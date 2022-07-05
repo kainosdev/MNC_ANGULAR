@@ -1,0 +1,674 @@
+<!-- <div> -->
+    <div class="container">
+
+        <div class="row requiredfield1">
+            <p style="color: red;border: none !important;" id="email_idmsg"></p>
+        </div>
+    
+    
+        <p class="mainheading Vendortitle">Vendor Details</p>
+    
+        <form [formGroup]="vendorMgmt">
+    
+            <div class="row" style="padding-bottom: 8px;">
+                <div class="col-sm-5 innerlinefont usernamediv">
+                    <!-- <mat-form-field> -->
+                    <label class="labelwidth"> User Name </label>
+                    <input class="toggle username" type="type" formControlName="user_name" id="user">
+    
+                    <!-- </mat-form-field> -->
+                </div>
+    
+                <div class="col-sm-5 innerlinefont vendortypelabel usernamediv" *ngFor="let s1 of singleVendorDet">
+                    <label class="labelwidth">Vendor Type</label>
+                    <!-- <div class="btndiv1"> -->
+                    <label>Individual</label>
+                    &nbsp;&nbsp;
+                    <label class="switch" *ngIf="s1.VendorTypeId == 'I'">
+                        <input type="checkbox" name="active" id="active" (change)="Displayvendortype()">
+                        <span class="slider round"></span>
+                    </label>
+
+                    <label class="switch" *ngIf="s1.VendorTypeId == 'B'">
+                        <input type="checkbox" name="active" id="active"  checked  (change)="Displayvendortype()">
+                        <span class="slider round"></span>
+                    </label>
+
+                    <!-- <label *ngIf="s1.VendorTypeId == 'I'" class="switch">
+                        <input   class="" type="checkbox" id="active" formControlName="active" (change)="Displayvendortype()">
+                        <span class="slider round"></span>
+                    </label>
+
+                    <label class="switch" *ngIf="s1.VendorTypeId == 'B'">
+                        <input  class="" type="checkbox" id="active" formControlName="active" (change)="Displayvendortype()" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    {{s1.VendorTypeId}} -->
+                    &nbsp;&nbsp;
+                    <label class="">Business</label>
+                    <!-- </div> -->
+                </div>
+            </div>
+    
+       
+    
+        <!--Contact Information Start -->
+       
+            <div id="vendor-individual" *ngFor="let s of singleVendorDet">
+    
+                <p class="mainheading heading">Contact Information</p>
+    
+                <div class="row Generaldiv individual">
+                    <div class="col-sm-6 innerlinefont">
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">First Name <span class="requiredfield "> *</span> </label>
+                            <input type="text" class="firstname" [(ngModel)]="s.LegalName" formControlName="first_name" id="firstname_id"
+                                (keypress)="EmptyErrorMessage('firstname_id');alpha($event)">
+                        </div>
+    
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">Last Name <span class="requiredfield "> *</span> </label>
+                            <input type="text" class="lastname" [(ngModel)]="s.TradeName" formControlName="last_name" id="lastname_id"
+                                (keypress)="EmptyErrorMessage('lastname_id'); alpha($event)">
+                        </div>
+    
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">Middle Name</label>
+                            <input type="text" class="middlename" id="middlename_id" formControlName="middle_name"
+                                (keypress)="alpha($event)">
+                        </div>
+    
+    
+                        <div class="labelheight">
+                            <label class="wouldla">Would you like to receive outreach emails from us ?</label>
+                            <!-- <label style="width:10px;"></label> -->
+                            <label class="switch">
+                                <input type="checkbox" name="active" id="active">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+    
+    
+                    <div class="col-sm-6 innerlinefont">
+                        <div class="labelheight">
+                            <label class="labelwidth">Social Security Number<span class="requiredfield "> *</span> </label>
+                            <input type="text" class="social" id="socialsecurity_id" [(ngModel)]="s.EIN_SSN" formControlName="social_no"
+                                (keypress)="EmptyErrorMessage('socialsecurity_id');">
+                        </div>
+    
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">Email<span class="requiredfield "> *</span> </label>
+                            <input type="email" class="emailt" id="email_id" [(ngModel)]="s.Email" formControlName="email_individual"
+                                (keyup)="EmptyErrorMessage('email_id')">
+                        </div>
+    
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">Phone<span class="requiredfield "> *</span> </label>
+                            <input type="text" class="phone" id="phone_id" [(ngModel)]="s.Phone" formControlName="phone_no"
+                                (keypress)="EmptyErrorMessage('phone_id');number($event)">
+                        </div>
+    
+    
+    
+                    </div>
+                </div>
+            </div>
+       
+        <!--Contact Information End -->
+    
+    
+    
+        <!--General Information Start -->
+        
+            <div id="General_Information" style="display: none;">
+                <p class="mainheading heading">General Information</p>
+    
+                <div class="row Generaldiv" *ngFor="let s2 of singleVendorDet">
+    
+                    <div class="col-sm-6 innerlinefont">
+                        <div class="labelheight">
+                            <label class="labelwidth"> Legal Business Name<span class="requiredfield "> *</span></label>
+                            <input type="text" class="Legalbusiness" id="legalbusiness_id" formControlName="business_name" [(ngModel)]="s2.LegalName"
+                                (keypress)="EmptyErrorMessage('legalbusiness_id'); alpha($event)">
+                        </div>
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">Alias Name</label>
+                            <input type="text" class="middlename" id="middlename_id" formControlName="alias_name" [(ngModel)]="s2.AliasName"
+                                (keypress)="alpha($event)">
+                        </div>
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">Federal EIN <span class="requiredfield "> *</span></label>
+                            <input type="text" class="Federal" id="federal_id" formControlName="federal"
+                                (keypress)="EmptyErrorMessage('federal_id')">
+                        </div>
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">NAICS Code </label>
+                            <input type="text" class="Federal" id="federal_id" formControlName="naicscode" [(ngModel)]="s2.NAICSCodes">
+                        </div>
+    
+    
+    
+    
+                        <div class="labelheight">
+                            <label class="Businessregistered">Is this Business Registered with this County/State ?</label>
+                            <!--<label style="width:10px"></label>-->
+                            <label class="switch">
+                                <input type="checkbox" name="active" id="active" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+    
+                        <div class="form-group form-inline">
+                            <label class="businessfranchisee">Is this business a franchisee ?</label>
+                            <!--<label style="width:10px"></label>-->
+                            <label class="switch">
+                                <input class="" type="checkbox" name="active" id="active" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+    
+                    <div class="col-sm-6" style="font-size:12px !important;;">
+    
+                        <div class="labelheight">
+                            <label class="labelwidth"> Trade Name <span class="requiredfield "> *</span></label>
+                            <input type="text" id="tradename_id" class="Vendortype" formControlName="trade_name" [(ngModel)]="s2.TradeName"
+                                (keypress)="EmptyErrorMessage('tradename_id');alpha($event)">
+                        </div>
+    
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">DUNS Number <span class="requiredfield "> *</span></label>
+                            <input type="number" id="dunsno_id" class="DUNSno" formControlName="duns_no" [(ngModel)]="s2.DUNS"
+                                (keypress)="EmptyErrorMessage('dunsno_id')">
+                        </div>
+                        <div class="labelheight">
+                            <label class="labelwidth">Commodity Code</label>
+                            <input type="number" id="dunsno_id" class="DUNSno" formControlName="commoditycode">
+                        </div>
+    
+    
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">Business Website <span class="requiredfield "> *</span></label>
+                            <input type="text" class="Businesswebsite" id="businesswebsite_id"
+                                formControlName="business_website" (keypress)="EmptyErrorMessage('businesswebsite_id')">
+                        </div>
+    
+                        <div class="labelheight">
+                            <label class="businessregistered1">Is this business registered with this State Corporation
+                                Commission ? </label>
+                            <!--<label style="width:10px"></label>-->
+                            <label class="switch">
+                                <input class="" type="checkbox" name="active" id="active" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+    
+                    </div>
+                </div>
+    
+            </div>
+        
+        <!--General Information end -->
+    
+    
+    
+        
+            <div id="currentaddress" *ngFor="let Addr of singleVendorAddressDet">
+    
+                <p class="mainheading heading">Address Information</p>
+    
+                <div class="row Generaldiv individual">
+                    <div class="col-sm-6 innerlinefont">
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">Address<span class="requiredfield "> *</span> </label>
+                            <input type="text" class="Physicaladdress" id="currentaddress_id" [(ngModel)]="Addr.Address1"
+                                formControlName="physical_address" (keypress)="EmptyErrorMessage('currentaddress_id')">
+                        </div>
+    
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">City<span class="requiredfield "> *</span> </label>
+                            <select id="currentcity_id" class="city" formControlName="city" [(ngModel)]="Addr.CityId"
+                                (keypress)="EmptyErrorMessage('currentcity_id')">
+                                <option *ngFor="let c of citylist" [value]="c.CityId ">
+                                    {{c.CityName}}
+                                </option>
+                            </select>
+                        </div>
+    
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">Zip Code<span class="requiredfield "> *</span> </label>
+                            <select id="currentzipcode_id" class="zip" formControlName="zip_code" [(ngModel)]="Addr.Zipcode"
+                                (keypress)="EmptyErrorMessage('currentzipcode_id');">
+                                <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode ">
+                                    {{z.Zipcode}}
+                                </option>
+                            </select>
+    
+                        </div>
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">County<span class="requiredfield "> *</span> </label>
+                            <select type="text" id="currentcounty_id" class="County" formControlName="county" [(ngModel)]="Addr.DistrictId"
+                                (keypress)="EmptyErrorMessage('currentcounty_id')">
+                                <option *ngFor="let d of districts" [value]="d.DistrictId ">
+                                    {{d.DistrictName}}
+                                </option>
+                            </select>
+                        </div>
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">State/province<span class="requiredfield "> *</span> </label>
+                            <select class="State" id="stateprovice_id" formControlName="state_province" [(ngModel)]="Addr.StateId"
+                                (change)="EmptyErrorMessage('stateprovice_id')">
+                                <option *ngFor="let s of statedetail" [value]="s.StateId ">
+                                    {{s.StateName}}
+                                </option>
+                            </select>
+                        </div>
+    
+    
+                    </div>
+    
+    
+                    <div class="col-sm-6 innerlinefont">
+                        <div class="labelheight">
+                            <label class="labelwidth">Address Line2</label>
+                            <input type="text" class="Physicaladdress" id="currentstreet_id" formControlName="street" [(ngModel)]="Addr.Address2"
+                                (keypress)="EmptyErrorMessage('currentstreet_id')">
+                        </div>
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">Country<span class="requiredfield "> *</span> </label>
+                            <select class="Country" id="currentcountry_id" formControlName="country" [(ngModel)]="Addr.CountryId"
+                                (change)="EmptyErrorMessage('currentcountry_id')">
+                                <option *ngFor="let countrylist of countrytype" [value]="countrylist.CountryId" >
+                                    {{countrylist.CountryName}}</option>
+                            </select>
+                        </div>
+                        <div class="labelheight">
+                            <label class="labeldate">From Date </label>
+                            <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
+                                
+                                 (keypress)="EmptyErrorMessage('mailingfromdata_id')">
+                        </div>
+                        <div class="labelheight">
+                            <label class="labeldate">To Date</label>
+                            <input type="date" id="mailingtodata_id" class="mailingfromdate" value="{{Addr.EndDate}}"
+                                
+                                >
+                        </div>
+    
+    
+    
+                    </div>
+                </div>
+            </div>
+       
+    
+    
+    
+    
+        <!-- <form [formGroup]="currentaddress"> -->
+        <div id="addtionaddress">
+    
+            <p class="mainheading heading">Additional Address</p>
+    
+            <div class="row Generaldiv individual">
+                <div class="col-sm-6 innerlinefont">
+    
+    
+                    <div class="form-group col col-lg-6">
+    
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="rtypes" class="labelwidth">Other Address</label>
+                            </div>
+    
+                            <div class="col-sm-4">
+                                <div class="form-check" style=" margin-left: 50px;">
+                                    <input class="form-check-input" type="radio" name="radiobutton" id="mail"
+                                        value="option1" (click)="display_addresstype('mail')">
+                                    <label class="form-check-label" for="mail" style="width: 112px;">
+                                        Mailing Address
+                                    </label>
+                                </div>
+                            </div>
+    
+                            <div class="col-sm-4">
+                                <div class="form-check" style=" margin-left: 98px;">
+                                    <input class="form-check-input" type="radio" name="radiobutton" id="past"
+                                        value="option2" (click)="display_addresstype('past')">
+                                    <label class="form-check-label" for="past" style="width: 112px;">
+                                        Past Address
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                        <div class="acc" style="display: none;" id="mailing_type">
+                            <h2 id="addressheading" class="title mainheading">Mailing Address</h2>
+                            <div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">Address</label>
+                                            <input type="text" id="mailingaddress_id" class="Mailingaddress1"
+                                                formControlName="mailing_address"
+                                                (keypress)="EmptyErrorMessage('mailingaddress_id')">
+                                        </div>
+    
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">Street Address</label>
+                                            <input type="text" id="mailingstreet_id" class="Mailingaddress1"
+                                                formControlName="mailing_street"
+                                                (keypress)="EmptyErrorMessage('mailingstreet_id')">
+                                        </div>
+    
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">City</label>
+                                            <select type="text" id="mailingcity_id" class="City1" formControlName="city_1"
+                                                (keypress)="EmptyErrorMessage('mailingcity_id')">
+                                                <option>chennai</option>
+                                            </select>
+                                        </div>
+    
+    
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">Zip Code</label>
+                                            <select type="number" id="mailingzipcode_id" class="zip1"
+                                                formControlName="zip_code1"
+                                                (keypress)="EmptyErrorMessage('mailingzipcode_id')">
+                                                <option></option>
+                                            </select>
+                                        </div>
+    
+    
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">County</label>
+                                            <select type="text" id="mailingcounty_id" class="County1"
+                                                formControlName="county_1"
+                                                (keypress)="EmptyErrorMessage('mailingcounty_id')">
+                                                <option>county</option>
+                                            </select>
+                                        </div>
+    
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">State/Province</label>
+                                            <select class="State" id="mailingstateprovince_id"
+                                                formControlName="state_province1"
+                                                (change)="EmptyErrorMessage('mailingstateprovince_id')">
+                                                <option value="value"></option>
+                                                <option value="value1">Virginia</option>
+                                                <option value="value2">Alabama</option>
+                                                <option value="value3">Alaska</option>
+                                                <option value="value4">California</option>
+                                                <option value="value5">Florida</option>
+                                                <option value="value6">Ohio</option>
+                                                <option value="value7">Washington</option>
+                                            </select>
+                                        </div>
+    
+    
+                                        <div class="labelheight" style="margin-left: 9px;">
+                                            <label class="labelwidth">Country</label>
+                                            <select class="Country1" id="mailingcountry_id" formControlName="country_1"
+                                                (change)="EmptyErrorMessage('mailingcountry_id')">
+                                                <option value="value"></option>
+                                                <option value="value1">USA</option>
+                                                <option value="value2">India</option>
+                                            </select>
+                                        </div>
+    
+    
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">From Date</label>
+                                            <input type="date" id="mailingfromdata_id" class="mailingfromdate"
+                                                formControlName="mailingfrom_date"
+                                                (keypress)="EmptyErrorMessage('mailingfromdata_id')">
+                                        </div>
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">To Date</label>
+                                            <input type="date" id="mailingtodata_id" class="mailingfromdate"
+                                                formControlName="mailingto_date">
+                                        </div>
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+                    
+                </div>
+    
+    
+                <div class="col-sm-6 innerlinefont">
+                    <div class="labelheight">
+                        <label class="Mailingaddress">Mailing address same as physical address ?</label>
+                        <!--<label style="width:10px"></label>-->
+                        <label class="switch">
+                            <input type="checkbox" name="active" id="address_active" (change)="Address_swiping()">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    
+                        <div class="acc1" style="display: none;" id="past_type">
+                            <h2 class="title1 mainheading">Past Address</h2>
+                            <div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">Address</label>
+                                            <input type="text" id="pastaddress_id" class="Mailingaddress1"
+                                                formControlName="past_address"
+                                                (keypress)="EmptyErrorMessage('pastaddress_id')">
+                                        </div>
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;"> Street Address</label>
+                                            <input type="text" id="paststreet_id" class="Mailingaddress1"
+                                                formControlName="past_street"
+                                                (keypress)="EmptyErrorMessage('paststreet_id')">
+                                        </div>
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">City</label>
+                                            <select id="pastcity_id" class="City1" formControlName="city_2"
+                                                (keypress)="EmptyErrorMessage('pastcity_id')">
+                                                <option>chennai</option>
+                                            </select>
+                                        </div>
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">Zip Code</label>
+                                            <select type="number" id="pastzipcode_id" class="zip1"
+                                                formControlName="zip_code2"
+                                                (keypress)="EmptyErrorMessage('pastzipcode_id')">
+                                                <option>600095</option>
+                                            </select>
+                                        </div>
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">County</label>
+                                            <select type="text" id="pastcounty_id" class="County1"
+                                                formControlName="county_2" (keypress)="EmptyErrorMessage('pastcounty_id')">
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">State/Province</label>
+                                            <select class="State" id="paststateprovice_id" formControlName="state_province2"
+                                                (change)="EmptyErrorMessage('paststateprovice_id')">
+                                                <option value="value1">Virginia</option>
+                                                <option value="value2">Alabama</option>
+                                                <option value="value3">Alaska</option>
+                                                <option value="value4">California</option>
+                                                <option value="value5">Florida</option>
+                                                <option value="value6">Ohio</option>
+                                                <option value="value7">Washington</option>
+                                            </select>
+                                        </div>
+                                        <div class="labelheight" style="margin-left: 9px;">
+                                            <label class="labelwidth">Country</label>
+                                            <select class="Country1" id="pastcountry_id"
+                                                (change)="EmptyErrorMessage('pastcountry_id')">
+                                                <option></option>
+                                                <option value="value1">USA</option>
+                                                <option value="value2">India</option>
+                                            </select>
+                                        </div>
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">From Date</label>
+                                            <input type="date" id="pastfromdata_id" class="mailingfromdate"
+                                                formControlName="pastfrom_date"
+                                                (keypress)="EmptyErrorMessage('pastfromdata_id')">
+                                        </div>
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">To Date</label>
+                                            <input type="date" id="pasttodata_id" class="mailingfromdate"
+                                                formControlName="pastto_date"
+                                                (keypress)="EmptyErrorMessage('pasttodata_id')">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- </form> -->
+        <!-- Contact Information Start -->
+        <div id="contact_inforation" style="display: none;">
+    
+            <p class="mainheading heading" style=" padding-bottom: 5px; padding-top: 16px;">Contact Information</p>
+    
+           
+                <div class="row Generaldiv">
+    
+    
+                    <div class="col-sm-6 innerlinefont">
+                        <div class="labelheight">
+                            <label class="labelwidth"> Contact Person Name <span class="requiredfield "> *</span></label>
+                            <input type="text" class="Contactperson" id="contactperson_id" formControlName="contact_name"
+                                (keypress)="EmptyErrorMessage('contactperson_id')">
+                        </div>
+    
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">Business Phone <span class="requiredfield "> *</span></label>
+                            <input type="number" class="Businessphone" id="businessphone_id"
+                                formControlName="business_phone" (keypress)="EmptyErrorMessage('businessphone_id')">
+    
+                        </div>
+    
+                        <div class="labelheight">
+                            <label class=" labelwidth" style="width: 146px;">Primary Contact</label>
+                            <label class="switch">
+                                <input class="" type="checkbox" name="businessprimaryContact" id="businessprimaryContact"
+                                    formControlName="VendorContactPrimary" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+    
+    
+    
+    
+                    </div>
+    
+                    <div class="col-sm-6 innerlinefont">
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">Title<span class="requiredfield "> *</span></label>
+                            <input type="text" class="Title" id="title_id" formControlName="title"
+                                (keypress)="EmptyErrorMessage('title_id')">
+                        </div>
+    
+    
+                        <div class="labelheight">
+                            <label class="labelwidth">Business Email <span class="requiredfield "> *</span></label>
+                            <input type="text" class="Businessemail" id="businessemail_id" formControlName="business_email"
+                                (keyup)="EmptyErrorMessage('businessemail_id')">
+                        </div>
+    
+                        <div style="height: 22px;">
+                            <label class="labelwidth">Active</label>
+                            <label class="switch">
+                                <input class="" type="checkbox" name="active" id="active">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+    
+                        <!-- <form [formGroup]="addtionalcontact"></form> -->
+                        <div class="accordion acc2">
+                            <h2 class="title mainheading" (click)="opened3 = !opened3">Additional Contact Details Added</h2>
+                            <div class="content-container" [class.opened3]="opened3">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">Contact Person Name</label>
+                                            <input type="text" class="Contactperson" id="addtionalcontactname_id"
+                                                formControlName="addtional_name"
+                                                (keypress)="EmptyErrorMessage('addtionalcontactname_id')">
+                                        </div>
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">Title</label>
+                                            <input type="text" class="Title" id="addtionaltitle_id"
+                                                formControlName="addtional_title"
+                                                (keypress)="EmptyErrorMessage('addtionaltitle_id')">
+                                        </div>
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">Business Email</label>
+                                            <input type="text" class="Businessemail" id="addtionalbusinessmail_id"
+                                                formControlName="addtional_businessmail"
+                                                (keypress)="EmptyErrorMessage('addtionalbusinessmail_id')">
+                                        </div>
+    
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="labelheight">
+                                            <label class="labelwidth" style="margin-left: 9px;">Business Phone</label>
+                                            <input type="number" class="City1" id="addtionalbusinessphone_id"
+                                                formControlName="addtional_businessphone"
+                                                (keypress)="EmptyErrorMessage('addtionalbusinessphone_id')">
+                                        </div>
+                                        <div style="height: 22px;">
+                                            <label class="labelwidth" style="width: 146px;margin-left: 9px;">Active</label>
+                                            <label class="switch">
+                                                <input class="" type="checkbox" name="active" id="active">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+        </div>
+        <!-- Contact Information End-->
+    
+        <div class="btndiv">
+            <input type="button" class="btn btn-primary fixedwidthcls" value="Cancel" />
+            &nbsp;&nbsp;
+            <input type="button" class="btn btn-primary fixedwidthcls"
+                (click)="Userdata(vendorMgmt.value);"
+                value="Save " />
+        </div><br>
+    
+        </form>
+    
+    </div>

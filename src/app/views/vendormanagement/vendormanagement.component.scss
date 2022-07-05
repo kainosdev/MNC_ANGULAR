@@ -1,0 +1,589 @@
+.requiredfield
+{
+    color:red;
+    // border: red;
+    
+}
+.acc{
+  width: 950px;
+}
+// .acc1{
+//   margin-left: -60px !important;
+//   width: 950px;
+// }
+.acc1 {
+  margin-left: -498px !important;
+}
+.acc2{
+  
+   
+    margin: 12px;
+    margin-left: -502px !important;
+    margin-top: 64px !important;
+
+}
+.requiredfield1
+{
+    // color:red;
+    // border: red;
+    font-size: 12px !important;
+    
+}
+
+.validation{
+  border: 1px solid red;
+}
+
+.accordion::before {
+    content: "+" !important;
+      font-weight: bold;
+      float: right;
+      margin-left: 5px;
+      margin-right: 9px;
+  }
+  
+  .active:after {
+    content: "\2212" !important;
+  }
+  
+  .accordion {
+    box-shadow: 0px 0px 0px 1px rgb(0 0 0 / 17%), 0px 1px 0px -1px rgb(0 0 0 / 14%), 0px 3px 0px -1px rgb(0 0 0 / 12%);
+    margin: 12px;
+    margin-left: 3px;
+  
+    
+  }
+  
+  .title {
+  padding: 0px;
+  margin-top: 1px;
+  margin-left: 8px;
+  margin-bottom: 6px;
+  font-size: 12px !important;
+  font-weight: 600;
+  }
+  .title1 {
+    padding: 0px;
+    margin-top: -7px;
+    margin-left: 8px;
+    margin-bottom: 6px;
+    font-size: 12px !important;
+    font-weight: 600;
+    }
+  .labeldate{
+    width: 146px;
+    margin-left: 2px;
+  }
+  .content {
+  padding: 12px;
+  }
+  
+  .content-container {
+  overflow: hidden;
+  max-height: 0;
+  }
+  
+  .content-container.opened {
+  max-height: none;
+  }
+  
+  .content-container.opened2 {
+  max-height: none;
+  }
+
+  .content-container.opened3 {
+    max-height: none;
+    }
+  
+  .toggledesign{
+    background: #1593E4;
+    border-radius: 0px;
+    font-size: 12px !important;
+    height: 29px;
+    width: 100px;
+  }
+  
+  input[type=button] {
+      padding: 4px 27px;
+      background: #1593E4;
+      border: 0 none;
+      /* cursor: pointer;
+      -webkit-border-radius: 5px; */
+      border-radius: 100px;
+      font-size: 12px !important;
+  }
+  
+  p {
+      margin-top: 0;
+      margin-bottom: 0rem !important;
+  }
+  
+  .switch {
+      position: relative;
+      display: inline-block;
+      width: 41px;
+      height: 17px;
+    }
+    
+    .switch input { 
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 12px;
+      width: 14px;
+      left: -1px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+    
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+    
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+    
+    .slider.round:before {
+      border-radius: 50%;
+    }
+  
+    .fixedwidthcls {
+      width: 109px;
+  }
+  
+  
+  
+  
+  @media screen and (min-width: 768px) {
+  
+    .vendor_btn{
+      padding: 4px 27px;
+      background: #1593E4;
+      border: 0 none;
+      border-radius: -16px;
+      font-size: 12px !important;
+    }
+  
+  
+    .individual{
+      height: 248px important;
+    }
+    .heading{
+      padding-bottom: 5px;
+    }
+      .username{
+          width: 243px !important;
+          height: 28px;
+      }
+  
+      .vendortype{
+          width: 243px !important;
+          height: 28px;
+      }
+  
+      .vendortypelabel{
+          padding-left: 23px;
+  
+      }
+     .Generaldiv{
+        border: 1px solid black !important;
+        width: 95%;
+        padding-top: 7px;
+        padding-bottom: 5px;
+      }
+      .addressinfdiv{
+        border: 1px solid black !important;
+        width: 47%;
+        padding-top: 7px;
+        padding-bottom: 5px;
+      }
+      .Legalbusiness{
+        width: 300px !important;
+        height: 28px;
+      }
+      .Federal{
+        width: 243px !important;
+        height: 28px;
+      }
+      .Physicaladdress{
+        width: 311px !important;
+        height: 28px;
+      }
+      .State{
+        width: 170px !important;
+        height: 28px;
+      }
+      .city{
+        width: 225px !important;
+        height: 28px;
+      }
+      .zip{
+        width: 130px !important;
+        height: 28px;
+      }
+      .County{
+        width: 225px !important;
+       height: 28px;
+      }
+      .Country{
+        width: 243px !important;
+        height: 28px;
+      }
+      .Mailingaddress{
+        width: 325px;
+      }
+      .Vendortype{
+        width: 243px !important;
+        height: 28px;
+      }
+      .DUNSno{
+        width: 243px !important;
+        height: 28px;
+      }
+      .Mailingaddress1{
+        width: 277px !important;
+        height: 28px;
+      }
+      .City1{
+        width: 225px !important;
+        height: 28px;
+      }
+      .zip1{
+        width: 130px !important;
+         height: 28px;
+      }
+      .County1{
+        width: 225px !important; 
+        height: 28px;
+      }
+      .mailingfromdate{
+        width:  105px !important; 
+          height: 28px;
+       }
+      .Country1{
+        width: 243px !important;
+        height: 28px;
+      }
+      .Businesswebsite{
+        width: 243px !important; 
+        height: 28px;
+      }
+      .Contactperson{
+        width: 200px !important;
+        height: 28px;
+      }
+      .Businessphone{
+        width: 117px !important;
+        height: 28px;
+      }
+      .Title{
+        width: 243px !important;
+        height: 28px;
+      }
+      .Businessemail{
+        width: 243px !important;
+        height: 28px;
+      }
+      .Businessregistered{
+          width: 325px;
+      }
+      .businessfranchisee{
+          width: 325px;
+      }
+      .Wouldyoulike{
+          width: 325px;
+      }
+      .btndiv{
+          padding-right: 42px; 
+          text-align: right;
+          padding-top: 15px;
+      }
+      .btndiv1{
+        padding-right: 156px; 
+        text-align: right;
+        // padding-top: 15px;
+    }
+      .businessregistered1{
+          width: 408px;
+      }
+      .Vendortitle{
+          padding-bottom: 8px;
+      }
+      .firstname{
+        width: 200px !important;
+        height: 28px;
+       }
+      .contentrow{
+        border: 2px solid black !important;
+        width: 90%;
+      }
+      .lastname{
+        width: 200px !important;
+        height: 28px;
+       }
+      .middlename{
+        width: 200px !important;
+        height: 28px;
+      }
+      .phone{
+        width: 117px !important;
+        height: 28px;
+      }
+      .social{
+        width: 130px !important;
+        height: 28px;
+       }
+      .emailt{
+        width: 243px !important;
+        height: 28px;
+      }
+      .wouldla{
+        width: 311px !important;
+        height: 28px;
+      }
+      .physicalt{
+        width: 308px !important;
+        height: 28px;
+       }
+       .cityt{
+        width: 225px;
+        height: 28px;
+       }
+      .zipt{
+        width: 68px;
+        height: 28px;
+      }
+      .countyt{
+      width: 225px;
+      height: 28px;
+    }
+    .countryt{
+      width: 225px;
+      height: 28px;
+     }
+    // .statet{
+    //   width: 100px;
+    //   height: 28px;
+    // }
+  }
+  
+  @media screen and (max-width: 768px) {
+  
+      .usernamediv{
+          margin-left: 24px;
+      }
+  
+      .username{
+          width: 220px !important;
+          height: 28px;
+      }
+  
+      .vendortype{
+          width: 220px !important;
+          height: 28px;
+        
+      }
+      .vendortypelabel{
+        padding-top: 8px;
+        
+    }
+    .Generaldiv{
+        border: 1px solid black !important;
+        width: 100%;
+        margin-left: 11px;
+        padding-top: 11px;
+        padding-bottom: 11px;
+      }
+      .Legalbusiness{
+        width: 188px !important;
+        height: 28px;
+      }
+      .Federal{
+        width: 188px !important;
+         height: 28px;
+      }
+      .Physicaladdress{
+        width: 188px !important;
+        height: 28px;
+      }
+      .State{
+        width: 25%;
+        height: 28px;
+      }
+      .city{
+        width: 190px !important;
+        height: 28px;
+      }
+      .zip{
+        width: 68px !important;
+        height: 28px;
+      }
+      .County{
+        width: 190px !important;
+        height: 28px;
+      }
+      .Country{
+        width: 190px !important;
+        height: 28px;
+      }
+      .Mailingaddress{
+        width: 321px;
+      }
+      .Vendortype{
+        width: 190px !important;
+        height: 28px;
+      }
+      .DUNSno{
+        width:  190px !important;
+        height: 28px;
+      }
+      .Mailingaddress1{
+        width: 190px !important;
+        height: 28px;
+      }
+      .City1{
+        width: 190px !important;
+        height: 28px;
+      }
+      .zip1{
+        width: 68px !important;
+         height: 28px;
+      }
+      .County1{
+        width: 190px !important; 
+        height: 28px;
+      }
+      .Country1{
+        width: 190px !important;
+        height: 28px;
+      }
+      .Businesswebsite{
+        width: 190px !important; 
+        height: 28px;
+      }
+      .Contactperson{
+        width: 190px !important;
+        height: 28px;
+      }
+      .Businessphone{
+        width: 190px !important;
+        height: 28px;
+      }
+      .Title{
+        width: 190px !important;
+        height: 28px;
+      }
+      .Businessemail{
+        width: 190px !important;
+        height: 28px;
+      }
+      .Businessregistered{
+          width: 322px;
+      }
+      .businessfranchisee{
+          width: 299px;
+      }
+      .Wouldyoulike{
+          width: 299px;
+          padding-bottom: 7px;
+      }
+      .btndiv{
+        padding-right: 63px;
+        text-align: right;
+        margin-top: 10px;
+      }
+      .businessregistered1{
+          width: 299px;
+      }
+      .firstname{
+        width: 170px;
+        height: 28px;
+       }
+       .contentrow{
+        border: 1px solid black !important;
+        width: 100%;
+        height: 80%;
+        margin-left: 2px;
+        margin-right: 0px;
+        padding-top: 11px;
+        padding-bottom: 11px;
+       }
+       .lastname{
+        width: 170px;
+        height: 28px;
+       }
+       .middlename{
+        width: 170px;
+        height: 28px;
+       }
+       .phone{
+        width: 117px;
+        height: 28px;
+       }
+       .social{
+        width: 85px;
+        height: 28px;
+       }
+       .emailt{
+        width: 170px;
+        height: 28px;
+       }
+       .physicalt{
+        width: 190px !important;
+        height: 28px;
+       }
+       .cityt{
+        width: 192px;
+        height: 28px;
+       }
+      .zipt{
+        height: 28px;
+        width: 65px !important;
+       }
+       .countyt{
+        width: 150px;
+         height: 28px;
+      }
+      .countryt{
+        width: 175px !important;
+        height: 28px;
+      }
+      .statet{
+        width: 100px;
+        height: 28px;
+       }
+       .heading{
+        padding-bottom: 5px;
+      }
+  }

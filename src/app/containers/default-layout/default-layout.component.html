@@ -1,0 +1,95 @@
+<!--sidebar-->
+<c-sidebar
+  #sidebar="cSidebar"
+  class="d-print-none sidebar sidebar-fixed"
+  id="sidebar"
+  visible
+>
+  <c-sidebar-brand
+    [brandFull]="{
+      src: 'http://demo.kainosinnovative.com/assets/dist/img/Kainos_logo.png',
+      width: 100,
+      height: 46,
+      alt: 'CoreUI Logo'
+    }"
+    [brandNarrow]="{
+      src: 'assets/img/brand/coreui-signet-white.svg',
+      width: 46,
+      height: 46,
+      alt: 'CoreUI Logo'
+    }"
+    routerLink="./"
+  >
+  </c-sidebar-brand>
+    <perfect-scrollbar [config]="perfectScrollbarConfig">
+
+
+<!-- <li class="c-sidebar-nav-dropdown">
+  <a>test</a>
+</li> -->
+
+
+  <!--  [perfectScrollbar]="perfectScrollbarConfig"-->
+  <!-- <c-sidebar-nav
+    [navItems]="navItems"
+  >
+    </c-sidebar-nav> -->
+
+    <!-- <c-sidebar-nav>
+      <c-sidebar-brand>Sidebar Brand</c-sidebar-brand>
+      
+    </c-sidebar-nav> -->
+
+    <!-- <c-sidebar visible>
+      <c-sidebar-brand>Sidebar Brand</c-sidebar-brand>
+      <c-sidebar-nav [navItems]="navItems"></c-sidebar-nav>
+      <c-sidebar-toggler></c-sidebar-toggler>
+    </c-sidebar> -->
+
+    <!-- <c-sidebar-toggler toggle="unfoldable" csidebartoggle="sidebar1" role="button" class="sidebar-toggler"></c-sidebar-toggler> -->
+
+    <!-- <c-sidebar-nav
+    [navItems1]="navItems1"
+  >
+    </c-sidebar-nav> -->
+
+ <p class="menulinkPtagcls" *ngIf="usertypeses=='EMPLOY' || usertypeses=='ADMIN'">   <a class="menulinkcls"  routerLink="/vendormanagement">Vendor Management</a></p>
+<!-- <br> -->
+   <p class="menulinkPtagcls" *ngIf="usertypeses=='ADMIN'"> <a class="menulinkcls" routerLink="/adminmanagement">User Management</a></p>
+
+  <!-- <a routerlinkactive="active" ng-reflect-router-link-active="active" ng-reflect-ng-class="[object Object]" ng-reflect-c-html-attr="[object Object]" ng-reflect-preserve-fragment="false" ng-reflect-skip-location-change="false" ng-reflect-replace-url="false" ng-reflect-state="[object Object]" ng-reflect-router-link="/vendormanagement" ng-reflect-router-link-active-options="[object Object]" class="nav-link active" href="/vendormanagement">
+    
+    <svg ng-reflect-name="cil-drop" ng-reflect-custom-classes="[object Object]" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" pointer-events="none" role="img" class="nav-icon"><path fill="var(--ci-primary-color, currentColor)" d="M394.633,220.663,269.475,25.174a16,16,0,0,0-26.95,0L117.364,220.665A170.531,170.531,0,0,0,84.1,322.3c0,94.785,77.113,171.9,171.9,171.9s171.9-77.113,171.9-171.9A170.519,170.519,0,0,0,394.633,220.663ZM256,462.2c-77.14,0-139.9-62.758-139.9-139.9a138.758,138.758,0,0,1,27.321-83.058q.319-.432.608-.884L256,63.475,367.967,238.359q.288.453.608.884A138.754,138.754,0,0,1,395.9,322.3C395.9,399.441,333.14,462.2,256,462.2Z" class="ci-primary"></path></svg>
+    
+  <c-sidebar-nav-link-content ng-reflect-item="[object Object]">Vendor Management
+    
+</c-sidebar-nav-link-content>
+
+</a> -->
+
+  <!-- <c-sidebar-nav
+    [navItems1]="navItems1"
+  >
+  
+  </c-sidebar-nav> -->
+    </perfect-scrollbar>
+  <c-sidebar-toggler
+    *ngIf="!sidebar.narrow"
+    toggle="unfoldable"
+    cSidebarToggle="sidebar"
+  ></c-sidebar-toggler>
+</c-sidebar>
+
+<!--main-->
+<div class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent">
+  <!--app-header-->
+  <app-default-header class="mb-4 d-print-none header header-sticky" position="sticky" sidebarId="sidebar"></app-default-header>
+  <!--app-body-->
+  <div class="body flex-grow-1 px-3">
+    <c-container breakpoint="lg" class="h-auto">
+      <router-outlet></router-outlet>
+    </c-container>
+  </div>
+  <!--app footer-->
+  <app-default-footer></app-default-footer>
+</div>

@@ -1,0 +1,36 @@
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-smart-table/2.1.8/smart-table.min.js"></script> -->
+<h4>Vendor Management</h4>
+<table class="table">
+    <thead>
+      <tr>
+        <!-- <th scope="col">#</th> -->
+        <th scope="col">Legal Business Name</th>
+        <th>Type</th>
+        <th scope="col">State/ Province</th>
+        <th scope="col">City</th>
+        <th scope="col">Zipcode</th>
+        <th scope="col">County</th>
+        <th scope="col">Country</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr *ngFor="let v of vendorDetail">
+        <!-- <th scope="row">1</th> -->
+        <td (click)="ViewVendor(v.VendorId)">{{v.LegalName}}</td>
+        <td>{{v.VendorTypeDesc}}</td>
+        <td>{{v.StateName}}</td>
+        <td>{{v.CityName}}</td>
+        <td>{{v.Zipcode}}</td>
+        <td>-</td>
+        <td>{{v.CountryName}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+

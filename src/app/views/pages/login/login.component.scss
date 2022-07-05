@@ -1,0 +1,67 @@
+@media screen and (min-width: 768px){
+img{
+ width: 100px;
+ height: 60px;
+}
+
+.loginalign{
+    height: 40px;
+    margin-left: 130px !important;
+}
+.loginbtn{
+    border-radius: 50px;
+    height: 40px;
+    width: 100px;
+    background-color: 	#42478a;
+    color: white !important;
+    
+}
+.registerbtn{
+    border-radius: 50px;
+    background-color: 	#42478a;
+    height: 50px;
+    width: 150px;
+}
+.logoalign{
+    margin-top: 160px !important;
+}
+.noticealign{
+    font-size: 12px;
+    margin-top: 20px;
+}
+}
+@media screen and (max-width: 768px){
+    
+       img{
+        width: 70px;
+        height: 50px;
+       }
+       .registerclm{
+        margin-top: -20px !important;
+        width: 340px !important;
+       }
+       .loginalign{
+        height: 20px;
+        margin-left: 80px !important;
+    }
+    .loginbtn{
+        border-radius: 50px;
+        height: 40px;
+        width: 100px;
+        background-color: 	#42478a;
+        color: white !important;
+    }
+    .registerbtn{
+        border-radius: 50px;
+        background-color: 	#42478a;
+        height: 50px;
+        width: 150px;
+    }
+    .noticealign{
+        font-size: 12px;
+        margin-top: 20px;
+    }
+    .fw{
+        margin-top: -20px;
+    }
+}
