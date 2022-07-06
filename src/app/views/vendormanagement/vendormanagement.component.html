@@ -338,17 +338,17 @@
             <p class="mainheading heading">Additional Address</p>
     
             <div class="row Generaldiv individual">
-                <div class="col-sm-6 innerlinefont">
+                <div class="col-sm-12 innerlinefont">
     
     
-                    <div class="form-group col col-lg-6">
+                    <div class="form-group col col-lg-12">
     
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <label for="rtypes" class="labelwidth">Other Address</label>
                             </div>
     
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-check" style=" margin-left: 50px;">
                                     <input class="form-check-input" type="radio" name="radiobutton" id="mail"
                                         value="option1" (click)="display_addresstype('mail')">
@@ -358,7 +358,7 @@
                                 </div>
                             </div>
     
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="form-check" style=" margin-left: 98px;">
                                     <input class="form-check-input" type="radio" name="radiobutton" id="past"
                                         value="option2" (click)="display_addresstype('past')">
@@ -367,6 +367,11 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="col-sm-3">
+                                <label>Mailing address same as physical address ?</label>
+                                <input type="checkbox">
+                            </div>
+                             
                         </div>
                     </div>
                     
@@ -421,7 +426,7 @@
                                     <div class="col-sm-6 ">
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">State/Province</label>
-                                            <select class="StateId" id="mailingstateprovince_id"
+                                            <select class="State" id="mailingstateprovince_id"
                                                 formControlName="MStateId"
                                                 (change)="EmptyErrorMessage('mailingstateprovince_id')">
                                                 <option value="value"></option>
@@ -438,7 +443,7 @@
     
                                         <div class="labelheight" style="margin-left: 9px;">
                                             <label class="labelwidth">Country</label>
-                                            <select class="MCountry" id="mailingcountry_id" formControlName="MCountryId"
+                                            <select class="Country" id="mailingcountry_id" formControlName="MCountryId"
                                                 (change)="EmptyErrorMessage('mailingcountry_id')">
                                                 <option value="value"></option>
                                                 <option value="value1">USA</option>
@@ -533,7 +538,7 @@
                                         </div>
                                         <div class="labelheight" style="margin-left: 9px;">
                                             <label class="labelwidth">Country</label>
-                                            <select class="PCountryId" id="pastcountry_id"
+                                            <select class="Country" formControlName="PCountryId" id="pastcountry_id"
                                                 (change)="EmptyErrorMessage('pastcountry_id')">
                                                 <option></option>
                                                 <option value="value1">USA</option>
