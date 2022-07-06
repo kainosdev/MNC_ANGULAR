@@ -50,6 +50,8 @@ import {
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { LogoutComponent } from './views/logout/logout.component';
 import { RegistrationformComponent } from './registrationform/registrationform.component';
+// import { BidmanagementComponent } from './bidmanagement/bidmanagement.component';
+import { BidmanagementComponent } from './views/bid-management/bid-management.component';
 // import { VendorListComponent } from './views/vendor-list/vendor-list.component';
 
 // import { AdminmanagementComponent } from './views/adminmanagement/adminmanagement.component';

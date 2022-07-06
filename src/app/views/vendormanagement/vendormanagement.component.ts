@@ -57,6 +57,8 @@ export class VendormanagementComponent implements OnInit {
     this.getstatedata();
     this.vendorMgmt = this.frmbuilder.group({
 
+      VendorId: [localStorage.getItem('vendoridSes')],
+      VendorTypeId: [],
       user_name :[],
       active: [],
       FirstName: [],

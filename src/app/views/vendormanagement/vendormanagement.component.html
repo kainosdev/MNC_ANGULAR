@@ -25,12 +25,12 @@
                     <label>Individual</label>
                     &nbsp;&nbsp;
                     <label class="switch" *ngIf="s1.VendorTypeId == 'I'">
-                        <input type="checkbox" name="active" id="active" (change)="Displayvendortype()">
+                        <input type="checkbox" name="active" id="active" (change)="Displayvendortype()" value="I">
                         <span class="slider round"></span>
                     </label>
 
                     <label class="switch" *ngIf="s1.VendorTypeId == 'B'">
-                        <input type="checkbox" name="active" id="active"  checked  (change)="Displayvendortype()">
+                        <input type="checkbox" name="active" id="active"  checked  (change)="Displayvendortype()" value="B">
                         <span class="slider round"></span>
                     </label>
 
