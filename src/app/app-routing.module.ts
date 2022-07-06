@@ -7,6 +7,9 @@ import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { AdminmanagementComponent } from './views/adminmanagement/adminmanagement.component';
 import { RegistrationformComponent } from './registrationform/registrationform.component';
+// import { BidmanagementComponent } from './bidmanagement/bidmanagement.component';
+// import { BidmanagementModule } from './views/bid-management/bid-management.module';
+import { Title } from 'chart.js';
 
 const newLocal = './views/register/register.module';
 // import { DashboardComponent } from './views/dashboard/dashboard.component';
@@ -15,6 +18,7 @@ const routes: Routes = [
 
   { path:'', component:LoginComponent, data: { title: 'login'}},
   { path:'', component:RegistrationformComponent, data: { title: 'registrationform'}},
+  // { path: '', component:BidmanagementComponent, data: { title: 'bidmanagement'}},
   
   // {path:'', component:RegisterComponent,data: { title: "registerpage"}},
   // { path:'', component:RegisterComponent, data: { title: 'register1'}},
@@ -77,6 +81,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/vendor-list/vendor-list.module').then((m) => m.VendorListModule)
       },
+      {
+        path: 'bidManagement',
+        loadChildren: () =>
+          import('./views/bid-management/bid-management.module').then((m) => m.BidmanagementModule)
+      },
     ]
   },
   {
@@ -114,6 +123,13 @@ const routes: Routes = [
       title: 'registrationform'
     }
   },
+  // {
+  //   path: 'bidmanagement',
+  //   component: BidmanagementComponent,
+  //   data: {
+  //     title: 'bidmanagement'
+  //   }
+  // },
   // {
   //   path: 'register',
   //   component: RegisterComponent,
