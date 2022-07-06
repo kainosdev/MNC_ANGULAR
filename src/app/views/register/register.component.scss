@@ -93,7 +93,7 @@ input[type=button] {
 }
 .Generaldiv{
     border: 1px solid black !important;
-    width: 95%;
+    width: 100%;
     padding-top: 7px;
     padding-bottom: 5px;
   }
@@ -164,4 +164,25 @@ input[type=button] {
 .phoneno{
   width: 117px;
   height: 28px;
+}
+.invalid-feedback {
+  position: absolute;
+  bottom: -17px;
+ 
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+}
+.invalid-feedback_vec {
+  position: absolute;
+ // bottom: -17px;
+  color:#dc3545;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+}
+.help-block
+{
+  font-size: 10px;
+  min-height: 14px!important;
 }

@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { config_url } from '../shared/constant';
 // import { ToastrService } from 'ngx-toastr';
 import { MustMatch } from '../_helpers/must-match.validator';
+import Swal from 'sweetalert2'; 
+
 
 
 @Component({
@@ -14,7 +16,8 @@ import { MustMatch } from '../_helpers/must-match.validator';
 export class RegisterComponent implements OnInit {
 
 //  registercontactinformation:any;
- registercontactinformation: FormGroup | any;
+employeeform: FormGroup | any;
+vendorform:FormGroup | any;
  submitted = false;
 
  
@@ -56,27 +59,37 @@ export class RegisterComponent implements OnInit {
     // this.getvendorlist()
     this. Getallzipcode_list();
 
-    this.registercontactinformation = this.frmbuilder.group({
+    this.employeeform = this.frmbuilder.group({
 
-     
-      FirstName: [],
-      legalbusiness: [],
-      LastName: [],
+     //contact details
+      FirstName: ['', [Validators.required]],
+      legalbusiness: [''],
+      LastName:  ['', [Validators.required]],
       tradeName: [],
-      UserTypeId: [],
-      UserId: [],
-      UserPassword: [],
-      conformpassword: [],
+      // UserTypeId:  ['', [Validators.required]],
+      UserId:  ['', [Validators.required]],
+      UserPassword:  ['', [Validators.required]],
+      conformpassword:  ['', [Validators.required]],
 
-      Address1: [],
+      Address1:  ['', [Validators.required]],
       Address2: [],
-      StateId: [],
-       CityId: [],
-      Zipcode: [],
-      county_name: [],
-      CountryId: [],
-      StartDate:[],
-      EndDate:[],
+      StateId:  ['', [Validators.required]],
+      CityId:  ['', [Validators.required]],
+      Zipcode: ['', [Validators.required]],
+      county_name: ['', [Validators.required]],
+      StartDate: ['', [Validators.required]],
+      EndDate: ['', [Validators.required]],
+      CountryId:  ['', [Validators.required]],
+     //employee details
+      JobTitleId:['', [Validators.required]],
+      EmploymentTypeId:['', [Validators.required]],
+      JobStartDate: ['', [Validators.required]],
+      AdminUser:  [],
+      Phone:['', [Validators.required]],
+
+
+
+      BusinessRegisteredInSCC: [],
       VendorTypeId: [],
       EIN_SSN:[],
      
@@ -88,15 +101,52 @@ export class RegisterComponent implements OnInit {
       BusinessIsFranchisee: [],
       BEClassificationId: [],
 
-      JobTitleId:[],
-      EmploymentTypeId:[],
-      JobStartDate: [],
-      BusinessRegisteredInSCC: [],
-     
-      Phone:[],
-      AdminUser: [],
+ 
       UserStatusId:['N'],
      
+})
+
+this.vendorform = this.frmbuilder.group({
+
+     
+  FirstName: ['', [Validators.required]],
+  legalbusiness: [''],
+  LastName:  ['', [Validators.required]],
+  tradeName: [],
+  UserTypeId:  ['', [Validators.required]],
+  UserId:  ['', [Validators.required]],
+  UserPassword:  ['', [Validators.required]],
+  conformpassword:  ['', [Validators.required]],
+
+  Address1:  ['', [Validators.required]],
+  Address2: [],
+  StateId:  ['', [Validators.required]],
+   CityId:  ['', [Validators.required]],
+  Zipcode: ['', [Validators.required]],
+  county_name: ['', [Validators.required]],
+  CountryId:  ['', [Validators.required]],
+  StartDate: ['', [Validators.required]],
+  EndDate: ['', [Validators.required]],
+  VendorTypeId: [],
+  EIN_SSN:[],
+ 
+
+  OutreachEmailOptIn:[],
+  business_ssn: [],
+  BusinessSize: [],
+  BusinessRegisteredInDistrict:[],
+  BusinessIsFranchisee: [],
+  BEClassificationId: [],
+
+  JobTitleId:[],
+  EmploymentTypeId:[],
+  JobStartDate: [],
+  BusinessRegisteredInSCC: [],
+ 
+  Phone:[],
+  AdminUser: [],
+  UserStatusId:['N'],
+ 
 })
 
 
@@ -126,6 +176,9 @@ alphanumeric(event: any){
     return false;
   }
 }
+get rcf() {
+  return this.employeeform.controls;
+}
 number(event: any) {
   var charCode = (event.which) ? event.which : event.keyCode;
   
@@ -137,294 +190,298 @@ number(event: any) {
   }
 }
 
-  validation(registercontactinformation:any){
-    // this.toastr.error("Holiday deleted");
-    console.log( 'Contact Information',registercontactinformation);
+  // validation(registeremployecontactinformation:any){
+  //   this.submitted=true;
+  //   // this.toastr.error("Holiday deleted");
+  //   console.log( 'Contact Information',registercontactinformation);
    
 
-    let FirstName = this.registercontactinformation.get('FirstName').value;
-    let legalbusiness = this.registercontactinformation.get('legalbusiness').value;
-    let LastName = this.registercontactinformation.get('LastName').value;
-    let tradeName = this.registercontactinformation.get('tradeName').value;
-    let UserTypeId = this.registercontactinformation.get('UserTypeId').value;
-    // alert(UserTypeId);
-    let UserId = this.registercontactinformation.get('UserId').value;
-    let UserPassword = this.registercontactinformation.get('UserPassword').value;
-    let conformpassword = this.registercontactinformation.get('conformpassword').value;
+  //   let FirstName = this.registercontactinformation.get('FirstName').value;
+  //   let legalbusiness = this.registercontactinformation.get('legalbusiness').value;
+  //   let LastName = this.registercontactinformation.get('LastName').value;
+  //   let tradeName = this.registercontactinformation.get('tradeName').value;
+  //   let UserTypeId = this.registercontactinformation.get('UserTypeId').value;
+  //   // alert(UserTypeId);
+  //   let UserId = this.registercontactinformation.get('UserId').value;
+  //   let UserPassword = this.registercontactinformation.get('UserPassword').value;
+  //   let conformpassword = this.registercontactinformation.get('conformpassword').value;
    
 
 
-    let Address1 = this.registercontactinformation.get('Address1').value;
-    let Address2 = this.registercontactinformation.get('Address2').value;
-    let StateId = this.registercontactinformation.get('StateId').value;
-    let CityId = this.registercontactinformation.get('CityId').value;
-    let Zipcode = this.registercontactinformation.get('Zipcode').value;
-    let county_name = this.registercontactinformation.get('county_name').value;
-    let CountryId = this.registercontactinformation.get('CountryId').value;
-    let StartDate = this.registercontactinformation.get('StartDate').value;
-    let EndDate = this.registercontactinformation.get('EndDate').value;
+  //   let Address1 = this.registercontactinformation.get('Address1').value;
+  //   let Address2 = this.registercontactinformation.get('Address2').value;
+  //   let StateId = this.registercontactinformation.get('StateId').value;
+  //   let CityId = this.registercontactinformation.get('CityId').value;
+  //   let Zipcode = this.registercontactinformation.get('Zipcode').value;
+  //   let county_name = this.registercontactinformation.get('county_name').value;
+  //   let CountryId = this.registercontactinformation.get('CountryId').value;
+  //   let StartDate = this.registercontactinformation.get('StartDate').value;
+  //   let EndDate = this.registercontactinformation.get('EndDate').value;
     
 
-    let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
+  //   let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
 
-    let EIN_SSN = this.registercontactinformation.get('EIN_SSN').value;
-    let business_ssn = this.registercontactinformation.get('business_ssn').value;
-    let BusinessSize = this.registercontactinformation.get('BusinessSize').value;
-    let BusinessRegisteredInDistrict = this.registercontactinformation.get('BusinessRegisteredInDistrict').value;
-    let BEClassificationId = this.registercontactinformation.get('BEClassificationId').value;
-    let BusinessRegisteredInSCC = this.registercontactinformation.get('BusinessRegisteredInSCC').value;
-    let BusinessIsFranchisee = this.registercontactinformation.get('BusinessIsFranchisee').value;
+  //   let EIN_SSN = this.registercontactinformation.get('EIN_SSN').value;
+  //   let business_ssn = this.registercontactinformation.get('business_ssn').value;
+  //   let BusinessSize = this.registercontactinformation.get('BusinessSize').value;
+  //   let BusinessRegisteredInDistrict = this.registercontactinformation.get('BusinessRegisteredInDistrict').value;
+  //   let BEClassificationId = this.registercontactinformation.get('BEClassificationId').value;
+  //   let BusinessRegisteredInSCC = this.registercontactinformation.get('BusinessRegisteredInSCC').value;
+  //   let BusinessIsFranchisee = this.registercontactinformation.get('BusinessIsFranchisee').value;
 
-    let JobTitleId = this.registercontactinformation.get('JobTitleId').value;
-    let EmploymentTypeId = this.registercontactinformation.get('EmploymentTypeId').value;
-    let JobStartDate = this.registercontactinformation.get('JobStartDate').value;
+  //   let JobTitleId = this.registercontactinformation.get('JobTitleId').value;
+  //   let EmploymentTypeId = this.registercontactinformation.get('EmploymentTypeId').value;
+  //   let JobStartDate = this.registercontactinformation.get('JobStartDate').value;
     
-    let Phone = this.registercontactinformation.get('Phone').value;
+  //   let Phone = this.registercontactinformation.get('Phone').value;
 
 
-    let usertype_id = (<HTMLInputElement>document.getElementById("usertype_id")).value;
+  //   let usertype_id = (<HTMLInputElement>document.getElementById("usertype_id")).value;
 
-    if(FirstName == null || FirstName == "")
-      {
-       (document.getElementById('firstname_id') as HTMLFormElement).classList.add("validation");
-     }
-     if(legalbusiness == null || legalbusiness == "")
-     {
-      (document.getElementById('legal_id') as HTMLFormElement).classList.add("validation");
-    }
-     if(LastName == null || LastName == "") 
-      {
-      (document.getElementById('lastname_id') as HTMLFormElement).classList.add("validation");
-     }
-     if(tradeName == null || tradeName == "") 
-     {
-     (document.getElementById('trade_id') as HTMLFormElement).classList.add("validation");
-    }
+  //   if(FirstName == null || FirstName == "")
+  //     {
+  //      (document.getElementById('firstname_id') as HTMLFormElement).classList.add("validation");
+  //    }
+  //    if(legalbusiness == null || legalbusiness == "")
+  //    {
+  //     (document.getElementById('legal_id') as HTMLFormElement).classList.add("validation");
+  //   }
+  //    if(LastName == null || LastName == "") 
+  //     {
+  //     (document.getElementById('lastname_id') as HTMLFormElement).classList.add("validation");
+  //    }
+  //    if(tradeName == null || tradeName == "") 
+  //    {
+  //    (document.getElementById('trade_id') as HTMLFormElement).classList.add("validation");
+  //   }
 
-     if(UserTypeId == null || UserTypeId == "")
-     {
-     (document.getElementById('usertype_id') as HTMLFormElement).classList.add("validation");
-      }
-      if(UserId == null || UserId == "")
-     {
-      (document.getElementById('userkey') as HTMLFormElement).classList.add("validation");
-      }
-     if(UserPassword == null || UserPassword == "")
-     {
-      (document.getElementById('userpswd_id') as HTMLFormElement).classList.add("validation");
-      }
-      if(conformpassword == null || conformpassword == "")
-     {
-      (document.getElementById('comformpswd_id') as HTMLFormElement).classList.add("validation");
-      }
+  //    if(UserTypeId == null || UserTypeId == "")
+  //    {
+  //    (document.getElementById('usertype_id') as HTMLFormElement).classList.add("validation");
+  //     }
+  //     if(UserId == null || UserId == "")
+  //    {
+  //     (document.getElementById('userkey') as HTMLFormElement).classList.add("validation");
+  //     }
+  //    if(UserPassword == null || UserPassword == "")
+  //    {
+  //     (document.getElementById('userpswd_id') as HTMLFormElement).classList.add("validation");
+  //     }
+  //     if(conformpassword == null || conformpassword == "")
+  //    {
+  //     (document.getElementById('comformpswd_id') as HTMLFormElement).classList.add("validation");
+  //     }
       
-      if(Address1 == null || Address1 == "")
-      {
-       (document.getElementById('currentadd_id') as HTMLFormElement).classList.add("validation");
-       }
-       if(Address2 == null || Address2 == "")
-       {
-        (document.getElementById('currentsecadd_id') as HTMLFormElement).classList.add("validation");
-        }
+  //     if(Address1 == null || Address1 == "")
+  //     {
+  //      (document.getElementById('currentadd_id') as HTMLFormElement).classList.add("validation");
+  //      }
+  //      if(Address2 == null || Address2 == "")
+  //      {
+  //       (document.getElementById('currentsecadd_id') as HTMLFormElement).classList.add("validation");
+  //       }
        
-         if(Zipcode == null || Zipcode == "")
-        {
-         (document.getElementById('regcurrentzip_id') as HTMLFormElement).classList.add("validation");
-         }
-         if(CityId == null || CityId == "")
-        {
-         (document.getElementById('currentcity_id') as HTMLFormElement).classList.add("validation");
-         }
-         if(StateId == null || StateId == "")
-         {
-          (document.getElementById('curstate_id') as HTMLFormElement).classList.add("validation");
-          }
-         if(county_name == null || county_name == "")
-         {
-          (document.getElementById('county_id') as HTMLFormElement).classList.add("validation");
-          }
-          if(CountryId == null || CountryId =="")
-          {
-           (document.getElementById('country_id') as HTMLFormElement).classList.add("validation");
-           }
-           if(StartDate == null || StartDate == "")
-           {
-            (document.getElementById('startdate_id') as HTMLFormElement).classList.add("validation");
-            }
-            if(EndDate == null || EndDate == "")
-            {
-             (document.getElementById('enddata_id') as HTMLFormElement).classList.add("validation");
-             }
+  //        if(Zipcode == null || Zipcode == "")
+  //       {
+  //        (document.getElementById('regcurrentzip_id') as HTMLFormElement).classList.add("validation");
+  //        }
+  //        if(CityId == null || CityId == "")
+  //       {
+  //        (document.getElementById('currentcity_id') as HTMLFormElement).classList.add("validation");
+  //        }
+  //        if(StateId == null || StateId == "")
+  //        {
+  //         (document.getElementById('curstate_id') as HTMLFormElement).classList.add("validation");
+  //         }
+  //        if(county_name == null || county_name == "")
+  //        {
+  //         (document.getElementById('county_id') as HTMLFormElement).classList.add("validation");
+  //         }
+  //         if(CountryId == null || CountryId =="")
+  //         {
+  //          (document.getElementById('country_id') as HTMLFormElement).classList.add("validation");
+  //          }
+  //          if(StartDate == null || StartDate == "")
+  //          {
+  //           (document.getElementById('startdate_id') as HTMLFormElement).classList.add("validation");
+  //           }
+  //           if(EndDate == null || EndDate == "")
+  //           {
+  //            (document.getElementById('enddata_id') as HTMLFormElement).classList.add("validation");
+  //            }
 
-           if(!UserId.match(this.useridmatch)){
+  //          if(!UserId.match(this.useridmatch)){
 
-            (document.getElementById('userkey') as HTMLFormElement).classList.add("validation");
-          }
+  //           (document.getElementById('userkey') as HTMLFormElement).classList.add("validation");
+  //         }
 
-     if(UserPassword != (conformpassword)){
+  //    if(UserPassword != (conformpassword)){
 
-      (document.getElementById('comformpswd_id') as HTMLFormElement).classList.add("validation");
+  //     (document.getElementById('comformpswd_id') as HTMLFormElement).classList.add("validation");
 
-      (document.getElementById('passvalidationid') as HTMLFormElement).innerText = 'Passwords must match.!'
-    }
+  //     (document.getElementById('passvalidationid') as HTMLFormElement).innerText = 'Passwords must match.!'
+  //   }
 
 
-    if(usertype_id == "EMPLOY"){
+  //   if(usertype_id == "EMPLOY"){
     
 
-      if(JobTitleId == null || JobTitleId == "")
-      {
-       (document.getElementById('job_title') as HTMLFormElement).classList.add("validation");
-       }
-       if(EmploymentTypeId == null || EmploymentTypeId == "")
-      {
-       (document.getElementById('employee_id') as HTMLFormElement).classList.add("validation");
-       }
-       if(JobStartDate == null || JobStartDate == "")
-       {
-        (document.getElementById('jobstartdate_id') as HTMLFormElement).classList.add("validation");
-        }
-       if(Phone == null || Phone == "")
-      {
-       (document.getElementById('phoneno_id') as HTMLFormElement).classList.add("validation");
-       }
+  //     if(JobTitleId == null || JobTitleId == "")
+  //     {
+  //      (document.getElementById('job_title') as HTMLFormElement).classList.add("validation");
+  //      }
+  //      if(EmploymentTypeId == null || EmploymentTypeId == "")
+  //     {
+  //      (document.getElementById('employee_id') as HTMLFormElement).classList.add("validation");
+  //      }
+  //      if(JobStartDate == null || JobStartDate == "")
+  //      {
+  //       (document.getElementById('jobstartdate_id') as HTMLFormElement).classList.add("validation");
+  //       }
+  //      if(Phone == null || Phone == "")
+  //     {
+  //      (document.getElementById('phoneno_id') as HTMLFormElement).classList.add("validation");
+  //      }
      
-    }
+  //   }
 
-    if(usertype_id == "VENDOR"){
+  //   if(usertype_id == "VENDOR"){
 
-   if(active1 == false){
+  //  if(active1 == false){
 
-  if(EIN_SSN == null || EIN_SSN == ""){
-      (document.getElementById('socialno_id') as HTMLFormElement).classList.add("validation");
-    }
+  // if(EIN_SSN == null || EIN_SSN == ""){
+  //     (document.getElementById('socialno_id') as HTMLFormElement).classList.add("validation");
+  //   }
 
-    }
+  //   }
    
 
-    else{
+  //   else{
 
-      if(business_ssn == null || business_ssn == ""){
-        (document.getElementById('busssn_id') as HTMLFormElement).classList.add("validation");
-      }
-      if(BusinessSize == null || BusinessSize == ""){
-        (document.getElementById('business_id') as HTMLFormElement).classList.add("validation");
-      }
-     if(BEClassificationId == null || BEClassificationId == ""){
-        (document.getElementById('be_classificationid') as HTMLFormElement).classList.add("validation");
-      }
+  //     if(business_ssn == null || business_ssn == ""){
+  //       (document.getElementById('busssn_id') as HTMLFormElement).classList.add("validation");
+  //     }
+  //     if(BusinessSize == null || BusinessSize == ""){
+  //       (document.getElementById('business_id') as HTMLFormElement).classList.add("validation");
+  //     }
+  //    if(BEClassificationId == null || BEClassificationId == ""){
+  //       (document.getElementById('be_classificationid') as HTMLFormElement).classList.add("validation");
+  //     }
         
-      }
-      }
+  //     }
+  //     }
 
-      if((FirstName != null) && (LastName != null || LastName != "") && (tradeName != "" || tradeName != null) && (UserId != null || UserId != "") && (UserPassword != null || UserPassword != "") && (Address1 != null || Address1 != "") && (Address2 != null || Address2 != "") && (StateId != null || StateId != "") && 
-        (CityId != null || CityId != "") && (Zipcode != null || Zipcode != "") && (CountryId != null || CountryId != "") && (StartDate != null || StartDate != "") && (EndDate != null || EndDate != "")){
+  //     if((FirstName != null) && (LastName != null || LastName != "") && (tradeName != "" || tradeName != null) && (UserId != null || UserId != "") && (UserPassword != null || UserPassword != "") && (Address1 != null || Address1 != "") && (Address2 != null || Address2 != "") && (StateId != null || StateId != "") && 
+  //       (CityId != null || CityId != "") && (Zipcode != null || Zipcode != "") && (CountryId != null || CountryId != "") && (StartDate != null || StartDate != "") && (EndDate != null || EndDate != "")){
         
           
-          // if(usertype_id == "OTHER"){
+  //         // if(usertype_id == "OTHER"){
 
-          //   if((FirstName != null || FirstName != "") && (LastName != null || LastName != "") && (UserId != null || UserId != "") && (UserPassword != null || UserPassword != "") &&  (StateId != null || StateId != "") && 
-          //   (EndDate != null || EndDate != "") && (Address1 != null || Address1 != "") && (Address2 != null || Address2 != "") && (CityId != null || CityId != "") && (Zipcode != null || Zipcode != "") && (CountryId != null || CountryId != "")){
+  //         //   if((FirstName != null || FirstName != "") && (LastName != null || LastName != "") && (UserId != null || UserId != "") && (UserPassword != null || UserPassword != "") &&  (StateId != null || StateId != "") && 
+  //         //   (EndDate != null || EndDate != "") && (Address1 != null || Address1 != "") && (Address2 != null || Address2 != "") && (CityId != null || CityId != "") && (Zipcode != null || Zipcode != "") && (CountryId != null || CountryId != "")){
     
-          //     this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', this.registercontactinformation).subscribe(
+  //         //     this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', this.registercontactinformation).subscribe(
           
-          //       data => {
-          //         console.log("data");
-          //           console.log('POST Request is successful >>>>>>>>', data);
+  //         //       data => {
+  //         //         console.log("data");
+  //         //           console.log('POST Request is successful >>>>>>>>', data);
           
-          //       },
-          //       success => {
-          //         console.log("success");
-          //       }
-          //     );
+  //         //       },
+  //         //       success => {
+  //         //         console.log("success");
+  //         //       }
+  //         //     );
     
-          //   }
+  //         //   }
             
-          // }
+  //         // }
          
 
 
-          if(usertype_id == "EMPLOY"){
+  //         if(usertype_id == "EMPLOY"){
          
             
-            if((JobTitleId != null) && (EmploymentTypeId != null) && (JobStartDate != null) && (Phone != null) ){
-            // if((JobTitleId != null || JobTitleId != "") && (EmploymentTypeId != null || EmploymentTypeId != "") && (JobStartDate != null || JobStartDate != "") && (Phone != null || Phone != "") ){
+  //           if((JobTitleId != null) && (EmploymentTypeId != null) && (JobStartDate != null) && (Phone != null) ){
+  //           // if((JobTitleId != null || JobTitleId != "") && (EmploymentTypeId != null || EmploymentTypeId != "") && (JobStartDate != null || JobStartDate != "") && (Phone != null || Phone != "") ){
               
              
-              this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', registercontactinformation).subscribe(
+  //             this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', registercontactinformation).subscribe(
           
-                data => {
-                  console.log("data");
-                    console.log('POST Request is successful >>>>>>>>', data);
+  //               data => {
+  //                 console.log("data");
+  //                   console.log('POST Request is successful >>>>>>>>', data);
           
-                },
-                success => {
-                  console.log("success");
-                }
-              );
-              window.setTimeout(function(){location.reload()},100);
-            }
+  //               },
+  //               success => {
+  //                 console.log("success");
+  //               }
+  //             );
+  //             window.setTimeout(function(){location.reload()},100);
+  //           }
             
-          }
+  //         }
 
 
 
-          if(usertype_id == "VENDOR"){
+  //         if(usertype_id == "VENDOR"){
             
 
-            if(active1 == false){
+  //           if(active1 == false){
 
-              if((EIN_SSN != null) && (StartDate != null) && (EndDate != null)){
-                alert("vendor individual");
-                this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', registercontactinformation).subscribe(
+  //             if((EIN_SSN != null) && (StartDate != null) && (EndDate != null)){
+  //               alert("vendor individual");
+  //               this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', registercontactinformation).subscribe(
           
-                data => {
-                  console.log("data");
-                    console.log('POST Request is successful >>>>>>>>', data);
+  //               data => {
+  //                 console.log("data");
+  //                   console.log('POST Request is successful >>>>>>>>', data);
           
-                },
-                success => {
-                  console.log("success");
-                }
-              );
-              window.setTimeout(function(){location.reload()},100);
-            }
-           if(!EIN_SSN.match(this.socialno)){
-                 (document.getElementById('socialno_id') as HTMLFormElement).classList.add("validation");
-                }
-              }
-            }
+  //               },
+  //               success => {
+  //                 console.log("success");
+  //               }
+  //             );
+  //             window.setTimeout(function(){location.reload()},100);
+  //           }
+  //          if(!EIN_SSN.match(this.socialno)){
+  //                (document.getElementById('socialno_id') as HTMLFormElement).classList.add("validation");
+  //               }
+  //             }
+  //           }
 
-            if(usertype_id == "VENDOR"){
+  //           if(usertype_id == "VENDOR"){
               
 
-              if(active1 == true){
+  //             if(active1 == true){
 
-              if((legalbusiness != null)&&(BusinessSize != null) && (BusinessRegisteredInDistrict != null)&& (BusinessRegisteredInSCC != null) && (BusinessIsFranchisee != null) && (BEClassificationId != null) && (StartDate != null) && (EndDate != null)){
-                // alert("vendor business");
+  //             if((legalbusiness != null)&&(BusinessSize != null) && (BusinessRegisteredInDistrict != null)&& (BusinessRegisteredInSCC != null) && (BusinessIsFranchisee != null) && (BEClassificationId != null) && (StartDate != null) && (EndDate != null)){
+  //               // alert("vendor business");
                 
-                this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', registercontactinformation).subscribe(
+  //               this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', registercontactinformation).subscribe(
           
-                data => {
-                  console.log("data");
-                    console.log('POST Request is successful >>>>>>>>', data);
+  //               data => {
+  //                 console.log("data");
+  //                   console.log('POST Request is successful >>>>>>>>', data);
           
-                },
-                success => {
-                  console.log("success");
-                }
-              );
-              window.setTimeout(function(){location.reload()},100);
-            }
-          }
-              }
+  //               },
+  //               success => {
+  //                 console.log("success");
+  //               }
+  //             );
+  //             window.setTimeout(function(){location.reload()},100);
+  //           }
+  //         }
+  //             }
 
 
-            }
+  //           }
 
+  // // }
   // }
+  cancelform()
+  {
+    this.submitted=false;
   }
-
   inputErrorMessage(errormessage: any) {
 
     (document.getElementById(errormessage) as HTMLFormElement).classList.remove("validation");
@@ -664,22 +721,48 @@ number(event: any) {
   
 
     removepassvalidation(){
-      (document.getElementById('passvalidationid') as HTMLFormElement).innerText = "";
+     // (document.getElementById('passvalidationid') as HTMLFormElement).innerText = "";
     }
 
 
-    get f() { return this.registercontactinformation.controls; }
+    get f() { return this.employeeform.controls; }
 
     onSubmit() {
+      debugger
         this.submitted = true;
-  
-        // stop here if form is invalid
-        if (this.registercontactinformation.invalid) {
+        let usertype_id = (<HTMLInputElement>document.getElementById("usertype_id")).value;
+        if(usertype_id == "EMPLOY")
+        {
+
+        if (this.employeeform.invalid) 
+        {
             return;
         }
-  
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registercontactinformation.value))
+        else
+        {
+          this.employeeform.value.UserTypeId="EMPLOY"
+          alert(JSON.stringify(this.employeeform.value))
+           this.http.post("http://localhost:8080/"+'vendor/AdduserDetails', this.employeeform.value).subscribe(
+          
+                data => {
+                  console.log("data");
+                    console.log('POST Request is successful >>>>>>>>', data);
+          
+                },
+                success => {
+                  console.log("success");
+                  Swal.fire({
+                    position: 'top',
+                    icon: 'success',
+                    title: 'Successfully Registered',
+                    showConfirmButton: false,
+                    timer: 3000
+                  })
+                }
+              );
+        }
+        }
+       
+      
     }
-
-    
 }

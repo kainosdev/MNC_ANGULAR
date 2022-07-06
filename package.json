@@ -16,6 +16,7 @@
   "dependencies": {
     "@angular/animations": "~13.3.0",
     "@angular/cdk": "~13.3.0",
+    "@angular/cli": "^14.0.4",
     "@angular/common": "~13.3.0",
     "@angular/compiler": "~13.3.0",
     "@angular/core": "~13.3.0",
@@ -45,12 +46,12 @@
     "ngx-perfect-scrollbar": "^10.1.1",
     "ngx-toastr": "^15.0.0",
     "rxjs": "~7.5.0",
+    "sweetalert2": "^11.4.20",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.0",
-    "@angular/cli": "~13.3.0",
     "@angular/compiler-cli": "~13.3.0",
     "@angular/localize": "~13.3.0",
     "@types/datatables.net": "^1.10.22",
