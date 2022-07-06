@@ -53,7 +53,7 @@
        
     
         <!--Contact Information Start -->
-            <div class="individualinfo" *ngIf="Vendortypevalue=='B'">
+            <div class="individualinfo" *ngIf="Vendortypevalue=='I'">
             <div id="vendor-individual" *ngFor="let s of singleVendorDet">
     
                 <p class="mainheading heading">Contact Information</p>
@@ -205,6 +205,11 @@
                             <input type="text" class="Businesswebsite" id="businesswebsite_id"
                                 formControlName="Website" (keypress)="EmptyErrorMessage('businesswebsite_id')">
                         </div>
+                        <div class="labelheight">
+                            <label class="labelwidth">Business Size <span class="requiredfield "> *</span></label>
+                            <input type="text" class="Businesswebsite" id="businesssize_id"
+                                formControlName="BusinessSize" [ngModel]="s2.BusinessSize" (keypress)="EmptyErrorMessage('businesssize_id')">
+                        </div>
     
                         <div class="labelheight">
                             <label class="businessregistered1">Is this business registered with this State Corporation
@@ -227,7 +232,7 @@
     
     
         
-            <div id="currentaddress" *ngFor="let Addr of singleVendorAddressDet">
+       <div id="currentaddress" *ngFor="let Addr of singleVendorAddressDet">
     
                 <p class="mainheading heading">Address Information</p>
     
@@ -367,7 +372,7 @@
                     
                 <div  style="display: none;" id="mailing_type">
                             <h2 id="addressheading" class="title mainheading">Mailing Address</h2>
-                            <div>
+                            
                                 <div class="row mail">
                                     <div class="col-sm-6">
                                         <div class="labelheight">
@@ -413,7 +418,7 @@
                                         </div>
     
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6 ">
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">State/Province</label>
                                             <select class="StateId" id="mailingstateprovince_id"
@@ -456,7 +461,7 @@
                                     </div>
                                 </div>
     
-                            </div>
+                            
                         </div>
                     
                 </div>
@@ -472,10 +477,10 @@
                         </label>
                     </div>
                     
-                        <div class="acc1" style="display: none;" id="past_type">
+                        <div  style="display: none;" id="past_type">
                             <h2 class="title1 mainheading">Past Address</h2>
                             <div>
-                                <div class="row">
+                                <div class="row past">
                                     <div class="col-sm-6">
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">Address</label>
