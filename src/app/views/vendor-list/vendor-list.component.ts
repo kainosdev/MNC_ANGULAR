@@ -32,7 +32,7 @@ export class VendorListComponent implements OnInit {
 
 
   GelAllVendors1(){
-     alert("in");
+    //  alert("in");
     return this.restApi.GetAllVendors().subscribe((citylistdata: {}) => {
 
       console.log("hi");
