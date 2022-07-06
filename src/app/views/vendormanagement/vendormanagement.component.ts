@@ -266,6 +266,7 @@ if(!Phone.match(this.phoneformat)){
 
     let LegalName = this.vendorMgmt.get('LegalName').value;
     let NAICSCodes=this.vendorMgmt.get('NAICSCodes').value;
+    let BusinessSize=this.vendorMgmt.get('BusinessSize').value;
     // alert(naicscode);
     let CommodityCodes=this.vendorMgmt.get('CommodityCodes').value;
     // alert(commoditycode);
