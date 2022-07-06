@@ -12,6 +12,7 @@ import { config_url } from '../shared/constant';
 })
 export class VendormanagementComponent implements OnInit {
   [x: string]: any;
+  Vendortypevalue:any;
   classList: any;
   nextElementSibling: any;
   citylist:any;
@@ -56,19 +57,21 @@ export class VendormanagementComponent implements OnInit {
     this.getAllDistricts();
     this.getstatedata();
     this.vendorMgmt = this.frmbuilder.group({
-
-      user_name :[],
-      active: [],
+VendorId:[localStorage.getItem('vendoridSes')],
+CreatedUserId:[localStorage.getItem("CreatedUseridses")],
+    UserName :[],
+      // active: [],
+      VendorTypeId:[],
       FirstName: [],
-      lastname: [],
-      Middlename: [],
+      LastName: [],
+      MiddleName: [],
       EIN_SSN: [],
       Email: [],
       Phone:[],
       OutreachEmailOptIn:[],
       AliasName:[],
       LegalName: [],
-      federal:[],
+      Federal:[],
       NAICSCodes: [],
       CommodityCodes:[],
       BusinessRegisteredInDistrict:[],
@@ -108,12 +111,15 @@ export class VendormanagementComponent implements OnInit {
       BusinessPhone: [],
       Title: [],
       BusinessEmail: [],
+      ContactActive:[],
       AddtionalName: [],
       AddtionalTitle: [],
       AddtionalBusinessMail: [],
       AddtionalBusinessPhone: [],
       VendorContactPrimary:[],
-      VendorContactActive:[]
+      VendorContactActive:[],
+      AddtionalContactActive:[],
+      
      })
 
    
@@ -170,7 +176,7 @@ export class VendormanagementComponent implements OnInit {
     console.log('alldata',vendorMgmt);
 
     alert('calling');
-    this.http.post('http://localhost/VERTEX-PHP-API/vendor/UpdateVendor',vendorMgmt).subscribe(
+    this.http.post('http://localhost/MNC_PHP_API/vendor/UpdateVendor',vendorMgmt).subscribe(
     // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
       
       data => {
@@ -385,29 +391,31 @@ EmptyErrorMessage(errormessage: any) {
 
   
 Displayvendortype(){
+  alert(this.Vendortypevalue);
 
   let vendor_details = (<HTMLInputElement>document.getElementById("active")).checked;
   // alert(vendor_details);
  if(vendor_details == true){
   // alert("in");
-this.is_business = 'business';
+  this.Vendortypevalue='B';
+// this.is_business = 'business';
 
-     (<HTMLInputElement>document.getElementById("General_Information")).style.display ="block";
-    (<HTMLInputElement>document.getElementById("currentaddress")).style.display ="block";
-    (<HTMLInputElement>document.getElementById("addtionaddress")).style.display ="block";
-    (<HTMLInputElement>document.getElementById("contact_inforation")).style.display ="block";
-    (<HTMLInputElement>document.getElementById("vendor-individual")).style.display ="none";
+//      (<HTMLInputElement>document.getElementById("General_Information")).style.display ="block";
+//     (<HTMLInputElement>document.getElementById("currentaddress")).style.display ="block";
+//     (<HTMLInputElement>document.getElementById("addtionaddress")).style.display ="block";
+//     (<HTMLInputElement>document.getElementById("contact_inforation")).style.display ="block";
+//     (<HTMLInputElement>document.getElementById("vendor-individual")).style.display ="none";
     
   }
   else{
-
+    this.Vendortypevalue='I';
  
-    this.is_business = 'individual';
-    (<HTMLInputElement>document.getElementById("vendor-individual")).style.display ="block";
-    (<HTMLInputElement>document.getElementById("currentaddress")).style.display ="block";
-    (<HTMLInputElement>document.getElementById("addtionaddress")).style.display ="block";
-    (<HTMLInputElement>document.getElementById("contact_inforation")).style.display ="none";
-    (<HTMLInputElement>document.getElementById("General_Information")).style.display ="none";
+    // this.is_business = 'individual';
+    // (<HTMLInputElement>document.getElementById("vendor-individual")).style.display ="block";
+    // (<HTMLInputElement>document.getElementById("currentaddress")).style.display ="block";
+    // (<HTMLInputElement>document.getElementById("addtionaddress")).style.display ="block";
+    // (<HTMLInputElement>document.getElementById("contact_inforation")).style.display ="none";
+    // (<HTMLInputElement>document.getElementById("General_Information")).style.display ="none";
     
   }
 
@@ -457,7 +465,7 @@ Address_swiping(){
 
 
 GetVendorById(){
-  alert("hi");
+ 
   let vendoridSes = localStorage.getItem('vendoridSes');
 
   this.http.get(config_url+'/vendor/GetVendorById?VendorId='+vendoridSes).subscribe(data1 =>
@@ -466,6 +474,9 @@ GetVendorById(){
       console.log("data2>>>",data1);
       this.singleVendorDet=data1;
       this.singleVendorDet=this.singleVendorDet.data.SingleVendorDetails;
+      this.Vendortypevalue=this.singleVendorDet[0].VendorTypeId;
+      // alert(this.Vendortypevalue);
+  
       // console.log( 'singleVendorDet', this.singleVendorDet);
       // alert(this.singleVendorDet[0]["VendorTypeId"]);
       // if(this.singleVendorDet[0]["VendorTypeId"] == "B") {
@@ -485,7 +496,7 @@ GetVendorById(){
 }
 
 GetVendorAddressById(){
- alert("hi");
+
   let vendoridSes = localStorage.getItem('vendoridSes');
   // let vendoridSes = "BC75E529-1F26-4993-9469-2797493CD645";
   this.http.get(config_url+'/vendor/GetVendorAddressById?VendorId='+vendoridSes).subscribe(data1 =>

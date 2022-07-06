@@ -284,7 +284,7 @@ export class RegistrationformComponent implements OnInit {
              if(FirstName != null && FirstName != "" && LastName != null && LastName != "" && UserId != null && UserId != "" && UserPassword != null && UserPassword != "" && Address1 != null && Address1 != "" && Address2 != null && Address2 != "" && StateId != null && StateId != "" && 
              CityId != null && CityId != "" && Zipcode != null && Zipcode != "" && CountryId != null && CountryId != ""){
      
-               this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', this.registercontactinformation).subscribe(
+               this.http.post("http://localhost/MNC-PHP-API/"+'vendor/AdduserDetails', this.registercontactinformation).subscribe(
            
                  data => {
                    console.log("data");
@@ -305,7 +305,7 @@ export class RegistrationformComponent implements OnInit {
  
              if(JobTitleId != null && JobTitleId != "" && EmploymentTypeId != null && EmploymentTypeId != "" && StartDate != null && StartDate != "" && Phone != null && Phone != ""){
      
-               this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', this.registercontactinformation).subscribe(
+               this.http.post("http://localhost/MNC_PHP_API/"+'vendor/AdduserDetails', this.registercontactinformation).subscribe(
            
                  data => {
                    console.log("data");
@@ -329,7 +329,7 @@ export class RegistrationformComponent implements OnInit {
  
                if(EIN_SSN != null && EIN_SSN != ""){
  
-                 this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', this.registercontactinformation).subscribe(
+                 this.http.post("http://localhost/MNC_PHP_API/"+'vendor/AdduserDetails', this.registercontactinformation).subscribe(
            
                  data => {
                    console.log("data");
@@ -353,7 +353,7 @@ export class RegistrationformComponent implements OnInit {
                if(BusinessSize != null && BusinessSize != "" && BEClassificationId != null && BEClassificationId != ""){
  
                  
-                 this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', this.registercontactinformation).subscribe(
+                 this.http.post("http://localhost/MNC_PHP_API/"+'vendor/AdduserDetails', this.registercontactinformation).subscribe(
            
                  data => {
                    console.log("data");

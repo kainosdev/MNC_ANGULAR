@@ -110,9 +110,10 @@ localStorage.setItem('access_token', finaltoken1);
 	var data = JSON.parse(jsonPayload);
   console.log(data);
   localStorage.setItem("usertypeses", data['UserTypeId']);
+ 
+  console.log("datalogin>>>>",data);
+  localStorage.setItem("CreatedUseridses", data['UserId']);
   this.router.navigate(['/VendorList']);
-  console.log("data>>>>",data);
-  
 	// console.log("data>>>>",data['UserId']);
     // return JSON.parse(jsonPayload);
 };

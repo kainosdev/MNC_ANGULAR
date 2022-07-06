@@ -14,7 +14,7 @@
                 <div class="col-sm-5 innerlinefont usernamediv">
                     <!-- <mat-form-field> -->
                     <label class="labelwidth"> User Name </label>
-                    <input class="toggle username" type="type" formControlName="user_name" id="user">
+                    <input class="toggle username" type="type" formControlName="UserName" id="user">
     
                     <!-- </mat-form-field> -->
                 </div>
@@ -25,11 +25,11 @@
                     <label>Individual</label>
                     &nbsp;&nbsp;
                     <label class="switch" *ngIf="s1.VendorTypeId == 'I'">
-                        <input type="checkbox" name="active" id="active" (change)="Displayvendortype()">
+                        <input type="checkbox" name="active" id="active" formControlName="VendorTypeId" (change)="Displayvendortype()">
                         <span class="slider round"></span>
                     </label>
 
-                    <label class="switch" *ngIf="s1.VendorTypeId == 'B'">
+                    <label class="switch" formControlName="VendorTypeId" *ngIf="s1.VendorTypeId == 'B'">
                         <input type="checkbox" name="active" id="active"  checked  (change)="Displayvendortype()">
                         <span class="slider round"></span>
                     </label>
@@ -53,7 +53,7 @@
        
     
         <!--Contact Information Start -->
-       
+            <div class="individualinfo" *ngIf="Vendortypevalue=='I'">
             <div id="vendor-individual" *ngFor="let s of singleVendorDet">
     
                 <p class="mainheading heading">Contact Information</p>
@@ -86,8 +86,8 @@
                             <label class="wouldla">Would you like to receive outreach emails from us ? </label>
                             <!-- <label style="width:10px;"></label> -->
                             <label class="switch">
-                                <input type="checkbox" name="active" id="active" formControlName="OutreachEmailOptIn"  *ngIf="s.OutreachEmailOptIn == 1" checked >
-                                <input type="checkbox" name="active" id="active"  formControlName="OutreachEmailOptIn" *ngIf="s.OutreachEmailOptIn == 0" >
+                                <input type="checkbox" name="active" id="active" formControlName="OutreachEmailOptIn" [ngModel]="s.OutreachEmailOptIn">
+                                <!-- <input type="checkbox" name="active" id="active"  formControlName="OutreachEmailOptIn" *ngIf="s.OutreachEmailOptIn == 0" > -->
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -120,14 +120,14 @@
                     </div>
                 </div>
             </div>
-       
+        </div>
         <!--Contact Information End -->
     
     
     
         <!--General Information Start -->
-        
-            <div id="General_Information" style="display: none;">
+        <div class="generalinfo" *ngIf="Vendortypevalue=='B'">
+            <div id="General_Information">
                 <p class="mainheading heading">General Information</p>
     
                 <div class="row Generaldiv" *ngFor="let s2 of singleVendorDet">
@@ -147,7 +147,7 @@
     
                         <div class="labelheight">
                             <label class="labelwidth">Federal EIN <span class="requiredfield "> *</span></label>
-                            <input type="text" class="Federal" id="federal_id" formControlName="federal"
+                            <input type="text" class="Federal" id="federal_id" formControlName="Federal"
                                 (keypress)="EmptyErrorMessage('federal_id')">
                         </div>
     
@@ -162,8 +162,8 @@
                             <!--<label style="width:10px"></label>-->
                             <label class="switch">
                                 
-                                <input type="checkbox" name="active" id="active" formControlName="BusinessRegisteredInDistrict" *ngIf="s2.BusinessRegisteredInDistrict == 1" checked >
-                                <input type="checkbox" name="active" id="active" formControlName="BusinessRegisteredInDistrict" *ngIf="s2.BusinessRegisteredInDistrict == 0" >
+                                <input type="checkbox" name="active" id="active" formControlName="BusinessRegisteredInDistrict" [ngModel]="s2.BusinessRegisteredInDistrict">
+                                <!-- <input type="checkbox" name="active" id="active" formControlName="BusinessRegisteredInDistrict" *ngIf="s2.BusinessRegisteredInDistrict == 0" > -->
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -172,8 +172,8 @@
                             <label class="businessfranchisee">Is this business a franchisee ?</label>
                             <!--<label style="width:10px"></label>-->
                             <label class="switch">
-                                <input type="checkbox" name="active" id="active" formControlName="BusinessIsFranchisee" *ngIf="s2.BusinessIsFranchisee == 1" checked >
-                                <input type="checkbox" name="active" id="active" formControlName="BusinessIsFranchisee" *ngIf="s2.BusinessIsFranchisee == 0" >
+                                <input type="checkbox" name="active" id="active" formControlName="BusinessIsFranchisee" [ngModel]="s2.BusinessIsFranchisee" >
+                                <!-- <input type="checkbox" name="active" id="active" formControlName="BusinessIsFranchisee" *ngIf="s2.BusinessIsFranchisee == 0" > -->
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -211,8 +211,8 @@
                                 Commission ? </label>
                             <!--<label style="width:10px"></label>-->
                             <label class="switch">
-                                <input type="checkbox" name="active" id="active" formControlName="BusinessRegisteredInSCC" *ngIf="s2.BusinessRegisteredInSCC == 1" checked >
-                                <input type="checkbox" name="active" id="active" formControlName="BusinessRegisteredInSCC" *ngIf="s2.BusinessRegisteredInSCC == 0" >
+                                <input type="checkbox" name="active" id="active" formControlName="BusinessRegisteredInSCC" [ngModel]="s2.BusinessRegisteredInSCC">
+                                <!-- <input type="checkbox" name="active" id="active" formControlName="BusinessRegisteredInSCC" *ngIf="s2.BusinessRegisteredInSCC == 0" > -->
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -221,7 +221,7 @@
                 </div>
     
             </div>
-        
+        </div>
         <!--General Information end -->
     
     
@@ -327,6 +327,7 @@
    
     
         <!-- <form [formGroup]="currentaddress"> -->
+        
         <div id="addtionaddress">
     
             <p class="mainheading heading">Additional Address</p>
@@ -364,10 +365,10 @@
                         </div>
                     </div>
                     
-                        <div class="acc" style="display: none;" id="mailing_type">
+                <div  style="display: none;" id="mailing_type">
                             <h2 id="addressheading" class="title mainheading">Mailing Address</h2>
                             <div>
-                                <div class="row">
+                                <div class="row mail">
                                     <div class="col-sm-6">
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">Address</label>
@@ -554,9 +555,11 @@
                 </div>
             </div>
         </div>
+       
         <!-- </form> -->
         <!-- Contact Information Start -->
-        <div id="contact_inforation" style="display: none;">
+        <div *ngIf="Vendortypevalue=='B'">
+        <div id="contact_inforation">
     
             <p class="mainheading heading" style=" padding-bottom: 5px; padding-top: 16px;">Contact Information</p>
     
@@ -611,12 +614,13 @@
                         <div style="height: 22px;">
                             <label class="labelwidth">Active</label>
                             <label class="switch">
-                                <input class="" type="checkbox" name="active" id="active">
+                                <input class="" type="checkbox" name="active" id="active" formControlName="ContactActive">
                                 <span class="slider round"></span>
                             </label>
                         </div>
     
                         <!-- <form [formGroup]="addtionalcontact"></form> -->
+                        
                         <div class="accordion acc2">
                             <h2 class="title mainheading" (click)="opened3 = !opened3">Additional Contact Details Added</h2>
                             <div class="content-container" [class.opened3]="opened3">
@@ -652,7 +656,7 @@
                                         <div style="height: 22px;">
                                             <label class="labelwidth" style="width: 146px;margin-left: 9px;">Active</label>
                                             <label class="switch">
-                                                <input class="" type="checkbox" name="active" id="active">
+                                                <input class="" type="checkbox" name="active" id="active"  formControlName="AddtionalContactActive">
                                                 <span class="slider round"></span>
                                             </label>
                                         </div>
@@ -662,6 +666,7 @@
                         </div>
                     </div>
                 </div>        
+        </div>
         </div>
         <!-- Contact Information End-->
     
