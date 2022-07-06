@@ -63,30 +63,31 @@
     
                         <div class="labelheight">
                             <label class="labelwidth">First Name <span class="requiredfield "> *</span> </label>
-                            <input type="text" class="firstname" [(ngModel)]="s.LegalName" formControlName="first_name" id="firstname_id"
+                            <input type="text" class="firstname" [(ngModel)]="s.LegalName" formControlName="FirstName" id="firstname_id"
                                 (keypress)="EmptyErrorMessage('firstname_id');alpha($event)">
                         </div>
     
     
                         <div class="labelheight">
                             <label class="labelwidth">Last Name <span class="requiredfield "> *</span> </label>
-                            <input type="text" class="lastname" [(ngModel)]="s.TradeName" formControlName="last_name" id="lastname_id"
+                            <input type="text" class="lastname" [(ngModel)]="s.TradeName" formControlName="LastName" id="lastname_id"
                                 (keypress)="EmptyErrorMessage('lastname_id'); alpha($event)">
                         </div>
     
     
                         <div class="labelheight">
                             <label class="labelwidth">Middle Name</label>
-                            <input type="text" class="middlename" id="middlename_id" formControlName="middle_name"
+                            <input type="text" class="middlename" id="middlename_id" formControlName="MiddleName"
                                 (keypress)="alpha($event)">
                         </div>
     
     
                         <div class="labelheight">
-                            <label class="wouldla">Would you like to receive outreach emails from us ?</label>
+                            <label class="wouldla">Would you like to receive outreach emails from us ? </label>
                             <!-- <label style="width:10px;"></label> -->
                             <label class="switch">
-                                <input type="checkbox" name="active" id="active">
+                                <input type="checkbox" name="active" id="active" formControlName="OutreachEmailOptIn"  *ngIf="s.OutreachEmailOptIn == 1" checked >
+                                <input type="checkbox" name="active" id="active"  formControlName="OutreachEmailOptIn" *ngIf="s.OutreachEmailOptIn == 0" >
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -96,21 +97,21 @@
                     <div class="col-sm-6 innerlinefont">
                         <div class="labelheight">
                             <label class="labelwidth">Social Security Number<span class="requiredfield "> *</span> </label>
-                            <input type="text" class="social" id="socialsecurity_id" [(ngModel)]="s.EIN_SSN" formControlName="social_no"
+                            <input type="text" class="social" id="socialsecurity_id" [(ngModel)]="s.EIN_SSN" formControlName="EIN_SSN"
                                 (keypress)="EmptyErrorMessage('socialsecurity_id');">
                         </div>
     
     
                         <div class="labelheight">
                             <label class="labelwidth">Email<span class="requiredfield "> *</span> </label>
-                            <input type="email" class="emailt" id="email_id" [(ngModel)]="s.Email" formControlName="email_individual"
+                            <input type="email" class="emailt" id="email_id" [(ngModel)]="s.Email" formControlName="Email"
                                 (keyup)="EmptyErrorMessage('email_id')">
                         </div>
     
     
                         <div class="labelheight">
                             <label class="labelwidth">Phone<span class="requiredfield "> *</span> </label>
-                            <input type="text" class="phone" id="phone_id" [(ngModel)]="s.Phone" formControlName="phone_no"
+                            <input type="text" class="phone" id="phone_id" [(ngModel)]="s.Phone" formControlName="Phone"
                                 (keypress)="EmptyErrorMessage('phone_id');number($event)">
                         </div>
     
@@ -134,13 +135,13 @@
                     <div class="col-sm-6 innerlinefont">
                         <div class="labelheight">
                             <label class="labelwidth"> Legal Business Name<span class="requiredfield "> *</span></label>
-                            <input type="text" class="Legalbusiness" id="legalbusiness_id" formControlName="business_name" [(ngModel)]="s2.LegalName"
+                            <input type="text" class="Legalbusiness" id="legalbusiness_id" formControlName="LegalName" [(ngModel)]="s2.LegalName"
                                 (keypress)="EmptyErrorMessage('legalbusiness_id'); alpha($event)">
                         </div>
     
                         <div class="labelheight">
                             <label class="labelwidth">Alias Name</label>
-                            <input type="text" class="middlename" id="middlename_id" formControlName="alias_name" [(ngModel)]="s2.AliasName"
+                            <input type="text" class="middlename" id="middlename_id" formControlName="AliasName" [(ngModel)]="s2.AliasName"
                                 (keypress)="alpha($event)">
                         </div>
     
@@ -152,17 +153,17 @@
     
                         <div class="labelheight">
                             <label class="labelwidth">NAICS Code </label>
-                            <input type="text" class="Federal" id="federal_id" formControlName="naicscode" [(ngModel)]="s2.NAICSCodes">
+                            <input type="text" class="Federal" id="federal_id" formControlName="NAICSCodes" [(ngModel)]="s2.NAICSCodes">
                         </div>
-    
-    
-    
+       
     
                         <div class="labelheight">
                             <label class="Businessregistered">Is this Business Registered with this County/State ?</label>
                             <!--<label style="width:10px"></label>-->
                             <label class="switch">
-                                <input type="checkbox" name="active" id="active" checked>
+                                
+                                <input type="checkbox" name="active" id="active" formControlName="BusinessRegisteredInDistrict" *ngIf="s2.BusinessRegisteredInDistrict == 1" checked >
+                                <input type="checkbox" name="active" id="active" formControlName="BusinessRegisteredInDistrict" *ngIf="s2.BusinessRegisteredInDistrict == 0" >
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -171,7 +172,8 @@
                             <label class="businessfranchisee">Is this business a franchisee ?</label>
                             <!--<label style="width:10px"></label>-->
                             <label class="switch">
-                                <input class="" type="checkbox" name="active" id="active" checked>
+                                <input type="checkbox" name="active" id="active" formControlName="BusinessIsFranchisee" *ngIf="s2.BusinessIsFranchisee == 1" checked >
+                                <input type="checkbox" name="active" id="active" formControlName="BusinessIsFranchisee" *ngIf="s2.BusinessIsFranchisee == 0" >
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -181,19 +183,19 @@
     
                         <div class="labelheight">
                             <label class="labelwidth"> Trade Name <span class="requiredfield "> *</span></label>
-                            <input type="text" id="tradename_id" class="Vendortype" formControlName="trade_name" [(ngModel)]="s2.TradeName"
+                            <input type="text" id="tradename_id" class="Vendortype" formControlName="TradeName" [(ngModel)]="s2.TradeName"
                                 (keypress)="EmptyErrorMessage('tradename_id');alpha($event)">
                         </div>
     
     
                         <div class="labelheight">
                             <label class="labelwidth">DUNS Number <span class="requiredfield "> *</span></label>
-                            <input type="number" id="dunsno_id" class="DUNSno" formControlName="duns_no" [(ngModel)]="s2.DUNS"
+                            <input type="number" id="dunsno_id" class="DUNSno" formControlName="DUNS" [(ngModel)]="s2.DUNS"
                                 (keypress)="EmptyErrorMessage('dunsno_id')">
                         </div>
                         <div class="labelheight">
                             <label class="labelwidth">Commodity Code</label>
-                            <input type="number" id="dunsno_id" class="DUNSno" formControlName="commoditycode">
+                            <input type="number" id="dunsno_id" class="DUNSno" formControlName="CommodityCodes">
                         </div>
     
     
@@ -201,7 +203,7 @@
                         <div class="labelheight">
                             <label class="labelwidth">Business Website <span class="requiredfield "> *</span></label>
                             <input type="text" class="Businesswebsite" id="businesswebsite_id"
-                                formControlName="business_website" (keypress)="EmptyErrorMessage('businesswebsite_id')">
+                                formControlName="Website" (keypress)="EmptyErrorMessage('businesswebsite_id')">
                         </div>
     
                         <div class="labelheight">
@@ -209,7 +211,8 @@
                                 Commission ? </label>
                             <!--<label style="width:10px"></label>-->
                             <label class="switch">
-                                <input class="" type="checkbox" name="active" id="active" checked>
+                                <input type="checkbox" name="active" id="active" formControlName="BusinessRegisteredInSCC" *ngIf="s2.BusinessRegisteredInSCC == 1" checked >
+                                <input type="checkbox" name="active" id="active" formControlName="BusinessRegisteredInSCC" *ngIf="s2.BusinessRegisteredInSCC == 0" >
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -234,13 +237,13 @@
                         <div class="labelheight">
                             <label class="labelwidth">Address<span class="requiredfield "> *</span> </label>
                             <input type="text" class="Physicaladdress" id="currentaddress_id" [(ngModel)]="Addr.Address1"
-                                formControlName="physical_address" (keypress)="EmptyErrorMessage('currentaddress_id')">
+                                formControlName="Address1" (keypress)="EmptyErrorMessage('currentaddress_id')">
                         </div>
     
     
                         <div class="labelheight">
                             <label class="labelwidth">City<span class="requiredfield "> *</span> </label>
-                            <select id="currentcity_id" class="city" formControlName="city" [(ngModel)]="Addr.CityId"
+                            <select id="currentcity_id" class="city" formControlName="CityId" [(ngModel)]="Addr.CityId"
                                 (keypress)="EmptyErrorMessage('currentcity_id')">
                                 <option *ngFor="let c of citylist" [value]="c.CityId ">
                                     {{c.CityName}}
@@ -251,7 +254,7 @@
     
                         <div class="labelheight">
                             <label class="labelwidth">Zip Code<span class="requiredfield "> *</span> </label>
-                            <select id="currentzipcode_id" class="zip" formControlName="zip_code" [(ngModel)]="Addr.Zipcode"
+                            <select id="currentzipcode_id" class="zip" formControlName="Zipcode" [(ngModel)]="Addr.Zipcode"
                                 (keypress)="EmptyErrorMessage('currentzipcode_id');">
                                 <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode ">
                                     {{z.Zipcode}}
@@ -262,7 +265,7 @@
     
                         <div class="labelheight">
                             <label class="labelwidth">County<span class="requiredfield "> *</span> </label>
-                            <select type="text" id="currentcounty_id" class="County" formControlName="county" [(ngModel)]="Addr.DistrictId"
+                            <select type="text" id="currentcounty_id" class="County" formControlName="DistrictId" [(ngModel)]="Addr.DistrictId"
                                 (keypress)="EmptyErrorMessage('currentcounty_id')">
                                 <option *ngFor="let d of districts" [value]="d.DistrictId ">
                                     {{d.DistrictName}}
@@ -272,7 +275,7 @@
     
                         <div class="labelheight">
                             <label class="labelwidth">State/province<span class="requiredfield "> *</span> </label>
-                            <select class="State" id="stateprovice_id" formControlName="state_province" [(ngModel)]="Addr.StateId"
+                            <select class="State" id="stateprovice_id" formControlName="StateId" [(ngModel)]="Addr.StateId"
                                 (change)="EmptyErrorMessage('stateprovice_id')">
                                 <option *ngFor="let s of statedetail" [value]="s.StateId ">
                                     {{s.StateName}}
@@ -287,13 +290,13 @@
                     <div class="col-sm-6 innerlinefont">
                         <div class="labelheight">
                             <label class="labelwidth">Address Line2</label>
-                            <input type="text" class="Physicaladdress" id="currentstreet_id" formControlName="street" [(ngModel)]="Addr.Address2"
+                            <input type="text" class="Physicaladdress" id="currentstreet_id" formControlName="Address2" [(ngModel)]="Addr.Address2"
                                 (keypress)="EmptyErrorMessage('currentstreet_id')">
                         </div>
     
                         <div class="labelheight">
                             <label class="labelwidth">Country<span class="requiredfield "> *</span> </label>
-                            <select class="Country" id="currentcountry_id" formControlName="country" [(ngModel)]="Addr.CountryId"
+                            <select class="Country" id="currentcountry_id" formControlName="CountryId" [(ngModel)]="Addr.CountryId"
                                 (change)="EmptyErrorMessage('currentcountry_id')">
                                 <option *ngFor="let countrylist of countrytype" [value]="countrylist.CountryId" >
                                     {{countrylist.CountryName}}</option>
@@ -302,12 +305,13 @@
                         <div class="labelheight">
                             <label class="labeldate">From Date </label>
                             <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
-                                
+                            [(ngModel)]="this.singleVendorAddressDet[0].StartDate"
+                            formControlName="StartDate"                             
                                  (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                         </div>
                         <div class="labelheight">
                             <label class="labeldate">To Date</label>
-                            <input type="date" id="mailingtodata_id" class="mailingfromdate" value="{{Addr.EndDate}}"
+                            <input type="date" id="mailingtodata_id" formControlName="EndDate" class="mailingfromdate" [(ngModel)]=" this.singleVendorAddressDet[0].EndDate"
                                 
                                 >
                         </div>
@@ -320,7 +324,7 @@
        
     
     
-    
+   
     
         <!-- <form [formGroup]="currentaddress"> -->
         <div id="addtionaddress">
@@ -368,20 +372,20 @@
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">Address</label>
                                             <input type="text" id="mailingaddress_id" class="Mailingaddress1"
-                                                formControlName="mailing_address"
+                                                formControlName="MAddress1"
                                                 (keypress)="EmptyErrorMessage('mailingaddress_id')">
                                         </div>
     
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">Street Address</label>
                                             <input type="text" id="mailingstreet_id" class="Mailingaddress1"
-                                                formControlName="mailing_street"
+                                                formControlName="MAddress2"
                                                 (keypress)="EmptyErrorMessage('mailingstreet_id')">
                                         </div>
     
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">City</label>
-                                            <select type="text" id="mailingcity_id" class="City1" formControlName="city_1"
+                                            <select type="text" id="mailingcity_id" class="City1" formControlName="MCityId"
                                                 (keypress)="EmptyErrorMessage('mailingcity_id')">
                                                 <option>chennai</option>
                                             </select>
@@ -391,7 +395,7 @@
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">Zip Code</label>
                                             <select type="number" id="mailingzipcode_id" class="zip1"
-                                                formControlName="zip_code1"
+                                                formControlName="MZipcode"
                                                 (keypress)="EmptyErrorMessage('mailingzipcode_id')">
                                                 <option></option>
                                             </select>
@@ -401,7 +405,7 @@
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">County</label>
                                             <select type="text" id="mailingcounty_id" class="County1"
-                                                formControlName="county_1"
+                                                formControlName="MDistrictId"
                                                 (keypress)="EmptyErrorMessage('mailingcounty_id')">
                                                 <option>county</option>
                                             </select>
@@ -411,8 +415,8 @@
                                     <div class="col-sm-6">
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">State/Province</label>
-                                            <select class="State" id="mailingstateprovince_id"
-                                                formControlName="state_province1"
+                                            <select class="StateId" id="mailingstateprovince_id"
+                                                formControlName="MStateId"
                                                 (change)="EmptyErrorMessage('mailingstateprovince_id')">
                                                 <option value="value"></option>
                                                 <option value="value1">Virginia</option>
@@ -428,7 +432,7 @@
     
                                         <div class="labelheight" style="margin-left: 9px;">
                                             <label class="labelwidth">Country</label>
-                                            <select class="Country1" id="mailingcountry_id" formControlName="country_1"
+                                            <select class="MCountry" id="mailingcountry_id" formControlName="MCountryId"
                                                 (change)="EmptyErrorMessage('mailingcountry_id')">
                                                 <option value="value"></option>
                                                 <option value="value1">USA</option>
@@ -440,13 +444,13 @@
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">From Date</label>
                                             <input type="date" id="mailingfromdata_id" class="mailingfromdate"
-                                                formControlName="mailingfrom_date"
+                                                formControlName="MStartDate"
                                                 (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                                         </div>
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">To Date</label>
                                             <input type="date" id="mailingtodata_id" class="mailingfromdate"
-                                                formControlName="mailingto_date">
+                                                formControlName="MEndDate">
                                         </div>
                                     </div>
                                 </div>
@@ -475,18 +479,18 @@
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">Address</label>
                                             <input type="text" id="pastaddress_id" class="Mailingaddress1"
-                                                formControlName="past_address"
+                                                formControlName="PAddress1"
                                                 (keypress)="EmptyErrorMessage('pastaddress_id')">
                                         </div>
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;"> Street Address</label>
                                             <input type="text" id="paststreet_id" class="Mailingaddress1"
-                                                formControlName="past_street"
+                                                formControlName="PAddress2"
                                                 (keypress)="EmptyErrorMessage('paststreet_id')">
                                         </div>
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">City</label>
-                                            <select id="pastcity_id" class="City1" formControlName="city_2"
+                                            <select id="pastcity_id" class="City1" formControlName="PCItyId"
                                                 (keypress)="EmptyErrorMessage('pastcity_id')">
                                                 <option>chennai</option>
                                             </select>
@@ -494,7 +498,7 @@
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">Zip Code</label>
                                             <select type="number" id="pastzipcode_id" class="zip1"
-                                                formControlName="zip_code2"
+                                                formControlName="PZipcode"
                                                 (keypress)="EmptyErrorMessage('pastzipcode_id')">
                                                 <option>600095</option>
                                             </select>
@@ -502,7 +506,7 @@
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">County</label>
                                             <select type="text" id="pastcounty_id" class="County1"
-                                                formControlName="county_2" (keypress)="EmptyErrorMessage('pastcounty_id')">
+                                                formControlName="PDistrictId" (keypress)="EmptyErrorMessage('pastcounty_id')">
                                                 <option></option>
                                             </select>
                                         </div>
@@ -510,7 +514,7 @@
                                     <div class="col-sm-6">
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">State/Province</label>
-                                            <select class="State" id="paststateprovice_id" formControlName="state_province2"
+                                            <select class="State" id="paststateprovice_id" formControlName="PStateId"
                                                 (change)="EmptyErrorMessage('paststateprovice_id')">
                                                 <option value="value1">Virginia</option>
                                                 <option value="value2">Alabama</option>
@@ -523,7 +527,7 @@
                                         </div>
                                         <div class="labelheight" style="margin-left: 9px;">
                                             <label class="labelwidth">Country</label>
-                                            <select class="Country1" id="pastcountry_id"
+                                            <select class="PCountryId" id="pastcountry_id"
                                                 (change)="EmptyErrorMessage('pastcountry_id')">
                                                 <option></option>
                                                 <option value="value1">USA</option>
@@ -533,13 +537,13 @@
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">From Date</label>
                                             <input type="date" id="pastfromdata_id" class="mailingfromdate"
-                                                formControlName="pastfrom_date"
+                                                formControlName="PStartDate"
                                                 (keypress)="EmptyErrorMessage('pastfromdata_id')">
                                         </div>
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">To Date</label>
                                             <input type="date" id="pasttodata_id" class="mailingfromdate"
-                                                formControlName="pastto_date"
+                                                formControlName="PEndDate"
                                                 (keypress)="EmptyErrorMessage('pasttodata_id')">
                                         </div>
                                     </div>
@@ -563,7 +567,7 @@
                     <div class="col-sm-6 innerlinefont">
                         <div class="labelheight">
                             <label class="labelwidth"> Contact Person Name <span class="requiredfield "> *</span></label>
-                            <input type="text" class="Contactperson" id="contactperson_id" formControlName="contact_name"
+                            <input type="text" class="Contactperson" id="contactperson_id" formControlName="ContactName"
                                 (keypress)="EmptyErrorMessage('contactperson_id')">
                         </div>
     
@@ -571,7 +575,7 @@
                         <div class="labelheight">
                             <label class="labelwidth">Business Phone <span class="requiredfield "> *</span></label>
                             <input type="number" class="Businessphone" id="businessphone_id"
-                                formControlName="business_phone" (keypress)="EmptyErrorMessage('businessphone_id')">
+                                formControlName="BusinessPhone" (keypress)="EmptyErrorMessage('businessphone_id')">
     
                         </div>
     
@@ -593,14 +597,14 @@
     
                         <div class="labelheight">
                             <label class="labelwidth">Title<span class="requiredfield "> *</span></label>
-                            <input type="text" class="Title" id="title_id" formControlName="title"
+                            <input type="text" class="Title" id="title_id" formControlName="Title"
                                 (keypress)="EmptyErrorMessage('title_id')">
                         </div>
     
     
                         <div class="labelheight">
                             <label class="labelwidth">Business Email <span class="requiredfield "> *</span></label>
-                            <input type="text" class="Businessemail" id="businessemail_id" formControlName="business_email"
+                            <input type="text" class="Businessemail" id="businessemail_id" formControlName="BusinessEmail"
                                 (keyup)="EmptyErrorMessage('businessemail_id')">
                         </div>
     
@@ -621,19 +625,19 @@
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">Contact Person Name</label>
                                             <input type="text" class="Contactperson" id="addtionalcontactname_id"
-                                                formControlName="addtional_name"
+                                                formControlName="AddtionalName"
                                                 (keypress)="EmptyErrorMessage('addtionalcontactname_id')">
                                         </div>
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">Title</label>
                                             <input type="text" class="Title" id="addtionaltitle_id"
-                                                formControlName="addtional_title"
+                                                formControlName="AddtionalTitle"
                                                 (keypress)="EmptyErrorMessage('addtionaltitle_id')">
                                         </div>
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">Business Email</label>
                                             <input type="text" class="Businessemail" id="addtionalbusinessmail_id"
-                                                formControlName="addtional_businessmail"
+                                                formControlName="AddtionalBusinessMail"
                                                 (keypress)="EmptyErrorMessage('addtionalbusinessmail_id')">
                                         </div>
     
@@ -642,7 +646,7 @@
                                         <div class="labelheight">
                                             <label class="labelwidth" style="margin-left: 9px;">Business Phone</label>
                                             <input type="number" class="City1" id="addtionalbusinessphone_id"
-                                                formControlName="addtional_businessphone"
+                                                formControlName="AddtionalBusinessPhone"
                                                 (keypress)="EmptyErrorMessage('addtionalbusinessphone_id')">
                                         </div>
                                         <div style="height: 22px;">
