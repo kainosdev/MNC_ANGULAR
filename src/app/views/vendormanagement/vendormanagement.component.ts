@@ -175,7 +175,7 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
 
     console.log('alldata',vendorMgmt);
 
-    alert('calling');
+    // alert('calling');
     this.http.post('http://localhost/MNC_PHP_API/vendor/UpdateVendor',vendorMgmt).subscribe(
     // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
       

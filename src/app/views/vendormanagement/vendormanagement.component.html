@@ -20,19 +20,19 @@
                 </div>
     
                 <div class="col-sm-5 innerlinefont vendortypelabel usernamediv" *ngFor="let s1 of singleVendorDet">
-                    <label class="labelwidth">Vendor Type</label>
+                    <label class="labelwidth">Vendor Type {{s1.VendorTypeId}}</label>
                     <!-- <div class="btndiv1"> -->
                     <label>Individual</label>
                     &nbsp;&nbsp;
-                    <label class="switch" *ngIf="s1.VendorTypeId == 'I'">
-                        <input type="checkbox" name="active" id="active" formControlName="VendorTypeId" (change)="Displayvendortype()">
+                    <label class="switch" >
+                        <input type="checkbox" name="active" id="active" [(ngModel)]="s1.VendorTypeId" formControlName="VendorTypeId" (change)="Displayvendortype()">
                         <span class="slider round"></span>
                     </label>
 
-                    <label class="switch" formControlName="VendorTypeId" *ngIf="s1.VendorTypeId == 'B'">
+                    <!-- <label class="switch" formControlName="VendorTypeId" *ngIf="s1.VendorTypeId == 'B'">
                         <input type="checkbox" name="active" id="active"  checked  (change)="Displayvendortype()">
                         <span class="slider round"></span>
-                    </label>
+                    </label> -->
 
                     <!-- <label *ngIf="s1.VendorTypeId == 'I'" class="switch">
                         <input   class="" type="checkbox" id="active" formControlName="active" (change)="Displayvendortype()">

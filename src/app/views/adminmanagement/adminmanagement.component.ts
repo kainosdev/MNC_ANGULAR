@@ -32,12 +32,17 @@ max: any = 0;
  
   ngOnInit(): void {
     this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      processing: true
+      // Declare the use of the extension in the dom parameter
+      dom: 'Bfrtip',
     };
 
-    
+    // $.fn.dataTable.ext.search.push((settings: any, data: string[], dataIndex: any) => {
+    //   const id = parseFloat(data[0]) || 0; // use data for the id column
+    //   return (Number.isNaN(this.min) && Number.isNaN(this.max)) ||
+    //       (Number.isNaN(this.min) && id <= this.max) ||
+    //       (this.min <= id && Number.isNaN(this.max)) ||
+    //       (this.min <= id && id <= this.max);
+    // });
   
     // this.http.get('http://jsonplaceholder.typicode.com/posts')
     //   .subscribe(posts => {
@@ -48,6 +53,13 @@ max: any = 0;
   
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
+  }
+
+
+  filterById(): void {
+    this.datatableElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      dtInstance.draw();
+    });
   }
 
   @ViewChild(DataTableDirective, {static: false})
