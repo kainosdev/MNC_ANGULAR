@@ -135,7 +135,7 @@ this.otherform = this.frmbuilder.group({
    CountryId:  ['', [Validators.required]],
    UserStatusId:['N'],
   
-})
+  },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 this.vendorform_individual = this.frmbuilder.group({
 
@@ -177,8 +177,7 @@ this.vendorform_individual = this.frmbuilder.group({
   Phone:[],
   AdminUser: [],
   UserStatusId:['N'],
- 
-})
+},{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 this.vendorform_business = this.frmbuilder.group({
 
@@ -221,7 +220,7 @@ this.vendorform_business = this.frmbuilder.group({
   AdminUser: [],
   UserStatusId:['N'],
  
-})
+},{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 
 
