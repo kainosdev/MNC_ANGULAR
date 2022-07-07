@@ -189,7 +189,9 @@
             <input type="password" class="tradename" formControlName="conformpassword" id="comformpswd_id" (keypress)="inputErrorMessage('comformpswd_id');removepassvalidation()">
                 <!-- <p id="passvalidationid" style="color: red;"></p>         -->
                 <div  class="help-block text-danger">
-                        <div *ngIf="submitted && ofv.conformpassword.errors">Confirm Password is required</div>
+                        <div *ngIf="submitted && ofv.conformpassword.errors.required">Confirm Password is required</div>
+                        <div *ngIf="submitted && ofv.conformpassword.errors.notEquivalent">Confirm Password is not matched.</div>
+
                 </div>
         </div>
     
@@ -418,7 +420,9 @@
             <input type="password" class="tradename" formControlName="conformpassword" id="comformpswd_id" (keypress)="inputErrorMessage('comformpswd_id');removepassvalidation()">
                 <!-- <p id="passvalidationid" style="color: red;"></p>         -->
                 <div  class="help-block text-danger">
-                        <div *ngIf="submitted && rcf.conformpassword.errors">Confirm Password is required</div>
+                        <div *ngIf="submitted && (rcf.conformpassword.errors != null && rcf.conformpassword.errors.required)">Confirm Password is required.</div>
+                        <div *ngIf="submitted && (rcf.conformpassword.errors != null &&rcf.conformpassword.errors.notEquivalent)">Confirm Password is not matched.</div>
+
                 </div>
         </div>
 

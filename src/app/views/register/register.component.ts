@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl,} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, ValidatorFn, AbstractControl, ValidationErrors,} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { config_url } from '../shared/constant';
 // import { ToastrService } from 'ngx-toastr';
@@ -110,7 +110,7 @@ vendorform_business:FormGroup | any;
  
       UserStatusId:['N'],
      
-})
+},{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 this.otherform = this.frmbuilder.group({
 
@@ -231,17 +231,37 @@ phoneformat= /^[0-9]{10}$/;
 socialno =  /^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$/;
 useridmatch=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
 
-alpha(event: any){
-  var inp = String.fromCharCode(event.keyCode);
+checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
+  return (group: FormGroup) => {
+    debugger
+    let passwordInput = group.controls[passwordKey],
+        passwordConfirmationInput = group.controls[passwordConfirmationKey];
+   
+    if (passwordConfirmationInput.value == '') {
+      return passwordConfirmationInput.setErrors({required: true})
+    }
+    else if (passwordInput.value !== passwordConfirmationInput.value) {
+      return passwordConfirmationInput.setErrors({notEquivalent: true})
+    }
+    else {
+        return passwordConfirmationInput.setErrors(null);
+    }
+  }
+}
 
-if (/[a-zA-Z]/.test(inp)) {
-  return true;
-} else {
-  event.preventDefault();
-  return false;
+alpha(event: any)
+{
+      var inp = String.fromCharCode(event.keyCode);
+
+    if (/[a-zA-Z]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
 }
-}
-alphanumeric(event: any){
+alphanumeric(event: any)
+{
   var inp = String.fromCharCode(event.keyCode);
   if (/[a-zA-Z0-9]/.test(inp)) {
     return true;
@@ -250,14 +270,17 @@ alphanumeric(event: any){
     return false;
   }
 }
-get rcf() {
+get rcf() 
+{
   return this.employeeform.controls;
 }
-get vif() {
+get vif() 
+{
   return this.vendorform_individual.controls;
 }
 
-get vbf() {
+get vbf() 
+{
   return this.vendorform_business.controls;
 }
 
