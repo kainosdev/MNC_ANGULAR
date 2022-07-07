@@ -46,7 +46,7 @@
                   
                     <input type="text"  class="first" formControlName="FirstName" id="firstname_id" (keypress)="inputErrorMessage('firstname_id');alpha($event)">
                     <div  class="help-block text-danger">
-                       <div *ngIf="submitted && rcf.FirstName.errors">First Name is required</div>
+                       <div *ngIf="submitted && ofv.FirstName.errors">First Name is required</div>
                     </div>
               </div>
     
@@ -59,7 +59,7 @@
                           
                             <input type="text" class="Physicaladdress"  formControlName="Address1" id="currentadd_id" (keypress)="inputErrorMessage('currentadd_id')">
                             <div  class="help-block text-danger">
-                                <div *ngIf="submitted && rcf.Address1.errors">First Name is required</div>
+                                <div *ngIf="submitted && ofv.Address1.errors">First Name is required</div>
                             </div>
                     </div>
             </div>
@@ -72,7 +72,7 @@
                   
                 <input type="text" class="lastname"  formControlName="LastName" id="lastname_id" (keypress)="inputErrorMessage('lastname_id');alpha($event)">
                 <div  class="help-block text-danger">
-                            <div *ngIf="submitted && rcf.LastName.errors">Last Name is required</div>
+                            <div *ngIf="submitted && ofv.LastName.errors">Last Name is required</div>
                 </div>
             </div>
     
@@ -98,7 +98,7 @@
                   
                 <input type="text" class="tradename" formControlName="UserId" id="userkey" (keypress)="inputErrorMessage('userkey');alphanumeric($event)">
                 <div  class="help-block text-danger">
-                            <div *ngIf="submitted && rcf.UserId.errors">User Id is required</div>
+                            <div *ngIf="submitted && ofv.UserId.errors">User Id is required</div>
                 </div>
               </div>
     
@@ -118,7 +118,7 @@
                                    {{citylist.CityName}}</option>
                               </select>
                               <div  class="help-block text-danger">
-                                <div *ngIf="submitted && rcf.CityId.errors">City is required</div>
+                                <div *ngIf="submitted && ofv.CityId.errors">City is required</div>
                              </div>
                     </div>
             </div>
@@ -133,7 +133,7 @@
                   
                 <input type="password" class="tradename" formControlName="UserPassword" id="userpswd_id" (keypress)="inputErrorMessage('userpswd_id');removepassvalidation()">
                 <div  class="help-block text-danger">
-                            <div *ngIf="submitted && rcf.UserPassword.errors">Password is required</div>
+                            <div *ngIf="submitted && ofv.UserPassword.errors">Password is required</div>
                 </div>
                </div>
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
@@ -150,7 +150,7 @@
                                {{ziplist.Zipcode}}</option>
                           </select>                    
                           <div  class="help-block text-danger">
-                            <div *ngIf="submitted && rcf.Zipcode.errors">Address Line2 is required</div>
+                            <div *ngIf="submitted && ofv.Zipcode.errors">Address Line2 is required</div>
                          </div>
                 </div>
         </div>
@@ -166,7 +166,7 @@
             <input type="password" class="tradename" formControlName="conformpassword" id="comformpswd_id" (keypress)="inputErrorMessage('comformpswd_id');removepassvalidation()">
                 <!-- <p id="passvalidationid" style="color: red;"></p>         -->
                 <div  class="help-block text-danger">
-                        <div *ngIf="submitted && rcf.conformpassword.errors">Confirm Password is required</div>
+                        <div *ngIf="submitted && ofv.conformpassword.errors">Confirm Password is required</div>
                 </div>
         </div>
     
@@ -182,7 +182,7 @@
                         {{statelistid.DistrictName}}</option>
                  </select>                  
                   <div  class="help-block text-danger">
-                        <div *ngIf="submitted && rcf.county_name.errors">Country is required</div>
+                        <div *ngIf="submitted && ofv.county_name.errors">Country is required</div>
                   </div>
             </div>
     </div>
@@ -198,7 +198,7 @@
                 (click)="inputErrorMessage('startdate_id')">
               
                 <div  class="help-block text-danger">
-                        <div *ngIf="submitted && rcf.StartDate.errors">Start Date is required</div>
+                        <div *ngIf="submitted && ofv.StartDate.errors">Start Date is required</div>
                </div>
         </div>
     
@@ -217,7 +217,7 @@
                {{statelistid.StateName}}</option>
               </select>                   
               <div  class="help-block text-danger">
-                    <div *ngIf="submitted && rcf.StateId.errors">State/Province is required</div>
+                    <div *ngIf="submitted && ofv.StateId.errors">State/Province is required</div>
              </div>
         </div>
     </div>
@@ -231,7 +231,7 @@
             <input type="date" class=""  formControlName="EndDate" id="enddata_id" (click)="inputErrorMessage('enddata_id')">
               
                 <div  class="help-block text-danger">
-                        <div *ngIf="submitted && rcf.EndDate.errors">End Date is required</div>
+                        <div *ngIf="submitted && ofv.EndDate.errors">End Date is required</div>
                </div>
         </div>
     
@@ -247,7 +247,7 @@
                    {{countrylist.CountryName}}</option>
                </select>             
                 <div  class="help-block text-danger">
-                    <div *ngIf="submitted && rcf.CountryId.errors">Country is required</div>
+                    <div *ngIf="submitted && ofv.CountryId.errors">Country is required</div>
               </div>
         </div>
     </div>

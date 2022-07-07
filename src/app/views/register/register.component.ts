@@ -205,6 +205,10 @@ alphanumeric(event: any){
 get rcf() {
   return this.employeeform.controls;
 }
+
+get ofv() {
+  return this.otherform.controls;
+}
 number(event: any) {
   var charCode = (event.which) ? event.which : event.keyCode;
   
@@ -556,11 +560,13 @@ number(event: any) {
       {
        this.employeeform_show=true;
        this.otherform_show=false;
+       this.submitted = false;
       }
       else if(usertype_id == 'OTHER')
       {
         this.otherform_show=true;
         this.employeeform_show=false;
+        this.submitted = false;
       }
     
     //   if(usertype_id == 'VENDOR'){
