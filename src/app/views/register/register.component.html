@@ -1,8 +1,5 @@
 <div class="container">
 
- 
-
-    
 <p class="mainheading Vendortitle" style="text-align: center;">Registration Form</p>
  <div style="padding-left: 115px;">
     <div style=" border: 1px solid yellow;background-color: #ffff00ba;width: 825px;align-items: center !important;">
@@ -34,10 +31,236 @@
       
     </div>
 
+    <!-- Other Role form starts here -->
 
+    <div *ngIf="otherform_show">
+        <form [formGroup]="otherform" > 
+        <div class="row Generaldiv mt-2">
+                <p class="mainheading heading">Contact Information</p>
+            <div class="row mt-2">
+                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                    <label class="labelwidth">First Name</label>
+                   
+              </div>
+              <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                  
+                    <input type="text"  class="first" formControlName="FirstName" id="firstname_id" (keypress)="inputErrorMessage('firstname_id');alpha($event)">
+                    <div  class="help-block text-danger">
+                       <div *ngIf="submitted && rcf.FirstName.errors">First Name is required</div>
+                    </div>
+              </div>
+    
+         
+                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                            <label class="">Address</label>
+                           
+                    </div>
+                    <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                          
+                            <input type="text" class="Physicaladdress"  formControlName="Address1" id="currentadd_id" (keypress)="inputErrorMessage('currentadd_id')">
+                            <div  class="help-block text-danger">
+                                <div *ngIf="submitted && rcf.Address1.errors">First Name is required</div>
+                            </div>
+                    </div>
+            </div>
+            <div class="row mt-2">
+                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                    <label class="labelwidth">Last Name</label>
+                   
+            </div>
+            <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                  
+                <input type="text" class="lastname"  formControlName="LastName" id="lastname_id" (keypress)="inputErrorMessage('lastname_id');alpha($event)">
+                <div  class="help-block text-danger">
+                            <div *ngIf="submitted && rcf.LastName.errors">Last Name is required</div>
+                </div>
+            </div>
+    
+            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                <label class="labelwidth">Address Line2</label>
+               
+           </div>
+    
+                    <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
+                          
+                            <input type="text" class="Physicaladdress" formControlName="Address2"  id="currentsecadd_id" (keypress)="inputErrorMessage('currentsecadd_id')">
+    
+                    </div>
+            </div>
+    
+            <div class="row mt-2">
+                 
+                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                    <label class="labelwidth">User Id</label>
+                   
+              </div>
+              <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                  
+                <input type="text" class="tradename" formControlName="UserId" id="userkey" (keypress)="inputErrorMessage('userkey');alphanumeric($event)">
+                <div  class="help-block text-danger">
+                            <div *ngIf="submitted && rcf.UserId.errors">User Id is required</div>
+                </div>
+              </div>
+    
+    
+    
+                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                            <label class="labelwidth">City</label>
+                           
+                    </div>
+                    <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
+                          
+                        <select class="city"  formControlName="CityId"  id="currentcity_id"
+                        (change)="inputErrorMessage('currentcity_id');onchangezip();onchangestate()" >
+                             <option value="value"></option>
+    
+                                 <option *ngFor="let citylist of cityalldetail" value="{{citylist.CityId}}">
+                                   {{citylist.CityName}}</option>
+                              </select>
+                              <div  class="help-block text-danger">
+                                <div *ngIf="submitted && rcf.CityId.errors">City is required</div>
+                             </div>
+                    </div>
+            </div>
+    
+            <div class="row mt-2">
+              
+                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                    <label class="labelwidth">Password</label>
+                   
+              </div>
+              <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                  
+                <input type="password" class="tradename" formControlName="UserPassword" id="userpswd_id" (keypress)="inputErrorMessage('userpswd_id');removepassvalidation()">
+                <div  class="help-block text-danger">
+                            <div *ngIf="submitted && rcf.UserPassword.errors">Password is required</div>
+                </div>
+               </div>
+                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                        <label class="labelwidth">Zip Code</label>
+                       
+                </div>
+                <div class="form-group col-xs-4 col-lg-3 col-md-2 col-sm-4">
+                      
+                    <select class="zip" formControlName="Zipcode" id="regcurrentzip_id"
+                    (change)="inputErrorMessage('regcurrentzip_id')" >
+    
+                          <option value="value"></option>
+                             <option *ngFor="let ziplist of zipcodedetail" >
+                               {{ziplist.Zipcode}}</option>
+                          </select>                    
+                          <div  class="help-block text-danger">
+                            <div *ngIf="submitted && rcf.Zipcode.errors">Address Line2 is required</div>
+                         </div>
+                </div>
+        </div>
+    
+        
+        <div class="row mt-2">
+            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                <label class="labelwidth">Confirm Password<span class="requiredfield ">  *</span> </label>
+    
+        </div>
+        <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+              
+            <input type="password" class="tradename" formControlName="conformpassword" id="comformpswd_id" (keypress)="inputErrorMessage('comformpswd_id');removepassvalidation()">
+                <!-- <p id="passvalidationid" style="color: red;"></p>         -->
+                <div  class="help-block text-danger">
+                        <div *ngIf="submitted && rcf.conformpassword.errors">Confirm Password is required</div>
+                </div>
+        </div>
+    
+            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                    <label class="labelwidth">Country</label>
+                   
+            </div>
+            <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
+                  
+                <select type="text"  class="County" formControlName="county_name" id="county_id" (change)="inputErrorMessage('county_id')">
+                    <!-- <option ></option> -->
+                    <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
+                        {{statelistid.DistrictName}}</option>
+                 </select>                  
+                  <div  class="help-block text-danger">
+                        <div *ngIf="submitted && rcf.county_name.errors">Country is required</div>
+                  </div>
+            </div>
+    </div>
+    
+    <div class="row mt-2">
+        <div class="form-group col-xs-4 col-md-2 col-sm-2">
+            <label class="labelwidth">Start Date<span class="requiredfield "> *</span> </label>
+    
+        </div>
+        <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+           
+            <input type="date" class="" formControlName="StartDate" id="startdate_id"
+                (click)="inputErrorMessage('startdate_id')">
+              
+                <div  class="help-block text-danger">
+                        <div *ngIf="submitted && rcf.StartDate.errors">Start Date is required</div>
+               </div>
+        </div>
+    
+        <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                <label class="labelwidth">State/Province<span class="requiredfield "> *</span></label>
+               
+        </div>
+        <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
+              
+            <select class="State"  formControlName="StateId" id="curstate_id"
+             (change)="inputErrorMessage('curstate_id');onchangecountry()" >
+           
+    
+             <!-- <option value=""></option> -->
+             <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
+               {{statelistid.StateName}}</option>
+              </select>                   
+              <div  class="help-block text-danger">
+                    <div *ngIf="submitted && rcf.StateId.errors">State/Province is required</div>
+             </div>
+        </div>
+    </div>
+    <div class="row mt-1">
+        <div class="form-group col-xs-4 col-md-2 col-sm-2">
+            <label class="labelwidth">End Date<span class="requiredfield "> *</span> </label>
+    
+        </div>
+        <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+           
+            <input type="date" class=""  formControlName="EndDate" id="enddata_id" (click)="inputErrorMessage('enddata_id')">
+              
+                <div  class="help-block text-danger">
+                        <div *ngIf="submitted && rcf.EndDate.errors">End Date is required</div>
+               </div>
+        </div>
+    
+        <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                <label class="labelwidth">Country<span class="requiredfield "> *</span></label>
+               
+        </div>
+        <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
+              
+              <select class="Country"  formControlName="CountryId" id="country_id" (change)="inputErrorMessage('country_id')">
+                <option value="value"></option>
+                <option *ngFor="let countrylist of countrydetail" [value]="countrylist.CountryId">
+                   {{countrylist.CountryName}}</option>
+               </select>             
+                <div  class="help-block text-danger">
+                    <div *ngIf="submitted && rcf.CountryId.errors">Country is required</div>
+              </div>
+        </div>
+    </div>
+    
+
+        </div>
+        </form>
+    </div>
+    
+    <!-- Other  form ends here -->
     <!-- Employee form starts here -->
 
-<div *ngIf="employeeform">
+<div *ngIf="employeeform_show">
     <form [formGroup]="employeeform" > 
     <div class="row Generaldiv mt-2">
             <p class="mainheading heading">Contact Information</p>
@@ -256,7 +479,7 @@
     </div>
 </div>
 
-<div id="employeeinfo" style="display: none;">
+<div id="employeeinfo" >
         <p class="mainheading heading">Employee Information</p>
 
 

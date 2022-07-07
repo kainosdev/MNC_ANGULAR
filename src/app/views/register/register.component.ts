@@ -17,10 +17,11 @@ export class RegisterComponent implements OnInit {
 
 //  registercontactinformation:any;
 employeeform: FormGroup | any;
+otherform: FormGroup | any;
 vendorform:FormGroup | any;
  submitted = false;
-
- 
+ employeeform_show=false;
+ otherform_show=false;
   vendor: any;
   employeeinformation:any;
   jobdetail: any;
@@ -104,6 +105,31 @@ vendorform:FormGroup | any;
  
       UserStatusId:['N'],
      
+})
+
+this.otherform = this.frmbuilder.group({
+
+  //contact details
+   FirstName: ['', [Validators.required]],
+   legalbusiness: [''],
+   LastName:  ['', [Validators.required]],
+   tradeName: [],
+   // UserTypeId:  ['', [Validators.required]],
+   UserId:  ['', [Validators.required]],
+   UserPassword:  ['', [Validators.required]],
+   conformpassword:  ['', [Validators.required]],
+
+   Address1:  ['', [Validators.required]],
+   Address2: [],
+   StateId:  ['', [Validators.required]],
+   CityId:  ['', [Validators.required]],
+   Zipcode: ['', [Validators.required]],
+   county_name: ['', [Validators.required]],
+   StartDate: ['', [Validators.required]],
+   EndDate: ['', [Validators.required]],
+   CountryId:  ['', [Validators.required]],
+   UserStatusId:['N'],
+  
 })
 
 this.vendorform = this.frmbuilder.group({
@@ -525,49 +551,60 @@ number(event: any) {
 
     vendordetails_display(){
       let usertype_id = (<HTMLInputElement>document.getElementById("usertype_id")).value;
+
+      if(usertype_id == 'EMPLOY')
+      {
+       this.employeeform_show=true;
+       this.otherform_show=false;
+      }
+      else if(usertype_id == 'OTHER')
+      {
+        this.otherform_show=true;
+        this.employeeform_show=false;
+      }
     
-      if(usertype_id == 'VENDOR'){
+    //   if(usertype_id == 'VENDOR'){
 
-        (<HTMLInputElement>document.getElementById("vendordetails")).style.display ="block";
-        (<HTMLInputElement>document.getElementById("employeeinfo")).style.display ="none";
-      }
-    else  if(usertype_id == 'EMPLOY'){
-        (<HTMLInputElement>document.getElementById("employeeinfo")).style.display ="block";
-        (<HTMLInputElement>document.getElementById("vendordetails")).style.display ="none";
-       }
+    //     (<HTMLInputElement>document.getElementById("vendordetails")).style.display ="block";
+    //     (<HTMLInputElement>document.getElementById("employeeinfo")).style.display ="none";
+    //   }
+    // else  if(usertype_id == 'EMPLOY'){
+    //     (<HTMLInputElement>document.getElementById("employeeinfo")).style.display ="block";
+    //     (<HTMLInputElement>document.getElementById("vendordetails")).style.display ="none";
+    //    }
 
-      else {
-        (<HTMLInputElement>document.getElementById("vendordetails")).style.display ="none";
-        (<HTMLInputElement>document.getElementById("employeeinfo")).style.display ="none";
-      }
+    //   else {
+    //     (<HTMLInputElement>document.getElementById("vendordetails")).style.display ="none";
+    //     (<HTMLInputElement>document.getElementById("employeeinfo")).style.display ="none";
+    //   }
 
-      if(usertype_id == 'EMPLOY'){
+    //   if(usertype_id == 'EMPLOY'){
 
-        (document.getElementById('socialno_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('busssn_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('business_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('be_classificationid') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('socialno_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('busssn_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('business_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('be_classificationid') as HTMLFormElement).classList.remove("validation");
 
-      }
-      else if(usertype_id == 'VENDOR'){
+    //   }
+    //   else if(usertype_id == 'VENDOR'){
 
-        (document.getElementById('job_title') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('employee_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('jobstartdate_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('phoneno_id') as HTMLFormElement).classList.remove("validation");
-      }
+    //     (document.getElementById('job_title') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('employee_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('jobstartdate_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('phoneno_id') as HTMLFormElement).classList.remove("validation");
+    //   }
 
-      else if(usertype_id == 'OTHER'){
+    //   else if(usertype_id == 'OTHER'){
 
-        (document.getElementById('socialno_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('busssn_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('business_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('be_classificationid') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('job_title') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('employee_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('jobstartdate_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('phoneno_id') as HTMLFormElement).classList.remove("validation");
-      }
+    //     (document.getElementById('socialno_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('busssn_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('business_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('be_classificationid') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('job_title') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('employee_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('jobstartdate_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('phoneno_id') as HTMLFormElement).classList.remove("validation");
+    //   }
 
     }
   // }
@@ -742,27 +779,53 @@ number(event: any) {
         {
           this.employeeform.value.UserTypeId="EMPLOY"
           alert(JSON.stringify(this.employeeform.value))
-           this.http.post("http://localhost:8080/"+'vendor/AdduserDetails', this.employeeform.value).subscribe(
-          
-                data => {
-                  console.log("data");
-                    console.log('POST Request is successful >>>>>>>>', data);
-          
-                },
-                success => {
-                  console.log("success");
-                  Swal.fire({
-                    position: 'top',
-                    icon: 'success',
-                    title: 'Successfully Registered',
-                    showConfirmButton: false,
-                    timer: 3000
-                  })
-                }
-              );
+          this.finalsavecall(this.employeeform.value)
+        }
+        }
+        else if(usertype_id == "OTHER")
+        {
+
+        if (this.otherform.invalid) 
+        {
+            return;
+        }
+        else
+        {
+          this.otherform.value.UserTypeId="EMPLOY"
+          alert(JSON.stringify(this.otherform.value))
+          this.finalsavecall(this.otherform.value)
+           
         }
         }
        
       
+    }
+    finalsavecall(value : any)
+    {
+    try
+    {
+      this.http.post("http://localhost:8080/"+'vendor/AdduserDetails', value).subscribe(
+          
+        data => {
+          console.log("data");
+            console.log('POST Request is successful >>>>>>>>', data);
+  
+        },
+        success => {
+          console.log("success");
+          Swal.fire({
+            position: 'top',
+            icon: 'success',
+            title: 'Successfully Registered',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        }
+      );
+    }
+    catch(e) 
+    {
+      console.log(e); 
+    }
     }
 }
