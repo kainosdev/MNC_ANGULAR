@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 
 
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -21,6 +22,9 @@ employeeform: FormGroup | any;
 otherform: FormGroup | any;
 vendorform_individual:FormGroup | any;
 vendorform_business:FormGroup | any;
+uidPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,15}";
+public mask = [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+
  submitted = false;
  usertype="VENDOR";
  vendortype=true;
