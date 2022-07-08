@@ -18,9 +18,9 @@
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                    <select class="first" [(ngModel)]='usertype' formControlName="UserTypeId" id="usertype_id" (change)="inputErrorMessage('usertype_id');vendordetails_display();displaydata()">
+                    <select class="first" [ngModel]='usertype'   id="usertype_id" (ngModelChange)="inputErrorMessage('usertype_id');vendordetails_display();displaydata()">
               
-                      <option *ngFor="let userlist of usertypedata" [value]="userlist.UserTypeId" [selected]="userlist.UserTypeId === 'EMPLOY'">
+                      <option *ngFor="let userlist of usertypedata" [value]="userlist.UserTypeId" [selected]="userlist.UserTypeId === 'VENDOR'">
                           {{userlist.UserTypeDesc}}</option>
                         
                        </select> 
@@ -45,7 +45,7 @@
                          </label>
                          &nbsp;&nbsp;
                         <label class="switch">
-                        <input class="" type="checkbox"  id="active"  (change)="vendortype_display('active')" formControlName="VendorTypeId">
+                        <input class="" type="checkbox"  id="active"  [checked]='vendortype' (change)="vendortype = !vendortype;vendortype_display('active');" >
                         <span class="slider round"></span>
                         </label>&nbsp;&nbsp;
                         <label >Business</label>  
@@ -62,7 +62,7 @@
                 <p class="mainheading heading">Contact Information</p>
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">First Name</label>
+                    <label class="labelwidth">First Name<span class="requiredfield ">  *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -75,7 +75,7 @@
     
          
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="">Address</label>
+                            <label class="">Address<span class="requiredfield ">  *</span></label>
                            
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -88,7 +88,7 @@
             </div>
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Last Name</label>
+                    <label class="labelwidth">Last Name<span class="requiredfield ">  *</span></label>
                    
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -114,7 +114,7 @@
             <div class="row mt-2">
                  
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">User Id</label>
+                    <label class="labelwidth">User Id<span class="requiredfield ">  *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -128,7 +128,7 @@
     
     
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">City</label>
+                            <label class="labelwidth">City<span class="requiredfield ">  *</span></label>
                            
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
@@ -149,7 +149,7 @@
             <div class="row mt-2">
               
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Password</label>
+                    <label class="labelwidth">Password<span class="requiredfield ">  *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -160,7 +160,7 @@
                 </div>
                </div>
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                        <label class="labelwidth">Zip Code</label>
+                        <label class="labelwidth">Zip Code<span class="requiredfield ">  *</span></label>
                        
                 </div>
                 <div class="form-group col-xs-4 col-lg-3 col-md-2 col-sm-4">
@@ -198,7 +198,7 @@
         </div>
     
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Country</label>
+                    <label class="labelwidth">Country<span class="requiredfield ">  *</span></label>
                    
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
@@ -295,7 +295,7 @@
                 <p class="mainheading heading">Contact Information</p>
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">First Name</label>
+                    <label class="labelwidth">First Name<span class="requiredfield ">  *</span></label>
                 
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -308,7 +308,7 @@
 
         
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="">Address</label>
+                            <label class="">Address<span class="requiredfield ">  *</span></label>
                         
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -321,7 +321,7 @@
             </div>
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Last Name</label>
+                    <label class="labelwidth">Last Name<span class="requiredfield ">  *</span></label>
                 
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -347,7 +347,7 @@
             <div class="row mt-2">
                 
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">User Id</label>
+                    <label class="labelwidth">User Id<span class="requiredfield ">  *</span></label>
                 
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -361,7 +361,7 @@
 
 
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">City</label>
+                            <label class="labelwidth">City<span class="requiredfield ">  *</span></label>
                         
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
@@ -382,7 +382,7 @@
             <div class="row mt-2">
             
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Password</label>
+                    <label class="labelwidth">Password<span class="requiredfield ">  *</span></label>
                 
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -393,7 +393,7 @@
                 </div>
             </div>
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                        <label class="labelwidth">Zip Code</label>
+                        <label class="labelwidth">Zip Code<span class="requiredfield ">  *</span></label>
                     
                 </div>
                 <div class="form-group col-xs-4 col-lg-3 col-md-2 col-sm-4">
@@ -414,7 +414,7 @@
         
         <div class="row mt-2">
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                <label class="labelwidth">Confirm Password<span class="requiredfield ">  *</span> </label>
+                <label class="labelwidth">Confirm Password<span class="requiredfield ">  *</span><span class="requiredfield ">  *</span> </label>
 
         </div>
         <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -429,7 +429,7 @@
         </div>
 
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Country</label>
+                    <label class="labelwidth">Country<span class="requiredfield ">  *</span></label>
                 
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
@@ -510,7 +510,7 @@
         </div>
     </div>
 
-    <div id="employeeinfo" >
+   
             <p class="mainheading heading">Employee Information</p>
 
 
@@ -518,10 +518,10 @@
 
 
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="">Job Title <span class="requiredfield "> *</span> </label>
+                            <label class="labelwidth">Job Title <span class="requiredfield "> *</span> </label>
     
                     </div>
-                    <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
+                    <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                         <select formControlName="JobTitleId" class="jobtitle" id="job_title" (change)="inputErrorMessage('job_title')">
                                 <option value=""></option>
                                 <option *ngFor="let jobtitle of jobdetail" [value]="jobtitle.JobTitleId">
@@ -533,7 +533,7 @@
                     </div>
 
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="">Phone Number <span class="requiredfield "> *</span> </label>
+                            <label class="labelwidth">Phone Number <span class="requiredfield "> *</span> </label>
     
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
@@ -552,7 +552,7 @@
                             <label class="labelwidth">Employment Type <span class="requiredfield "> *</span> </label>
     
                     </div>
-                    <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
+                    <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                             <select formControlName="EmploymentTypeId" class="employeeid" id="employee_id"
                             (change)="inputErrorMessage('employee_id');">
                             <option value="value"></option>
@@ -606,7 +606,7 @@
         
             
         
-        </div>
+        
         </div>
         </form>
     </div>
@@ -623,7 +623,7 @@
             <p class="mainheading heading">Contact Information</p>
         <div class="row mt-2">
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                <label class="labelwidth">First Name</label>
+                <label class="labelwidth">First Name<span class="requiredfield ">  *</span></label>
                
           </div>
           <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -636,7 +636,7 @@
 
      
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                        <label class="">Address</label>
+                        <label class="">Address<span class="requiredfield ">  *</span></label>
                        
                 </div>
                 <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -649,7 +649,7 @@
         </div>
         <div class="row mt-2">
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                <label class="labelwidth">Last Name</label>
+                <label class="labelwidth">Last Name<span class="requiredfield ">  *</span></label>
                
         </div>
         <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -675,7 +675,7 @@
         <div class="row mt-2">
              
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                <label class="labelwidth">User Id</label>
+                <label class="labelwidth">User Id<span class="requiredfield ">  *</span></label>
                
           </div>
           <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -689,7 +689,7 @@
 
 
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                        <label class="labelwidth">City</label>
+                        <label class="labelwidth">City<span class="requiredfield ">  *</span></label>
                        
                 </div>
                 <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
@@ -710,7 +710,7 @@
         <div class="row mt-2">
           
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                <label class="labelwidth">Password</label>
+                <label class="labelwidth">Password<span class="requiredfield ">  *</span></label>
                
           </div>
           <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -721,7 +721,7 @@
             </div>
            </div>
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Zip Code</label>
+                    <label class="labelwidth">Zip Code<span class="requiredfield ">  *</span></label>
                    
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-2 col-sm-4">
@@ -757,7 +757,7 @@
     </div>
 
         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                <label class="labelwidth">Country</label>
+                <label class="labelwidth">Country<span class="requiredfield ">  *</span></label>
                
         </div>
         <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
@@ -885,7 +885,7 @@
                 <p class="mainheading heading">Contact Information</p>
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">First Name</label>
+                    <label class="labelwidth">Legal Business Name<span class="requiredfield ">  *</span></label>
                 
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -898,7 +898,7 @@
 
         
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="">Address</label>
+                            <label class="">Address<span class="requiredfield ">  *</span></label>
                         
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -911,7 +911,7 @@
             </div>
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Last Name</label>
+                    <label class="labelwidth">Trade Name<span class="requiredfield ">  *</span></label>
                 
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -937,7 +937,7 @@
             <div class="row mt-2">
                 
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">User Id</label>
+                    <label class="labelwidth">User Id<span class="requiredfield ">  *</span></label>
                 
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -951,7 +951,7 @@
 
 
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">City</label>
+                            <label class="labelwidth">City<span class="requiredfield ">  *</span></label>
                         
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
@@ -972,7 +972,7 @@
             <div class="row mt-2">
             
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Password</label>
+                    <label class="labelwidth">Password<span class="requiredfield ">  *</span></label>
                 
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -983,7 +983,7 @@
                 </div>
             </div>
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                        <label class="labelwidth">Zip Code</label>
+                        <label class="labelwidth">Zip Code<span class="requiredfield ">  *</span></label>
                     
                 </div>
                 <div class="form-group col-xs-4 col-lg-3 col-md-2 col-sm-4">
@@ -1020,7 +1020,7 @@
         </div>
 
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Country</label>
+                    <label class="labelwidth">Country<span class="requiredfield ">  *</span></label>
                 
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
@@ -1229,7 +1229,7 @@
     <!-- vendor form business ends here -->
 
 
-<div class="btndiv">
+<div class="btndiv mt-2">
          <input type="button"  class="btn btn-primary fixedwidthcls" value="Cancel" (click)="cancelform()"/>
          &nbsp;&nbsp;
               <input type="button"   class="btn btn-primary fixedwidthcls" (click)="onSubmit()"  value="Register" />  

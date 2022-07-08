@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 
 
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -21,11 +22,12 @@ otherform: FormGroup | any;
 vendorform_individual:FormGroup | any;
 vendorform_business:FormGroup | any;
  submitted = false;
- usertype="EMPLOY";
+ usertype="VENDOR";
+ vendortype=true;
  employeeform_show=false;
  vendorform_individual_show=false;
- vendorform_business_show=false;
- vendortype_show=false;
+ vendorform_business_show=true;
+ vendortype_show=true;
  otherform_show=false;
   vendor: any;
   employeeinformation:any;
@@ -604,9 +606,9 @@ number(event: any) {
 
     vendortype_display(active:any){
       debugger
-      let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
+    //  let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
      
-      if(active1 == true){
+      if(this.vendortype == true){
         
         // (<HTMLInputElement>document.getElementById("vendorbusiness")).style.display ="block";
         // (<HTMLInputElement>document.getElementById("vendorindividual")).style.display ="none";
@@ -623,7 +625,7 @@ number(event: any) {
       }
     
 
-      else if(active1 == false){
+      else if(this.vendortype == false){
 
         // (<HTMLInputElement>document.getElementById("vendorbusiness")).style.display ="none";
         // (<HTMLInputElement>document.getElementById("vendorindividual")).style.display ="block";
@@ -666,54 +668,57 @@ number(event: any) {
       {
         this.otherform_show=false;
         this.employeeform_show=false;
-        this.vendorform_individual_show=true;
+       // this.vendorform_individual_show=true;
         this.submitted = false;
-        this.vendorform_business_show=false;
+       // this.vendorform_business_show=false;
         this.vendortype_show =true;
+
+        this.vendortype_display(true)
+        
       }
     
-      if(usertype_id == 'VENDOR'){
+    //   if(usertype_id == 'VENDOR'){
 
-        (<HTMLInputElement>document.getElementById("vendordetails")).style.display ="block";
-        (<HTMLInputElement>document.getElementById("employeeinfo")).style.display ="none";
-      }
-    else  if(usertype_id == 'EMPLOY'){
-        (<HTMLInputElement>document.getElementById("employeeinfo")).style.display ="block";
-        (<HTMLInputElement>document.getElementById("vendordetails")).style.display ="none";
-       }
+    //     (<HTMLInputElement>document.getElementById("vendordetails")).style.display ="block";
+    //     (<HTMLInputElement>document.getElementById("employeeinfo")).style.display ="none";
+    //   }
+    // else  if(usertype_id == 'EMPLOY'){
+    //     (<HTMLInputElement>document.getElementById("employeeinfo")).style.display ="block";
+    //     (<HTMLInputElement>document.getElementById("vendordetails")).style.display ="none";
+    //    }
 
-      else {
-        (<HTMLInputElement>document.getElementById("vendordetails")).style.display ="none";
-        (<HTMLInputElement>document.getElementById("employeeinfo")).style.display ="none";
-      }
+    //   else {
+    //     (<HTMLInputElement>document.getElementById("vendordetails")).style.display ="none";
+    //     (<HTMLInputElement>document.getElementById("employeeinfo")).style.display ="none";
+    //   }
 
-      if(usertype_id == 'EMPLOY'){
+    //   if(usertype_id == 'EMPLOY'){
 
-        (document.getElementById('socialno_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('busssn_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('business_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('be_classificationid') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('socialno_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('busssn_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('business_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('be_classificationid') as HTMLFormElement).classList.remove("validation");
 
-      }
-      else if(usertype_id == 'VENDOR'){
+    //   }
+    //   else if(usertype_id == 'VENDOR'){
 
-        (document.getElementById('job_title') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('employee_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('jobstartdate_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('phoneno_id') as HTMLFormElement).classList.remove("validation");
-      }
+    //     (document.getElementById('job_title') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('employee_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('jobstartdate_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('phoneno_id') as HTMLFormElement).classList.remove("validation");
+    //   }
 
-      else if(usertype_id == 'OTHER'){
+    //   else if(usertype_id == 'OTHER'){
 
-        (document.getElementById('socialno_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('busssn_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('business_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('be_classificationid') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('job_title') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('employee_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('jobstartdate_id') as HTMLFormElement).classList.remove("validation");
-        (document.getElementById('phoneno_id') as HTMLFormElement).classList.remove("validation");
-      }
+    //     (document.getElementById('socialno_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('busssn_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('business_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('be_classificationid') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('job_title') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('employee_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('jobstartdate_id') as HTMLFormElement).classList.remove("validation");
+    //     (document.getElementById('phoneno_id') as HTMLFormElement).classList.remove("validation");
+    //   }
 
     }
   // }
