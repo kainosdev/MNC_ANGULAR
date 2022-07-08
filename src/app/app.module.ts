@@ -4,6 +4,7 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
+import { CKEditorModule } from 'ckeditor4-angular';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -45,6 +46,7 @@ import {
   TabsModule,
   UtilitiesModule,
  
+ 
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
@@ -53,6 +55,7 @@ import { RegistrationformComponent } from './registrationform/registrationform.c
 // import { BidmanagementComponent } from './bidmanagement/bidmanagement.component';
 import { BidmanagementComponent } from './views/bid-management/bid-management.component';
 import { TesingComponent } from './tesing/tesing.component';
+// import { ContractawardComponent } from './views/contractaward/contractaward.component';
 // import { VendorListComponent } from './views/vendor-list/vendor-list.component';
 
 // import { AdminmanagementComponent } from './views/adminmanagement/adminmanagement.component';
@@ -101,6 +104,8 @@ const APP_CONTAINERS = [
     CardModule,
     HttpClientModule,
     DataTablesModule,
+   
+    
     // ToastrModule.forRoot({
     //   positionClass: 'toast-center-center',
     //   timeOut: 2000,

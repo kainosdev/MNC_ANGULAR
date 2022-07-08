@@ -7,6 +7,7 @@ import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { AdminmanagementComponent } from './views/adminmanagement/adminmanagement.component';
 import { RegistrationformComponent } from './registrationform/registrationform.component';
+import { ContractawardComponent } from './views/contractaward/contractaward.component';
 import { TesingComponent } from './tesing/tesing.component';
 // import { BidmanagementComponent } from './bidmanagement/bidmanagement.component';
 // import { BidmanagementModule } from './views/bid-management/bid-management.module';
@@ -20,6 +21,8 @@ const routes: Routes = [
   { path:'', component:LoginComponent, data: { title: 'login'}},
   { path:'', component:RegistrationformComponent, data: { title: 'registrationform'}},
   { path:'', component:TesingComponent, data: { title: 'tesingcomponent'}},
+  
+
   // { path: '', component:BidmanagementComponent, data: { title: 'bidmanagement'}},
   
   // {path:'', component:RegisterComponent,data: { title: "registerpage"}},
@@ -43,6 +46,12 @@ const routes: Routes = [
         path: 'vendormanagement',
         loadChildren: () =>
           import('./views/vendormanagement/vendormanagement.module').then((m) => m.VendorModule)
+      },
+      {
+        // path: 'vendormanagement/:id',
+        path: 'contractaward',
+        loadChildren: () =>
+          import('./views/contractaward/contractaward.module').then((m) => m.ContractawardModule)
       },
     
      

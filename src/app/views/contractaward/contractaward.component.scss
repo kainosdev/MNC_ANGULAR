@@ -1,0 +1,138 @@
+.label{
+    width: 100px;
+    height: 40px;
+}
+.label1{
+ width: 150px;
+}
+.contractlabel{
+    width: 150px;
+}
+.solicitaionnum{
+    width: 140px;
+    height: 28px;
+}
+.status{
+    width: 160px;
+    height: 28px;
+}
+.vendorname{
+    width: 297px;
+    height: 28px;
+}
+.contractno{
+    width: 120px;
+    height: 28px;
+}
+.title{
+    width: 350px;
+    height: 28px;
+}
+.col1{
+    border: 1px solid black;
+    padding: 5px;
+
+}
+.col2{
+    margin-top: 5px;
+    border: 1px solid black;
+    padding: 5px;
+}
+.procurement{
+    width: 199px;
+    height: 28px;
+}
+.contractvehicle{
+    width: 216px;
+    height: 28px;
+}
+.posteddate{
+    width: 120px;
+    height: 28px;
+}
+.budgetamount{
+    width: 132px;
+    height: 28px;
+}
+.dbegoal{
+    height: 28px;
+    width: 75px;
+}
+.fundingsource{
+    width: 216px;
+    height: 28px;
+}
+.contractvalue{
+    width: 130px;
+    height: 28px;
+}
+.tolabel{
+    margin-left: 5px;
+    width: 20px;
+}
+.baseyear{
+    width: 64px;
+    height: 28px;
+}
+.optionyearlabel{
+    margin-left: 5px;
+    width: 140px;
+}
+.officerlabel{
+    width: 280px;
+    height: 28px;
+}
+.uploaddocument{
+    margin-left: 605px;
+    font-size: 12px;
+}
+table{
+    margin-top: 5px;
+}
+.btndiv{
+    padding-right: 62px; 
+    text-align: right;
+    padding-top: 0px;
+}
+input[type=button] {
+    padding: 4px 27px;
+    background: #1593E4;
+    border: 0 none;
+    /* cursor: pointer;
+    -webkit-border-radius: 5px; */
+    border-radius: 100px;
+    font-size: 12px !important;
+}
+:host ::ng-deep .ck.ck-editor__editable {
+	min-height: 200px;
+    width: 500px;
+}
+table{
+    height: 10%;
+    font-size: 12px;
+}
+th{
+    background-color: #1593E4;   
+}
+.ckeditor{
+    padding-top: 10px;
+    height: 40%;
+   
+}
+.table2{
+    padding-top: 10px;
+}
+.help-block
+{
+  font-size: 10px;
+  min-height: 14px!important;
+}
+.contractperiodlabel{
+    width: 143px;
+}
+.optionyearlabel{
+     
+        margin-left: -68px;
+        width: 140px;
+    
+}

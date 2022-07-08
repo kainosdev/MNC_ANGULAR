@@ -1,0 +1,296 @@
+<div class="container">
+    <form [formGroup]="contractaward">
+        <p class="mainheading">Contract Award</p>
+        <div class="row">
+            <div class="col-sm-3 innerlinefont">
+                <label class="label1">Solicitation Number</label>
+                <input type="text" class="solicitaionnum" formControlName="SolicitationNumber">
+                <div class="help-block text-danger">
+                    <div *ngIf="submitted && ca.SolicitationNumber.errors">Solicitation Number is required</div>
+                </div>
+            </div>
+            <div class="col-sm-3 innerlinefont">
+                <label class="label">Status</label>
+                <select class="status" formControlName="Status">
+                    <option>Open</option>
+                    <option>Closed</option>
+                </select>
+                <div class="help-block text-danger">
+                    <div *ngIf="submitted && ca.Status.errors">Status is required</div>
+                </div>
+            </div>
+            <div class="col-sm-5 innerlinefont">
+                <label class="label">Vendor Name</label>
+                <select class="vendorname" formControlName="VendorName">
+                    <option>Safeguard Privacy Protection Services</option>
+                    <option>Koios Systems & Technologies LLC</option>
+                </select>
+                <div class="help-block text-danger">
+                    <div *ngIf="submitted && ca.VendorName.errors">Vendor Name is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 innerlinefont">
+                <label class="contractlabel">Contract Number</label>
+                <input type="text" class="contractno" formControlName="ContractNumber">
+                <div class="help-block text-danger">
+                    <div *ngIf="submitted && ca.ContractNumber.errors">Contract Number is required</div>
+                </div>
+            </div>
+        </div>
+        <!--first row starts-->
+
+        <div class="row mt-2">
+            <div class="col-sm-5  innerlinefont">
+                <div class="col1">
+                    <div class="labelheight">
+
+                        <label class="labelwidth">Title</label>
+                        <input type="text" class="title" formControlName="Title">
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.Title.errors">Title is required</div>
+                        </div>
+                    </div>
+
+                    <div class="labelheight">
+                        <label class="labelwidth">Procurement Category</label>
+                        <select class="procurement" formControlName="ProcurementCategory">
+                            <option>RFP</option>
+                        </select>
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.ProcurementCategory.errors">Procurement Category is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="labelheight">
+                        <label class="labelwidth">Department</label>
+                        <select class="procurement" formControlName="Department">
+                            <option>DOE</option>
+                        </select>
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.Department.errors">Department is required</div>
+                        </div>
+                    </div>
+                    <div class="labelheight">
+                        <label class="labelwidth">Contract Vehicle</label>
+                        <select class="contractvehicle" formControlName="ContractVehicle">
+                            <option>General Service Administration</option>
+                            <option>Federal Business Opportunities</option>
+                        </select>
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.ContractVehicle.errors">Contract Vehicle is required</div>
+                        </div>
+                    </div>
+                    <div class="labelheight">
+                        <label class="labelwidth">Posted Date</label>
+                        <input type="date" class="posteddate" formControlName="PostedDate">
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.PostedDate.errors">Posted Date is required</div>
+                        </div>
+                    </div>
+                    <div class="labelheight">
+                        <label class="labelwidth">Budget Amount ($)</label>
+                        <input type="text" class="budgetamount" formControlName="BudgetAmount">
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.BudgetAmount.errors">Budget Amount is required</div>
+                        </div>
+                    </div>
+                    <div class="labelheight">
+                        <label class="labelwidth">Questions Due Date</label>
+                        <input type="date" class="posteddate" formControlName="QuestionsDueDate">
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.QuestionsDueDate.errors">Questions Due Date is required</div>
+                        </div>
+                    </div>
+                    <div class="labelheight">
+                        <label class="labelwidth">Response Due Date </label>
+                        <input type="date" class="posteddate" formControlName="ResponseDueDate">
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.ResponseDueDate.errors">Response Due Date is required</div>
+                        </div>
+                    </div>
+                    <div class="labelheight">
+                        <label class="labelwidth">DBE Goal(%)</label>
+                        <input type="text" class="dbegoal" formControlName="DBEGoal">
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.DBEGoal.errors">DBE Goal is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col2">
+                    <div class="labelheight">
+                        <label class="labelwidth">Funding Source</label>
+                        <input type="text" class="fundingsource" formControlName="FundingSource">
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.FundingSource.errors">Funding Source is required</div>
+                        </div>
+                    </div>
+                    <div class="labelheight">
+                        <label class="labelwidth">DBE Goal (%) Committed</label>
+                        <input type="text" class="dbegoal" formControlName="DBEGoalCommitted">
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.DBEGoalCommitted.errors">DBE Goal Committed is required</div>
+                        </div>
+                    </div>
+                    <div class="labelheight">
+                        <label class="labelwidth">Contract Value ($)</label>
+                        <input type="text" class="contractvalue" formControlName="ContractValue">
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.ContractValue.errors">Contract Value is required</div>
+                        </div>
+                    </div>
+                    <div class="formgroup">
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <label class="contractperiodlabel">Contract Period</label>
+                                <input type="date" class="posteddate" formControlName="ContractPeriod">
+                                <div class="help-block text-danger">
+                                    <div *ngIf="submitted && ca.ContractPeriod.errors">Contract Period is required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <label class="tolabel">To</label>
+                                <input type="date" class="posteddate" formControlName="ToDate">
+                                <div class="help-block text-danger">
+                                    <div *ngIf="submitted && ca.ToDate.errors">To Date is required </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-7">
+                        <label class="labelwidth">Number of Base Years</label>
+                        <input type="text" class="baseyear" formControlName="NumberofBaseYears">
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.NumberofBaseYears.errors">Number of Base Years is required
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <label class="optionyearlabel"> Number of Option Years</label>
+                            <input type="text" class="baseyear">
+                            <div class="help-block text-danger">
+                                <div *ngIf="submitted && ca.NumberofBaseYears.errors">Number of Base Years is required
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="labelheight">
+                        <label class="labelwidth">Number of Base Years</label>
+                        <input type="text" class="baseyear" formControlName="NumberofBaseYears">
+                        <label class="optionyearlabel"> Number of Option Years</label>
+                        <input type="text" class="baseyear" formControlName="NumberofOptionYears">
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.NumberofOptionYears.errors">Number of Option Years is required
+                        </div>
+                        </div>
+                    </div> -->
+                    
+                    <div class="labelheight">
+                        <label class="labelwidth">Technical Monitor</label>
+                        <select class="officerlabel" formControlName="TechnicalMonitor">
+                            <option>Addisson</option>
+                            <option>Colton</option>
+                        </select>
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.TechnicalMonitor.errors">Technical Monitor is required </div>
+                        </div>
+                    </div>
+                    <div class="labelheight">
+                        <label class="labelwidth">Contracting Officer</label>
+                        <select class="officerlabel" formControlName="ContractingOfficer">
+                            <option>Watson</option>
+                            <option>Smith</option>
+                        </select>
+                        <div class="help-block text-danger">
+                            <div *ngIf="submitted && ca.ContractingOfficer.errors">Contracting Officer is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-7">
+                <div class="table1">
+                    <p class="mainheading">Contract Documents - Draft</p>
+                    <a href="/" class="uploaddocument">Upload Documents</a>
+                    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                        <thead>
+                            <tr>
+                                <th>Document Type</th>
+                                <th>File Name Uploaded</th>
+                                <th>Uploaded Date</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Original</td>
+                                <td>Document1.jpg</td>
+                                <td>2021-11-05</td>
+                                <td>notes1</td>
+                            </tr>
+                            <tr>
+                                <td>Original1</td>
+                                <td>Document2.jpg</td>
+                                <td>2021-11-06</td>
+                                <td>notes2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table2">
+                    <p class="mainheading">Contract Documents - Final</p>
+                    <a href="/" class="uploaddocument">Upload Documents</a>
+                    <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                        <thead>
+                            <tr>
+                                <th>Document Type</th>
+                                <th>File Name Uploaded</th>
+                                <th>Uploaded Date</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Original</td>
+                                <td>Document1.jpg</td>
+                                <td>2021-11-05</td>
+                                <td>notes1</td>
+                            </tr>
+                            <tr>
+                                <td>Original1</td>
+                                <td>Document2.jpg</td>
+                                <td>2021-11-06</td>
+                                <td>notes2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="ckeditor">
+                    <p class="mainheading">Notes by Contracting Officer</p>
+                    <ckeditor data="<p>Hello, world!</p>"></ckeditor>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--first row ends-->
+
+<!--second row starts-->
+
+
+
+<!--second row ends-->
+<div class="btndiv">
+    <input type="button" class="btn btn-primary fixedwidthcls" value="Cancel" (click)="cancelform()" />
+    &nbsp;&nbsp;
+    <input type="button" class="btn btn-primary fixedwidthcls" (click)="submitContractAward()" value="Save " />
+</div><br>
