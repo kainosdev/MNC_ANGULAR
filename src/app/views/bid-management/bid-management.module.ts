@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgWizardModule, NgWizardConfig, THEME, TOOLBAR_BUTTON_POSITION } from 'ng-wizard';
 
 import {
     AvatarModule,
@@ -20,7 +21,9 @@ import { ChartjsModule } from '@coreui/angular-chartjs';
 
 import { BidmanagementRoutingModule } from './bid-management-routing.module';
 import { BidmanagementComponent} from './bid-management.component';
-
+const ngWizardConfig: NgWizardConfig = {
+  theme: THEME.default
+};
 @NgModule({
     imports: [
       BidmanagementRoutingModule,
@@ -39,6 +42,7 @@ import { BidmanagementComponent} from './bid-management.component';
       ChartjsModule,
       AvatarModule,
       TableModule,
+      NgWizardModule.forRoot(ngWizardConfig)
       // WidgetsModule
     ],
     declarations: [BidmanagementComponent]
