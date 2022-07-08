@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { TextMaskModule } from 'angular2-text-mask';
 // import { ToastrModule } from 'ngx-toastr';
 import {
   AvatarModule,
@@ -13,7 +14,8 @@ import {
   NavModule,
   ProgressModule,
   TableModule,
-  TabsModule
+  TabsModule,
+  
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
@@ -47,7 +49,8 @@ import { RegisterComponent } from './register.component';
     ChartjsModule,
     AvatarModule,
     TableModule,
-    FormsModule
+    FormsModule,
+    TextMaskModule
     // WidgetsModule
   ],
   declarations: [RegisterComponent]

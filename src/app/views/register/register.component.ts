@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 
 
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -21,6 +22,9 @@ employeeform: FormGroup | any;
 otherform: FormGroup | any;
 vendorform_individual:FormGroup | any;
 vendorform_business:FormGroup | any;
+uidPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,15}";
+public mask = [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+
  submitted = false;
  usertype="VENDOR";
  vendortype=true;
@@ -86,7 +90,7 @@ vendorform_business:FormGroup | any;
       Zipcode: ['', [Validators.required]],
       county_name: ['', [Validators.required]],
       StartDate: ['', [Validators.required]],
-      EndDate: ['', [Validators.required]],
+      EndDate: [''],
       CountryId:  ['', [Validators.required]],
      //employee details
       JobTitleId:['', [Validators.required]],
@@ -133,7 +137,7 @@ this.otherform = this.frmbuilder.group({
    Zipcode: ['', [Validators.required]],
    county_name: ['', [Validators.required]],
    StartDate: ['', [Validators.required]],
-   EndDate: ['', [Validators.required]],
+   EndDate: [''],
    CountryId:  ['', [Validators.required]],
    UserStatusId:['N'],
   
@@ -159,7 +163,7 @@ this.vendorform_individual = this.frmbuilder.group({
   county_name: ['', [Validators.required]],
   CountryId:  ['', [Validators.required]],
   StartDate: ['', [Validators.required]],
-  EndDate: ['', [Validators.required]],
+  EndDate: [''],
   VendorTypeId: [],
   EIN_SSN:[],
  
@@ -201,7 +205,7 @@ this.vendorform_business = this.frmbuilder.group({
   county_name: ['', [Validators.required]],
   CountryId:  ['', [Validators.required]],
   StartDate: ['', [Validators.required]],
-  EndDate: ['', [Validators.required]],
+  EndDate: [''],
   VendorTypeId: [],
   EIN_SSN:[],
  

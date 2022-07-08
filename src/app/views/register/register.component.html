@@ -82,7 +82,7 @@
                           
                             <input type="text" class="Physicaladdress"  formControlName="Address1" id="currentadd_id" (keypress)="inputErrorMessage('currentadd_id')">
                             <div  class="help-block text-danger">
-                                <div *ngIf="submitted && ofv.Address1.errors">First Name is required</div>
+                                <div *ngIf="submitted && ofv.Address1.errors">Address is required</div>
                             </div>
                     </div>
             </div>
@@ -110,6 +110,7 @@
     
                     </div>
             </div>
+            
     
             <div class="row mt-2">
                  
@@ -119,9 +120,10 @@
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                <input type="text" class="tradename" formControlName="UserId" id="userkey" (keypress)="inputErrorMessage('userkey');alphanumeric($event)">
+                <input type="text" class="tradename"  [pattern]="uidPattern" formControlName="UserId" id="userkey" (keypress)="inputErrorMessage('userkey');">
                 <div  class="help-block text-danger">
-                            <div *ngIf="submitted && ofv.UserId.errors">User Id is required</div>
+                            <div *ngIf="submitted && ofv.UserId.errors?.required">User Id is required</div>
+                            <div *ngIf="submitted && ofv.UserId.errors?.pattern">Pattern Not matched</div>
                 </div>
               </div>
     
@@ -173,7 +175,7 @@
                                {{ziplist.Zipcode}}</option>
                           </select>                    
                           <div  class="help-block text-danger">
-                            <div *ngIf="submitted && ofv.Zipcode.errors">Address Line2 is required</div>
+                            <div *ngIf="submitted && ofv.Zipcode.errors">ZipCode is required</div>
                          </div>
                 </div>
         </div>
@@ -250,16 +252,16 @@
     </div>
     <div class="row mt-1">
         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-            <label class="labelwidth">End Date<span class="requiredfield "> *</span> </label>
+            <!-- <label class="labelwidth">End Date<span class="requiredfield "> *</span> </label> -->
     
         </div>
         <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
            
-            <input type="date" class=""  formControlName="EndDate" id="enddata_id" (click)="inputErrorMessage('enddata_id')">
+            <!-- <input type="date" class=""  formControlName="EndDate" id="enddata_id" (click)="inputErrorMessage('enddata_id')">
               
                 <div  class="help-block text-danger">
                         <div *ngIf="submitted && ofv.EndDate.errors">End Date is required</div>
-               </div>
+               </div> -->
         </div>
     
         <div class="form-group col-xs-4 col-md-2 col-sm-2">
@@ -315,7 +317,7 @@
                         
                             <input type="text" class="Physicaladdress"  formControlName="Address1" id="currentadd_id" (keypress)="inputErrorMessage('currentadd_id')">
                             <div  class="help-block text-danger">
-                                <div *ngIf="submitted && rcf.Address1.errors">First Name is required</div>
+                                <div *ngIf="submitted && rcf.Address1.errors">Address is required</div>
                             </div>
                     </div>
             </div>
@@ -352,9 +354,10 @@
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                 
-                <input type="text" class="tradename" formControlName="UserId" id="userkey" (keypress)="inputErrorMessage('userkey');alphanumeric($event)">
+                <input type="text" class="tradename" formControlName="UserId" [pattern]="uidPattern" id="userkey" (keypress)="inputErrorMessage('userkey');">
                 <div  class="help-block text-danger">
-                            <div *ngIf="submitted && rcf.UserId.errors">User Id is required</div>
+                        <div *ngIf="submitted && rcf.UserId.errors?.required">User Id is required</div>
+                        <div *ngIf="submitted && rcf.UserId.errors?.pattern">Pattern Not matched</div>
                 </div>
             </div>
 
@@ -481,16 +484,16 @@
     </div>
     <div class="row mt-1">
         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-            <label class="labelwidth">End Date<span class="requiredfield "> *</span> </label>
+            <!-- <label class="labelwidth">End Date<span class="requiredfield "> *</span> </label> -->
 
         </div>
         <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
         
-            <input type="date" class=""  formControlName="EndDate" id="enddata_id" (click)="inputErrorMessage('enddata_id')">
+            <!-- <input type="date" class=""  formControlName="EndDate" id="enddata_id" (click)="inputErrorMessage('enddata_id')">
             
                 <div  class="help-block text-danger">
                         <div *ngIf="submitted && rcf.EndDate.errors">End Date is required</div>
-            </div>
+            </div> -->
         </div>
 
         <div class="form-group col-xs-4 col-md-2 col-sm-2">
@@ -643,7 +646,7 @@
                       
                         <input type="text" class="Physicaladdress"  formControlName="Address1" id="currentadd_id" (keypress)="inputErrorMessage('currentadd_id')">
                         <div  class="help-block text-danger">
-                            <div *ngIf="submitted && vif.Address1.errors">First Name is required</div>
+                            <div *ngIf="submitted && vif.Address1.errors">Address is required</div>
                         </div>
                 </div>
         </div>
@@ -680,9 +683,10 @@
           </div>
           <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
               
-            <input type="text" class="tradename" formControlName="UserId" id="userkey" (keypress)="inputErrorMessage('userkey');alphanumeric($event)">
+            <input type="text" class="tradename" formControlName="UserId" [pattern]="uidPattern" id="userkey" (keypress)="inputErrorMessage('userkey');">
             <div  class="help-block text-danger">
-                        <div *ngIf="submitted && vif.UserId.errors">User Id is required</div>
+                <div *ngIf="submitted && vif.UserId.errors?.required">User Id is required</div>
+                <div *ngIf="submitted && vif.UserId.errors?.pattern">Pattern Not matched</div>
             </div>
           </div>
 
@@ -809,16 +813,16 @@
 </div>
 <div class="row mt-1">
     <div class="form-group col-xs-4 col-md-2 col-sm-2">
-        <label class="labelwidth">End Date<span class="requiredfield "> *</span> </label>
+        <!-- <label class="labelwidth">End Date<span class="requiredfield "> *</span> </label> -->
 
     </div>
     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-       
+<!--        
         <input type="date" class=""  formControlName="EndDate" id="enddata_id" (click)="inputErrorMessage('enddata_id')">
           
             <div  class="help-block text-danger">
                     <div *ngIf="submitted && vif.EndDate.errors">End Date is required</div>
-           </div>
+           </div> -->
     </div>
 
     <div class="form-group col-xs-4 col-md-2 col-sm-2">
@@ -843,15 +847,15 @@
 
 <div class="row mt-1">
         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                <label class="labelwidth">Social Security Number<span class="requiredfield ">  *</span> </label>
+                <label class="labelwidth">Social Security Number<span class="requiredfield ">*</span> </label>
     
         </div>
         <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
            
-                <input type="text" class="" formControlName="EIN_SSN" id="socialno_id" (keypress)="inputErrorMessage('socialno_id')">
+                <input type="text" class="" [textMask]="{mask: mask}" formControlName="EIN_SSN" id="socialno_id" (keypress)="inputErrorMessage('socialno_id')">
               
                 <div  class="help-block text-danger">
-                        <div *ngIf="submitted && vif.EndDate.errors">Social Security Number is required</div>
+                        <div *ngIf="submitted && vif.EIN_SSN.errors">Social Security Number is required</div>
                </div>
         </div>
     
@@ -905,7 +909,7 @@
                         
                             <input type="text" class="Physicaladdress"  formControlName="Address1" id="currentadd_id" (keypress)="inputErrorMessage('currentadd_id')">
                             <div  class="help-block text-danger">
-                                <div *ngIf="submitted && vbf.Address1.errors">First Name is required</div>
+                                <div *ngIf="submitted && vbf.Address1.errors">Address is required</div>
                             </div>
                     </div>
             </div>
@@ -918,7 +922,7 @@
                 
                 <input type="text" class="lastname"  formControlName="LastName" id="lastname_id" (keypress)="inputErrorMessage('lastname_id');alpha($event)">
                 <div  class="help-block text-danger">
-                            <div *ngIf="submitted && vbf.LastName.errors">Last Name is required</div>
+                            <div *ngIf="submitted && vbf.LastName.errors">Trade Name is required</div>
                 </div>
             </div>
 
@@ -942,9 +946,10 @@
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                 
-                <input type="text" class="tradename" formControlName="UserId" id="userkey" (keypress)="inputErrorMessage('userkey');alphanumeric($event)">
+                <input type="text" class="tradename" formControlName="UserId" [pattern]="uidPattern" id="userkey" (keypress)="inputErrorMessage('userkey');">
                 <div  class="help-block text-danger">
-                            <div *ngIf="submitted && vbf.UserId.errors">User Id is required</div>
+                        <div *ngIf="submitted && vbf.UserId.errors?.required">User Id is required</div>
+                        <div *ngIf="submitted && vbf.UserId.errors?.pattern">Pattern Not matched</div>
                 </div>
             </div>
 
@@ -996,7 +1001,7 @@
                             {{ziplist.Zipcode}}</option>
                         </select>                    
                         <div  class="help-block text-danger">
-                            <div *ngIf="submitted && vbf.Zipcode.errors">Address Line2 is required</div>
+                            <div *ngIf="submitted && vbf.Zipcode.errors">Zip Code is required</div>
                         </div>
                 </div>
         </div>
@@ -1072,16 +1077,16 @@
     </div>
     <div class="row mt-1">
         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-            <label class="labelwidth">End Date<span class="requiredfield "> *</span> </label>
+            <!-- <label class="labelwidth">End Date<span class="requiredfield "> *</span> </label> -->
 
         </div>
         <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
         
-            <input type="date" class=""  formControlName="EndDate" id="enddata_id" (click)="inputErrorMessage('enddata_id')">
+            <!-- <input type="date" class=""  formControlName="EndDate" id="enddata_id" (click)="inputErrorMessage('enddata_id')">
             
                 <div  class="help-block text-danger">
                         <div *ngIf="submitted && vbf.EndDate.errors">End Date is required</div>
-            </div>
+            </div> -->
         </div>
 
         <div class="form-group col-xs-4 col-md-2 col-sm-2">
@@ -1112,7 +1117,7 @@
                     <input type="text" class="social" formControlName="business_ssn" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
                 
                     <div  class="help-block text-danger">
-                            <div *ngIf="submitted && vbf.EndDate.errors">End Date is required</div>
+                            <div *ngIf="submitted && vbf.business_ssn.errors">EIN/Tax ID is required</div>
                 </div>
             </div>
         
@@ -1144,8 +1149,8 @@
                         <input type="text" class="social" formControlName="business_ssn" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
                     
                         <div  class="help-block text-danger">
-                                <div *ngIf="submitted && vbf.EndDate.errors">Business Size is required</div>
-                    </div>
+                                <div *ngIf="submitted && vbf.business_ssn.errors">Business Size is required</div>
+                       </div>
                 </div>
             
             
@@ -1176,9 +1181,7 @@
                                     <input  type="checkbox" name="state_active" id="state_activeid" formControlName="BusinessRegisteredInDistrict" checked>
                                     <span class="slider round"></span>
                                     </label>                      
-                            <div  class="help-block text-danger">
-                                    <div *ngIf="submitted && vbf.EndDate.errors">County/State  is required</div>
-                        </div>
+                      
                     </div>
                     
                 </div>
@@ -1199,9 +1202,7 @@
                                         <input  type="checkbox" name="franchisee_active" id="franchisee_activeid" formControlName="BusinessIsFranchisee" checked>
                                         <span class="slider round"></span>
                                         </label>                          
-                                <div  class="help-block text-danger">
-                                        <div *ngIf="submitted && vbf.EndDate.errors">County/State  is required</div>
-                            </div>
+                        
                         </div>
                         <div class="form-group col-xs-4 col-md-4 col-sm-4">
                                 <label class="">Would you like to receive outreach emails from us ?</label>
