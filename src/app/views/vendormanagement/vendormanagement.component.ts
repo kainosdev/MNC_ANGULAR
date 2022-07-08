@@ -11,6 +11,9 @@ import { config_url } from '../shared/constant';
  
 })
 export class VendormanagementComponent implements OnInit {
+  submitted = false;
+  submitted1 = false;
+  submitted2 = false;
   [x: string]: any;
   Vendortypevalue:any;
   classList: any;
@@ -23,7 +26,8 @@ export class VendormanagementComponent implements OnInit {
   opened2 = false;
   opened3 = false;
   date:any;
-  vendorMgmt: any;
+  VendorMgmtBusiness: any;
+  VendorMgmtIndividual:any;
   contactindividual: any;
   generalinformation: any;
   currentaddress: any;
@@ -56,21 +60,21 @@ export class VendormanagementComponent implements OnInit {
     this.getcountrydata();
     this.getAllDistricts();
     this.getstatedata();
-    this.vendorMgmt = this.frmbuilder.group({
+    this.VendorMgmtBusiness = this.frmbuilder.group({
 VendorId:[localStorage.getItem('vendoridSes')],
 CreatedUserId:[localStorage.getItem("CreatedUseridses")],
     UserName :[],
       // active: [],
       VendorTypeId:[],
-      FirstName: [],
-      LastName: [],
+      //FirstName: ['', [Validators.required]],
+      //LastName: ['', [Validators.required]],
       MiddleName: [],
-      EIN_SSN: [],
+      EIN_SSN: ['', [Validators.required]],
       Email: [],
       Phone:[],
       OutreachEmailOptIn:[],
       AliasName:[],
-      LegalName: [],
+      LegalName: ['', [Validators.required]],
       Federal:[],
       NAICSCodes: [],
       CommodityCodes:[],
@@ -78,7 +82,7 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
       BusinessRegisteredInSCC:[],
       BusinessIsFranchisee:[],
       BusinessSize:[],
-      TradeName: [],
+      TradeName: ['', [Validators.required]],
       DUNS: [],
       Website:[],
       StartDate:[],
@@ -90,24 +94,27 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
       Zipcode: [],
       DistrictId: [],
       CountryId: [],
-      MAddress1: [],
-      MAddress2: [],
-      MStateId: [],
-      MCityId: [],
-      MZipcode: [],
-      MDistrictId: [],
-      MCountryId:[],
-      MStartDate: [],
-      MEndDate:[],
-      PAddress1: [],
-      PAddress2: [],
-      PStateId: [],
-      PCItyId: [],
-      PZipcode: [],
-      PDistrictId: [],
-      PCountryId: [],
-      PStartDate: [],
-      PEndDate:[],
+
+      BMAddress1: [],
+      BMAddress2: [],
+      BMStateId: [],
+      BMCityId: [],
+      BMZipcode: [],
+      BMDistrictId: [],
+      BMCountryId:[],
+      BMStartDate: [],
+      BMEndDate:[],
+
+      BPAddress1: [],
+      BPAddress2: [],
+      BPStateId: [],
+      BPCityId: [],
+      BPZipcode: [],
+      BPDistrictId: [],
+      BPCountryId: [],
+      BPStartDate: [],
+      BPEndDate:[],
+      
       ContactName: [],
       BusinessPhone: [],
       Title: [],
@@ -123,15 +130,62 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
       
      })
 
-   
+     this.VendorMgmtIndividual = this.frmbuilder.group({
+      UserName :[],
+      // active: [],
+      VendorTypeId:[],
+      VendorId:[localStorage.getItem('vendoridSes')],
+CreatedUserId:[localStorage.getItem("CreatedUseridses")],
+      FirstName: ['', [Validators.required]],
+      EIN_SSN: ['', [Validators.required]],
+      LastName:['', [Validators.required]],
+      Email:['', [Validators.required]],
+      MiddleName:['', [Validators.required]],
+      Phone:['', [Validators.required]],
+      OutreachEmailOptIn:[],
+      Address1:['', [Validators.required]],
+      Address2:[],
+      CityId:['', [Validators.required]], 
+      CountryId:['', [Validators.required]],
+      Zipcode:['', [Validators.required]],
+      StartDate:['', [Validators.required]],
+      EndDate:['', [Validators.required]],
+      DistrictId:['', [Validators.required]],
+      StateId:['', [Validators.required]],
+
+      IMAddress1:[],
+      IMAddress2:[],
+      IMCityId:[],
+      IMCountryId:[],
+      IMZipcode:[],
+      IMStartDate:[],
+      IMDistrictId:[],
+      IMEndDate:[],
+      IMStateId:[],
+
+      IPAddress1:[],
+      IPAddress2:[],
+      IPCityId:[],
+      IPCountryId:[],
+      IPZipcode:[],
+      IPStartDate:[],
+      IPDistrictId:[],
+      IPEndDate:[],
+      IPStateId:[],
+     });
+
    
   }
   mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   phoneformat= /^[0-9]{10}$/;
   socialno = /^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$/;
 
+  
 
 
+  // get rcf() {
+  //   return this.vendorMgmt.controls;
+  // }
 
   alpha(event: any){
     var inp = String.fromCharCode(event.keyCode);
@@ -171,206 +225,212 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
  
 //  ssnformat = /^ [0-9] {3}-? [0-9] {2}-? [0-9] {4}$/;
 
+VendorData(VendorMgmtIndividual:any){
+  this.submitted1 = true;
+  console.log('VendorMgmtIndividual',VendorMgmtIndividual);
+}
+
 
   Userdata(vendorMgmt:any){
+    this.submitted2 = true;
 
     console.log('alldata',vendorMgmt);
 
     // alert('calling');
-    this.http.post('http://localhost/MNC_PHP_API/vendor/UpdateVendor',vendorMgmt).subscribe(
-    // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
+    // this.http.post('http://localhost/MNC_PHP_API/vendor/UpdateVendor',vendorMgmt).subscribe(
+    // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
       
-      data => {
-        console.log("data");
-          console.log('POST Request is successful >>>>>>>>', data);
+    //   data => {
+    //     console.log("data");
+    //       console.log('POST Request is successful >>>>>>>>', data);
 
-      },
-      success => {});
+    //   },
+    //   success => {});
 
     // console.log('contactindividual>>>', contactindividual);
 
-     if(this.is_business == 'individual'){
+//      if(this.is_business == 'individual'){
 
 
       
-       let FirstName = this.vendorMgmt.get('FirstName').value;
-       let LastName = this.vendorMgmt.get('LastName').value;
-       let EIN_SSN = this.vendorMgmt.get('EIN_SSN').value;
-       let Email = this.vendorMgmt.get('Email').value;
-       let Phone =this.vendorMgmt.get('Phone').value;
+//        let FirstName = this.vendorMgmt.get('FirstName').value;
+//        let LastName = this.vendorMgmt.get('LastName').value;
+//        let EIN_SSN = this.vendorMgmt.get('EIN_SSN').value;
+//        let Email = this.vendorMgmt.get('Email').value;
+//        let Phone =this.vendorMgmt.get('Phone').value;
 
        
 
 
 
-       let Address1 =this.vendorMgmt.get('Address1').value;
-       let Address2 =this.vendorMgmt.get('Address2').value;
-       let StateId =this.vendorMgmt.get('StateId').value;
-       let CityId= this.vendorMgmt.get('CityId').value;
-       let Zipcode =this.vendorMgmt.get('Zipcode').value;
-       let DistrictId =this.vendorMgmt.get('DistrictId').value;
-       let CountryId =this.vendorMgmt.get('CountryId').value;
+//        let Address1 =this.vendorMgmt.get('Address1').value;
+//        let Address2 =this.vendorMgmt.get('Address2').value;
+//        let StateId =this.vendorMgmt.get('StateId').value;
+//        let CityId= this.vendorMgmt.get('CityId').value;
+//        let Zipcode =this.vendorMgmt.get('Zipcode').value;
+//        let DistrictId =this.vendorMgmt.get('DistrictId').value;
+//        let CountryId =this.vendorMgmt.get('CountryId').value;
 
-       if(FirstName == null){
-        (document.getElementById('firstname_id') as HTMLFormElement).classList.add("validation");
-       }
-       if(LastName == null ){
-        (document.getElementById('lastname_id') as HTMLFormElement).classList.add("validation");
-       }
-       if(EIN_SSN == null ){
-        (document.getElementById('socialsecurity_id') as HTMLFormElement).classList.add("validation");
-       }
-       if(Email == null ){
-        (document.getElementById('email_id') as HTMLFormElement).classList.add("validation");
-       }
-       if(Phone == null ){
-        (document.getElementById('phone_id') as HTMLFormElement).classList.add("validation");
-       }
-       if(Address1 == null  ){
-        (document.getElementById('currentaddress_id') as HTMLFormElement).classList.add("validation");
-       }
-       if(Address2 == null){
-        (document.getElementById('currentstreet_id') as HTMLFormElement).classList.add("validation");
-       }
-       if(StateId == null){
-        (document.getElementById('stateprovice_id') as HTMLFormElement).classList.add("validation");
-       }
-       if(CityId == null){
-        (document.getElementById('currentcity_id') as HTMLFormElement).classList.add("validation");
-       }
-       if(Zipcode== null){
-        (document.getElementById('currentzipcode_id') as HTMLFormElement).classList.add("validation");
-       }
-       if(DistrictId == null){
-        (document.getElementById('currentcounty_id' ) as HTMLFormElement).classList.add("validation");
-       }
-       if(CountryId == null){
-        (document.getElementById('currentcountry_id') as HTMLFormElement).classList.add("validation");
-       }
+//        if(FirstName == null){
+//         (document.getElementById('firstname_id') as HTMLFormElement).classList.add("validation");
+//        }
+//        if(LastName == null ){
+//         (document.getElementById('lastname_id') as HTMLFormElement).classList.add("validation");
+//        }
+//        if(EIN_SSN == null ){
+//         (document.getElementById('socialsecurity_id') as HTMLFormElement).classList.add("validation");
+//        }
+//        if(Email == null ){
+//         (document.getElementById('email_id') as HTMLFormElement).classList.add("validation");
+//        }
+//        if(Phone == null ){
+//         (document.getElementById('phone_id') as HTMLFormElement).classList.add("validation");
+//        }
+//        if(Address1 == null  ){
+//         (document.getElementById('currentaddress_id') as HTMLFormElement).classList.add("validation");
+//        }
+//        if(Address2 == null){
+//         (document.getElementById('currentstreet_id') as HTMLFormElement).classList.add("validation");
+//        }
+//        if(StateId == null){
+//         (document.getElementById('stateprovice_id') as HTMLFormElement).classList.add("validation");
+//        }
+//        if(CityId == null){
+//         (document.getElementById('currentcity_id') as HTMLFormElement).classList.add("validation");
+//        }
+//        if(Zipcode== null){
+//         (document.getElementById('currentzipcode_id') as HTMLFormElement).classList.add("validation");
+//        }
+//        if(DistrictId == null){
+//         (document.getElementById('currentcounty_id' ) as HTMLFormElement).classList.add("validation");
+//        }
+//        if(CountryId == null){
+//         (document.getElementById('currentcountry_id') as HTMLFormElement).classList.add("validation");
+//        }
 
-       if(!Email.match(this.mailformat)){
-        (document.getElementById('email_id') as HTMLFormElement).classList.add("validation");
-    //   (document.getElementById('email_idmsg') as HTMLFormElement).innerHTML = "Enter valid email address";
-    //   (document.getElementById('email_idmsg') as HTMLFormElement).focus();
-    //  return;
-  }
-  if(!EIN_SSN.match(this.socialno)){
-    (document.getElementById('socialsecurity_id') as HTMLFormElement).classList.add("validation");
-}
-if(!Phone.match(this.phoneformat)){
-  (document.getElementById('phone_id') as HTMLFormElement).classList.add("validation");
-}
-}
+//        if(!Email.match(this.mailformat)){
+//         (document.getElementById('email_id') as HTMLFormElement).classList.add("validation");
+//     //   (document.getElementById('email_idmsg') as HTMLFormElement).innerHTML = "Enter valid email address";
+//     //   (document.getElementById('email_idmsg') as HTMLFormElement).focus();
+//     //  return;
+//   }
+//   if(!EIN_SSN.match(this.socialno)){
+//     (document.getElementById('socialsecurity_id') as HTMLFormElement).classList.add("validation");
+// }
+// if(!Phone.match(this.phoneformat)){
+//   (document.getElementById('phone_id') as HTMLFormElement).classList.add("validation");
+// }
+// }
 
-  else{
+//   else{
 
-    let LegalName = this.vendorMgmt.get('LegalName').value;
-    let NAICSCodes=this.vendorMgmt.get('NAICSCodes').value;
-    let BusinessSize=this.vendorMgmt.get('BusinessSize').value;
-    // alert(naicscode);
-    let CommodityCodes=this.vendorMgmt.get('CommodityCodes').value;
-    // alert(commoditycode);
-    let federal = this.vendorMgmt.get('federal').value;
-    let TradeName = this. vendorMgmt.get('TradeName').value;
-    let DUNS = this.vendorMgmt.get('DUNS').value;
-    let Website = this.vendorMgmt.get('Website').value;
+//     let LegalName = this.vendorMgmt.get('LegalName').value;
+//     let NAICSCodes=this.vendorMgmt.get('NAICSCodes').value;
+//     let BusinessSize=this.vendorMgmt.get('BusinessSize').value;
+//     // alert(naicscode);
+//     let CommodityCodes=this.vendorMgmt.get('CommodityCodes').value;
+//     // alert(commoditycode);
+//     let federal = this.vendorMgmt.get('federal').value;
+//     let TradeName = this. vendorMgmt.get('TradeName').value;
+//     let DUNS = this.vendorMgmt.get('DUNS').value;
+//     let Website = this.vendorMgmt.get('Website').value;
 
-      let Address1 =this.vendorMgmt.get('Address1').value;
-       let Address2 =this.vendorMgmt.get('Address2').value;
-       let StateId =this.vendorMgmt.get('StateId').value;
-       let CityId= this.vendorMgmt.get('CityId:').value;
-       let  Zipcode =this.vendorMgmt.get(' Zipcode').value;
-       let DistrictId =this.vendorMgmt.get('DistrictId').value;
-       let CountryId =this.vendorMgmt.get('CountryId').value;
-
-
-    let ContactName = this.vendorMgmt.get('ContactName').value;
-    let BusinessPhone = this.vendorMgmt.get('BusinessPhone').value;
-    let Title= this.vendorMgmt.get('Title').value;
-    let BusinessEmail = this.vendorMgmt.get('BusinessEmail').value;
+//       let Address1 =this.vendorMgmt.get('Address1').value;
+//        let Address2 =this.vendorMgmt.get('Address2').value;
+//        let StateId =this.vendorMgmt.get('StateId').value;
+//        let CityId= this.vendorMgmt.get('CityId:').value;
+//        let  Zipcode =this.vendorMgmt.get(' Zipcode').value;
+//        let DistrictId =this.vendorMgmt.get('DistrictId').value;
+//        let CountryId =this.vendorMgmt.get('CountryId').value;
 
 
-if(LegalName == null){
-  (document.getElementById('legalbusiness_id') as HTMLFormElement).classList.add("validation");
-}
-if(federal == null){
-  (document.getElementById('federal_id') as HTMLFormElement).classList.add("validation");
-}
-if(TradeName == null){
-  (document.getElementById('tradename_id') as HTMLFormElement).classList.add("validation");
-}
-if(DUNS == null){
-  (document.getElementById('dunsno_id') as HTMLFormElement).classList.add("validation");
-}
-if(Website == null){
-  (document.getElementById('businesswebsite_id') as HTMLFormElement).classList.add("validation");
-}
-if(Address1 == null  ){
-  (document.getElementById('currentaddress_id') as HTMLFormElement).classList.add("validation");
- }
- if(Address2 == null){
-  (document.getElementById('currentstreet_id') as HTMLFormElement).classList.add("validation");
- }
- if(StateId == null){
-  (document.getElementById('stateprovice_id') as HTMLFormElement).classList.add("validation");
- }
- if(CityId == null){
-  (document.getElementById('currentcity_id') as HTMLFormElement).classList.add("validation");
- }
- if( Zipcode == null){
-  (document.getElementById('currentzipcode_id') as HTMLFormElement).classList.add("validation");
- }
- if(DistrictId == null){
-  (document.getElementById('currentcounty_id' ) as HTMLFormElement).classList.add("validation");
- }
- if(CountryId == null){
-  (document.getElementById('currentcountry_id') as HTMLFormElement).classList.add("validation");
- }
- if(ContactName==null){
-  (document.getElementById('contactperson_id') as HTMLFormElement).classList.add("validation");
- }
- if(BusinessPhone ==  null){
-  (document.getElementById('businessphone_id') as HTMLFormElement).classList.add("validation");
- }
- if(Title == null){
-  (document.getElementById('title_id') as HTMLFormElement).classList.add("validation");
- }
- if(BusinessEmail == null){
-  (document.getElementById('businessemail_id') as HTMLFormElement).classList.add("validation");
- }
+//     let ContactName = this.vendorMgmt.get('ContactName').value;
+//     let BusinessPhone = this.vendorMgmt.get('BusinessPhone').value;
+//     let Title= this.vendorMgmt.get('Title').value;
+//     let BusinessEmail = this.vendorMgmt.get('BusinessEmail').value;
 
 
-    //  if(Legal_business == null && federal == null && trade_name == null  && duns_no == null && business_website == null &&
-    //   physical_address == null  && street == null && state_province == null && city == null && zip_code == null && county == null && country == null &&
-    //   contact_name == null && business_phone ==  null && title == null  && business_email == null ){
+// if(LegalName == null){
+//   (document.getElementById('legalbusiness_id') as HTMLFormElement).classList.add("validation");
+// }
+// if(federal == null){
+//   (document.getElementById('federal_id') as HTMLFormElement).classList.add("validation");
+// }
+// if(TradeName == null){
+//   (document.getElementById('tradename_id') as HTMLFormElement).classList.add("validation");
+// }
+// if(DUNS == null){
+//   (document.getElementById('dunsno_id') as HTMLFormElement).classList.add("validation");
+// }
+// if(Website == null){
+//   (document.getElementById('businesswebsite_id') as HTMLFormElement).classList.add("validation");
+// }
+// if(Address1 == null  ){
+//   (document.getElementById('currentaddress_id') as HTMLFormElement).classList.add("validation");
+//  }
+//  if(Address2 == null){
+//   (document.getElementById('currentstreet_id') as HTMLFormElement).classList.add("validation");
+//  }
+//  if(StateId == null){
+//   (document.getElementById('stateprovice_id') as HTMLFormElement).classList.add("validation");
+//  }
+//  if(CityId == null){
+//   (document.getElementById('currentcity_id') as HTMLFormElement).classList.add("validation");
+//  }
+//  if( Zipcode == null){
+//   (document.getElementById('currentzipcode_id') as HTMLFormElement).classList.add("validation");
+//  }
+//  if(DistrictId == null){
+//   (document.getElementById('currentcounty_id' ) as HTMLFormElement).classList.add("validation");
+//  }
+//  if(CountryId == null){
+//   (document.getElementById('currentcountry_id') as HTMLFormElement).classList.add("validation");
+//  }
+//  if(ContactName==null){
+//   (document.getElementById('contactperson_id') as HTMLFormElement).classList.add("validation");
+//  }
+//  if(BusinessPhone ==  null){
+//   (document.getElementById('businessphone_id') as HTMLFormElement).classList.add("validation");
+//  }
+//  if(Title == null){
+//   (document.getElementById('title_id') as HTMLFormElement).classList.add("validation");
+//  }
+//  if(BusinessEmail == null){
+//   (document.getElementById('businessemail_id') as HTMLFormElement).classList.add("validation");
+//  }
+
+
+//     //  if(Legal_business == null && federal == null && trade_name == null  && duns_no == null && business_website == null &&
+//     //   physical_address == null  && street == null && state_province == null && city == null && zip_code == null && county == null && country == null &&
+//     //   contact_name == null && business_phone ==  null && title == null  && business_email == null ){
 
 
         
-    //   (document.getElementById('legalbusiness_id') as HTMLFormElement).classList.add("validation");
-    //   (document.getElementById('federal_id') as HTMLFormElement).classList.add("validation");
-    //   (document.getElementById('tradename_id') as HTMLFormElement).classList.add("validation");
-    //   (document.getElementById('dunsno_id') as HTMLFormElement).classList.add("validation");
-    //   (document.getElementById('businesswebsite_id') as HTMLFormElement).classList.add("validation");
+//     //   (document.getElementById('legalbusiness_id') as HTMLFormElement).classList.add("validation");
+//     //   (document.getElementById('federal_id') as HTMLFormElement).classList.add("validation");
+//     //   (document.getElementById('tradename_id') as HTMLFormElement).classList.add("validation");
+//     //   (document.getElementById('dunsno_id') as HTMLFormElement).classList.add("validation");
+//     //   (document.getElementById('businesswebsite_id') as HTMLFormElement).classList.add("validation");
 
-    //   (document.getElementById('currentaddress_id') as HTMLFormElement).classList.add("validation");
-    //   (document.getElementById('currentstreet_id') as HTMLFormElement).classList.add("validation");
-    //   (document.getElementById('stateprovice_id') as HTMLFormElement).classList.add("validation");
-    //   (document.getElementById('currentcity_id') as HTMLFormElement).classList.add("validation");
-    //   (document.getElementById('currentzipcode_id') as HTMLFormElement).classList.add("validation");
-    //   (document.getElementById('currentcounty_id' ) as HTMLFormElement).classList.add("validation");
-    //   (document.getElementById('currentcountry_id') as HTMLFormElement).classList.add("validation");
+//     //   (document.getElementById('currentaddress_id') as HTMLFormElement).classList.add("validation");
+//     //   (document.getElementById('currentstreet_id') as HTMLFormElement).classList.add("validation");
+//     //   (document.getElementById('stateprovice_id') as HTMLFormElement).classList.add("validation");
+//     //   (document.getElementById('currentcity_id') as HTMLFormElement).classList.add("validation");
+//     //   (document.getElementById('currentzipcode_id') as HTMLFormElement).classList.add("validation");
+//     //   (document.getElementById('currentcounty_id' ) as HTMLFormElement).classList.add("validation");
+//     //   (document.getElementById('currentcountry_id') as HTMLFormElement).classList.add("validation");
 
 
-    //    (document.getElementById('contactperson_id') as HTMLFormElement).classList.add("validation");
-    //    (document.getElementById('businessphone_id') as HTMLFormElement).classList.add("validation");
-    //    (document.getElementById('title_id') as HTMLFormElement).classList.add("validation");
-    //    (document.getElementById('businessemail_id') as HTMLFormElement).classList.add("validation");
+//     //    (document.getElementById('contactperson_id') as HTMLFormElement).classList.add("validation");
+//     //    (document.getElementById('businessphone_id') as HTMLFormElement).classList.add("validation");
+//     //    (document.getElementById('title_id') as HTMLFormElement).classList.add("validation");
+//     //    (document.getElementById('businessemail_id') as HTMLFormElement).classList.add("validation");
    
    
-    //   }
+//     //   }
 
 
-  }
+//   }
   
  
 
@@ -393,9 +453,10 @@ EmptyErrorMessage(errormessage: any) {
 
   
 Displayvendortype(){
-  alert(this.Vendortypevalue);
+  // alert(this.Vendortypevalue);
 
-  let vendor_details = (<HTMLInputElement>document.getElementById("active")).checked;
+  let vendor_details = (<HTMLInputElement>document.getElementById("vendortypeactive")).checked;
+  console.log(vendor_details);
   // alert(vendor_details);
  if(vendor_details == true){
   // alert("in");
@@ -420,6 +481,7 @@ Displayvendortype(){
     // (<HTMLInputElement>document.getElementById("General_Information")).style.display ="none";
     
   }
+  this.Displayvendortype();
 
 }
 
@@ -438,31 +500,61 @@ display_addresstype(addresstype:any){
   }
   
 }
+
+
+display_addresstypeIndividual(addresstype:any){
+  if(addresstype == "mail"){
+   
+    (<HTMLInputElement>document.getElementById("MailingAddressIndividual")).style.display ="block";
+    (<HTMLInputElement>document.getElementById("PastAddressIndividual")).style.display ="none";
+
+  }
+  else {
+   
+    (<HTMLInputElement>document.getElementById("PastAddressIndividual")).style.display ="block";
+    (<HTMLInputElement>document.getElementById("MailingAddressIndividual")).style.display ="none";
+  }
+}
+
+
+display_addresstypeBusiness(addresstype:any){
+  if(addresstype == "mail"){
+   
+    (<HTMLInputElement>document.getElementById("MailingAddressBusiness")).style.display ="block";
+    (<HTMLInputElement>document.getElementById("PastAddressBusiness")).style.display ="none";
+
+  }
+  else {
+   
+    (<HTMLInputElement>document.getElementById("PastAddressBusiness")).style.display ="block";
+    (<HTMLInputElement>document.getElementById("MailingAddressBusiness")).style.display ="none";
+  }
+}
  
 Address_swiping(){
 
-      let address_type = (<HTMLInputElement>document.getElementById("address_active")).checked;
-      if(address_type == true){
+//       let address_type = (<HTMLInputElement>document.getElementById("address_active")).checked;
+//       if(address_type == true){
 
-        this.vendorMgmt.controls.mailing_address.setValue(this.currentaddress.get('physical_address').value); 
-        this.vendorMgmt.controls.mailing_street.setValue(this.currentaddress.get('street').value);
-        this.vendorMgmt.controls.state_province1.setValue(this.currentaddress.get('state_province').value);
-        this.vendorMgmt.controls.city_1.setValue(this.currentaddress.get('city').value);
-        this.vendorMgmt.controls.zip_code1.setValue(this.currentaddress.get('zip_code').value);
-        this.vendorMgmt.controls.county_1.setValue(this.currentaddress.get('county').value);
-        this.vendorMgmt.controls.country_1.setValue(this.currentaddress.get('country').value);
+//         this.vendorMgmt.controls.mailing_address.setValue(this.currentaddress.get('physical_address').value); 
+//         this.vendorMgmt.controls.mailing_street.setValue(this.currentaddress.get('street').value);
+//         this.vendorMgmt.controls.state_province1.setValue(this.currentaddress.get('state_province').value);
+//         this.vendorMgmt.controls.city_1.setValue(this.currentaddress.get('city').value);
+//         this.vendorMgmt.controls.zip_code1.setValue(this.currentaddress.get('zip_code').value);
+//         this.vendorMgmt.controls.county_1.setValue(this.currentaddress.get('county').value);
+//         this.vendorMgmt.controls.country_1.setValue(this.currentaddress.get('country').value);
 
- }
- else{
+//  }
+//  else{
 
-  this.vendorMgmt.controls.mailing_address.setValue(""); 
-  this.vendorMgmt.controls.mailing_street.setValue("");
-  this.vendorMgmt.controls.state_province1.setValue("");
-  this.vendorMgmt.controls.city_1.setValue("");
-  this.vendorMgmt.controls.zip_code1.setValue("");
-  this.vendorMgmt.controls.county_1.setValue("");
-  this.vendorMgmt.controls.country_1.setValue("");
- }
+//   this.vendorMgmt.controls.mailing_address.setValue(""); 
+//   this.vendorMgmt.controls.mailing_street.setValue("");
+//   this.vendorMgmt.controls.state_province1.setValue("");
+//   this.vendorMgmt.controls.city_1.setValue("");
+//   this.vendorMgmt.controls.zip_code1.setValue("");
+//   this.vendorMgmt.controls.county_1.setValue("");
+//   this.vendorMgmt.controls.country_1.setValue("");
+//  }
 }
 
 
@@ -477,7 +569,12 @@ GetVendorById(){
       this.singleVendorDet=data1;
       this.singleVendorDet=this.singleVendorDet.data.SingleVendorDetails;
       this.Vendortypevalue=this.singleVendorDet[0].VendorTypeId;
-      // alert(this.Vendortypevalue);
+      if(this.Vendortypevalue == "B"){
+        (<HTMLInputElement>document.getElementById("vendortypeactive")).checked = true;
+      }else {
+        (<HTMLInputElement>document.getElementById("vendortypeactive")).checked = false;
+      }
+      //alert(this.Vendortypevalue);
   
       // console.log( 'singleVendorDet', this.singleVendorDet);
       // alert(this.singleVendorDet[0]["VendorTypeId"]);
@@ -580,5 +677,40 @@ getstatedata(){
       console.log("state",this.statedetail)
 });
 }
+
+cancelform()
+  {
+    this.submitted=false;
+  }
+
+  cancelform1()
+  {
+    this.submitted1=false;
+  }
+
+  cancelform2()
+  {
+    this.submitted2=false;
+  }
+
+  get rcf1() {
+    return this.VendorMgmtIndividual.controls;
+  }
+
+  get rcf2() {
+    return this.VendorMgmtBusiness.controls;
+  }
+
+  inputErrorMessage(errormessage: any) {
+
+    //(document.getElementById(errormessage) as HTMLFormElement).classList.remove("validation");
+  
+    }
+
+    inputErrorMessage1(errormessage: any) {
+
+      //(document.getElementById('passvalidationid') as HTMLFormElement).innerText = 'Passwords must match.!'
+    
+      }
 
 }
