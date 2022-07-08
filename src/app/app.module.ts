@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+
 import {DataTablesModule} from 'angular-datatables';
-import { CKEditorModule } from 'ckeditor4-angular';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarConfigInterface,
@@ -18,12 +19,14 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Import app component
 import { AppComponent } from './app.component';
+import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
 
 // Import containers
 import {
   DefaultFooterComponent,
   DefaultHeaderComponent,
   DefaultLayoutComponent,
+  
 } from './containers';
 
 import {
@@ -44,8 +47,8 @@ import {
   SharedModule,
   SidebarModule,
   TabsModule,
-  UtilitiesModule,
- 
+  UtilitiesModule
+
  
 } from '@coreui/angular';
 
@@ -55,7 +58,8 @@ import { RegistrationformComponent } from './registrationform/registrationform.c
 // import { BidmanagementComponent } from './bidmanagement/bidmanagement.component';
 import { BidmanagementComponent } from './views/bid-management/bid-management.component';
 import { TesingComponent } from './tesing/tesing.component';
-// import { ContractawardComponent } from './views/contractaward/contractaward.component';
+import { BidlistComponent } from './bidlist/bidlist.component';
+
 // import { VendorListComponent } from './views/vendor-list/vendor-list.component';
 
 // import { AdminmanagementComponent } from './views/adminmanagement/adminmanagement.component';
@@ -73,8 +77,12 @@ const APP_CONTAINERS = [
   DefaultLayoutComponent,
 ];
 
+const ngWizardConfig: NgWizardConfig = {
+  theme: THEME.default
+};
+
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, LogoutComponent, RegistrationformComponent, TesingComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, LogoutComponent, RegistrationformComponent, TesingComponent, BidlistComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -104,7 +112,9 @@ const APP_CONTAINERS = [
     CardModule,
     HttpClientModule,
     DataTablesModule,
-   
+    ReactiveFormsModule,
+    FormsModule,
+    NgWizardModule.forRoot(ngWizardConfig)
     
     // ToastrModule.forRoot({
     //   positionClass: 'toast-center-center',
@@ -112,6 +122,7 @@ const APP_CONTAINERS = [
     // }),
 
   ],
+ 
   providers: [
     // {
       // provide: LocationStrategy,
