@@ -11,6 +11,9 @@ import { config_url } from '../shared/constant';
  
 })
 export class VendormanagementComponent implements OnInit {
+  PastAddressDetails:any;
+  CurrentAddressDetails:any;
+  MailingAddressDetails:any;
   submitted = false;
   submitted1 = false;
   submitted2 = false;
@@ -82,16 +85,16 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
       BusinessRegisteredInSCC:[],
       BusinessIsFranchisee:[],
       BusinessSize:[],
-      TradeName: ['', [Validators.required]],
+      TradeName: [],
       DUNS: [],
       Website:[],
-      StartDate:[],
-      EndDate:[],
-      Address1:[],
+      StartDate:['', [Validators.required]],
+      EndDate:['', [Validators.required]],
+      Address1:['', [Validators.required]],
       Address2: [],
-      StateId: [],
-      CityId: [],
-      Zipcode: [],
+      StateId: ['', [Validators.required]],
+      CityId: ['', [Validators.required]],
+      Zipcode: ['', [Validators.required]],
       DistrictId: [],
       CountryId: [],
 
@@ -531,30 +534,69 @@ display_addresstypeBusiness(addresstype:any){
   }
 }
  
-Address_swiping(){
+Address_swipingIndividual(){
+  //alert("in");
 
-//       let address_type = (<HTMLInputElement>document.getElementById("address_active")).checked;
-//       if(address_type == true){
+      let individualMailQn = (<HTMLInputElement>document.getElementById("individualMailQn")).checked;
+      // alert(individualMailQn);
+      if(individualMailQn == true){
+        // alert(this.VendorMgmtIndividual.get('Address1').value)
+        this.VendorMgmtIndividual.controls.IMAddress1.setValue(this.VendorMgmtIndividual.get('Address1').value); 
+        this.VendorMgmtIndividual.controls.IMAddress2.setValue(this.VendorMgmtIndividual.get('Address2').value);
+        this.VendorMgmtIndividual.controls.IMCityId.setValue(this.VendorMgmtIndividual.get('CityId').value);
+        this.VendorMgmtIndividual.controls.IMCountryId.setValue(this.VendorMgmtIndividual.get('CountryId').value);
+        this.VendorMgmtIndividual.controls.IMZipcode.setValue(this.VendorMgmtIndividual.get('Zipcode').value);
+        this.VendorMgmtIndividual.controls.IMStartDate.setValue(this.VendorMgmtIndividual.get('StartDate').value);
+        this.VendorMgmtIndividual.controls.IMEndDate.setValue(this.VendorMgmtIndividual.get('EndDate').value);
+        this.VendorMgmtIndividual.controls.IMDistrictId.setValue(this.VendorMgmtIndividual.get('DistrictId').value);
+        this.VendorMgmtIndividual.controls.IMStateId.setValue(this.VendorMgmtIndividual.get('StateId').value);
 
-//         this.vendorMgmt.controls.mailing_address.setValue(this.currentaddress.get('physical_address').value); 
-//         this.vendorMgmt.controls.mailing_street.setValue(this.currentaddress.get('street').value);
-//         this.vendorMgmt.controls.state_province1.setValue(this.currentaddress.get('state_province').value);
-//         this.vendorMgmt.controls.city_1.setValue(this.currentaddress.get('city').value);
-//         this.vendorMgmt.controls.zip_code1.setValue(this.currentaddress.get('zip_code').value);
-//         this.vendorMgmt.controls.county_1.setValue(this.currentaddress.get('county').value);
-//         this.vendorMgmt.controls.country_1.setValue(this.currentaddress.get('country').value);
+ }
+ else{
 
-//  }
-//  else{
+  this.VendorMgmtIndividual.controls.IMAddress1.setValue(""); 
+  this.VendorMgmtIndividual.controls.IMAddress2.setValue("");
+  this.VendorMgmtIndividual.controls.IMCountryId.setValue("");
+  this.VendorMgmtIndividual.controls.IMCityId.setValue("");
+  this.VendorMgmtIndividual.controls.IMZipcode.setValue("");
+  this.VendorMgmtIndividual.controls.IMStartDate.setValue("");
+  this.VendorMgmtIndividual.controls.IMEndDate.setValue("");
+  this.VendorMgmtIndividual.controls.IMDistrictId.setValue("");
+  this.VendorMgmtIndividual.controls.IMStateId.setValue("");
+ }
+}
 
-//   this.vendorMgmt.controls.mailing_address.setValue(""); 
-//   this.vendorMgmt.controls.mailing_street.setValue("");
-//   this.vendorMgmt.controls.state_province1.setValue("");
-//   this.vendorMgmt.controls.city_1.setValue("");
-//   this.vendorMgmt.controls.zip_code1.setValue("");
-//   this.vendorMgmt.controls.county_1.setValue("");
-//   this.vendorMgmt.controls.country_1.setValue("");
-//  }
+
+Address_swipingBusiness(){
+  //alert("in");
+
+      let individualMailQn = (<HTMLInputElement>document.getElementById("BusinessMailQn")).checked;
+      // alert(individualMailQn);
+      if(individualMailQn == true){
+        // alert(this.VendorMgmtIndividual.get('Address1').value)
+        this.VendorMgmtBusiness.controls.BMAddress1.setValue(this.VendorMgmtBusiness.get('Address1').value); 
+        this.VendorMgmtBusiness.controls.BMAddress2.setValue(this.VendorMgmtBusiness.get('Address2').value);
+        this.VendorMgmtBusiness.controls.BMCityId.setValue(this.VendorMgmtBusiness.get('CityId').value);
+        this.VendorMgmtBusiness.controls.BMCountryId.setValue(this.VendorMgmtBusiness.get('CountryId').value);
+        this.VendorMgmtBusiness.controls.BMZipcode.setValue(this.VendorMgmtBusiness.get('Zipcode').value);
+        this.VendorMgmtBusiness.controls.BMStartDate.setValue(this.VendorMgmtBusiness.get('StartDate').value);
+        this.VendorMgmtBusiness.controls.BMEndDate.setValue(this.VendorMgmtBusiness.get('EndDate').value);
+        this.VendorMgmtBusiness.controls.BMDistrictId.setValue(this.VendorMgmtBusiness.get('DistrictId').value);
+        this.VendorMgmtBusiness.controls.BMStateId.setValue(this.VendorMgmtBusiness.get('StateId').value);
+
+ }
+ else{
+
+  this.VendorMgmtBusiness.controls.BMAddress1.setValue(""); 
+  this.VendorMgmtBusiness.controls.BMAddress2.setValue("");
+  this.VendorMgmtBusiness.controls.BMCountryId.setValue("");
+  this.VendorMgmtBusiness.controls.BMCityId.setValue("");
+  this.VendorMgmtBusiness.controls.BMZipcode.setValue("");
+  this.VendorMgmtBusiness.controls.BMStartDate.setValue("");
+  this.VendorMgmtBusiness.controls.BMEndDate.setValue("");
+  this.VendorMgmtBusiness.controls.BMDistrictId.setValue("");
+  this.VendorMgmtBusiness.controls.BMStateId.setValue("");
+ }
 }
 
 
@@ -569,11 +611,11 @@ GetVendorById(){
       this.singleVendorDet=data1;
       this.singleVendorDet=this.singleVendorDet.data.SingleVendorDetails;
       this.Vendortypevalue=this.singleVendorDet[0].VendorTypeId;
-      if(this.Vendortypevalue == "B"){
-        (<HTMLInputElement>document.getElementById("vendortypeactive")).checked = true;
-      }else {
-        (<HTMLInputElement>document.getElementById("vendortypeactive")).checked = false;
-      }
+      // if(this.Vendortypevalue == "B"){
+      //   (<HTMLInputElement>document.getElementById("vendortypeactive")).checked = true;
+      // }else {
+      //   (<HTMLInputElement>document.getElementById("vendortypeactive")).checked = false;
+      // }
       //alert(this.Vendortypevalue);
   
       // console.log( 'singleVendorDet', this.singleVendorDet);
@@ -608,8 +650,23 @@ GetVendorAddressById(){
       this.singleVendorAddressDet[0].StartDate = this.singleVendorAddressDet[0].StartDate.split(" ")[0];
 
       this.singleVendorAddressDet[0].EndDate = this.singleVendorAddressDet[0].EndDate.split(" ")[0];   
-      console.log( 'singleVendorAddressDet', this.singleVendorAddressDet[0]);
+      console.log( 'singleVendorAddressDet', this.singleVendorAddressDet);
       console.log(this.StartDate);
+
+      for(let i=0;i<this.singleVendorAddressDet.length;i++){
+        // alert(this.singleVendorAddressDet[i].AddressTypeId)
+        if(this.singleVendorAddressDet[i].AddressTypeId == "C") {
+          this.CurrentAddressDetails = this.singleVendorAddressDet[i];
+        }
+        if(this.singleVendorAddressDet[i].AddressTypeId == "M") {
+          this.MailingAddressDetails = this.singleVendorAddressDet[i];
+        }
+        if(this.singleVendorAddressDet[i].AddressTypeId == "P") {
+          this.PastAddressDetails = this.singleVendorAddressDet[i];
+        }
+      }
+      console.log("this.CurrentAddressDetails",this.CurrentAddressDetails);
+      console.log("this.MailingAddressDetails",this.MailingAddressDetails);
       
       
     })

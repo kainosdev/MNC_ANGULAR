@@ -10,7 +10,7 @@
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                    <input type="text"  class="first" formControlName="UserName"  (keypress)="alpha($event)">
+                    <input type="text"  class="first"   (keypress)="alpha($event)">
                     <!-- <div  class="help-block text-danger">
                        <div *ngIf="submitted1 && rcf1.FirstName.errors">First Name is required</div>
                     </div> -->
@@ -23,16 +23,17 @@
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <label>Individual </label>
+                        <label *ngIf="Vendortypevalue=='I'">Individual </label>
                         &nbsp;&nbsp;
-                        <label class="switch" >
-                            <input type="checkbox" name="vendortypeactive" id="vendortypeactive" [(ngModel)]="Vendortypevalue" formControlName="VendorTypeId"  (change)="Displayvendortype()">
+                        <!-- {{Vendortypevalue}} -->
+                        <!-- <label class="switch" >
+                            <input type="checkbox"  name="vendortypeactive" id="vendortypeactive" [(ngModel)]="Vendortypevalue" formControlName="VendorTypeId"  (change)="Displayvendortype()">
                             <span class="slider round"></span>
-                        </label>
+                        </label> -->
     
                         
                         &nbsp;&nbsp;
-                        <label class="">Business</label>
+                        <label *ngIf="Vendortypevalue=='B'" class="">Business</label>
                     </div>
             </div>
             </div>
@@ -51,7 +52,7 @@
         <div class="row Generaldiv mt-2" *ngFor="let s of singleVendorDet">
         <div class="row mt-2">
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                <label class="labelwidth">First Name</label>
+                <label class="labelwidth">First Name<span class="requiredfield ">  *</span></label>
                
           </div>
           <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -64,7 +65,7 @@
 
      
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                        <label class="">Social Security Number</label>
+                        <label >Social Security Number<span class="requiredfield ">  *</span></label>
                        
                 </div>
                 <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -133,7 +134,7 @@
 
         <div class="row mt-2">
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                <label class="labelwidth">Would you like to receive outreach emails from us ?</label>
+                <label class="labelwidth">Would you like to receive outreach emails from us ? <span class="requiredfield ">  *</span></label>
                
           </div>
           <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -156,16 +157,16 @@
 
         <p class="mainheading Vendortitle">Address Information</p>
 
-        <div class="row Generaldiv mt-2" *ngFor="let Addr of singleVendorAddressDet">
+        <div class="row Generaldiv mt-2" >
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Address</label>
+                    <label class="labelwidth">Address <span class="requiredfield ">  *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                    <input type="text"  class="first" formControlName="Address1"  [(ngModel)]="Addr.Address1">
+                    <input type="text"  class="first" formControlName="Address1"  [(ngModel)]="CurrentAddressDetails.Address1">
                     <div  class="help-block text-danger">
                        <div *ngIf="submitted1 && rcf1.Address1.errors">Address is required</div>
                     </div>
@@ -178,7 +179,7 @@
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                            <input type="text" class="Physicaladdress"  formControlName="Address2" [(ngModel)]="Addr.Address2">
+                            <input type="text" class="Physicaladdress"  formControlName="Address2" [(ngModel)]="CurrentAddressDetails.Address2">
                             <!-- <div  class="help-block text-danger">
                                 <div *ngIf="submitted1 && rcf1.Address2.errors">Ssn is required</div>
                             </div> -->
@@ -188,12 +189,12 @@
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">City </label>
+                    <label class="labelwidth">City <span class="requiredfield ">  *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                <select id="currentcity_id" class="city" formControlName="CityId" [(ngModel)]="Addr.CityId"
+                <select id="currentcity_id" class="city" formControlName="CityId" [(ngModel)]="CurrentAddressDetails.CityId"
                 (keypress)="EmptyErrorMessage('currentcity_id')">
                 <option *ngFor="let c of citylist" [value]="c.CityId ">
                     {{c.CityName}}
@@ -211,7 +212,7 @@
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select class="Country" id="currentcountry_id" formControlName="CountryId" [(ngModel)]="Addr.CountryId"
+                        <select class="Country" id="currentcountry_id" formControlName="CountryId" [(ngModel)]="CurrentAddressDetails.CountryId"
                         (change)="EmptyErrorMessage('currentcountry_id')">
                         <option *ngFor="let countrylist of countrytype" [value]="countrylist.CountryId" >
                             {{countrylist.CountryName}}</option>
@@ -225,12 +226,12 @@
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Zip Code </label>
+                    <label class="labelwidth">Zip Code <span class="requiredfield ">  *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                <select id="currentzipcode_id" class="zip" formControlName="Zipcode" [(ngModel)]="Addr.Zipcode"
+                <select id="currentzipcode_id" class="zip" formControlName="Zipcode" [(ngModel)]="CurrentAddressDetails.Zipcode"
                                 (keypress)="EmptyErrorMessage('currentzipcode_id');">
                                 <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode ">
                                     {{z.Zipcode}}
@@ -243,7 +244,7 @@
     
          
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="">From Date</label>
+                            <label class="">From Date <span class="requiredfield ">  *</span></label>
                            
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -266,7 +267,7 @@
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                <select type="text" id="currentcounty_id" class="County" formControlName="DistrictId" [(ngModel)]="Addr.DistrictId"
+                <select type="text" id="currentcounty_id" class="County" formControlName="DistrictId" [(ngModel)]="CurrentAddressDetails.DistrictId"
                                 (keypress)="EmptyErrorMessage('currentcounty_id')">
                                 <option *ngFor="let d of districts" [value]="d.DistrictId ">
                                     {{d.DistrictName}}
@@ -279,7 +280,7 @@
     
          
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="">To Date</label>
+                            <label class="">To Date <span class="requiredfield ">  *</span></label>
                            
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -297,12 +298,12 @@
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">State/province </label>
+                    <label class="labelwidth">State/province <span class="requiredfield ">  *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                <select class="State" id="stateprovice_id" formControlName="StateId" [(ngModel)]="Addr.StateId"
+                <select class="State" id="stateprovice_id" formControlName="StateId" [(ngModel)]="CurrentAddressDetails.StateId"
                                 (change)="EmptyErrorMessage('stateprovice_id')">
                                 <option *ngFor="let s of statedetail" [value]="s.StateId ">
                                     {{s.StateName}}
@@ -349,7 +350,7 @@
                     <div class="col-sm-4">
                         <label>Mailing address same as physical address ?</label>
                         <label class="switch">
-                            <input type="checkbox" name="active" id="active" >
+                            <input type="checkbox" name="individualMailQn" id="individualMailQn" (click)="Address_swipingIndividual()">
                             <!-- <input type="checkbox" name="active" id="active"  formControlName="OutreachEmailOptIn" *ngIf="s.OutreachEmailOptIn == 0" > -->
                             <span class="slider round"></span>
                         </label>
@@ -364,12 +365,14 @@
 
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Address</label>
+                            <label class="labelwidth">Address 
+                                <!-- <span class="requiredfield ">  *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                            <input type="text"  class="first" formControlName="IMAddress1"  >
+                            <input type="text"  class="first" formControlName="IMAddress1" [(ngModel)]="MailingAddressDetails.Address1" >
                             <div  class="help-block text-danger">
                                <div *ngIf="submitted1 && rcf1.IMAddress1.errors">Address is required</div>
                             </div>
@@ -392,7 +395,9 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">City </label>
+                            <label class="labelwidth">City 
+                                <!-- <span class="requiredfield ">  *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -429,7 +434,9 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Zip Code </label>
+                            <label class="labelwidth">Zip Code 
+                                <!-- <span class="requiredfield ">  *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -447,7 +454,9 @@
             
                  
                             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                    <label class="">From Date</label>
+                                    <label class="">From Date 
+                                        <!-- <span class="requiredfield ">  *</span> -->
+                                    </label>
                                    
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -483,7 +492,9 @@
             
                  
                             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                    <label class="">To Date</label>
+                                    <label class="">To Date 
+                                        <!-- <span class="requiredfield ">  *</span> -->
+                                    </label>
                                    
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -501,7 +512,9 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">State/province </label>
+                            <label class="labelwidth">State/province 
+                                <!-- <span class="requiredfield ">  *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -532,7 +545,9 @@
 
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Address</label>
+                            <label class="labelwidth">Address 
+                                <!-- <span class="requiredfield ">  *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -551,16 +566,18 @@
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                   
                                     <input type="text" class="Physicaladdress"  formControlName="IPAddress2" >
-                                    <div  class="help-block text-danger">
+                                    <!-- <div  class="help-block text-danger">
                                         <div *ngIf="submitted1 && rcf1.IPAddress2.errors">Ssn is required</div>
-                                    </div>
+                                    </div> -->
                             </div>
                     </div>
         
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">City </label>
+                            <label class="labelwidth">City 
+                                <!-- <span class="requiredfield ">  *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -597,7 +614,9 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Zip Code </label>
+                            <label class="labelwidth">Zip Code 
+                                <!-- <span class="requiredfield ">  *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -615,7 +634,9 @@
             
                  
                             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                    <label class="">From Date</label>
+                                    <label class="">From Date 
+                                        <!-- <span class="requiredfield ">  *</span> -->
+                                    </label>
                                    
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -651,7 +672,9 @@
             
                  
                             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                    <label class="">To Date</label>
+                                    <label class="">To Date 
+                                        <!-- <span class="requiredfield ">  *</span> -->
+                                    </label>
                                    
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -669,7 +692,9 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">State/province </label>
+                            <label class="labelwidth">State/province 
+                                <!-- <span class="requiredfield ">  *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -765,7 +790,7 @@
                 <div class="row Generaldiv mt-2" *ngFor="let s2 of singleVendorDet">
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Legal Business Name</label>
+                            <label class="labelwidth">Legal Business Name <span class="requiredfield ">  *</span></label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -958,16 +983,16 @@
     
         <p class="mainheading Vendortitle">Address Information</p>
 
-        <div class="row Generaldiv mt-2" *ngFor="let Addr of singleVendorAddressDet">
+        <div class="row Generaldiv mt-2" >
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Address</label>
+                    <label class="labelwidth">Address <span  class="requiredfield"> *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                    <input type="text"  class="first" formControlName="Address1"  [(ngModel)]="Addr.Address1">
+                    <input type="text"  class="first" formControlName="Address1"  [(ngModel)]="CurrentAddressDetails.Address1">
                     <div  class="help-block text-danger">
                        <div *ngIf="submitted2 && rcf2.Address1.errors">Address is required</div>
                     </div>
@@ -980,7 +1005,7 @@
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                            <input type="text" class="Physicaladdress"  formControlName="Address2" [(ngModel)]="Addr.Address2">
+                            <input type="text" class="Physicaladdress"  formControlName="Address2" [(ngModel)]="CurrentAddressDetails.Address2">
                             <!-- <div  class="help-block text-danger">
                                 <div *ngIf="submitted2 && rcf2.Address2.errors">Ssn is required</div>
                             </div> -->
@@ -990,12 +1015,12 @@
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">City </label>
+                    <label class="labelwidth">City <span  class="requiredfield"> *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                <select id="currentcity_id" class="city" formControlName="CityId" [(ngModel)]="Addr.CityId"
+                <select id="currentcity_id" class="city" formControlName="CityId" [(ngModel)]="CurrentAddressDetails.CityId"
                 (keypress)="EmptyErrorMessage('currentcity_id')">
                 <option *ngFor="let c of citylist" [value]="c.CityId ">
                     {{c.CityName}}
@@ -1013,7 +1038,7 @@
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select class="Country" id="currentcountry_id" formControlName="CountryId" [(ngModel)]="Addr.CountryId"
+                        <select class="Country" id="currentcountry_id" formControlName="CountryId" [(ngModel)]="CurrentAddressDetails.CountryId"
                         (change)="EmptyErrorMessage('currentcountry_id')">
                         <option *ngFor="let countrylist of countrytype" [value]="countrylist.CountryId" >
                             {{countrylist.CountryName}}</option>
@@ -1027,12 +1052,12 @@
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Zip Code </label>
+                    <label class="labelwidth">Zip Code <span  class="requiredfield"> *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                <select id="currentzipcode_id" class="zip" formControlName="Zipcode" [(ngModel)]="Addr.Zipcode"
+                <select id="currentzipcode_id" class="zip" formControlName="Zipcode" [(ngModel)]="CurrentAddressDetails.Zipcode"
                                 (keypress)="EmptyErrorMessage('currentzipcode_id');">
                                 <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode ">
                                     {{z.Zipcode}}
@@ -1045,7 +1070,7 @@
     
          
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="">From Date</label>
+                            <label class="">From Date <span  class="requiredfield"> *</span></label>
                            
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -1068,7 +1093,7 @@
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                <select type="text" id="currentcounty_id" class="County" formControlName="DistrictId" [(ngModel)]="Addr.DistrictId"
+                <select type="text" id="currentcounty_id" class="County" formControlName="DistrictId" [(ngModel)]="CurrentAddressDetails.DistrictId"
                                 (keypress)="EmptyErrorMessage('currentcounty_id')">
                                 <option *ngFor="let d of districts" [value]="d.DistrictId ">
                                     {{d.DistrictName}}
@@ -1081,7 +1106,7 @@
     
          
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="">To Date</label>
+                            <label class="">To Date <span  class="requiredfield"> *</span></label>
                            
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -1099,12 +1124,12 @@
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">State/province </label>
+                    <label class="labelwidth">State/province <span  class="requiredfield"> *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                <select class="State" id="stateprovice_id" formControlName="StateId" [(ngModel)]="Addr.StateId"
+                <select class="State" id="stateprovice_id" formControlName="StateId" [(ngModel)]="CurrentAddressDetails.StateId"
                                 (change)="EmptyErrorMessage('stateprovice_id')">
                                 <option *ngFor="let s of statedetail" [value]="s.StateId ">
                                     {{s.StateName}}
@@ -1155,7 +1180,7 @@
                     <div class="col-sm-4">
                         <label>Mailing address same as physical address ?</label>
                         <label class="switch">
-                            <input type="checkbox" name="active" id="active" >
+                            <input type="checkbox" name="active" id="BusinessMailQn" (click)="Address_swipingBusiness()" >
                             <!-- <input type="checkbox" name="active" id="active"  formControlName="OutreachEmailOptIn" *ngIf="s.OutreachEmailOptIn == 0" > -->
                             <span class="slider round"></span>
                         </label>
@@ -1170,12 +1195,14 @@
 
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Address</label>
+                            <label class="labelwidth">Address 
+                                <!-- <span  class="requiredfield"> *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                            <input type="text"  class="first" formControlName="BMAddress1"  >
+                            <input type="text"  class="first" formControlName="BMAddress1" [(ngModel)]="MailingAddressDetails.Address1" >
                             <div  class="help-block text-danger">
                                <div *ngIf="submitted2 && rcf2.BMAddress1.errors">Address is required</div>
                             </div>
@@ -1198,7 +1225,9 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">City </label>
+                            <label class="labelwidth">City 
+                                <!-- <span  class="requiredfield"> *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -1235,7 +1264,9 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Zip Code </label>
+                            <label class="labelwidth">Zip Code 
+                                <!-- <span  class="requiredfield"> *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -1253,7 +1284,9 @@
             
                  
                             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                    <label class="">From Date</label>
+                                    <label class="">From Date 
+                                        <!-- <span  class="requiredfield"> *</span> -->
+                                    </label>
                                    
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -1289,17 +1322,19 @@
             
                  
                             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                    <label class="">To Date</label>
+                                    <label class="">To Date1 
+                                        <!-- <span  class="requiredfield"> *</span> -->
+                                    </label>
                                    
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                 <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
                                 
                                 formControlName="BMEndDate"                             
-                                     (keypress)="EmptyErrorMessage('mailingfromdata_id')">
+                                     >
                                
                             <div  class="help-block text-danger">
-                                <div *ngIf="submitted1 && rcf2.BMEndDate.errors">End Date is required</div>
+                                <div *ngIf="submitted2 && rcf2.BMEndDate.errors">End Date is required</div>
                              </div>
                             </div>
                     </div>
@@ -1307,7 +1342,9 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">State/province </label>
+                            <label class="labelwidth">State/province 
+                                <!-- <span  class="requiredfield"> *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -1338,7 +1375,9 @@
 
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Address</label>
+                            <label class="labelwidth">Address 
+                                <!-- <span class="requiredfield ">  *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -1366,7 +1405,9 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">City </label>
+                            <label class="labelwidth">City 
+                                <!-- <span class="requiredfield ">  *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -1403,7 +1444,9 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Zip Code </label>
+                            <label class="labelwidth">Zip Code 
+                                <!-- <span class="requiredfield ">  *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -1421,7 +1464,9 @@
             
                  
                             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                    <label class="">From Date</label>
+                                    <label class="">From Date 
+                                        <!-- <span class="requiredfield ">  *</span> -->
+                                    </label>
                                    
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -1457,7 +1502,9 @@
             
                  
                             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                    <label class="">To Date</label>
+                                    <label class="">To Date 
+                                        <!-- <span class="requiredfield ">  *</span> -->
+                                    </label>
                                    
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -1475,7 +1522,9 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">State/province </label>
+                            <label class="labelwidth">State/province 
+                                <!-- span class="requiredfield ">  *</span> -->
+                            </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
