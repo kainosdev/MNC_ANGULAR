@@ -90,7 +90,7 @@ public mask = [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
       Zipcode: ['', [Validators.required]],
       county_name: ['', [Validators.required]],
       StartDate: ['', [Validators.required]],
-      EndDate: ['', [Validators.required]],
+      EndDate: [''],
       CountryId:  ['', [Validators.required]],
      //employee details
       JobTitleId:['', [Validators.required]],
@@ -137,7 +137,7 @@ this.otherform = this.frmbuilder.group({
    Zipcode: ['', [Validators.required]],
    county_name: ['', [Validators.required]],
    StartDate: ['', [Validators.required]],
-   EndDate: ['', [Validators.required]],
+   EndDate: [''],
    CountryId:  ['', [Validators.required]],
    UserStatusId:['N'],
   
@@ -163,7 +163,7 @@ this.vendorform_individual = this.frmbuilder.group({
   county_name: ['', [Validators.required]],
   CountryId:  ['', [Validators.required]],
   StartDate: ['', [Validators.required]],
-  EndDate: ['', [Validators.required]],
+  EndDate: [''],
   VendorTypeId: [],
   EIN_SSN:[],
  
@@ -205,7 +205,7 @@ this.vendorform_business = this.frmbuilder.group({
   county_name: ['', [Validators.required]],
   CountryId:  ['', [Validators.required]],
   StartDate: ['', [Validators.required]],
-  EndDate: ['', [Validators.required]],
+  EndDate: [''],
   VendorTypeId: [],
   EIN_SSN:[],
  
