@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl,} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, ValidatorFn, AbstractControl, ValidationErrors,} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { config_url } from '../shared/constant';
 // import { ToastrService } from 'ngx-toastr';
 import { MustMatch } from '../_helpers/must-match.validator';
 import Swal from 'sweetalert2'; 
+
 
 
 
@@ -18,9 +19,15 @@ export class RegisterComponent implements OnInit {
 //  registercontactinformation:any;
 employeeform: FormGroup | any;
 otherform: FormGroup | any;
-vendorform:FormGroup | any;
+vendorform_individual:FormGroup | any;
+vendorform_business:FormGroup | any;
  submitted = false;
+ usertype="VENDOR";
+ vendortype=true;
  employeeform_show=false;
+ vendorform_individual_show=false;
+ vendorform_business_show=true;
+ vendortype_show=true;
  otherform_show=false;
   vendor: any;
   employeeinformation:any;
@@ -85,7 +92,7 @@ vendorform:FormGroup | any;
       JobTitleId:['', [Validators.required]],
       EmploymentTypeId:['', [Validators.required]],
       JobStartDate: ['', [Validators.required]],
-      AdminUser:  [],
+      AdminUser:  [false],
       Phone:['', [Validators.required]],
 
 
@@ -105,7 +112,7 @@ vendorform:FormGroup | any;
  
       UserStatusId:['N'],
      
-})
+},{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 this.otherform = this.frmbuilder.group({
 
@@ -130,16 +137,58 @@ this.otherform = this.frmbuilder.group({
    CountryId:  ['', [Validators.required]],
    UserStatusId:['N'],
   
-})
+  },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
-this.vendorform = this.frmbuilder.group({
+this.vendorform_individual = this.frmbuilder.group({
 
      
   FirstName: ['', [Validators.required]],
   legalbusiness: [''],
   LastName:  ['', [Validators.required]],
   tradeName: [],
-  UserTypeId:  ['', [Validators.required]],
+  // UserTypeId:  ['', [Validators.required]],
+  UserId:  ['', [Validators.required]],
+  UserPassword:  ['', [Validators.required]],
+  conformpassword:  ['', [Validators.required]],
+
+  Address1:  ['', [Validators.required]],
+  Address2: [],
+  StateId:  ['', [Validators.required]],
+   CityId:  ['', [Validators.required]],
+  Zipcode: ['', [Validators.required]],
+  county_name: ['', [Validators.required]],
+  CountryId:  ['', [Validators.required]],
+  StartDate: ['', [Validators.required]],
+  EndDate: ['', [Validators.required]],
+  VendorTypeId: [],
+  EIN_SSN:[],
+ 
+
+  OutreachEmailOptIn:[],
+  business_ssn: [],
+  BusinessSize: [],
+  BusinessRegisteredInDistrict:[],
+  BusinessIsFranchisee: [],
+  BEClassificationId: [],
+
+  JobTitleId:[],
+  EmploymentTypeId:[],
+  JobStartDate: [],
+  BusinessRegisteredInSCC: [],
+ 
+  Phone:[],
+  AdminUser: [],
+  UserStatusId:['N'],
+},{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
+
+this.vendorform_business = this.frmbuilder.group({
+
+     
+  FirstName: ['', [Validators.required]],
+  legalbusiness: [''],
+  LastName:  ['', [Validators.required]],
+  tradeName: [],
+  // UserTypeId:  ['', [Validators.required]],
   UserId:  ['', [Validators.required]],
   UserPassword:  ['', [Validators.required]],
   conformpassword:  ['', [Validators.required]],
@@ -173,7 +222,7 @@ this.vendorform = this.frmbuilder.group({
   AdminUser: [],
   UserStatusId:['N'],
  
-})
+},{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 
 
@@ -183,17 +232,37 @@ phoneformat= /^[0-9]{10}$/;
 socialno =  /^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$/;
 useridmatch=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
 
-alpha(event: any){
-  var inp = String.fromCharCode(event.keyCode);
+checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
+  return (group: FormGroup) => {
+    debugger
+    let passwordInput = group.controls[passwordKey],
+        passwordConfirmationInput = group.controls[passwordConfirmationKey];
+   
+    if (passwordConfirmationInput.value == '') {
+      return passwordConfirmationInput.setErrors({required: true})
+    }
+    else if (passwordInput.value !== passwordConfirmationInput.value) {
+      return passwordConfirmationInput.setErrors({notEquivalent: true})
+    }
+    else {
+        return passwordConfirmationInput.setErrors(null);
+    }
+  }
+}
 
-if (/[a-zA-Z]/.test(inp)) {
-  return true;
-} else {
-  event.preventDefault();
-  return false;
+alpha(event: any)
+{
+      var inp = String.fromCharCode(event.keyCode);
+
+    if (/[a-zA-Z]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
 }
-}
-alphanumeric(event: any){
+alphanumeric(event: any)
+{
   var inp = String.fromCharCode(event.keyCode);
   if (/[a-zA-Z0-9]/.test(inp)) {
     return true;
@@ -202,8 +271,22 @@ alphanumeric(event: any){
     return false;
   }
 }
-get rcf() {
+get rcf() 
+{
   return this.employeeform.controls;
+}
+get vif() 
+{
+  return this.vendorform_individual.controls;
+}
+
+get vbf() 
+{
+  return this.vendorform_business.controls;
+}
+
+get ofv() {
+  return this.otherform.controls;
 }
 number(event: any) {
   var charCode = (event.which) ? event.which : event.keyCode;
@@ -508,6 +591,7 @@ number(event: any) {
   {
     this.submitted=false;
   }
+  
   inputErrorMessage(errormessage: any) {
 
     (document.getElementById(errormessage) as HTMLFormElement).classList.remove("validation");
@@ -521,30 +605,40 @@ number(event: any) {
       }
 
     vendortype_display(active:any){
-
-      let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
+      debugger
+    //  let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
      
-      if(active1 == true){
-
-        (<HTMLInputElement>document.getElementById("vendorbusiness")).style.display ="block";
-        (<HTMLInputElement>document.getElementById("vendorindividual")).style.display ="none";
-        (<HTMLInputElement>document.getElementById("busname1")).style.display ="block";
-        (<HTMLInputElement>document.getElementById("busname2")).style.display ="block";
-        (<HTMLInputElement>document.getElementById("indname1")).style.display ="none";
-        (<HTMLInputElement>document.getElementById("indname2")).style.display ="none";
-
+      if(this.vendortype == true){
         
+        // (<HTMLInputElement>document.getElementById("vendorbusiness")).style.display ="block";
+        // (<HTMLInputElement>document.getElementById("vendorindividual")).style.display ="none";
+        // (<HTMLInputElement>document.getElementById("busname1")).style.display ="block";
+        // (<HTMLInputElement>document.getElementById("busname2")).style.display ="block";
+        // (<HTMLInputElement>document.getElementById("indname1")).style.display ="none";
+        // (<HTMLInputElement>document.getElementById("indname2")).style.display ="none";
+
+        this.employeeform_show=false;
+        this.otherform_show=false;
+        this.vendorform_individual_show=false;
+        this.vendorform_business_show=true;
+        this.submitted = false;
       }
     
 
-      else if(active1 == false){
+      else if(this.vendortype == false){
 
-        (<HTMLInputElement>document.getElementById("vendorbusiness")).style.display ="none";
-        (<HTMLInputElement>document.getElementById("vendorindividual")).style.display ="block";
-        (<HTMLInputElement>document.getElementById("busname1")).style.display ="none";
-        (<HTMLInputElement>document.getElementById("busname2")).style.display ="none";
-        (<HTMLInputElement>document.getElementById("indname1")).style.display ="block";
-        (<HTMLInputElement>document.getElementById("indname2")).style.display ="block";
+        // (<HTMLInputElement>document.getElementById("vendorbusiness")).style.display ="none";
+        // (<HTMLInputElement>document.getElementById("vendorindividual")).style.display ="block";
+        // (<HTMLInputElement>document.getElementById("busname1")).style.display ="none";
+        // (<HTMLInputElement>document.getElementById("busname2")).style.display ="none";
+        // (<HTMLInputElement>document.getElementById("indname1")).style.display ="block";
+        // (<HTMLInputElement>document.getElementById("indname2")).style.display ="block";
+
+        this.employeeform_show=false;
+        this.otherform_show=false;
+        this.vendorform_individual_show=true;
+        this.vendorform_business_show=false;
+        this.submitted = false;
 
       }
     }
@@ -556,11 +650,31 @@ number(event: any) {
       {
        this.employeeform_show=true;
        this.otherform_show=false;
+       this.vendorform_individual_show=false;
+       this.vendorform_business_show=false;
+       this.submitted = false;
+       this.vendortype_show =false;
       }
       else if(usertype_id == 'OTHER')
       {
         this.otherform_show=true;
         this.employeeform_show=false;
+        this.vendorform_individual_show=false;
+        this.vendorform_business_show=false;
+        this.submitted = false;
+        this.vendortype_show =false;
+      }
+      else if(usertype_id == 'VENDOR')
+      {
+        this.otherform_show=false;
+        this.employeeform_show=false;
+       // this.vendorform_individual_show=true;
+        this.submitted = false;
+       // this.vendorform_business_show=false;
+        this.vendortype_show =true;
+
+        this.vendortype_display(true)
+        
       }
     
     //   if(usertype_id == 'VENDOR'){
@@ -797,6 +911,46 @@ number(event: any) {
            
         }
         }
+        else if(usertype_id == "VENDOR")
+        {
+
+
+          let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
+     
+          if(active1 == true)
+          {
+            if (this.vendorform_business.invalid) 
+            {
+                return;
+            }
+            else
+            {
+              this.vendorform_business.value.UserTypeId="VENDOR";
+              this.vendorform_business.value.VendorTypeId=true;
+              alert(JSON.stringify(this.otherform.value))
+              this.finalsavecall(this.otherform.value)
+               
+            }
+          }
+          else
+          {
+            if (this.vendorform_individual.invalid) 
+            {
+                return;
+            }
+            else
+            {
+              this.vendorform_individual.value.UserTypeId="VENDOR"
+              this.vendorform_business.value.VendorTypeId=false;
+              alert(JSON.stringify(this.otherform.value))
+              this.finalsavecall(this.otherform.value)
+               
+            }
+
+          }
+
+  
+       }
        
       
     }

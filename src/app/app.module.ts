@@ -52,11 +52,13 @@ import { LogoutComponent } from './views/logout/logout.component';
 import { RegistrationformComponent } from './registrationform/registrationform.component';
 // import { BidmanagementComponent } from './bidmanagement/bidmanagement.component';
 import { BidmanagementComponent } from './views/bid-management/bid-management.component';
+import { TesingComponent } from './tesing/tesing.component';
 // import { VendorListComponent } from './views/vendor-list/vendor-list.component';
 
 // import { AdminmanagementComponent } from './views/adminmanagement/adminmanagement.component';
 // import { VendormanagementComponent } from './views/vendormanagement/vendormanagement.component';
 // import { VendormanagementComponent } from './vendormanagement/vendormanagement.component';
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -69,7 +71,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, LogoutComponent, RegistrationformComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, LogoutComponent, RegistrationformComponent, TesingComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

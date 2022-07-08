@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 // import { ToastrModule } from 'ngx-toastr';
 import {
   AvatarModule,
@@ -46,6 +47,7 @@ import { RegisterComponent } from './register.component';
     ChartjsModule,
     AvatarModule,
     TableModule,
+    FormsModule
     // WidgetsModule
   ],
   declarations: [RegisterComponent]

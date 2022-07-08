@@ -69,19 +69,63 @@
 
   <!-- <h1>Angular 12 Datatables Example - Laratutorials.com</h1> -->
   <h1>Angular 12 Datatables Example - Laratutorials.com</h1>
-  <table datatable dtOptions="dtOptions" dtTrigger="dtTrigger" class="row-border hover">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Body</th>
+  <table  class="table  servicecss tblnewbook" *ngIf="posts"  datatable="ng"  datatable  dtOptions="dtOptions" style="border: 0.5px solid #000000 !important;border-right: 2px solid !important;">
+    <thead style="color: black;text-align: left;background-color: #80808091;">
+
+        <tr>
+        <!-- <th  style="display:none;width: 0px;">b</th> -->
+        <th  style="width:8%;text-align: center;" class="fontwghtcls tblheadingnewbook">Booking Id</th>
+        <th style="width: 12%;text-align: center; " class="fontwghtcls tblheadingnewbook">Registration No</th>
+        <th style="width:8%;text-align: center;" class="fontwghtcls tblheadingnewbook">Date</th>
+        <th style="width:18%;text-align: center;" class="fontwghtcls tblheadingnewbook">Customer Name</th>
+         <th style="width:10%;text-align: center;" class="fontwghtcls tblheadingtotalnewbook">Total (<span><i class="fa fa-rupee"></i></span>) </th>
+         <th style="width:5%;text-align: center;" class="fontwghtcls ">Confirm</th>
+        <th style="width:5%;text-align: center;" class="fontwghtcls">Reject</th>
+
+
       </tr>
     </thead>
-    <tbody>
-      <tr >
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
+
+    <tbody >
+      <tr   style="border-bottom:1px solid #aeaeae;text-align: left;">
+
+        <!-- <td  style="display:none;width: 0px;">{{b.bookingdate}}</td> -->
+        <td ><a class="fontwghtcls" class="bookingid" >test</a></td>
+        <td ><p class="vehiclenumbernewbook" ></p>test1</td>
+        <td>
+          <p class="bookingdatenewbook">08-07-2022</p>
+          <!-- <input type="date" value="{{b.bookingdate}}" readonly style="width: 110px;border: none;"> -->
+        </td>
+        <td><p class="firstnamenewbook">Abhi</p></td>
+        <!-- <td>     {{b.combo_id}}           </td>  -->
+        <!-- <td>{{b.comboprice_total}}</td> -->
+        <!-- <td>
+          <div *ngIf="b.services != null">
+          <div *ngFor="let m of  b.services.split(',');let j=index" >
+            <div *ngFor="let m1 of  MasterServiceData1;" >
+
+<span *ngIf="m === m1.service_id"><i class="fa fa-check-circle" style="color: #429c68;"></i>&nbsp; {{m1.service_name}}</span>
+            </div>
+
+          </div>
+        </div>
+          </td>  -->
+        <!-- <td>{{b.serviceprice_total}}</td> -->
+        <td >
+          <p class="totalnewbook" style="text-align: right;">1000</p>
+
+        </td>
+        <!-- <td>
+          <span *ngIf = "b.pickup_drop == 0;else pickDropid" >No</span>
+
+            <ng-template  #pickDropid>
+              <span>Yes</span>
+            </ng-template>
+          </td> -->
+
+        <td style="text-align: center;">test</td>
+          <td style="text-align: center;">1234 </td>
       </tr>
+
     </tbody>
   </table>
