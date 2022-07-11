@@ -110,10 +110,15 @@ export class BidmanagementComponent implements OnInit {
           // }
           this.step++
     }
-    if(this.step==2){
+    else if(this.step==2){
         this.address_step = true;
         // if (this.addressDetails.invalid) { return }
             this.step++;
+    }
+    else if(this.step==3){
+      this.address_step = true;
+      // if (this.addressDetails.invalid) { return }
+          this.step++;
     }
   }
   previous(){
