@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { NgWizardConfig, THEME, StepChangedArgs, NgWizardService, TOOLBAR_POSITION, TOOLBAR_BUTTON_POSITION, STEP_STATE, StepValidationArgs } from 'ng-wizard';
 
 
 @Component({
@@ -16,23 +15,9 @@ export class BidmanagementComponent implements OnInit {
   a="1";
   b="2";
   c="3";
-  stepStates = {
-    normal: STEP_STATE.normal,
-    disabled: STEP_STATE.disabled,
-    error: STEP_STATE.error,
-    hidden: STEP_STATE.hidden
-  };
+
  
 
-  config: NgWizardConfig = {
-    selected: 0,
-    theme: THEME.arrows,
-    toolbarSettings: {
-      toolbarExtraButtons: [
-        { text: 'Finish', class: 'btn btn-info', event: () => { alert("Finished!!!"); } }
-      ],
-    }
-  };
   personalDetails!: FormGroup;
   addressDetails!: FormGroup;
   educationalDetails!: FormGroup;
@@ -40,7 +25,7 @@ export class BidmanagementComponent implements OnInit {
   address_step = false;
   education_step = false;
   step = 1;
-  constructor(private frmbuilder: FormBuilder,private ngWizardService: NgWizardService) { }
+  constructor(private frmbuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.personalDetails = this.frmbuilder.group({
@@ -144,9 +129,7 @@ export class BidmanagementComponent implements OnInit {
     (document.getElementById(errormessage) as HTMLFormElement).classList.remove("validation");
   
     }
-    stepChanged(args: StepChangedArgs) {
-      console.log(args.step);
-    }
+
     inputErrorMessage1(errormessage: any) {
 
       (document.getElementById('passvalidationid') as HTMLFormElement).innerText = 'Passwords must match.!'
