@@ -208,19 +208,18 @@ this.vendorform_business = this.frmbuilder.group({
   EndDate: [''],
   VendorTypeId: [],
   EIN_SSN:[],
- 
 
-  OutreachEmailOptIn:[],
+  OutreachEmailOptIn:[true],
   business_ssn: [],
   BusinessSize: [],
-  BusinessRegisteredInDistrict:[],
-  BusinessIsFranchisee: [],
+  BusinessRegisteredInDistrict:[false],
+  BusinessIsFranchisee: [false],
   BEClassificationId: [],
 
   JobTitleId:[],
   EmploymentTypeId:[],
   JobStartDate: [],
-  BusinessRegisteredInSCC: [],
+  BusinessRegisteredInSCC: [false],
  
   Phone:[],
   AdminUser: [],
@@ -919,9 +918,9 @@ number(event: any) {
         {
 
 
-          let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
+         // let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
      
-          if(active1 == true)
+          if(this.vendortype == true)
           {
             if (this.vendorform_business.invalid) 
             {
@@ -931,8 +930,8 @@ number(event: any) {
             {
               this.vendorform_business.value.UserTypeId="VENDOR";
               this.vendorform_business.value.VendorTypeId=true;
-              alert(JSON.stringify(this.otherform.value))
-              this.finalsavecall(this.otherform.value)
+              alert(JSON.stringify(this.vendorform_business.value))
+              this.finalsavecall(this.vendorform_business.value)
                
             }
           }
@@ -945,9 +944,11 @@ number(event: any) {
             else
             {
               this.vendorform_individual.value.UserTypeId="VENDOR"
-              this.vendorform_business.value.VendorTypeId=false;
-              alert(JSON.stringify(this.otherform.value))
-              this.finalsavecall(this.otherform.value)
+              this.vendorform_individual.value.VendorTypeId=false;
+              var int_business=parseInt(this.vendorform_individual.value.BusinessSize) 
+              this.vendorform_individual.value.BusinessSize=int_business;
+              alert(JSON.stringify(this.vendorform_individual.value))
+              this.finalsavecall(this.vendorform_individual.value)
                
             }
 
