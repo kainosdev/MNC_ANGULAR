@@ -11,9 +11,16 @@ import { config_url } from '../shared/constant';
  
 })
 export class VendormanagementComponent implements OnInit {
-  PastAddressDetails:any;
-  CurrentAddressDetails:any;
-  MailingAddressDetails:any;
+  public mask = [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+  CurrentAddrStartDate:any;
+  CurrentAddrEndDate:any;
+  MailAddrStartDate:any;
+  MailAddrEndDate:any;
+  PastAddrStartDate:any;
+  PastAddrEndDate:any;
+  PastAddressDetails:any=[];
+  CurrentAddressDetails:any=[];
+  MailingAddressDetails:any=[];
   submitted = false;
   submitted1 = false;
   submitted2 = false;
@@ -142,9 +149,9 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
       FirstName: ['', [Validators.required]],
       EIN_SSN: ['', [Validators.required]],
       LastName:['', [Validators.required]],
-      Email:['', [Validators.required]],
-      MiddleName:['', [Validators.required]],
-      Phone:['', [Validators.required]],
+      Email:[],
+      MiddleName:[],
+      Phone:[],
       OutreachEmailOptIn:[],
       Address1:['', [Validators.required]],
       Address2:[],
@@ -177,8 +184,35 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
       IPStateId:[],
      });
 
-   
+  //  this.setUserCategoryValidators();
   }
+
+  setUserCategoryValidators() {
+//     this.VendorMgmtIndividual.get("IMAddress1").clearValidators([Validators.required]);//clear validation
+// this.VendorMgmtIndividual.get("IMAddress1").setErrors(null);//updating error message
+// this.VendorMgmtIndividual.updateValueAndValidity();//update validation
+    // alert("in");
+    // let IMAddress1_ind = this.VendorMgmtIndividual.get('IMAddress1').value;
+    // alert(IMAddress1_ind);
+    // this.VendorMgmtIndividual.controls.IMAddress1.setValue= "";
+    // this.VendorMgmtIndividual.controls["IMAddress1"].setValidators([Validators.required]);
+    // this.VendorMgmtIndividual.get('IMAddress1').setValidators([Validators.required])
+    // 
+    // 
+    
+
+    // this.VendorMgmtIndividual.get('IMCityId').valueChanges
+    //   .subscribe((IMCityId: any) => {
+
+    //     if (IMCityId != null) {
+    //       IMAddress1.setValidators([Validators.required]);
+          
+    //     }
+
+        
+    //   });
+  }
+
   mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   phoneformat= /^[0-9]{10}$/;
   socialno = /^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$/;
@@ -231,6 +265,7 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
 VendorData(VendorMgmtIndividual:any){
   this.submitted1 = true;
   console.log('VendorMgmtIndividual',VendorMgmtIndividual);
+  // this.setUserCategoryValidators();
 }
 
 
@@ -607,9 +642,10 @@ GetVendorById(){
   this.http.get(config_url+'/vendor/GetVendorById?VendorId='+vendoridSes).subscribe(data1 =>
     {
 
-      console.log("data2>>>",data1);
+      
       this.singleVendorDet=data1;
       this.singleVendorDet=this.singleVendorDet.data.SingleVendorDetails;
+      console.log("singleVendorDet>>>",this.singleVendorDet);
       this.Vendortypevalue=this.singleVendorDet[0].VendorTypeId;
       // if(this.Vendortypevalue == "B"){
       //   (<HTMLInputElement>document.getElementById("vendortypeactive")).checked = true;
@@ -647,9 +683,9 @@ GetVendorAddressById(){
       this.singleVendorAddressDet=data1;
       this.singleVendorAddressDet=this.singleVendorAddressDet.data.SingleVendorAddressDetails;
 
-      this.singleVendorAddressDet[0].StartDate = this.singleVendorAddressDet[0].StartDate.split(" ")[0];
+      // this.singleVendorAddressDet[0].StartDate = this.singleVendorAddressDet[0].StartDate.split(" ")[0];
 
-      this.singleVendorAddressDet[0].EndDate = this.singleVendorAddressDet[0].EndDate.split(" ")[0];   
+      // this.singleVendorAddressDet[0].EndDate = this.singleVendorAddressDet[0].EndDate.split(" ")[0];   
       console.log( 'singleVendorAddressDet', this.singleVendorAddressDet);
       console.log(this.StartDate);
 
@@ -657,16 +693,23 @@ GetVendorAddressById(){
         // alert(this.singleVendorAddressDet[i].AddressTypeId)
         if(this.singleVendorAddressDet[i].AddressTypeId == "C") {
           this.CurrentAddressDetails = this.singleVendorAddressDet[i];
+          this.CurrentAddrStartDate = this.singleVendorAddressDet[i].StartDate.split(" ")[0];
+          this.CurrentAddrEndDate = this.singleVendorAddressDet[i].EndDate.split(" ")[0];
         }
         if(this.singleVendorAddressDet[i].AddressTypeId == "M") {
           this.MailingAddressDetails = this.singleVendorAddressDet[i];
+          this.MailAddrStartDate = this.singleVendorAddressDet[i].StartDate.split(" ")[0];
+          this.MailAddrEndDate = this.singleVendorAddressDet[i].EndDate.split(" ")[0];
         }
         if(this.singleVendorAddressDet[i].AddressTypeId == "P") {
           this.PastAddressDetails = this.singleVendorAddressDet[i];
+          this.PastAddrStartDate = this.singleVendorAddressDet[i].StartDate.split(" ")[0];
+          this.PastAddrEndDate = this.singleVendorAddressDet[i].EndDate.split(" ")[0];
         }
       }
       console.log("this.CurrentAddressDetails",this.CurrentAddressDetails);
       console.log("this.MailingAddressDetails",this.MailingAddressDetails);
+      console.log("this.PastAddressDetails",this.PastAddressDetails);
       
       
     })

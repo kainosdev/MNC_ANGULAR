@@ -1,7 +1,7 @@
 <!-- <div> -->
     <div class="container">
 
-        <p class="mainheading Vendortitle">Vendor Details</p>
+        <p class="mainheading Vendortitle">Vendor Details </p>
         <div class="row  mt-2">
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
@@ -52,7 +52,7 @@
         <div class="row Generaldiv mt-2" *ngFor="let s of singleVendorDet">
         <div class="row mt-2">
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                <label class="labelwidth">First Name<span class="requiredfield ">  *</span></label>
+                <label class="labelwidth">First Name <span class="requiredfield ">  *</span></label>
                
           </div>
           <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -70,7 +70,7 @@
                 </div>
                 <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                       
-                        <input type="text" class="Physicaladdress"  formControlName="EIN_SSN" [(ngModel)]="s.EIN_SSN">
+                        <input type="text" class="Physicaladdress" [textMask]="{mask: mask}" formControlName="EIN_SSN" [(ngModel)]="s.EIN_SSN">
                         <div  class="help-block text-danger">
                             <div *ngIf="submitted1 && rcf1.EIN_SSN.errors">Ssn is required</div>
                         </div>
@@ -250,7 +250,7 @@
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
                         <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
-                            [(ngModel)]="this.singleVendorAddressDet[0].StartDate"
+                            [(ngModel)]="CurrentAddrStartDate"
                             formControlName="StartDate"                             
                                  (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                     <div  class="help-block text-danger">
@@ -285,7 +285,7 @@
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                         <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
-                        [(ngModel)]="this.singleVendorAddressDet[0].EndDate"
+                        [(ngModel)]="CurrentAddrEndDate"
                         formControlName="EndDate"                             
                              (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                        
@@ -385,7 +385,7 @@
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                   
-                                    <input type="text" class="Physicaladdress"  formControlName="IMAddress2" >
+                                    <input type="text" class="Physicaladdress"  formControlName="IMAddress2" [(ngModel)]="MailingAddressDetails.Address2">
                                     <div  class="help-block text-danger">
                                         <div *ngIf="submitted1 && rcf1.IMAddress2.errors">Ssn is required</div>
                                     </div>
@@ -402,7 +402,7 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentcity_id" class="city" formControlName="IMCityId" 
+                        <select id="currentcity_id" class="city" formControlName="IMCityId" [(ngModel)]="MailingAddressDetails.CityId"
                         (keypress)="EmptyErrorMessage('currentcity_id')">
                         <option *ngFor="let c of citylist" [value]="c.CityId ">
                             {{c.CityName}}
@@ -420,7 +420,7 @@
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                   
-                                <select class="Country" id="currentcountry_id" formControlName="IMCountryId" 
+                                <select class="Country" id="currentcountry_id" formControlName="IMCountryId"  [(ngModel)]="MailingAddressDetails.CountryId"
                                 (change)="EmptyErrorMessage('currentcountry_id')">
                                 <option *ngFor="let countrylist of countrytype" [value]="countrylist.CountryId" >
                                     {{countrylist.CountryName}}</option>
@@ -441,7 +441,7 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentzipcode_id" class="zip" formControlName="IMZipcode" 
+                        <select id="currentzipcode_id" class="zip" formControlName="IMZipcode" [(ngModel)]="MailingAddressDetails.Zipcode"
                                         (keypress)="EmptyErrorMessage('currentzipcode_id');">
                                         <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode ">
                                             {{z.Zipcode}}
@@ -461,7 +461,7 @@
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                   
-                                <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
+                                <input type="date" id="mailingfromdata_id" class="mailingfromdate" [(ngModel)]="MailAddrStartDate"
                                     
                                     formControlName="IMStartDate"                             
                                          (keypress)="EmptyErrorMessage('mailingfromdata_id')">
@@ -479,7 +479,7 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select type="text" id="currentcounty_id" class="County" formControlName="IMDistrictId" 
+                        <select type="text" id="currentcounty_id" class="County" formControlName="IMDistrictId"  [(ngModel)]="MailingAddressDetails.DistrictId"
                                         (keypress)="EmptyErrorMessage('currentcounty_id')">
                                         <option *ngFor="let d of districts" [value]="d.DistrictId ">
                                             {{d.DistrictName}}
@@ -500,7 +500,7 @@
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                 <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
                                 
-                                formControlName="IMEndDate"                             
+                                formControlName="IMEndDate"       [(ngModel)]="MailAddrEndDate"                      
                                      (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                                
                             <div  class="help-block text-danger">
@@ -520,7 +520,7 @@
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
                         <select class="State" id="stateprovice_id" formControlName="IMStateId" 
-                                        (change)="EmptyErrorMessage('stateprovice_id')">
+                                        (change)="EmptyErrorMessage('stateprovice_id')" [(ngModel)]="MailingAddressDetails.StateId">
                                         <option *ngFor="let s of statedetail" [value]="s.StateId ">
                                             {{s.StateName}}
                                         </option>
@@ -552,7 +552,7 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                            <input type="text"  class="first" formControlName="IPAddress1"  >
+                            <input type="text"  class="first" formControlName="IPAddress1" [(ngModel)]="PastAddressDetails.Address1" >
                             <div  class="help-block text-danger">
                                <div *ngIf="submitted1 && rcf1.IPAddress1.errors">Address is required</div>
                             </div>
@@ -565,7 +565,7 @@
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                   
-                                    <input type="text" class="Physicaladdress"  formControlName="IPAddress2" >
+                                    <input type="text" class="Physicaladdress"  formControlName="IPAddress2" [(ngModel)]="PastAddressDetails.Address2">
                                     <!-- <div  class="help-block text-danger">
                                         <div *ngIf="submitted1 && rcf1.IPAddress2.errors">Ssn is required</div>
                                     </div> -->
@@ -582,7 +582,7 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentcity_id" class="city" formControlName="IPCityId" 
+                        <select id="currentcity_id" class="city" formControlName="IPCityId" [(ngModel)]="PastAddressDetails.CityId"
                         (keypress)="EmptyErrorMessage('currentcity_id')">
                         <option *ngFor="let c of citylist" [value]="c.CityId ">
                             {{c.CityName}}
@@ -600,7 +600,7 @@
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                   
-                                <select class="Country" id="currentcountry_id" formControlName="IPCountryId" 
+                                <select class="Country" id="currentcountry_id" formControlName="IPCountryId" [(ngModel)]="PastAddressDetails.CountryId"
                                 (change)="EmptyErrorMessage('currentcountry_id')">
                                 <option *ngFor="let countrylist of countrytype" [value]="countrylist.CountryId" >
                                     {{countrylist.CountryName}}</option>
@@ -622,7 +622,7 @@
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
                         <select id="currentzipcode_id" class="zip" formControlName="IPZipcode" 
-                                        (keypress)="EmptyErrorMessage('currentzipcode_id');">
+                                        (keypress)="EmptyErrorMessage('currentzipcode_id');" [(ngModel)]="PastAddressDetails.Zipcode">
                                         <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode ">
                                             {{z.Zipcode}}
                                         </option>
@@ -643,7 +643,7 @@
                                   
                                 <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
                                     
-                                    formControlName="IPStartDate"                             
+                                    formControlName="IPStartDate" [(ngModel)]="PastAddrStartDate"                            
                                          (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                             <div  class="help-block text-danger">
                                 <div *ngIf="submitted1 && rcf1.IPStartDate.errors">From Date is required</div>
@@ -659,7 +659,7 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select type="text" id="currentcounty_id" class="County" formControlName="IPDistrictId" 
+                        <select type="text" id="currentcounty_id" class="County" formControlName="IPDistrictId" [(ngModel)]="PastAddressDetails.DistrictId"
                                         (keypress)="EmptyErrorMessage('currentcounty_id')">
                                         <option *ngFor="let d of districts" [value]="d.DistrictId ">
                                             {{d.DistrictName}}
@@ -680,7 +680,7 @@
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                 <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
                                 
-                                formControlName="IPEndDate"                             
+                                formControlName="IPEndDate"   [(ngModel)]="PastAddrEndDate"                          
                                      (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                                
                             <div  class="help-block text-danger">
@@ -699,7 +699,7 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select class="State" id="stateprovice_id" formControlName="IPStateId" 
+                        <select class="State" id="stateprovice_id" formControlName="IPStateId" [(ngModel)]="PastAddressDetails.StateId"
                                         (change)="EmptyErrorMessage('stateprovice_id')">
                                         <option *ngFor="let s of statedetail" [value]="s.StateId ">
                                             {{s.StateName}}
@@ -835,7 +835,7 @@
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                   
-                                    <input type="number" class="Physicaladdress"  class="DUNSno" formControlName="DUNS">
+                                    <input type="text" class="Physicaladdress"  class="DUNSno" formControlName="DUNS" [(ngModel)]="s2.DUNS">
                                     <div  class="help-block text-danger">
                                         <div *ngIf="submitted2 && rcf2.DUNS.errors">Duns No is required</div>
                                     </div>
@@ -849,7 +849,7 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                            <input type="text"  class="Federal" id="federal_id" formControlName="Federal">
+                            <input type="text"  class="Federal" id="federal_id" formControlName="Federal" [(ngModel)]="s2.Federal">
                             <div  class="help-block text-danger">
                                <div *ngIf="submitted2 && rcf2.Federal.errors">Federal is required</div>
                             </div>
@@ -862,7 +862,7 @@
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                   
-                                    <input type="number"   class="DUNSno" formControlName="CommodityCodes">
+                                    <input type="number"   class="DUNSno" formControlName="CommodityCodes" [(ngModel)]="s2.CommodityCodes">
                                     <div  class="help-block text-danger">
                                         <div *ngIf="submitted2 && rcf2.CommodityCodes.errors">Commodity Code is required</div>
                                     </div>
@@ -891,7 +891,7 @@
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                   
                                     <input type="text"   class="Businesswebsite" id="businesswebsite_id"
-                                    formControlName="Website">
+                                    formControlName="Website" [(ngModel)]="s2.Website">
                                     <div  class="help-block text-danger">
                                         <div *ngIf="submitted2 && rcf2.Website.errors">Website is required</div>
                                     </div>
@@ -1076,7 +1076,7 @@
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
                         <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
-                            [(ngModel)]="this.singleVendorAddressDet[0].StartDate"
+                            [(ngModel)]="CurrentAddrStartDate"
                             formControlName="StartDate"                             
                                  (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                     <div  class="help-block text-danger">
@@ -1111,7 +1111,7 @@
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                         <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
-                        [(ngModel)]="this.singleVendorAddressDet[0].EndDate"
+                        [(ngModel)]="CurrentAddrEndDate"
                         formControlName="EndDate"                             
                              (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                        
@@ -1210,15 +1210,15 @@
             
                  
                             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                    <label class="">Address Line2</label>
+                                    <label class="">Address Line2 </label>
                                    
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                   
-                                    <input type="text" class="Physicaladdress"  formControlName="BMAddress2" >
-                                    <div  class="help-block text-danger">
+                                    <input type="text" class="Physicaladdress"  formControlName="BMAddress2" [(ngModel)]="MailingAddressDetails.Address2">
+                                    <!-- <div  class="help-block text-danger">
                                         <div *ngIf="submitted2 && rcf2.BMAddress2.errors">Ssn is required</div>
-                                    </div>
+                                    </div> -->
                             </div>
                     </div>
         
@@ -1233,7 +1233,7 @@
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
                         <select id="currentcity_id" class="city" formControlName="BMCityId" 
-                        (keypress)="EmptyErrorMessage('currentcity_id')">
+                        (keypress)="EmptyErrorMessage('currentcity_id')" [(ngModel)]="MailingAddressDetails.CityId">
                         <option *ngFor="let c of citylist" [value]="c.CityId ">
                             {{c.CityName}}
                         </option>
@@ -1251,7 +1251,7 @@
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                   
                                 <select class="Country" id="currentcountry_id" formControlName="BMCountryId" 
-                                (change)="EmptyErrorMessage('currentcountry_id')">
+                                (change)="EmptyErrorMessage('currentcountry_id')" [(ngModel)]="MailingAddressDetails.CountryId">
                                 <option *ngFor="let countrylist of countrytype" [value]="countrylist.CountryId" >
                                     {{countrylist.CountryName}}</option>
                             </select>
@@ -1272,8 +1272,8 @@
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
                         <select id="currentzipcode_id" class="zip" formControlName="BMZipcode" 
-                                        (keypress)="EmptyErrorMessage('currentzipcode_id');">
-                                        <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode ">
+                                        (keypress)="EmptyErrorMessage('currentzipcode_id');" [(ngModel)]="MailingAddressDetails.Zipcode">
+                                        <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode " >
                                             {{z.Zipcode}}
                                         </option>
                                     </select>
@@ -1293,7 +1293,7 @@
                                   
                                 <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
                                     
-                                    formControlName="BMStartDate"                             
+                                    formControlName="BMStartDate"   [(ngModel)]="MailAddrStartDate"                          
                                          (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                             <div  class="help-block text-danger">
                                 <div *ngIf="submitted2 && rcf2.BMStartDate.errors">From Date is required</div>
@@ -1310,7 +1310,7 @@
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
                         <select type="text" id="currentcounty_id" class="County" formControlName="BMDistrictId" 
-                                        (keypress)="EmptyErrorMessage('currentcounty_id')">
+                                        (keypress)="EmptyErrorMessage('currentcounty_id')" [(ngModel)]="MailingAddressDetails.DistrictId">
                                         <option *ngFor="let d of districts" [value]="d.DistrictId ">
                                             {{d.DistrictName}}
                                         </option>
@@ -1322,7 +1322,7 @@
             
                  
                             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                    <label class="">To Date1 
+                                    <label class="">To Date
                                         <!-- <span  class="requiredfield"> *</span> -->
                                     </label>
                                    
@@ -1330,7 +1330,7 @@
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                 <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
                                 
-                                formControlName="BMEndDate"                             
+                                formControlName="BMEndDate"    [(ngModel)]="MailAddrEndDate"                         
                                      >
                                
                             <div  class="help-block text-danger">
@@ -1350,7 +1350,7 @@
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
                         <select class="State" id="stateprovice_id" formControlName="BMStateId" 
-                                        (change)="EmptyErrorMessage('stateprovice_id')">
+                                        (change)="EmptyErrorMessage('stateprovice_id')" [(ngModel)]="MailingAddressDetails.StateId">
                                         <option *ngFor="let s of statedetail" [value]="s.StateId ">
                                             {{s.StateName}}
                                         </option>
@@ -1382,7 +1382,7 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                            <input type="text"  class="first" formControlName="BPAddress1"  >
+                            <input type="text"  class="first" formControlName="BPAddress1" [(ngModel)]="PastAddressDetails.Address1"  >
                             <div  class="help-block text-danger">
                                <div *ngIf="submitted2 && rcf2.BPAddress1.errors">Address is required</div>
                             </div>
@@ -1395,7 +1395,7 @@
                             </div>
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                   
-                                    <input type="text" class="Physicaladdress"  formControlName="BPAddress2" >
+                                    <input type="text" class="Physicaladdress"  formControlName="BPAddress2" [(ngModel)]="PastAddressDetails.Address2">
                                     <div  class="help-block text-danger">
                                         <div *ngIf="submitted2 && rcf2.BPAddress2.errors">Ssn is required</div>
                                     </div>
@@ -1413,7 +1413,7 @@
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
                         <select id="currentcity_id" class="city" formControlName="BPCityId" 
-                        (keypress)="EmptyErrorMessage('currentcity_id')">
+                        (keypress)="EmptyErrorMessage('currentcity_id')" [(ngModel)]="PastAddressDetails.CityId">
                         <option *ngFor="let c of citylist" [value]="c.CityId ">
                             {{c.CityName}}
                         </option>
@@ -1431,7 +1431,7 @@
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                   
                                 <select class="Country" id="currentcountry_id" formControlName="BPCountryId" 
-                                (change)="EmptyErrorMessage('currentcountry_id')">
+                                (change)="EmptyErrorMessage('currentcountry_id')" [(ngModel)]="PastAddressDetails.CountryId">
                                 <option *ngFor="let countrylist of countrytype" [value]="countrylist.CountryId" >
                                     {{countrylist.CountryName}}</option>
                             </select>
@@ -1452,7 +1452,7 @@
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
                         <select id="currentzipcode_id" class="zip" formControlName="BPZipcode" 
-                                        (keypress)="EmptyErrorMessage('currentzipcode_id');">
+                                        (keypress)="EmptyErrorMessage('currentzipcode_id');" [(ngModel)]="PastAddressDetails.Zipcode">
                                         <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode ">
                                             {{z.Zipcode}}
                                         </option>
@@ -1473,7 +1473,7 @@
                                   
                                 <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
                                     
-                                    formControlName="BPStartDate"                             
+                                    formControlName="BPStartDate"        [(ngModel)]="PastAddrStartDate"                     
                                          (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                             <div  class="help-block text-danger">
                                 <div *ngIf="submitted2 && rcf2.BPStartDate.errors">From Date is required</div>
@@ -1490,7 +1490,7 @@
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
                         <select type="text" id="currentcounty_id" class="County" formControlName="BPDistrictId" 
-                                        (keypress)="EmptyErrorMessage('currentcounty_id')">
+                                        (keypress)="EmptyErrorMessage('currentcounty_id')" [(ngModel)]="PastAddressDetails.DistrictId">
                                         <option *ngFor="let d of districts" [value]="d.DistrictId ">
                                             {{d.DistrictName}}
                                         </option>
@@ -1510,7 +1510,7 @@
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                 <input type="date" id="mailingfromdata_id" class="mailingfromdate" 
                                 
-                                formControlName="BPEndDate"                             
+                                formControlName="BPEndDate"        [(ngModel)]="PastAddrEndDate"                     
                                      (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                                
                             <div  class="help-block text-danger">
@@ -1530,7 +1530,7 @@
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
                         <select class="State" id="stateprovice_id" formControlName="BPStateId" 
-                                        (change)="EmptyErrorMessage('stateprovice_id')">
+                                        (change)="EmptyErrorMessage('stateprovice_id')" [(ngModel)]="PastAddressDetails.StateId">
                                         <option *ngFor="let s of statedetail" [value]="s.StateId ">
                                             {{s.StateName}}
                                         </option>

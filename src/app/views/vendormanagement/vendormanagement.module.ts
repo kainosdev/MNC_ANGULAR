@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { TextMaskModule } from 'angular2-text-mask';
 import {
   AvatarModule,
   ButtonGroupModule,
@@ -42,6 +42,7 @@ import { VendormanagementComponent } from './vendormanagement.component';
     ChartjsModule,
     AvatarModule,
     TableModule,
+    TextMaskModule
     // WidgetsModule
   ],
   declarations: [VendormanagementComponent]

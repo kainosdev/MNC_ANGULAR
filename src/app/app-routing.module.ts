@@ -127,13 +127,13 @@ const routes: Routes = [
       title: 'Login Page'
     }
   },
-  {
-    path: 'registrationform',
-    component: RegistrationformComponent,
-    data: {
-      title: 'registrationform'
-    }
-  },
+  // {
+  //   path: 'registrationform',
+  //   component: RegistrationformComponent,
+  //   data: {
+  //     title: 'registrationform'
+  //   }
+  // },
   {
     path: 'testing',
     component: TesingComponent,

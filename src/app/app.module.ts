@@ -54,11 +54,11 @@ import {
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { LogoutComponent } from './views/logout/logout.component';
-import { RegistrationformComponent } from './registrationform/registrationform.component';
+// import { RegistrationformComponent } from './registrationform/registrationform.component';
 // import { BidmanagementComponent } from './bidmanagement/bidmanagement.component';
 import { BidmanagementComponent } from './views/bid-management/bid-management.component';
 import { TesingComponent } from './tesing/tesing.component';
-import { BidlistComponent } from './bidlist/bidlist.component';
+// import { BidlistComponent } from './bidlist/bidlist.component';
 
 // import { VendorListComponent } from './views/vendor-list/vendor-list.component';
 
@@ -82,7 +82,11 @@ const ngWizardConfig: NgWizardConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, LogoutComponent, RegistrationformComponent, TesingComponent, BidlistComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, LogoutComponent, 
+    // RegistrationformComponent,
+     TesingComponent, 
+    // BidlistComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
