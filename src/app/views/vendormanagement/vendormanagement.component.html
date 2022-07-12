@@ -261,7 +261,7 @@
 
 
             <div class="row mt-2">
-                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+              <div class="form-group col-xs-4 col-md-2 col-sm-2">
                     <label class="labelwidth">County </label>
                    
               </div>
@@ -1554,12 +1554,12 @@
         <div *ngIf="Vendortypevalue=='B'">
         <div id="contact_inforation">
     
-            <p class="mainheading heading" style=" padding-bottom: 5px; padding-top: 16px;">Contact Information</p>
     
            
                 <div class="row Generaldiv">
     
-    
+                        <p class="mainheading heading" style=" padding-bottom: 5px; padding-top: 16px;">Contact Information</p>
+                        <div class="card tab-content p-3">
                     <div class="col-sm-6 innerlinefont">
                         <div class="labelheight">
                             <label class="labelwidth"> Contact Person Name <span class="requiredfield "> *</span></label>
@@ -1613,25 +1613,25 @@
                         </div>
     
                         <!-- <form [formGroup]="addtionalcontact"></form> -->
-                        
-                        <div class="accordion acc2">
+               
+                        <!-- <div class="accordion acc2">
                             <h2 class="title mainheading" (click)="opened3 = !opened3">Additional Contact Details Added</h2>
                             <div class="content-container" [class.opened3]="opened3">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="labelheight">
-                                            <label class="labelwidth" style="margin-left: 9px;">Contact Person Name</label>
+                                        <div class="">
+                                            <label class="labelwidth" style="margin-left: 9px;"> Name</label>
                                             <input type="text" class="Contactperson" id="addtionalcontactname_id"
                                                 formControlName="AddtionalName"
                                                 (keypress)="EmptyErrorMessage('addtionalcontactname_id')">
                                         </div>
-                                        <div class="labelheight">
+                                        <div class="">
                                             <label class="labelwidth" style="margin-left: 9px;">Title</label>
                                             <input type="text" class="Title" id="addtionaltitle_id"
                                                 formControlName="AddtionalTitle"
                                                 (keypress)="EmptyErrorMessage('addtionaltitle_id')">
                                         </div>
-                                        <div class="labelheight">
+                                        <div class="">
                                             <label class="labelwidth" style="margin-left: 9px;">Business Email</label>
                                             <input type="text" class="Businessemail" id="addtionalbusinessmail_id"
                                                 formControlName="AddtionalBusinessMail"
@@ -1656,8 +1656,107 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
+                </div>
+                    <p class="mainheading heading" style=" padding-bottom: 5px; padding-top: 16px;">Additional Contact Information</p>
+
+                    <form [formGroup]="contactsform" autocomplete="off" class="ml-1 mr-1">
+                            <div formArrayName="contactarray">
+                                <div *ngFor="let item of contactFormGroup.controls; let i = index; count as count;last as isLast">
+                                    <div [formGroupName]="i">
+                                        <div class="card tab-content p-3" *ngIf='!ContactToggle[i]'>
+                                            <div class="row">
+                                           
+                                                    <div class="col-sm-6">
+                                                        <div class="">
+                                                            <label class="labelwidth" style="margin-left: 9px;">Contact Name</label>
+                                                            <input type="text" class="" id="addtionalcontactname_id"
+                                                                formControlName="AddtionalName"
+                                                                (keypress)="EmptyErrorMessage('addtionalcontactname_id')">
+                                                        </div>
+                                                        <div class="mt-1">
+                                                            <label class="labelwidth" style="margin-left: 9px;">Title</label>
+                                                            <input type="text" class="" id="addtionaltitle_id"
+                                                                formControlName="AddtionalTitle"
+                                                                (keypress)="EmptyErrorMessage('addtionaltitle_id')">
+                                                        </div>
+                                                        <div class="mt-1">
+                                                            <label class="labelwidth" style="margin-left: 9px;">Business Email</label>
+                                                            <input type="text" class="" id="addtionalbusinessmail_id"
+                                                                formControlName="AddtionalBusinessMail"
+                                                                (keypress)="EmptyErrorMessage('addtionalbusinessmail_id')">
+                                                        </div>
+                    
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="mt-1">
+                                                            <label class="labelwidth" style="margin-left: 9px;">Business Phone</label>
+                                                            <input type="number" class="" id="addtionalbusinessphone_id"
+                                                                formControlName="AddtionalBusinessPhone"
+                                                                (keypress)="EmptyErrorMessage('addtionalbusinessphone_id')">
+                                                        </div>
+                                                        <div class="mt-1">
+                                                            <label class="labelwidth" style="width: 146px;margin-left: 9px;">Active</label>
+                                                            <label class="switch">
+                                                                <input class="" type="checkbox" name="active" id="active"  formControlName="AddtionalContactActive">
+                                                                <span class="slider round"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12  align-self-end text-left">
+                                                        <button class="btn btn-filled text-right common_btn_action" type="button" (click)="savecontact(i)">
+                                                            <img class="img-fluid btn-img "                               
+                                                                >Save</button>
+                                                                <button class="btn btn-filled btn-delete common_btn_cancel ml-2" type="button"
+                                                                (click)="removeContact(i)">
+                                                                Remove
+                                                            </button>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                    <div class="card tab-content p-3" *ngIf='ContactToggle[i]'>
+                                        <div class="added-quotes">
+                                            <div class="row pl-3">
+                                                <div class="col-xs-12 col-md-1 p-0 ">
+                                                        <img class="img-fluid vechiclelist icon-contact" src="https://findicons.com/files/icons/2443/bunch_of_cool_bluish_icons/256/add_address.png">
+            
+                                                </div>
+                                                <div class="col-xs-12 col-md-8 pl-2">
+                                                    <h5 >Address {{i+1}}</h5>
+                                                   
+                                                </div>
+                                                <div class="col-xs-12 col-md-3 text-right">
+                                                    <button class="btn btn-filled btn-edit" type="button"
+                                                        (click)='toggleContact(i)'>
+                                                      Edit
+                                                    </button>
+                                                    <button class="btn btn-filled btn-delete" type="button"
+                                                        (click)="removeContact(i)">
+                                                        Remove
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                        
+                                      
+                                    </div>
+                                </div>
+                                </div>  
+                            </div>  
+                        </form>  
+                        <div class="row" >
+                               
+                                <!--   -->
+                                <div class="col-sm-12">
+                                        <div class="align-self-end text-right">
+                                                <button class="btn btn-filled text-right common_btn_action" type="button" (click)="addcontact()">
+                                                    <img class="img-fluid btn-img"                               
+                                                        >Add</button>
+                                        </div>
+                             
+                                </div>
+                        </div>
                 </div>        
         </div>
         </div>
@@ -1672,5 +1771,6 @@
         </div><br>
     
         </form>
+  
     
     </div>
