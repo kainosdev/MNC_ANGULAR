@@ -894,6 +894,7 @@ number(event: any) {
         }
         else
         {
+          
           this.employeeform.value.UserTypeId="EMPLOY"
           alert(JSON.stringify(this.employeeform.value))
           this.finalsavecall(this.employeeform.value)
