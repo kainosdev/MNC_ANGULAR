@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+const config_url = "http://localhost/MNC_PHP_API";
 // import { IpServiceService } from 'ip-service.service';
 @Component({
   selector: 'app-login',
@@ -8,34 +9,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
   loginForm = {
     UserId: '',
     Password: '',
     IPAddress:''
   };
-  ipAddress:any; 
+  ipAddress:any;
   constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.getIP();  
+    this.getIP();
   }
 
-  getIP()  
-  {  
+  getIP()
+  {
     this.http.get("http://api.ipify.org/?format=json").subscribe((res:any)=>{
-      this.ipAddress=res.ip;  
+      this.ipAddress=res.ip;
       console.log("ip>>>",this.ipAddress);
     });
-    // this.ip.getIPAddress().subscribe((res:any)=>{  
-      
-    // });  
-  }  
+    // this.ip.getIPAddress().subscribe((res:any)=>{
+
+    // });
+  }
 
   userLogin() {
     this.loginForm.IPAddress = this.ipAddress;
     console.log(this.loginForm);
     // alert("hi");
-    
+
     (<HTMLInputElement>document.getElementById("invalidid")).innerText = "";
     // alert("hi");
     // console.log(this.loginForm);
@@ -49,8 +51,8 @@ export class LoginComponent implements OnInit {
 
 else {
   console.log("else");
-    this.http.post("http://localhost/VERTEX-PHP-API/"+'login/loginauth', this.loginForm).subscribe(
-      
+    this.http.post(config_url+'/login/loginauth', this.loginForm).subscribe(
+
       data => {
         console.log("data");
           console.log('POST Request is successful >>>>>>>>', data);
@@ -61,10 +63,10 @@ else {
           console.log('Error>>>>>', success.status);
           // console.log(success.status);
           // if(success.status == 404) {
-         
-            
+
+
           // }
-          
+
           if(success.status == 404) {
             let msg = success.error;
             console.log(msg);
@@ -93,8 +95,8 @@ localStorage.setItem('access_token', finaltoken1);
 // alert(success.status);
 
 
-            
-  
+
+
           }
       }
     );
@@ -110,7 +112,7 @@ localStorage.setItem('access_token', finaltoken1);
 	var data = JSON.parse(jsonPayload);
   console.log(data);
   localStorage.setItem("usertypeses", data['UserTypeId']);
- 
+
   console.log("datalogin>>>>",data);
   localStorage.setItem("CreatedUseridses", data['UserId']);
   this.router.navigate(['/VendorList']);
@@ -121,6 +123,6 @@ localStorage.setItem('access_token', finaltoken1);
 EmptyErrorMessage() {
   //   // alert("hi");
     (document.getElementById('invalidid') as HTMLFormElement).innerHTML = "";
-   
+
   }
 }
