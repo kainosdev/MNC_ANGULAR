@@ -437,13 +437,15 @@
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
                 
-                <select type="text"  class="County" formControlName="county_name" id="county_id" (change)="inputErrorMessage('county_id')">
+                <select type="text"  class="County" formControlName="DistrictId" id="county_id" (change)="inputErrorMessage('county_id')">
                     <!-- <option ></option> -->
+                    <option  value="">
+                                Select</option>
                     <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
                         {{statelistid.DistrictName}}</option>
                 </select>                  
                 <div  class="help-block text-danger">
-                        <div *ngIf="submitted && rcf.county_name.errors">Country is required</div>
+                        <div *ngIf="submitted && rcf.DistrictId.errors">Country is required</div>
                 </div>
             </div>
     </div>
@@ -472,7 +474,8 @@
             <select class="State"  formControlName="StateId" id="curstate_id"
             (change)="inputErrorMessage('curstate_id');onchangecountry()" >
         
-
+            <option  value="">
+                        Select</option>
             <!-- <option value=""></option> -->
             <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
             {{statelistid.StateName}}</option>
@@ -623,7 +626,7 @@
    <div *ngIf="vendorform_individual_show">
     <form [formGroup]="vendorform_individual" > 
     <div class="row Generaldiv mt-2">
-            <p class="mainheading heading">Contact Information</p>
+            <p class="mainheading heading">Primary Contact Information</p>
         <div class="row mt-2">
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
                 <label class="labelwidth">First Name<span class="requiredfield ">  *</span></label>
@@ -855,7 +858,7 @@
                 <input type="text" class="" [textMask]="{mask: mask}" formControlName="EIN_SSN" id="socialno_id" (keypress)="inputErrorMessage('socialno_id')">
               
                 <div  class="help-block text-danger">
-                        <div *ngIf="submitted && vif.EIN_SSN.errors">Social Security Number is required</div>
+                        <div *ngIf="submitted && vif.EIN_SSN.errors?.required">Social Security Number is required</div>
                </div>
         </div>
     
@@ -886,7 +889,7 @@
     <div *ngIf="vendorform_business_show">
         <form [formGroup]="vendorform_business" > 
         <div class="row Generaldiv mt-2">
-                <p class="mainheading heading">Contact Information</p>
+                <p class="mainheading heading">Primary Contact Information</p>
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
                     <label class="labelwidth">Legal Business Name<span class="requiredfield ">  *</span></label>
@@ -1146,7 +1149,7 @@
                 </div>
                 <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                 
-                        <input type="text" class="social" formControlName="BusinessSize" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
+                        <input type="number" max-length="2" class="social" formControlName="BusinessSize" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
                     
                         <div  class="help-block text-danger">
                                 <div *ngIf="submitted && vbf.BusinessSize.errors">Business Size is required</div>

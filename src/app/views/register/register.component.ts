@@ -88,7 +88,7 @@ public mask = [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
       StateId:  ['', [Validators.required]],
       CityId:  ['', [Validators.required]],
       Zipcode: ['', [Validators.required]],
-      county_name: ['', [Validators.required]],
+      DistrictId: ['', [Validators.required]],
       StartDate: ['', [Validators.required]],
       EndDate: [''],
       CountryId:  ['', [Validators.required]],
@@ -165,7 +165,7 @@ this.vendorform_individual = this.frmbuilder.group({
   StartDate: ['', [Validators.required]],
   EndDate: [''],
   VendorTypeId: [],
-  EIN_SSN:[],
+  EIN_SSN: ['', [Validators.required]],
  
 
   OutreachEmailOptIn:[],
@@ -210,8 +210,8 @@ this.vendorform_business = this.frmbuilder.group({
   EIN_SSN:[],
 
   OutreachEmailOptIn:[true],
-  business_ssn: [],
-  BusinessSize: [],
+  business_ssn: ['', [Validators.required]],
+  BusinessSize: ['', [Validators.required]],
   BusinessRegisteredInDistrict:[false],
   BusinessIsFranchisee: [false],
   BEClassificationId: [],
@@ -930,6 +930,8 @@ number(event: any) {
             {
               this.vendorform_business.value.UserTypeId="VENDOR";
               this.vendorform_business.value.VendorTypeId=true;
+              var int_business=parseInt(this.vendorform_business.value.BusinessSize) 
+              this.vendorform_business.value.BusinessSize=int_business;
               alert(JSON.stringify(this.vendorform_business.value))
               this.finalsavecall(this.vendorform_business.value)
                
