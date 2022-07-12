@@ -19,7 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Import app component
 import { AppComponent } from './app.component';
-import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+
 
 // Import containers
 import {
@@ -79,9 +79,7 @@ const APP_CONTAINERS = [
   DefaultLayoutComponent,
 ];
 
-const ngWizardConfig: NgWizardConfig = {
-  theme: THEME.default
-};
+
 
 @NgModule({
   declarations: [AppComponent, ...APP_CONTAINERS, //LogoutComponent,
@@ -120,7 +118,7 @@ const ngWizardConfig: NgWizardConfig = {
     DataTablesModule,
     ReactiveFormsModule,
     FormsModule,
-    NgWizardModule.forRoot(ngWizardConfig)
+   
     
     // ToastrModule.forRoot({
     //   positionClass: 'toast-center-center',
