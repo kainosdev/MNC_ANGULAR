@@ -965,6 +965,7 @@ number(event: any) {
     {
     try
     {
+      
       this.http.post("http://localhost:8080/"+'vendor/AdduserDetails', value).subscribe(
           
         data => {
