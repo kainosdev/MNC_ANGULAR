@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl,} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,FormArray, FormControl} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { config_url } from '../shared/constant';
 import Swal from 'sweetalert2';
@@ -29,6 +29,7 @@ export class VendormanagementComponent implements OnInit {
   classList: any;
   nextElementSibling: any;
   citylist:any;
+ 
   zipcodeVal:any;
   countrytype:any;
   districts:any;
@@ -43,6 +44,7 @@ export class VendormanagementComponent implements OnInit {
   currentaddress: any;
   mailingaddress: any;
   Pastaddress: any;
+  // Contactlist: FormArray;
   ContactBusiness: any;
   addtionalcontact: any;
   citytype: any;
@@ -60,12 +62,30 @@ export class VendormanagementComponent implements OnInit {
   IndBusinessPastZipcode:any;
   IndBusinessPastCity:any;
   IndBusinessPastState:any;
+  contactsform: FormGroup;
+  contactList?: FormArray;
+  vehicleList?: FormArray;
+  AdditionalContactList:any=[];
+ 
+  ContactToggle : boolean[] = [];
+
   constructor(
-    private frmbuilder: FormBuilder,private http: HttpClient
-  ) { }
+    private frmbuilder: FormBuilder,private http: HttpClient,
+  ) { 
+   
+    this.contactsform = this.frmbuilder.group({
+      contactarray: this.frmbuilder.array([this.createcontact()])
+    });
+    this.contactList = this.contactsform.get('contactarray') as FormArray;
+   
+  }
 
   ngOnInit(): void {
-    
+    debugger
+    this.contactsform = this.frmbuilder.group({
+      contactarray: this.frmbuilder.array([this.createcontact()])
+    });
+    this.contactList = this.contactsform.get('contactarray') as FormArray;
     let vendoridSes = localStorage.getItem('vendoridSes');
     console.log(vendoridSes);
   //  this.getstate_list();
@@ -151,7 +171,7 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
       // active: [],
       VendorTypeId:[],
       VendorId:[localStorage.getItem('vendoridSes')],
-CreatedUserId:[localStorage.getItem("CreatedUseridses")],
+      CreatedUserId:[localStorage.getItem("CreatedUseridses")],
       FirstName: ['', [Validators.required]],
       EIN_SSN: ['', [Validators.required]],
       LastName:['', [Validators.required]],
@@ -191,8 +211,65 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
      });
 
   //  this.setUserCategoryValidators();
+   
   }
+  toggleContact(i:any) {
+    if(this.ContactToggle[i]!=null)
+    {
+      this.ContactToggle[i] = !this.ContactToggle[i]; 
+    }
+     
+  }
+  removeContact(index:any) {
+    if(this.ContactToggle!=null)
+    {
+      this.ContactToggle.splice(index, 1);
+    }
+    if(this.contactList!=null)
+    {
+      this.contactList.removeAt(index);
+    }
 
+    
+   
+  }
+  createcontact(): FormGroup {
+    return this.frmbuilder.group({
+      AddtionalName: [],
+      AddtionalTitle: [],
+      AddtionalBusinessMail: [],
+      AddtionalBusinessPhone: [],
+      AddtionalContactActive:[],
+
+    });
+  }
+  addcontact() {
+    debugger
+    if(this.contactList!=null)
+    {
+      
+      //this.ContactToggle[i]=true;
+      //this.toggleContact(i)
+      this.contactList.push(this.createcontact());
+     
+    }
+
+   
+  }
+  savecontact(i:any) {
+    
+      
+      this.ContactToggle[i]=true;
+      //this.toggleContact(i)
+     
+
+  }
+  get contactFormGroup() {
+    return this.contactsform.get('contactarray') as FormArray;
+  }
+  get cfc() {
+    return this.contactsform.controls;
+  }
   setUserCategoryValidators() {
 //     this.VendorMgmtIndividual.get("IMAddress1").clearValidators([Validators.required]);//clear validation
 // this.VendorMgmtIndividual.get("IMAddress1").setErrors(null);//updating error message
@@ -298,26 +375,30 @@ VendorData(VendorMgmtIndividual:any){
     this.submitted2 = true;
 
     console.log('alldata',vendorMgmt);
-
-    // alert('calling');
-    this.http.post('http://localhost/MNC_PHP_API/vendor/UpdateVendor',vendorMgmt).subscribe(
+    if(this.contactList !=null)
+    {
+      this.AdditionalContactList=[]
+      this.contactList.value.forEach((element: any) => {
+     
+        var addcontactData = {
+          "AddtionalName": element.AddtionalName,
+          "AddtionalTitle": element.AddtionalTitle,
+          "AddtionalBusinessMail": element.AddtionalBusinessMail,
+          "AddtionalBusinessPhone": element.AddtionalBusinessPhone,
+          "AddtionalContactActive": element.AddtionalContactActive,
+          
+        };
+  
+        this.AdditionalContactList.push(addcontactData)
+      });
+      
+       alert(JSON.stringify(this.AdditionalContactList))
+    }
+    
+    // this.http.post('http://localhost/MNC_PHP_API/vendor/UpdateVendor',vendorMgmt).subscribe(
     // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
       
-      data => {
-        console.log("data");
-          console.log('POST Request is successful >>>>>>>>', data);
-
-      },
-      success => {
-        // Swal.fire({
-        //   position: 'top',
-        //   icon: 'success',
-        //   title: 'Successfully Registered',
-        //   showConfirmButton: false,
-        //   timer: 3000
-        // })
-      }
-      );
+     
 
     // console.log('contactindividual>>>', contactindividual);
 
