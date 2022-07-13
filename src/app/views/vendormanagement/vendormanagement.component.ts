@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl,} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { config_url } from '../shared/constant';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vendormanagement',
@@ -54,6 +54,12 @@ export class VendormanagementComponent implements OnInit {
   statedetail:any;
   current_date: any;
   from_date: any;
+
+  IndBusinessPastDistricts:any;
+  IndBusinessPastCountry:any;
+  IndBusinessPastZipcode:any;
+  IndBusinessPastCity:any;
+  IndBusinessPastState:any;
   constructor(
     private frmbuilder: FormBuilder,private http: HttpClient
   ) { }
@@ -156,11 +162,11 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
       Address1:['', [Validators.required]],
       Address2:[],
       CityId:['', [Validators.required]], 
-      CountryId:['', [Validators.required]],
+      CountryId:[],
       Zipcode:['', [Validators.required]],
       StartDate:['', [Validators.required]],
       EndDate:['', [Validators.required]],
-      DistrictId:['', [Validators.required]],
+      DistrictId:[],
       StateId:['', [Validators.required]],
 
       IMAddress1:[],
@@ -262,28 +268,56 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
  
 //  ssnformat = /^ [0-9] {3}-? [0-9] {2}-? [0-9] {4}$/;
 
-VendorData(VendorMgmtIndividual:any){
+VendorData(VendorMgmtIndividual:any){ 
   this.submitted1 = true;
   console.log('VendorMgmtIndividual',VendorMgmtIndividual);
   // this.setUserCategoryValidators();
+  this.http.post('http://localhost/MNC_PHP_API/vendor/UpdateVendor',VendorMgmtIndividual).subscribe(
+    // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
+      
+      data => {
+        console.log("data");
+          console.log('POST Request is successful >>>>>>>>', data);
+
+      },
+      success => {
+        // Swal.fire({
+        //   position: 'top',
+        //   icon: 'success',
+        //   title: 'Successfully Registered',
+        //   showConfirmButton: false,
+        //   timer: 3000
+        // })
+      }
+      );
 }
 
 
   Userdata(vendorMgmt:any){
+    // business
     this.submitted2 = true;
 
     console.log('alldata',vendorMgmt);
 
     // alert('calling');
-    // this.http.post('http://localhost/MNC_PHP_API/vendor/UpdateVendor',vendorMgmt).subscribe(
+    this.http.post('http://localhost/MNC_PHP_API/vendor/UpdateVendor',vendorMgmt).subscribe(
     // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
       
-    //   data => {
-    //     console.log("data");
-    //       console.log('POST Request is successful >>>>>>>>', data);
+      data => {
+        console.log("data");
+          console.log('POST Request is successful >>>>>>>>', data);
 
-    //   },
-    //   success => {});
+      },
+      success => {
+        // Swal.fire({
+        //   position: 'top',
+        //   icon: 'success',
+        //   title: 'Successfully Registered',
+        //   showConfirmButton: false,
+        //   timer: 3000
+        // })
+      }
+      );
 
     // console.log('contactindividual>>>', contactindividual);
 
@@ -729,9 +763,13 @@ Getcityall_list(){
         //  console.log( 'citylist', citylist);
 
           this.citylist=citylist;
+
+          this.IndBusinessPastCity=this.citylist.data.citydetails;
+          console.log("past city>>>",this.IndBusinessPastCity)
+
            this.citylist=this.citylist.data.citydetails;
           //  console.log(this.citylist)
-
+          
         });
 
 }
@@ -742,8 +780,12 @@ getAllZipcodes(){
   // alert('in');
   this.http.get(config_url+'/app/getZipCode').subscribe( (data: {}) => {
       this.zipcodeVal=data;
+
+      this.IndBusinessPastZipcode=this.zipcodeVal.data.zipcodedata;
+
       this.zipcodeVal=this.zipcodeVal.data.zipcodedata;
         // console.log(this.zipcodeVal);
+        
 });
 }
 
@@ -752,7 +794,11 @@ getcountrydata(){
     (countrydata: {}) => {
      
       this.countrytype = countrydata;
-      this.countrytype = this.countrytype.data.CountryDetails
+
+      this.IndBusinessPastCountry = this.countrytype.data.CountryDetails;
+
+      this.countrytype = this.countrytype.data.CountryDetails;
+      
       // console.log("country",countrydata)
 });
 }
@@ -762,8 +808,12 @@ getAllDistricts(){
     (data: {}) => {
      
       this.districts = data;
-      this.districts = this.districts.data.selectAllDistricts
+
+      this.IndBusinessPastDistricts = this.districts.data.selectAllDistricts;
+
+      this.districts = this.districts.data.selectAllDistricts;
       // console.log("districts",this.districts);
+      
 });
 }
 
@@ -773,6 +823,9 @@ getstatedata(){
     (statelistdata: {}) => {
      
       this.statedetail = statelistdata;
+
+      this.IndBusinessPastState = this.statedetail.data.statedetails;
+
       this.statedetail = this.statedetail.data.statedetails;
       console.log("state",this.statedetail)
 });
@@ -811,6 +864,48 @@ cancelform()
 
       //(document.getElementById('passvalidationid') as HTMLFormElement).innerText = 'Passwords must match.!'
     
+      }
+
+
+      onchangezip(){
+// alert("in");
+        let cityid = (<HTMLInputElement>document.getElementById("currentcity_id")).value;
+
+        this.http.get(config_url+'/app/getZipcodeByCity?cityid='+cityid).subscribe(data1 =>
+          {
+
+            this.zipcodeVal=data1;
+            this.zipcodeVal=this.zipcodeVal.data.zipcodedata;
+           })
+
+      }
+
+      onchangestate(){
+
+        let cityid = (<HTMLInputElement>document.getElementById("currentcity_id")).value;
+
+        this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe(statelist =>
+          {
+
+            console.log(statelist);
+            this.statedetail=statelist;
+            this.statedetail=this.statedetail.data.Statelist;
+           })
+
+      }
+
+      onchangecountry(){
+        // alert("in");
+       
+        let state_id = (<HTMLInputElement>document.getElementById("stateprovice_id")).value;
+
+        this.http.get(config_url+'/app/getCountryByState?stateid='+state_id).subscribe(countrydata =>
+          {
+ this.countrytype = countrydata;
+            this.countrytype = this.countrytype.data.countrydata
+          })
+
+
       }
 
 }

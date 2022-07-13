@@ -43,7 +43,7 @@
                 <form [formGroup]="VendorMgmtIndividual">
 
                 
-
+                    <input hidden type="text"  class="first" formControlName="VendorTypeId" [(ngModel)]="Vendortypevalue">
                 
 
                 <p class="mainheading Vendortitle">Contact Information</p>
@@ -195,7 +195,7 @@
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
                 <select id="currentcity_id" class="city" formControlName="CityId" [(ngModel)]="CurrentAddressDetails.CityId"
-                (keypress)="EmptyErrorMessage('currentcity_id')">
+                (keypress)="EmptyErrorMessage('currentcity_id')" (change)="onchangezip();onchangestate()">
                 <option *ngFor="let c of citylist" [value]="c.CityId ">
                     {{c.CityName}}
                 </option>
@@ -298,13 +298,13 @@
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">State/province <span class="requiredfield ">  *</span></label>
+                    <label class="labelwidth">State/province  <span class="requiredfield ">  *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
                 <select class="State" id="stateprovice_id" formControlName="StateId" [(ngModel)]="CurrentAddressDetails.StateId"
-                                (change)="EmptyErrorMessage('stateprovice_id')">
+                                (change)="EmptyErrorMessage('stateprovice_id');onchangecountry()">
                                 <option *ngFor="let s of statedetail" [value]="s.StateId ">
                                     {{s.StateName}}
                                 </option>
@@ -404,7 +404,7 @@
                           
                         <select id="currentcity_id" class="city" formControlName="IMCityId" [(ngModel)]="MailingAddressDetails.CityId"
                         (keypress)="EmptyErrorMessage('currentcity_id')">
-                        <option *ngFor="let c of citylist" [value]="c.CityId ">
+                        <option *ngFor="let c of IndBusinessPastCity" [value]="c.CityId ">
                             {{c.CityName}}
                         </option>
                     </select>
@@ -422,7 +422,7 @@
                                   
                                 <select class="Country" id="currentcountry_id" formControlName="IMCountryId"  [(ngModel)]="MailingAddressDetails.CountryId"
                                 (change)="EmptyErrorMessage('currentcountry_id')">
-                                <option *ngFor="let countrylist of countrytype" [value]="countrylist.CountryId" >
+                                <option *ngFor="let countrylist of IndBusinessPastCountry" [value]="countrylist.CountryId" >
                                     {{countrylist.CountryName}}</option>
                             </select>
                             <div  class="help-block text-danger">
@@ -443,7 +443,7 @@
                           
                         <select id="currentzipcode_id" class="zip" formControlName="IMZipcode" [(ngModel)]="MailingAddressDetails.Zipcode"
                                         (keypress)="EmptyErrorMessage('currentzipcode_id');">
-                                        <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode ">
+                                        <option *ngFor="let z of IndBusinessPastZipcode" [value]="z.Zipcode ">
                                             {{z.Zipcode}}
                                         </option>
                                     </select>
@@ -481,7 +481,7 @@
                           
                         <select type="text" id="currentcounty_id" class="County" formControlName="IMDistrictId"  [(ngModel)]="MailingAddressDetails.DistrictId"
                                         (keypress)="EmptyErrorMessage('currentcounty_id')">
-                                        <option *ngFor="let d of districts" [value]="d.DistrictId ">
+                                        <option *ngFor="let d of IndBusinessPastDistricts" [value]="d.DistrictId ">
                                             {{d.DistrictName}}
                                         </option>
                                     </select>
@@ -521,7 +521,7 @@
                           
                         <select class="State" id="stateprovice_id" formControlName="IMStateId" 
                                         (change)="EmptyErrorMessage('stateprovice_id')" [(ngModel)]="MailingAddressDetails.StateId">
-                                        <option *ngFor="let s of statedetail" [value]="s.StateId ">
+                                        <option *ngFor="let s of IndBusinessPastState" [value]="s.StateId ">
                                             {{s.StateName}}
                                         </option>
                                     </select>
@@ -738,6 +738,7 @@
         
         <form [formGroup]="VendorMgmtBusiness">
             <div  *ngIf="Vendortypevalue=='B'">
+                <input hidden type="text"  class="first" formControlName="VendorTypeId" [(ngModel)]="Vendortypevalue">
             <!-- <div class="row  mt-2">
                 <div class="row mt-2">
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
@@ -1021,7 +1022,7 @@
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
                 <select id="currentcity_id" class="city" formControlName="CityId" [(ngModel)]="CurrentAddressDetails.CityId"
-                (keypress)="EmptyErrorMessage('currentcity_id')">
+                (keypress)="EmptyErrorMessage('currentcity_id')" (change)="onchangezip();onchangestate()">
                 <option *ngFor="let c of citylist" [value]="c.CityId ">
                     {{c.CityName}}
                 </option>
@@ -1130,7 +1131,7 @@
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
                 <select class="State" id="stateprovice_id" formControlName="StateId" [(ngModel)]="CurrentAddressDetails.StateId"
-                                (change)="EmptyErrorMessage('stateprovice_id')">
+                                (change)="EmptyErrorMessage('stateprovice_id');onchangecountry()">
                                 <option *ngFor="let s of statedetail" [value]="s.StateId ">
                                     {{s.StateName}}
                                 </option>
@@ -1234,7 +1235,7 @@
                           
                         <select id="currentcity_id" class="city" formControlName="BMCityId" 
                         (keypress)="EmptyErrorMessage('currentcity_id')" [(ngModel)]="MailingAddressDetails.CityId">
-                        <option *ngFor="let c of citylist" [value]="c.CityId ">
+                        <option *ngFor="let c of IndBusinessPastCity" [value]="c.CityId ">
                             {{c.CityName}}
                         </option>
                     </select>
@@ -1252,7 +1253,7 @@
                                   
                                 <select class="Country" id="currentcountry_id" formControlName="BMCountryId" 
                                 (change)="EmptyErrorMessage('currentcountry_id')" [(ngModel)]="MailingAddressDetails.CountryId">
-                                <option *ngFor="let countrylist of countrytype" [value]="countrylist.CountryId" >
+                                <option *ngFor="let countrylist of IndBusinessPastCountry" [value]="countrylist.CountryId" >
                                     {{countrylist.CountryName}}</option>
                             </select>
                             <div  class="help-block text-danger">
@@ -1273,7 +1274,7 @@
                           
                         <select id="currentzipcode_id" class="zip" formControlName="BMZipcode" 
                                         (keypress)="EmptyErrorMessage('currentzipcode_id');" [(ngModel)]="MailingAddressDetails.Zipcode">
-                                        <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode " >
+                                        <option *ngFor="let z of IndBusinessPastZipcode" [value]="z.Zipcode " >
                                             {{z.Zipcode}}
                                         </option>
                                     </select>
@@ -1311,7 +1312,7 @@
                           
                         <select type="text" id="currentcounty_id" class="County" formControlName="BMDistrictId" 
                                         (keypress)="EmptyErrorMessage('currentcounty_id')" [(ngModel)]="MailingAddressDetails.DistrictId">
-                                        <option *ngFor="let d of districts" [value]="d.DistrictId ">
+                                        <option *ngFor="let d of IndBusinessPastDistricts" [value]="d.DistrictId ">
                                             {{d.DistrictName}}
                                         </option>
                                     </select>
@@ -1351,7 +1352,7 @@
                           
                         <select class="State" id="stateprovice_id" formControlName="BMStateId" 
                                         (change)="EmptyErrorMessage('stateprovice_id')" [(ngModel)]="MailingAddressDetails.StateId">
-                                        <option *ngFor="let s of statedetail" [value]="s.StateId ">
+                                        <option *ngFor="let s of IndBusinessPastState" [value]="s.StateId ">
                                             {{s.StateName}}
                                         </option>
                                     </select>
