@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { INavData } from '@coreui/angular';
 // import { navItems } from './_nav';
 // import { navItems1 } from './_nav';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './default-layout.component.html',
@@ -17,36 +18,95 @@ export class DefaultLayoutComponent implements OnInit{
   navItems: INavData[] = [
  
     {
-      name: 'Vendor Management 1',
-      url: '/vendormanagement',
-      iconComponent: { name: 'cil-drop' }
-    }
-  // }
-  ,
-    {
       name: 'User Management',
-      url: '/adminmanagement',
-      // linkProps: { fragment: 'someAnchor' },
-      iconComponent: { name: 'cil-pencil' }
+      url: '/VendorList',
+      icon: 'fa fa-users'
+     },
+    {
+      name: 'Vendor Management',
+      url: '/vendormanagement',
+       icon: 'fa fa-user-circle'
     },
     {
-      name: 'Buttons',
+      name: 'Certification Management',
       url: '/buttons',
-      iconComponent: { name: 'cil-cursor' },
+      icon: 'fa fa-files-o'
+  
+      // children: [
+      //   {
+      //     name: 'Certification Programs Offered',
+      //     url: '/buttons/buttons',
+      //     iconComponent: { name: 'cil-drop' }
+      //   },
+      //   {
+      //     name: 'Certification Application Processing',
+      //     url: '/buttons/button-groups',
+      //     iconComponent: { name: 'cil-drop' }
+      //   },
+      //   {
+      //     name: 'View Active Certificates',
+      //     url: '/BidResponses',
+      //     iconComponent: { name: 'cil-drop' }
+      //   },
+      //   {
+      //     name: 'Certificate Expiration Notification',
+      //     url: '/BidResponses'
+      //   },
+      // ]
+    },
+    {
+      name: 'Bid Management',
+      url: '/BidList',
+      // iconComponent: { name: 'cil-balance-scale'},
+      icon: 'fa fa-balance-scale',
       children: [
-        // {
-        //   name: 'Buttons',
-        //   url: '/buttons/buttons'
-        // },
-        // {
-        //   name: 'Button groups',
-        //   url: '/buttons/button-groups'
-        // },
         {
-          name: 'Dropdowns',
+          name: 'View Bids',
+          url: '/BidList'
+        },
+        {
+          name: 'Create/View Bid',
+          url: '/adminmanagement'
+        },
+        {
+          name: 'Bid Responses',
           url: '/BidResponses'
         },
+        {
+          name: 'Award Contract',
+          url: '/adminmanagement'
+        },
       ]
+    },
+    {
+      name: 'Contract Management',
+      url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-handshake-o'
+    },
+    {
+      name: 'Insurance Management',
+      url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-umbrella'
+    },
+    {
+      name: 'HR Management',
+      url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-user-o'
+    },
+    {
+      name: 'Interface',
+      url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-window-restore'
+    },
+    {
+      name: 'Reports',
+      url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-line-chart'
     },
     
   ];
@@ -55,14 +115,14 @@ export class DefaultLayoutComponent implements OnInit{
  
     {
       name: 'Vendor Management 2 tyreytry',
-      url: '/vendormanagement',
+      url: '/',
       iconComponent: { name: 'cil-drop' }
     }
   // }
   ,
     {
       name: 'User Management 2 rtetrty',
-      url: '/adminmanagement',
+      url: '/',
       // linkProps: { fragment: 'someAnchor' },
       iconComponent: { name: 'cil-pencil' }
     },
