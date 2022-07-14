@@ -53,9 +53,12 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/contractaward/contractaward.module').then((m) => m.ContractawardModule)
       },
-    
-     
       {
+        path: 'BidResponses', 
+        loadChildren: () =>
+          import('./views/bid-responses/bid-responses.module').then((m) => m.BidResponsesModule)
+      },
+     {
         path: 'adminmanagement',
         loadChildren: () =>
           import('./views/adminmanagement/adminmanagement.module').then((m) => m.AdminModule)
