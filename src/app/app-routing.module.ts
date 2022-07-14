@@ -58,6 +58,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/bid-responses/bid-responses.module').then((m) => m.BidResponsesModule)
       },
+      {
+        path: 'BidList',
+        loadChildren: () =>
+          import('./views/bid-list/bid-list.module').then((m) => m.BidListModule)
+      },
      {
         path: 'adminmanagement',
         loadChildren: () =>

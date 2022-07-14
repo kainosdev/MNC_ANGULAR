@@ -59,6 +59,7 @@ import { LogoutComponent } from './views/logout/logout.component';
 import { BidmanagementComponent } from './views/bid-management/bid-management.component';
 import { TesingComponent } from './tesing/tesing.component';
 import { BidResponsesComponent } from './views/bid-responses/bid-responses.component';
+import { BidListComponent } from './views/bid-list/bid-list.component';
 // import { BidlistComponent } from './bidlist/bidlist.component';
 
 // import { VendorListComponent } from './views/vendor-list/vendor-list.component';
@@ -84,6 +85,7 @@ const APP_CONTAINERS = [
   declarations: [AppComponent, ...APP_CONTAINERS, LogoutComponent, 
     // RegistrationformComponent,
      TesingComponent, 
+    //  BidListComponent, 
     //  BidResponsesComponent, 
     // BidlistComponent
   ],
