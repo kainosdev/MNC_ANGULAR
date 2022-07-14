@@ -1,822 +1,476 @@
-<div class="row"> 
-        <div class="">
-            <form [formGroup]="personalDetails" id="msform">
-                <!-- progressbar -->
-                <ul id="progressbar">
-                    <li [ngClass]="step>=1 ? 'active ' : 'inactive'">General Information </li>
-                    <li [ngClass]="step==2 ? 'active' : 'inactive'">Document Upload </li>                                     
-                    <li [ngClass]="step>=3 ? 'active' : 'inactive'">Contract Line Items</li>
-                    <li [ngClass]="step==4 ? 'active' : 'inactive'">Vendors Matched</li>
-                    
-                </ul>
-                <!-- fieldsets -->
-                <fieldset  *ngIf="step == 1" >
-                    <h2 class="fs-title">General Information</h2>
-                    <form [formGroup]="bid_form" > 
-                            <div class="row col-12">
-                                       <div class="row col-8">
-                                            <div class="row  col-12 mt-2">
-                                                    <!-- <p class="mainheading heading">General Information</p> -->
-                                                <div class="row mt-2">
-                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                        <label class="labelwidth">Bid Status<span class="requiredfield ">  *</span></label>
-                                                       
-                                                  </div>
-                                                  <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-3">
-                                                      
-                                                        <select class="Country" formControlName="bidstatus" id="bidstatus" (change)="inputErrorMessage('bidstatus')" >
-                                                                <option value="Open">Open</option>
-                                                                <option value="Closed">Closed</option>
-                                                               
-                                                        </select>   
-                                                        <div  class="help-block text-danger">
-                                                           <div *ngIf="submitted && bfc.FirstName.errors">Bid Status is required</div>
-                                                        </div>
-                                                  </div>
-                                        
-                                             
-                                                        <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                <label class="">Number of Response<span class="requiredfield ">  *</span></label>
-                                                               
-                                                        </div>
-                                                        <div class="form-group col-xs-4 col-lg-3 col-md-2 col-sm-2">
-                                                              
-                                                                <input type="text" class=""  formControlName="no_of_response" id="no_of_response" >
-                                                                <div  class="help-block text-danger">
-                                                                    <div *ngIf="submitted && bfc.no_of_response.errors">First Name is required</div>
-                                                                </div>
-                                                        </div> -->
-                                                </div>
-                                                <div class="row mt-2">
-                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                        <label class="labelwidth">Title<span class="requiredfield ">  *</span></label>
-                                                       
-                                                </div>
-                                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                      
-                                                    <input type="text" class="lastname"  formControlName="title" id="title" >
-                                                    <div  class="help-block text-danger">
-                                                                <div *ngIf="submitted && bfc.LastName.errors">Title is required</div>
-                                                    </div>
-                                                </div>
-                                        
-                                             
-                                                </div>
-                                        
-                                                <div class="row mt-2">
-                                                     
-                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                        <label class="labelwidth">Description<span class="requiredfield ">  *</span></label>
-                                                       
-                                                  </div>
-                                                  <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                      
-                                                    <input type="text" class="tradename" formControlName="description" id="description" >
-                                                    <div  class="help-block text-danger">
-                                                                <div *ngIf="submitted && bfc.UserId.errors">Description is required</div>
-                                                    </div>
-                                                  </div>
-                                        
-                                        
-                                        
-                                                    
-                                                </div>
-                                        
-                                                <div class="row mt-2">
-                                                  
-                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                        <label class="labelwidth">Opportunity Type<span class="requiredfield ">  *</span></label>
-                                                       
-                                                  </div>
-                                                  <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                        <select class="Country" formControlName="opportunity_type" id="bidstatus" (change)="inputErrorMessage('bidstatus')" >
-                                                                <option value="Open">Open</option>
-                                                                <option value="Closed">Closed</option>
-                                                               
-                                                        </select>  
-                                                    <div  class="help-block text-danger">
-                                                                <div *ngIf="submitted && bfc.UserPassword.errors">Opportunity Type is required</div>
-                                                    </div>
-                                                   </div>
-                                              
-                                            </div>
-                                        
-                                            
-                                            <div class="row mt-2">
-                                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                    <label class="labelwidth">Category <span class="requiredfield ">  *</span> </label>
-                                        
-                                            </div>
-                                            <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                  
-                                                    <select class="Country" formControlName="category" id="category" (change)="inputErrorMessage('bidstatus')" >
-                                                            <option value="Open">Open</option>
-                                                            <option value="Closed">Closed</option>
-                                                           
-                                                    </select> 
-                                                    <div  class="help-block text-danger">
-                                                            <div *ngIf="submitted && bfc.category.errors">Address Line2 is required</div>
-                                                    </div>
-                                            </div>
-                                        
-                                              
-                                        </div>
-                                        
-                                        <div class="row mt-2">
-                                            <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                <label class="labelwidth">Buying Entry <span class="requiredfield "> *</span> </label>
-                                        
-                                            </div>
-                                            <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                               
-                                                    <select class="Country" formControlName="buying_entry" id="buying_entry" (change)="inputErrorMessage('bidstatus')" >
-                                                            <option value="Open">Open</option>
-                                                            <option value="Closed">Closed</option>
-                                                           
-                                                    </select> 
-                                                  
-                                                    <div  class="help-block text-danger">
-                                                            <div *ngIf="submitted && bfc.StartDate.errors">Buying Entry is required</div>
-                                                   </div>
-                                            </div>
-                                        
-                                        </div>
-                                        <div class="row mt-1">
-                                            <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                <label class="labelwidth">Set Aside<span class="requiredfield "> *</span> </label>
-                                        
-                                            </div>
-                                            <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                               
-                                                    <select class="Country" formControlName="set_aside" id="set_aside" (change)="inputErrorMessage('bidstatus')" >
-                                                            <option value="Open">Open</option>
-                                                            <option value="Closed">Closed</option>
-                                                           
-                                                    </select>                   
-                                                    <div  class="help-block text-danger">
-                                                            <div *ngIf="submitted && bfc.set_aside.errors">End Date is required</div>
-                                                   </div>
-                                            </div>
-                                        
-                                        </div>
-                                        <div class="row mt-1">
-                                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                    <label class="labelwidth">Contract Officer<span class="requiredfield "> *</span> </label>
-                                            
-                                                </div>
-                                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                   
-                                                        <select class="Country" formControlName="set_aside" id="set_aside" (change)="inputErrorMessage('bidstatus')" >
-                                                                <option value="Open">Open</option>
-                                                                <option value="Closed">Closed</option>
-                                                               
-                                                        </select>                   
-                                                        <div  class="help-block text-danger">
-                                                                <div *ngIf="submitted && bfc.set_aside.errors">Contract Officer is required</div>
-                                                       </div>
-                                                </div>
-                                            
-                                              
-                                            </div>
-                                            <div class="row mt-1">
-                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                        <label class="labelwidth"> Officer Phone<span class="requiredfield "> *</span> </label>
-                                                
-                                                    </div>
-                                                    <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                       
-                                                            <input type="text" class="co_officer_phone" formControlName="co_officer_phone" id="co_officer_phone" >
-                             
-                                                            <div  class="help-block text-danger">
-                                                                    <div *ngIf="submitted && bfc.set_aside.errors">Contract Officer is required</div>
-                                                           </div>
-                                                    </div>
-                                                
-                                                 
-                                                </div>
-                                                <div class="row mt-1">
-                                                        <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                            <label class="labelwidth">Officer Email<span class="requiredfield "> *</span> </label>
-                                                    
-                                                        </div>
-                                                        <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                                <input type="text" class="co_officer_email" formControlName="co_officer_phone" id="co_officer_phone" >
-                              
-                                                                <div  class="help-block text-danger">
-                                                                        <div *ngIf="submitted && bfc.set_aside.errors">Contract Officer is required</div>
-                                                               </div>
-                                                        </div>
-                                                    
-                                                     
-                                                    </div>
-                                    
-                                            </div>
-                                        </div>
-                                        <div class="row col-4">
-                                                <div class="row col-12 mt-2">
-                                                       
-                                                    <div class="row mt-2">
-                                                        <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                            <label class="labelwidth">Funding Source Status<span class="requiredfield ">  *</span></label>
-                                                           
-                                                      </div>
-                                                      <div class="form-group col-xs-4 col-lg-3 col-md-6 col-sm-6">
-                                                          
-                                                            <select class="Country" formControlName="bidstatus" id="bidstatus" (change)="inputErrorMessage('bidstatus')" >
-                                                                    <option value="Open">Open</option>
-                                                                    <option value="Closed">Closed</option>
-                                                                   
-                                                            </select>   
-                                                            <div  class="help-block text-danger">
-                                                               <div *ngIf="submitted && bfc.FirstName.errors">Bid Status is required</div>
-                                                            </div>
-                                                      </div>
-                                            
-                                                 
-                                                      
-                                                    </div>
-                                                    <div class="row mt-2">
-                                                        <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                            <label class="labelwidth">Contract Vehicle<span class="requiredfield ">  *</span></label>
-                                                           
-                                                    </div>
-                                                    <div class="form-group col-xs-4 col-lg-3 col-md-6 col-sm-6">
-                                                          
-                                                        <input type="text" class="lastname"  formControlName="title" id="title" >
-                                                        <div  class="help-block text-danger">
-                                                                    <div *ngIf="submitted && bfc.LastName.errors">Title is required</div>
-                                                        </div>
-                                                    </div>
-                                            
-                                                 
-                                                    </div>
-                                            
-                                                    <div class="row mt-2">
-                                                         
-                                                        <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                            <label class="labelwidth">Budget Amount ($)<span class="requiredfield ">  *</span></label>
-                                                           
-                                                      </div>
-                                                      <div class="form-group col-xs-4 col-lg-3 col-md-6 col-sm-6">
-                                                          
-                                                        <input type="text" class="tradename" formControlName="description" id="description" >
-                                                        <div  class="help-block text-danger">
-                                                                    <div *ngIf="submitted && bfc.UserId.errors">Description is required</div>
-                                                        </div>
-                                                      </div>
-                                            
-                                            
-                                            
-                                                        
-                                                    </div>
-                                            
-                                                    <div class="row mt-2">
-                                                      
-                                                        <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                            <label class="labelwidth">Posted Date<span class="requiredfield ">  *</span></label>
-                                                           
-                                                      </div>
-                                                      <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                            <select class="Country" formControlName="opportunity_type" id="bidstatus" (change)="inputErrorMessage('bidstatus')" >
-                                                                    <option value="Open">Open</option>
-                                                                    <option value="Closed">Closed</option>
-                                                                   
-                                                            </select>  
-                                                        <div  class="help-block text-danger">
-                                                                    <div *ngIf="submitted && bfc.UserPassword.errors">Opportunity Type is required</div>
-                                                        </div>
-                                                       </div>
-                                                  
-                                                </div>
-                                            
-                                                
-                                                <div class="row mt-2">
-                                                    <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                        <label class="labelwidth">Question Due Date <span class="requiredfield ">  *</span> </label>
-                                            
-                                                </div>
-                                                <div class="form-group col-xs-4 col-lg-3 col-md-6 col-sm-6">
-                                                      
-                                                        <select class="Country" formControlName="category" id="category" (change)="inputErrorMessage('bidstatus')" >
-                                                                <option value="Open">Open</option>
-                                                                <option value="Closed">Closed</option>
-                                                               
-                                                        </select> 
-                                                        <div  class="help-block text-danger">
-                                                                <div *ngIf="submitted && bfc.category.errors">Address Line2 is required</div>
-                                                        </div>
-                                                </div>
-                                            
-                                                  
-                                            </div>
-                                            
-                                            <div class="row mt-2">
-                                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                    <label class="labelwidth">Response Due Date <span class="requiredfield "> *</span> </label>
-                                            
-                                                </div>
-                                                <div class="form-group col-xs-4 col-lg-3 col-md-6 col-sm-6">
-                                                   
-                                                        <select class="Country" formControlName="buying_entry" id="buying_entry" (change)="inputErrorMessage('bidstatus')" >
-                                                                <option value="Open">Open</option>
-                                                                <option value="Closed">Closed</option>
-                                                               
-                                                        </select> 
-                                                      
-                                                        <div  class="help-block text-danger">
-                                                                <div *ngIf="submitted && bfc.StartDate.errors">Buying Entry is required</div>
-                                                       </div>
-                                                </div>
-                                            
-                                            </div>
-                                            <div class="row mt-1">
-                                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                    <label class="labelwidth">DBE Goal (%)<span class="requiredfield "> *</span> </label>
-                                            
-                                                </div>
-                                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                   
-                                                        <select class="Country" formControlName="set_aside" id="set_aside" (change)="inputErrorMessage('bidstatus')" >
-                                                                <option value="Open">Open</option>
-                                                                <option value="Closed">Closed</option>
-                                                               
-                                                        </select>                   
-                                                        <div  class="help-block text-danger">
-                                                                <div *ngIf="submitted && bfc.set_aside.errors">End Date is required</div>
-                                                       </div>
-                                                </div>
-                                            
-                                            </div>
-                                           
-                                             
-                                                   
-                                                </div>
-                                        </div>
-                            </div>
-                       
-                        </form>
-                  
-                    <input (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
-                </fieldset>
-            </form>
-                
-            <form [formGroup]="addressDetails" id="msform">
-                    <fieldset *ngIf="step == 2" >
-                            <h2 class="fs-title">Schedule: Contract Line Items (CLIN)</h2>
-      
-                <table id="secondtableLineitem" class="table table-bordered table-striped dark dataTable no-footer" role="grid" aria-describedby="secondtableLineitem_info" style="width: 1322px;">
-              <thead>
-               <tr style="background: #2F9CE2FF;" role="row"><th style="display: none; width: 0px;" class="sorting_asc" tabindex="0" aria-controls="secondtableLineitem" rowspan="1" colspan="1" aria-sort="ascending" aria-label=": activate to sort column descending"></th><th style="width: 57px;" class="sorting" tabindex="0" aria-controls="secondtableLineitem" rowspan="1" colspan="1" aria-label="CLIN #: activate to sort column ascending">CLIN #</th><th style="width: 360px;" class="sorting" tabindex="0" aria-controls="secondtableLineitem" rowspan="1" colspan="1" aria-label="Description: activate to sort column ascending">Description</th><th style="width: 294px;" class="sorting" tabindex="0" aria-controls="secondtableLineitem" rowspan="1" colspan="1" aria-label="Service Type: activate to sort column ascending">Service Type</th><th class="sorting" tabindex="0" aria-controls="secondtableLineitem" rowspan="1" colspan="1" aria-label="DBE Goal Type: activate to sort column ascending" style="width: 123px;">DBE Goal Type</th><th style="width: 96px;" class="sorting" tabindex="0" aria-controls="secondtableLineitem" rowspan="1" colspan="1" aria-label="DBE Goal (%): activate to sort column ascending">DBE Goal (%)</th><th style="width: 177px;" class="sorting" tabindex="0" aria-controls="secondtableLineitem" rowspan="1" colspan="1" aria-label="DBE Budget ($): activate to sort column ascending">DBE Budget ($)</th></tr>
-             </thead>
-             <tbody>
-
-                                        
-                 <tr role="row" class="odd">
-                               <td style="display:none" class="sorting_1"></td>
-                     
-                             <td><a style="text-decoration:underline;">12005</a></td>
-                             <td>Software Architect</td>
-                             <td>Software Engineering</td>
-                             <td>S</td>
-                             <td>10%</td>
-                             <td>40,000</td>
-                             
-                           </tr><tr role="row" class="even">
-                                <td style="display:none" class="sorting_1"></td>
-                             <td><a style="text-decoration:underline;">12006</a></td>
-                             <td>Odoo Superuser License</td>
-                             <td>Product License</td>
-                             <td>S,M</td>
-                             <td>3%</td>
-                             <td>10,000</td>
-                             
-                           </tr><tr role="row" class="odd">
-                     <td style="display:none" class="sorting_1"></td>
-                             <td><a style="text-decoration:underline;">12007</a></td>
-                             <td>Odoo Support Technician</td>
-                             <td>Product Support</td>
-                             <td>S,M</td>
-                           <td>4%</td>
-                                           
-                           <td>10,000</td>
-                             
-                           </tr><tr role="row" class="even">
-                     <td style="display:none" class="sorting_1"></td>
-                             <td><a style="text-decoration:underline;"></a></td>
-                             <td></td>
-                             <td></td>
-                             <td></td>
-                           <td></td>
-                                           
-                           <td></td>
-                             
-                           </tr><tr role="row" class="odd">
-                     <td style="display:none" class="sorting_1"></td>
-                             <td></td>
-                             <td></td>
-                             <td></td>
-                             <td></td>
-                           <td></td>
-                                           
-                           <td></td>
-                             
-                           </tr></tbody>
-               </table>
-               <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    
-               <input  (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
-            </fieldset> 
-            </form>
-             <form [formGroup]="addressDetails" id="msform">
-                    <fieldset *ngIf="step == 3" >
-                            <h2 class="fs-title">Schedule: Contract Line Items (CLIN)</h2>
-                <!-- <fieldset *ngIf="step == 2" >
-                    <h2 class="fs-title">Address Details</h2>
-                    <input type="text" formControlName="city"  placeholder="City"/>
-                   
-                    <textarea rows="5" cols="5" formControlName="address"  placeholder="address"></textarea>
-                 
-                    <input type="text" formControlName="pincode"  placeholder="Pincode"/>
-                 
-                    <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    
-                    <input  (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
-                </fieldset> -->
-                <table id="secondtableLineitem" class="table table-bordered table-striped dark dataTable no-footer" role="grid" aria-describedby="secondtableLineitem_info" style="width: 1322px;">
-              <thead>
-               <tr style="background: #2F9CE2FF;" role="row"><th style="display: none; width: 0px;" class="sorting_asc" tabindex="0" aria-controls="secondtableLineitem" rowspan="1" colspan="1" aria-sort="ascending" aria-label=": activate to sort column descending"></th><th style="width: 57px;" class="sorting" tabindex="0" aria-controls="secondtableLineitem" rowspan="1" colspan="1" aria-label="CLIN #: activate to sort column ascending">CLIN #</th><th style="width: 360px;" class="sorting" tabindex="0" aria-controls="secondtableLineitem" rowspan="1" colspan="1" aria-label="Description: activate to sort column ascending">Description</th><th style="width: 294px;" class="sorting" tabindex="0" aria-controls="secondtableLineitem" rowspan="1" colspan="1" aria-label="Service Type: activate to sort column ascending">Service Type</th><th class="sorting" tabindex="0" aria-controls="secondtableLineitem" rowspan="1" colspan="1" aria-label="DBE Goal Type: activate to sort column ascending" style="width: 123px;">DBE Goal Type</th><th style="width: 96px;" class="sorting" tabindex="0" aria-controls="secondtableLineitem" rowspan="1" colspan="1" aria-label="DBE Goal (%): activate to sort column ascending">DBE Goal (%)</th><th style="width: 177px;" class="sorting" tabindex="0" aria-controls="secondtableLineitem" rowspan="1" colspan="1" aria-label="DBE Budget ($): activate to sort column ascending">DBE Budget ($)</th></tr>
-             </thead>
-             <tbody>
-
-                           
-                           
-
-                           
+<!-- Tabs navs -->
 
 
-                           
-
-                           
-
-                           
-                           
-                           
-                          
-                         
-                         
-                 <tr role="row" class="odd">
-                               <td style="display:none" class="sorting_1"></td>
-                     
-                             <td><a style="text-decoration:underline;">12005</a></td>
-                             <td>Software Architect</td>
-                             <td>Software Engineering</td>
-                             <td>S</td>
-                             <td>10%</td>
-                             <td>40,000</td>
-                             
-                           </tr><tr role="row" class="even">
-                                <td style="display:none" class="sorting_1"></td>
-                             <td><a style="text-decoration:underline;">12006</a></td>
-                             <td>Odoo Superuser License</td>
-                             <td>Product License</td>
-                             <td>S,M</td>
-                             <td>3%</td>
-                             <td>10,000</td>
-                             
-                           </tr><tr role="row" class="odd">
-                     <td style="display:none" class="sorting_1"></td>
-                             <td><a style="text-decoration:underline;">12007</a></td>
-                             <td>Odoo Support Technician</td>
-                             <td>Product Support</td>
-                             <td>S,M</td>
-                           <td>4%</td>
-                                           
-                           <td>10,000</td>
-                             
-                           </tr><tr role="row" class="even">
-                     <td style="display:none" class="sorting_1"></td>
-                             <td><a style="text-decoration:underline;"></a></td>
-                             <td></td>
-                             <td></td>
-                             <td></td>
-                           <td></td>
-                                           
-                           <td></td>
-                             
-                           </tr><tr role="row" class="odd">
-                     <td style="display:none" class="sorting_1"></td>
-                             <td></td>
-                             <td></td>
-                             <td></td>
-                             <td></td>
-                           <td></td>
-                                           
-                           <td></td>
-                             
-                           </tr></tbody>
-               </table>
-               <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    
-               <input  (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
-            </fieldset> 
-            </form>
-             <form [formGroup]="addressDetails" id="msform">
-                <fieldset *ngIf="step == 4">
-                    <h2 class="fs-title">Vendor Matching</h2>
-                   
-                   
-
-
-                    <div class="row">
-                    
+    <div id="wrapper"> <!-- give it an id -->
+      <div fxLayout="row" fxLayoutGap="16px" fxFill>
        
-                            <div class="row" style="padding-right:0px !important;">
-                            <div class="col-sm-6" style="margin-left: -11px;">
-                                <p class="subheadingcls" style="margin-left: 2px;margin-top: -7px;"><b>Vendors Matched</b></p>
-                      </div>
-            
-                      <div class="col-sm-6" style="text-align:right;padding-right:0px !important;margin-top: -12px;margin-left: -5px;">
-                      <a href="#"><button type="button" class="btn btn-primary matchvendorcls">Match Vendors</button></a>
-            
-                      </div>
-            
-                      </div>
-            
-                   <div class="box-body table-responsive" style="padding: 1px;margin-left: -10px;overflow:unset !important">
-                         
-                         <div id="secondtableVendorsMatched_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="secondtableVendorsMatched_length"><label>Show <select name="secondtableVendorsMatched_length" aria-controls="secondtableVendorsMatched" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div id="secondtableVendorsMatched_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="secondtableVendorsMatched"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="secondtableVendorsMatched" class="table table-bordered table-striped dark dataTable no-footer" role="grid" aria-describedby="secondtableVendorsMatched_info" style="width: 1314px;">
-                         <thead>
-                           <tr style="background: #2F9CE2FF;" role="row"><th style="display: none; width: 0px;" class="sorting_asc" tabindex="0" aria-controls="secondtableVendorsMatched" rowspan="1" colspan="1" aria-sort="ascending" aria-label=": activate to sort column descending"></th><th style="width: 53px;" class="sorting" tabindex="0" aria-controls="secondtableVendorsMatched" rowspan="1" colspan="1" aria-label="CLIN #: activate to sort column ascending">CLIN #</th><th style="width: 210px;" class="sorting" tabindex="0" aria-controls="secondtableVendorsMatched" rowspan="1" colspan="1" aria-label="Description: activate to sort column ascending">Description</th><th style="width: 267px;" class="sorting" tabindex="0" aria-controls="secondtableVendorsMatched" rowspan="1" colspan="1" aria-label="Service Type: activate to sort column ascending">Service Type</th><th style="width: 267px;" class="sorting" tabindex="0" aria-controls="secondtableVendorsMatched" rowspan="1" colspan="1" aria-label="Vendor Name: activate to sort column ascending">Vendor Name</th><th class="sorting" tabindex="0" aria-controls="secondtableVendorsMatched" rowspan="1" colspan="1" aria-label="Certified: activate to sort column ascending" style="width: 47px;">Certified</th><th style="width: 150px;" class="sorting" tabindex="0" aria-controls="secondtableVendorsMatched" rowspan="1" colspan="1" aria-label="Email Invitation to Bid 
-            Select All
-            : activate to sort column ascending">Email Invitation to Bid <br>
-            <a href="#" style="color:white;text-decoration:underline;">Select All</a>
-            </th><th style="width: 69px;" class="sorting" tabindex="0" aria-controls="secondtableVendorsMatched" rowspan="1" colspan="1" aria-label="Email Invitation Sent Date: activate to sort column ascending">Email Invitation Sent Date</th></tr>
-                         </thead>
-                         <tbody>
-            
-                                       
-                                       
-            
-                                       
-            
-            
-                                       
-            
-                                       
-                                       
-                                       
-            
-                               
+          <div fxFlex="80" fxFill>
+              <mat-tab-group id="tab-group" mat-align-tabs="start"> <!-- give it an id -->
+                   <mat-tab label="Bid List">
+                   </mat-tab>
+                  <mat-tab label="Create/view Bid" >
+                      <div fxFlex style="padding: 16px;">
+                          <div class="example-large-box mat-elevation-z4">
+                              <div class="row mt-2">
+                                                                         
+                                  <div class="form-group  col-md-2 col-sm-2">
+                                      <label class="">Solicitation Number<span class="requiredfield ">  *</span></label>
                                      
+                                </div>
+                                <div class="form-group col-xs-4 col-lg-3 col-md-6 col-sm-6">
+                                    
+                                  <input type="text" class="tradename" formControlName="description" id="description" >
+                                  
+                                </div>
+                              </div>
+                              <accordion [collapsing]="collapsing">
+                                <accordion-item >
+                                    <ng-template accordionTitle>
+                                        <div class="flex space-x-2 ">
+                                          <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24" width="20" height="20">
+                                            <path fill="none" d="M0 0h24v24H0z" />
+                                            <path
+                                              d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
+                                          </svg> -->
+                                          <h6>General Information</h6>
+                                        </div>
+                                      </ng-template>
+                                  <ng-template accordionContent>
+                                    <div class="card ">
+                                        <form [formGroup]="bid_form" > 
+                                            <div class="row col-12">
+                                                       <div class="row col-8">
+                                                            <div class="row  col-12 mt-2">
+                                                                    <!-- <p class="mainheading heading">General Information</p> -->
+                                                                <div class="row ">
+                                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                                                        <label class="labelwidth">Bid Status<span class="requiredfield ">  *</span></label>
+                                                                       
+                                                                  </div>
+                                                                  <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-3">
+                                                                        
+                                                                  <select class="Country" id="bidstatus" formControlName="bidstatus"  >
+                                                                  <option *ngFor="let item of bidstatus" [value]="item.BidStatusId ">
+                                                                      {{item.BidStatusDesc}}
+                                                                  </option>
+                                                                 </select>
+                                                                 
+                                                                        <div  class="help-block text-danger">
+                                                                           <div *ngIf="submitted && bfc.bidstatus.errors">Bid Status is required</div>
+                                                                        </div>
+                                                                  </div>
+                                                        
+                                                             
+                                                                        <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                                                                <label class="">Number of Response<span class="requiredfield ">  *</span></label>
+                                                                               
+                                                                        </div>
+                                                                        <div class="form-group col-xs-4 col-lg-3 col-md-2 col-sm-2">
+                                                                              
+                                                                                <input type="text" class=""  formControlName="no_of_response" id="no_of_response" >
+                                                                                <div  class="help-block text-danger">
+                                                                                    <div *ngIf="submitted && bfc.no_of_response.errors">First Name is required</div>
+                                                                                </div>
+                                                                        </div> -->
+                                                                </div>
+                                                                <div class="row ">
+                                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                                                        <label class="labelwidth">Title<span class="requiredfield ">  *</span></label>
+                                                                       
+                                                                </div>
+                                                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                                                      
+                                                                    <input type="text" class="lastname"  formControlName="title" id="title" >
+                                                                    <div  class="help-block text-danger">
+                                                                                <div *ngIf="submitted && bfc.title.errors">Title is required</div>
+                                                                    </div>
+                                                                </div>
+                                                        
+                                                             
+                                                                </div>
+                                                        
+                                                                <div class="row ">
+                                                                     
+                                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                                                        <label class="labelwidth">Description<span class="requiredfield ">  *</span></label>
+                                                                       
+                                                                  </div>
+                                                                  <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                                                      
+                                                                    <input type="text" class="tradename" formControlName="description" id="description" >
+                                                                    <div  class="help-block text-danger">
+                                                                                <div *ngIf="submitted && bfc.description.errors">Description is required</div>
+                                                                    </div>
+                                                                  </div>
+                                                        
+                                                        
+                                                        
+                                                                    
+                                                                </div>
+                                                        
+                                                                <div class="row ">
+                                                                  
+                                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                                                        <label class="labelwidth">Opportunity Type<span class="requiredfield ">  *</span></label>
+                                                                       
+                                                                  </div>
+                                                                  <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                                                        <select class="Country" formControlName="opportunity_type" id="bidstatus" (change)="inputErrorMessage('bidstatus')" >
+                                                                            <option *ngFor="let item of opportunity_type_list" [value]="item.SolicitationTypeId ">
+                                                                                {{item.SolicitationTypeDesc}}
+                                                                            </option>
+                                                                               
+                                                                        </select>  
+                                                                    <div  class="help-block text-danger">
+                                                                                <div *ngIf="submitted && bfc.opportunity_type.errors">Opportunity Type is required</div>
+                                                                    </div>
+                                                                   </div>
+                                                              
+                                                            </div>
+                                                        
+                                                            
+                                                            <div class="row ">
+                                                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                                                    <label class="labelwidth">Category <span class="requiredfield ">  *</span> </label>
+                                                        
+                                                            </div>
+                                                            <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                                                  
+                                                                    <select class="Country" formControlName="category" id="category" (change)="inputErrorMessage('bidstatus')" >
+                                                                            <option value="Open">Open</option>
+                                                                            <option value="Closed">Closed</option>
+                                                                           
+                                                                    </select> 
+                                                                    <div  class="help-block text-danger">
+                                                                            <div *ngIf="submitted && bfc.category.errors">Category is required</div>
+                                                                    </div>
+                                                            </div>
+                                                        
+                                                              
+                                                        </div>
+                                                        
+                                                        <div class="row">
+                                                            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                                                <label class="labelwidth">Buying Entry <span class="requiredfield "> *</span> </label>
+                                                        
+                                                            </div>
+                                                            <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                                               
+                                                                    <select class="Country" formControlName="buying_entry" id="buying_entry" (change)="inputErrorMessage('bidstatus')" >
+                                                                            <option value="Open">Open</option>
+                                                                            <option value="Closed">Closed</option>
+                                                                           
+                                                                    </select> 
+                                                                  
+                                                                    <div  class="help-block text-danger">
+                                                                            <div *ngIf="submitted && bfc.buying_entry.errors">Buying Entry is required</div>
+                                                                   </div>
+                                                            </div>
+                                                        
+                                                        </div>
+                                                        <div class="row ">
+                                                            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                                                <label class="labelwidth">Set Aside<span class="requiredfield "> *</span> </label>
+                                                        
+                                                            </div>
+                                                            <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                                               
+                                                                    <select class="Country" formControlName="set_aside" id="set_aside" (change)="inputErrorMessage('bidstatus')" >
+                                                                        <option *ngFor="let item of aside_type_list" [value]="item.SetAsideTypeId ">
+                                                                            {{item.SetAsideTypeDesc}}
+                                                                        </option>
+                                                                    </select>                   
+                                                                    <div  class="help-block text-danger">
+                                                                            <div *ngIf="submitted && bfc.set_aside.errors">Set Aside is required</div>
+                                                                   </div>
+                                                            </div>
+                                                        
+                                                        </div>
+                                                        <div class="row ">
+                                                                <div class="form-group  col-md-2 col-sm-2">
+                                                                    <label class="labelwidth">Contract Officer<span class="requiredfield "> *</span> </label>
+                                                            
+                                                                </div>
+                                                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                                                   
+                                                                        <select class="Country" formControlName="contrcat_officer" id="contrcat_officer" (change)="inputErrorMessage('bidstatus')" >
+                                                                            <option *ngFor="let item of contract_officer_list" [value]="item.JobTitleId ">
+                                                                                {{item.JobTitleDesc}}
+                                                                            </option>
+                                                                               
+                                                                        </select>                   
+                                                                        <div  class="help-block text-danger">
+                                                                                <div *ngIf="submitted && bfc.set_aside.errors">Contract Officer is required</div>
+                                                                       </div>
+                                                                </div>
+                                                            
+                                                              
+                                                            </div>
+                                                            <div class="row">
+                                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                                                        <label class="labelwidth"> Officer Phone<span class="requiredfield "> *</span> </label>
+                                                                
+                                                                    </div>
+                                                                    <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                                                       
+                                                                            <input type="text" class="co_officer_phone" formControlName="co_officer_phone" id="co_officer_phone" >
+                                             
+                                                                            <div  class="help-block text-danger">
+                                                                                    <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Phone is required</div>
+                                                                           </div>
+                                                                    </div>
+                                                                
+                                                                 
+                                                                </div>
+                                                                <div class="row">
+                                                                        <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                                                            <label class="labelwidth">Officer Email<span class="requiredfield "> *</span> </label>
+                                                                    
+                                                                        </div>
+                                                                        <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                                                                <input type="text" class="co_officer_email" formControlName="co_officer_phone" id="co_officer_phone" >
+                                              
+                                                                                <div  class="help-block text-danger">
+                                                                                        <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Email is required</div>
+                                                                               </div>
+                                                                        </div>
+                                                                    
+                                                                     
+                                                                    </div>
+                                                    
+                                                            </div>
+                                                        </div>
+                                                        <div class="row col-4">
+                                                                <div class="row col-12 ">
+                                                                       
+                                                                    <div class="row mt-1">
+                                                                        <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                                                            <label class="labelwidth">Funding Source<span class="requiredfield ">  *</span></label>
+                                                                           
+                                                                      </div>
+                                                                      <div class="form-group col-xs-4  col-md-6 col-sm-6">
+                                                                          <input type="text" class="fund_source" formControlName="fund_source" id="fund_source" >
+                            
+                                                                            <div  class="help-block text-danger">
+                                                                               <div *ngIf="submitted && bfc.fund_source_resource.errors">Funding Source is required</div>
+                                                                            </div>
+                                                                      </div>
+                                                            
+                                                                 
+                                                                      
+                                                                    </div>
+                                                                    <div class="row ">
+                                                                      <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                                                              <label class="labelwidth">Contract Vehicle<span class="requiredfield ">  *</span></label>
+                                                                            
+                                                                      </div>
+                                                                      <div class="form-group col-xs-4  col-md-6 col-sm-6">
+                                                                        <select class="Country" id="contract_vehicle" formControlName="contract_vehicle"  >
+                                                                          <option *ngFor="let item of contractVehicle" [value]="item.ContractVehicleId ">
+                                                                              {{item.ContractVehicleDesc}}
+                                                                          </option>
+                                                                         </select>
+                                                                          <div  class="help-block text-danger">
+                                                                                      <div *ngIf="submitted && bfc.contract_vehicle.errors">Contract Vehicle is required</div>
+                                                                          </div>
+                                                                      </div>
+                                                                    </div>
+                                                            
+                                                                    <div class="row ">
+                                                                         
+                                                                        <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                                                            <label class="labelwidth">Budget Amount ($)<span class="requiredfield ">  *</span></label>
+                                                                           
+                                                                      </div>
+                                                                      <div class="form-group col-xs-4  col-md-6 col-sm-6">
+                                                                          
+                                                                        <input type="text" class="tradename" formControlName="budget_amount" id="budget_amount" >
+                                                                        <div  class="help-block text-danger">
+                                                                                    <div *ngIf="submitted && bfc.budget_amount.errors">Budget Amount is required</div>
+                                                                        </div>
+                                                                      </div>
+                                                            
+                                                            
+                                                            
+                                                                        
+                                                                    </div>
+                                                            
+                                                                    <div class="row ">
+                                                                      
+                                                                        <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                                                            <label class="labelwidth">Posted Date<span class="requiredfield ">  *</span></label>
+                                                                           
+                                                                      </div>
+                                                                      <div class="form-group  col-md-6 col-sm-6">
+                                                                          <input type="date" class="posted_date" formControlName="posted_date" id="posted_date" >
+                            
+                                                                        <div  class="help-block text-danger">
+                                                                                    <div *ngIf="submitted && bfc.posted_date.errors">Posted Date is required</div>
+                                                                        </div>
+                                                                       </div>
+                                                                  
+                                                                </div>
+                                                            
+                                                                
+                                                                <div class="row ">
+                                                                    <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                                                        <label class="labelwidth">Question Due Date <span class="requiredfield ">  *</span> </label>
+                                                            
+                                                                </div>
+                                                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                                                    <input type="date" class="question_due_date" formControlName="question_due_date" id="question_due_date" >
+                            
+                                                              
+                                                                        <div  class="help-block text-danger">
+                                                                                <div *ngIf="submitted && bfc.question_due_date.errors">Question Due Date is required</div>
+                                                                        </div>
+                                                                </div>
+                                                            
+                                                                  
+                                                            </div>
+                                                            
+                                                            <div class="row">
+                                                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                                                    <label class="labelwidth">Response Due Date<span class="requiredfield ">*</span> </label>
+                                                            
+                                                                </div>
+                                                                <div class="form-group col-xs-4  col-md-6 col-sm-6">
+                                                                    <input type="date" class="response_due_date" formControlName="response_due_date" id="question_due_date" >
+                            
+                                                                      
+                                                                        <div  class="help-block text-danger">
+                                                                                <div *ngIf="submitted && bfc.StartDate.errors">Response Due Date is required</div>
+                                                                       </div>
+                                                                </div>
+                                                            
+                                                            </div>
+                                                            <div class="row ">
+                                                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                                                    <label class="labelwidth">DBE Goal (%)<span class="requiredfield "> *</span> </label>
+                                                            
+                                                                </div>
+                                                                <div class="form-group col-xs-4  col-md-6 col-sm-6">
+                                                                    <input type="text" class="dbe_goal" formControlName="dbe_goal" id="dbe_goal" >
+                            
+                                                                                    
+                                                                        <div  class="help-block text-danger">
+                                                                                <div *ngIf="submitted && bfc.dbe_goal.errors">DBE Goal (%) is required</div>
+                                                                       </div>
+                                                                </div>
+                                                            
+                                                            </div>
+                                                           
+                                                             
+                                                                   
+                                                                </div>
+                                                        </div>
+                                            </div>
+                                       
+                                        </form>
+                                        <input type="button"   class="btn btn-primary fixedwidthcls" (click)="generalsave()"  value="Update" />  
+                            
+                                    </div>
+                                  </ng-template>
+                                </accordion-item>
+                                <!-- <accordion-item>
+                                  <ng-template accordionHeader let-toggle="toggle">
+                                    <div class="row">
+                                      <div class="col-sm-8">
+                                          <p> Custom Header <span class="text-xs text-gray-700">(  toggle button)</span>
+                                          </p>
+                                      </div>
+                            
+                                      <div class="col-sm-4">
+                                          <button (click)="toggle()" class="accordion__toggle-btn"> <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      viewBox="0 0 24 24" width="24" height="24">
+                                      <path fill="none" d="M0 0h24v24H0z" />
+                                      <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/>
+                                    </svg></button>
+                                          
+                                      </div>
+                                    </div>
+                                    <div class="flex items-center justify-between px-4 h-12 bg-purple-200">
                                      
-                             <tr role="row" class="odd">
-                                 <td style="display:none" class="sorting_1"></td>
-                                         <td><a style="text-decoration:underline;">12005</a></td>
-                                         <td>	Software Architect</td>
-                                         <td>Software Engineering</td>
-                                         <td>Koios Systems &amp; Technology LLC</td>
-                                         <td>Yes</td>
-                                         <td><input type="checkbox" checked=""></td>
-                                         <td>11/06/2021</td>
-                                       </tr><tr role="row" class="even">
-                                 <td style="display:none" class="sorting_1"></td>
-                                         <td><a style="text-decoration:underline;">12005</a></td>
-                                         <td>	Software Architect</td>
-                                         <td>Software Engineering</td>
-                                         <td>Safeguard Privacy Protection Services</td>
-                                         <td>No</td>
-                                         <td><input type="checkbox" checked=""></td>
-                                                       
-                                       <td>11/06/2021</td>
-                                         
-                                       </tr><tr role="row" class="odd">
-                                 <td style="display:none" class="sorting_1"></td>
-                                         <td><a style="text-decoration:underline;">12006</a></td>
-                                         <td>Product License</td>
-                                         <td></td>
-                                         <td>Lees Service LLC</td>
-                                         <td>Yes</td>
-                                         <td><input type="checkbox" checked=""></td>
-                                         <td>11/07/2021</td>
-                                         
-                                       </tr><tr role="row" class="even">
-                                 <td style="display:none" class="sorting_1"></td>
-                                         <td><a style="text-decoration:underline;">12006</a></td>
-                                         <td>Odoo Superuser License</td>
-                                         <td>Product License</td>
-                                         <td>Safety First Inc</td>
-                                         <td>Yes</td>
-                                         <td><input type="checkbox" checked=""></td>
-                                         <td>11/06/2021</td>
-                                         
-                                       </tr><tr role="row" class="odd">
-                                 <td style="display:none" class="sorting_1"></td>
-                                         <td><a style="text-decoration:underline;">12007</a></td>
-                                         <td>Odoo Support Technician</td>
-                                         <td>Product Support</td>
-                                         <td>Savi Solutions Inc</td>
-                                         <td>Yes</td>
-                                         <td><input type="checkbox" checked=""></td>
-                                         <td>11/10/2021</td>
-                                         
-                                       </tr><tr role="row" class="even">
-                                 <td style="display:none" class="sorting_1"></td>
-                                 <td></td>
-                                 <td></td>
-                                 <td></td>
-                                 <td></td>
-                                 <td></td>
-                               <td></td>
-                                               
-                               <td></td>
-                                 
-                               </tr></tbody>
-                           </table></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="secondtableVendorsMatched_info" role="status" aria-live="polite">Showing 1 to 6 of 6 entries</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="secondtableVendorsMatched_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="secondtableVendorsMatched_previous"><a href="#" aria-controls="secondtableVendorsMatched" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="secondtableVendorsMatched" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="secondtableVendorsMatched_next"><a href="#" aria-controls="secondtableVendorsMatched" data-dt-idx="2" tabindex="0">Next</a></li></ul></div></div></div></div>
-                             </div>
-            <!-- /.box-body -->
-            <!--<div class="col-sm-12" style="padding:0px 0px 0px 0px !important;">-->
-                
-                 <span class="subheadingcls" style="margin-left: -12px;">Post Bid</span>
-                
-                <div class="row">
-                    
-                    <div class="col-sm-6" style="margin-left: -14px;">
-                        
-                        <div class="panel-group" id="accordion">
-              
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                      <div class="row subheadingcls">
-                            
-                            <div class="col-sm-6">
-                                Email
+                                      <div class="flex space-x-2">
+                                      </div>
+                                    </div>
+                                  </ng-template>
+                                  <ng-template accordionContent>
+                                      <div class="p-4">
+                                        This is a <strong>complete custom header</strong> implementation. The
+                                        whole header section can be customized to you liking. Toggle method
+                                        will be exposed which can be used to open/close the section.
+                                      </div>
+                                  </ng-template>
+                                </accordion-item> -->
+                                <accordion-item>
+                                    <ng-template accordionTitle>
+                                      <div class="flex space-x-2">
+                                        <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                                          viewBox="0 0 24 24" width="20" height="20">
+                                          <path fill="none" d="M0 0h24v24H0z" />
+                                          <path
+                                            d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
+                                        </svg> -->
+                                        <h6>Document Upload</h6>
+                                      </div>
+                                    </ng-template>
+                                    <ng-template accordionContent>
+                                        <div class="p-4">
+                                          This is a simple implementation where the
+                                          <strong>Document Upload part</strong>. 
+                                        </div>
+                                    </ng-template>
+                                  </accordion-item>
+                                <accordion-item>
+                                  <ng-template accordionTitle>
+                                    <div class="flex space-x-2">
+                                      <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" width="20" height="20">
+                                        <path fill="none" d="M0 0h24v24H0z" />
+                                        <path
+                                          d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
+                                      </svg> -->
+                                      <h6>Schedule: Contract Line Items</h6>
+                                    </div>
+                                  </ng-template>
+                                  <ng-template accordionContent>
+                                      <div class="p-4">
+                                          This is a simple implementation where the
+                                          <strong>Contract Line Items</strong>. 
+                                        </div>
+                                  </ng-template>
+                                </accordion-item>
+                                <accordion-item title="Vendors Matching" [disabled]="true">
+                                  <ng-template> 
+                                  <div class="flex space-x-2">
+                                       
+                                        <h6>Vendors Matching</h6>
+                                      </div>
+                                    </ng-template>
+                                  <ng-template accordionContent>
+                                      <div class="p-4">
+                                          This is a simple implementation where the
+                                          <strong>Vendors Matching Items</strong>. 
+                                        </div>
+                                  </ng-template>
+                                </accordion-item>
+                              </accordion>
                             </div>
-                            
-                            <div class="col-sm-6" style="text-align:right">
-                                <i style="font-weight: bold;" class="fa fa-angle-down rotate-icon"></i>
-                            </div>
-                            
-                        </div>
-                      <!--Email  &nbsp; <i class="fa fa-angle-down rotate-icon"></i>-->
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapse1" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <div class="col-sm-12" id="emailBoxId">
-                    
-              <label style="margin-left: 1px;">Email Id </label> &nbsp;&nbsp;
-                
-                <input type="text" class="" name="address" id="" style="border-radius:0px;width: 243px !important;box-shadow: none;height: 28px;font-size: 12px !important;border: 1px solid;" value="" placeholder="">
-                
-                <button type="button" style="
-            " class="btn btn-primary prevnextbtn1" data-toggle="modal" href="#">Send Email</button>
-            
-            
-                                         
-                                     </div>
-                  </div>
-                </div>
-              </div>
-              
-            </div>
-                        
-                    </div>
-                    
-                    <div class="col-sm-6">
-                        
-                        <div class="panel-group" id="accordion2" style="margin-left: 52px;">
-              
-              
-              <div class="panel panel-default" style="width: 481px;">
-                <div class="panel-heading" style="">
-                  <h4 class="panel-title">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
-                        <div class="row subheadingcls">
-                            
-                            <div class="col-sm-6">
-                                Download
-                            </div>
-                            
-                            <div class="col-sm-6" style="text-align:right">
-                                <i style="font-weight: bold;" class="fa fa-angle-down rotate-icon"></i>
-                            </div>
-                            
-                        </div>
-                      <!--Download &nbsp; <i class="fa fa-angle-down rotate-icon"></i>-->
-                    </a>
-                  </h4>
-                </div>
-                <div id="collapse2" class="panel-collapse collapse">
-                  <div class="panel-body" style="">
-                    <div class="col-sm-12" id="ExportboxId" style="display: block;">
-                                         <!--<input type="checkbox" id="vehicle1" name="vehicle1" checked >-->
-              
-              
-              
-              
-              <div class="form-group form-inline" style="padding-top: 3px;">
+                      </div>
+                  </mat-tab>
+                  <mat-tab label="Bid Response">
                   
-                  <!--<label for="vehicle1" style="width: 150px;"> Export Job Posting</label>-->
-                  <!--<label style="width:30px"></label>-->
-                <label style="width: 90px;">Document Type </label>
-                
-                <select class="form-control heightfieldcls" style="border-radius:0px;width: 100px !important;">
-                                             <option>XML</option>
-                                               <option>Pdf</option>
-                                          </select>
-                                          &nbsp;
-                                          &nbsp;
-                                           <button type="button" style="padding:5px !important
-            " class="btn btn-primary prevnextbtn1" data-toggle="modal" href="#">Download</button>
-                               
-               
-             </div>
-             
-            <!-- <div style="text-align:right;margin-top: -27px;">-->
-            <!--  <button type="button" style="padding:5px !important-->
-            <!--" class="btn btn-primary prevnextbtn1" data-toggle="modal" href="#">Export Job Posting</button>-->
-            <!--</div>-->
-                                         
-                                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-                        
-                    </div>
-                    
-                    </div>
-                    
-                    
-                    <div class="row">
-                        
-                        <div class="col-sm-6">
-                                
-                            </div>
-                            
-                            <div class="col-sm-6" style="text-align:right">
-                                <div class="form-group form-inline">
-                     <br>
-                     <!--<br><br>-->
-                     <!--<br>-->
-                     
-                          <button onclick="createbit2nd()" type="button" class="btn btn-primary fixedwidthcls" style="">&lt;&lt; Previous</button> &nbsp;&nbsp;
-            <button type="button" class="btn btn-primary" style="width:30%;padding-left:20px !important;">Send Email Invitation</button>
-                          <!--&nbsp;&nbsp;</a>-->
-            </div>
-                            </div>
-                        
-                        
-                         
-                        
-                    </div>
-                
-            <!--    <div class="row">-->
-                    
-            <!--        <div class="col-sm-6" style="margin-left: -14px;">-->
-                        
-                        
-            <!--        </div>-->
-                    
-            <!--        <div class="col-sm-6" style="text-align:right;margin-left: 11px;">-->
-                        
-            <!--            <div class="form-group form-inline">-->
-            <!--         <br>-->
-            <!--         <br><br>-->
-            <!--         <br>-->
-                     
-            <!--              <button onclick="createbit2nd()" type="button" class="btn btn-primary fixedwidthcls" style=""><< Previous</button> &nbsp;&nbsp;-->
-            <!--<button type="button" class="btn btn-primary" style="width:30%;padding-left:20px !important;">Send Email Invitation</button>-->
-                          <!--&nbsp;&nbsp;</a>-->
-            <!--</div>-->
-                        
-            <!--        </div>-->
-                
-                
-                
-            
-            <!--</div>-->
-                
-                
-            
-            
-            
-            
-            
-            
-                 <!--</div>-->
-            
-                     
-            
-              
-                      </div>
-                    <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                   
-                    <input (click)="submit()"type="submit" name="submit" class="submit action-button" value="Submit"/>
-                </fieldset>
-            </form>
-        </div>
-    </div>
+                  </mat-tab>
+              </mat-tab-group>
+          </div>
+      </div>
+  </div>
+
+
+
+
+
+<!-- Tabs content -->
