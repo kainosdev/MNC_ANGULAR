@@ -21,6 +21,9 @@ import { ChartjsModule } from '@coreui/angular-chartjs';
 import { BidmanagementRoutingModule } from './bid-management-routing.module';
 import { BidmanagementComponent} from './bid-management.component';
 
+import { AccordionModule } from "../../lib/accordion/accordion.module";
+import {MatTabsModule} from '@angular/material/tabs';
+
 @NgModule({
     imports: [
       BidmanagementRoutingModule,
@@ -38,10 +41,14 @@ import { BidmanagementComponent} from './bid-management.component';
       ButtonGroupModule,
       ChartjsModule,
       AvatarModule,
-      TableModule
+      TableModule,
+      AccordionModule,
+      MatTabsModule
+      
      
       // WidgetsModule
     ],
+   
     declarations: [BidmanagementComponent]
   })
   export class BidmanagementModule { }
