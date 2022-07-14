@@ -83,3 +83,21 @@ div.dataTables_wrapper div.dataTables_filter input {
     height: 20px !important;
     font-size: 12px !important;
 }
+
+.sidebar-nav .nav-link {
+    
+    color: black !important;
+   
+    background: #a1e2fd !important;
+    
+}
+
+.sidebar-nav .nav-link.active {
+    //color: var(--cui-sidebar-nav-link-active-color, rgba(255, 255, 255, 0.87));
+    background: #53d8fb !important;
+}
+
+.sidebar-brand {
+   
+    background: white;
+}

@@ -29,26 +29,48 @@ export class DefaultLayoutComponent implements OnInit{
       // linkProps: { fragment: 'someAnchor' },
       iconComponent: { name: 'cil-pencil' }
     },
+    {
+      name: 'Buttons',
+      url: '/buttons',
+      iconComponent: { name: 'cil-cursor' },
+      children: [
+        // {
+        //   name: 'Buttons',
+        //   url: '/buttons/buttons'
+        // },
+        // {
+        //   name: 'Button groups',
+        //   url: '/buttons/button-groups'
+        // },
+        {
+          name: 'Dropdowns',
+          url: '/BidResponses'
+        },
+      ]
+    },
     
   ];
 
-  // navItems1: INavData[] = [
+  navItems1: INavData[] = [
  
-  //   {
-  //     name: 'Vendor Management 2',
-  //     url: '/vendormanagement',
-  //     iconComponent: { name: 'cil-drop' }
-  //   }
-  // // }
-  // ,
-  //   {
-  //     name: 'User Management 2',
-  //     url: '/adminmanagement',
-  //     // linkProps: { fragment: 'someAnchor' },
-  //     iconComponent: { name: 'cil-pencil' }
-  //   },
+    {
+      name: 'Vendor Management 2 tyreytry',
+      url: '/vendormanagement',
+      iconComponent: { name: 'cil-drop' }
+    }
+  // }
+  ,
+    {
+      name: 'User Management 2 rtetrty',
+      url: '/adminmanagement',
+      // linkProps: { fragment: 'someAnchor' },
+      iconComponent: { name: 'cil-pencil' }
+    },
+
     
-  // ];
+    
+  ];
+
   // console.log(usertypeses);
   // if(this.usertypeses == "EMPLOY") {
   
