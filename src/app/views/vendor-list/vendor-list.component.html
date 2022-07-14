@@ -3,7 +3,22 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-smart-table/2.1.8/smart-table.min.js"></script> -->
 <h4>Vendor Management</h4>
-<table class="table">
+<div class="row" style="text-align:center;margin-left:-5px">
+  <div class="col-sm-4" class="vendorcount">No. of Certified Vendors : &nbsp; 6</div>
+  <div class="col-sm-4" class="vendorcount2">No. of Small Businessess&nbsp;&nbsp; :&nbsp; 5</div>
+  <div class="col-sm-4" class="vendorcount3">No. of Vendors with Active Contracts &nbsp; :&nbsp; 7</div>
+</div>
+<div style="text-align:right;">
+  <a class="popup-link" data-toggle="modal" (click)="openPopup()"><span style="
+  text-align: right;
+">Advanced Search</span></a>
+</div>
+
+
+
+
+
+<table class="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
     <thead>
       <tr>
         <!-- <th scope="col">#</th> -->
@@ -16,8 +31,8 @@
         <th scope="col">Country</th>
       </tr>
     </thead>
-    <tbody>
-      
+    <tbody >
+
       <tr *ngFor="let v of vendorDetail">
         <!-- <th scope="row">1</th> -->
         <td (click)="ViewVendor(v.VendorId)">{{v.LegalName}}</td>
@@ -31,6 +46,128 @@
     </tbody>
   </table>
 
+<!--Advanced search menu-->
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
 
+    <div class="modal-dialog " role="document">
+
+      <div class="modal-content innerlinefont">
+        <div class="model-header" style="text-align: center;">
+          <button type="button" class="close" data-dismiss="modal" (click)="closePopup()">×</button>
+          <h3 class="modal-title subheadingcls">Vendor Management</h3>
+          <span class="modal-title subheadingcls">Advanced Search</span>
+        </div>
+        <div class="modal-body" style="line-height:2;margin-left: 20px;">
+          <div class="row" style="margin-left:0px">
+            <div class="form-group form-inline">
+
+              <label class="vendorpopup_lbl1" style="padding-bottom:0px !important;">Commodity Code </label>
+              <select class=" heightfieldcls" style="height:28px;width:50%;">
+                <option></option>
+              </select>
+
+            </div>
+
+            <div class="form-group form-inline">
+
+              <label class="vendorpopup_lbl1" style="text-align:left">Certifications </label>
+              <select class=" heightfieldcls" style="height:28px;width:38%;">
+                <option></option>
+                <option>O - Micro Business</option>
+                <option>S - Small Business</option>
+                <option>M - Minority Owned Business</option>
+                <option>W - Women Owned Business</option>
+                <option>SDV - Service Disabled Veteran Owned</option>
+              </select>
+              <!--<p class="offclick"></p>-->
+            </div>
+
+            <div class="form-group form-inline">
+
+              <label class="vendorpopup_lbl1" style="text-align:left">State </label>
+              <select style="height:28px;width: 100px;">
+                <option></option>
+                <option>Alabama</option>
+                <option>Alaska</option>
+                <option>California</option>
+                <option>Ohio</option>
+                <option>Virginia</option>
+                <option>Washington</option>
+              </select>
+              <!--<p class="offclick"></p>-->
+            </div>
+
+            <div class="form-group form-inline">
+
+              <label class="vendorpopup_lbl1" style="text-align:left">City</label>
+              <select class=" heightfieldcls" style="height:28px;width:50%;">
+                <option></option>
+              </select>
+
+            </div>
+            <!--<p class="offclick"></p>-->
+            <div class="form-group form-inline">
+
+              <label class="vendorpopup_lbl1" style="text-align:left">Business size</label>
+              <select class=" heightfieldcls4" style="height:28px;">
+                <option>1</option>
+                <option>5</option>
+                <option>10</option>
+              </select>
+              <label class="" style="text-align:left;margin-left: 9px;">To</label>
+              <select class=" heightfieldcls4" style="height:28px;margin-left:5px;">
+                <option>50</option>
+                <option>100</option>
+                <option>150</option>
+              </select>
+
+            </div>
+            <!--<p class="offclick"></p>-->
+            <div class="form-group form-inline" style="margin-bottom:8px !important;">
+              <label class="vendorpopup_lbl1" for="email" class="vendorpopup_lbl1">Active Contracts</label>
+              <label class="switch">
+                <input class="" type="checkbox" name="active" id="active">
+                <span class="slider round"></span>
+              </label>
+            </div>
+
+
+            <div class="form-group form-inline">
+              <label class="vendorpopup_lbl1" for="email">Custom Search Field 1</label>
+
+              <input type="text" class=" heightfieldcls" style="height:28px;width:250px !important; ">
+
+
+            </div>
+            <div class="form-group form-inline">
+              <label class="vendorpopup_lbl1" for="email">Custom Search Field 2</label>
+
+              <select class=" heightfieldcls" style="height:28px;width:180px !important; ">
+                <option></option>
+              </select>
+
+            </div>
+
+
+            <div class="form-group form-inline">
+              <label class="vendorpopup_lbl1" for="email">Custom Search Field 3</label>
+              <label class="switch">
+                <input class="" type="checkbox" name="active" id="active">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="modal-footer" style="text-align:center">
+              <input type="submit" id="localityaddBtn" data-dismiss="modal" name="save" class="btn btn-primary"
+                value="Search">
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+</div>
 
 

@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import {DataTablesModule} from 'angular-datatables';
+import { DataTableDirective } from 'angular-datatables';
+
 
 import {
   AvatarModule,
@@ -38,6 +41,8 @@ import { VendorListComponent } from './vendor-list.component';
     ChartjsModule,
     AvatarModule,
     TableModule,
+    DataTablesModule,
+    
     // WidgetsModule
   ],
   declarations: [VendorListComponent]
