@@ -84,6 +84,32 @@ div.dataTables_wrapper div.dataTables_filter input {
     font-size: 12px !important;
 }
 
+//common styles
+
+.common_btn_action
+{
+background-color: #10295F !important;
+color: white !important;
+}
+
+.common_btn_cancel
+{
+background-color: #A01D1D !important;
+color: white !important;
+}
+.icon-contact
+{
+    width: 70% !important;
+    height: 70% !important;
+}
+.bg-purple-200 {
+    --tw-bg-opacity: 1;
+    background-color: rgba(221,214,254,var(--tw-bg-opacity));
+}
+.general_info_back{
+    background-color: #95bee1;
+}
+
 .sidebar-nav .nav-link {
     
     color: black !important;
