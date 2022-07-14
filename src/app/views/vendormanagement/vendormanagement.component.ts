@@ -23,6 +23,8 @@ export class VendormanagementComponent implements OnInit {
   zipcodeValPastAddr:any;
   statedetailPastAddr:any;
 
+  SingleVendorContactDetailsArr:any;
+
   CurrentAddrStartDate:any;
   CurrentAddrEndDate:any;
   MailAddrStartDate:any;
@@ -115,6 +117,7 @@ export class VendormanagementComponent implements OnInit {
     this.getcountrydata();
     this.getAllDistricts();
     this.getstatedata();
+    this.GetVendorContactById();
     this.VendorMgmtBusiness = this.frmbuilder.group({
 VendorId:[localStorage.getItem('vendoridSes')],
 CreatedUserId:[localStorage.getItem("CreatedUseridses")],
@@ -282,6 +285,7 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
     
       
       this.ContactToggle[i]=true;
+      console.log(this.contactList);
       //this.toggleContact(i)
      
 
@@ -1134,4 +1138,20 @@ onchangezipPastAddr(){
   
         }
 // for both past address
+
+GetVendorContactById(){
+ 
+  let vendoridSes = localStorage.getItem('vendoridSes');
+
+  this.http.get(config_url+'/vendor/GetVendorContactById?VendorId='+vendoridSes+"&VendorContactPrimary=1").subscribe(data1 =>
+    {
+
+      
+      this.SingleVendorContactDetailsArr=data1;
+      this.SingleVendorContactDetailsArr=this.SingleVendorContactDetailsArr.data.SingleVendorContactDetails;
+      console.log("SingleVendorContactDetailsArr>>>",this.SingleVendorContactDetailsArr);
+      
+    })
+
+}
 }

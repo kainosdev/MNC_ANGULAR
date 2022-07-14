@@ -10,7 +10,7 @@
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                    <input type="text"  class="first"   (keypress)="alpha($event)">
+                    <input type="text"  class="first" readonly  (keypress)="alpha($event)">
                     <!-- <div  class="help-block text-danger">
                        <div *ngIf="submitted1 && rcf1.FirstName.errors">First Name is required</div>
                     </div> -->
@@ -1560,12 +1560,12 @@
                 <div class="row Generaldiv">
     
                         <p class="mainheading heading" style=" padding-bottom: 5px; padding-top: 16px;">Contact Information</p>
-                        <div class="card tab-content p-3">
+                        <div class="card tab-content p-3" *ngFor="let s of SingleVendorContactDetailsArr">
                     <div class="col-sm-6 innerlinefont">
                         <div class="labelheight">
                             <label class="labelwidth"> Contact Person Name <span class="requiredfield "> *</span></label>
                             <input type="text" class="Contactperson" id="contactperson_id" formControlName="ContactName"
-                                (keypress)="EmptyErrorMessage('contactperson_id')">
+                                (keypress)="EmptyErrorMessage('contactperson_id')" [(ngModel)]="s.ContactName">
                                 <div  class="help-block text-danger">
                                     <div *ngIf="submitted2 && rcf2.ContactName.errors">Contact Name is required</div>
                                  </div>
@@ -1575,14 +1575,18 @@
                         <div class="labelheight">
                             <label class="labelwidth">Business Phone <span class="requiredfield "> *</span></label>
                             <input type="text" [textMask]="{mask: mask1}" class="Businessphone" id="businessphone_id"
-                                formControlName="BusinessPhone" (keypress)="EmptyErrorMessage('businessphone_id')">
+                                formControlName="BusinessPhone" (keypress)="EmptyErrorMessage('businessphone_id')" [(ngModel)]="s.Phone">
+
+                                <div  class="help-block text-danger">
+                                    <div *ngIf="submitted2 && rcf2.BusinessPhone.errors">Phone is required</div>
+                                 </div>
     
                         </div>
     
                         <div class="labelheight">
                             <label class=" labelwidth" style="width: 146px;">Primary Contact</label>
                             <label class="switch">
-                                <input class="" type="checkbox" name="businessprimaryContact" id="businessprimaryContact"
+                                <input class="" type="checkbox" name="businessprimaryContact" id="businessprimaryContact" [(ngModel)]="s.VendorContactPrimary"
                                     formControlName="VendorContactPrimary" checked>
                                 <span class="slider round"></span>
                             </label>
@@ -1593,25 +1597,32 @@
     
                     </div>
     
-                    <div class="col-sm-6 innerlinefont">
+                    <div class="col-sm-6 innerlinefont" >
     
                         <div class="labelheight">
                             <label class="labelwidth">Title<span class="requiredfield "> *</span></label>
                             <input type="text" class="Title" id="title_id" formControlName="JobTitle"
-                                (keypress)="EmptyErrorMessage('title_id')">
+                                (keypress)="EmptyErrorMessage('title_id')" [(ngModel)]="s.JobTitle">
+
+                                <div  class="help-block text-danger">
+                                    <div *ngIf="submitted2 && rcf2.JobTitle.errors">Title is required</div>
+                                 </div>
                         </div>
     
     
                         <div class="labelheight">
                             <label class="labelwidth">Business Email <span class="requiredfield "> *</span></label>
-                            <input type="text" class="Businessemail" id="businessemail_id" formControlName="BusinessEmail"
+                            <input type="text" class="Businessemail" id="businessemail_id" formControlName="BusinessEmail" [(ngModel)]="s.Email"
                                 (keyup)="EmptyErrorMessage('businessemail_id')">
+                                <div  class="help-block text-danger">
+                                    <div *ngIf="submitted2 && rcf2.BusinessEmail.errors">Email is required</div>
+                                 </div>
                         </div>
     
                         <div style="height: 22px;">
                             <label class="labelwidth">Active</label>
                             <label class="switch">
-                                <input class="" type="checkbox" name="active" id="active" formControlName="VendorContactActive">
+                                <input class="" type="checkbox" name="active" id="active" formControlName="VendorContactActive" [(ngModel)]="s.VendorContactActive">
                                 <span class="slider round"></span>
                             </label>
                         </div>
