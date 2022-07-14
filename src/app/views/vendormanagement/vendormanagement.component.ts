@@ -11,7 +11,18 @@ import Swal from 'sweetalert2';
  
 })
 export class VendormanagementComponent implements OnInit {
-  public mask = [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+  public mask = [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  public mask1 = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+  // public mask1 = ['+',/\d/,'(',/\d/, /\d/, /\d/, ') ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+
+  statedetailMailAddr:any;
+  zipcodeValMailAddr:any;
+  countrytypeMailAddr:any;
+
+  countrytypePastAddr:any;
+  zipcodeValPastAddr:any;
+  statedetailPastAddr:any;
+
   CurrentAddrStartDate:any;
   CurrentAddrEndDate:any;
   MailAddrStartDate:any;
@@ -62,6 +73,14 @@ export class VendormanagementComponent implements OnInit {
   IndBusinessPastZipcode:any;
   IndBusinessPastCity:any;
   IndBusinessPastState:any;
+
+  IndBusinessDistrictsNew:any;
+  IndBusinessCountryNew:any;
+  IndBusinessZipcodeNew:any;
+  IndBusinessCityNew:any;
+  IndBusinessStateNew:any;
+
+
   contactsform: FormGroup;
   contactList?: FormArray;
   vehicleList?: FormArray;
@@ -81,7 +100,7 @@ export class VendormanagementComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger
+    // debugger
     this.contactsform = this.frmbuilder.group({
       contactarray: this.frmbuilder.array([this.createcontact()])
     });
@@ -143,7 +162,7 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
 
       BPAddress1: [],
       BPAddress2: [],
-      BPStateId: [],
+      BPStateId: [1],
       BPCityId: [],
       BPZipcode: [],
       BPDistrictId: [],
@@ -244,7 +263,7 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
     });
   }
   addcontact() {
-    debugger
+    // debugger
     if(this.contactList!=null)
     {
       
@@ -391,9 +410,29 @@ VendorData(VendorMgmtIndividual:any){
   
         this.AdditionalContactList.push(addcontactData)
       });
+      //vendorMgmt.push(this.AdditionalContactList);
       
-       alert(JSON.stringify(this.AdditionalContactList))
+       //console.log(JSON.stringify(this.AdditionalContactList))
     }
+
+    this.http.post('http://localhost/MNC_PHP_API/vendor/UpdateVendor',vendorMgmt).subscribe(
+    // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
+      
+      data => {
+        console.log("data");
+          console.log('POST Request is successful >>>>>>>>', data);
+
+      },
+      success => {
+        // Swal.fire({
+        //   position: 'top',
+        //   icon: 'success',
+        //   title: 'Successfully Registered',
+        //   showConfirmButton: false,
+        //   timer: 3000
+        // })
+      }
+      );
     
     // this.http.post('http://localhost/MNC_PHP_API/vendor/UpdateVendor',vendorMgmt).subscribe(
     // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
@@ -845,6 +884,8 @@ Getcityall_list(){
 
           this.citylist=citylist;
 
+          this.IndBusinessCityNew=this.citylist.data.citydetails;
+
           this.IndBusinessPastCity=this.citylist.data.citydetails;
           console.log("past city>>>",this.IndBusinessPastCity)
 
@@ -862,6 +903,8 @@ getAllZipcodes(){
   this.http.get(config_url+'/app/getZipCode').subscribe( (data: {}) => {
       this.zipcodeVal=data;
 
+      this.IndBusinessZipcodeNew=this.zipcodeVal.data.zipcodedata;
+
       this.IndBusinessPastZipcode=this.zipcodeVal.data.zipcodedata;
 
       this.zipcodeVal=this.zipcodeVal.data.zipcodedata;
@@ -875,6 +918,8 @@ getcountrydata(){
     (countrydata: {}) => {
      
       this.countrytype = countrydata;
+
+      this.IndBusinessCountryNew = this.countrytype.data.CountryDetails;
 
       this.IndBusinessPastCountry = this.countrytype.data.CountryDetails;
 
@@ -890,6 +935,8 @@ getAllDistricts(){
      
       this.districts = data;
 
+      this.IndBusinessDistrictsNew = this.districts.data.selectAllDistricts;
+
       this.IndBusinessPastDistricts = this.districts.data.selectAllDistricts;
 
       this.districts = this.districts.data.selectAllDistricts;
@@ -904,6 +951,8 @@ getstatedata(){
     (statelistdata: {}) => {
      
       this.statedetail = statelistdata;
+
+      this.IndBusinessStateNew = this.statedetail.data.statedetails;
 
       this.IndBusinessPastState = this.statedetail.data.statedetails;
 
@@ -989,4 +1038,97 @@ cancelform()
 
       }
 
+// for both mail address
+      onchangezipIndividual(){
+        // alert("in");
+      //   this.IndBusinessPastZipcode="";
+                let cityid = (<HTMLInputElement>document.getElementById("currentcity_id_mail")).value;
+        
+                this.http.get(config_url+'/app/getZipcodeByCity?cityid='+cityid).subscribe(data1 =>
+                  {
+        
+                    this.zipcodeValMailAddr=data1;
+                    this.IndBusinessPastZipcode=this.zipcodeValMailAddr.data.zipcodedata;
+                   })
+        
+              }
+        
+              onchangestateIndividual(){
+                // alert("in");
+      //           this.IndBusinessPastState="";
+                let cityid = (<HTMLInputElement>document.getElementById("currentcity_id_mail")).value;
+        
+                this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe(statelist =>
+                  {
+        
+                    // console.log(statelist);
+                    this.statedetailMailAddr=statelist;
+                    this.IndBusinessPastState=this.statedetailMailAddr.data.Statelist;
+                   })
+        
+              }
+        
+              onchangecountryIndividual(){
+      //           // alert("in");
+                
+                let state_id = (<HTMLInputElement>document.getElementById("stateprovice_id_mail")).value;
+        
+                this.http.get(config_url+'/app/getCountryByState?stateid='+state_id).subscribe(countrydata =>
+                  {
+         this.countrytypeMailAddr = countrydata;
+                    this.IndBusinessPastCountry = this.countrytypeMailAddr.data.countrydata
+                    console.log(this.IndBusinessPastCountry);
+                  })
+        
+        
+              }
+// for both mail address
+
+
+
+// for both past address
+onchangezipPastAddr(){
+  // alert("in");
+//   this.IndBusinessPastZipcode="";
+          let cityid = (<HTMLInputElement>document.getElementById("currentcity_id_past")).value;
+  
+          this.http.get(config_url+'/app/getZipcodeByCity?cityid='+cityid).subscribe(data1 =>
+            {
+  
+              this.zipcodeValPastAddr=data1;
+              this.IndBusinessZipcodeNew=this.zipcodeValPastAddr.data.zipcodedata;
+             })
+  
+        }
+  
+        onchangestatePastAddr(){
+          // alert("in");
+//           this.IndBusinessPastState="";
+          let cityid = (<HTMLInputElement>document.getElementById("currentcity_id_past")).value;
+  
+          this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe(statelist =>
+            {
+  
+              // console.log(statelist);
+              this.statedetailPastAddr=statelist;
+              this.IndBusinessStateNew=this.statedetailPastAddr.data.Statelist;
+             })
+  
+        }
+  
+        onchangecountryPastAddr(){
+//           // alert("in");
+          
+          let state_id = (<HTMLInputElement>document.getElementById("stateprovice_id_past")).value;
+  
+          this.http.get(config_url+'/app/getCountryByState?stateid='+state_id).subscribe(countrydata =>
+            {
+   this.countrytypePastAddr = countrydata;
+              this.IndBusinessCountryNew = this.countrytypePastAddr.data.countrydata
+              console.log(this.IndBusinessCountryNew);
+            })
+  
+  
+        }
+// for both past address
 }

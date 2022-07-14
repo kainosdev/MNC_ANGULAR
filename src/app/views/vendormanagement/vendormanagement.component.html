@@ -124,7 +124,7 @@
                 </div>
                 <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                       
-                        <input type="text" class="Physicaladdress"  formControlName="Phone" [(ngModel)]="s.Phone">
+                        <input type="text" class="Physicaladdress" [textMask]="{mask: mask1}" formControlName="Phone" [(ngModel)]="s.Phone">
                         <div  class="help-block text-danger">
                             <div *ngIf="submitted1 && rcf1.Phone.errors">Phone is required</div>
                         </div>
@@ -298,7 +298,7 @@
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">State/province  <span class="requiredfield ">  *</span></label>
+                    <label class="labelwidth">State/Province  <span class="requiredfield ">  *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -512,7 +512,7 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">State/province 
+                            <label class="labelwidth">State/Province 
                                 <!-- <span class="requiredfield ">  *</span> -->
                             </label>
                            
@@ -692,7 +692,7 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">State/province 
+                            <label class="labelwidth">State/Province 
                                 <!-- <span class="requiredfield ">  *</span> -->
                             </label>
                            
@@ -850,7 +850,7 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                            <input type="text"  class="Federal" id="federal_id" formControlName="Federal" [(ngModel)]="s2.Federal">
+                            <input type="text"  class="Federal" id="federal_id" [textMask]="{mask: mask}" formControlName="Federal" [(ngModel)]="s2.EIN_SSN">
                             <div  class="help-block text-danger">
                                <div *ngIf="submitted2 && rcf2.Federal.errors">Federal is required</div>
                             </div>
@@ -1125,7 +1125,7 @@
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">State/province <span  class="requiredfield"> *</span></label>
+                    <label class="labelwidth">State/Province <span  class="requiredfield"> *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -1343,7 +1343,7 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">State/province 
+                            <label class="labelwidth">State/Province 
                                 <!-- <span  class="requiredfield"> *</span> -->
                             </label>
                            
@@ -1523,7 +1523,7 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">State/province 
+                            <label class="labelwidth">State/Province 
                                 <!-- span class="requiredfield ">  *</span> -->
                             </label>
                            
@@ -1571,7 +1571,7 @@
     
                         <div class="labelheight">
                             <label class="labelwidth">Business Phone <span class="requiredfield "> *</span></label>
-                            <input type="number" class="Businessphone" id="businessphone_id"
+                            <input type="text" [textMask]="{mask: mask1}" class="Businessphone" id="businessphone_id"
                                 formControlName="BusinessPhone" (keypress)="EmptyErrorMessage('businessphone_id')">
     
                         </div>
@@ -1693,7 +1693,7 @@
                                                     <div class="col-sm-6">
                                                         <div class="mt-1">
                                                             <label class="labelwidth" style="margin-left: 9px;">Business Phone</label>
-                                                            <input type="number" class="" id="addtionalbusinessphone_id"
+                                                            <input type="text" [textMask]="{mask: mask1}" class="" id="addtionalbusinessphone_id"
                                                                 formControlName="AddtionalBusinessPhone"
                                                                 (keypress)="EmptyErrorMessage('addtionalbusinessphone_id')">
                                                         </div>
