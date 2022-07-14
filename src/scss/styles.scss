@@ -83,3 +83,25 @@ div.dataTables_wrapper div.dataTables_filter input {
     height: 20px !important;
     font-size: 12px !important;
 }
+.lefthandmenu{
+    text-align:left !important;
+    font-size: 14px;
+    // margin-left: 19px;
+    color: black;
+  
+
+}
+.lefthandmenu:hover {
+    background-color: #baddec;
+    // font-weight: 500 !important;
+  }
+  
+  .btn-primary {
+    color: #fff;
+    background-color: #10295f !important;
+    border-color: #10295f !important;
+}
+
+a {
+    color: #10295f !important;
+   }
