@@ -83,25 +83,21 @@ div.dataTables_wrapper div.dataTables_filter input {
     height: 20px !important;
     font-size: 12px !important;
 }
-.lefthandmenu{
-    text-align:left !important;
-    font-size: 14px;
-    // margin-left: 19px;
-    color: black;
-  
 
-}
-.lefthandmenu:hover {
-    background-color: #baddec;
-    // font-weight: 500 !important;
-  }
-  
-  .btn-primary {
-    color: #fff;
-    background-color: #10295f !important;
-    border-color: #10295f !important;
+.sidebar-nav .nav-link {
+    
+    color: black !important;
+   
+    background: #a1e2fd !important;
+    
 }
 
-a {
-    color: #10295f !important;
-   }
+.sidebar-nav .nav-link.active {
+    //color: var(--cui-sidebar-nav-link-active-color, rgba(255, 255, 255, 0.87));
+    background: #53d8fb !important;
+}
+
+.sidebar-brand {
+   
+    background: white;
+}

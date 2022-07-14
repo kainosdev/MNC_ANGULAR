@@ -582,9 +582,9 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentcity_id" class="city" formControlName="IPCityId" [(ngModel)]="PastAddressDetails.CityId"
-                        (keypress)="EmptyErrorMessage('currentcity_id')">
-                        <option *ngFor="let c of citylist" [value]="c.CityId ">
+                        <select id="currentcity_id_Past" class="city" formControlName="IPCityId" [(ngModel)]="PastAddressDetails.CityId"
+                        (change)="onchangezipPastAddr();onchangestatePastAddr()">
+                        <option *ngFor="let c of IndBusinessPastCity" [value]="c.CityId ">
                             {{c.CityName}}
                         </option>
                     </select>
@@ -602,7 +602,7 @@
                                   
                                 <select class="Country" id="currentcountry_id" formControlName="IPCountryId" [(ngModel)]="PastAddressDetails.CountryId"
                                 (change)="EmptyErrorMessage('currentcountry_id')">
-                                <option *ngFor="let countrylist of countrytype" [value]="countrylist.CountryId" >
+                                <option *ngFor="let countrylist of IndBusinessPastCountry" [value]="countrylist.CountryId" >
                                     {{countrylist.CountryName}}</option>
                             </select>
                             <div  class="help-block text-danger">
@@ -623,7 +623,7 @@
                           
                         <select id="currentzipcode_id" class="zip" formControlName="IPZipcode" 
                                         (keypress)="EmptyErrorMessage('currentzipcode_id');" [(ngModel)]="PastAddressDetails.Zipcode">
-                                        <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode ">
+                                        <option *ngFor="let z of IndBusinessPastZipcode" [value]="z.Zipcode ">
                                             {{z.Zipcode}}
                                         </option>
                                     </select>
@@ -661,7 +661,7 @@
                           
                         <select type="text" id="currentcounty_id" class="County" formControlName="IPDistrictId" [(ngModel)]="PastAddressDetails.DistrictId"
                                         (keypress)="EmptyErrorMessage('currentcounty_id')">
-                                        <option *ngFor="let d of districts" [value]="d.DistrictId ">
+                                        <option *ngFor="let d of IndBusinessPastDistricts" [value]="d.DistrictId ">
                                             {{d.DistrictName}}
                                         </option>
                                     </select>
@@ -701,7 +701,7 @@
                           
                         <select class="State" id="stateprovice_id" formControlName="IPStateId" [(ngModel)]="PastAddressDetails.StateId"
                                         (change)="EmptyErrorMessage('stateprovice_id')">
-                                        <option *ngFor="let s of statedetail" [value]="s.StateId ">
+                                        <option *ngFor="let s of IndBusinessPastState" [value]="s.StateId ">
                                             {{s.StateName}}
                                         </option>
                                     </select>
@@ -1566,6 +1566,9 @@
                             <label class="labelwidth"> Contact Person Name <span class="requiredfield "> *</span></label>
                             <input type="text" class="Contactperson" id="contactperson_id" formControlName="ContactName"
                                 (keypress)="EmptyErrorMessage('contactperson_id')">
+                                <div  class="help-block text-danger">
+                                    <div *ngIf="submitted2 && rcf2.ContactName.errors">Contact Name is required</div>
+                                 </div>
                         </div>
     
     
@@ -1594,7 +1597,7 @@
     
                         <div class="labelheight">
                             <label class="labelwidth">Title<span class="requiredfield "> *</span></label>
-                            <input type="text" class="Title" id="title_id" formControlName="Title"
+                            <input type="text" class="Title" id="title_id" formControlName="JobTitle"
                                 (keypress)="EmptyErrorMessage('title_id')">
                         </div>
     
@@ -1608,7 +1611,7 @@
                         <div style="height: 22px;">
                             <label class="labelwidth">Active</label>
                             <label class="switch">
-                                <input class="" type="checkbox" name="active" id="active" formControlName="ContactActive">
+                                <input class="" type="checkbox" name="active" id="active" formControlName="VendorContactActive">
                                 <span class="slider round"></span>
                             </label>
                         </div>

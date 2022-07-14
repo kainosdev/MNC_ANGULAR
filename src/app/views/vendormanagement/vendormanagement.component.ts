@@ -170,17 +170,20 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
       BPStartDate: [],
       BPEndDate:[],
       
-      ContactName: [],
-      BusinessPhone: [],
-      Title: [],
-      BusinessEmail: [],
-      ContactActive:[],
+      ContactName: ['', [Validators.required]],
+      BusinessPhone: ['', [Validators.required]],
+      JobTitle: ['', [Validators.required]],
+      BusinessEmail: ['', [Validators.required]],
+      // ContactActive:[],
+      VendorContactActive:[],
+      VendorContactPrimary:[1],
+
       AddtionalName: [],
       AddtionalTitle: [],
       AddtionalBusinessMail: [],
       AddtionalBusinessPhone: [],
-      VendorContactPrimary:[],
-      VendorContactActive:[],
+      
+      //VendorContactActive:[],
       AddtionalContactActive:[],
       
      })
@@ -1090,7 +1093,7 @@ cancelform()
 onchangezipPastAddr(){
   // alert("in");
 //   this.IndBusinessPastZipcode="";
-          let cityid = (<HTMLInputElement>document.getElementById("currentcity_id_past")).value;
+          let cityid = (<HTMLInputElement>document.getElementById("currentcity_id_Past")).value;
   
           this.http.get(config_url+'/app/getZipcodeByCity?cityid='+cityid).subscribe(data1 =>
             {
@@ -1104,7 +1107,7 @@ onchangezipPastAddr(){
         onchangestatePastAddr(){
           // alert("in");
 //           this.IndBusinessPastState="";
-          let cityid = (<HTMLInputElement>document.getElementById("currentcity_id_past")).value;
+          let cityid = (<HTMLInputElement>document.getElementById("currentcity_id_Past")).value;
   
           this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe(statelist =>
             {
