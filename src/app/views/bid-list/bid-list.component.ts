@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-bid-list',
+  selector: 'bid-management-bid-list',
   templateUrl: './bid-list.component.html',
   styleUrls: ['./bid-list.component.scss']
 })

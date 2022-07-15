@@ -1,386 +1,578 @@
 <!-- Tabs navs -->
 
 
-    <div id="wrapper"> <!-- give it an id -->
-      <div fxLayout="row" fxLayoutGap="16px" fxFill>
-       
-          <div fxFlex="80" fxFill>
-              <mat-tab-group id="tab-group" mat-align-tabs="start"> <!-- give it an id -->
-                   <mat-tab label="Bid List">
-                   </mat-tab>
-                  <mat-tab label="Create/view Bid" >
-                      <div fxFlex style="padding: 16px;">
-                          <div class="example-large-box mat-elevation-z4">
-                              <div class="row mt-2">
-                                                                         
-                                  <div class="form-group  col-md-2 col-sm-2">
-                                      <label class="">Solicitation Number<span class="requiredfield ">  *</span></label>
-                                     
-                                </div>
-                                <div class="form-group col-xs-4 col-lg-3 col-md-6 col-sm-6">
-                                    
-                                  <input type="text" class="tradename" formControlName="description" id="description" >
-                                  
-                                </div>
-                              </div>
-                              <accordion [collapsing]="collapsing">
-                                <accordion-item >
-                                    <ng-template accordionTitle>
-                                        <div class="flex space-x-2 ">
-                                          <!-- <svg xmlns="http://www.w3.org/2000/svg"
+<div id="wrapper">
+  <!-- give it an id -->
+  <div fxLayout="row" fxLayoutGap="16px" fxFill>
+
+    <div fxFlex="80" fxFill>
+      <mat-tab-group id="tab-group" mat-align-tabs="start">
+        <!-- give it an id -->
+        <mat-tab label="Bid List">
+          <p ></p>
+
+          <div style="text-align:right;">
+            <a   class="popup-link" data-toggle="modal" (click)="openPopup()"><span style="text-align: right;">Advanced Search</span></a>
+          </div>
+
+          <div
+            class="modal"
+            tabindex="-1"
+            role="dialog"
+            [ngStyle]="{'display':displayStyle}" style="margin-top: 65px;margin-left: 95px;">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+
+                  <h4 class="modal-title" style="font-size: 12px !important;margin-left: 199px">View Bids</h4>
+                  <!-- <h4 style="font-size: 12px ;">test</h4> -->
+
+
+                  <h4 class="modal-title" style="font-size: 12px !important;margin-left: 179px;">Advanced Search</h4><br>
+
+                <div class="modal-body" >
+
+              <div class="form-inline labelheight">
+                  <label style="width: 167px;font-size: 14px;">Department</label>
+                  <!-- <input type="text" /> -->
+                  <select style="width: 180px !important;height: 26px;">
+                    <option></option>
+                    <option value="value1">xxxx</option>
+                    <option value="value2">yyy</option>
+                  </select>
+                  </div>
+
+                  <div class="form-inline labelheight">
+                    <label style="width: 167px;font-size: 14px;">Budget Range</label>
+                    <input style="height: 26px;width: 85px;" type="text" />
+                    <label style="font-size: 12px;">To</label>
+                    <input style="height: 26px;width: 85px;" type="text" />
+                    </div>
+
+                    <div class="form-inline labelheight">
+                      <label style="width: 167px;font-size: 14px;">Due Date Range</label>
+                      <input style="height: 26px;width: 85px;" type="text" />
+                      <label style="font-size: 12px;">To</label>
+                      <input style="height: 26px;width: 85px;" type="text" />
+                      </div>
+
+
+                    <!-- <div class="form-inline labelheight">
+                      <label style="width: 167px;font-size: 14px;">Due Date Range</label>
+                      <select style="width: 180px !important;">
+                        <option></option>
+                       <option value="value1">xxxx</option>
+                       <option value="value2">yyy</option>
+                      </select>
+                  </div> -->
+
+                  <div class="form-inline labelheight">
+                    <label style="width: 167px;font-size: 14px;">DBE Goal Type</label>
+                    <select style="width: 180px !important;">
+                      <option></option>
+                     <option value="value1">xxxx</option>
+                     <option value="value2">yyy</option>
+                    </select>
+                </div>
+
+                <div class="form-inline labelheight">
+                  <label style="width: 167px;font-size: 14px;">Created By User</label>
+                  <select style="width: 180px !important;">
+                    <option></option>
+                   <option value="value1">xxxx</option>
+                   <option value="value2">yyy</option>
+                  </select>
+              </div>
+
+              <div class="form-inline labelheight">
+                <label style="width: 167px;font-size: 14px;">Custom Search field 1</label>
+               <input style="height: 26px;width: 180px;" type="text" />
+              </div>
+
+            <div class="form-inline labelheight">
+              <label style="width: 167px;font-size: 14px;">Custom Search field 2</label>
+              <select style="width: 180px !important;">
+                <option></option>
+               <option value="value1">xxxx</option>
+               <option value="value2">yyy</option>
+              </select>
+          </div>
+
+          <div class="form-inline labelheight">
+            <label style="width: 167px;font-size: 14px;">Custom Search field 3</label>
+           <label class="switch">
+            <input class="" type="checkbox" id="admin_activeid" >
+            <span class="slider round"></span>
+          </label>
+
+          </div>
+
+                </div>
+
+                <div class="btndiv" style="margin-top: -21px;text-align: center;">
+                  <button type="button" class="btn btn-primary fixedwidthcls"   (click)="closePopup()" >cancel</button>
+                  &nbsp;&nbsp;
+                  <button type="button" class="btn btn-primary fixedwidthcls" value="Save" (click)="closePopup()" >Save</button>
+              </div><br>
+              </div>
+            </div>
+          </div>
+
+
+
+          <table  class="table  servicecss tblnewbook"   datatable="ng"  datatable  [dtOptions] = "dtOptions" [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+              <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
+
+                  <tr>
+                  <!-- <th  style="display:none;width: 0px;">b</th> -->
+                  <th  style="color: white;">Solicitation Number</th>
+                  <th  style="color: white;">Title</th>
+                  <th  style="color: white;">Category</th>
+                  <th style="color: white;"> Status</th>
+                   <th style="color: white;">Department</th>
+                   <th style="color: white !important;">Funding Source</th>
+                  <th  style="color: white !important;">Budget Amount ($)</th>
+                  <th style="color: white;"> Posted Date</th>
+                  <th  style="color: white;"> Due Date</th>
+                  <th style="color: white;"> DBE Goal (%)</th>
+                  <th style="color: white;"> # of Responses</th>
+
+
+                </tr>
+              </thead>
+
+              <tbody >
+                <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;" *ngFor="let v of viewbiddetail">
+                 <td>{{v.BidNumber}}</td>
+                 <td>{{v.Title}}</td>
+                 <td>-</td>
+                 <td>{{v.BitstatusDesc}}</td>
+                 <td>{{v.DepartmentName}}</td>
+                 <td>{{v.FundingSourceDesc}}</td>
+                 <td>{{v.BidBudgetAmount}}</td>
+                 <td>{{posteddate}}</td>
+                 <td>{{duedate}}</td>
+                 <td>{{v.BidBEGoalPercent}}</td>
+                 <td>{{v.BidResponseTotalScore}}</td>
+                  <!-- <td ><a class="fontwghtcls">87654322</a></td>
+                  <td >Facility Safety Upgrades</td>
+                  <td>RFQ </td>
+                  <td> Closed</td>
+                  <td >DHS</td>
+                  <td >m24h111s</td>
+                  <td >	$26540</td>
+                  <td>Dec 11, 2021</td>
+                  <td >	Dec 30, 2021</td>
+                  <td >14%</td>
+                  <td >	34%</td> -->
+                </tr>
+
+
+              </tbody>
+            </table>
+
+
+         <div class="app-bid-list">
+
+         </div>
+        </mat-tab>
+        <mat-tab label="Create/view Bid">
+          <div fxFlex style="padding: 16px;">
+            <div class="example-large-box mat-elevation-z4">
+              <div class="row mt-2">
+
+                <div class="form-group  col-md-2 col-sm-2">
+                  <label class="">Solicitation Number<span class="requiredfield "> *</span></label>
+
+                </div>
+                <div class="form-group col-xs-4 col-lg-3 col-md-6 col-sm-6">
+
+                  <input type="text" class="tradename" formControlName="description" id="description">
+
+                </div>
+              </div>
+              <accordion [collapsing]="collapsing">
+                <accordion-item>
+                  <ng-template accordionTitle>
+                    <div class="flex space-x-2 ">
+                      <!-- <svg xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24" width="20" height="20">
                                             <path fill="none" d="M0 0h24v24H0z" />
                                             <path
                                               d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
                                           </svg> -->
-                                          <h6>General Information</h6>
-                                        </div>
-                                      </ng-template>
-                                  <ng-template accordionContent>
-                                    <div class="card ">
-                                        <form [formGroup]="bid_form" > 
-                                            <div class="row col-12">
-                                                       <div class="row col-8">
-                                                            <div class="row  col-12 mt-2">
-                                                                    <!-- <p class="mainheading heading">General Information</p> -->
-                                                                <div class="row ">
-                                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                        <label class="labelwidth">Bid Status<span class="requiredfield ">  *</span></label>
-                                                                       
-                                                                  </div>
-                                                                  <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-3">
-                                                                        
-                                                                  <select class="Country" id="bidstatus" formControlName="bidstatus"  >
-                                                                  <option *ngFor="let item of bidstatus" [value]="item.BidStatusId ">
-                                                                      {{item.BidStatusDesc}}
-                                                                  </option>
-                                                                 </select>
-                                                                 
-                                                                        <div  class="help-block text-danger">
-                                                                           <div *ngIf="submitted && bfc.bidstatus.errors">Bid Status is required</div>
-                                                                        </div>
-                                                                  </div>
-                                                        
-                                                             
-                                                                        <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                      <h6>General Information</h6>
+                    </div>
+                  </ng-template>
+                  <ng-template accordionContent>
+                    <div class="card ">
+                      <form [formGroup]="bid_form">
+                        <div class="row col-12">
+                          <div class="row col-8">
+                            <div class="row  col-12 mt-2">
+                              <!-- <p class="mainheading heading">General Information</p> -->
+                              <div class="row ">
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                  <label class="labelwidth">Bid Status<span class="requiredfield "> *</span></label>
+
+                                </div>
+                                <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-3">
+
+                                  <select class="Country" id="bidstatus" formControlName="bidstatus">
+                                    <option *ngFor="let item of bidstatus" [value]="item.BidStatusId ">
+                                      {{item.BidStatusDesc}}
+                                    </option>
+                                  </select>
+
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.bidstatus.errors">Bid Status is required</div>
+                                  </div>
+                                </div>
+
+
+                                <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
                                                                                 <label class="">Number of Response<span class="requiredfield ">  *</span></label>
-                                                                               
+
                                                                         </div>
                                                                         <div class="form-group col-xs-4 col-lg-3 col-md-2 col-sm-2">
-                                                                              
+
                                                                                 <input type="text" class=""  formControlName="no_of_response" id="no_of_response" >
                                                                                 <div  class="help-block text-danger">
                                                                                     <div *ngIf="submitted && bfc.no_of_response.errors">First Name is required</div>
                                                                                 </div>
                                                                         </div> -->
-                                                                </div>
-                                                                <div class="row ">
-                                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                        <label class="labelwidth">Title<span class="requiredfield ">  *</span></label>
-                                                                       
-                                                                </div>
-                                                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                                      
-                                                                    <input type="text" class="lastname"  formControlName="title" id="title" >
-                                                                    <div  class="help-block text-danger">
-                                                                                <div *ngIf="submitted && bfc.title.errors">Title is required</div>
-                                                                    </div>
-                                                                </div>
-                                                        
-                                                             
-                                                                </div>
-                                                        
-                                                                <div class="row ">
-                                                                     
-                                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                        <label class="labelwidth">Description<span class="requiredfield ">  *</span></label>
-                                                                       
-                                                                  </div>
-                                                                  <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                                      
-                                                                    <input type="text" class="tradename" formControlName="description" id="description" >
-                                                                    <div  class="help-block text-danger">
-                                                                                <div *ngIf="submitted && bfc.description.errors">Description is required</div>
-                                                                    </div>
-                                                                  </div>
-                                                        
-                                                        
-                                                        
-                                                                    
-                                                                </div>
-                                                        
-                                                                <div class="row ">
-                                                                  
-                                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                        <label class="labelwidth">Opportunity Type<span class="requiredfield ">  *</span></label>
-                                                                       
-                                                                  </div>
-                                                                  <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                                        <select class="Country" formControlName="opportunity_type" id="bidstatus" (change)="inputErrorMessage('bidstatus')" >
-                                                                            <option *ngFor="let item of opportunity_type_list" [value]="item.SolicitationTypeId ">
-                                                                                {{item.SolicitationTypeDesc}}
-                                                                            </option>
-                                                                               
-                                                                        </select>  
-                                                                    <div  class="help-block text-danger">
-                                                                                <div *ngIf="submitted && bfc.opportunity_type.errors">Opportunity Type is required</div>
-                                                                    </div>
-                                                                   </div>
-                                                              
-                                                            </div>
-                                                        
-                                                            
-                                                            <div class="row ">
-                                                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                    <label class="labelwidth">Category <span class="requiredfield ">  *</span> </label>
-                                                        
-                                                            </div>
-                                                            <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                                  
-                                                                    <select class="Country" formControlName="category" id="category" (change)="inputErrorMessage('bidstatus')" >
-                                                                            <option value="Open">Open</option>
-                                                                            <option value="Closed">Closed</option>
-                                                                           
-                                                                    </select> 
-                                                                    <div  class="help-block text-danger">
-                                                                            <div *ngIf="submitted && bfc.category.errors">Category is required</div>
-                                                                    </div>
-                                                            </div>
-                                                        
-                                                              
-                                                        </div>
-                                                        
-                                                        <div class="row">
-                                                            <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                <label class="labelwidth">Buying Entry <span class="requiredfield "> *</span> </label>
-                                                        
-                                                            </div>
-                                                            <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                               
-                                                                    <select class="Country" formControlName="buying_entry" id="buying_entry" (change)="inputErrorMessage('bidstatus')" >
-                                                                            <option value="Open">Open</option>
-                                                                            <option value="Closed">Closed</option>
-                                                                           
-                                                                    </select> 
-                                                                  
-                                                                    <div  class="help-block text-danger">
-                                                                            <div *ngIf="submitted && bfc.buying_entry.errors">Buying Entry is required</div>
-                                                                   </div>
-                                                            </div>
-                                                        
-                                                        </div>
-                                                        <div class="row ">
-                                                            <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                <label class="labelwidth">Set Aside<span class="requiredfield "> *</span> </label>
-                                                        
-                                                            </div>
-                                                            <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                               
-                                                                    <select class="Country" formControlName="set_aside" id="set_aside" (change)="inputErrorMessage('bidstatus')" >
-                                                                        <option *ngFor="let item of aside_type_list" [value]="item.SetAsideTypeId ">
-                                                                            {{item.SetAsideTypeDesc}}
-                                                                        </option>
-                                                                    </select>                   
-                                                                    <div  class="help-block text-danger">
-                                                                            <div *ngIf="submitted && bfc.set_aside.errors">Set Aside is required</div>
-                                                                   </div>
-                                                            </div>
-                                                        
-                                                        </div>
-                                                        <div class="row ">
-                                                                <div class="form-group  col-md-2 col-sm-2">
-                                                                    <label class="labelwidth">Contract Officer<span class="requiredfield "> *</span> </label>
-                                                            
-                                                                </div>
-                                                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                                   
-                                                                        <select class="Country" formControlName="contrcat_officer" id="contrcat_officer" (change)="inputErrorMessage('bidstatus')" >
-                                                                            <option *ngFor="let item of contract_officer_list" [value]="item.JobTitleId ">
-                                                                                {{item.JobTitleDesc}}
-                                                                            </option>
-                                                                               
-                                                                        </select>                   
-                                                                        <div  class="help-block text-danger">
-                                                                                <div *ngIf="submitted && bfc.set_aside.errors">Contract Officer is required</div>
-                                                                       </div>
-                                                                </div>
-                                                            
-                                                              
-                                                            </div>
-                                                            <div class="row">
-                                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                        <label class="labelwidth"> Officer Phone<span class="requiredfield "> *</span> </label>
-                                                                
-                                                                    </div>
-                                                                    <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                                       
-                                                                            <input type="text" class="co_officer_phone" formControlName="co_officer_phone" id="co_officer_phone" >
-                                             
-                                                                            <div  class="help-block text-danger">
-                                                                                    <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Phone is required</div>
-                                                                           </div>
-                                                                    </div>
-                                                                
-                                                                 
-                                                                </div>
-                                                                <div class="row">
-                                                                        <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                            <label class="labelwidth">Officer Email<span class="requiredfield "> *</span> </label>
-                                                                    
-                                                                        </div>
-                                                                        <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                                                <input type="text" class="co_officer_email" formControlName="co_officer_phone" id="co_officer_phone" >
-                                              
-                                                                                <div  class="help-block text-danger">
-                                                                                        <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Email is required</div>
-                                                                               </div>
-                                                                        </div>
-                                                                    
-                                                                     
-                                                                    </div>
-                                                    
-                                                            </div>
-                                                        </div>
-                                                        <div class="row col-4">
-                                                                <div class="row col-12 ">
-                                                                       
-                                                                    <div class="row mt-1">
-                                                                        <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                            <label class="labelwidth">Funding Source<span class="requiredfield ">  *</span></label>
-                                                                           
-                                                                      </div>
-                                                                      <div class="form-group col-xs-4  col-md-6 col-sm-6">
-                                                                          <input type="text" class="fund_source" formControlName="fund_source" id="fund_source" >
-                            
-                                                                            <div  class="help-block text-danger">
-                                                                               <div *ngIf="submitted && bfc.fund_source_resource.errors">Funding Source is required</div>
-                                                                            </div>
-                                                                      </div>
-                                                            
-                                                                 
-                                                                      
-                                                                    </div>
-                                                                    <div class="row ">
-                                                                      <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                              <label class="labelwidth">Contract Vehicle<span class="requiredfield ">  *</span></label>
-                                                                            
-                                                                      </div>
-                                                                      <div class="form-group col-xs-4  col-md-6 col-sm-6">
-                                                                        <select class="Country" id="contract_vehicle" formControlName="contract_vehicle"  >
-                                                                          <option *ngFor="let item of contractVehicle" [value]="item.ContractVehicleId ">
-                                                                              {{item.ContractVehicleDesc}}
-                                                                          </option>
-                                                                         </select>
-                                                                          <div  class="help-block text-danger">
-                                                                                      <div *ngIf="submitted && bfc.contract_vehicle.errors">Contract Vehicle is required</div>
-                                                                          </div>
-                                                                      </div>
-                                                                    </div>
-                                                            
-                                                                    <div class="row ">
-                                                                         
-                                                                        <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                            <label class="labelwidth">Budget Amount ($)<span class="requiredfield ">  *</span></label>
-                                                                           
-                                                                      </div>
-                                                                      <div class="form-group col-xs-4  col-md-6 col-sm-6">
-                                                                          
-                                                                        <input type="text" class="tradename" formControlName="budget_amount" id="budget_amount" >
-                                                                        <div  class="help-block text-danger">
-                                                                                    <div *ngIf="submitted && bfc.budget_amount.errors">Budget Amount is required</div>
-                                                                        </div>
-                                                                      </div>
-                                                            
-                                                            
-                                                            
-                                                                        
-                                                                    </div>
-                                                            
-                                                                    <div class="row ">
-                                                                      
-                                                                        <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                            <label class="labelwidth">Posted Date<span class="requiredfield ">  *</span></label>
-                                                                           
-                                                                      </div>
-                                                                      <div class="form-group  col-md-6 col-sm-6">
-                                                                          <input type="date" class="posted_date" formControlName="posted_date" id="posted_date" >
-                            
-                                                                        <div  class="help-block text-danger">
-                                                                                    <div *ngIf="submitted && bfc.posted_date.errors">Posted Date is required</div>
-                                                                        </div>
-                                                                       </div>
-                                                                  
-                                                                </div>
-                                                            
-                                                                
-                                                                <div class="row ">
-                                                                    <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                        <label class="labelwidth">Question Due Date <span class="requiredfield ">  *</span> </label>
-                                                            
-                                                                </div>
-                                                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                    <input type="date" class="question_due_date" formControlName="question_due_date" id="question_due_date" >
-                            
-                                                              
-                                                                        <div  class="help-block text-danger">
-                                                                                <div *ngIf="submitted && bfc.question_due_date.errors">Question Due Date is required</div>
-                                                                        </div>
-                                                                </div>
-                                                            
-                                                                  
-                                                            </div>
-                                                            
-                                                            <div class="row">
-                                                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                    <label class="labelwidth">Response Due Date<span class="requiredfield ">*</span> </label>
-                                                            
-                                                                </div>
-                                                                <div class="form-group col-xs-4  col-md-6 col-sm-6">
-                                                                    <input type="date" class="response_due_date" formControlName="response_due_date" id="question_due_date" >
-                            
-                                                                      
-                                                                        <div  class="help-block text-danger">
-                                                                                <div *ngIf="submitted && bfc.StartDate.errors">Response Due Date is required</div>
-                                                                       </div>
-                                                                </div>
-                                                            
-                                                            </div>
-                                                            <div class="row ">
-                                                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                    <label class="labelwidth">DBE Goal (%)<span class="requiredfield "> *</span> </label>
-                                                            
-                                                                </div>
-                                                                <div class="form-group col-xs-4  col-md-6 col-sm-6">
-                                                                    <input type="text" class="dbe_goal" formControlName="dbe_goal" id="dbe_goal" >
-                            
-                                                                                    
-                                                                        <div  class="help-block text-danger">
-                                                                                <div *ngIf="submitted && bfc.dbe_goal.errors">DBE Goal (%) is required</div>
-                                                                       </div>
-                                                                </div>
-                                                            
-                                                            </div>
-                                                           
-                                                             
-                                                                   
-                                                                </div>
-                                                        </div>
-                                            </div>
-                                       
-                                        </form>
-                                        <input type="button"   class="btn btn-primary fixedwidthcls" (click)="generalsave()"  value="Update" />  
-                            
+                              </div>
+                              <div class="row ">
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                  <label class="labelwidth">Title<span class="requiredfield "> *</span></label>
+
+                                </div>
+                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+
+                                  <input type="text" class="lastname" formControlName="title" id="title">
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.title.errors">Title is required</div>
+                                  </div>
+                                </div>
+
+
+                              </div>
+
+                              <div class="row ">
+
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                  <label class="labelwidth">Description<span class="requiredfield "> *</span></label>
+
+                                </div>
+                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+
+                                  <input type="text" class="tradename" formControlName="description" id="description">
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.description.errors">Description is required</div>
+                                  </div>
+                                </div>
+
+
+
+
+                              </div>
+
+                              <div class="row ">
+
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                  <label class="labelwidth">Opportunity Type<span class="requiredfield ">
+                                      *</span></label>
+
+                                </div>
+                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                  <select class="Country" formControlName="opportunity_type" id="bidstatus"
+                                    (change)="inputErrorMessage('bidstatus')">
+                                    <option *ngFor="let item of opportunity_type_list"
+                                      [value]="item.SolicitationTypeId ">
+                                      {{item.SolicitationTypeDesc}}
+                                    </option>
+
+                                  </select>
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.opportunity_type.errors">Opportunity Type is required
                                     </div>
-                                  </ng-template>
-                                </accordion-item>
-                                <!-- <accordion-item>
+                                  </div>
+                                </div>
+
+                              </div>
+
+
+                              <div class="row ">
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                  <label class="labelwidth">Category <span class="requiredfield "> *</span> </label>
+
+                                </div>
+                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+
+                                  <select class="Country" formControlName="category" id="category"
+                                    (change)="inputErrorMessage('bidstatus')">
+                                    <option value="Open">Open</option>
+                                    <option value="Closed">Closed</option>
+
+                                  </select>
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.category.errors">Category is required</div>
+                                  </div>
+                                </div>
+
+
+                              </div>
+
+                              <div class="row">
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                  <label class="labelwidth">Buying Entry <span class="requiredfield "> *</span> </label>
+
+                                </div>
+                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+
+                                  <select class="Country" formControlName="buying_entry" id="buying_entry"
+                                    (change)="inputErrorMessage('bidstatus')">
+                                    <option value="Open">Open</option>
+                                    <option value="Closed">Closed</option>
+
+                                  </select>
+
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.buying_entry.errors">Buying Entry is required</div>
+                                  </div>
+                                </div>
+
+                              </div>
+                              <div class="row ">
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                  <label class="labelwidth">Set Aside<span class="requiredfield "> *</span> </label>
+
+                                </div>
+                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+
+                                  <select class="Country" formControlName="set_aside" id="set_aside"
+                                    (change)="inputErrorMessage('bidstatus')">
+                                    <option *ngFor="let item of aside_type_list" [value]="item.SetAsideTypeId ">
+                                      {{item.SetAsideTypeDesc}}
+                                    </option>
+                                  </select>
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.set_aside.errors">Set Aside is required</div>
+                                  </div>
+                                </div>
+
+                              </div>
+                              <div class="row ">
+                                <div class="form-group  col-md-2 col-sm-2">
+                                  <label class="labelwidth">Contract Officer<span class="requiredfield "> *</span>
+                                  </label>
+
+                                </div>
+                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+
+                                  <select class="Country" formControlName="contrcat_officer" id="contrcat_officer"
+                                    (change)="inputErrorMessage('bidstatus')">
+                                    <option *ngFor="let item of contract_officer_list" [value]="item.JobTitleId ">
+                                      {{item.JobTitleDesc}}
+                                    </option>
+
+                                  </select>
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.set_aside.errors">Contract Officer is required</div>
+                                  </div>
+                                </div>
+
+
+                              </div>
+                              <div class="row">
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                  <label class="labelwidth"> Officer Phone<span class="requiredfield "> *</span>
+                                  </label>
+
+                                </div>
+                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+
+                                  <input type="text" class="co_officer_phone" formControlName="co_officer_phone"
+                                    id="co_officer_phone">
+
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Phone is
+                                      required</div>
+                                  </div>
+                                </div>
+
+
+                              </div>
+                              <div class="row">
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                  <label class="labelwidth">Officer Email<span class="requiredfield "> *</span> </label>
+
+                                </div>
+                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                  <input type="text" class="co_officer_email" formControlName="co_officer_phone"
+                                    id="co_officer_phone">
+
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Email is
+                                      required</div>
+                                  </div>
+                                </div>
+
+
+                              </div>
+
+                            </div>
+                          </div>
+                          <div class="row col-4">
+                            <div class="row col-12 ">
+
+                              <div class="row mt-1">
+                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                  <label class="labelwidth">Funding Source<span class="requiredfield "> *</span></label>
+
+                                </div>
+                                <div class="form-group col-xs-4  col-md-6 col-sm-6">
+                                  <input type="text" class="fund_source" formControlName="fund_source" id="fund_source">
+
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.fund_source_resource.errors">Funding Source is required
+                                    </div>
+                                  </div>
+                                </div>
+
+
+
+                              </div>
+                              <div class="row ">
+                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                  <label class="labelwidth">Contract Vehicle<span class="requiredfield ">
+                                      *</span></label>
+
+                                </div>
+                                <div class="form-group col-xs-4  col-md-6 col-sm-6">
+                                  <select class="Country" id="contract_vehicle" formControlName="contract_vehicle">
+                                    <option *ngFor="let item of contractVehicle" [value]="item.ContractVehicleId ">
+                                      {{item.ContractVehicleDesc}}
+                                    </option>
+                                  </select>
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.contract_vehicle.errors">Contract Vehicle is required
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row ">
+
+                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                  <label class="labelwidth">Budget Amount ($)<span class="requiredfield ">
+                                      *</span></label>
+
+                                </div>
+                                <div class="form-group col-xs-4  col-md-6 col-sm-6">
+
+                                  <input type="text" class="tradename" formControlName="budget_amount"
+                                    id="budget_amount">
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.budget_amount.errors">Budget Amount is required</div>
+                                  </div>
+                                </div>
+
+
+
+
+                              </div>
+
+                              <div class="row ">
+
+                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                  <label class="labelwidth">Posted Date<span class="requiredfield "> *</span></label>
+
+                                </div>
+                                <div class="form-group  col-md-6 col-sm-6">
+                                  <input type="date" class="posted_date" formControlName="posted_date" id="posted_date">
+
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.posted_date.errors">Posted Date is required</div>
+                                  </div>
+                                </div>
+
+                              </div>
+
+
+                              <div class="row ">
+                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                  <label class="labelwidth">Question Due Date <span class="requiredfield "> *</span>
+                                  </label>
+
+                                </div>
+                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                  <input type="date" class="question_due_date" formControlName="question_due_date"
+                                    id="question_due_date">
+
+
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.question_due_date.errors">Question Due Date is required
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                              </div>
+
+                              <div class="row">
+                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                  <label class="labelwidth">Response Due Date<span class="requiredfield ">*</span>
+                                  </label>
+
+                                </div>
+                                <div class="form-group col-xs-4  col-md-6 col-sm-6">
+                                  <input type="date" class="response_due_date" formControlName="response_due_date"
+                                    id="question_due_date">
+
+
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.StartDate.errors">Response Due Date is required</div>
+                                  </div>
+                                </div>
+
+                              </div>
+                              <div class="row ">
+                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
+                                  <label class="labelwidth">DBE Goal (%)<span class="requiredfield "> *</span> </label>
+
+                                </div>
+                                <div class="form-group col-xs-4  col-md-6 col-sm-6">
+                                  <input type="text" class="dbe_goal" formControlName="dbe_goal" id="dbe_goal">
+
+
+                                  <div class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.dbe_goal.errors">DBE Goal (%) is required</div>
+                                  </div>
+                                </div>
+
+                              </div>
+
+
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </form>
+                      <input type="button" class="btn btn-primary fixedwidthcls" (click)="generalsave()"
+                        value="Update" />
+
+                    </div>
+                  </ng-template>
+                </accordion-item>
+                <!-- <accordion-item>
                                   <ng-template accordionHeader let-toggle="toggle">
                                     <div class="row">
                                       <div class="col-sm-8">
                                           <p> Custom Header <span class="text-xs text-gray-700">(  toggle button)</span>
                                           </p>
                                       </div>
-                            
+
                                       <div class="col-sm-4">
                                           <button (click)="toggle()" class="accordion__toggle-btn"> <svg
                                       xmlns="http://www.w3.org/2000/svg"
@@ -388,11 +580,11 @@
                                       <path fill="none" d="M0 0h24v24H0z" />
                                       <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/>
                                     </svg></button>
-                                          
+
                                       </div>
                                     </div>
                                     <div class="flex items-center justify-between px-4 h-12 bg-purple-200">
-                                     
+
                                       <div class="flex space-x-2">
                                       </div>
                                     </div>
@@ -405,69 +597,69 @@
                                       </div>
                                   </ng-template>
                                 </accordion-item> -->
-                                <accordion-item>
-                                    <ng-template accordionTitle>
-                                      <div class="flex space-x-2">
-                                        <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                <accordion-item>
+                  <ng-template accordionTitle>
+                    <div class="flex space-x-2">
+                      <!-- <svg xmlns="http://www.w3.org/2000/svg"
                                           viewBox="0 0 24 24" width="20" height="20">
                                           <path fill="none" d="M0 0h24v24H0z" />
                                           <path
                                             d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
                                         </svg> -->
-                                        <h6>Document Upload</h6>
-                                      </div>
-                                    </ng-template>
-                                    <ng-template accordionContent>
-                                        <div class="p-4">
-                                          This is a simple implementation where the
-                                          <strong>Document Upload part</strong>. 
-                                        </div>
-                                    </ng-template>
-                                  </accordion-item>
-                                <accordion-item>
-                                  <ng-template accordionTitle>
-                                    <div class="flex space-x-2">
-                                      <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                      <h6>Document Upload</h6>
+                    </div>
+                  </ng-template>
+                  <ng-template accordionContent>
+                    <div class="p-4">
+                      This is a simple implementation where the
+                      <strong>Document Upload part</strong>.
+                    </div>
+                  </ng-template>
+                </accordion-item>
+                <accordion-item>
+                  <ng-template accordionTitle>
+                    <div class="flex space-x-2">
+                      <!-- <svg xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 24 24" width="20" height="20">
                                         <path fill="none" d="M0 0h24v24H0z" />
                                         <path
                                           d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
                                       </svg> -->
-                                      <h6>Schedule: Contract Line Items</h6>
-                                    </div>
-                                  </ng-template>
-                                  <ng-template accordionContent>
-                                      <div class="p-4">
-                                          This is a simple implementation where the
-                                          <strong>Contract Line Items</strong>. 
-                                        </div>
-                                  </ng-template>
-                                </accordion-item>
-                                <accordion-item title="Vendors Matching" [disabled]="true">
-                                  <ng-template> 
-                                  <div class="flex space-x-2">
-                                       
-                                        <h6>Vendors Matching</h6>
-                                      </div>
-                                    </ng-template>
-                                  <ng-template accordionContent>
-                                      <div class="p-4">
-                                          This is a simple implementation where the
-                                          <strong>Vendors Matching Items</strong>. 
-                                        </div>
-                                  </ng-template>
-                                </accordion-item>
-                              </accordion>
-                            </div>
-                      </div>
-                  </mat-tab>
-                  <mat-tab label="Bid Response">
-                  
-                  </mat-tab>
-              </mat-tab-group>
+                      <h6>Schedule: Contract Line Items</h6>
+                    </div>
+                  </ng-template>
+                  <ng-template accordionContent>
+                    <div class="p-4">
+                      This is a simple implementation where the
+                      <strong>Contract Line Items</strong>.
+                    </div>
+                  </ng-template>
+                </accordion-item>
+                <accordion-item title="Vendors Matching" [disabled]="true">
+                  <ng-template>
+                    <div class="flex space-x-2">
+
+                      <h6>Vendors Matching</h6>
+                    </div>
+                  </ng-template>
+                  <ng-template accordionContent>
+                    <div class="p-4">
+                      This is a simple implementation where the
+                      <strong>Vendors Matching Items</strong>.
+                    </div>
+                  </ng-template>
+                </accordion-item>
+              </accordion>
+            </div>
           </div>
-      </div>
+        </mat-tab>
+        <mat-tab label="Bid Response">
+
+        </mat-tab>
+      </mat-tab-group>
+    </div>
   </div>
+</div>
 
 
 
