@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { config_url } from '../shared/constant';
 // import { ToastrService } from 'ngx-toastr';
 import { MustMatch } from '../_helpers/must-match.validator';
-import Swal from 'sweetalert2'; 
+import Swal from 'sweetalert2';
 
 
 
@@ -23,7 +23,8 @@ otherform: FormGroup | any;
 vendorform_individual:FormGroup | any;
 vendorform_business:FormGroup | any;
 uidPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,15}";
-public mask = [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+public mask = [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+public mask1 = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
  submitted = false;
  usertype="VENDOR";
@@ -54,9 +55,10 @@ public mask = [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
   zip:any;
   zipdetail :any;
   zip2:any;
+  UserTypeDetails: any;
 
 
-  constructor(private frmbuilder: FormBuilder,  private http: HttpClient, 
+  constructor(private frmbuilder: FormBuilder,  private http: HttpClient,
   //  private toastr: ToastrService
     ) { }
 
@@ -69,7 +71,7 @@ public mask = [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
     this.getbeclassificationdata();
     this.Getcityall_list();
     // this.getvendorlist()
-    this. Getallzipcode_list();
+    // this. Getallzipcode_list();
 
     this.employeeform = this.frmbuilder.group({
 
@@ -104,7 +106,7 @@ public mask = [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
       BusinessRegisteredInSCC: [],
       VendorTypeId: [],
       EIN_SSN:[],
-     
+
 
       OutreachEmailOptIn:[],
       business_ssn: [],
@@ -113,9 +115,9 @@ public mask = [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
       BusinessIsFranchisee: [],
       BEClassificationId: [],
 
- 
+
       UserStatusId:['N'],
-     
+
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 this.otherform = this.frmbuilder.group({
@@ -140,12 +142,12 @@ this.otherform = this.frmbuilder.group({
    EndDate: [''],
    CountryId:  ['', [Validators.required]],
    UserStatusId:['N'],
-  
+
   },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 this.vendorform_individual = this.frmbuilder.group({
 
-     
+
   FirstName: ['', [Validators.required]],
   legalbusiness: [''],
   LastName:  ['', [Validators.required]],
@@ -166,7 +168,7 @@ this.vendorform_individual = this.frmbuilder.group({
   EndDate: [''],
   VendorTypeId: [],
   EIN_SSN: ['', [Validators.required]],
- 
+
 
   OutreachEmailOptIn:[],
   business_ssn: [],
@@ -179,7 +181,7 @@ this.vendorform_individual = this.frmbuilder.group({
   EmploymentTypeId:[],
   JobStartDate: [],
   BusinessRegisteredInSCC: [],
- 
+
   Phone:[],
   AdminUser: [],
   UserStatusId:['N'],
@@ -187,7 +189,7 @@ this.vendorform_individual = this.frmbuilder.group({
 
 this.vendorform_business = this.frmbuilder.group({
 
-     
+
   FirstName: ['', [Validators.required]],
   legalbusiness: [''],
   LastName:  ['', [Validators.required]],
@@ -220,11 +222,11 @@ this.vendorform_business = this.frmbuilder.group({
   EmploymentTypeId:[],
   JobStartDate: [],
   BusinessRegisteredInSCC: [false],
- 
+
   Phone:[],
   AdminUser: [],
   UserStatusId:['N'],
- 
+
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 
@@ -237,10 +239,10 @@ useridmatch=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
 
 checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
   return (group: FormGroup) => {
-    debugger
+    // debugger
     let passwordInput = group.controls[passwordKey],
         passwordConfirmationInput = group.controls[passwordConfirmationKey];
-   
+
     if (passwordConfirmationInput.value == '') {
       return passwordConfirmationInput.setErrors({required: true})
     }
@@ -274,16 +276,16 @@ alphanumeric(event: any)
     return false;
   }
 }
-get rcf() 
+get rcf()
 {
   return this.employeeform.controls;
 }
-get vif() 
+get vif()
 {
   return this.vendorform_individual.controls;
 }
 
-get vbf() 
+get vbf()
 {
   return this.vendorform_business.controls;
 }
@@ -293,7 +295,7 @@ get ofv() {
 }
 number(event: any) {
   var charCode = (event.which) ? event.which : event.keyCode;
-  
+
   if ((charCode < 48 || charCode > 57)) {
     event.preventDefault();
     return false;
@@ -306,7 +308,7 @@ number(event: any) {
   //   this.submitted=true;
   //   // this.toastr.error("Holiday deleted");
   //   console.log( 'Contact Information',registercontactinformation);
-   
+
 
   //   let FirstName = this.registercontactinformation.get('FirstName').value;
   //   let legalbusiness = this.registercontactinformation.get('legalbusiness').value;
@@ -317,7 +319,7 @@ number(event: any) {
   //   let UserId = this.registercontactinformation.get('UserId').value;
   //   let UserPassword = this.registercontactinformation.get('UserPassword').value;
   //   let conformpassword = this.registercontactinformation.get('conformpassword').value;
-   
+
 
 
   //   let Address1 = this.registercontactinformation.get('Address1').value;
@@ -329,7 +331,7 @@ number(event: any) {
   //   let CountryId = this.registercontactinformation.get('CountryId').value;
   //   let StartDate = this.registercontactinformation.get('StartDate').value;
   //   let EndDate = this.registercontactinformation.get('EndDate').value;
-    
+
 
   //   let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
 
@@ -344,7 +346,7 @@ number(event: any) {
   //   let JobTitleId = this.registercontactinformation.get('JobTitleId').value;
   //   let EmploymentTypeId = this.registercontactinformation.get('EmploymentTypeId').value;
   //   let JobStartDate = this.registercontactinformation.get('JobStartDate').value;
-    
+
   //   let Phone = this.registercontactinformation.get('Phone').value;
 
 
@@ -358,11 +360,11 @@ number(event: any) {
   //    {
   //     (document.getElementById('legal_id') as HTMLFormElement).classList.add("validation");
   //   }
-  //    if(LastName == null || LastName == "") 
+  //    if(LastName == null || LastName == "")
   //     {
   //     (document.getElementById('lastname_id') as HTMLFormElement).classList.add("validation");
   //    }
-  //    if(tradeName == null || tradeName == "") 
+  //    if(tradeName == null || tradeName == "")
   //    {
   //    (document.getElementById('trade_id') as HTMLFormElement).classList.add("validation");
   //   }
@@ -383,7 +385,7 @@ number(event: any) {
   //    {
   //     (document.getElementById('comformpswd_id') as HTMLFormElement).classList.add("validation");
   //     }
-      
+
   //     if(Address1 == null || Address1 == "")
   //     {
   //      (document.getElementById('currentadd_id') as HTMLFormElement).classList.add("validation");
@@ -392,7 +394,7 @@ number(event: any) {
   //      {
   //       (document.getElementById('currentsecadd_id') as HTMLFormElement).classList.add("validation");
   //       }
-       
+
   //        if(Zipcode == null || Zipcode == "")
   //       {
   //        (document.getElementById('regcurrentzip_id') as HTMLFormElement).classList.add("validation");
@@ -436,7 +438,7 @@ number(event: any) {
 
 
   //   if(usertype_id == "EMPLOY"){
-    
+
 
   //     if(JobTitleId == null || JobTitleId == "")
   //     {
@@ -454,7 +456,7 @@ number(event: any) {
   //     {
   //      (document.getElementById('phoneno_id') as HTMLFormElement).classList.add("validation");
   //      }
-     
+
   //   }
 
   //   if(usertype_id == "VENDOR"){
@@ -466,7 +468,7 @@ number(event: any) {
   //   }
 
   //   }
-   
+
 
   //   else{
 
@@ -479,50 +481,50 @@ number(event: any) {
   //    if(BEClassificationId == null || BEClassificationId == ""){
   //       (document.getElementById('be_classificationid') as HTMLFormElement).classList.add("validation");
   //     }
-        
+
   //     }
   //     }
 
-  //     if((FirstName != null) && (LastName != null || LastName != "") && (tradeName != "" || tradeName != null) && (UserId != null || UserId != "") && (UserPassword != null || UserPassword != "") && (Address1 != null || Address1 != "") && (Address2 != null || Address2 != "") && (StateId != null || StateId != "") && 
+  //     if((FirstName != null) && (LastName != null || LastName != "") && (tradeName != "" || tradeName != null) && (UserId != null || UserId != "") && (UserPassword != null || UserPassword != "") && (Address1 != null || Address1 != "") && (Address2 != null || Address2 != "") && (StateId != null || StateId != "") &&
   //       (CityId != null || CityId != "") && (Zipcode != null || Zipcode != "") && (CountryId != null || CountryId != "") && (StartDate != null || StartDate != "") && (EndDate != null || EndDate != "")){
-        
-          
+
+
   //         // if(usertype_id == "OTHER"){
 
-  //         //   if((FirstName != null || FirstName != "") && (LastName != null || LastName != "") && (UserId != null || UserId != "") && (UserPassword != null || UserPassword != "") &&  (StateId != null || StateId != "") && 
+  //         //   if((FirstName != null || FirstName != "") && (LastName != null || LastName != "") && (UserId != null || UserId != "") && (UserPassword != null || UserPassword != "") &&  (StateId != null || StateId != "") &&
   //         //   (EndDate != null || EndDate != "") && (Address1 != null || Address1 != "") && (Address2 != null || Address2 != "") && (CityId != null || CityId != "") && (Zipcode != null || Zipcode != "") && (CountryId != null || CountryId != "")){
-    
+
   //         //     this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', this.registercontactinformation).subscribe(
-          
+
   //         //       data => {
   //         //         console.log("data");
   //         //           console.log('POST Request is successful >>>>>>>>', data);
-          
+
   //         //       },
   //         //       success => {
   //         //         console.log("success");
   //         //       }
   //         //     );
-    
+
   //         //   }
-            
+
   //         // }
-         
+
 
 
   //         if(usertype_id == "EMPLOY"){
-         
-            
+
+
   //           if((JobTitleId != null) && (EmploymentTypeId != null) && (JobStartDate != null) && (Phone != null) ){
   //           // if((JobTitleId != null || JobTitleId != "") && (EmploymentTypeId != null || EmploymentTypeId != "") && (JobStartDate != null || JobStartDate != "") && (Phone != null || Phone != "") ){
-              
-             
+
+
   //             this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', registercontactinformation).subscribe(
-          
+
   //               data => {
   //                 console.log("data");
   //                   console.log('POST Request is successful >>>>>>>>', data);
-          
+
   //               },
   //               success => {
   //                 console.log("success");
@@ -530,24 +532,24 @@ number(event: any) {
   //             );
   //             window.setTimeout(function(){location.reload()},100);
   //           }
-            
+
   //         }
 
 
 
   //         if(usertype_id == "VENDOR"){
-            
+
 
   //           if(active1 == false){
 
   //             if((EIN_SSN != null) && (StartDate != null) && (EndDate != null)){
   //               alert("vendor individual");
   //               this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', registercontactinformation).subscribe(
-          
+
   //               data => {
   //                 console.log("data");
   //                   console.log('POST Request is successful >>>>>>>>', data);
-          
+
   //               },
   //               success => {
   //                 console.log("success");
@@ -562,19 +564,19 @@ number(event: any) {
   //           }
 
   //           if(usertype_id == "VENDOR"){
-              
+
 
   //             if(active1 == true){
 
   //             if((legalbusiness != null)&&(BusinessSize != null) && (BusinessRegisteredInDistrict != null)&& (BusinessRegisteredInSCC != null) && (BusinessIsFranchisee != null) && (BEClassificationId != null) && (StartDate != null) && (EndDate != null)){
   //               // alert("vendor business");
-                
+
   //               this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/AdduserDetails', registercontactinformation).subscribe(
-          
+
   //               data => {
   //                 console.log("data");
   //                   console.log('POST Request is successful >>>>>>>>', data);
-          
+
   //               },
   //               success => {
   //                 console.log("success");
@@ -594,25 +596,25 @@ number(event: any) {
   {
     this.submitted=false;
   }
-  
+
   inputErrorMessage(errormessage: any) {
 
     (document.getElementById(errormessage) as HTMLFormElement).classList.remove("validation");
-  
+
     }
 
     inputErrorMessage1(errormessage: any) {
 
       (document.getElementById('passvalidationid') as HTMLFormElement).innerText = 'Passwords must match.!'
-    
+
       }
 
     vendortype_display(active:any){
-      debugger
+      // debugger
     //  let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
-     
+
       if(this.vendortype == true){
-        
+
         // (<HTMLInputElement>document.getElementById("vendorbusiness")).style.display ="block";
         // (<HTMLInputElement>document.getElementById("vendorindividual")).style.display ="none";
         // (<HTMLInputElement>document.getElementById("busname1")).style.display ="block";
@@ -626,7 +628,7 @@ number(event: any) {
         this.vendorform_business_show=true;
         this.submitted = false;
       }
-    
+
 
       else if(this.vendortype == false){
 
@@ -677,9 +679,9 @@ number(event: any) {
         this.vendortype_show =true;
 
         this.vendortype_display(true)
-        
+
       }
-    
+
     //   if(usertype_id == 'VENDOR'){
 
     //     (<HTMLInputElement>document.getElementById("vendordetails")).style.display ="block";
@@ -744,36 +746,40 @@ number(event: any) {
     }
 
     gejobtitledata(){
-     
+
       console.log('in');
       // alert('in');
       this.http.get(config_url+'/employee/selectJobTitle').subscribe( (data: {}) => {
           this.jobtitle=data;
-          this.jobdetail=this.jobtitle.data.JobTitle;
-            
+          this.jobdetail=this.jobtitle.JobTitle;
+
     });
     }
 
     getemployeedata(){
-      
+
       console.log('in');
       // alert('in');
       this.http.get(config_url+'/employee/selectEmployeeType').subscribe(
         (employeedata: {}) => {
           this.employeetype=employeedata;
-          this.employeedetail=this.employeetype.data.EmployeeDetails;
+          this.employeedetail=this.employeetype.EmployeeDetails;
      });
     }
 
     getusertypedata(){
-      
+
       console.log('in');
-     
+
       this.http.get(config_url+'/app/selectUserType').subscribe(
         (usertype: {}) => {
+          // alert('userdata');
+          // console.log(this.UserTypeDetails[0]);
+          console.log("usertype>>",usertype);
           this.userdata=usertype;
-          this.usertypedata=this.userdata.data.UserTypeDetails;
-              
+          this.usertypedata=this.userdata.UserTypeDetails;
+
+
     });
     }
 
@@ -782,9 +788,9 @@ number(event: any) {
         // alert('in');
         this.http.get(config_url+'/app/selectBEClassification').subscribe(
           (beclassificationdata: {}) => {
-           
+
             this.beclassificationtype = beclassificationdata;
-            this.beclassificationdetail = this.beclassificationtype.data.BEClassification
+            this.beclassificationdetail = this.beclassificationtype.BEClassification
             // console.log("country",countrydata)
       });
       }
@@ -811,11 +817,11 @@ number(event: any) {
         this.http.get(config_url+'/app/selectAllcity').subscribe(
               (citylist: {}) => {
               //  console.log( 'citylist', citylist);
-    
+
                 this.citylist=citylist;
-                 this.cityalldetail=this.citylist.data.citydetails;
+                 this.cityalldetail=this.citylist.citydetails;
                 //  console.log(this.cityalldetail)
-    
+
               });
 
       }
@@ -840,7 +846,7 @@ number(event: any) {
           {
 
             this.zipcodelist=data1;
-            this.zipcodedetail=this.zipcodelist.data.zipcodedata;
+            this.zipcodedetail=this.zipcodelist.zipcodedata;
            })
 
       }
@@ -854,25 +860,25 @@ number(event: any) {
 
             console.log(statelist);
             this.statedetails=statelist;
-            this.statetype=this.statedetails.data.Statelist;
+            this.statetype=this.statedetails.Statelist;
            })
 
       }
 
       onchangecountry(){
-       
+
         let state_id = (<HTMLInputElement>document.getElementById("curstate_id")).value;
 
         this.http.get(config_url+'/app/getCountryByState?stateid='+state_id).subscribe(countrydata =>
           {
  this.countrytype = countrydata;
-            this.countrydetail = this.countrytype.data.countrydata
+            this.countrydetail = this.countrytype.countrydata
           })
 
 
       }
 
-  
+
 
     removepassvalidation(){
      // (document.getElementById('passvalidationid') as HTMLFormElement).innerText = "";
@@ -882,19 +888,19 @@ number(event: any) {
     get f() { return this.employeeform.controls; }
 
     onSubmit() {
-      debugger
+      // debugger
         this.submitted = true;
         let usertype_id = (<HTMLInputElement>document.getElementById("usertype_id")).value;
         if(usertype_id == "EMPLOY")
         {
 
-        if (this.employeeform.invalid) 
+        if (this.employeeform.invalid)
         {
             return;
         }
         else
         {
-          
+
           this.employeeform.value.UserTypeId="EMPLOY"
           alert(JSON.stringify(this.employeeform.value))
           this.finalsavecall(this.employeeform.value)
@@ -903,7 +909,7 @@ number(event: any) {
         else if(usertype_id == "OTHER")
         {
 
-        if (this.otherform.invalid) 
+        if (this.otherform.invalid)
         {
             return;
         }
@@ -912,7 +918,7 @@ number(event: any) {
           this.otherform.value.UserTypeId="EMPLOY"
           alert(JSON.stringify(this.otherform.value))
           this.finalsavecall(this.otherform.value)
-           
+
         }
         }
         else if(usertype_id == "VENDOR")
@@ -920,10 +926,10 @@ number(event: any) {
 
 
          // let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
-     
+
           if(this.vendortype == true)
           {
-            if (this.vendorform_business.invalid) 
+            if (this.vendorform_business.invalid)
             {
                 return;
             }
@@ -931,16 +937,16 @@ number(event: any) {
             {
               this.vendorform_business.value.UserTypeId="VENDOR";
               this.vendorform_business.value.VendorTypeId=true;
-              var int_business=parseInt(this.vendorform_business.value.BusinessSize) 
+              var int_business=parseInt(this.vendorform_business.value.BusinessSize)
               this.vendorform_business.value.BusinessSize=int_business;
               alert(JSON.stringify(this.vendorform_business.value))
               this.finalsavecall(this.vendorform_business.value)
-               
+
             }
           }
           else
           {
-            if (this.vendorform_individual.invalid) 
+            if (this.vendorform_individual.invalid)
             {
                 return;
             }
@@ -948,31 +954,31 @@ number(event: any) {
             {
               this.vendorform_individual.value.UserTypeId="VENDOR"
               this.vendorform_individual.value.VendorTypeId=false;
-              var int_business=parseInt(this.vendorform_individual.value.BusinessSize) 
+              var int_business=parseInt(this.vendorform_individual.value.BusinessSize)
               this.vendorform_individual.value.BusinessSize=int_business;
               alert(JSON.stringify(this.vendorform_individual.value))
               this.finalsavecall(this.vendorform_individual.value)
-               
+
             }
 
           }
 
-  
+
        }
-       
-      
+
+
     }
     finalsavecall(value : any)
     {
     try
     {
-      
+
       this.http.post("http://localhost:8080/"+'vendor/AdduserDetails', value).subscribe(
-          
+
         data => {
           console.log("data");
             console.log('POST Request is successful >>>>>>>>', data);
-  
+
         },
         success => {
           console.log("success");
@@ -986,9 +992,9 @@ number(event: any) {
         }
       );
     }
-    catch(e) 
+    catch(e)
     {
-      console.log(e); 
+      console.log(e);
     }
     }
 }
