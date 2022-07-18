@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import {DataTablesModule} from 'angular-datatables';
 
 import {
     AvatarModule,
@@ -46,13 +47,19 @@ import { CKEditorModule } from 'ckeditor4-angular';
       TableModule,
       AccordionModule,
       MatTabsModule,
+<<<<<<< HEAD
       DataTablesModule,
       CKEditorModule
       
      
+=======
+      DataTablesModule
+
+
+>>>>>>> 1110c14e433fafad1278c3ca719378cb18849eeb
       // WidgetsModule
     ],
-   
+
     declarations: [BidmanagementComponent]
   })
   export class BidmanagementModule { }
