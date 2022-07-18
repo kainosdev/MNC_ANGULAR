@@ -100,11 +100,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/vendor-list/vendor-list.module').then((m) => m.VendorListModule)
       },
-      // {
-      //   path: 'bidManagement',
-      //   loadChildren: () =>
-      //     import('./views/bid-management/bid-management.module').then((m) => m.BidmanagementModule)
-      // },
+      {
+        path: 'bidManagement',
+        loadChildren: () =>
+          import('./views/bid-management/bid-management.module').then((m) => m.BidmanagementModule)
+      },
     ]
   },
   {
