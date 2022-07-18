@@ -69,15 +69,15 @@ export class VendorListComponent implements OnInit {
 
     return this.restApi.GetAllVendors().subscribe((citylistdata: {}) => {
 
-      // console.log(citylistdata);
+      console.log("hi");
        this.vendorDetail = citylistdata;
 
-       console.log(this.vendorDetail.VendorList)
+       console.log(this.vendorDetail)
    //console.log("hi")
-       this.vendorDetail = this.vendorDetail.VendorList;
-      //  this.dtTrigger.next(this.vendorDetail);
+       this.vendorDetail = this.vendorDetail.data.VendorList;
+       this.dtTrigger.next(this.vendorDetail);
 
-        // console.log("vendorDetail test>>>>",this.vendorDetail);
+        console.log("vendorDetail test>>>>",this.vendorDetail);
      })
 
   }

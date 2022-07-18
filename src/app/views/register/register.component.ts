@@ -146,7 +146,6 @@ this.otherform = this.frmbuilder.group({
 
 this.vendorform_individual = this.frmbuilder.group({
 
-
      
   FirstName: ['', [Validators.required]],
   legalbusiness: [''],

@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DataTablesModule} from 'angular-datatables';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -44,7 +45,7 @@ import {
   ListGroupModule,
   NavModule,
   ProgressModule,
-  SharedModule,
+  
   SidebarModule,
   TabsModule,
   UtilitiesModule
@@ -56,7 +57,7 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { LogoutComponent } from './views/logout/logout.component';
 // import { RegistrationformComponent } from './registrationform/registrationform.component';
 // import { BidmanagementComponent } from './bidmanagement/bidmanagement.component';
-import { BidmanagementComponent } from './views/bid-management/bid-management.component';
+// import { BidmanagementComponent } from './views/bid-management/bid-management.component';
 import { TesingComponent } from './tesing/tesing.component';
 import { BidResponsesComponent } from './views/bid-responses/bid-responses.component';
 import { BidListComponent } from './views/bid-list/bid-list.component';
@@ -109,7 +110,7 @@ const APP_CONTAINERS = [
     ButtonGroupModule,
     ReactiveFormsModule,
     SidebarModule,
-    SharedModule,
+    
     TabsModule,
     ListGroupModule,
     ProgressModule,
@@ -120,6 +121,7 @@ const APP_CONTAINERS = [
     DataTablesModule,
     ReactiveFormsModule,
     FormsModule,
+    SharedModule
    
     
     // ToastrModule.forRoot({
