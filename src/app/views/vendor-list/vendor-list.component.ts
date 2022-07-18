@@ -74,7 +74,7 @@ export class VendorListComponent implements OnInit {
 
        console.log(this.vendorDetail)
    //console.log("hi")
-       this.vendorDetail = this.vendorDetail.data.VendorList;
+       this.vendorDetail = this.vendorDetail.VendorList;
        this.dtTrigger.next(this.vendorDetail);
 
         console.log("vendorDetail test>>>>",this.vendorDetail);

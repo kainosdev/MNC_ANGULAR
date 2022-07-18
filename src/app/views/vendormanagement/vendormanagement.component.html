@@ -1560,120 +1560,252 @@
                 <div class="row Generaldiv">
     
                         <p class="mainheading heading" style=" padding-bottom: 5px; padding-top: 16px;">Contact Information</p>
-                        <div class="card tab-content p-3" *ngFor="let s of SingleVendorContactDetailsArr">
-                    <div class="col-sm-6 innerlinefont">
-                        <div class="labelheight">
-                            <label class="labelwidth"> Contact Person Name <span class="requiredfield "> *</span></label>
-                            <input type="text" class="Contactperson" id="contactperson_id" formControlName="ContactName"
-                                (keypress)="EmptyErrorMessage('contactperson_id')" [(ngModel)]="s.ContactName">
-                                <div  class="help-block text-danger">
-                                    <div *ngIf="submitted2 && rcf2.ContactName.errors">Contact Name is required</div>
-                                 </div>
-                        </div>
-    
-    
-                        <div class="labelheight">
-                            <label class="labelwidth">Business Phone <span class="requiredfield "> *</span></label>
-                            <input type="text" [textMask]="{mask: mask1}" class="Businessphone" id="businessphone_id"
-                                formControlName="BusinessPhone" (keypress)="EmptyErrorMessage('businessphone_id')" [(ngModel)]="s.Phone">
+                       
+                        
+<!-- arr not equal to null -->
+<div *ngIf="SingleVendorContactDetailsArr.length != 0">
+    <div  class="card tab-content p-3"  *ngFor="let s of SingleVendorContactDetailsArr">
 
-                                <div  class="help-block text-danger">
-                                    <div *ngIf="submitted2 && rcf2.BusinessPhone.errors">Phone is required</div>
-                                 </div>
-    
-                        </div>
-    
-                        <div class="labelheight">
-                            <label class=" labelwidth" style="width: 146px;">Primary Contact</label>
-                            <label class="switch">
-                                <input class="" type="checkbox" name="businessprimaryContact" id="businessprimaryContact" [(ngModel)]="s.VendorContactPrimary"
-                                    formControlName="VendorContactPrimary" checked>
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-    
-    
-    
-    
-                    </div>
-    
-                    <div class="col-sm-6 innerlinefont" >
-    
-                        <div class="labelheight">
-                            <label class="labelwidth">Title<span class="requiredfield "> *</span></label>
-                            <input type="text" class="Title" id="title_id" formControlName="JobTitle"
-                                (keypress)="EmptyErrorMessage('title_id')" [(ngModel)]="s.JobTitle">
 
-                                <div  class="help-block text-danger">
-                                    <div *ngIf="submitted2 && rcf2.JobTitle.errors">Title is required</div>
-                                 </div>
-                        </div>
-    
-    
-                        <div class="labelheight">
-                            <label class="labelwidth">Business Email <span class="requiredfield "> *</span></label>
-                            <input type="text" class="Businessemail" id="businessemail_id" formControlName="BusinessEmail" [(ngModel)]="s.Email"
-                                (keyup)="EmptyErrorMessage('businessemail_id')">
-                                <div  class="help-block text-danger">
-                                    <div *ngIf="submitted2 && rcf2.BusinessEmail.errors">Email is required</div>
-                                 </div>
-                        </div>
-    
-                        <div style="height: 22px;">
-                            <label class="labelwidth">Active</label>
-                            <label class="switch">
-                                <input class="" type="checkbox" name="active" id="active" formControlName="VendorContactActive" [(ngModel)]="s.VendorContactActive">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-    
-                        <!-- <form [formGroup]="addtionalcontact"></form> -->
+        <div class="row mt-2">
+            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                <label class="labelwidth">Contact Person Name <span class="requiredfield ">  *</span></label>
                
-                        <!-- <div class="accordion acc2">
-                            <h2 class="title mainheading" (click)="opened3 = !opened3">Additional Contact Details Added</h2>
-                            <div class="content-container" [class.opened3]="opened3">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="">
-                                            <label class="labelwidth" style="margin-left: 9px;"> Name</label>
-                                            <input type="text" class="Contactperson" id="addtionalcontactname_id"
-                                                formControlName="AddtionalName"
-                                                (keypress)="EmptyErrorMessage('addtionalcontactname_id')">
-                                        </div>
-                                        <div class="">
-                                            <label class="labelwidth" style="margin-left: 9px;">Title</label>
-                                            <input type="text" class="Title" id="addtionaltitle_id"
-                                                formControlName="AddtionalTitle"
-                                                (keypress)="EmptyErrorMessage('addtionaltitle_id')">
-                                        </div>
-                                        <div class="">
-                                            <label class="labelwidth" style="margin-left: 9px;">Business Email</label>
-                                            <input type="text" class="Businessemail" id="addtionalbusinessmail_id"
-                                                formControlName="AddtionalBusinessMail"
-                                                (keypress)="EmptyErrorMessage('addtionalbusinessmail_id')">
-                                        </div>
-    
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="labelheight">
-                                            <label class="labelwidth" style="margin-left: 9px;">Business Phone</label>
-                                            <input type="number" class="City1" id="addtionalbusinessphone_id"
-                                                formControlName="AddtionalBusinessPhone"
-                                                (keypress)="EmptyErrorMessage('addtionalbusinessphone_id')">
-                                        </div>
-                                        <div style="height: 22px;">
-                                            <label class="labelwidth" style="width: 146px;margin-left: 9px;">Active</label>
-                                            <label class="switch">
-                                                <input class="" type="checkbox" name="active" id="active"  formControlName="AddtionalContactActive">
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
+          </div>
+          <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+              
+                <input type="text"  class="first" formControlName="ContactName" [(ngModel)]="s.ContactName" (keypress)="alpha($event)">
+                <div  class="help-block text-danger">
+                   <div *ngIf="submitted2 && rcf2.ContactName.errors">Contact Person Name is required</div>
                 </div>
+          </div>
+
+     
+                
+        </div>
+
+
+        <div class="row mt-2">
+            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                <label class="labelwidth">Business Phone <span class="requiredfield ">  *</span></label>
+               
+          </div>
+          <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+              
+                <input type="text"   [textMask]="{mask: mask1}" class="Businessphone" id="businessphone_id"
+                formControlName="BusinessPhone" (keypress)="EmptyErrorMessage('businessphone_id')" [(ngModel)]="s.Phone">
+                <div  class="help-block text-danger">
+                   <div *ngIf="submitted2 && rcf2.BusinessPhone.errors">Phone Name is required</div>
+                </div>
+          </div>
+
+     
+                
+        </div>
+
+        <div class="row mt-2">
+            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                <label class="labelwidth">Primary Contact<span class="requiredfield ">  *</span></label>
+               
+          </div>
+          <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+              
+            <label class="switch">
+                <input class="" type="checkbox" name="businessprimaryContact" id="businessprimaryContact" [(ngModel)]="s.VendorContactPrimary"
+                    formControlName="VendorContactPrimary" checked>
+                <span class="slider round"></span>
+            </label>
+          </div>
+
+     
+                
+        </div>
+
+        <div class="row mt-2">
+            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                <label class="labelwidth">Title<span class="requiredfield ">  *</span></label>
+               
+          </div>
+          <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+              
+            <input type="text" class="Title" id="title_id" formControlName="JobTitle"
+            (keypress)="EmptyErrorMessage('title_id')" [(ngModel)]="s.JobTitle">
+
+            <div  class="help-block text-danger">
+                <div *ngIf="submitted2 && rcf2.JobTitle.errors">Title is required</div>
+             </div>
+          </div>
+
+     
+                
+        </div>
+
+        <div class="row mt-2">
+            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                <label class="labelwidth">Business Email<span class="requiredfield ">  *</span></label>
+               
+          </div>
+          <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+              
+            <input type="text" class="Businessemail" id="businessemail_id" formControlName="BusinessEmail" [(ngModel)]="s.Email"
+            (keyup)="EmptyErrorMessage('businessemail_id')">
+            <div  class="help-block text-danger">
+                <div *ngIf="submitted2 && rcf2.BusinessEmail.errors">Email is required</div>
+             </div>
+          </div>
+
+     
+                
+        </div>
+
+
+        <div class="row mt-2">
+            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                <label class="labelwidth">Active<span class="requiredfield ">  *</span></label>
+               
+          </div>
+          <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+              
+            <label class="switch">
+                <input class="" type="checkbox" name="active" id="active" formControlName="VendorContactActive" [(ngModel)]="s.VendorContactActive">
+                <span class="slider round"></span>
+            </label>
+          </div>
+
+     
+                
+        </div>
+
+
+</div>
+
+</div>
+
+
+<!-- arr not equal to null -->
+
+
+<!-- arr equal to null -->
+<div *ngIf="SingleVendorContactDetailsArr.length == 0">
+<div  class="card tab-content p-3"  >
+
+
+<div class="row mt-2">
+    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+        <label class="labelwidth">Contact Person Name  <span class="requiredfield ">  *</span></label>
+       
+  </div>
+  <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+      
+        <input type="text"  class="first" formControlName="ContactName"  (keypress)="alpha($event)">
+        <div  class="help-block text-danger">
+           <div *ngIf="submitted2 && rcf2.ContactName.errors">Contact Person Name is required</div>
+        </div>
+  </div>
+
+
+        
+</div>
+
+
+<div class="row mt-2">
+    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+        <label class="labelwidth">Business Phone <span class="requiredfield ">  *</span></label>
+       
+  </div>
+  <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+      
+        <input type="text"   [textMask]="{mask: mask1}" class="Businessphone" id="businessphone_id"
+        formControlName="BusinessPhone" (keypress)="EmptyErrorMessage('businessphone_id')" >
+        <div  class="help-block text-danger">
+           <div *ngIf="submitted2 && rcf2.BusinessPhone.errors">Phone Name is required</div>
+        </div>
+  </div>
+
+
+        
+</div>
+
+<div class="row mt-2">
+    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+        <label class="labelwidth">Primary Contact<span class="requiredfield ">  *</span></label>
+       
+  </div>
+  <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+      
+    <label class="switch">
+        <input class="" type="checkbox" name="businessprimaryContact" id="businessprimaryContact" 
+            formControlName="VendorContactPrimary" checked>
+        <span class="slider round"></span>
+    </label>
+  </div>
+
+
+        
+</div>
+
+<div class="row mt-2">
+    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+        <label class="labelwidth">Title<span class="requiredfield ">  *</span></label>
+       
+  </div>
+  <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+      
+    <input type="text" class="Title" id="title_id" formControlName="JobTitle"
+    (keypress)="EmptyErrorMessage('title_id')" >
+
+    <div  class="help-block text-danger">
+        <div *ngIf="submitted2 && rcf2.JobTitle.errors">Title is required</div>
+     </div>
+  </div>
+
+
+        
+</div>
+
+<div class="row mt-2">
+    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+        <label class="labelwidth">Business Email<span class="requiredfield ">  *</span></label>
+       
+  </div>
+  <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+      
+    <input type="text" class="Businessemail" id="businessemail_id" formControlName="BusinessEmail" 
+    (keyup)="EmptyErrorMessage('businessemail_id')">
+    <div  class="help-block text-danger">
+        <div *ngIf="submitted2 && rcf2.BusinessEmail.errors">Email is required</div>
+     </div>
+  </div>
+
+
+        
+</div>
+
+
+<div class="row mt-2">
+    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+        <label class="labelwidth">Active<span class="requiredfield ">  *</span></label>
+       
+  </div>
+  <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+      
+    <label class="switch">
+        <input class="" type="checkbox" name="active" id="active" formControlName="VendorContactActive" >
+        <span class="slider round"></span>
+    </label>
+  </div>
+
+
+        
+</div>
+
+
+</div>
+
+</div>
+<!-- arr not equal to null -->
+
+
                     <p class="mainheading heading" style=" padding-bottom: 5px; padding-top: 16px;">Additional Contact Information</p>
 
                     <form [formGroup]="contactsform" autocomplete="off" class="ml-1 mr-1">
@@ -1684,6 +1816,8 @@
                                             <div class="row">
                                            
                                                     <div class="col-sm-6">
+                                                        <input type="hidden" class="" 
+                                                                formControlName="ContactId">
                                                         <div class="">
                                                             <label class="labelwidth" style="margin-left: 9px;">Contact Name</label>
                                                             <input type="text" class="" id="addtionalcontactname_id"
@@ -1720,11 +1854,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-12  align-self-end text-left">
-                                                        <button class="btn btn-filled text-right common_btn_action" type="button" (click)="savecontact(i)">
+                                                        <!-- <button class="btn btn-filled text-right common_btn_action" type="button" (click)="savecontact(i)">
                                                             <img class="img-fluid btn-img "                               
-                                                                >Save</button>
+                                                                >Save</button> -->
                                                                 <button class="btn btn-filled btn-delete common_btn_cancel ml-2" type="button"
-                                                                (click)="removeContact(i)">
+                                                                (click)="removeContact(i,contactsform.value)">
                                                                 Remove
                                                             </button>
                                                     </div>
@@ -1747,7 +1881,7 @@
                                                       Edit
                                                     </button>
                                                     <button class="btn btn-filled btn-delete" type="button"
-                                                        (click)="removeContact(i)">
+                                                        (click)="removeContact(i,contactsform.value)">
                                                         Remove
                                                     </button>
                                                 </div>
