@@ -49,7 +49,6 @@ import { SharedModule } from '../../shared/shared.module';
       SharedModule
       // WidgetsModule
     ],
-    
 
     declarations: [BidmanagementComponent]
   })
