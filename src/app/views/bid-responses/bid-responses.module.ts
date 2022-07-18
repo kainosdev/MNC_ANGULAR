@@ -22,6 +22,7 @@ import { BidResponsesComponent } from './bid-responses.component';
 import {DataTablesModule} from 'angular-datatables';
 
 
+
 @NgModule({
   imports: [
     BidResponsesRoutingModule,
@@ -40,7 +41,8 @@ import {DataTablesModule} from 'angular-datatables';
     ChartjsModule,
     AvatarModule, 
     TableModule,
-    DataTablesModule
+    DataTablesModule,
+    // 
     // WidgetsModule
   ],
   declarations: [BidResponsesComponent]

@@ -4,12 +4,18 @@ import { HttpClient } from '@angular/common/http';
 import { config_url } from '../shared/constant';
 
 
+
 @Component({
   selector: 'app-bid-management',
   templateUrl: './bid-management.component.html',
   styleUrls: ['./bid-management.component.scss']
 })
 export class BidmanagementComponent implements OnInit { 
+
+  dtOptions: DataTables.Settings = {};
+  title = 'datatables';
+
+
   bid_form: FormGroup | any;
   submitted = false;
   bid_form_show=true;
@@ -35,6 +41,13 @@ export class BidmanagementComponent implements OnInit {
   constructor(private frmbuilder: FormBuilder,private http: HttpClient) { }
 
   ngOnInit(): void {
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      processing: true
+    };
+
     this.personalDetails = this.frmbuilder.group({
       name: ['', Validators.required],
       email: ['', Validators.required],

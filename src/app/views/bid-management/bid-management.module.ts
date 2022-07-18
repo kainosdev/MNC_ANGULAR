@@ -23,6 +23,8 @@ import { BidmanagementComponent} from './bid-management.component';
 
 import { AccordionModule } from "../../lib/accordion/accordion.module";
 import {MatTabsModule} from '@angular/material/tabs';
+import {DataTablesModule} from 'angular-datatables';
+import { CKEditorModule } from 'ckeditor4-angular';
 
 @NgModule({
     imports: [
@@ -43,7 +45,9 @@ import {MatTabsModule} from '@angular/material/tabs';
       AvatarModule,
       TableModule,
       AccordionModule,
-      MatTabsModule
+      MatTabsModule,
+      DataTablesModule,
+      CKEditorModule
       
      
       // WidgetsModule

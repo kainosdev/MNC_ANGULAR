@@ -1,5 +1,17 @@
 <p style="font-weight: 500;">Bid Responses</p>
 
+<div id="wrapper">
+  <div fxLayout="row" fxLayoutGap="16px" fxFill>
+    <div fxFlex="80" fxFill>
+      <!-- <mat-tab-group id="tab-group" mat-align-tabs="start"> -->
+
+      <!-- </mat-tab-group> -->
+
+
+    </div>
+  </div>
+</div>
+
 <div class="form-inline">
   <label class="labelwidth" style="font-size: 14px;">Solicitation Number</label>
   <input type="text" style="height: 23px;">
@@ -7,26 +19,79 @@
 
  <p style="margin-top: 11px; font-weight: 500;">Responses Received</p>
 
+ <div class="row">
+  <div class="col-sm-8" style=" border: 1px solid black !important; height: 160px;">
+    <div class="row">
+<div class="col-sm-6">
+    <div class="form-inline" style="margin-top: 10px;">
+      <label class="" style="font-size: 14px;    width: 98px;">Vendor Name</label>
+      <input type="text" style="width: 176px;margin-left: 12px;">
+     </div><br>
+     <div class="form-inline">
+      <label class="" style="font-size: 14px;    width: 98px;">Submitted Date</label>
+      <input type="text" style="width: 176px;margin-left: 12px;">
+     </div><br>
+     <div class="form-inline">
+      <label class="" style="font-size: 14px;    width: 98px;">Total Score</label>
+      <input type="text" style="width: 176px;margin-left: 12px;">
+     </div>
+ </div>
+
+<div class="col-sm-4">
+<div class="form-inline">
+  <label class="" style="margin-left: 25px;margin-top: 10px;
+  font-size: 14px;
+  width: 145px;">Qualified Response</label>
+  <label class="switch">
+    <input  type="checkbox" name="franchisee_active" id="franchisee_activeid" formControlName="BusinessIsFranchisee" checked>
+    <span class="slider round"></span>
+    </label>
+  </div><br>
+
+  <div class="form-inline">
+    <label class="" style="margin-left: 25px;
+    font-size: 14px;
+    width: 145px;">Demo/Oral</label>
+    <label class="switch">
+      <input  type="checkbox" name="franchisee_active" id="franchisee_activeid" formControlName="BusinessIsFranchisee" checked>
+      <span class="slider round"></span>
+      </label>
+    </div>
+  </div></div>
+</div>
+ 
+
+  <div class="col-sm-3" style=" border: 1px solid black !important;margin-left: 11px;height: 160px;">
+    <p style="font-size: 14px;height: 15px;"> Evaluation Criteria</p>
+    <p style="font-size: 14px;height: 15px;">Response header</p>
+   <p style="font-size: 14px;height: 15px;"> Subcontractor Plan</p>
+   <p style="font-size: 14px;height: 15px;">Submitted Date</p>
+   <p style="font-size: 14px;height: 15px;">Response comment</p> 
+</div>
+
+ </div>
+ <br>
+
 <table  class="table  servicecss tblnewbook"   datatable="ng"  datatable  [dtOptions] = "dtOptions" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
-    <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
+    <thead class="datatable" >
 
         <tr>
         <!-- <th  style="display:none;width: 0px;">b</th> -->
-        <th  style="color: white;" >Vendor Name </th>
-        <th  style="color: white;">Vendor Type</th>
-        <th   style="color: white;">Certified</th>
-        <th   style="color: white;">Response Files</th>
-         <th  style="color: white;">Response Received Date</th>
-         <th  style="color: white;">Reviewed By Contracting Officer</th>
-        <th style="color: white;">Qualified Response?</th>
-        <th style="color: white;"> Demo/Oral</th>
-        <th style="color: white;"> Total Score</th>
-        <th style="color: white;"> Response</th>
+        <th >Vendor Name </th>
+        <th >Vendor Type</th>
+        <th >Certified</th>
+        <th >Response Files</th>
+         <th>Response Received Date</th>
+         <th>Reviewed By Contracting Officer</th>
+        <th >Qualified Response?</th>
+        <th > Demo/Oral</th>
+        <th > Total Score</th>
+        <th > Response</th>
        </tr>
     </thead>
 
     <tbody >
-      <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+      <tr >
 
          <td ><a class="fontwghtcls">Safeguard Privacy Protection Services </a></td>
         <td >Individual</td>
@@ -48,7 +113,7 @@
         </td>
       </tr>
 
-      <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+      <tr >
         <td ><a class="fontwghtcls">Leroy Jethro Gibbs</a></td>
        <td >Business</td>
        <td></td>
@@ -69,7 +134,7 @@
        </td>
      </tr>
 
-     <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+     <tr >
       <td ><a class="fontwghtcls">Koios Systems & Technology LLC</a></td>
      <td >Individual</td>
      <td>S,M,V</td>
@@ -90,7 +155,7 @@
      </td>
    </tr>
 
-   <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+   <tr>
     <td ><a class="fontwghtcls">Lees Welding Service</a></td>
    <td >Individual</td>
    <td>O,S,M</td>
