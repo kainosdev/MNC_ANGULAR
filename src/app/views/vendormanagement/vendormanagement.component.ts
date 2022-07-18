@@ -23,8 +23,6 @@ export class VendormanagementComponent implements OnInit {
   zipcodeValPastAddr:any;
   statedetailPastAddr:any;
 
-  SingleVendorContactDetailsNotPrimary1:any;
-
   SingleVendorContactDetailsArr:any;
 
   CurrentAddrStartDate:any;
@@ -78,11 +76,11 @@ export class VendormanagementComponent implements OnInit {
   IndBusinessPastCity:any;
   IndBusinessPastState:any;
 
-  IndBusinessDistrictsMailAddr:any;
-  IndBusinessCountryMailAddr:any;
-  IndBusinessZipcodeMailAddr:any;
-  IndBusinessCityMailAddr:any;
-  IndBusinessStateMailAddr:any;
+  IndBusinessDistrictsNew:any;
+  IndBusinessCountryNew:any;
+  IndBusinessZipcodeNew:any;
+  IndBusinessCityNew:any;
+  IndBusinessStateNew:any;
 
 
   contactsform: FormGroup;
@@ -91,9 +89,6 @@ export class VendormanagementComponent implements OnInit {
   AdditionalContactList:any=[];
  
   ContactToggle : boolean[] = [];
-
-  VendorIdObj:any;
-  SingleVendorContactDetailsNotPrimary:any;
 
   constructor(
     private frmbuilder: FormBuilder,private http: HttpClient,
@@ -113,9 +108,8 @@ export class VendormanagementComponent implements OnInit {
     });
     this.contactList = this.contactsform.get('contactarray') as FormArray;
     let vendoridSes = localStorage.getItem('vendoridSes');
-    this.VendorIdObj = localStorage.getItem('vendoridSes');
     console.log(vendoridSes);
-   this.GetVendorContactByIdNotPrimary();
+  //  this.getstate_list();
     this.GetVendorById();
     this.GetVendorAddressById();
     this.Getcityall_list();
@@ -197,8 +191,6 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
       
      })
 
-    
-
      this.VendorMgmtIndividual = this.frmbuilder.group({
       UserName :[],
       // active: [],
@@ -243,8 +235,6 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
       IPStateId:[],
      });
 
-     
-
   //  this.setUserCategoryValidators();
    
   }
@@ -270,7 +260,6 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
   }
   createcontact(): FormGroup {
     return this.frmbuilder.group({
-      VendorIdContact: [],
       AddtionalName: [],
       AddtionalTitle: [],
       AddtionalBusinessMail: [],
@@ -292,36 +281,16 @@ CreatedUserId:[localStorage.getItem("CreatedUseridses")],
 
    
   }
-  savecontact(i:any,contactsform:any) {
+  savecontact(i:any) {
     
       
       this.ContactToggle[i]=true;
-      console.log(contactsform.contactarray[i]);
-      // console.log(contactsform[i]);
+      console.log(this.contactList);
       //this.toggleContact(i)
-      this.http.post('http://localhost/MNC_PHP_API/vendor/AddVendorContact',contactsform.contactarray[i]).subscribe(
-    // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
-      
-      data => {
-        console.log("data");
-          console.log('POST Request is successful >>>>>>>>', data);
-
-      },
-      success => {
-        // Swal.fire({
-        //   position: 'top',
-        //   icon: 'success',
-        //   title: 'Successfully Registered',
-        //   showConfirmButton: false,
-        //   timer: 3000
-        // })
-      }
-      );
      
 
   }
   get contactFormGroup() {
-    //console.log("Arr>>>>>",this.contactsform.get('contactarray') as FormArray);
     return this.contactsform.get('contactarray') as FormArray;
   }
   get cfc() {
@@ -454,8 +423,6 @@ VendorData(VendorMgmtIndividual:any){
       
        //console.log(JSON.stringify(this.AdditionalContactList))
     }
-
-    //this.VendorMgmtBusiness.get("Email").setValidators([Validators.required]);
 
     this.http.post('http://localhost/MNC_PHP_API/vendor/UpdateVendor',vendorMgmt).subscribe(
     // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
@@ -840,7 +807,7 @@ GetVendorById(){
 
       
       this.singleVendorDet=data1;
-      this.singleVendorDet=this.singleVendorDet.SingleVendorDetails;
+      this.singleVendorDet=this.singleVendorDet.data.SingleVendorDetails;
       console.log("singleVendorDet>>>",this.singleVendorDet);
       this.Vendortypevalue=this.singleVendorDet[0].VendorTypeId;
       // if(this.Vendortypevalue == "B"){
@@ -877,7 +844,7 @@ GetVendorAddressById(){
 
       console.log(data1);
       this.singleVendorAddressDet=data1;
-      this.singleVendorAddressDet=this.singleVendorAddressDet.SingleVendorAddressDetails;
+      this.singleVendorAddressDet=this.singleVendorAddressDet.data.SingleVendorAddressDetails;
 
       // this.singleVendorAddressDet[0].StartDate = this.singleVendorAddressDet[0].StartDate.split(" ")[0];
 
@@ -923,15 +890,15 @@ Getcityall_list(){
   this.http.get(config_url+'/app/selectAllcity').subscribe(
         (citylist: {}) => {
         //  console.log( 'citylist', citylist);
-        console.log("citylist>>>",citylist)
+
           this.citylist=citylist;
-          
-          this.IndBusinessCityMailAddr=this.citylist.citydetails;
 
-          this.IndBusinessPastCity=this.citylist.citydetails;
-          
+          this.IndBusinessCityNew=this.citylist.data.citydetails;
 
-           this.citylist=this.citylist.citydetails;
+          this.IndBusinessPastCity=this.citylist.data.citydetails;
+          console.log("past city>>>",this.IndBusinessPastCity)
+
+           this.citylist=this.citylist.data.citydetails;
           //  console.log(this.citylist)
           
         });
@@ -945,11 +912,11 @@ getAllZipcodes(){
   this.http.get(config_url+'/app/getZipCode').subscribe( (data: {}) => {
       this.zipcodeVal=data;
 
-      this.IndBusinessZipcodeMailAddr=this.zipcodeVal.zipcodedata;
+      this.IndBusinessZipcodeNew=this.zipcodeVal.data.zipcodedata;
 
-      this.IndBusinessPastZipcode=this.zipcodeVal.zipcodedata;
+      this.IndBusinessPastZipcode=this.zipcodeVal.data.zipcodedata;
 
-      this.zipcodeVal=this.zipcodeVal.zipcodedata;
+      this.zipcodeVal=this.zipcodeVal.data.zipcodedata;
         // console.log(this.zipcodeVal);
         
 });
@@ -961,11 +928,11 @@ getcountrydata(){
      
       this.countrytype = countrydata;
 
-      this.IndBusinessCountryMailAddr = this.countrytype.CountryDetails;
+      this.IndBusinessCountryNew = this.countrytype.data.CountryDetails;
 
-      this.IndBusinessPastCountry = this.countrytype.CountryDetails;
+      this.IndBusinessPastCountry = this.countrytype.data.CountryDetails;
 
-      this.countrytype = this.countrytype.CountryDetails;
+      this.countrytype = this.countrytype.data.CountryDetails;
       
       // console.log("country",countrydata)
 });
@@ -977,11 +944,11 @@ getAllDistricts(){
      
       this.districts = data;
 
-      this.IndBusinessDistrictsMailAddr = this.districts.selectAllDistricts;
+      this.IndBusinessDistrictsNew = this.districts.data.selectAllDistricts;
 
-      this.IndBusinessPastDistricts = this.districts.selectAllDistricts;
+      this.IndBusinessPastDistricts = this.districts.data.selectAllDistricts;
 
-      this.districts = this.districts.selectAllDistricts;
+      this.districts = this.districts.data.selectAllDistricts;
       // console.log("districts",this.districts);
       
 });
@@ -994,11 +961,11 @@ getstatedata(){
      
       this.statedetail = statelistdata;
 
-      this.IndBusinessStateMailAddr = this.statedetail.statedetails;
+      this.IndBusinessStateNew = this.statedetail.data.statedetails;
 
-      this.IndBusinessPastState = this.statedetail.statedetails;
+      this.IndBusinessPastState = this.statedetail.data.statedetails;
 
-      this.statedetail = this.statedetail.statedetails;
+      this.statedetail = this.statedetail.data.statedetails;
       console.log("state",this.statedetail)
 });
 }
@@ -1047,7 +1014,7 @@ cancelform()
           {
 
             this.zipcodeVal=data1;
-            this.zipcodeVal=this.zipcodeVal.zipcodedata;
+            this.zipcodeVal=this.zipcodeVal.data.zipcodedata;
            })
 
       }
@@ -1061,7 +1028,7 @@ cancelform()
 
             console.log(statelist);
             this.statedetail=statelist;
-            this.statedetail=this.statedetail.Statelist;
+            this.statedetail=this.statedetail.data.Statelist;
            })
 
       }
@@ -1074,14 +1041,14 @@ cancelform()
         this.http.get(config_url+'/app/getCountryByState?stateid='+state_id).subscribe(countrydata =>
           {
  this.countrytype = countrydata;
-            this.countrytype = this.countrytype.countrydata
+            this.countrytype = this.countrytype.data.countrydata
           })
 
 
       }
 
 // for both mail address
-      onchangezipIndividualBusMailAddr(){
+      onchangezipIndividual(){
         // alert("in");
       //   this.IndBusinessPastZipcode="";
                 let cityid = (<HTMLInputElement>document.getElementById("currentcity_id_mail")).value;
@@ -1090,12 +1057,12 @@ cancelform()
                   {
         
                     this.zipcodeValMailAddr=data1;
-                    this.IndBusinessZipcodeMailAddr=this.zipcodeValMailAddr.zipcodedata;
+                    this.IndBusinessPastZipcode=this.zipcodeValMailAddr.data.zipcodedata;
                    })
         
               }
         
-              onchangestateIndividualBusMailAddr(){
+              onchangestateIndividual(){
                 // alert("in");
       //           this.IndBusinessPastState="";
                 let cityid = (<HTMLInputElement>document.getElementById("currentcity_id_mail")).value;
@@ -1105,21 +1072,21 @@ cancelform()
         
                     // console.log(statelist);
                     this.statedetailMailAddr=statelist;
-                    this.IndBusinessStateMailAddr=this.statedetailMailAddr.Statelist;
+                    this.IndBusinessPastState=this.statedetailMailAddr.data.Statelist;
                    })
         
               }
         
-              onchangecountryIndividualBusMailAddr(){
-                // alert("in");
+              onchangecountryIndividual(){
+      //           // alert("in");
                 
                 let state_id = (<HTMLInputElement>document.getElementById("stateprovice_id_mail")).value;
         
                 this.http.get(config_url+'/app/getCountryByState?stateid='+state_id).subscribe(countrydata =>
                   {
          this.countrytypeMailAddr = countrydata;
-                    this.IndBusinessCountryMailAddr = this.countrytypeMailAddr.countrydata
-                    // console.log(this.IndBusinessPastCountry);
+                    this.IndBusinessPastCountry = this.countrytypeMailAddr.data.countrydata
+                    console.log(this.IndBusinessPastCountry);
                   })
         
         
@@ -1129,7 +1096,7 @@ cancelform()
 
 
 // for both past address
-onchangezipPastAddr1(){
+onchangezipPastAddr(){
   // alert("in");
 //   this.IndBusinessPastZipcode="";
           let cityid = (<HTMLInputElement>document.getElementById("currentcity_id_Past")).value;
@@ -1138,12 +1105,12 @@ onchangezipPastAddr1(){
             {
   
               this.zipcodeValPastAddr=data1;
-              this.IndBusinessPastZipcode=this.zipcodeValPastAddr.zipcodedata;
+              this.IndBusinessZipcodeNew=this.zipcodeValPastAddr.data.zipcodedata;
              })
   
         }
   
-        onchangestatePastAddr1(){
+        onchangestatePastAddr(){
           // alert("in");
 //           this.IndBusinessPastState="";
           let cityid = (<HTMLInputElement>document.getElementById("currentcity_id_Past")).value;
@@ -1153,21 +1120,21 @@ onchangezipPastAddr1(){
   
               // console.log(statelist);
               this.statedetailPastAddr=statelist;
-              this.IndBusinessPastState=this.statedetailPastAddr.Statelist;
+              this.IndBusinessStateNew=this.statedetailPastAddr.data.Statelist;
              })
   
         }
   
         onchangecountryPastAddr(){
-          // alert("in");
+//           // alert("in");
           
           let state_id = (<HTMLInputElement>document.getElementById("stateprovice_id_past")).value;
   
           this.http.get(config_url+'/app/getCountryByState?stateid='+state_id).subscribe(countrydata =>
             {
    this.countrytypePastAddr = countrydata;
-              this.IndBusinessPastCountry = this.countrytypePastAddr.countrydata
-              // console.log(this.IndBusinessCountryNew);
+              this.IndBusinessCountryNew = this.countrytypePastAddr.data.countrydata
+              console.log(this.IndBusinessCountryNew);
             })
   
   
@@ -1183,31 +1150,9 @@ GetVendorContactById(){
 
       
       this.SingleVendorContactDetailsArr=data1;
-      this.SingleVendorContactDetailsArr=this.SingleVendorContactDetailsArr.SingleVendorContactDetails;
-      // console.log("SingleVendorContactDetailsArr>>>",this.SingleVendorContactDetailsArr);
+      this.SingleVendorContactDetailsArr=this.SingleVendorContactDetailsArr.data.SingleVendorContactDetails;
+      console.log("SingleVendorContactDetailsArr>>>",this.SingleVendorContactDetailsArr);
       
-    })
-
-}
-
-
-GetVendorContactByIdNotPrimary(){
- 
-  let vendoridSes = localStorage.getItem('vendoridSes');
-
-  this.http.get(config_url+'/app/getVContactNotPrimary?VendorId='+vendoridSes+"&VendorContactPrimary=0").subscribe(data1 =>
-    {
-
-      
-      this.SingleVendorContactDetailsNotPrimary=data1;
-      this.SingleVendorContactDetailsNotPrimary1=this.SingleVendorContactDetailsNotPrimary.VendorContact;
-      console.log("SingleVendorContactDetailsNotPrimary>>>",this.SingleVendorContactDetailsNotPrimary);
-      // console.log("this.contactsform",this.contactsform);
-      // this.contactsform = (this.SingleVendorContactDetailsNotPrimary);
-
-      // for(let i=0;i< this.SingleVendorContactDetailsNotPrimary.length;i++){
-      //   contactarray.push(this.SingleVendorContactDetailsNotPrimary[i]);
-      // }
     })
 
 }

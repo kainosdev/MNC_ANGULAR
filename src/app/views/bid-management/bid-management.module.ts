@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import {DataTablesModule} from 'angular-datatables';
 
 import {
     AvatarModule,
@@ -24,8 +23,8 @@ import { BidmanagementComponent} from './bid-management.component';
 
 import { AccordionModule } from "../../lib/accordion/accordion.module";
 import {MatTabsModule} from '@angular/material/tabs';
-// import {DataTablesModule} from 'angular-datatables';
-import { CKEditorModule } from 'ckeditor4-angular';
+import { SharedModule } from '../../shared/shared.module';
+
 
 @NgModule({
     imports: [
@@ -47,10 +46,7 @@ import { CKEditorModule } from 'ckeditor4-angular';
       TableModule,
       AccordionModule,
       MatTabsModule,
-      DataTablesModule,
-      CKEditorModule
-      
-     
+      SharedModule
       // WidgetsModule
     ],
 
