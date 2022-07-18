@@ -193,6 +193,7 @@ export class BidmanagementComponent implements OnInit {
     }
       
   }
+  
   GetContract_officer(){
     try
     {
