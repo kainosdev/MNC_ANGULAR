@@ -60,7 +60,7 @@ export class BidmanagementComponent implements OnInit {
       pagingType: 'full_numbers',
       pageLength: 5,
       processing: true
-      // processing: true,
+  
     };
 
     this.personalDetails = this.frmbuilder.group({
