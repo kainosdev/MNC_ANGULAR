@@ -448,6 +448,8 @@ VendorData(VendorMgmtIndividual:any){
   
         this.AdditionalContactList.push(addcontactData)
       });
+      vendorMgmt.Newcontact = this.AdditionalContactList;
+      console.log(vendorMgmt);
       //vendorMgmt.push(this.AdditionalContactList);
       
        //console.log(JSON.stringify(this.AdditionalContactList))

@@ -56,7 +56,7 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { LogoutComponent } from './views/logout/logout.component';
 // import { RegistrationformComponent } from './registrationform/registrationform.component';
 // import { BidmanagementComponent } from './bidmanagement/bidmanagement.component';
-import { BidmanagementComponent } from './views/bid-management/bid-management.component';
+// import { BidmanagementComponent } from './views/bid-management/bid-management.component';
 import { TesingComponent } from './tesing/tesing.component';
 import { BidResponsesComponent } from './views/bid-responses/bid-responses.component';
 import { BidListComponent } from './views/bid-list/bid-list.component';
