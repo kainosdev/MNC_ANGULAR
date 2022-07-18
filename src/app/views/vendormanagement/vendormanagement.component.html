@@ -402,9 +402,9 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentcity_id" class="city" formControlName="IMCityId" [(ngModel)]="MailingAddressDetails.CityId"
-                        (keypress)="EmptyErrorMessage('currentcity_id')">
-                        <option *ngFor="let c of IndBusinessPastCity" [value]="c.CityId ">
+                        <select id="currentcity_id_mail" class="city" formControlName="IMCityId" [(ngModel)]="MailingAddressDetails.CityId"
+                        (keypress)="EmptyErrorMessage('currentcity_id')" (change)="onchangezipIndividualBusMailAddr();onchangestateIndividualBusMailAddr()">
+                        <option *ngFor="let c of IndBusinessCityMailAddr" [value]="c.CityId ">
                             {{c.CityName}}
                         </option>
                     </select>
@@ -422,7 +422,7 @@
                                   
                                 <select class="Country" id="currentcountry_id" formControlName="IMCountryId"  [(ngModel)]="MailingAddressDetails.CountryId"
                                 (change)="EmptyErrorMessage('currentcountry_id')">
-                                <option *ngFor="let countrylist of IndBusinessPastCountry" [value]="countrylist.CountryId" >
+                                <option *ngFor="let countrylist of IndBusinessCountryMailAddr" [value]="countrylist.CountryId" >
                                     {{countrylist.CountryName}}</option>
                             </select>
                             <div  class="help-block text-danger">
@@ -443,7 +443,7 @@
                           
                         <select id="currentzipcode_id" class="zip" formControlName="IMZipcode" [(ngModel)]="MailingAddressDetails.Zipcode"
                                         (keypress)="EmptyErrorMessage('currentzipcode_id');">
-                                        <option *ngFor="let z of IndBusinessPastZipcode" [value]="z.Zipcode ">
+                                        <option *ngFor="let z of IndBusinessZipcodeMailAddr" [value]="z.Zipcode ">
                                             {{z.Zipcode}}
                                         </option>
                                     </select>
@@ -481,7 +481,7 @@
                           
                         <select type="text" id="currentcounty_id" class="County" formControlName="IMDistrictId"  [(ngModel)]="MailingAddressDetails.DistrictId"
                                         (keypress)="EmptyErrorMessage('currentcounty_id')">
-                                        <option *ngFor="let d of IndBusinessPastDistricts" [value]="d.DistrictId ">
+                                        <option *ngFor="let d of IndBusinessDistrictsMailAddr" [value]="d.DistrictId ">
                                             {{d.DistrictName}}
                                         </option>
                                     </select>
@@ -519,9 +519,9 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select class="State" id="stateprovice_id" formControlName="IMStateId" 
-                                        (change)="EmptyErrorMessage('stateprovice_id')" [(ngModel)]="MailingAddressDetails.StateId">
-                                        <option *ngFor="let s of IndBusinessPastState" [value]="s.StateId ">
+                        <select class="State" id="stateprovice_id_mail" formControlName="IMStateId" 
+                                        (change)="EmptyErrorMessage('stateprovice_id');onchangecountryIndividualBusMailAddr()" [(ngModel)]="MailingAddressDetails.StateId">
+                                        <option *ngFor="let s of IndBusinessStateMailAddr" [value]="s.StateId ">
                                             {{s.StateName}}
                                         </option>
                                     </select>
@@ -582,8 +582,8 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentcity_id_Past" class="city" formControlName="IPCityId" [(ngModel)]="PastAddressDetails.CityId"
-                        (change)="onchangezipPastAddr();onchangestatePastAddr()">
+                        <select id="currentcity_id_Past" class="city" (change)="onchangezipPastAddr1();onchangestatePastAddr1()" formControlName="IPCityId" [(ngModel)]="PastAddressDetails.CityId"
+                        >
                         <option *ngFor="let c of IndBusinessPastCity" [value]="c.CityId ">
                             {{c.CityName}}
                         </option>
@@ -699,8 +699,8 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select class="State" id="stateprovice_id" formControlName="IPStateId" [(ngModel)]="PastAddressDetails.StateId"
-                                        (change)="EmptyErrorMessage('stateprovice_id')">
+                        <select class="State" id="stateprovice_id_past" formControlName="IPStateId" [(ngModel)]="PastAddressDetails.StateId"
+                                        (change)="EmptyErrorMessage('stateprovice_id');onchangecountryPastAddr()">
                                         <option *ngFor="let s of IndBusinessPastState" [value]="s.StateId ">
                                             {{s.StateName}}
                                         </option>
@@ -1233,9 +1233,9 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentcity_id" class="city" formControlName="BMCityId" 
+                        <select id="currentcity_id_mail" class="city" formControlName="BMCityId" (change)="onchangezipIndividualBusMailAddr();onchangestateIndividualBusMailAddr()"
                         (keypress)="EmptyErrorMessage('currentcity_id')" [(ngModel)]="MailingAddressDetails.CityId">
-                        <option *ngFor="let c of IndBusinessPastCity" [value]="c.CityId ">
+                        <option *ngFor="let c of IndBusinessCityMailAddr" [value]="c.CityId ">
                             {{c.CityName}}
                         </option>
                     </select>
@@ -1253,7 +1253,7 @@
                                   
                                 <select class="Country" id="currentcountry_id" formControlName="BMCountryId" 
                                 (change)="EmptyErrorMessage('currentcountry_id')" [(ngModel)]="MailingAddressDetails.CountryId">
-                                <option *ngFor="let countrylist of IndBusinessPastCountry" [value]="countrylist.CountryId" >
+                                <option *ngFor="let countrylist of IndBusinessCountryMailAddr" [value]="countrylist.CountryId" >
                                     {{countrylist.CountryName}}</option>
                             </select>
                             <div  class="help-block text-danger">
@@ -1274,7 +1274,7 @@
                           
                         <select id="currentzipcode_id" class="zip" formControlName="BMZipcode" 
                                         (keypress)="EmptyErrorMessage('currentzipcode_id');" [(ngModel)]="MailingAddressDetails.Zipcode">
-                                        <option *ngFor="let z of IndBusinessPastZipcode" [value]="z.Zipcode " >
+                                        <option *ngFor="let z of IndBusinessZipcodeMailAddr" [value]="z.Zipcode " >
                                             {{z.Zipcode}}
                                         </option>
                                     </select>
@@ -1312,7 +1312,7 @@
                           
                         <select type="text" id="currentcounty_id" class="County" formControlName="BMDistrictId" 
                                         (keypress)="EmptyErrorMessage('currentcounty_id')" [(ngModel)]="MailingAddressDetails.DistrictId">
-                                        <option *ngFor="let d of IndBusinessPastDistricts" [value]="d.DistrictId ">
+                                        <option *ngFor="let d of IndBusinessDistrictsMailAddr" [value]="d.DistrictId ">
                                             {{d.DistrictName}}
                                         </option>
                                     </select>
@@ -1350,9 +1350,9 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select class="State" id="stateprovice_id" formControlName="BMStateId" 
-                                        (change)="EmptyErrorMessage('stateprovice_id')" [(ngModel)]="MailingAddressDetails.StateId">
-                                        <option *ngFor="let s of IndBusinessPastState" [value]="s.StateId ">
+                        <select class="State" id="stateprovice_id_mail" formControlName="BMStateId" 
+                                        (change)="EmptyErrorMessage('stateprovice_id');onchangecountryIndividualBusMailAddr()" [(ngModel)]="MailingAddressDetails.StateId">
+                                        <option *ngFor="let s of IndBusinessStateMailAddr" [value]="s.StateId ">
                                             {{s.StateName}}
                                         </option>
                                     </select>
@@ -1376,7 +1376,7 @@
 
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Address 
+                            <label class="labelwidth">Address
                                 <!-- <span class="requiredfield ">  *</span> -->
                             </label>
                            
@@ -1413,9 +1413,9 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentcity_id" class="city" formControlName="BPCityId" 
+                        <select id="currentcity_id_Past" class="city" formControlName="BPCityId" (change)="onchangezipPastAddr1();onchangestatePastAddr1()"
                         (keypress)="EmptyErrorMessage('currentcity_id')" [(ngModel)]="PastAddressDetails.CityId">
-                        <option *ngFor="let c of citylist" [value]="c.CityId ">
+                        <option *ngFor="let c of IndBusinessPastCity" [value]="c.CityId ">
                             {{c.CityName}}
                         </option>
                     </select>
@@ -1432,8 +1432,8 @@
                             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                                   
                                 <select class="Country" id="currentcountry_id" formControlName="BPCountryId" 
-                                (change)="EmptyErrorMessage('currentcountry_id')" [(ngModel)]="PastAddressDetails.CountryId">
-                                <option *ngFor="let countrylist of countrytype" [value]="countrylist.CountryId" >
+                                (change)="EmptyErrorMessage('currentcountry_id');" [(ngModel)]="PastAddressDetails.CountryId">
+                                <option *ngFor="let countrylist of IndBusinessPastCountry" [value]="countrylist.CountryId" >
                                     {{countrylist.CountryName}}</option>
                             </select>
                             <div  class="help-block text-danger">
@@ -1454,7 +1454,7 @@
                           
                         <select id="currentzipcode_id" class="zip" formControlName="BPZipcode" 
                                         (keypress)="EmptyErrorMessage('currentzipcode_id');" [(ngModel)]="PastAddressDetails.Zipcode">
-                                        <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode ">
+                                        <option *ngFor="let z of IndBusinessPastZipcode" [value]="z.Zipcode ">
                                             {{z.Zipcode}}
                                         </option>
                                     </select>
@@ -1492,7 +1492,7 @@
                           
                         <select type="text" id="currentcounty_id" class="County" formControlName="BPDistrictId" 
                                         (keypress)="EmptyErrorMessage('currentcounty_id')" [(ngModel)]="PastAddressDetails.DistrictId">
-                                        <option *ngFor="let d of districts" [value]="d.DistrictId ">
+                                        <option *ngFor="let d of IndBusinessPastDistricts" [value]="d.DistrictId ">
                                             {{d.DistrictName}}
                                         </option>
                                     </select>
@@ -1530,9 +1530,9 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select class="State" id="stateprovice_id" formControlName="BPStateId" 
-                                        (change)="EmptyErrorMessage('stateprovice_id')" [(ngModel)]="PastAddressDetails.StateId">
-                                        <option *ngFor="let s of statedetail" [value]="s.StateId ">
+                        <select class="State" id="stateprovice_id_past" formControlName="BPStateId" 
+                                        (change)="EmptyErrorMessage('stateprovice_id');onchangecountryPastAddr()" [(ngModel)]="PastAddressDetails.StateId">
+                                        <option *ngFor="let s of IndBusinessPastState" [value]="s.StateId ">
                                             {{s.StateName}}
                                         </option>
                                     </select>
@@ -1554,152 +1554,291 @@
         <!-- Contact Information Start -->
         <div *ngIf="Vendortypevalue=='B'">
         <div id="contact_inforation">
+
+
+            
     
     
            
                 <div class="row Generaldiv">
     
-                        <p class="mainheading heading" style=" padding-bottom: 5px; padding-top: 16px;">Contact Information</p>
-                        <div class="card tab-content p-3" *ngFor="let s of SingleVendorContactDetailsArr">
-                    <div class="col-sm-6 innerlinefont">
-                        <div class="labelheight">
-                            <label class="labelwidth"> Contact Person Name <span class="requiredfield "> *</span></label>
-                            <input type="text" class="Contactperson" id="contactperson_id" formControlName="ContactName"
-                                (keypress)="EmptyErrorMessage('contactperson_id')" [(ngModel)]="s.ContactName">
-                                <div  class="help-block text-danger">
-                                    <div *ngIf="submitted2 && rcf2.ContactName.errors">Contact Name is required</div>
-                                 </div>
-                        </div>
-    
-    
-                        <div class="labelheight">
-                            <label class="labelwidth">Business Phone <span class="requiredfield "> *</span></label>
-                            <input type="text" [textMask]="{mask: mask1}" class="Businessphone" id="businessphone_id"
-                                formControlName="BusinessPhone" (keypress)="EmptyErrorMessage('businessphone_id')" [(ngModel)]="s.Phone">
+                        <p class="mainheading heading" style=" padding-bottom: 5px; padding-top: 16px;"> Contact Information</p>
+                        
+                        <!-- arr not equal to null -->
+                    <div *ngIf="SingleVendorContactDetailsArr.length != 0">
+                        <div  class="card tab-content p-3"  *ngFor="let s of SingleVendorContactDetailsArr">
 
-                                <div  class="help-block text-danger">
-                                    <div *ngIf="submitted2 && rcf2.BusinessPhone.errors">Phone is required</div>
-                                 </div>
-    
-                        </div>
-    
-                        <div class="labelheight">
-                            <label class=" labelwidth" style="width: 146px;">Primary Contact</label>
-                            <label class="switch">
-                                <input class="" type="checkbox" name="businessprimaryContact" id="businessprimaryContact" [(ngModel)]="s.VendorContactPrimary"
-                                    formControlName="VendorContactPrimary" checked>
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-    
-    
-    
-    
-                    </div>
-    
-                    <div class="col-sm-6 innerlinefont" >
-    
-                        <div class="labelheight">
-                            <label class="labelwidth">Title<span class="requiredfield "> *</span></label>
-                            <input type="text" class="Title" id="title_id" formControlName="JobTitle"
+
+                            <div class="row mt-2">
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                    <label class="labelwidth">Contact Person Name <span class="requiredfield ">  *</span></label>
+                                   
+                              </div>
+                              <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                  
+                                    <input type="text"  class="first" formControlName="ContactName" [(ngModel)]="s.ContactName" (keypress)="alpha($event)">
+                                    <div  class="help-block text-danger">
+                                       <div *ngIf="submitted2 && rcf2.ContactName.errors">Contact Person Name is required</div>
+                                    </div>
+                              </div>
+                    
+                         
+                                    
+                            </div>
+
+
+                            <div class="row mt-2">
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                    <label class="labelwidth">Business Phone <span class="requiredfield ">  *</span></label>
+                                   
+                              </div>
+                              <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                  
+                                    <input type="text"   [textMask]="{mask: mask1}" class="Businessphone" id="businessphone_id"
+                                    formControlName="BusinessPhone" (keypress)="EmptyErrorMessage('businessphone_id')" [(ngModel)]="s.Phone">
+                                    <div  class="help-block text-danger">
+                                       <div *ngIf="submitted2 && rcf2.BusinessPhone.errors">Phone Name is required</div>
+                                    </div>
+                              </div>
+                    
+                         
+                                    
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                    <label class="labelwidth">Primary Contact<span class="requiredfield ">  *</span></label>
+                                   
+                              </div>
+                              <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                  
+                                <label class="switch">
+                                    <input class="" type="checkbox" name="businessprimaryContact" id="businessprimaryContact" [(ngModel)]="s.VendorContactPrimary"
+                                        formControlName="VendorContactPrimary" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                              </div>
+                    
+                         
+                                    
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                    <label class="labelwidth">Title<span class="requiredfield ">  *</span></label>
+                                   
+                              </div>
+                              <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                  
+                                <input type="text" class="Title" id="title_id" formControlName="JobTitle"
                                 (keypress)="EmptyErrorMessage('title_id')" [(ngModel)]="s.JobTitle">
 
                                 <div  class="help-block text-danger">
                                     <div *ngIf="submitted2 && rcf2.JobTitle.errors">Title is required</div>
                                  </div>
-                        </div>
-    
-    
-                        <div class="labelheight">
-                            <label class="labelwidth">Business Email <span class="requiredfield "> *</span></label>
-                            <input type="text" class="Businessemail" id="businessemail_id" formControlName="BusinessEmail" [(ngModel)]="s.Email"
+                              </div>
+                    
+                         
+                                    
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                    <label class="labelwidth">Business Email<span class="requiredfield ">  *</span></label>
+                                   
+                              </div>
+                              <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                  
+                                <input type="text" class="Businessemail" id="businessemail_id" formControlName="BusinessEmail" [(ngModel)]="s.Email"
                                 (keyup)="EmptyErrorMessage('businessemail_id')">
                                 <div  class="help-block text-danger">
                                     <div *ngIf="submitted2 && rcf2.BusinessEmail.errors">Email is required</div>
                                  </div>
-                        </div>
-    
-                        <div style="height: 22px;">
-                            <label class="labelwidth">Active</label>
-                            <label class="switch">
-                                <input class="" type="checkbox" name="active" id="active" formControlName="VendorContactActive" [(ngModel)]="s.VendorContactActive">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-    
-                        <!-- <form [formGroup]="addtionalcontact"></form> -->
-               
-                        <!-- <div class="accordion acc2">
-                            <h2 class="title mainheading" (click)="opened3 = !opened3">Additional Contact Details Added</h2>
-                            <div class="content-container" [class.opened3]="opened3">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="">
-                                            <label class="labelwidth" style="margin-left: 9px;"> Name</label>
-                                            <input type="text" class="Contactperson" id="addtionalcontactname_id"
-                                                formControlName="AddtionalName"
-                                                (keypress)="EmptyErrorMessage('addtionalcontactname_id')">
-                                        </div>
-                                        <div class="">
-                                            <label class="labelwidth" style="margin-left: 9px;">Title</label>
-                                            <input type="text" class="Title" id="addtionaltitle_id"
-                                                formControlName="AddtionalTitle"
-                                                (keypress)="EmptyErrorMessage('addtionaltitle_id')">
-                                        </div>
-                                        <div class="">
-                                            <label class="labelwidth" style="margin-left: 9px;">Business Email</label>
-                                            <input type="text" class="Businessemail" id="addtionalbusinessmail_id"
-                                                formControlName="AddtionalBusinessMail"
-                                                (keypress)="EmptyErrorMessage('addtionalbusinessmail_id')">
-                                        </div>
-    
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="labelheight">
-                                            <label class="labelwidth" style="margin-left: 9px;">Business Phone</label>
-                                            <input type="number" class="City1" id="addtionalbusinessphone_id"
-                                                formControlName="AddtionalBusinessPhone"
-                                                (keypress)="EmptyErrorMessage('addtionalbusinessphone_id')">
-                                        </div>
-                                        <div style="height: 22px;">
-                                            <label class="labelwidth" style="width: 146px;margin-left: 9px;">Active</label>
-                                            <label class="switch">
-                                                <input class="" type="checkbox" name="active" id="active"  formControlName="AddtionalContactActive">
-                                                <span class="slider round"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
+                              </div>
+                    
+                         
+                                    
                             </div>
-                        </div> -->
-                    </div>
-                </div>
-                    <p class="mainheading heading" style=" padding-bottom: 5px; padding-top: 16px;">Additional Contact Information</p>
 
+
+                            <div class="row mt-2">
+                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                                    <label class="labelwidth">Active<span class="requiredfield ">  *</span></label>
+                                   
+                              </div>
+                              <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                  
+                                <label class="switch">
+                                    <input class="" type="checkbox" name="active" id="active" formControlName="VendorContactActive" [(ngModel)]="s.VendorContactActive">
+                                    <span class="slider round"></span>
+                                </label>
+                              </div>
+                    
+                         
+                                    
+                            </div>
+
+                    
+                </div>
+
+            </div>
+
+
+            <!-- arr not equal to null -->
+
+
+<!-- arr equal to null -->
+            <div *ngIf="SingleVendorContactDetailsArr.length == 0">
+                <div  class="card tab-content p-3"  >
+
+
+                    <div class="row mt-2">
+                        <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                            <label class="labelwidth">Contact Person Name  <span class="requiredfield ">  *</span></label>
+                           
+                      </div>
+                      <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                          
+                            <input type="text"  class="first" formControlName="ContactName"  (keypress)="alpha($event)">
+                            <div  class="help-block text-danger">
+                               <div *ngIf="submitted2 && rcf2.ContactName.errors">Contact Person Name is required</div>
+                            </div>
+                      </div>
+            
+                 
+                            
+                    </div>
+
+
+                    <div class="row mt-2">
+                        <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                            <label class="labelwidth">Business Phone <span class="requiredfield ">  *</span></label>
+                           
+                      </div>
+                      <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                          
+                            <input type="text"   [textMask]="{mask: mask1}" class="Businessphone" id="businessphone_id"
+                            formControlName="BusinessPhone" (keypress)="EmptyErrorMessage('businessphone_id')" >
+                            <div  class="help-block text-danger">
+                               <div *ngIf="submitted2 && rcf2.BusinessPhone.errors">Phone Name is required</div>
+                            </div>
+                      </div>
+            
+                 
+                            
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                            <label class="labelwidth">Primary Contact<span class="requiredfield ">  *</span></label>
+                           
+                      </div>
+                      <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                          
+                        <label class="switch">
+                            <input class="" type="checkbox" name="businessprimaryContact" id="businessprimaryContact" 
+                                formControlName="VendorContactPrimary" checked>
+                            <span class="slider round"></span>
+                        </label>
+                      </div>
+            
+                 
+                            
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                            <label class="labelwidth">Title<span class="requiredfield ">  *</span></label>
+                           
+                      </div>
+                      <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                          
+                        <input type="text" class="Title" id="title_id" formControlName="JobTitle"
+                        (keypress)="EmptyErrorMessage('title_id')" >
+
+                        <div  class="help-block text-danger">
+                            <div *ngIf="submitted2 && rcf2.JobTitle.errors">Title is required</div>
+                         </div>
+                      </div>
+            
+                 
+                            
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                            <label class="labelwidth">Business Email<span class="requiredfield ">  *</span></label>
+                           
+                      </div>
+                      <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                          
+                        <input type="text" class="Businessemail" id="businessemail_id" formControlName="BusinessEmail" 
+                        (keyup)="EmptyErrorMessage('businessemail_id')">
+                        <div  class="help-block text-danger">
+                            <div *ngIf="submitted2 && rcf2.BusinessEmail.errors">Email is required</div>
+                         </div>
+                      </div>
+            
+                 
+                            
+                    </div>
+
+
+                    <div class="row mt-2">
+                        <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                            <label class="labelwidth">Active<span class="requiredfield ">  *</span></label>
+                           
+                      </div>
+                      <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                          
+                        <label class="switch">
+                            <input class="" type="checkbox" name="active" id="active" formControlName="VendorContactActive" >
+                            <span class="slider round"></span>
+                        </label>
+                      </div>
+            
+                 
+                            
+                    </div>
+
+            
+        </div>
+
+    </div>
+<!-- arr not equal to null -->
+
+
+                    <p class="mainheading heading" style=" padding-bottom: 5px; padding-top: 16px;">Additional Contact Information</p>
+<div >
                     <form [formGroup]="contactsform" autocomplete="off" class="ml-1 mr-1">
-                            <div formArrayName="contactarray">
+                            <div formArrayName="contactarray" >
                                 <div *ngFor="let item of contactFormGroup.controls; let i = index; count as count;last as isLast">
-                                    <div [formGroupName]="i">
-                                        <div class="card tab-content p-3" *ngIf='!ContactToggle[i]'>
+                                    <div >
+                                    <div [formGroupName]="i" >
+                                        <div  class="card tab-content p-3" *ngIf='!ContactToggle[i]'>
                                             <div class="row">
+
+                                                <input type="hidden" class="" 
+                                                                formControlName="VendorIdContact" [(ngModel)]="VendorIdObj">
                                            
                                                     <div class="col-sm-6">
                                                         <div class="">
+                                                            
                                                             <label class="labelwidth" style="margin-left: 9px;">Contact Name</label>
-                                                            <input type="text" class="" id="addtionalcontactname_id"
-                                                                formControlName="AddtionalName"
+                                                            <input type="text" class="" id="addtionalcontactname_id" 
+                                                                formControlName="AddtionalName" 
                                                                 (keypress)="EmptyErrorMessage('addtionalcontactname_id')">
                                                         </div>
                                                         <div class="mt-1">
                                                             <label class="labelwidth" style="margin-left: 9px;">Title</label>
-                                                            <input type="text" class="" id="addtionaltitle_id"
-                                                                formControlName="AddtionalTitle"
+                                                            <input type="text" class="" id="addtionaltitle_id" 
+                                                                formControlName="AddtionalTitle" name="CTitle{j}}"
                                                                 (keypress)="EmptyErrorMessage('addtionaltitle_id')">
                                                         </div>
                                                         <div class="mt-1">
                                                             <label class="labelwidth" style="margin-left: 9px;">Business Email</label>
-                                                            <input type="text" class="" id="addtionalbusinessmail_id"
-                                                                formControlName="AddtionalBusinessMail"
+                                                            <input type="text" class="" id="addtionalbusinessmail_id" 
+                                                                formControlName="AddtionalBusinessMail" 
                                                                 (keypress)="EmptyErrorMessage('addtionalbusinessmail_id')">
                                                         </div>
                     
@@ -1708,7 +1847,7 @@
                                                         <div class="mt-1">
                                                             <label class="labelwidth" style="margin-left: 9px;">Business Phone</label>
                                                             <input type="text" [textMask]="{mask: mask1}" class="" id="addtionalbusinessphone_id"
-                                                                formControlName="AddtionalBusinessPhone"
+                                                                formControlName="AddtionalBusinessPhone" 
                                                                 (keypress)="EmptyErrorMessage('addtionalbusinessphone_id')">
                                                         </div>
                                                         <div class="mt-1">
@@ -1720,7 +1859,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-12  align-self-end text-left">
-                                                        <button class="btn btn-filled text-right common_btn_action" type="button" (click)="savecontact(i)">
+                                                        <button class="btn btn-filled text-right common_btn_action" type="button" (click)="savecontact(i,contactsform.value)">
                                                             <img class="img-fluid btn-img "                               
                                                                 >Save</button>
                                                                 <button class="btn btn-filled btn-delete common_btn_cancel ml-2" type="button"
@@ -1757,9 +1896,12 @@
                                       
                                     </div>
                                 </div>
+                            </div>
                                 </div>  
                             </div>  
                         </form>  
+
+                    </div>
                         <div class="row" >
                                
                                 <!--   -->
@@ -1786,6 +1928,15 @@
         </div><br>
     
         </form>
+
+        
   
     
     </div>
+
+
+    <ul *ngFor="let s2 of SingleVendorContactDetailsNotPrimary1; let i = index;">
+        <li>
+{{s2.JobTitle}} --- {{s2.ContactName}}
+        </li>
+    </ul>

@@ -12,13 +12,6 @@ import { Subject } from 'rxjs';
   templateUrl: './bid-management.component.html',
   styleUrls: ['./bid-management.component.scss'],
 })
-<<<<<<< HEAD
-export class BidmanagementComponent implements OnInit { 
-
-  dtOptions: DataTables.Settings = {};
-  title = 'datatables';
-
-=======
 export class BidmanagementComponent implements OnInit {
   displayStyle = 'none';
 
@@ -27,7 +20,6 @@ export class BidmanagementComponent implements OnInit {
   dtElement: DataTableDirective | any;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
->>>>>>> 1110c14e433fafad1278c3ca719378cb18849eeb
 
   bid_form: FormGroup | any;
   submitted = false;
@@ -61,20 +53,13 @@ export class BidmanagementComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-<<<<<<< HEAD
-=======
     this.viewbiddetail = [];
     this.GetViewBid1();
->>>>>>> 1110c14e433fafad1278c3ca719378cb18849eeb
 
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-<<<<<<< HEAD
-      processing: true
-=======
       processing: true,
->>>>>>> 1110c14e433fafad1278c3ca719378cb18849eeb
     };
 
     this.personalDetails = this.frmbuilder.group({

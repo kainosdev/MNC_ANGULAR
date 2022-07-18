@@ -24,7 +24,7 @@ import { BidmanagementComponent} from './bid-management.component';
 
 import { AccordionModule } from "../../lib/accordion/accordion.module";
 import {MatTabsModule} from '@angular/material/tabs';
-import {DataTablesModule} from 'angular-datatables';
+// import {DataTablesModule} from 'angular-datatables';
 import { CKEditorModule } from 'ckeditor4-angular';
 
 @NgModule({
@@ -47,16 +47,9 @@ import { CKEditorModule } from 'ckeditor4-angular';
       TableModule,
       AccordionModule,
       MatTabsModule,
-<<<<<<< HEAD
-      DataTablesModule,
-      CKEditorModule
-      
-     
-=======
       DataTablesModule
 
 
->>>>>>> 1110c14e433fafad1278c3ca719378cb18849eeb
       // WidgetsModule
     ],
 
