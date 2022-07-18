@@ -610,7 +610,7 @@ number(event: any) {
       }
 
     vendortype_display(active:any){
-      debugger
+      // debugger
     //  let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
      
       if(this.vendortype == true){
@@ -884,7 +884,8 @@ number(event: any) {
     get f() { return this.employeeform.controls; }
 
     onSubmit() {
-      debugger
+      alert('output');
+      // debugger
         this.submitted = true;
         let usertype_id = (<HTMLInputElement>document.getElementById("usertype_id")).value;
         if(usertype_id == "EMPLOY")
@@ -968,7 +969,7 @@ number(event: any) {
     {
     try
     {
-      debugger
+      // debugger
       this.registerapicall(value);
       // this.registerapicall(value).subscribe((resp) => {
       //   if (resp && resp.success == 1) {
@@ -1015,7 +1016,7 @@ number(event: any) {
       
       //   })
       // };
-      this.http.post<any>("http://localhost:8080/vendor/AdduserDetails", data).subscribe({
+      this.http.post<any>("http://localhost/MNC_PHP_API/vendor/AdduserDetails", data).subscribe({
         next: data => {
           console.error('There was an data!', data);
           if(data != null && data.length >0)
