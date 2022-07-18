@@ -213,9 +213,9 @@ export class BidmanagementComponent implements OnInit {
     try
     {
      
-      this.http.get(config_url+'/app/BitDBEGoal').subscribe(
+      this.http.get(config_url+'/app/BidBEGoalTYpe').subscribe(
         (data: any) => {
-          var response= data.DBEGoal;
+          var response= data.BidBEGoalType;
           this.dbe_list = response;
            // console.log(this.dbe_list)
         });
