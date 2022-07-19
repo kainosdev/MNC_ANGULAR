@@ -14,13 +14,13 @@
                               <div class="col-md">
                                   <div class="form-floating">
                                 
-                                          <input type="text" class="form-control" formControlName="description" id="description" placeholder="Solicitation Number">
+                                          <input type="text" class="form-control" formControlName="social_no" id="social_no" placeholder="Solicitation Number">
                                           
                                                
                                   <div  class="help-block text-danger">
-                                          <div *ngIf="submitted && bfc.set_aside.errors">Set Aside is required</div>
+                                          <div *ngIf="submitted && bfc.social_no.errors">Solicitation Number is required</div>
                                   </div>
-                                  <label class="common_lbl" for="set_aside">Solicitation Number</label>
+                                  <label class="common_lbl" for="social_no">Solicitation Number</label>
   
                                   </div>
                                 </div>
@@ -80,8 +80,8 @@
                                                      
                                                 <div class="col-12">
                                                     <div class="form-floating">
-                                                        <textarea class="form-control" placeholder="Leave a Description here" id="floatingTextarea" style="height: 100px"></textarea>
-                                                        <label for="floatingTextarea" class="common_lbl">Description</label>
+                                                        <textarea class="form-control" placeholder="Leave a Description here" formControlName="description" id="description" style="height: 100px"></textarea>
+                                                        <label for="description" class="common_lbl">Description</label>
                                                       </div>
                                                   </div>
                                                
@@ -420,7 +420,7 @@
                                                       <div  class="help-block text-danger">
                                                             <div *ngIf="clin_submitted && clfc.desc.errors">Description is required</div>
                                                       </div>
-                                                      <label class="common_lbl" for="clin" >Description </label>
+                                                      <label class="common_lbl" for="clin" >DESCRIPTION </label>
                                                 </div>
                                               </div>
                                               <div class="col-md">
@@ -436,7 +436,7 @@
                                                       <div  class="help-block text-danger">
                                                             <div *ngIf="clin_submitted && clfc.service_type.errors">Service Type is required</div>
                                                       </div>
-                                                      <label class="common_lbl" for="service_type">Service Type</label>
+                                                      <label class="common_lbl" for="service_type">SERVICE TYPE</label>
                                                   </div>
                                                 </div>
                                                 <div class="col-md">
@@ -450,7 +450,7 @@
                                                            <div  class="help-block text-danger">
                                                               <div *ngIf="clin_submitted && clfc.dbe_goal_type.errors">DBE Goal Type is required</div>
                                                            </div>
-                                                        <label class="common_lbl" for="dbe_goal_type">DBE Goal Type</label>
+                                                        <label class="common_lbl" for="dbe_goal_type">DBE GOAL TYPE</label>
                                                     </div>
                                                   </div>
                                             </div>
@@ -464,7 +464,7 @@
                                                    <div  class="help-block text-danger">
                                                     <div *ngIf="clin_submitted && clfc.dbe_goal.errors">DBE Goal is required</div>
                                                     </div>
-                                                        <label class="common_lbl" for="dbe_goal" >DBE Goal</label>
+                                                        <label class="common_lbl" for="dbe_goal" >DBE GOAL</label>
                                                   </div>
                                                 </div>
                                                 <div class="col-md">
@@ -476,7 +476,7 @@
                                                           <div  class="help-block text-danger">
                                                               <div *ngIf="clin_submitted && clfc.dbe_budget.errors">DBE Budget is required</div>
                                                            </div>
-                                                        <label class="common_lbl" for="dbe_budget" >DBE Budget ($)</label>
+                                                        <label class="common_lbl" for="dbe_budget" >DBE BUDGET ($)</label>
                                                   </div>
                                                 </div>
                                                 <div class="col-md">
