@@ -1,8 +1,21 @@
-a
+.requiredfield
 {
-  cursor:pointer;
-  text-decoration:underline;/* margin-bottom: -9px; */
+    color:red;
+
+  }
+
+.statecorporation{
+  width: 397px !important;
+  height: 28px;
 }
+.wouldla{
+  width: 311px !important;
+  height: 28px;
+}
+.social{
+  width: 130px !important;
+  height: 28px;
+ }
 
 .switch {
   position: relative;
@@ -11,7 +24,7 @@ a
   height: 17px;
 }
 
-.switch input {
+.switch input { 
   opacity: 0;
   width: 0;
   height: 0;
@@ -64,6 +77,11 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+
+.validation{
+  border: 1px solid red;
+}
+
 input[type=button] {
   padding: 4px 27px;
   background: #1593E4;
@@ -73,87 +91,321 @@ input[type=button] {
   border-radius: 100px;
   font-size: 12px !important;
 }
+.Generaldiv{
+    border: 1px solid black !important;
+    width: 100%;
+    padding-top: 7px;
+    padding-bottom: 5px;
+  }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-  color: white !important;
+  .first{
+    width: 200px !important;
+    height: 28px;
+   }
+
+   .lastname{
+    width: 200px !important;
+    height: 28px;
+   }
+
+   .Legalbusiness{
+    width: 300px !important;
+    height: 28px;
+  }
+  .tradename{
+    width: 243px !important;
+    height: 28px;
 }
-a
+.Physicaladdress{
+    width: 311px !important;
+    height: 28px;
+  }
+  .State{
+    width: 170px !important;
+    height: 28px;
+  }
+  .city{
+    width: 225px !important;
+    height: 28px;
+  }
+  .zip{
+    width: 130px !important;
+    height: 28px;
+  }
+  .Physicaladdress{
+    width: 311px !important;
+    height: 28px;
+  }
+  .County{
+    width: 225px !important;
+   height: 28px;
+  }
+  .Country{
+    width: 243px !important;
+    height: 28px;
+  }
+  .btndiv{
+    padding-right: 62px; 
+    text-align: right;
+    padding-top: 0px;
+}
+.jobtitle{
+  width: 200px !important;
+  height: 28px;
+}
+.employeeid{
+  width: 170px !important;
+  height: 28px;
+}
+.startdate{
+  width: 100px;
+  height: 28px;
+}
+.phoneno{
+  width: 117px;
+  height: 28px;
+}
+.invalid-feedback {
+  position: absolute;
+  bottom: -17px;
+ 
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+}
+.invalid-feedback_vec {
+  position: absolute;
+ // bottom: -17px;
+  color:#dc3545;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+}
+.help-block
 {
-  cursor:pointer;
-  text-decoration:underline;/* margin-bottom: -9px; */
+  font-size: 10px;
+  min-height: 0px!important;
 }
 
-.switch {
+#msform {
+  // text-align: center;
   position: relative;
-  display: inline-block;
-  width: 41px;
-  height: 17px;
+  margin-top: 3px;
 }
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 12px;
-  width: 14px;
-  left: -1px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-input[type=button] {
-  padding: 4px 27px;
-  background: #1593E4;
+#msform fieldset {
+  background: white;
   border: 0 none;
-  /* cursor: pointer;
-  -webkit-border-radius: 5px; */
-  border-radius: 100px;
+  border-radius: 0px;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  padding: 5px 5px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0%;
+  /*stacking fieldsets above each other*/
+  position: relative;
+}
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+  display: none;
+}
+/*inputs*/
+#msform input, #msform textarea {
+  // padding: 15px;
+  // border: 1px solid #ccc;
+  // border-radius: 0px;
+  // margin-bottom: 10px;
+  // width: 100%;
+  // box-sizing: border-box;
+  // font-family: montserrat;
+  // color: #2C3E50;
+  // font-size: 13px;
+}
+#msform input:focus, #msform textarea:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #ee0979;
+  outline-width: 0;
+  transition: All 0.5s ease-in;
+  -webkit-transition: All 0.5s ease-in;
+  -moz-transition: All 0.5s ease-in;
+  -o-transition: All 0.5s ease-in;
+}
+/*buttons*/
+#msform .action-button {
+  width: 100px;
+  background: #371b9c;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 25px;
+  cursor: pointer;
+  padding: 5px 5px;
+  margin: 5px 5px;
+  padding-right: 0%
+}
+#msform .action-button:hover, #msform .action-button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
+}
+#msform .action-button-previous {
+  width: 100px;
+  background: #C5C5F1;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 25px;
+  cursor: pointer;
+  padding: 5px 5px;
+  margin: 5px 5px;
+}
+#msform .action-button-previous:hover, #msform .action-button-previous:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
+}
+/*headings*/
+.fs-title {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #2C3E50;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  
+}
+.fs-subtitle {
+  font-weight: normal;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 20px;
+}
+/*progressbar*/
+#progressbar {
+  margin-bottom: 10px;
+  overflow: hidden;
+  /*CSS counters to number the steps*/
+  counter-reset: step;
+  text-align: center;
+}
+#progressbar li {
+  list-style-type: none;
+  color: rebeccapurple;
+  text-transform: uppercase;
+  font-size: 9px;
+  width: 23.33%;
+  float: left;
+  position: relative;
+  letter-spacing: 1px;
+}
+#progressbar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 24px;
+  height: 24px;
+  line-height: 26px;
+  display: block;
+  font-size: 12px;
+  color: #333;
+  background: white;
+  border-radius: 25px;
+  margin: 0 auto 10px auto;
+}
+/*progressbar connectors*/
+#progressbar li:after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: white;
+  position: absolute;
+  left: -50%;
+  top: 9px;
+  z-index: -1; /*put it behind the numbers*/
+}
+#progressbar li:first-child:after {
+  /*connector not needed before the first step*/
+  content: none;
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before, #progressbar li.active:after {
+  background: #2e197a;
+  color: white;
+}
+#progressbar li.inactive:before{
+  background: rgb(60, 121, 60);
+  color: #000;
+}
+fieldset {
+ /* for chrome and safari*/
+-webkit-animation-duration: .25ms;-webkit-animation-name: slidein;
+ /*for firefox*/
+-moz-animation-duration: 1s;-moz-animation-name: slidein;
+ /* for opera*/
+ -o-animation-duration: 1s;-o-animation-name: slidein;
+/* Standard syntax*/
+    animation-duration: 1s;animation-name: slidein;
+}
+ @-webkit-keyframes slidein {
+      from { margin-right:100%;width:300%;}
+      to { margin-right: 0%;width: 100%;           }
+}
+@-moz-keyframes slidein {
+         from {
+             margin-left: 100%;width: 300%;
+         }
+         to {
+             margin-left: 0%; width: 100%;
+         }
+  }
+@-o-keyframes slidein {
+         from {
+             margin-left: 100%;width: 300%;
+         }
+         to {
+             margin-left: 0%;width: 100%;
+         }
+}
+@keyframes slidein {
+         from {
+             margin-left: 100%;width: 300%;
+         }
+         to {
+             margin-left: 0%;width: 100%;
+         }
+}
+button {
+  padding: 0.2rem 1rem;
+  background: var(--primary);
+  border-radius: 8px;
+  color: #fff;
+}
+
+.mat-tab-body-wrapper{
+  flex-grow: 1;
+}
+#wrapper{
+  padding: 16px; 
+  min-height: 100%; 
+  height: 100%; 
+  box-sizing: border-box;/*new*/
+}
+#tab-group{
+  height: 100%;
+}
+#tab-group mat-tab-body {
+  flex-grow: 1;
+}
+.datatable{
+  text-align: left;
+  background-color: #5e6572;
   font-size: 12px !important;
 }
-
-
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-  color: white !important;
+.tableheading{
+  color: white;
 }
+.tabletr{
+  border-bottom:1px solid #aeaeae;
+  font-size: 12px;
+}
+ .number{
+  width: 162px;
+ }
+ 

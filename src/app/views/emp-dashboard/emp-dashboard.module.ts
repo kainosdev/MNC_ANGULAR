@@ -20,9 +20,7 @@ import { ChartjsModule } from '@coreui/angular-chartjs';
 import { EmpDashboardRoutingModule } from './emp-dashboard-routing.module';
 import { EmpDashboardComponent } from './emp-dashboard.component';
 import {DataTablesModule} from 'angular-datatables';
-
-
-
+import { AccordionModule } from "../../lib/accordion/accordion.module";
 
 @NgModule({
   imports: [
@@ -41,6 +39,7 @@ import {DataTablesModule} from 'angular-datatables';
     ButtonGroupModule,
     ChartjsModule,
     AvatarModule,
+    AccordionModule,
     TableModule,
     DataTablesModule,
     // WidgetsModule

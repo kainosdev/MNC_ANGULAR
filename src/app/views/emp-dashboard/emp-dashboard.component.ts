@@ -6,6 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./emp-dashboard.component.scss']
 })
 export class EmpDashboardComponent implements OnInit {
+  //bid_form: FormGroup | any;
+  //clinform:FormGroup | any;
+  submitted = false;
+  bid_form_show=true;
+  clin_submitted=false;
+  bidstatus:any;
+  contractVehicle:any;
+  aside_type_list:any;
+  opportunity_type_list:any;
+  contract_officer_list:any;
+  service_type_list:any;
+  dbe_list:any;
+  stepname="Details"
+  a="1";
+  b="2";
+  c="3";
+  collapsing = true;
 
   dtOptions: DataTables.Settings = {};
   title = 'datatables';
@@ -21,7 +38,6 @@ export class EmpDashboardComponent implements OnInit {
     };
   }
 
-  
   displayStyle = "none";
 
   openPopup() {
