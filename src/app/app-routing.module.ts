@@ -6,7 +6,6 @@ import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { AdminmanagementComponent } from './views/adminmanagement/adminmanagement.component';
-import { RegistrationformComponent } from './registrationform/registrationform.component';
 import { ContractawardComponent } from './views/contractaward/contractaward.component';
 import { TesingComponent } from './tesing/tesing.component';
 // import { BidmanagementComponent } from './bidmanagement/bidmanagement.component';
@@ -19,7 +18,7 @@ const newLocal = './views/register/register.module';
 const routes: Routes = [
 
   { path:'', component:LoginComponent, data: { title: 'login'}},
-  { path:'', component:RegistrationformComponent, data: { title: 'registrationform'}},
+
   { path:'', component:TesingComponent, data: { title: 'tesingcomponent'}},
   
 
@@ -63,6 +62,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/bid-list/bid-list.module').then((m) => m.BidListModule)
       },
+      {
+        path: 'empdashboard',
+        loadChildren: () =>
+          import('./views/emp-dashboard/emp-dashboard.module').then((m) => m.EmpdashboardModule)
+      },
      {
         path: 'adminmanagement',
         loadChildren: () =>
@@ -100,11 +104,18 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/vendor-list/vendor-list.module').then((m) => m.VendorListModule)
       },
+  
+      {
+        path: 'BidResponses', 
+        loadChildren: () =>
+          import('./views/bid-responses/bid-responses.module').then((m) => m.BidResponsesModule)
+      },
       {
         path: 'bidManagement',
         loadChildren: () =>
           import('./views/bid-management/bid-management.module').then((m) => m.BidmanagementModule)
       },
+      
     ]
   },
   {
@@ -135,6 +146,7 @@ const routes: Routes = [
       title: 'Login Page'
     }
   },
+  
   // {
   //   path: 'registrationform',
   //   component: RegistrationformComponent,
