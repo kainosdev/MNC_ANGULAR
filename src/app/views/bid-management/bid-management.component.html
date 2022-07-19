@@ -87,7 +87,7 @@
                                                
                                                   
                                               </div>
-                                            <div class="row g-3 p-1 ">
+                                            <div class="row g-4 p-1 ">
                                                 <div class="col-md">
                                                   <div class="form-floating">
                                                   
@@ -132,13 +132,28 @@
                                                     <label class="common_lbl" for="buying_entry">BUYING ENTRY</label>
                                                     </div>
                                                   </div>
+                                                  
+                                                  <div class="col-md">
+                                                      <div class="form-floating">
+                                                        <select class="form-select" formControlName="set_aside" id="set_aside" (change)="inputErrorMessage('bidstatus')" >
+                                                          <option *ngFor="let item of aside_type_list" [value]="item.SetAsideTypeId ">
+                                                              {{item.SetAsideTypeDesc}}
+                                                          </option>
+                                                      </select>                   
+                                                      <div  class="help-block text-danger">
+                                                              <div *ngIf="submitted && bfc.set_aside.errors">Set Aside is required</div>
+                                                      </div>
+                                                      <label class="common_lbl" for="set_aside">SET ASIDE</label>
+  
+                                                      </div>
+                                                    </div>
                                               </div>
 
 
 
         <!-- 2 row -->
 
-                                              <div class="row g-3 p-1">
+                                              <div class="row g-4 p-1">
                                                   <div class="col-md">
                                                     <div class="form-floating">
                                                     
@@ -174,26 +189,28 @@
                                                       <label class="common_lbl" for="buying_entry">BUDGET AMOUNT</label>
                                                       </div>
                                                     </div>
+                                                    <div class="col-md">
+                                                        <div class="form-floating">
+                                                        
+                                                            <select class="form-select" formControlName="contrcat_officer" id="contrcat_officer" (change)="inputErrorMessage('bidstatus')" >
+                                                                <option *ngFor="let item of contract_officer_list" [value]="item.JobTitleId ">
+                                                                    {{item.JobTitleDesc}}
+                                                                </option>
+                                                                   
+                                                            </select>                   
+                                                            <div  class="help-block text-danger">
+                                                                    <div *ngIf="submitted && bfc.set_aside.errors">Contract Officer is required</div>
+                                                           </div>
+                                                            
+                                                               <label class="common_lbl" for="contrcat_officer">CONTRACT OFFICER</label>
+                                                        </div>
+                                                      </div>
+
                                                 </div>
 
       <!-- 3 row -->
                                                 <div class="row g-3 p-1">
-                                                    <div class="col-md">
-                                                      <div class="form-floating">
-                                                      
-                                                          <select class="form-select" formControlName="contrcat_officer" id="contrcat_officer" (change)="inputErrorMessage('bidstatus')" >
-                                                              <option *ngFor="let item of contract_officer_list" [value]="item.JobTitleId ">
-                                                                  {{item.JobTitleDesc}}
-                                                              </option>
-                                                                 
-                                                          </select>                   
-                                                          <div  class="help-block text-danger">
-                                                                  <div *ngIf="submitted && bfc.set_aside.errors">Contract Officer is required</div>
-                                                         </div>
-                                                          
-                                                             <label class="common_lbl" for="contrcat_officer">CONTRACT OFFICER</label>
-                                                      </div>
-                                                    </div>
+                                                    
                                                     <div class="col-md">
                                                       <div class="form-floating">
                                                     
@@ -217,35 +234,36 @@
                                                         <label class="common_lbl" for="co_officer_phone">CONTRACT OFFICER EMAIL</label>
                                                         </div>
                                                       </div>
+                                                      <div class="col-md">
+                                                          <div class="form-floating">
+                                                            <input type="date" class="form-control" formControlName="posted_date" id="posted_date" >
+                            
+                                                            <div  class="help-block text-danger">
+                                                                        <div *ngIf="submitted && bfc.posted_date.errors">Posted Date is required</div>
+                                                            </div>
+                                                              
+                                                                 <label class="common_lbl" for="posted_date">POSTED DATE</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-md">
+                                                          <div class="form-floating">
+                                                        
+                                                            <input type="date" class="form-control" formControlName="question_due_date" id="question_due_date" >
+                            
+                                                              
+                                                            <div  class="help-block text-danger">
+                                                                    <div *ngIf="submitted && bfc.question_due_date.errors">Question Due Date is required</div>
+                                                            </div>
+                                                               
+                                                                   <label class="common_lbl" for="question_due_date">QUESTION DUE DATE</label>
+                                                          </div>
+                                                        </div>
                                                   </div>
 
                       <!-- 4 row --> 
 
-                                                  <div class="row g-3 p-1">
-                                                    <div class="col-md">
-                                                      <div class="form-floating">
-                                                        <input type="date" class="form-control" formControlName="posted_date" id="posted_date" >
-                        
-                                                        <div  class="help-block text-danger">
-                                                                    <div *ngIf="submitted && bfc.posted_date.errors">Posted Date is required</div>
-                                                        </div>
-                                                          
-                                                             <label class="common_lbl" for="posted_date">POSTED DATE</label>
-                                                      </div>
-                                                    </div>
-                                                    <div class="col-md">
-                                                      <div class="form-floating">
-                                                    
-                                                        <input type="date" class="form-control" formControlName="question_due_date" id="question_due_date" >
-                        
-                                                          
-                                                        <div  class="help-block text-danger">
-                                                                <div *ngIf="submitted && bfc.question_due_date.errors">Question Due Date is required</div>
-                                                        </div>
-                                                           
-                                                               <label class="common_lbl" for="question_due_date">QUESTION DUE DATE</label>
-                                                      </div>
-                                                    </div>
+                                                  <div class="row g-4 p-1">
+                                             
                                                     <div class="col-md">
                                                         <div class="form-floating">
                                                           <input type="date" class="form-control" formControlName="response_due_date" id="question_due_date" >
@@ -257,29 +275,14 @@
                                                         <label class="common_lbl" for="response_due_date">RESPONSE DUE DATE</label>
                                                         </div>
                                                       </div>
-                                                  </div>
-                                                  <div class="row g-3 p-1">
-                                                     
-                                                     
                                                       <div class="col-md">
-                                                          <div class="form-floating">
-                                                            <select class="form-select" formControlName="set_aside" id="set_aside" (change)="inputErrorMessage('bidstatus')" >
-                                                              <option *ngFor="let item of aside_type_list" [value]="item.SetAsideTypeId ">
-                                                                  {{item.SetAsideTypeDesc}}
-                                                              </option>
-                                                          </select>                   
-                                                          <div  class="help-block text-danger">
-                                                                  <div *ngIf="submitted && bfc.set_aside.errors">Set Aside is required</div>
-                                                          </div>
-                                                          <label class="common_lbl" for="set_aside">SET ASIDE</label>
-      
-                                                          </div>
                                                         </div>
                                                         <div class="col-md">
                                                           </div>
                                                           <div class="col-md">
                                                             </div>
-                                                    </div>
+                                                  </div>
+                                            
                           <!-- 5 row --> 
                           <div class="row g-3 p-1">
                               <h6>Q And A</h6>         
