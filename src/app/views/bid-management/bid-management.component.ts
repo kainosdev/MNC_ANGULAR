@@ -58,8 +58,8 @@ export class BidmanagementComponent implements OnInit {
       total_marks: ['',Validators.required]
   });
     this.bid_form = this.frmbuilder.group({
-
-      bidstatus: [[Validators.required]],
+      social_no:['',[Validators.required]],
+      bidstatus: ['',[Validators.required]],
       title: ['',[Validators.required]],
       description: ['', [Validators.required]],
       opportunity_type:['', [Validators.required]],
@@ -144,6 +144,7 @@ export class BidmanagementComponent implements OnInit {
           {
             this.biddetails = response[0];
             this.bid_form.patchValue({ 
+            social_no: this.biddetails.BidNumber,
             bidstatus: this.biddetails.BidStatusId,
             title: this.biddetails.Title,
             description: this.biddetails.Descritpion,
