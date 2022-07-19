@@ -189,13 +189,13 @@
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">City <span class="requiredfield ">  *</span></label>
+                    <label class="labelwidth">City ind <span class="requiredfield ">  *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                <select id="currentcity_id" class="city" formControlName="CityId" [(ngModel)]="CurrentAddressDetails.CityId"
-                (keypress)="EmptyErrorMessage('currentcity_id')" (change)="onchangezip();onchangestate()">
+                <select id="currentcity_id_ind" class="city" formControlName="CityId" [(ngModel)]="CurrentAddressDetails.CityId"
+                (keypress)="EmptyErrorMessage('currentcity_id')" (change)="changeAllDetailsByCityCurrentIndividual()">
                 <option *ngFor="let c of citylist" [value]="c.CityId ">
                     {{c.CityName}}
                 </option>
@@ -304,7 +304,7 @@
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
                 <select class="State" id="stateprovice_id" formControlName="StateId" [(ngModel)]="CurrentAddressDetails.StateId"
-                                (change)="EmptyErrorMessage('stateprovice_id');onchangecountry()">
+                                (change)="EmptyErrorMessage('stateprovice_id');">
                                 <option *ngFor="let s of statedetail" [value]="s.StateId ">
                                     {{s.StateName}}
                                 </option>
@@ -365,7 +365,7 @@
 
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Address 
+                            <label class="labelwidth">Address ind mail
                                 <!-- <span class="requiredfield ">  *</span> -->
                             </label>
                            
@@ -402,9 +402,9 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentcity_id" class="city" formControlName="IMCityId" [(ngModel)]="MailingAddressDetails.CityId"
-                        (keypress)="EmptyErrorMessage('currentcity_id')">
-                        <option *ngFor="let c of IndBusinessPastCity" [value]="c.CityId ">
+                        <select id="currentcity_id_mailInd" class="city" formControlName="IMCityId" [(ngModel)]="MailingAddressDetails.CityId"
+                        (keypress)="EmptyErrorMessage('currentcity_id')" (change)="changeAllDetailsByCityMailIndividual()">
+                        <option *ngFor="let c of indBusMailAddressCityFinal" [value]="c.CityId ">
                             {{c.CityName}}
                         </option>
                     </select>
@@ -422,7 +422,7 @@
                                   
                                 <select class="Country" id="currentcountry_id" formControlName="IMCountryId"  [(ngModel)]="MailingAddressDetails.CountryId"
                                 (change)="EmptyErrorMessage('currentcountry_id')">
-                                <option *ngFor="let countrylist of IndBusinessPastCountry" [value]="countrylist.CountryId" >
+                                <option *ngFor="let countrylist of indBusMailAddressCountryFinal" [value]="countrylist.CountryId" >
                                     {{countrylist.CountryName}}</option>
                             </select>
                             <div  class="help-block text-danger">
@@ -443,7 +443,7 @@
                           
                         <select id="currentzipcode_id" class="zip" formControlName="IMZipcode" [(ngModel)]="MailingAddressDetails.Zipcode"
                                         (keypress)="EmptyErrorMessage('currentzipcode_id');">
-                                        <option *ngFor="let z of IndBusinessPastZipcode" [value]="z.Zipcode ">
+                                        <option *ngFor="let z of indBusMailAddressZipcodeFinal" [value]="z.Zipcode ">
                                             {{z.Zipcode}}
                                         </option>
                                     </select>
@@ -481,7 +481,7 @@
                           
                         <select type="text" id="currentcounty_id" class="County" formControlName="IMDistrictId"  [(ngModel)]="MailingAddressDetails.DistrictId"
                                         (keypress)="EmptyErrorMessage('currentcounty_id')">
-                                        <option *ngFor="let d of IndBusinessPastDistricts" [value]="d.DistrictId ">
+                                        <option *ngFor="let d of indBusMailAddressDistrictFinal" [value]="d.DistrictId ">
                                             {{d.DistrictName}}
                                         </option>
                                     </select>
@@ -519,9 +519,9 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select class="State" id="stateprovice_id" formControlName="IMStateId" 
-                                        (change)="EmptyErrorMessage('stateprovice_id')" [(ngModel)]="MailingAddressDetails.StateId">
-                                        <option *ngFor="let s of IndBusinessPastState" [value]="s.StateId ">
+                        <select class="State" id="stateprovice_id_mailInd" formControlName="IMStateId" 
+                                        (change)="EmptyErrorMessage('stateprovice_id');onchangeMailcountryIndBus()" [(ngModel)]="MailingAddressDetails.StateId">
+                                        <option *ngFor="let s of indBusMailAddressStateFinal" [value]="s.StateId ">
                                             {{s.StateName}}
                                         </option>
                                     </select>
@@ -545,7 +545,7 @@
 
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Address 
+                            <label class="labelwidth">Address past ind
                                 <!-- <span class="requiredfield ">  *</span> -->
                             </label>
                            
@@ -554,7 +554,7 @@
                           
                             <input type="text"  class="first" formControlName="IPAddress1" [(ngModel)]="PastAddressDetails.Address1" >
                             <div  class="help-block text-danger">
-                               <div *ngIf="submitted1 && rcf1.IPAddress1.errors">Address is required</div>
+                               <div *ngIf="rcf1.IPAddress1.touched && rcf1.IPAddress1.errors">Address is required</div>
                             </div>
                       </div>
             
@@ -583,8 +583,8 @@
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
                         <select id="currentcity_id_Past" class="city" formControlName="IPCityId" [(ngModel)]="PastAddressDetails.CityId"
-                        (change)="onchangezipPastAddr();onchangestatePastAddr()">
-                        <option *ngFor="let c of IndBusinessPastCity" [value]="c.CityId ">
+                        (change)="onchangezipPastAddr();onchangestatePastAddr()" (change)="changeAllDetailsByCityPastIndividual()">
+                        <option *ngFor="let c of indBusPastAddressCityFinal" [value]="c.CityId ">
                             {{c.CityName}}
                         </option>
                     </select>
@@ -602,7 +602,7 @@
                                   
                                 <select class="Country" id="currentcountry_id" formControlName="IPCountryId" [(ngModel)]="PastAddressDetails.CountryId"
                                 (change)="EmptyErrorMessage('currentcountry_id')">
-                                <option *ngFor="let countrylist of IndBusinessPastCountry" [value]="countrylist.CountryId" >
+                                <option *ngFor="let countrylist of indBusPastAddressCountryFinal" [value]="countrylist.CountryId" >
                                     {{countrylist.CountryName}}</option>
                             </select>
                             <div  class="help-block text-danger">
@@ -623,7 +623,7 @@
                           
                         <select id="currentzipcode_id" class="zip" formControlName="IPZipcode" 
                                         (keypress)="EmptyErrorMessage('currentzipcode_id');" [(ngModel)]="PastAddressDetails.Zipcode">
-                                        <option *ngFor="let z of IndBusinessPastZipcode" [value]="z.Zipcode ">
+                                        <option *ngFor="let z of indBusPastAddressZipcodeFinal" [value]="z.Zipcode ">
                                             {{z.Zipcode}}
                                         </option>
                                     </select>
@@ -661,7 +661,7 @@
                           
                         <select type="text" id="currentcounty_id" class="County" formControlName="IPDistrictId" [(ngModel)]="PastAddressDetails.DistrictId"
                                         (keypress)="EmptyErrorMessage('currentcounty_id')">
-                                        <option *ngFor="let d of IndBusinessPastDistricts" [value]="d.DistrictId ">
+                                        <option *ngFor="let d of indBusPastAddressDistrictFinal" [value]="d.DistrictId ">
                                             {{d.DistrictName}}
                                         </option>
                                     </select>
@@ -699,9 +699,9 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select class="State" id="stateprovice_id" formControlName="IPStateId" [(ngModel)]="PastAddressDetails.StateId"
-                                        (change)="EmptyErrorMessage('stateprovice_id')">
-                                        <option *ngFor="let s of IndBusinessPastState" [value]="s.StateId ">
+                        <select class="State" id="stateprovice_id_past" formControlName="IPStateId" [(ngModel)]="PastAddressDetails.StateId"
+                                        (change)="EmptyErrorMessage('stateprovice_id');">
+                                        <option *ngFor="let s of indBusPastAddressStateFinal" [value]="s.StateId ">
                                             {{s.StateName}}
                                         </option>
                                     </select>
@@ -1016,13 +1016,13 @@
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">City <span  class="requiredfield"> *</span></label>
+                    <label class="labelwidth">City bus<span  class="requiredfield"> *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                <select id="currentcity_id" class="city" formControlName="CityId" [(ngModel)]="CurrentAddressDetails.CityId"
-                (keypress)="EmptyErrorMessage('currentcity_id')" (change)="onchangezip();onchangestate()">
+                <select id="currentcity_idbus" class="city" formControlName="CityId" [(ngModel)]="CurrentAddressDetails.CityId"
+                (keypress)="EmptyErrorMessage('currentcity_id')" (change)="changeAllDetailsByCityCurrentBusiness()">
                 <option *ngFor="let c of citylist" [value]="c.CityId ">
                     {{c.CityName}}
                 </option>
@@ -1131,7 +1131,7 @@
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
                 <select class="State" id="stateprovice_id" formControlName="StateId" [(ngModel)]="CurrentAddressDetails.StateId"
-                                (change)="EmptyErrorMessage('stateprovice_id');onchangecountry()">
+                                >
                                 <option *ngFor="let s of statedetail" [value]="s.StateId ">
                                     {{s.StateName}}
                                 </option>
@@ -1196,7 +1196,7 @@
 
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Address 
+                            <label class="labelwidth">Address mail bus
                                 <!-- <span  class="requiredfield"> *</span> -->
                             </label>
                            
@@ -1233,9 +1233,9 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentcity_id" class="city" formControlName="BMCityId" 
-                        (keypress)="EmptyErrorMessage('currentcity_id')" [(ngModel)]="MailingAddressDetails.CityId">
-                        <option *ngFor="let c of IndBusinessPastCity" [value]="c.CityId ">
+                        <select id="currentcity_id_Past" class="city" formControlName="BMCityId" 
+                        (keypress)="EmptyErrorMessage('currentcity_id')" (change)="changeAllByCityMailBusiness();" [(ngModel)]="MailingAddressDetails.CityId">
+                        <option *ngFor="let c of indBusMailAddressCityFinal" [value]="c.CityId ">
                             {{c.CityName}}
                         </option>
                     </select>
@@ -1253,7 +1253,7 @@
                                   
                                 <select class="Country" id="currentcountry_id" formControlName="BMCountryId" 
                                 (change)="EmptyErrorMessage('currentcountry_id')" [(ngModel)]="MailingAddressDetails.CountryId">
-                                <option *ngFor="let countrylist of IndBusinessPastCountry" [value]="countrylist.CountryId" >
+                                <option *ngFor="let countrylist of indBusMailAddressCountryFinal" [value]="countrylist.CountryId" >
                                     {{countrylist.CountryName}}</option>
                             </select>
                             <div  class="help-block text-danger">
@@ -1272,14 +1272,14 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentzipcode_id" class="zip" formControlName="BMZipcode" 
+                        <select id="currentzipcode_id" class="zip" formControlName="BMZipcode1" 
                                         (keypress)="EmptyErrorMessage('currentzipcode_id');" [(ngModel)]="MailingAddressDetails.Zipcode">
-                                        <option *ngFor="let z of IndBusinessPastZipcode" [value]="z.Zipcode " >
+                                        <option *ngFor="let z of indBusMailAddressZipcodeFinal" [value]="z.Zipcode " >
                                             {{z.Zipcode}}
                                         </option>
                                     </select>
                             <div  class="help-block text-danger">
-                               <div *ngIf="submitted2 && rcf2.BMZipcode.errors">Zipcode is required</div>
+                               <div *ngIf="submitted2 && rcf2.BMZipcode1.errors">Zipcode is required</div>
                             </div>
                       </div>
             
@@ -1312,7 +1312,7 @@
                           
                         <select type="text" id="currentcounty_id" class="County" formControlName="BMDistrictId" 
                                         (keypress)="EmptyErrorMessage('currentcounty_id')" [(ngModel)]="MailingAddressDetails.DistrictId">
-                                        <option *ngFor="let d of IndBusinessPastDistricts" [value]="d.DistrictId ">
+                                        <option *ngFor="let d of indBusMailAddressDistrictFinal" [value]="d.DistrictId ">
                                             {{d.DistrictName}}
                                         </option>
                                     </select>
@@ -1350,14 +1350,14 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select class="State" id="stateprovice_id" formControlName="BMStateId" 
-                                        (change)="EmptyErrorMessage('stateprovice_id')" [(ngModel)]="MailingAddressDetails.StateId">
-                                        <option *ngFor="let s of IndBusinessPastState" [value]="s.StateId ">
+                        <select class="State" id="stateprovice_id_mailInd" formControlName="BMStateId1" 
+                                        (change)="EmptyErrorMessage('stateprovice_id');" [(ngModel)]="MailingAddressDetails.StateId">
+                                        <option *ngFor="let s of indBusMailAddressStateFinal" [value]="s.StateId ">
                                             {{s.StateName}}
                                         </option>
                                     </select>
                             <div  class="help-block text-danger">
-                               <div *ngIf="submitted2 && rcf2.BMStateId.errors">State is required</div>
+                               <div *ngIf="submitted2 && rcf2.BMStateId1.errors">State is required</div>
                             </div>
                       </div>
             
@@ -1406,16 +1406,16 @@
         
                     <div class="row mt-2">
                         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">City 
+                            <label class="labelwidth">City 222
                                 <!-- <span class="requiredfield ">  *</span> -->
                             </label>
                            
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentcity_id" class="city" formControlName="BPCityId" 
-                        (keypress)="EmptyErrorMessage('currentcity_id')" [(ngModel)]="PastAddressDetails.CityId">
-                        <option *ngFor="let c of citylist" [value]="c.CityId ">
+                        <select id="currentcity_idPastBusiness" class="city" formControlName="BPCityId" 
+                        (keypress)="EmptyErrorMessage('currentcity_id')" (change)="changeAllDetailsByCityPastBusiness()" [(ngModel)]="PastAddressDetails.CityId">
+                        <option *ngFor="let c of citylist" [value]="c.CityId " >
                             {{c.CityName}}
                         </option>
                     </select>
@@ -1819,10 +1819,15 @@
                                                         <input type="hidden" class="" 
                                                                 formControlName="ContactId">
                                                         <div class="">
-                                                            <label class="labelwidth" style="margin-left: 9px;">Contact Name</label>
+                                                            <label class="labelwidth" style="margin-left: 9px;"> Contact Name</label>
                                                             <input type="text" class="" id="addtionalcontactname_id"
                                                                 formControlName="AddtionalName"
                                                                 (keypress)="EmptyErrorMessage('addtionalcontactname_id')">
+
+
+                                                                <!-- <div  class="help-block text-danger">
+                                                                    <div *ngIf="rcf3.AddtionalName.errors">Contact Name is required</div>
+                                                                </div> -->
                                                         </div>
                                                         <div class="mt-1">
                                                             <label class="labelwidth" style="margin-left: 9px;">Title</label>
