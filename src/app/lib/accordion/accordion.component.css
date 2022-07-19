@@ -24,7 +24,7 @@
     border: 2px solid transparent;
     height: var(--accordion-header-height);
     cursor: pointer;
-    background: var(--accordion-header-bg);
+    background: lavender;
   }
   
   /* Default toggle button styles */
