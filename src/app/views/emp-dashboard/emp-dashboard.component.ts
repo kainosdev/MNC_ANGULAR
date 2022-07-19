@@ -21,6 +21,7 @@ export class EmpDashboardComponent implements OnInit {
     };
   }
 
+  
   displayStyle = "none";
 
   openPopup() {
