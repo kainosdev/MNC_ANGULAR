@@ -32,7 +32,7 @@
             </div>
 
 
-    </div>
+     </div>
 
     <div class="row mt-2" *ngIf="vendortype_show">
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
@@ -627,10 +627,12 @@
 
    <div *ngIf="vendorform_individual_show">
     <form [formGroup]="vendorform_individual" >
-    <div class="row Generaldiv mt-2">
+    <div class="row card">
             <p class="mainheading heading">Primary Contact Information</p>
-        <div class="row mt-2">
-            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+        <div class="row g-2">
+
+
+            <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
                 <label class="labelwidth">First Name<span class="requiredfield ">  *</span></label>
 
           </div>
@@ -640,10 +642,31 @@
                 <div  class="help-block text-danger">
                    <div *ngIf="submitted && vif.FirstName.errors">First Name is required</div>
                 </div>
-          </div>
+          </div> -->
 
 
-                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+          <div class="col-md">
+                <div class="form-floating">
+               <input type="text" class="form-control" formControlName="FirstName" id="firstname_id" placeholder="FirstName">
+                 <div  class="help-block text-danger">
+                      <div *ngIf="submitted && vif.FirstName.errors">First Name is required</div>
+                   </div>
+                <label class="common_lbl" for="social_no">First Name</label>
+                 </div>
+         </div>
+         
+
+         <div class="col-md">
+                <div class="form-floating">
+               <input type="text" class="form-control" formControlName="Address1" id="currentadd_id" placeholder="FirstName">
+               <div  class="help-block text-danger">
+                <div *ngIf="submitted && vif.Address1.errors">Address is required</div>
+            </div>
+                <label class="common_lbl" for="social_no">Address</label>
+                 </div>
+         </div>
+
+                <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
                         <label class="">Address<span class="requiredfield ">  *</span></label>
 
                 </div>
@@ -653,10 +676,21 @@
                         <div  class="help-block text-danger">
                             <div *ngIf="submitted && vif.Address1.errors">Address is required</div>
                         </div>
-                </div>
+                </div> -->
         </div>
-        <div class="row mt-2">
-            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+        <div class="row g-2">
+
+                <div class="col-md">
+                        <div class="form-floating">
+                       <input type="text" class="form-control" formControlName="LastName" id="lastname_id"  placeholder="Last Name">
+                       <div  class="help-block text-danger">
+                        <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
+                        </div>
+                        <label class="common_lbl" for="social_no">Last Name</label>
+                         </div>
+                 </div>
+
+            <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
                 <label class="labelwidth">Last Name<span class="requiredfield ">  *</span></label>
 
         </div>
@@ -666,23 +700,41 @@
             <div  class="help-block text-danger">
                         <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="form-group col-xs-4 col-md-2 col-sm-2">
+        <div class="col-md">
+                <div class="form-floating">
+               <input type="text" class="form-control" formControlName="Address2"  id="currentsecadd_id"  placeholder="Address Line2">
+               <!-- <div  class="help-block text-danger">
+                <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
+                </div> -->
+                <label class="common_lbl" for="social_no">Address Line2</label>
+                 </div>
+         </div>
+
+        <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
             <label class="labelwidth">Address Line2</label>
-
-       </div>
-
+          </div>
                 <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
-
                         <input type="text" class="Physicaladdress" formControlName="Address2"  id="currentsecadd_id" (keypress)="inputErrorMessage('currentsecadd_id')">
-
-                </div>
+                 </div> -->
         </div>
 
-        <div class="row mt-2">
+        <div class="row g-2">
 
-            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                <div class="col-md">
+                        <div class="form-floating">
+                       <input type="text" class="form-control" formControlName="UserId" [pattern]="uidPattern" id="userkey"  placeholder="User Id">
+                       <div  class="help-block text-danger">
+                        <div *ngIf="submitted && vif.UserId.errors?.required">User Id is required</div>
+                        <div *ngIf="submitted && vif.UserId.errors?.pattern">Pattern Not matched</div>
+                    </div>
+                        <label class="common_lbl" for="social_no">User Id</label>
+                         </div>
+                 </div>
+
+
+            <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
                 <label class="labelwidth">User Id<span class="requiredfield ">  *</span></label>
 
           </div>
@@ -693,11 +745,27 @@
                 <div *ngIf="submitted && vif.UserId.errors?.required">User Id is required</div>
                 <div *ngIf="submitted && vif.UserId.errors?.pattern">Pattern Not matched</div>
             </div>
-          </div>
+          </div> -->
+
+          <div class="col-md">
+                <div class="form-floating">
+              
+                  <select class="form-select" formControlName="CityId"  id="currentcity_id"  (change)="inputErrorMessage('currentcity_id');onchangezip();onchangestate()"  >
+                        <option value="value"></option>
+                         <option *ngFor="let citylist of cityalldetail" value="{{citylist.CityId}}">
+                          {{citylist.CityName}}</option>
+                     
+                 </select> 
+                 <div  class="help-block text-danger">
+                        <div *ngIf="submitted && vif.CityId.errors">City is required</div>
+                     </div>
+                  <!-- <label class="common_lbl" for="floatingSelectGrid">City</label> -->
+                  <label class="common_lbl" for="social_no">City</label>
+                </div>
+              </div>
 
 
-
-                <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
                         <label class="labelwidth">City<span class="requiredfield ">  *</span></label>
 
                 </div>
@@ -713,12 +781,22 @@
                           <div  class="help-block text-danger">
                             <div *ngIf="submitted && vif.CityId.errors">City is required</div>
                          </div>
-                </div>
+                </div> -->
         </div>
 
-        <div class="row mt-2">
+        <div class="row g-2">
 
-            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                <div class="col-md">
+                        <div class="form-floating">
+                       <input type="password" class="form-control" formControlName="UserPassword" id="userpswd_id"  (keypress)="inputErrorMessage('userpswd_id');removepassvalidation()">
+                       <div  class="help-block text-danger">
+                        <div *ngIf="submitted && vif.UserPassword.errors">Password is required</div>
+                         </div>
+                        <label class="common_lbl" for="social_no">Password</label>
+                         </div>
+                 </div>
+
+            <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
                 <label class="labelwidth">Password<span class="requiredfield ">  *</span></label>
 
           </div>
@@ -728,8 +806,24 @@
             <div  class="help-block text-danger">
                         <div *ngIf="submitted && vif.UserPassword.errors">Password is required</div>
             </div>
-           </div>
-            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+           </div> -->
+
+           <div class="col-md">
+                <div class="form-floating">
+              
+                  <select class="form-select" formControlName="Zipcode" id="regcurrentzip_id"   (change)="inputErrorMessage('regcurrentzip_id')"  >
+                        <option value="value"></option>
+                         <option *ngFor="let ziplist of zipcodedetail" >
+                           {{ziplist.Zipcode}}</option>
+                  </select> 
+                  <div  class="help-block text-danger">
+                        <div *ngIf="submitted && vif.Zipcode.errors">Address Line2 is required</div>
+                     </div>
+                  <label class="common_lbl" for="floatingSelectGrid">Zip Code</label>
+                </div>
+              </div>
+
+            <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
                     <label class="labelwidth">Zip Code<span class="requiredfield ">  *</span></label>
 
             </div>
@@ -745,49 +839,82 @@
                       <div  class="help-block text-danger">
                         <div *ngIf="submitted && vif.Zipcode.errors">Address Line2 is required</div>
                      </div>
-            </div>
+            </div> -->
     </div>
 
 
-    <div class="row mt-2">
-        <div class="form-group col-xs-4 col-md-2 col-sm-2">
+    <div class="row g-2">
+   <div class="col-md">
+                <div class="form-floating">
+               <input type="password" class="form-control" formControlName="conformpassword" id="comformpswd_id" (keypress)="inputErrorMessage('comformpswd_id');removepassvalidation()">
+               <div  class="help-block text-danger">
+                <div *ngIf="submitted && (vif.conformpassword.errors != null && vif.conformpassword.errors.required)">Confirm Password is required.</div>
+                <div *ngIf="submitted && (vif.conformpassword.errors != null && vif.conformpassword.errors.notEquivalent)">Confirm Password is not matched.</div>
+                 </div>
+                <label class="common_lbl" for="social_no">Confirm Password</label>
+                 </div>
+         </div>
+
+
+        <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
             <label class="labelwidth">Confirm Password<span class="requiredfield ">  *</span> </label>
 
     </div>
     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
 
         <input type="password" class="tradename" formControlName="conformpassword" id="comformpswd_id" (keypress)="inputErrorMessage('comformpswd_id');removepassvalidation()">
-            <!-- <p id="passvalidationid" style="color: red;"></p>         -->
             <div  class="help-block text-danger">
 
                     <div *ngIf="submitted && (vif.conformpassword.errors != null && vif.conformpassword.errors.required)">Confirm Password is required.</div>
                     <div *ngIf="submitted && (vif.conformpassword.errors != null && vif.conformpassword.errors.notEquivalent)">Confirm Password is not matched.</div>
             </div>
-    </div>
+    </div> -->
 
-        <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                <label class="labelwidth">Country<span class="requiredfield ">  *</span></label>
-
+    <div class="col-md">
+        <div class="form-floating">
+       <select class="form-select" formControlName="county_name" id="county_id"   (change)="inputErrorMessage('county_id')">
+                <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
+                        {{statelistid.DistrictName}}</option>
+          </select> 
+          <div  class="help-block text-danger">
+                <div *ngIf="submitted && vif.county_name.errors">Country is required</div>
+          </div>
+          <label class="common_lbl" for="floatingSelectGrid">Country</label>
         </div>
+      </div>
+
+        <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
+                <label class="labelwidth">Country<span class="requiredfield ">  *</span></label>
+         </div>
         <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
 
             <select type="text"  class="County" formControlName="county_name" id="county_id" (change)="inputErrorMessage('county_id')">
-                <!-- <option ></option> -->
                 <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
                     {{statelistid.DistrictName}}</option>
              </select>
               <div  class="help-block text-danger">
                     <div *ngIf="submitted && vif.county_name.errors">Country is required</div>
               </div>
-        </div>
+        </div> -->
 </div>
 
-<div class="row mt-2">
-    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+<div class="row g-2">
+
+        <div class="col-md">
+                <div class="form-floating">
+               <input type="date" class="form-control" formControlName="StartDate" id="startdate_id" (click)="inputErrorMessage('startdate_id')">
+               <div  class="help-block text-danger">
+                <div *ngIf="submitted && vif.StartDate.errors">Start Date is required</div>
+                 </div>
+                <label class="common_lbl" for="social_no">Start Date</label>
+                 </div>
+         </div>         
+
+    <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
         <label class="labelwidth">Start Date<span class="requiredfield "> *</span> </label>
 
-    </div>
-    <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+    </div> -->
+    <!-- <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
 
         <input type="date" class="" formControlName="StartDate" id="startdate_id"
             (click)="inputErrorMessage('startdate_id')">
@@ -795,9 +922,22 @@
             <div  class="help-block text-danger">
                     <div *ngIf="submitted && vif.StartDate.errors">Start Date is required</div>
            </div>
-    </div>
+    </div> -->
 
-    <div class="form-group col-xs-4 col-md-2 col-sm-2">
+    <div class="col-md">
+        <div class="form-floating">
+       <select class="form-select" formControlName="StateId" id="curstate_id"    (change)="inputErrorMessage('curstate_id');onchangecountry()" >
+        <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
+                {{statelistid.StateName}}</option>
+          </select> 
+          <div  class="help-block text-danger">
+                <div *ngIf="submitted && vif.StateId.errors">State/Province is required</div>
+         </div>
+          <label class="common_lbl" for="floatingSelectGrid">State/Province</label>
+        </div>
+      </div>
+
+    <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
             <label class="labelwidth">State/Province<span class="requiredfield "> *</span></label>
 
     </div>
@@ -806,15 +946,14 @@
         <select class="State"  formControlName="StateId" id="curstate_id"
          (change)="inputErrorMessage('curstate_id');onchangecountry()" >
 
-
-         <!-- <option value=""></option> -->
+        <option value=""></option> 
          <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
            {{statelistid.StateName}}</option>
           </select>
           <div  class="help-block text-danger">
                 <div *ngIf="submitted && vif.StateId.errors">State/Province is required</div>
          </div>
-    </div>
+    </div> -->
 </div>
 <div class="row mt-1">
     <div class="form-group col-xs-4 col-md-2 col-sm-2">
