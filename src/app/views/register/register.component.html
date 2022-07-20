@@ -139,8 +139,8 @@
 
                         <select class="city"  formControlName="CityId"  id="currentcity_id"
                         (change)="inputErrorMessage('currentcity_id');onchangezip();onchangestate()" >
-                             <option value="value"></option>
-
+                        <option  value="">
+                          Select</option>
                                  <option *ngFor="let citylist of cityalldetail" value="{{citylist.CityId}}">
                                    {{citylist.CityName}}</option>
                               </select>
@@ -172,7 +172,8 @@
                     <select class="zip" formControlName="Zipcode" id="regcurrentzip_id"
                     (change)="inputErrorMessage('regcurrentzip_id')" >
 
-                          <option value="value"></option>
+                    <option  value="">
+                      Select</option>
                              <option *ngFor="let ziplist of zipcodedetail" >
                                {{ziplist.Zipcode}}</option>
                           </select>
@@ -202,18 +203,20 @@
         </div>
 
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Country<span class="requiredfield ">  *</span></label>
+                    <label class="labelwidth">County<span class="requiredfield ">  *</span></label>
 
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
 
-                <select type="text"  class="County" formControlName="county_name" id="county_id" (change)="inputErrorMessage('county_id')">
+                <select type="text"  class="County" formControlName="DistrictId" id="county_id" (change)="inputErrorMessage('county_id')">
+                  <option  value="">
+                    Select</option>
                     <!-- <option ></option> -->
                     <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
                         {{statelistid.DistrictName}}</option>
                  </select>
                   <div  class="help-block text-danger">
-                        <div *ngIf="submitted && ofv.county_name.errors">Country is required</div>
+                        <div *ngIf="submitted && ofv.DistrictId.errors">Country is required</div>
                   </div>
             </div>
     </div>
@@ -273,7 +276,8 @@
         <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
 
               <select class="Country"  formControlName="CountryId" id="country_id" (change)="inputErrorMessage('country_id')">
-                <option value="value"></option>
+                <option  value="">
+                  Select</option>
                 <option *ngFor="let countrylist of countrydetail" [value]="countrylist.CountryId">
                    {{countrylist.CountryName}}</option>
                </select>
@@ -373,7 +377,8 @@
 
                         <select class="city"  formControlName="CityId"  id="currentcity_id"
                         (change)="inputErrorMessage('currentcity_id');onchangezip();onchangestate()" >
-                            <option value="value"></option>
+                        <option  value="">
+                          Select</option>
 
                                 <option *ngFor="let citylist of cityalldetail" value="{{citylist.CityId}}">
                                 {{citylist.CityName}}</option>
@@ -406,7 +411,8 @@
                     <select class="zip" formControlName="Zipcode" id="regcurrentzip_id"
                     (change)="inputErrorMessage('regcurrentzip_id')" >
 
-                        <option value="value"></option>
+                    <option  value="">
+                      Select</option>
                             <option *ngFor="let ziplist of zipcodedetail" >
                             {{ziplist.Zipcode}}</option>
                         </select>
@@ -434,7 +440,7 @@
         </div>
 
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Country<span class="requiredfield ">  *</span></label>
+                    <label class="labelwidth">County<span class="requiredfield ">  *</span></label>
 
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
@@ -531,7 +537,8 @@
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                         <select formControlName="JobTitleId" class="jobtitle" id="job_title" (change)="inputErrorMessage('job_title')">
-                                <option value=""></option>
+                          <option  value="">
+                            Select</option>
                                 <option *ngFor="let jobtitle of jobdetail" [value]="jobtitle.JobTitleId">
                                     {{jobtitle.JobTitleDesc}}</option>
                             </select>
@@ -546,7 +553,7 @@
                     </div>
                     <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
                             <input type="text" class=""  formControlName="Phone" id="phoneno_id"
-                            (keypress)="inputErrorMessage('phoneno_id'); number($event)">
+                            (keypress)="inputErrorMessage('phoneno_id'); number($event)"  [textMask]="{mask: mask1}">
                             <div  class="help-block text-danger">
                                     <div *ngIf="submitted && rcf.Phone.errors">Phone Number is required</div>
                             </div>
@@ -563,7 +570,8 @@
                     <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                             <select formControlName="EmploymentTypeId" class="employeeid" id="employee_id"
                             (change)="inputErrorMessage('employee_id');">
-                            <option value="value"></option>
+                            <option  value="">
+                              Select</option>
                             <option *ngFor="let employeetype of employeedetail" [value]="employeetype.EmploymentTypeId">
                                 {{employeetype.EmploymentTypeDesc}}</option>
                         </select>
@@ -705,7 +713,8 @@
 
                     <select class="city"  formControlName="CityId"  id="currentcity_id"
                     (change)="inputErrorMessage('currentcity_id');onchangezip();onchangestate()" >
-                         <option value="value"></option>
+                    <option  value="">
+                      Select</option>
 
                              <option *ngFor="let citylist of cityalldetail" value="{{citylist.CityId}}">
                                {{citylist.CityName}}</option>
@@ -738,7 +747,8 @@
                 <select class="zip" formControlName="Zipcode" id="regcurrentzip_id"
                 (change)="inputErrorMessage('regcurrentzip_id')" >
 
-                      <option value="value"></option>
+                <option  value="">
+                  Select</option>
                          <option *ngFor="let ziplist of zipcodedetail" >
                            {{ziplist.Zipcode}}</option>
                       </select>
@@ -766,18 +776,20 @@
     </div>
 
         <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                <label class="labelwidth">Country<span class="requiredfield ">  *</span></label>
+                <label class="labelwidth">County<span class="requiredfield ">  *</span></label>
 
         </div>
         <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
 
-            <select type="text"  class="County" formControlName="county_name" id="county_id" (change)="inputErrorMessage('county_id')">
+            <select type="text"  class="County" formControlName="DistrictId" id="county_id" (change)="inputErrorMessage('county_id')">
                 <!-- <option ></option> -->
+                <option  value="">
+                  Select</option>
                 <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
                     {{statelistid.DistrictName}}</option>
              </select>
               <div  class="help-block text-danger">
-                    <div *ngIf="submitted && vif.county_name.errors">Country is required</div>
+                    <div *ngIf="submitted && vif.DistrictId.errors">Country is required</div>
               </div>
         </div>
 </div>
@@ -805,7 +817,8 @@
 
         <select class="State"  formControlName="StateId" id="curstate_id"
          (change)="inputErrorMessage('curstate_id');onchangecountry()" >
-
+         <option  value="">
+          Select</option>
 
          <!-- <option value=""></option> -->
          <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
@@ -837,7 +850,8 @@
     <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
 
           <select class="Country"  formControlName="CountryId" id="country_id" (change)="inputErrorMessage('country_id')">
-            <option value="value"></option>
+            <option  value="">
+              Select</option>
             <option *ngFor="let countrylist of countrydetail" [value]="countrylist.CountryId">
                {{countrylist.CountryName}}</option>
            </select>
@@ -968,8 +982,8 @@
 
                         <select class="city"  formControlName="CityId"  id="currentcity_id"
                         (change)="inputErrorMessage('currentcity_id');onchangezip();onchangestate()" >
-                            <option value="value"></option>
-
+                        <option  value="">
+                          Select</option>
                                 <option *ngFor="let citylist of cityalldetail" value="{{citylist.CityId}}">
                                 {{citylist.CityName}}</option>
                             </select>
@@ -1001,7 +1015,8 @@
                     <select class="zip" formControlName="Zipcode" id="regcurrentzip_id"
                     (change)="inputErrorMessage('regcurrentzip_id')" >
 
-                        <option value="value"></option>
+                    <option  value="">
+                      Select</option>
                             <option *ngFor="let ziplist of zipcodedetail" >
                             {{ziplist.Zipcode}}</option>
                         </select>
@@ -1030,18 +1045,20 @@
         </div>
 
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">Country<span class="requiredfield ">  *</span></label>
+                    <label class="labelwidth">County<span class="requiredfield ">  *</span></label>
 
             </div>
             <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
 
-                <select type="text"  class="County" formControlName="county_name" id="county_id" (change)="inputErrorMessage('county_id')">
+                <select type="text"  class="County" formControlName="DistrictId" id="county_id" (change)="inputErrorMessage('county_id')">
                     <!-- <option ></option> -->
+                    <option  value="">
+                      Select</option>
                     <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
                         {{statelistid.DistrictName}}</option>
                 </select>
                 <div  class="help-block text-danger">
-                        <div *ngIf="submitted && vbf.county_name.errors">Country is required</div>
+                        <div *ngIf="submitted && vbf.DistrictId.errors">Country is required</div>
                 </div>
             </div>
     </div>
@@ -1069,7 +1086,8 @@
 
             <select class="State"  formControlName="StateId" id="curstate_id"
             (change)="inputErrorMessage('curstate_id');onchangecountry()" >
-
+            <option  value="">
+              Select</option>
 
             <!-- <option value=""></option> -->
             <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
