@@ -189,7 +189,7 @@
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">City ind <span class="requiredfield ">  *</span></label>
+                    <label class="labelwidth">City <span class="requiredfield ">  *</span></label>
                    
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -231,8 +231,8 @@
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                <select id="currentzipcode_id" class="zip" formControlName="Zipcode" [(ngModel)]="CurrentAddressDetails.Zipcode"
-                                (keypress)="EmptyErrorMessage('currentzipcode_id');">
+                <select id="currentzipcode_idInd" class="zip" formControlName="Zipcode"  [(ngModel)]="CurrentAddressDetails.Zipcode"
+                                (keypress)="EmptyErrorMessage('currentzipcode_id');" (change)="changeAllDeatilsByZipcodeIndCurAddr()">
                                 <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode ">
                                     {{z.Zipcode}}
                                 </option>
@@ -441,8 +441,8 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentzipcode_id" class="zip" formControlName="IMZipcode" [(ngModel)]="MailingAddressDetails.Zipcode"
-                                        (keypress)="EmptyErrorMessage('currentzipcode_id');">
+                        <select id="currentzipcode_id_indmail" class="zip" formControlName="IMZipcode" [(ngModel)]="MailingAddressDetails.Zipcode"
+                                        (keypress)="EmptyErrorMessage('currentzipcode_id');" (change)="changeAllDeatilsByZipcodeIndMailAddr()">
                                         <option *ngFor="let z of indBusMailAddressZipcodeFinal" [value]="z.Zipcode ">
                                             {{z.Zipcode}}
                                         </option>
@@ -520,7 +520,7 @@
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
                         <select class="State" id="stateprovice_id_mailInd" formControlName="IMStateId" 
-                                        (change)="EmptyErrorMessage('stateprovice_id');onchangeMailcountryIndBus()" [(ngModel)]="MailingAddressDetails.StateId">
+                                        (change)="EmptyErrorMessage('stateprovice_id')" [(ngModel)]="MailingAddressDetails.StateId">
                                         <option *ngFor="let s of indBusMailAddressStateFinal" [value]="s.StateId ">
                                             {{s.StateName}}
                                         </option>
@@ -621,7 +621,7 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentzipcode_id" class="zip" formControlName="IPZipcode" 
+                        <select id="currentzipcode_id_indpast" class="zip" formControlName="IPZipcode" (change)="changeAllDeatilsByZipcodeIndPastAddr()"
                                         (keypress)="EmptyErrorMessage('currentzipcode_id');" [(ngModel)]="PastAddressDetails.Zipcode">
                                         <option *ngFor="let z of indBusPastAddressZipcodeFinal" [value]="z.Zipcode ">
                                             {{z.Zipcode}}
@@ -1058,8 +1058,8 @@
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                   
-                <select id="currentzipcode_id" class="zip" formControlName="Zipcode" [(ngModel)]="CurrentAddressDetails.Zipcode"
-                                (keypress)="EmptyErrorMessage('currentzipcode_id');">
+                <select id="currentzipcode_id_mailbus" class="zip" formControlName="Zipcode" [(ngModel)]="CurrentAddressDetails.Zipcode"
+                                (keypress)="EmptyErrorMessage('currentzipcode_id');" (change)="changeAllDeatilsByZipcodeBusCurrentAddr()">
                                 <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode ">
                                     {{z.Zipcode}}
                                 </option>
@@ -1272,7 +1272,7 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentzipcode_id" class="zip" formControlName="BMZipcode1" 
+                        <select id="zipcode_id_bus_mail" class="zip" formControlName="BMZipcode1" (change)="changeAllDeatilsByZipcodeBusMailAddr()"
                                         (keypress)="EmptyErrorMessage('currentzipcode_id');" [(ngModel)]="MailingAddressDetails.Zipcode">
                                         <option *ngFor="let z of indBusMailAddressZipcodeFinal" [value]="z.Zipcode " >
                                             {{z.Zipcode}}
@@ -1452,7 +1452,7 @@
                       </div>
                       <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
                           
-                        <select id="currentzipcode_id" class="zip" formControlName="BPZipcode" 
+                        <select id="currentzipcode_id_past" class="zip" formControlName="BPZipcode" (change)="changeAllDeatilsByZipcodeBusPastAddr()"
                                         (keypress)="EmptyErrorMessage('currentzipcode_id');" [(ngModel)]="PastAddressDetails.Zipcode">
                                         <option *ngFor="let z of zipcodeVal" [value]="z.Zipcode ">
                                             {{z.Zipcode}}
