@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { config_url } from '../shared/constant';
 
 @Component({
   selector: 'emp-dashboard',
@@ -6,28 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./emp-dashboard.component.scss']
 })
 export class EmpDashboardComponent implements OnInit {
-  //bid_form: FormGroup | any;
-  //clinform:FormGroup | any;
-  submitted = false;
-  bid_form_show=true;
-  clin_submitted=false;
-  bidstatus:any;
-  contractVehicle:any;
-  aside_type_list:any;
-  opportunity_type_list:any;
-  contract_officer_list:any;
-  service_type_list:any;
-  dbe_list:any;
-  stepname="Details"
-  a="1";
-  b="2";
-  c="3";
+  
+  Bidslist:any;
+  awarduserlist:any;
+  Vendorlist:any;
+  Title:any;
+  SolicitationTypeId: any;
+  BidStatusId: any;
+  DepartmentId:any;
+  UpdatedDate:any;
+  BidResponseDueDate:any;
   collapsing = true;
 
   dtOptions: DataTables.Settings = {};
   title = 'datatables';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
 
@@ -36,6 +33,64 @@ export class EmpDashboardComponent implements OnInit {
       pageLength: 5,
       processing: true
     };
+
+    this.awarduser();
+    this.vendor();
+    this.bids();
+   
+
+  }
+  
+   
+  vendor(){
+    try
+    {
+      this.http.get(config_url+'bid/GetBidOpenandDraft?BidStatusId=A').subscribe(
+        (data: any) => {
+          var response= data.BidOpen;
+          this.Vendorlist = response;
+           // console.log(this.bidstatus)
+        });
+    }
+    catch(e) 
+    {
+      console.log(e); 
+    }
+      
+  }
+
+  bids(){
+    try
+    {
+      this.http.get(config_url+'bid/GetBidOpenandDraft?BidStatusId=O').subscribe(
+        (data: any) => {
+          var response= data.BidOpen;
+          this.Bidslist = response;
+           // console.log(this.bidstatus)
+        });
+    }
+    catch(e) 
+    {
+      console.log(e); 
+    }
+      
+  }
+
+  awarduser(){
+    try
+    {
+      this.http.get(config_url+'bid/GetConAwardByUser?CurrentUserid=1').subscribe(
+        (data: any) => {
+          var response= data.currentuserid;
+          this.awarduserlist = response;
+           // console.log(this.bidstatus)
+        });
+    }
+    catch(e) 
+    {
+      console.log(e); 
+    }
+      
   }
 
   displayStyle = "none";
