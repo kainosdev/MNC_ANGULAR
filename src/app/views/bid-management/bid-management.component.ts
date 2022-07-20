@@ -16,12 +16,14 @@ export class BidmanagementComponent implements OnInit {
   bid_form_show=true;
   clin_submitted=false;
   bidstatus:any;
+  biddetails:any;
   contractVehicle:any;
   aside_type_list:any;
   opportunity_type_list:any;
   contract_officer_list:any;
   service_type_list:any;
   dbe_list:any;
+  BuyingEntitylist:any;
   stepname="Details"
   a="1";
   b="2";
@@ -56,9 +58,9 @@ export class BidmanagementComponent implements OnInit {
       total_marks: ['',Validators.required]
   });
     this.bid_form = this.frmbuilder.group({
-
-      bidstatus: ['', [Validators.required]],
-      title: ['', [Validators.required]],
+      social_no:['',[Validators.required]],
+      bidstatus: ['',[Validators.required]],
+      title: ['',[Validators.required]],
       description: ['', [Validators.required]],
       opportunity_type:['', [Validators.required]],
       category:['', [Validators.required]],
@@ -118,6 +120,8 @@ export class BidmanagementComponent implements OnInit {
       this.GetContract_officer();
       this.GetDbe_Goal_Type();
       this.GetServiceType();
+      this.GetBuyingentity();
+     this.GetBidDetailsById();
   }
   get personal() { return this.personalDetails.controls; }
   get education() { return this.educationalDetails.controls; }
@@ -128,6 +132,49 @@ export class BidmanagementComponent implements OnInit {
   get clfc()
   {
     return this.clinform.controls;
+  }
+  GetBidDetailsById()
+  {
+    try
+    {
+      this.http.get(config_url+'/bid/GetBidByNumber?BidNumber=87654322').subscribe(
+        (data: any) => {
+          var response= data.BidDetails;
+          if(response != null && response.length>0)
+          {
+            this.biddetails = response[0];
+            this.bid_form.patchValue({ 
+            social_no: this.biddetails.BidNumber,
+            bidstatus: this.biddetails.BidStatusId,
+            title: this.biddetails.Title,
+            description: this.biddetails.Descritpion,
+            opportunity_type:this.biddetails.SolicitationTypeId,
+            category:this.biddetails.BidStatusId,
+            buying_entry:this.biddetails.BuyingEntityTypeId,
+            set_aside:this.biddetails.SetAsideTypeId,
+            contrcat_officer:this.biddetails.ContractingOfficer,
+            co_officer_phone:this.biddetails.ContractNumber,
+            co_officer_email:this.biddetails.BidStatusId,
+            no_of_response:this.biddetails.BidStatusId,
+
+
+            fund_source:this.biddetails.FundingSourceId,
+            contract_vehicle:this.biddetails.ContractVehicleId,
+            budget_amount:this.biddetails.BidBudgetAmount,
+            posted_date:this.biddetails.BidPostedDate.split(" ")[0],
+            question_due_date:this.biddetails.QandADueDate.split(" ")[0],
+            response_due_date:this.biddetails.BidResponseDueDate.split(" ")[0],
+            dbe_goal:this.biddetails.BidBudgetAmount,
+           });  
+          }
+        
+           // console.log(this.bidstatus)
+        });
+    }
+    catch(e) 
+    {
+      console.log(e); 
+    } 
   }
   GetBidStatus(){
     try
@@ -144,6 +191,22 @@ export class BidmanagementComponent implements OnInit {
       console.log(e); 
     }
       
+  }
+  GetBuyingentity()
+  {
+    try
+    {
+      this.http.get(config_url+'/bid/BuyingEntity').subscribe(
+        (data: any) => {
+          var response= data.BuyingEntity;
+          this.BuyingEntitylist = response;
+           // console.log(this.contractVehicle)
+        });
+    }
+    catch(e) 
+    {
+      console.log(e); 
+    }
   }
   GetContract_vehicle(){
     try

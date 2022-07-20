@@ -6,20 +6,57 @@
   <div class="card-body" >
     <h5 class="card-title">Create/View Bid</h5>
 
-     
+    <form [formGroup]="bid_form"> 
               
                       <div >
-                          <div class="row mt-2">
-                                                                     
-                              <div class="form-group  col-md-2 col-sm-2">
-                                  <label class="">Solicitation Number<span class="requiredfield ">  *</span></label>
-                                 
-                            </div>
-                            <div class="form-group col-xs-4 col-lg-3 col-md-6 col-sm-6">
+                          
+                          <div class="row g-3 p-1">
+                              <div class="col-md">
+                                  <div class="form-floating">
                                 
-                              <input type="text" class="tradename" formControlName="description" id="description" >
+                                          <input type="text" class="form-control" formControlName="social_no" id="social_no" placeholder="Solicitation Number">
+                                          
+                                               
+                                  <div  class="help-block text-danger">
+                                          <div *ngIf="submitted && bfc.social_no.errors">Solicitation Number is required</div>
+                                  </div>
+                                  <label class="common_lbl" for="social_no">Solicitation Number</label>
+  
+                                  </div>
+                                </div>
+                              <div class="col-md">
+                        
+                                  <div class="form-floating">
+                                    <input type="text" class="form-control"  formControlName="title" id="title" placeholder="title">
+    
+                                 
+                                     
+                                   <label class="common_lbl" for="title">TITLE</label>
+                                
+                                 
                               
+                                 <div  class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.title.errors">Title is required</div>
+                                  </div>
+                                </div>
+                                </div>
+                            <div class="col-md">
+                              <div class="form-floating">
+                                <select class="form-select" id="bidstatus" formControlName="bidstatus" aria-label="Floating label select example" placeholder="bidstatus" >
+                                  <option *ngFor="let item of bidstatus" [value]="item.BidStatusId ">
+                                      {{item.BidStatusDesc}}
+                                  </option>
+                                </select>
+                                
+                              <label class="common_lbl" for="bidstatus">BID STATUS</label>
+                              <div  class="help-block text-danger">
+                                <div *ngIf="submitted && bfc.bidstatus.errors">Bid Status is required</div>
+                             </div>  
+                                    
+                              </div>
                             </div>
+                        
+                         
                           </div>
                           <accordion [collapsing]="collapsing">
                             <accordion-item >
@@ -36,346 +73,236 @@
                                   </ng-template>
                               <ng-template accordionContent>
                                 <div class="card ">
-                                    <form [formGroup]="bid_form" > 
-                                        <div class="row col-12">
-                                                   <div class="row col-8">
-                                                        <div class="row  col-12 mt-2">
-                                                                <!-- <p class="mainheading heading">General Information</p> -->
-                                                            <div class="row ">
-                                                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                    <label class="labelwidth">Bid Status<span class="requiredfield ">  *</span></label>
-                                                                   
-                                                              </div>
-                                                              <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-3">
-                                                                    
-                                                              <select class="Country" id="bidstatus" formControlName="bidstatus"  >
-                                                              <option *ngFor="let item of bidstatus" [value]="item.BidStatusId ">
-                                                                  {{item.BidStatusDesc}}
-                                                              </option>
-                                                             </select>
-                                                             
-                                                                    <div  class="help-block text-danger">
-                                                                       <div *ngIf="submitted && bfc.bidstatus.errors">Bid Status is required</div>
-                                                                    </div>
-                                                              </div>
-                                                    
-                                                         
-                                                                    <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                            <label class="">Number of Response<span class="requiredfield ">  *</span></label>
-                                                                           
-                                                                    </div>
-                                                                    <div class="form-group col-xs-4 col-lg-3 col-md-2 col-sm-2">
-                                                                          
-                                                                            <input type="text" class=""  formControlName="no_of_response" id="no_of_response" >
-                                                                            <div  class="help-block text-danger">
-                                                                                <div *ngIf="submitted && bfc.no_of_response.errors">First Name is required</div>
-                                                                            </div>
-                                                                    </div> -->
-                                                            </div>
-                                                            <div class="row ">
-                                                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                    <label class="labelwidth">Title<span class="requiredfield ">  *</span></label>
-                                                                   
-                                                            </div>
-                                                            <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                                  
-                                                                <input type="text" class="lastname"  formControlName="title" id="title" >
-                                                                <div  class="help-block text-danger">
-                                                                            <div *ngIf="submitted && bfc.title.errors">Title is required</div>
-                                                                </div>
-                                                            </div>
-                                                    
-                                                         
-                                                            </div>
-                                                    
-                                                            <div class="row ">
-                                                                 
-                                                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                    <label class="labelwidth">Description<span class="requiredfield ">  *</span></label>
-                                                                   
-                                                              </div>
-                                                              <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                                  
-                                                                <input type="text" class="tradename" formControlName="description" id="description" >
-                                                                <div  class="help-block text-danger">
-                                                                            <div *ngIf="submitted && bfc.description.errors">Description is required</div>
-                                                                </div>
-                                                              </div>
-                                                    
-                                                    
-                                                    
-                                                                
-                                                            </div>
-                                                    
-                                                            <div class="row ">
-                                                              
-                                                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                    <label class="labelwidth">Opportunity Type<span class="requiredfield ">  *</span></label>
-                                                                   
-                                                              </div>
-                                                              <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                                    <select class="Country" formControlName="opportunity_type" id="bidstatus" (change)="inputErrorMessage('bidstatus')" >
-                                                                        <option *ngFor="let item of opportunity_type_list" [value]="item.SolicitationTypeId ">
-                                                                            {{item.SolicitationTypeDesc}}
-                                                                        </option>
-                                                                           
-                                                                    </select>  
-                                                                <div  class="help-block text-danger">
-                                                                            <div *ngIf="submitted && bfc.opportunity_type.errors">Opportunity Type is required</div>
-                                                                </div>
-                                                               </div>
-                                                          
-                                                        </div>
-                                                    
-                                                        
-                                                        <div class="row ">
-                                                            <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                <label class="labelwidth">Category <span class="requiredfield ">  *</span> </label>
-                                                    
-                                                        </div>
-                                                        <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                              
-                                                                <select class="Country" formControlName="category" id="category" (change)="inputErrorMessage('bidstatus')" >
-                                                                        <option value="Open">Open</option>
-                                                                        <option value="Closed">Closed</option>
-                                                                       
-                                                                </select> 
-                                                                <div  class="help-block text-danger">
-                                                                        <div *ngIf="submitted && bfc.category.errors">Category is required</div>
-                                                                </div>
-                                                        </div>
-                                                    
-                                                          
-                                                    </div>
-                                                    
-                                                    <div class="row">
-                                                        <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                            <label class="labelwidth">Buying Entry <span class="requiredfield "> *</span> </label>
-                                                    
-                                                        </div>
-                                                        <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                           
-                                                                <select class="Country" formControlName="buying_entry" id="buying_entry" (change)="inputErrorMessage('bidstatus')" >
-                                                                        <option value="Open">Open</option>
-                                                                        <option value="Closed">Closed</option>
-                                                                       
-                                                                </select> 
-                                                              
-                                                                <div  class="help-block text-danger">
-                                                                        <div *ngIf="submitted && bfc.buying_entry.errors">Buying Entry is required</div>
-                                                               </div>
-                                                        </div>
-                                                    
-                                                    </div>
-                                                    <div class="row ">
-                                                        <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                            <label class="labelwidth">Set Aside<span class="requiredfield "> *</span> </label>
-                                                    
-                                                        </div>
-                                                        <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                           
-                                                                <select class="Country" formControlName="set_aside" id="set_aside" (change)="inputErrorMessage('bidstatus')" >
-                                                                    <option *ngFor="let item of aside_type_list" [value]="item.SetAsideTypeId ">
-                                                                        {{item.SetAsideTypeDesc}}
-                                                                    </option>
-                                                                </select>                   
-                                                                <div  class="help-block text-danger">
-                                                                        <div *ngIf="submitted && bfc.set_aside.errors">Set Aside is required</div>
-                                                               </div>
-                                                        </div>
-                                                    
-                                                    </div>
-                                                    <div class="row ">
-                                                            <div class="form-group  col-md-2 col-sm-2">
-                                                                <label class="labelwidth">Contract Officer<span class="requiredfield "> *</span> </label>
-                                                        
-                                                            </div>
-                                                            <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+                                   
+                                        <div class="">
+                                            <div class="row g-3 p-1">
+                                                     
+                                                     
+                                                <div class="col-12">
+                                                    <div class="form-floating">
+                                                        <textarea class="form-control" placeholder="Leave a Description here" formControlName="description" id="description" style="height: 100px"></textarea>
+                                                        <label for="description" class="common_lbl">Description</label>
+                                                      </div>
+                                                  </div>
+                                               
+                                                  
+                                              </div>
+                                            <div class="row g-4 p-1 ">
+                                                <div class="col-md">
+                                                  <div class="form-floating">
+                                                  
+                                                        <select class="form-select" formControlName="opportunity_type" id="bidstatus" (change)="inputErrorMessage('bidstatus')" >
+                                                            <option *ngFor="let item of opportunity_type_list" [value]="item.SolicitationTypeId ">
+                                                                {{item.SolicitationTypeDesc}}
+                                                            </option>
                                                                
-                                                                    <select class="Country" formControlName="contrcat_officer" id="contrcat_officer" (change)="inputErrorMessage('bidstatus')" >
-                                                                        <option *ngFor="let item of contract_officer_list" [value]="item.JobTitleId ">
-                                                                            {{item.JobTitleDesc}}
-                                                                        </option>
-                                                                           
-                                                                    </select>                   
-                                                                    <div  class="help-block text-danger">
-                                                                            <div *ngIf="submitted && bfc.set_aside.errors">Contract Officer is required</div>
-                                                                   </div>
-                                                            </div>
+                                                        </select>  
+                                                        <div  class="help-block text-danger">
+                                                            <div *ngIf="submitted && bfc.opportunity_type.errors">Opportunity Type is required</div>
+                                                    </div>                                                    <label class="common_lbl" for="floatingInputGrid">OPPORTUNITY TYPE</label>
                                                         
-                                                          
-                                                        </div>
-                                                        <div class="row">
-                                                                <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                    <label class="labelwidth"> Officer Phone<span class="requiredfield "> *</span> </label>
-                                                            
-                                                                </div>
-                                                                <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                                   
-                                                                        <input type="text" class="co_officer_phone" formControlName="co_officer_phone" id="co_officer_phone" >
-                                         
-                                                                        <div  class="help-block text-danger">
-                                                                                <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Phone is required</div>
-                                                                       </div>
-                                                                </div>
-                                                            
-                                                             
-                                                            </div>
-                                                            <div class="row">
-                                                                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                                                                        <label class="labelwidth">Officer Email<span class="requiredfield "> *</span> </label>
-                                                                
-                                                                    </div>
-                                                                    <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                                                                            <input type="text" class="co_officer_email" formControlName="co_officer_phone" id="co_officer_phone" >
-                                          
-                                                                            <div  class="help-block text-danger">
-                                                                                    <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Email is required</div>
-                                                                           </div>
-                                                                    </div>
-                                                                
-                                                                 
-                                                                </div>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md">
+                                                  <div class="form-floating">
                                                 
-                                                        </div>
+                                                    <select class="form-select" formControlName="category" id="category" (change)="inputErrorMessage('bidstatus')" >
+                                                        <option value="Open">Open</option>
+                                                        <option value="Closed">Closed</option>
+                                                       
+                                                   </select> 
+                                                   <div  class="help-block text-danger">
+                                                        <div *ngIf="submitted && bfc.category.errors">Category is required</div>
+                                                   </div>
+                                                    <label class="common_lbl" for="floatingSelectGrid">CATEGORY</label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-floating">
+                                                        <select class="form-select" formControlName="buying_entry" id="buying_entry" (change)="inputErrorMessage('bidstatus')" >
+                                                           
+                                                            <option *ngFor="let item of BuyingEntitylist" [value]="item.BuyingEntityTypeId">
+                                                              {{item.BuyingEntityTypeDesc}}
+                                                          </option>
+                                                    </select> 
+                                                  
+                                                    <div  class="help-block text-danger">
+                                                            <div *ngIf="submitted && bfc.buying_entry.errors">Buying Entry is required</div>
+                                                   </div>  
+                                                    <label class="common_lbl" for="buying_entry">BUYING ENTRY</label>
                                                     </div>
-                                                    <div class="row col-4">
-                                                            <div class="row col-12 ">
+                                                  </div>
+                                                  
+                                                  <div class="col-md">
+                                                      <div class="form-floating">
+                                                        <select class="form-select" formControlName="set_aside" id="set_aside" (change)="inputErrorMessage('bidstatus')" >
+                                                          <option *ngFor="let item of aside_type_list" [value]="item.SetAsideTypeId ">
+                                                              {{item.SetAsideTypeDesc}}
+                                                          </option>
+                                                      </select>                   
+                                                      <div  class="help-block text-danger">
+                                                              <div *ngIf="submitted && bfc.set_aside.errors">Set Aside is required</div>
+                                                      </div>
+                                                      <label class="common_lbl" for="set_aside">SET ASIDE</label>
+  
+                                                      </div>
+                                                    </div>
+                                              </div>
+
+
+
+        <!-- 2 row -->
+
+                                              <div class="row g-4 p-1">
+                                                  <div class="col-md">
+                                                    <div class="form-floating">
+                                                    
+                                                          <input type="text" class="form-control" formControlName="fund_source" id="fund_source" placeholder="Funding Source">
+                        
+                                                          <div  class="help-block text-danger">
+                                                                <div *ngIf="submitted && bfc.fund_source.errors">Funding Source is required</div>
+                                                           </div>
+                                                        
+                                                           <label class="common_lbl" for="fund_source">FUNDING SOURCE</label>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md">
+                                                    <div class="form-floating">
+                                                  
+                                                        <select class="form-select" id="contract_vehicle" formControlName="contract_vehicle"  >
+                                                            <option *ngFor="let item of contractVehicle" [value]="item.ContractVehicleId ">
+                                                                {{item.ContractVehicleDesc}}
+                                                            </option>
+                                                           </select>
+                                                            <div  class="help-block text-danger">
+                                                                        <div *ngIf="submitted && bfc.contract_vehicle.errors">Contract Vehicle is required</div>
+                                                            </div>
+                                                             <label class="common_lbl" for="floatingSelectGrid">CONTRACT VEHICLE</label>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md">
+                                                      <div class="form-floating">
+                                                          <input type="text" class="form-control" formControlName="budget_amount" id="budget_amount" placeholder="Budget Amount">
+                                                          <div  class="help-block text-danger">
+                                                                      <div *ngIf="submitted && bfc.budget_amount.errors">Budget Amount is required</div>
+                                                          </div> 
+                                                      <label class="common_lbl" for="buying_entry">BUDGET AMOUNT</label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-floating">
+                                                        
+                                                            <select class="form-select" formControlName="contrcat_officer" id="contrcat_officer" (change)="inputErrorMessage('bidstatus')" >
+                                                                <option *ngFor="let item of contract_officer_list" [value]="item.JobTitleId ">
+                                                                    {{item.JobTitleDesc}}
+                                                                </option>
                                                                    
-                                                                <div class="row mt-1">
-                                                                    <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                        <label class="labelwidth">Funding Source<span class="requiredfield ">  *</span></label>
-                                                                       
-                                                                  </div>
-                                                                  <div class="form-group col-xs-4  col-md-6 col-sm-6">
-                                                                      <input type="text" class="fund_source" formControlName="fund_source" id="fund_source" >
-                        
-                                                                        <div  class="help-block text-danger">
-                                                                           <div *ngIf="submitted && bfc.fund_source.errors">Funding Source is required</div>
-                                                                        </div>
-                                                                  </div>
-                                                        
-                                                             
-                                                                  
-                                                                </div>
-                                                                <div class="row ">
-                                                                  <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                          <label class="labelwidth">Contract Vehicle<span class="requiredfield ">  *</span></label>
-                                                                        
-                                                                  </div>
-                                                                  <div class="form-group col-xs-4  col-md-6 col-sm-6">
-                                                                    <select class="Country" id="contract_vehicle" formControlName="contract_vehicle"  >
-                                                                      <option *ngFor="let item of contractVehicle" [value]="item.ContractVehicleId ">
-                                                                          {{item.ContractVehicleDesc}}
-                                                                      </option>
-                                                                     </select>
-                                                                      <div  class="help-block text-danger">
-                                                                                  <div *ngIf="submitted && bfc.contract_vehicle.errors">Contract Vehicle is required</div>
-                                                                      </div>
-                                                                  </div>
-                                                                </div>
-                                                        
-                                                                <div class="row ">
-                                                                     
-                                                                    <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                        <label class="labelwidth">Budget Amount ($)<span class="requiredfield ">  *</span></label>
-                                                                       
-                                                                  </div>
-                                                                  <div class="form-group col-xs-4  col-md-6 col-sm-6">
-                                                                      
-                                                                    <input type="text" class="tradename" formControlName="budget_amount" id="budget_amount" >
-                                                                    <div  class="help-block text-danger">
-                                                                                <div *ngIf="submitted && bfc.budget_amount.errors">Budget Amount is required</div>
-                                                                    </div>
-                                                                  </div>
-                                                        
-                                                        
-                                                        
-                                                                    
-                                                                </div>
-                                                        
-                                                                <div class="row ">
-                                                                  
-                                                                    <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                        <label class="labelwidth">Posted Date<span class="requiredfield ">  *</span></label>
-                                                                       
-                                                                  </div>
-                                                                  <div class="form-group  col-md-6 col-sm-6">
-                                                                      <input type="date" class="posted_date" formControlName="posted_date" id="posted_date" >
-                        
-                                                                    <div  class="help-block text-danger">
-                                                                                <div *ngIf="submitted && bfc.posted_date.errors">Posted Date is required</div>
-                                                                    </div>
-                                                                   </div>
-                                                              
-                                                            </div>
-                                                        
+                                                            </select>                   
+                                                            <div  class="help-block text-danger">
+                                                                    <div *ngIf="submitted && bfc.set_aside.errors">Contract Officer is required</div>
+                                                           </div>
                                                             
-                                                            <div class="row ">
-                                                                <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                    <label class="labelwidth">Question Due Date <span class="requiredfield ">  *</span> </label>
-                                                        
-                                                            </div>
-                                                            <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                <input type="date" class="question_due_date" formControlName="question_due_date" id="question_due_date" >
-                        
-                                                          
-                                                                    <div  class="help-block text-danger">
-                                                                            <div *ngIf="submitted && bfc.question_due_date.errors">Question Due Date is required</div>
-                                                                    </div>
-                                                            </div>
-                                                        
-                                                              
+                                                               <label class="common_lbl" for="contrcat_officer">CONTRACT OFFICER</label>
                                                         </div>
-                                                        
-                                                        <div class="row">
-                                                            <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                <label class="labelwidth">Response Due Date<span class="requiredfield ">*</span> </label>
-                                                        
+                                                      </div>
+
+                                                </div>
+
+      <!-- 3 row -->
+                                                <div class="row g-3 p-1">
+                                                    
+                                                    <div class="col-md">
+                                                      <div class="form-floating">
+                                                    
+                                                          
+                                                          <input type="text" class="form-control" formControlName="co_officer_phone" id="co_officer_phone" placeholder="Phone">
+                                         
+                                                          <div  class="help-block text-danger">
+                                                                  <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Phone is required</div>
+                                                         </div>
+                                                           
+                                                               <label class="common_lbl" for="co_officer_phone">OFFICER PHONE</label>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" formControlName="co_officer_phone" id="co_officer_phone" placeholder="Email">
+                                          
+                                                            <div  class="help-block text-danger">
+                                                                    <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Email is required</div>
                                                             </div>
-                                                            <div class="form-group col-xs-4  col-md-6 col-sm-6">
-                                                                <input type="date" class="response_due_date" formControlName="response_due_date" id="question_due_date" >
+                                                        <label class="common_lbl" for="co_officer_phone">CONTRACT OFFICER EMAIL</label>
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md">
+                                                          <div class="form-floating">
+                                                            <input type="date" class="form-control" formControlName="posted_date" id="posted_date" >
+                            
+                                                            <div  class="help-block text-danger">
+                                                                        <div *ngIf="submitted && bfc.posted_date.errors">Posted Date is required</div>
+                                                            </div>
+                                                              
+                                                                 <label class="common_lbl" for="posted_date">POSTED DATE</label>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-md">
+                                                          <div class="form-floating">
+                                                        
+                                                            <input type="date" class="form-control" formControlName="question_due_date" id="question_due_date" >
+                            
+                                                              
+                                                            <div  class="help-block text-danger">
+                                                                    <div *ngIf="submitted && bfc.question_due_date.errors">Question Due Date is required</div>
+                                                            </div>
+                                                               
+                                                                   <label class="common_lbl" for="question_due_date">QUESTION DUE DATE</label>
+                                                          </div>
+                                                        </div>
+                                                  </div>
+
+                      <!-- 4 row --> 
+
+                                                  <div class="row g-4 p-1">
+                                             
+                                                    <div class="col-md">
+                                                        <div class="form-floating">
+                                                          <input type="date" class="form-control" formControlName="response_due_date" id="question_due_date" >
                         
                                                                   
                                                                     <div  class="help-block text-danger">
                                                                             <div *ngIf="submitted && bfc.StartDate.errors">Response Due Date is required</div>
                                                                    </div>
-                                                            </div>
-                                                        
+                                                        <label class="common_lbl" for="response_due_date">RESPONSE DUE DATE</label>
                                                         </div>
-                                                        <div class="row ">
-                                                            <div class="form-group col-xs-4 col-md-6 col-sm-6">
-                                                                <label class="labelwidth">DBE Goal (%)<span class="requiredfield "> *</span> </label>
-                                                        
-                                                            </div>
-                                                            <div class="form-group col-xs-4  col-md-6 col-sm-6">
-                                                                <input type="text" class="dbe_goal" formControlName="dbe_goal" id="dbe_goal" >
-                        
-                                                                                
-                                                                    <div  class="help-block text-danger">
-                                                                            <div *ngIf="submitted && bfc.dbe_goal.errors">DBE Goal (%) is required</div>
-                                                                   </div>
-                                                            </div>
-                                                        
+                                                      </div>
+                                                      <div class="col-md">
                                                         </div>
-                                                     
-                                                         
-                                                               
+                                                        <div class="col-md">
+                                                          </div>
+                                                          <div class="col-md">
                                                             </div>
-                                                    </div>
+                                                  </div>
+                                            
+                          <!-- 5 row --> 
+                          <div class="row g-3 p-1">
+                              <h6>Q And A</h6>         
+                              <div class="ckeditor">
+                              
+                               <ckeditor data="<p>Hello, world!</p>"></ckeditor>
+                              </div>
+                            </div>
+                         
+                                                 
                                         </div>
-                                        <div class="row col-12">
-                                        <div class="ckeditor">
-                                          <p class="mainheading">Q and A</p>
-                                          <ckeditor data="<p>Hello, world!</p>"></ckeditor>
-                                         </div>
-                                        </div>
-                                    </form>
-                                    <input type="button"   class="btn btn-primary fixedwidthcls" (click)="generalsave()"  value="Update" />  
+                                    
+                                   
+                                   
+                                  
                         
                                 </div>
                               </ng-template>
                             </accordion-item>
+                        
                             <!-- <accordion-item>
                               <ng-template accordionHeader let-toggle="toggle">
                                 <div class="row">
@@ -417,7 +344,7 @@
                                       <path
                                         d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
                                     </svg> -->
-                                    <h6>Document Upload</h6>
+                                    <h6>Bid Documents Upload</h6>
                                   </div>
                                 </ng-template>
                                 <ng-template accordionContent>
@@ -471,85 +398,109 @@
                                             </tbody>
                                           </table>
                                         <form [formGroup]="clinform" >
-                                            <h6>Add New Contract Line Item (CLIN)</h6>
+                                            <a class="fontwghtcls">Add New Contract Line Item (CLIN)</a>
 
                                       <div class="row col-12">
-                                          <div class="col-3">
-                                              <label class="labelwidth" >CLIN </label>
-                                              <input type="text" class="" id="clin"
-                                                  formControlName="clin">
-                                                <div  class="help-block text-danger">
-                                                      <div *ngIf="clin_submitted && clfc.clin.errors">CLIN is required</div>
+
+                                          <div class="row g-4">
+                                              <div class="col-md">
+                                                <div class="form-floating">
+                                                    
+                                                    <input type="text" class="form-control" id="clin"
+                                                        formControlName="clin" placeholder="CLIN">
+                                                      <div  class="help-block text-danger">
+                                                            <div *ngIf="clin_submitted && clfc.clin.errors">CLIN is required</div>
+                                                      </div>
+                                                      <label class="common_lbl" for="clin" >CLIN </label>
                                                 </div>
-                                          </div>
-                                          <div class="col-3">
-                                              <label class="labelwidth" >Description</label>
-                                              <input type="text" class="" id="desc"
-                                                  formControlName="desc"
-                                                  >
-                                                <div  class="help-block text-danger">
-                                                      <div *ngIf="clin_submitted && clfc.desc.errors">Description is required</div>
-                                                </div>
-                                          </div>
-                                          <div class="col-3">
-                                              <label class="labelwidth" >Service Type</label>
-                                              <select class="Country" id="service_type" formControlName="service_type"  >
-                                                  <option *ngFor="let item of service_type_list" [value]="item.ServiceTypeId ">
-                                                      {{item.ServiceTypeDesc}}
-                                                  </option>
-                                                 </select>
-                                                 
+                                              </div>
+                                              <div class="col-md">
                                           
-                                                 <div  class="help-block text-danger">
-                                                    <div *ngIf="clin_submitted && clfc.service_type.errors">Service Type is required</div>
-                                                 </div>
-                                          </div>
+                                                <div class="form-floating">
+                                                    
+                                                    <input type="text" class="form-control" id="desc"
+                                                        formControlName="desc" placeholder="Description">
+                                                      <div  class="help-block text-danger">
+                                                            <div *ngIf="clin_submitted && clfc.desc.errors">Description is required</div>
+                                                      </div>
+                                                      <label class="common_lbl" for="clin" >DESCRIPTION </label>
+                                                </div>
+                                              </div>
+                                              <div class="col-md">
+                                                  <div class="form-floating">
+                                                    
+                                                      <select class="form-select" id="service_type" formControlName="service_type"  >
+                                                          <option *ngFor="let item of service_type_list" [value]="item.ServiceTypeId ">
+                                                              {{item.ServiceTypeDesc}}
+                                                          </option>
+                                                      </select>
+                                                         
+                                                  
+                                                      <div  class="help-block text-danger">
+                                                            <div *ngIf="clin_submitted && clfc.service_type.errors">Service Type is required</div>
+                                                      </div>
+                                                      <label class="common_lbl" for="service_type">SERVICE TYPE</label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-floating">
+                                                      
+                                                        <select class="form-control" id="dbe_goal_type" formControlName="dbe_goal_type"  >
+                                                            <option *ngFor="let item of dbe_list" [value]="item.BEGoalTypeId ">
+                                                                {{item.BEGoalTypeDesc}}
+                                                            </option>
+                                                           </select>
+                                                           <div  class="help-block text-danger">
+                                                              <div *ngIf="clin_submitted && clfc.dbe_goal_type.errors">DBE Goal Type is required</div>
+                                                           </div>
+                                                        <label class="common_lbl" for="dbe_goal_type">DBE GOAL TYPE</label>
+                                                    </div>
+                                                  </div>
+                                            </div>
+
+                                            <div class="row g-4">
+                                                <div class="col-md">
+                                                  <div class="form-floating">
+                                                      
+                                                  <input type="text" class="form-control" id="dbe_goal"
+                                                                  formControlName="dbe_goal">
+                                                   <div  class="help-block text-danger">
+                                                    <div *ngIf="clin_submitted && clfc.dbe_goal.errors">DBE Goal is required</div>
+                                                    </div>
+                                                        <label class="common_lbl" for="dbe_goal" >DBE GOAL</label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md">
+                                            
+                                                  <div class="form-floating">
+                                                      
+                                                   
+                                                      <input type="text" class="form-control" id="dbe_budget" formControlName="dbe_budget">
+                                                          <div  class="help-block text-danger">
+                                                              <div *ngIf="clin_submitted && clfc.dbe_budget.errors">DBE Budget is required</div>
+                                                           </div>
+                                                        <label class="common_lbl" for="dbe_budget" >DBE BUDGET ($)</label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md">
+                                                   
+                                                  </div>
+                                                  <div class="col-md">
+                                                      <button class="btn btn-filled  common_btn_action ml-2" type="button"  (click)="clinsave()"  >
+                                                          <img class="img-fluid btn-img "                             
+                                                              >Save</button>
+                                                              <button class="btn btn-filled btn-delete common_btn_cancel ml-1" type="button" >                                                           Cancel
+                                                                </button>
+                                                    </div>
+                                              </div>
+                                          
+                                         
+                                         
       
                                       </div>
-                                      <div class="row col-12">
-                                        <div class="col-3">
-                                            <label >DBE Goal Type </label>
-                                            <select class="Country" id="dbe_goal_type" formControlName="dbe_goal_type"  >
-                                                <option *ngFor="let item of dbe_list" [value]="item.BEGoalTypeId ">
-                                                    {{item.BEGoalTypeDesc}}
-                                                </option>
-                                               </select>
-                                               <div  class="help-block text-danger">
-                                                  <div *ngIf="clin_submitted && clfc.dbe_goal_type.errors">DBE Goal Type is required</div>
-                                               </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <label class="labelwidth" >DBE Goal(%)</label>
-                                            <input type="text" class="" id="dbe_goal"
-                                                formControlName="dbe_goal"
-                                                >
-                                                <div  class="help-block text-danger">
-                                                    <div *ngIf="clin_submitted && clfc.dbe_goal.errors">DBE Goal is required</div>
-                                                 </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <label class="labelwidth" >DBE Budget ($)</label>
-                                            <input type="text" class="" id="dbe_budget"
-                                                formControlName="dbe_budget">
-                                                <div  class="help-block text-danger">
-                                                    <div *ngIf="clin_submitted && clfc.dbe_budget.errors">DBE Budget is required</div>
-                                                 </div>
-                                        </div>
-    
-                                     </div>
+                                     
                                         </form>
-                                      <div class="row col-12 mt-1 align-self-end text-left">
-                                          <div class="col-3">
-                                              <button class="btn btn-filled  common_btn_action ml-2" type="button"  (click)="clinsave()"  >
-                                                  <img class="img-fluid btn-img "                             
-                                                      >Save</button>
-                                                      <button class="btn btn-filled btn-delete common_btn_cancel ml-1" type="button" >                                                           Cancel
-                                                        </button>
-                                          </div>
-                                       
-                                         
-                                                  
-                                      </div>
+                                
                                   </div>
                                     </div>
                               </ng-template>
@@ -569,9 +520,16 @@
                               </ng-template>
                             </accordion-item>
                           </accordion>
+                          <div class="row col-12">
+                            <div class="form-group text-right col-12">
+                              <input type="button"   class="btn btn-primary fixedwidthcls" (click)="generalsave()"  value="Update" />  
+                              <input type="button"   class="btn btn-primary fixedwidthcls" (click)="generalsave()"  value="Cancel" />  
+
+                            </div>
+                         </div>
                         </div>
              
-    
+      </form>
   </div>
 </div>
 
