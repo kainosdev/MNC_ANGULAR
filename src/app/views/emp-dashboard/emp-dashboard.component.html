@@ -1,0 +1,237 @@
+<div class="card"> <!-- give it an id -->
+
+  <div class="card-body" >
+
+<h4>Employee name</h4> 
+
+
+<accordion [collapsing]="collapsing">
+  <accordion-item >
+      <ng-template accordionTitle>
+          <div class="flex space-x-2 ">
+            <h6>My direct reports</h6>
+          </div>
+        </ng-template>
+    <ng-template accordionContent>
+      <div class="p-4">
+        <h4 class="modal-title" style="font-size: 12px !important;margin-left: 884px;">Advanced Search</h4><br>
+        <div class="row">
+          <table  class="table  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+              <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
+        
+                <tr>
+                <!-- <th  style="display:none;width: 0px;">b</th> -->
+                <th  style="color: white;">Employee Id</th>
+                <th  style="color: white;">Employee Frist Name</th>
+                <th  style="color: white;">Last Name</th>
+                <th style="color: white;">Middle Name</th>
+                 <th style="color: white;">Phone</th>
+                <th style="color: white;">Email</th>
+                <th  style="color: white;">Employment Type</th>
+                <th style="color: white;">Job Title</th>
+                <th style="color: white;"> Start Date</th>
+        
+        
+              </tr>
+            </thead>
+        
+            
+          </table>
+        </div>
+      </div>
+    </ng-template>
+  </accordion-item>
+    
+  <accordion-item>
+      <ng-template accordionTitle>
+        <div class="flex space-x-2">
+          <h6>Employee Users pending approval</h6>
+        </div>
+      </ng-template>
+      <ng-template accordionContent>
+        <div class="p-4">
+          <h4 class="modal-title" style="font-size: 12px !important;margin-left: 884px;">Advanced Search</h4><br>
+          <div class="row">
+            <table  class="table  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+                <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
+      
+              <tr>
+              <!-- <th  style="display:none;width: 0px;">b</th> -->
+              <th  style="color: white;">Employee Id</th>
+              <th  style="color: white;">Employee Frist Name</th>
+              <th  style="color: white;">Last Name</th>
+              <th style="color: white;">Middle Name</th>
+               <th style="color: white;">Phone</th>
+              <th style="color: white;">Email</th>
+              <th  style="color: white;">Employment Type</th>
+              <th style="color: white;">Job Title</th>
+              <th style="color: white;"> Start Date</th>
+      
+      
+            </tr>
+          </thead>
+      
+          
+        </table>
+        </div>
+        </div>
+      </ng-template>
+    </accordion-item>
+  
+    <accordion-item>
+      <ng-template accordionTitle>
+        <div class="flex space-x-2">
+          <h6>Vendor Users pending approval</h6>
+        </div>
+      </ng-template>
+      <ng-template accordionContent>
+        <div class="p-4">
+          <h4 class="modal-title" style="font-size: 12px !important;margin-left: 884px;">Advanced Search</h4><br>
+          <input class="modal-title" style="font-size: 12px !important;margin-left: 827px;"type="text" placeholder="Search Text">
+          <label class="labelwidth"></label>
+          <div class="row">
+        <table  class="table  servicecss tblnewbook"   style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+          <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
+      
+              <tr>
+              <!-- <th  style="display:none;width: 0px;">b</th> -->
+              <th  style="color: white;">Vendor Id</th>
+              <th  style="color: white;">Vendor Name</th>
+              <th  style="color: white;">Vendor Type</th>
+               <th style="color: white;">Phone</th>
+              <th style="color: white;">Email</th>
+              <th style="color: white;">UserStatu</th>
+              <th style="color: white;">Created Date</th>
+              <th style="color: white;">Created serId</th>
+      
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let item of Vendorlist">           
+        
+
+
+
+            <td>{{item.ComtractVendorId}}</td>
+            <td>{{item.ComtractVendorId}}</td>
+            <td>{{item.ComtractVendorId}}</td>
+            <td>{{item.BidStatusId}}</td>
+            <td>{{item.CreatedDate}}
+            </td>
+            <td>{{item.BidStatusId}}</td>
+            <td>{{item.BidStatusId}}</td>
+            <td>{{item.BidStatusId}}</td>
+          </tr>
+          </tbody>
+          
+        </table>
+        </div>
+        </div>
+      </ng-template>
+    </accordion-item>
+
+    <accordion-item>
+      <ng-template accordionTitle>
+        <div class="flex space-x-2">
+          <h6>Bids</h6>
+        </div>
+        
+      </ng-template>
+      <ng-template accordionContent>
+          <div class="p-4">
+            <h4 class="modal-title" style="font-size: 12px !important;margin-left: 884px;">Advanced Search</h4><br>
+            <div class="row">
+              <table  class="table  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+                <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
+            
+                    <tr>
+                    <!-- <th  style="display:none;width: 0px;">b</th> -->
+                    <th  style="color: white;">Bid Number</th>
+                    <th  style="color: white;">Title</th>
+                    <th  style="color: white;">Category</th>
+                    <th style="color: white;"> Status</th>
+                     <th style="color: white;">Department</th>
+                    <th style="color: white;"> Posted Date</th>
+                    <th  style="color: white;"> Due Date</th>
+            
+            
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr *ngFor="let item of Bidslist">           
+                 
+      
+      
+      
+                  <td>{{item.BidNumber}}</td>
+                  <td>{{item.Title}}</td>
+                  <td>{{item.SolicitationTypeId}}</td>
+                  <td>{{item.BidStatusId}}</td>
+                  <td>{{item.DepartmentId}}</td>
+                  <td>{{item.BidPostedDate}}</td>
+                  <td>{{item.BidResponseDueDate}}</td>
+                </tr>
+                </tbody>
+                
+              </table>
+            </div>
+          </div>
+      </ng-template>
+    </accordion-item>
+
+
+    <accordion-item>
+      <ng-template accordionTitle>
+        <div class="flex space-x-2">
+          <h6>My contracts</h6>
+        </div>
+        
+      </ng-template>
+      <ng-template accordionContent>
+          <div class="p-4">
+            <h4 class="modal-title" style="font-size: 12px !important;margin-left: 884px;">Advanced Search</h4><br>
+            <div class="row">
+              <table  class="table  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+                  <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
+            
+                    <tr>
+                    <!-- <th  style="display:none;width: 0px;">b</th> -->
+
+                    <th  style="color: white;" scope="col">Contract Number</th>
+                    <th  style="color: white;" scope="col">Title</th>
+                    <th  style="color: white;" scope="col">Category</th>
+                    <th style="color: white;" scope="col"> Contract Status</th>
+                     <th style="color: white;" scope="col">Department</th>
+                    <th style="color: white;" scope="col"> Awarded Date</th>
+                    <th  style="color: white;" scope="col"> Planned Start Date</th>
+                    <th style="color: white;" scope="col"> # of Bidresponse  Documents</th>
+                    <th style="color: white;" scope="col"> # of Contract Documents</th>
+            
+            
+                  </tr>
+                </thead>
+            
+                <tbody >
+                  <tr *ngFor="let item of awarduserlist">           
+             
+                  <td ><a class="fontwghtcls">87654322</a></td>
+                  <td >Facility Safety Upgrades</td>
+                  <td>RFQ </td>
+                  <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+                  <td> Closed</td>
+                  <td >DHS</td>
+                  <td >Dec 11, 2021</td>
+                  <td >	Dec 30, 2021</td>
+                  <td >14%</td>
+                  <td >	34%</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </ng-template>
+    </accordion-item>
+  
+</accordion>
+</div>
+</div>
