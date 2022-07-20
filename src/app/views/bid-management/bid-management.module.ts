@@ -24,6 +24,8 @@ import { BidmanagementComponent} from './bid-management.component';
 import { AccordionModule } from "../../lib/accordion/accordion.module";
 import {MatTabsModule} from '@angular/material/tabs';
 import { SharedModule } from '../../shared/shared.module';
+import { ProgressComponent } from '../../../components/progress/progress.component';
+import { DndDirective } from '../../directives/dnd.directive';
 
 
 @NgModule({
@@ -50,6 +52,6 @@ import { SharedModule } from '../../shared/shared.module';
       // WidgetsModule
     ],
 
-    declarations: [BidmanagementComponent]
+    declarations: [BidmanagementComponent,ProgressComponent,DndDirective]
   })
   export class BidmanagementModule { }

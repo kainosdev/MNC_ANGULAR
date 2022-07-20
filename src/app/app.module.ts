@@ -61,6 +61,7 @@ import { LogoutComponent } from './views/logout/logout.component';
 import { TesingComponent } from './tesing/tesing.component';
 import { BidResponsesComponent } from './views/bid-responses/bid-responses.component';
 import { BidListComponent } from './views/bid-list/bid-list.component';
+import { ViewBidresponsesComponent } from './views/view-bidresponses/view-bidresponses.component';
 // import { BidlistComponent } from './bidlist/bidlist.component';
 
 // import { VendorListComponent } from './views/vendor-list/vendor-list.component';
@@ -85,7 +86,8 @@ const APP_CONTAINERS = [
 @NgModule({
   declarations: [AppComponent, ...APP_CONTAINERS, LogoutComponent, 
     // RegistrationformComponent,
-     TesingComponent, 
+     TesingComponent
+      // ViewBidresponsesComponent, 
     //  BidListComponent, 
     //  BidResponsesComponent, 
     // BidlistComponent

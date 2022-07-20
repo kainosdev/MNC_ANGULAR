@@ -1,10 +1,12 @@
 <div class="container">
+
+
     <form [formGroup]="contractaward">
         <p class="mainheading">Contract Award</p>
         <div class="row">
             <div class="col-sm-3 innerlinefont">
                 <label class="label1">Solicitation Number</label>
-                <input type="text" class="solicitaionnum" formControlName="SolicitationNumber">
+                <input type="text" class="solicitaionnum" formControlName="SolicitationNumber" >
                 <div class="help-block text-danger">
                     <div *ngIf="submitted && ca.SolicitationNumber.errors">Solicitation Number is required</div>
                 </div>
@@ -12,8 +14,12 @@
             <div class="col-sm-3 innerlinefont">
                 <label class="label">Status</label>
                 <select class="status" formControlName="Status">
-                    <option>Open</option>
-                    <option>Closed</option>
+                  <option></option>
+                  <option *ngFor="let b of bidstatusdetail" [value]="b.BidStatusId ">
+                    {{b.BidStatusDesc}}
+                </option>
+                    <!-- <option>Open</option>
+                    <option>Closed</option> -->
                 </select>
                 <div class="help-block text-danger">
                     <div *ngIf="submitted && ca.Status.errors">Status is required</div>
@@ -75,8 +81,11 @@
                     <div class="labelheight">
                         <label class="labelwidth">Contract Vehicle</label>
                         <select class="contractvehicle" formControlName="ContractVehicle">
-                            <option>General Service Administration</option>
-                            <option>Federal Business Opportunities</option>
+                          <option *ngFor="let c of contractvehicledetail" [value]="c.ContractVehicleId ">
+                            {{c.ContractVehicleDesc}}
+                        </option>
+                            <!-- <option>General Service Administration</option>
+                            <option>Federal Business Opportunities</option> -->
                         </select>
                         <div class="help-block text-danger">
                             <div *ngIf="submitted && ca.ContractVehicle.errors">Contract Vehicle is required</div>
@@ -143,22 +152,42 @@
                     <div class="formgroup">
                         <div class="row">
                             <div class="col-sm-7">
-                                <label class="contractperiodlabel">Contract Period</label>
-                                <input type="date" class="posteddate" formControlName="ContractPeriod">
+                                <label class="contractperiodlabel">Contract Period Planned</label>
+                                <input type="date" class="posteddate" formControlName="ContractPeriodPlanned">
                                 <div class="help-block text-danger">
-                                    <div *ngIf="submitted && ca.ContractPeriod.errors">Contract Period is required
+                                    <div *ngIf="submitted && ca.ContractPeriodPlanned.errors">Contract Period is required
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-5">
                                 <label class="tolabel">To</label>
-                                <input type="date" class="posteddate" formControlName="ToDate">
+                                <input type="date" class="posteddate" formControlName="ToDatePlanned">
                                 <div class="help-block text-danger">
-                                    <div *ngIf="submitted && ca.ToDate.errors">To Date is required </div>
+                                    <div *ngIf="submitted && ca.ToDatePlanned.errors">To Date is required </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="formgroup">
+                      <div class="row">
+                          <div class="col-sm-7">
+                              <label class="contractperiodlabel">Contract Period Actual</label>
+                              <input type="date" class="posteddate" formControlName="ContractPeriodActual">
+                              <div class="help-block text-danger">
+                                  <div *ngIf="submitted && ca.ContractPeriodActual.errors">Contract Period is required
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-5">
+                              <label class="tolabel">To</label>
+                              <input type="date" class="posteddate" formControlName="ToDateActual">
+                              <div class="help-block text-danger">
+                                  <div *ngIf="submitted && ca.ToDateActual.errors">To Date is required </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
                     <div class="row">
                         <div class="col-sm-7">
                         <label class="labelwidth">Number of Base Years</label>
@@ -188,7 +217,7 @@
                         </div>
                         </div>
                     </div> -->
-                    
+
                     <div class="labelheight">
                         <label class="labelwidth">Technical Monitor</label>
                         <select class="officerlabel" formControlName="TechnicalMonitor">
@@ -216,9 +245,10 @@
             <div class="col-sm-7">
                 <div class="table1">
                     <p class="mainheading">Contract Documents - Draft</p>
-                    <a href="/" class="uploaddocument">Upload Documents</a>
+                    <a  class="popup-link uploaddocument" data-toggle="modal" (click)="openPopup()">Upload Documents</a>
+                    <!-- <a   class="popup-link" data-toggle="modal" (click)="openPopup()"><span style="text-align: right;">Advanced Search</span></a> -->
                     <table datatable [dtOptions]="dtOptions" class="row-border hover">
-                        <thead>
+                        <thead class="tablehead">
                             <tr>
                                 <th>Document Type</th>
                                 <th>File Name Uploaded</th>
@@ -245,9 +275,9 @@
 
                 <div class="table2">
                     <p class="mainheading">Contract Documents - Final</p>
-                    <a href="/" class="uploaddocument">Upload Documents</a>
+                    <a  class="popup-link uploaddocument" (click)="openPopup()">Upload Documents</a>
                     <table datatable [dtOptions]="dtOptions" class="row-border hover">
-                        <thead>
+                        <thead class="tablehead">
                             <tr>
                                 <th>Document Type</th>
                                 <th>File Name Uploaded</th>
@@ -280,12 +310,12 @@
             </div>
         </div>
     </form>
+
 </div>
 
 <!--first row ends-->
 
 <!--second row starts-->
-
 
 
 <!--second row ends-->
@@ -294,3 +324,59 @@
     &nbsp;&nbsp;
     <input type="button" class="btn btn-primary fixedwidthcls" (click)="submitContractAward()" value="Save " />
 </div><br>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}" style="margin-top: 65px;margin-left: 95px;">
+
+<div class="modal-dialog"   style="width:800px">
+  <div class="modal-content" id="modelmain">
+     <div class="" style="text-align: center;">
+        <button type="button" style="background:none" id="closedid" class="close" data-dismiss="modal"
+        (click)="closePopup()">×</button>
+        <h3 id="headingpopupid" class="modal-title subheadingcls">Contract Award</h3>
+        <span id="uploaddoccontentId" class="subheadingcls"> Upload Documents</span>
+     </div>
+     <div class="modal-body">
+        <div class="form-group form-inline">
+           <label class="col-sm-4 documentlabel" style="text-align:left">Document 1</label>
+           <select type="text" required="" class="col-sm-4 " style="margin-left: -14px;height:28px" id="State" name="State" autocomplete="off">
+              <option></option>
+              <option></option>
+           </select>
+           <!--<label class="col-sm-1 "></label>-->
+           <input class="col-sm-5 form-control" type="file" name="Document1" id="Document1" style="margin-top: 3px;border: none;margin-left: 12px;height:28px !important;font-size:12px !important;">
+        </div>
+        <!--<p class="pcls6"></p>-->
+
+        <div class="row">
+            <div class="col-sm-9 addDocBtncls" style="text-align: right;">
+                <br>
+               <input type="button" id="localityaddBtn" name="save" class="btn btn-primary prevnextbtn1 " value="Add Document
+">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+            </div>
+        <div class="col-sm-3">
+
+           </div>
+           </div>
+
+        <p class="pcls"></p>
+
+        <div class="modal-footer" style="text-align:center">
+              <input data-dismiss="modal" type="button"  name="save" class="btn btn-primary fixedwidthcls" value="Cancel" >
+              <input data-dismiss="modal" type="button"  name="save" class="btn btn-primary fixedwidthcls" value="Save">
+           </div>
+
+     </div>
+
+  </div>
+</div>
+</div>

@@ -110,7 +110,7 @@
 
 
 <table  class="table  servicecss tblnewbook"   datatable="ng"  datatable  [dtOptions] = "dtOptions" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
-    <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
+    <thead class="tablehead">
 
         <tr>
         <!-- <th  style="display:none;width: 0px;">b</th> -->
@@ -131,12 +131,27 @@
     </thead>
 
     <tbody >
-      <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+
+      <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;" *ngFor="let v of viewbiddetail">
+        <td>{{v.BidNumber}}</td>
+        <td>{{v.Title}}</td>
+        <td>-</td>
+        <td>{{v.BitstatusDesc}}</td>
+        <td>{{v.DepartmentName}}</td>
+        <td>{{v.FundingSourceDesc}}</td>
+        <td>{{v.BidBudgetAmount}}</td>
+        <td>{{posteddate}}</td>
+        <td>{{duedate}}</td>
+        <td>{{v.BidBEGoalPercent}}%</td>
+        <td>{{v.BidResponseTotalScore}}</td>
+       </tr>
+
+      <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
 
          <td ><a class="fontwghtcls">87654322</a></td>
         <td >Facility Safety Upgrades</td>
         <td>RFQ </td>
-        <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+        <td><p class="firstnamenewbook">Abhi</p></td>
         <td> Closed</td>
         <td >DHS</td>
         <td >m24h111s</td>
@@ -145,13 +160,13 @@
         <td >	Dec 30, 2021</td>
         <td >14%</td>
         <td >	34%</td>
-      </tr>
+      </tr> -->
 
-      <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+      <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
        <td ><a class="fontwghtcls">87654322</a></td>
        <td >Facility Safety Upgrades</td>
        <td>RFQ </td>
-       <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+       <td><p class="firstnamenewbook">Abhi</p></td>
        <td> Closed</td>
        <td >DHS</td>
        <td >m24h111s</td>
@@ -161,12 +176,12 @@
        <td >14%</td>
        <td >	34%</td>
      </tr>
-
-     <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+ -->
+     <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
       <td ><a class="fontwghtcls">87654322</a></td>
       <td >Facility Safety Upgrades</td>
       <td>RFQ </td>
-      <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+      <td><p class="firstnamenewbook">Abhi</p></td>
       <td> Closed</td>
       <td >DHS</td>
       <td >m24h111s</td>
@@ -175,13 +190,13 @@
       <td >	Dec 30, 2021</td>
       <td >14%</td>
       <td >	34%</td>
-    </tr>
+    </tr> -->
 
-    <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+    <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
       <td ><a class="fontwghtcls">87654322</a></td>
       <td >Facility Safety Upgrades</td>
       <td>RFQ </td>
-      <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+      <td><p class="firstnamenewbook">Abhi</p></td>
       <td> Closed</td>
       <td >DHS</td>
       <td >m24h111s</td>
@@ -190,12 +205,12 @@
       <td >	Dec 30, 2021</td>
       <td >14%</td>
       <td >	34%</td>
-    </tr>
-    <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+    </tr> -->
+    <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
       <td ><a class="fontwghtcls">87654322</a></td>
       <td >Facility Safety Upgrades</td>
       <td>RFQ </td>
-      <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+      <td><p class="firstnamenewbook">Abhi</p></td>
       <td> Closed</td>
       <td >DHS</td>
       <td >m24h111s</td>
@@ -204,13 +219,13 @@
       <td >	Dec 30, 2021</td>
       <td >14%</td>
       <td >	34%</td>
-    </tr>
+    </tr> -->
 
-    <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+    <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
       <td ><a class="fontwghtcls">87654322</a></td>
       <td >Facility Safety Upgrades</td>
       <td>RFQ </td>
-      <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+      <td><p class="firstnamenewbook">Abhi</p></td>
       <td> Closed</td>
       <td >DHS</td>
       <td >m24h111s</td>
@@ -219,13 +234,13 @@
       <td >	Dec 30, 2021</td>
       <td >14%</td>
       <td >	34%</td>
-    </tr>
+    </tr> -->
 
-    <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+    <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
       <td ><a class="fontwghtcls">87654322</a></td>
       <td >Facility Safety Upgrades</td>
       <td>RFQ </td>
-      <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+      <td><p class="firstnamenewbook">Abhi</p></td>
       <td> Closed</td>
       <td >DHS</td>
       <td >m24h111s</td>
@@ -234,14 +249,14 @@
       <td >	Dec 30, 2021</td>
       <td >14%</td>
       <td >	34%</td>
-    </tr>
+    </tr> -->
 
 
-    <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+    <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
       <td ><a class="fontwghtcls">87654322</a></td>
       <td >Facility Safety Upgrades</td>
       <td>RFQ </td>
-      <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+      <td><p class="firstnamenewbook">Abhi</p></td>
       <td> Closed</td>
       <td >DHS</td>
       <td >m24h111s</td>
@@ -250,14 +265,14 @@
       <td >	Dec 30, 2021</td>
       <td >14%</td>
       <td >	34%</td>
-    </tr>
+    </tr> -->
 
 
-    <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+    <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
       <td ><a class="fontwghtcls">87654322</a></td>
       <td >yyy</td>
       <td>RFQ </td>
-      <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+      <td><p class="firstnamenewbook">Abhi</p></td>
       <td> Closed</td>
       <td >DHS</td>
       <td >m24h111s</td>
@@ -266,14 +281,14 @@
       <td >	Dec 30, 2021</td>
       <td >14%</td>
       <td >	34%</td>
-    </tr>
+    </tr> -->
 
 
-    <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+    <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
       <td ><a class="fontwghtcls">87654322</a></td>
       <td >Facility Safety Upgrades</td>
       <td>RFQ </td>
-      <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+      <td><p class="firstnamenewbook">Abhi</p></td>
       <td> Closed</td>
       <td >DHS</td>
       <td >m24h111s</td>
@@ -282,14 +297,14 @@
       <td >	Dec 30, 2021</td>
       <td >14%</td>
       <td >	34%</td>
-    </tr>
+    </tr> -->
 
 
-    <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+    <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
       <td ><a class="fontwghtcls">87654322</a></td>
       <td >zzzz</td>
       <td>RFQ </td>
-      <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+      <td><p class="firstnamenewbook">Abhi</p></td>
       <td> Closed</td>
       <td >DHS</td>
       <td >m24h111s</td>
@@ -298,14 +313,14 @@
       <td >	Dec 30, 2021</td>
       <td >14%</td>
       <td >	34%</td>
-    </tr>
+    </tr> -->
 
 
-    <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+    <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
       <td ><a class="fontwghtcls">87654322</a></td>
       <td >Facility Safety Upgrades</td>
       <td>RFQ </td>
-      <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+      <td><p class="firstnamenewbook">Abhi</p></td>
       <td> Closed</td>
       <td >DHS</td>
       <td >m24h111s</td>
@@ -314,13 +329,13 @@
       <td >	Dec 30, 2021</td>
       <td >14%</td>
       <td >	34%</td>
-    </tr>
+    </tr> -->
 
-    <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+    <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
       <td ><a class="fontwghtcls">87654322</a></td>
       <td >tes</td>
       <td>RFQ </td>
-      <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+      <td><p class="firstnamenewbook">Abhi</p></td>
       <td> Closed</td>
       <td >DHS</td>
       <td >m24h111s</td>
@@ -329,13 +344,13 @@
       <td >	Dec 30, 2021</td>
       <td >14%</td>
       <td >	34%</td>
-    </tr>
+    </tr> -->
 
-    <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+    <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
       <td ><a class="fontwghtcls">87654322</a></td>
       <td >Facility Safety Upgrades</td>
       <td>RFQ </td>
-      <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+      <td><p class="firstnamenewbook">Abhi</p></td>
       <td> Closed</td>
       <td >DHS</td>
       <td >m24h111s</td>
@@ -344,14 +359,14 @@
       <td >	Dec 30, 2021</td>
       <td >14%</td>
       <td >	34%</td>
-    </tr>
+    </tr> -->
 
 
-    <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+    <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
       <td ><a class="fontwghtcls">87654322</a></td>
       <td >Abi</td>
       <td>RFQ </td>
-      <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+      <td><p class="firstnamenewbook">Abhi</p></td>
       <td> Closed</td>
       <td >DHS</td>
       <td >m24h111s</td>
@@ -360,14 +375,14 @@
       <td >	Dec 30, 2021</td>
       <td >14%</td>
       <td >	34%</td>
-    </tr>
+    </tr> -->
 
 
-    <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
+    <!-- <tr   style="border-bottom:1px solid #aeaeae;font-size: 12px;">
       <td ><a class="fontwghtcls">87654322</a></td>
       <td >Facility Safety Upgrades</td>
       <td>RFQ </td>
-      <!-- <td><p class="firstnamenewbook">Abhi</p></td> -->
+      <td><p class="firstnamenewbook">Abhi</p></td>
       <td> Closed</td>
       <td >DHS</td>
       <td >m24h111s</td>
@@ -376,6 +391,6 @@
       <td >	Dec 30, 2021</td>
       <td >14%</td>
       <td >	34%</td>
-    </tr>
+    </tr> -->
     </tbody>
   </table>
