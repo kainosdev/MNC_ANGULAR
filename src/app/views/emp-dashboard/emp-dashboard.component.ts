@@ -29,7 +29,10 @@ export class EmpDashboardComponent implements OnInit {
   ngOnInit(): void {
 
 
+
+
     
+
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
