@@ -937,7 +937,7 @@
         </div>
       </div>
 
-    <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
+    <div class="form-group col-xs-4 col-md-2 col-sm-2">
             <label class="labelwidth">State/Province<span class="requiredfield "> *</span></label>
 
     </div>
@@ -946,14 +946,15 @@
         <select class="State"  formControlName="StateId" id="curstate_id"
          (change)="inputErrorMessage('curstate_id');onchangecountry()" >
 
-        <option value=""></option> 
+
+         <!-- <option value=""></option> -->
          <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
            {{statelistid.StateName}}</option>
           </select>
           <div  class="help-block text-danger">
                 <div *ngIf="submitted && vif.StateId.errors">State/Province is required</div>
          </div>
-    </div> -->
+    </div>
 </div>
 <div class="row mt-1">
     <div class="form-group col-xs-4 col-md-2 col-sm-2">

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RestApiService } from '../shared/rest-api.service';
 import { FormGroup, Validators, FormControl, FormBuilder} from '@angular/forms';
+import { config_url } from '../shared/constant';
 
 
 @Component({
@@ -10,16 +12,25 @@ import { FormGroup, Validators, FormControl, FormBuilder} from '@angular/forms';
 })
 
 export class ContractawardComponent implements OnInit {
- 
+  displayStyle = "none";
+
 
   contractaward: FormGroup | any;
   submitted = false;
   title = 'datatables';
   dtOptions: DataTables.Settings = {};
+
+  bidstatusdetail: any;
+  contractvehicledetail: any;
   // posts: any;
-  constructor(private http: HttpClient, private frmbuilder: FormBuilder) { }
+  constructor(private http: HttpClient, private frmbuilder: FormBuilder,     private restApi: RestApiService
+    ) { }
 
   ngOnInit(): void {
+
+    this.getBidStatus();
+    this.getContractVehicle();
+    
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
@@ -42,8 +53,10 @@ export class ContractawardComponent implements OnInit {
       FundingSource:['', [Validators.required]],
       DBEGoalCommitted:['', [Validators.required]],
       ContractValue:['', [Validators.required]],
-      ContractPeriod:['', [Validators.required]],
-      ToDate:['', [Validators.required]],
+      ContractPeriodPlanned:['', [Validators.required]],
+      ToDatePlanned:['', [Validators.required]],
+      ContractPeriodActual:['', [Validators.required]],
+      ToDateActual:['', [Validators.required]],
       NumberofBaseYears:['', [Validators.required]],
       NumberofOptionYears:['', [Validators.required]],
       TechnicalMonitor:['', [Validators.required]],
@@ -51,18 +64,45 @@ export class ContractawardComponent implements OnInit {
 
     })
 
- 
+
 
   }
 
   get ca() {
     return this.contractaward.controls;
   }
-  
+
   submitContractAward(){
     this.submitted = true;
   }
   cancelform(){
     this.submitted = false;
   }
+  openPopup() {
+    this.displayStyle = "block";
+  }
+
+  closePopup(){
+    this.displayStyle = "none";
+  }
+  getBidStatus(){
+    this.http.get(config_url+'/app/BidStatus').subscribe(
+      (bidstatus: {}) => {
+       console.log(bidstatus);
+       this.bidstatusdetail=bidstatus;
+       this.bidstatusdetail=this.bidstatusdetail.BidStatus;
+
+
+      });
+
+  }
+  getContractVehicle(){
+    this.http.get(config_url+'/app/ContractVehicle').subscribe(
+      (contractvehicle: {}) => {
+       console.log(contractvehicle);
+       this.contractvehicledetail=contractvehicle;
+       this.contractvehicledetail=this.contractvehicledetail.ContractVehicle;
+      });
+  }
+
 }
