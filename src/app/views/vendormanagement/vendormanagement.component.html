@@ -1563,7 +1563,8 @@
                        
                         
 <!-- arr not equal to null -->
-<div *ngIf="SingleVendorContactDetailsArr.length != 0">
+<!-- <div *ngIf="SingleVendorContactDetailsArr.length != 0"> -->
+        <div > 
     <div  class="card tab-content p-3"  *ngFor="let s of SingleVendorContactDetailsArr">
 
 
@@ -1686,7 +1687,7 @@
 
 
 <!-- arr equal to null -->
-<div *ngIf="SingleVendorContactDetailsArr.length == 0">
+<div >
 <div  class="card tab-content p-3"  >
 
 
@@ -1807,10 +1808,10 @@
 
 
                     <p class="mainheading heading" style=" padding-bottom: 5px; padding-top: 16px;">Additional Contact Information</p>
-
+                   <div *ngIf='showadditional'>
                     <form [formGroup]="contactsform" autocomplete="off" class="ml-1 mr-1">
-                            <div formArrayName="contactarray">
-                                <div *ngFor="let item of contactFormGroup.controls; let i = index; count as count;last as isLast">
+                            <div  formArrayName="contactarray">
+                                <div  *ngFor="let item of contactFormGroup.controls; let i = index; count as count;last as isLast">
                                     <div [formGroupName]="i">
                                         <div class="card tab-content p-3" *ngIf='!ContactToggle[i]'>
                                             <div class="row">
@@ -1820,26 +1821,32 @@
                                                                 formControlName="ContactId">
                                                         <div class="">
                                                             <label class="labelwidth" style="margin-left: 9px;"> Contact Name</label>
-                                                            <input type="text" class="" id="addtionalcontactname_id"
+                                                            <input type="text" class="" id="AddtionalName"
                                                                 formControlName="AddtionalName"
-                                                                (keypress)="EmptyErrorMessage('addtionalcontactname_id')">
+                                                                >
 
 
-                                                                <!-- <div  class="help-block text-danger">
-                                                                    <div *ngIf="rcf3.AddtionalName.errors">Contact Name is required</div>
-                                                                </div> -->
+                                                                <div  class="help-block text-danger" *ngIf="issubmiited && item.get('AddtionalName')?.errors">
+                                                                    <div *ngIf="issubmiited && item.get('AddtionalName')?.errors?.required">Contact Name is required</div>
+                                                                </div>
                                                         </div>
                                                         <div class="mt-1">
                                                             <label class="labelwidth" style="margin-left: 9px;">Title</label>
                                                             <input type="text" class="" id="addtionaltitle_id"
                                                                 formControlName="AddtionalTitle"
                                                                 (keypress)="EmptyErrorMessage('addtionaltitle_id')">
+                                                                <div  class="help-block text-danger" *ngIf="issubmiited && item.get('AddtionalTitle')?.errors">
+                                                                        <div *ngIf="issubmiited && item.get('AddtionalTitle')?.errors?.required">Contact Name is required</div>
+                                                                    </div>
                                                         </div>
                                                         <div class="mt-1">
                                                             <label class="labelwidth" style="margin-left: 9px;">Business Email</label>
                                                             <input type="text" class="" id="addtionalbusinessmail_id"
                                                                 formControlName="AddtionalBusinessMail"
                                                                 (keypress)="EmptyErrorMessage('addtionalbusinessmail_id')">
+                                                                <div  class="help-block text-danger" *ngIf="issubmiited && item.get('AddtionalBusinessMail')?.errors">
+                                                                        <div *ngIf="issubmiited && item.get('AddtionalBusinessMail')?.errors?.required">Contact Name is required</div>
+                                                                    </div>
                                                         </div>
                     
                                                     </div>
@@ -1849,6 +1856,9 @@
                                                             <input type="text" [textMask]="{mask: mask1}" class="" id="addtionalbusinessphone_id"
                                                                 formControlName="AddtionalBusinessPhone"
                                                                 (keypress)="EmptyErrorMessage('addtionalbusinessphone_id')">
+                                                                <div  class="help-block text-danger" *ngIf="issubmiited && item.get('AddtionalBusinessPhone')?.errors">
+                                                                        <div *ngIf="issubmiited && item.get('AddtionalBusinessPhone')?.errors?.required">Contact Name is required</div>
+                                                                    </div>
                                                         </div>
                                                         <div class="mt-1">
                                                             <label class="labelwidth" style="width: 146px;margin-left: 9px;">Active</label>
@@ -1899,6 +1909,7 @@
                                 </div>  
                             </div>  
                         </form>  
+                    </div> 
                         <div class="row" >
                                
                                 <!--   -->
