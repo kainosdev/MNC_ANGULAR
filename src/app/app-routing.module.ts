@@ -48,7 +48,6 @@ const routes: Routes = [
           import('./views/vendormanagement/vendormanagement.module').then((m) => m.VendorModule)
       },
       {
-        // path: 'vendormanagement/:id',
         path: 'contractaward',
         loadChildren: () =>
           import('./views/contractaward/contractaward.module').then((m) => m.ContractawardModule)
@@ -104,6 +103,11 @@ const routes: Routes = [
         path: 'bidManagement',
         loadChildren: () =>
           import('./views/bid-management/bid-management.module').then((m) => m.BidmanagementModule)
+      },
+      {
+        path: 'ViewBidresponses',
+        loadChildren: () =>
+          import('./views/view-bidresponses/view-bidresponses.module').then((m) => m.ViewBidresponsesModule)
       },
     ]
   },
