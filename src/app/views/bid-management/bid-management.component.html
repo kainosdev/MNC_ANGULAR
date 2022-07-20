@@ -276,6 +276,20 @@
                                                         </div>
                                                       </div>
                                                       <div class="col-md">
+                                                          <div class="form-floating">
+                                                        
+                                                              <select class="form-select" formControlName="contrcat_officer" id="contrcat_officer" (change)="inputErrorMessage('bidstatus')" >
+                                                                  <option *ngFor="let item of contract_officer_list" [value]="item.JobTitleId ">
+                                                                      {{item.JobTitleDesc}}
+                                                                  </option>
+                                                                     
+                                                              </select>                   
+                                                              <div  class="help-block text-danger">
+                                                                      <div *ngIf="submitted && bfc.set_aside.errors">Technical Monitor is required</div>
+                                                             </div>
+                                                              
+                                                                 <label class="common_lbl" for="contrcat_officer">TECHNICAL MONITOR</label>
+                                                          </div>
                                                         </div>
                                                         <div class="col-md">
                                                           </div>
@@ -348,9 +362,38 @@
                                   </div>
                                 </ng-template>
                                 <ng-template accordionContent>
-                                    <div class="p-4">
-                                      This is a simple implementation where the
-                                      <strong>Document Upload part</strong>. 
+                                    <div class="p-1">
+                                   
+                                      <strong>Document Upload </strong>. 
+
+                                      <div class="container_upload text-center" appDnd (fileDropped)="onFileDropped($event)">
+                                         
+                                          <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event)" />
+                                          <div class="row">
+                                            <div class="col-12">
+                                              <img  class="upload_file_img" src="assets/img/dnd/ic-upload-file.svg" alt="">
+                                              <h3>Drag and drop file here or upload</h3>
+                                            </div>
+                                          </div>
+              
+                                          <label for="fileDropRef">Browse for file</label>
+                                        </div>
+                                        <div class="files-list">
+                                            <strong class="name">Bid Documents</strong>
+                                          <div class="single-file" *ngFor="let file of files; let i = index">
+                                            <img src="assets/img/dnd/ic-file.svg" width="45px" alt="file">
+                                            <div class="info">
+                                              <p class="name">
+                                                {{ file?.name }}
+                                              </p>
+                                              <p class="size">
+                                                {{ formatBytes(file?.size) }}
+                                              </p>
+                                              <app-progress [progress]="file?.progress"></app-progress>
+                                            </div>
+                                            <img src="assets/img/dnd/ic-delete-file.svg" class="delete" width="20px" alt="file" (click)="deleteFile(i)">
+                                          </div>
+                                        </div>
                                     </div>
                                 </ng-template>
                               </accordion-item>
