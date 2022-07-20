@@ -1827,7 +1827,7 @@
 
 
                                                                 <div  class="help-block text-danger" *ngIf="issubmiited && item.get('AddtionalName')?.errors">
-                                                                    <div *ngIf="issubmiited && item.get('AddtionalName')?.errors?.required">Contact Name is required</div>
+                                                                    <div *ngIf="issubmiited && item.get('AddtionalName')?.errors?.['required']">Contact Name is required</div>
                                                                 </div>
                                                         </div>
                                                         <div class="mt-1">
@@ -1836,7 +1836,7 @@
                                                                 formControlName="AddtionalTitle"
                                                                 (keypress)="EmptyErrorMessage('addtionaltitle_id')">
                                                                 <div  class="help-block text-danger" *ngIf="issubmiited && item.get('AddtionalTitle')?.errors">
-                                                                        <div *ngIf="issubmiited && item.get('AddtionalTitle')?.errors?.required">Contact Name is required</div>
+                                                                        <div *ngIf="issubmiited && item.get('AddtionalTitle')?.errors?.['required']">Contact Name is required</div>
                                                                     </div>
                                                         </div>
                                                         <div class="mt-1">
@@ -1845,7 +1845,7 @@
                                                                 formControlName="AddtionalBusinessMail"
                                                                 (keypress)="EmptyErrorMessage('addtionalbusinessmail_id')">
                                                                 <div  class="help-block text-danger" *ngIf="issubmiited && item.get('AddtionalBusinessMail')?.errors">
-                                                                        <div *ngIf="issubmiited && item.get('AddtionalBusinessMail')?.errors?.required">Contact Name is required</div>
+                                                                        <div *ngIf="issubmiited && item.get('AddtionalBusinessMail')?.errors?.['required']">Contact Name is required</div>
                                                                     </div>
                                                         </div>
                     
@@ -1857,7 +1857,7 @@
                                                                 formControlName="AddtionalBusinessPhone"
                                                                 (keypress)="EmptyErrorMessage('addtionalbusinessphone_id')">
                                                                 <div  class="help-block text-danger" *ngIf="issubmiited && item.get('AddtionalBusinessPhone')?.errors">
-                                                                        <div *ngIf="issubmiited && item.get('AddtionalBusinessPhone')?.errors?.required">Contact Name is required</div>
+                                                                        <div *ngIf="issubmiited && item.get('AddtionalBusinessPhone')?.errors?.['required']">Contact Name is required</div>
                                                                     </div>
                                                         </div>
                                                         <div class="mt-1">

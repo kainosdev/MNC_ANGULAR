@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
 
 else {
   console.log("else");
-    this.http.post("http://localhost/VERTEX-PHP-API/"+'login/loginauth', this.loginForm).subscribe(
+    this.http.post("http://localhost/MNC_PHP_API/"+'login/loginauth', this.loginForm).subscribe(
       
       data => {
         console.log("data");

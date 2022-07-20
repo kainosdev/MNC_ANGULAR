@@ -162,6 +162,7 @@ this.vendorform_individual = this.frmbuilder.group({
   StateId:  ['', [Validators.required]],
    CityId:  ['', [Validators.required]],
   Zipcode: ['', [Validators.required]],
+  county_name: ['', [Validators.required]],
   DistrictId: ['', [Validators.required]],
   CountryId:  ['', [Validators.required]],
   StartDate: ['', [Validators.required]],
@@ -204,6 +205,7 @@ this.vendorform_business = this.frmbuilder.group({
   StateId:  ['', [Validators.required]],
    CityId:  ['', [Validators.required]],
   Zipcode: ['', [Validators.required]],
+  county_name: ['', [Validators.required]],
   DistrictId: ['', [Validators.required]],
   CountryId:  ['', [Validators.required]],
   StartDate: ['', [Validators.required]],
@@ -1015,7 +1017,7 @@ number(event: any) {
 
       //   })
       // };
-      this.http.post<any>(config_url+'/vendor/AdduserDetails', data).subscribe({
+      this.http.post<any>("http://localhost/MNC_PHP_API/vendor/AdduserDetails", data).subscribe({
         next: data => {
           console.error('There was an data!', data);
           console.log("errorcode",data.ErrorCodeID);
