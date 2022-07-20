@@ -1015,7 +1015,7 @@ number(event: any) {
 
       //   })
       // };
-      this.http.post<any>(config_url+'/vendor/AdduserDetails', data).subscribe({
+      this.http.post<any>("http://localhost/MNC_PHP_API/vendor/AdduserDetails", data).subscribe({
         next: data => {
           console.error('There was an data!', data);
           console.log("errorcode",data.ErrorCodeID);

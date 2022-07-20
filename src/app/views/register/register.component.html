@@ -870,7 +870,7 @@
             </div>
     </div> -->
 
-    <div class="col-md">
+    <!-- <div class="col-md">
         <div class="form-floating">
        <select class="form-select" formControlName="county_name" id="county_id"   (change)="inputErrorMessage('county_id')">
                 <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
@@ -881,9 +881,9 @@
           </div>
           <label class="common_lbl" for="floatingSelectGrid">Country</label>
         </div>
-      </div>
+      </div> -->
 
-        <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
+        <div class="form-group col-xs-4 col-md-2 col-sm-2">
                 <label class="labelwidth">Country<span class="requiredfield ">  *</span></label>
          </div>
         <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
@@ -895,26 +895,15 @@
               <div  class="help-block text-danger">
                     <div *ngIf="submitted && vif.county_name.errors">Country is required</div>
               </div>
-        </div> -->
+        </div>
 </div>
 
-<div class="row g-2">
-
-        <div class="col-md">
-                <div class="form-floating">
-               <input type="date" class="form-control" formControlName="StartDate" id="startdate_id" (click)="inputErrorMessage('startdate_id')">
-               <div  class="help-block text-danger">
-                <div *ngIf="submitted && vif.StartDate.errors">Start Date is required</div>
-                 </div>
-                <label class="common_lbl" for="social_no">Start Date</label>
-                 </div>
-         </div>         
-
-    <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
+<div class="row mt-2">
+    <div class="form-group col-xs-4 col-md-2 col-sm-2">
         <label class="labelwidth">Start Date<span class="requiredfield "> *</span> </label>
 
-    </div> -->
-    <!-- <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
+    </div>
+    <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
 
         <input type="date" class="" formControlName="StartDate" id="startdate_id"
             (click)="inputErrorMessage('startdate_id')">
@@ -922,20 +911,7 @@
             <div  class="help-block text-danger">
                     <div *ngIf="submitted && vif.StartDate.errors">Start Date is required</div>
            </div>
-    </div> -->
-
-    <div class="col-md">
-        <div class="form-floating">
-       <select class="form-select" formControlName="StateId" id="curstate_id"    (change)="inputErrorMessage('curstate_id');onchangecountry()" >
-        <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
-                {{statelistid.StateName}}</option>
-          </select> 
-          <div  class="help-block text-danger">
-                <div *ngIf="submitted && vif.StateId.errors">State/Province is required</div>
-         </div>
-          <label class="common_lbl" for="floatingSelectGrid">State/Province</label>
-        </div>
-      </div>
+    </div>
 
     <div class="form-group col-xs-4 col-md-2 col-sm-2">
             <label class="labelwidth">State/Province<span class="requiredfield "> *</span></label>
