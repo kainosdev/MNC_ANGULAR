@@ -526,7 +526,7 @@ VendorData(VendorMgmtIndividual:any){
     if(this.contactList !=null)
     {
       this.AdditionalContactList=[]
-      this.contactsform.controls.contactarray.value.forEach((element: any) => {
+      this.contactsform.controls["contactarray"].value.forEach((element: any) => {
      
         var addcontactData = {
           "AddtionalName": element.AddtionalName,
