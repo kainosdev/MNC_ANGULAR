@@ -671,16 +671,28 @@ number(event: any) {
         this.submitted = false;
         this.vendortype_show =false;
       }
-      else if(usertype_id == 'VENDOR')
+      else if(usertype_id == 'INDIVI')
       {
         this.otherform_show=false;
         this.employeeform_show=false;
        // this.vendorform_individual_show=true;
         this.submitted = false;
-       // this.vendorform_business_show=false;
-        this.vendortype_show =true;
+       this.vendorform_business_show=false;
+        this.vendorform_individual_show =true; 
 
-        this.vendortype_display(true)
+        // this.vendortype_display(true)
+
+      }
+      else if(usertype_id == 'BUSINE')
+      {
+        this.otherform_show=false;
+        this.employeeform_show=false;
+       // this.vendorform_individual_show=true;
+        this.submitted = false;
+       this.vendorform_business_show=true;
+        this.vendorform_individual_show =false; 
+
+        // this.vendortype_display(true)
 
       }
 
