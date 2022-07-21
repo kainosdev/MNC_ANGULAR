@@ -20,7 +20,7 @@
         <div class="col-md">
                 <div class="form-floating">
                 <select class="form-select" [ngModel]='usertype'   id="usertype_id" (ngModelChange)="inputErrorMessage('usertype_id');vendordetails_display();displaydata()">
-                        <option *ngFor="let userlist of usertypedata" [value]="userlist.UserTypeId" [selected]="userlist.UserTypeId === 'VENDOR'">
+                        <option *ngFor="let userlist of usertypedata" [value]="userlist.UserTypeId" [selected]="userlist.UserTypeId === 'BUSINE'">
                                 {{userlist.UserTypeDesc}}</option>
                   </select> 
                   <label class="common_lbl" for="floatingSelectGrid">USER TYPE</label>
@@ -589,11 +589,11 @@
 
                  <div class="col-md">
                         <div class="form-floating">
-                       <input type="text" class="form-control" >
-                       <!-- <div  class="help-block text-danger">
-                        <div *ngIf="submitted && rcf.Phone.errors">Phone Number is required</div>
-                       </div> -->
-                        <label class="common_lbl" for="social_no">MAIL ADDRESS</label>
+                       <input type="email" class="form-control" formControlName="mail" >
+                       <div  class="help-block text-danger">
+                        <div *ngIf="submitted && rcf.mail.errors">Email Address is required</div>
+                       </div>
+                        <label class="common_lbl" for="social_no">EMAIL ADDRESS</label>
                          </div>
                  </div>
 
@@ -913,20 +913,20 @@
 
          <div class="col-md">
                 <div class="form-floating">
-               <input type="text" class="form-control"  placeholder="Last Name">
-               <!-- <div  class="help-block text-danger">
-                <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
-                </div> -->
+               <input type="text" class="form-control" formControlName="phoneindividual" (keypress)="number($event)">
+               <div  class="help-block text-danger">
+                <div *ngIf="submitted && vif.phoneindividual.errors">Phone Number is required</div>
+                </div>
                 <label class="common_lbl" for="social_no">PHONE NUMBER</label>
                  </div>
          </div>
 
          <div class="col-md">
                 <div class="form-floating">
-               <input type="text" class="form-control"  placeholder="Last Name">
-               <!-- <div  class="help-block text-danger">
-                <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
-                </div> -->
+               <input type="text" class="form-control" formControlName="Mailindividual" >
+               <div  class="help-block text-danger">
+                <div *ngIf="submitted && vif.Mailindividual.errors">Email Address is required</div>
+                </div>
                 <label class="common_lbl" for="social_no">EMAIL ADDRESS</label>
                  </div>
          </div>
@@ -1190,10 +1190,10 @@
 
          <div class="col-md">
                 <div class="form-floating">
-               <input type="text" class="form-control" formControlName="LastName" id="lastname_id" (keypress)="inputErrorMessage('lastname_id');alpha($event)">
-               <!-- <div  class="help-block text-danger">
-                <div *ngIf="submitted && vbf.LastName.errors">Trade Name is required</div>
-                </div> -->
+               <input type="text" class="form-control" formControlName="Mailbusiness">
+               <div  class="help-block text-danger">
+                <div *ngIf="submitted && vbf.Mailbusiness.errors">Email Address is required</div>
+                </div>
                 <label class="common_lbl" for="social_no">EMAIL ADDRESS</label>
                  </div>
          </div>
@@ -1315,9 +1315,9 @@
 
 <br>
 <div class="btndiv mt-2">
-         <input type="button"  class="btn btn-primary fixedwidthcls" value="Save" (click)="cancelform()"/>
+         <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="onSubmit()"/>
          &nbsp;&nbsp;
-              <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" (click)="onSubmit()"/>
+              <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" (click)="cancelform()"/>
     </div><br>
 <!-- </div> -->
 <!-- </form> -->

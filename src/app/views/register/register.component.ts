@@ -100,8 +100,8 @@ public mask1 = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/,
       JobStartDate: ['', [Validators.required]],
       AdminUser:  [false],
       Phone:['', [Validators.required]],
-
-
+      mail:['', [Validators.required]],
+     
 
       BusinessRegisteredInSCC: [],
       VendorTypeId: [],
@@ -169,6 +169,8 @@ this.vendorform_individual = this.frmbuilder.group({
   EndDate: [''],
   VendorTypeId: [],
   EIN_SSN: ['', [Validators.required]],
+  phoneindividual: ['', [Validators.required]],
+  Mailindividual: ['', [Validators.required]],
 
 
   OutreachEmailOptIn:[],
@@ -183,7 +185,8 @@ this.vendorform_individual = this.frmbuilder.group({
   JobStartDate: [],
   BusinessRegisteredInSCC: [],
 
-  Phone:[],
+  // Phone:[],
+  mail:[],
   AdminUser: [],
   UserStatusId:['N'],
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
@@ -216,6 +219,8 @@ this.vendorform_business = this.frmbuilder.group({
   OutreachEmailOptIn:[true],
   business_ssn: ['', [Validators.required]],
   BusinessSize: ['', [Validators.required]],
+  Mailbusiness: ['', [Validators.required]],
+
   BusinessRegisteredInDistrict:[false],
   BusinessIsFranchisee: [false],
   BEClassificationId: [],
@@ -945,7 +950,7 @@ number(event: any) {
             }
             else
             {
-              this.vendorform_business.value.UserTypeId="VENDOR";
+              this.vendorform_business.value.UserTypeId="BUSINE";
               this.vendorform_business.value.VendorTypeId=true;
               var int_business=parseInt(this.vendorform_business.value.BusinessSize)
               this.vendorform_business.value.BusinessSize=int_business;
@@ -962,7 +967,7 @@ number(event: any) {
             }
             else
             {
-              this.vendorform_individual.value.UserTypeId="VENDOR"
+              this.vendorform_individual.value.UserTypeId="INDIVI"
               this.vendorform_individual.value.VendorTypeId=false;
               var int_business=parseInt(this.vendorform_individual.value.BusinessSize)
               this.vendorform_individual.value.BusinessSize=int_business;
