@@ -58,6 +58,23 @@
 <!--</c-header>-->
 
 <ng-template #userDropdown>
+
+  <c-dropdown alignment="end" variant="nav-item">
+    <button
+      cButton
+      color=""
+      [caret]="false"
+      cDropdownToggle
+      class="py-0"
+    >
+      <c-avatar
+       
+      >{{firstname}} - {{lastname}}
+      </c-avatar>
+    </button>
+    </c-dropdown>
+
+
   <c-dropdown alignment="end" variant="nav-item">
     <button
       cButton
