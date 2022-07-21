@@ -66,6 +66,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/emp-dashboard/emp-dashboard.module').then((m) => m.EmpdashboardModule)
       },
+      {
+        path: 'vendordashboard',
+        loadChildren: () =>
+          import('./views/vendor_dashboard/vendor-dashboard.module').then((m) => m.VendordashboardModule)
+      },
      {
         path: 'adminmanagement',
         loadChildren: () =>
