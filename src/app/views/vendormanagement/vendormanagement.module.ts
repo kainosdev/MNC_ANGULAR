@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
+import { AccordionModule } from "../../lib/accordion/accordion.module";
+
 import {
   AvatarModule,
   ButtonGroupModule,
@@ -13,6 +15,7 @@ import {
   ProgressModule,
   TableModule,
   TabsModule
+
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
@@ -42,7 +45,8 @@ import { VendormanagementComponent } from './vendormanagement.component';
     ChartjsModule,
     AvatarModule,
     TableModule,
-    TextMaskModule
+    TextMaskModule,
+    AccordionModule
     // WidgetsModule
   ],
   declarations: [VendormanagementComponent]

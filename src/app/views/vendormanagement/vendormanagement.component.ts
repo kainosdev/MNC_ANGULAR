@@ -53,6 +53,8 @@ export class VendormanagementComponent implements OnInit {
   opened2 = false;
   opened3 = false;
   issubmiited:boolean=false;
+  address_submmited:boolean=false;
+  contact_submmited:boolean=false;
   date:any;
   VendorMgmtBusiness: any;
   VendorMgmtIndividual:any;
@@ -73,6 +75,7 @@ export class VendormanagementComponent implements OnInit {
   statedetail:any;
   current_date: any;
   from_date: any;
+  collapsing = true;
 
   IndBusinessPastDistricts:any;
   IndBusinessPastCountry:any;
@@ -109,7 +112,8 @@ export class VendormanagementComponent implements OnInit {
   AdditionalContactList:any=[];
  
   ContactToggle : boolean[] = [];
-
+  address_list:any =[];
+  contact_list:any =[];
   SingleVendorContactNotPrimary:any;
 
   constructor(
@@ -122,7 +126,25 @@ export class VendormanagementComponent implements OnInit {
     //   ])
     // });
     // this.contactList = this.contactsform.get('contactarray') as FormArray;
-   
+    $('.btn-toggle').click(function() {
+      $(this).find('.btn').toggleClass('active');  
+      
+      if ($(this).find('.btn-primary').length>0) {
+        $(this).find('.btn').toggleClass('btn-primary');
+      }
+      if ($(this).find('.btn-danger').length>0) {
+        $(this).find('.btn').toggleClass('btn-danger');
+      }
+      if ($(this).find('.btn-success').length>0) {
+        $(this).find('.btn').toggleClass('btn-success');
+      }
+      if ($(this).find('.btn-info').length>0) {
+        $(this).find('.btn').toggleClass('btn-info');
+      }
+      
+      $(this).find('.btn').toggleClass('btn-default');
+         
+  });
   }
  
   ngOnInit(): void {
@@ -142,9 +164,10 @@ export class VendormanagementComponent implements OnInit {
     this.VendorMgmtBusiness = this.frmbuilder.group({
    VendorId:[localStorage.getItem('vendoridSes')],
   CreatedUserId:[localStorage.getItem("CreatedUseridses")],
-    UserName :[],
+  
+      UserName :new FormControl({value: '', disabled: true}, Validators.required),
       // active: [],
-      VendorTypeId:[],
+      VendorTypeId:new FormControl({value: '', disabled: true}, Validators.required),
       //FirstName: ['', [Validators.required]],
       //LastName: ['', [Validators.required]],
       MiddleName: [],
@@ -164,53 +187,11 @@ export class VendormanagementComponent implements OnInit {
       TradeName: [],
       DUNS: [],
       Website:[],
-      StartDate:['', [Validators.required]],
-      EndDate:['', [Validators.required]],
-      Address1:['', [Validators.required]],
-      Address2: [],
-      StateId: ['', [Validators.required]],
-      CityId: ['', [Validators.required]],
-      Zipcode: ['', [Validators.required]],
-      DistrictId: [],
-      CountryId: [],
-
-      BMAddress1: [],
-      BMAddress2: [],
-      BMStateId1: [],
-      BMCityId: [],
-      BMZipcode1: [],
-      BMDistrictId: [],
-      BMCountryId:[],
-      BMStartDate: [],
-      BMEndDate:[],
-
-      BPAddress1: [],
-      BPAddress2: [],
-      BPStateId: [1],
-      BPCityId: [],
-      BPZipcode: [],
-      BPDistrictId: [],
-      BPCountryId: [],
-      BPStartDate: [],
-      BPEndDate:[],
       
-      ContactName: ['', [Validators.required]],
-      BusinessPhone: ['', [Validators.required]],
-      JobTitle: ['', [Validators.required]],
-      BusinessEmail: ['', [Validators.required]],
-      // ContactActive:[],
-      VendorContactActive:[],
-      VendorContactPrimary:[1],
-
-      AddtionalName: [],
-      AddtionalTitle: [],
-      AddtionalBusinessMail: [],
-      AddtionalBusinessPhone: [],
+     
       
-      //VendorContactActive:[],
-      AddtionalContactActive:[],
-      
-     })
+     });
+   
 
      this.VendorMgmtIndividual = this.frmbuilder.group({
       UserName :[],
@@ -256,9 +237,34 @@ export class VendormanagementComponent implements OnInit {
       IPStateId:[],
      });
 
+     this.Addressform = this.frmbuilder.group({
+      address_type:[],
+      Address1:['', [Validators.required]],
+      Address2:[],
+      CityId:['', [Validators.required]], 
+      CountryId:[],
+      Zipcode:['', [Validators.required]],
+      StartDate:['', [Validators.required]],
+      EndDate:['', [Validators.required]],
+      DistrictId:[],
+      StateId:['', [Validators.required]],
+    });
+
+    this.Contactform = this.frmbuilder.group({
+      firstname:[],
+      lastname:['', [Validators.required]],
+      middlename:[],
+      JobTitle:['', [Validators.required]], 
+      BusinessPhone:[],
+      BusinessEmail:['', [Validators.required]],
+      primary:[''],
+      active:[''],
+    
+    });
+
   //  this.setUserCategoryValidators();
   this.GetVendorContactByNotPrimary();
-   
+ 
   }
   toggleContact(i:any) {
     if(this.ContactToggle[i]!=null)
@@ -267,7 +273,38 @@ export class VendormanagementComponent implements OnInit {
     }
      
   }
- 
+  
+  addaddress()
+  {
+    this.address_submmited=true;
+    if (this.Addressform.invalid) 
+    {
+        return;
+    }
+    else
+    {
+     this.address_list.push(this.Addressform.value)
+     this.Addressform.reset()
+     this.address_submmited=false;
+    }
+  }
+
+  addcontact()
+  {
+    this.contact_submmited=true;
+    if (this.Contactform.invalid) 
+    {
+        return;
+    }
+    else
+    {
+      
+     this.contact_list.push(this.Contactform.value)
+     this.Contactform.reset()
+     this.contact_submmited=false;
+   
+    }
+  }
   removeContact(index:any,contactsform:any) {
     
     // console.log(this.ContactToggle);
@@ -349,7 +386,7 @@ export class VendormanagementComponent implements OnInit {
     });
   }
 
-  addcontact() {
+  addcontact2() {
 
     // debugger
 
@@ -516,35 +553,34 @@ VendorData(VendorMgmtIndividual:any){
 
 
   Userdata(vendorMgmt:any){
-    // business
+    debugger
     this.submitted2 = true;
     this.issubmiited=true;
-    if (this.contactsform.valid) {
-     
+    if (this.VendorMgmtBusiness.valid) {
+      vendorMgmt.Newcontact = this.contact_list;
+      vendorMgmt.Address = this.address_list;
    
-    console.log('alldata',vendorMgmt);
-    if(this.contactList !=null)
-    {
-      this.AdditionalContactList=[]
-      this.contactsform.controls["contactarray"].value.forEach((element: any) => {
+    // console.log('alldata',vendorMgmt);
+    // if(this.contactList !=null)
+    // {
+    //   this.AdditionalContactList=[]
+    //   this.contactsform.controls["contactarray"].value.forEach((element: any) => {
      
-        var addcontactData = {
-          "AddtionalName": element.AddtionalName,
-          "AddtionalTitle": element.AddtionalTitle,
-          "AddtionalBusinessMail": element.AddtionalBusinessMail,
-          "AddtionalBusinessPhone": element.AddtionalBusinessPhone,
-          "AddtionalContactActive": element.AddtionalContactActive,
-          "ContactId": element.ContactId
-        };
+    //     var addcontactData = {
+    //       "AddtionalName": element.AddtionalName,
+    //       "AddtionalTitle": element.AddtionalTitle,
+    //       "AddtionalBusinessMail": element.AddtionalBusinessMail,
+    //       "AddtionalBusinessPhone": element.AddtionalBusinessPhone,
+    //       "AddtionalContactActive": element.AddtionalContactActive,
+    //       "ContactId": element.ContactId
+    //     };
   
-        this.AdditionalContactList.push(addcontactData)
-      });
-      vendorMgmt.Newcontact = this.AdditionalContactList;
-      console.log(vendorMgmt);
-      //vendorMgmt.push(this.AdditionalContactList);
-      
-       //console.log(JSON.stringify(this.AdditionalContactList))
-    }
+    //     this.AdditionalContactList.push(addcontactData)
+    //   });
+    //   vendorMgmt.Newcontact = this.AdditionalContactList;
+    //   console.log(vendorMgmt);
+ 
+    // }
 
     this.http.post('http://localhost:8080/vendor/UpdateVendor',vendorMgmt).subscribe(
     // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
@@ -925,14 +961,43 @@ GetVendorById(){
  
   let vendoridSes = localStorage.getItem('vendoridSes');
 
-  this.http.get(config_url+'/vendor/GetVendorById?VendorId='+vendoridSes).subscribe(data1 =>
+  this.http.get(config_url+'/vendor/GetVendorById?VendorId='+vendoridSes).subscribe((data:any) =>
     {
 
-      
-      this.singleVendorDet=data1;
-      this.singleVendorDet=this.singleVendorDet.SingleVendorDetails;
-      console.log("singleVendorDet>>>",this.singleVendorDet);
-      this.Vendortypevalue=this.singleVendorDet[0].VendorTypeId;
+      var response= data.SingleVendorDetails;
+      if(response != null && response.length>0)
+      {
+        var details = response[0];
+        this.VendorMgmtBusiness.patchValue({ 
+
+
+        
+          UserName :details.TradeName,
+          EIN_SSN:details.EIN_SSN,
+          // active: [],VendorTypeId
+          VendorTypeId:details.VendorTypeId =="B"?"Business":"Individual",
+          LegalName: details.LegalName,
+          TradeName: details.TradeName,
+          AliasName:details.AliasName,
+          DUNS: details.DUNS,
+       
+          NAICSCodes:details.NAICSCodes,
+          CommodityCodes:details.CommodityCodes,
+          BusinessSize:details.BusinessSize,
+          Website:details.Website,
+        
+
+
+
+         
+
+       });  
+      }
+
+      // this.singleVendorDet=data1;
+      // this.singleVendorDet=this.singleVendorDet.SingleVendorDetails;
+      // console.log("singleVendorDet>>>",this.singleVendorDet);
+      // this.Vendortypevalue=this.singleVendorDet[0].VendorTypeId;
       // if(this.Vendortypevalue == "B"){
       //   (<HTMLInputElement>document.getElementById("vendortypeactive")).checked = true;
       // }else {
@@ -1006,7 +1071,7 @@ GetVendorAddressById(){
   }
 
 Getcityall_list(){
-
+debugger
   console.log('in');
   // alert('in');
 
@@ -1154,6 +1219,12 @@ cancelform()
     return this.VendorMgmtBusiness.controls;
   }
 
+  get af() {
+    return this.Addressform.controls;
+  }
+  get cf() {
+    return this.Contactform.controls;
+  }
 
   // get rcf3() {
   //   return this.contactsform.controls;
