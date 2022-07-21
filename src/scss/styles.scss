@@ -140,6 +140,12 @@ color: white !important;
     border-color: #10295f !important;
 }
 
+.btn-primary-red {
+    color: #fff !important;
+    background-color: #A01D1D !important;
+    border-color: #A01D1D !important;
+}
+
 a {
     color: #10295f !important;
    }
@@ -175,3 +181,17 @@ a {
   opacity: 0.65 !important;
 
 }
+
+input[type=button] {
+    // padding: 7px 32px;
+    width: 95px;
+    background: #1593E4;
+    border: 0 none;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    
+  }
+
+  .btndiv{
+     text-align: right;
+   }
