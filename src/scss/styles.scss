@@ -31,6 +31,11 @@ $enable-rtl: true;
 // html, body { height: 100%; }
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.page-item.active .page-link {
+    z-index: 3;
+    background-color: #1f52be !important;
+    border-color: #1f52be !important;
+}
 
 .labelheight{
     height: 36px;
@@ -111,14 +116,14 @@ color: white !important;
 }
 
 .sidebar-nav .nav-link {
-    
+
     color: black !important;
-   
+
     background: white !important;
     font-size: 14px !important;
     // padding-left: 0px !important;
     height: 36px;
-    
+
 }
 
 .sidebar-nav .nav-link.active {
@@ -131,7 +136,7 @@ color: white !important;
 
 
 .sidebar-brand {
-   
+
     background: white;
 }
 .btn-primary {
