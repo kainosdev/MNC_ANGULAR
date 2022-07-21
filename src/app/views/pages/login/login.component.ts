@@ -41,10 +41,10 @@ export class LoginComponent implements OnInit {
     // console.log(this.loginForm);
     // this.toastr.success('hi');
  if(this.loginForm.UserId == "") {
-  (document.getElementById('invalidid') as HTMLFormElement).innerHTML = "Enter your Userid";
+  (document.getElementById('invalidid') as HTMLFormElement).innerHTML = "Enter Your Userid";
  }
  else if(this.loginForm.Password == "") {
-  (document.getElementById('invalidid') as HTMLFormElement).innerHTML = "Enter your Password";
+  (document.getElementById('invalidid') as HTMLFormElement).innerHTML = "Enter Your Password";
  }
 
 else {
