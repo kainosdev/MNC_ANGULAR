@@ -2,26 +2,26 @@
 
   <div class="card-body" >
 
-<h4>Employee name</h4>
-
+<h4>{{firstname}}</h4>
 
 <accordion [collapsing]="collapsing">
   <accordion-item >
       <ng-template accordionTitle>
           <div class="flex space-x-2 ">
-            <h6>My direct reports</h6>
+            <h6>My Direct Reports</h6>
           </div>
         </ng-template>
     <ng-template accordionContent>
       <div class="p-4">
-        <div class="row">
-          <table  class="table nowrap servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+        <div class="row" style="overflow-x:auto;">
+
+          <table  class="table nowrap  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
               <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
 
                 <tr>
                 <!-- <th  style="display:none;width: 0px;">b</th> -->
-                <th  style="color: white;">Employee Id</th>
-                <th  style="color: white;">Employee Frist Name</th>
+                <th  style="color: white;">User Name</th>
+                <th  style="color: white;">Frist Name</th>
                 <th  style="color: white;">Last Name</th>
                 <th style="color: white;">Middle Name</th>
                  <th style="color: white;">Phone</th>
@@ -30,14 +30,24 @@
                 <th style="color: white;">Job Title</th>
                 <th style="color: white;"> Start Date</th>
                 <th style="color: white;"> End Date</th>
-
-
-
               </tr>
             </thead>
-
-
+            <tbody>
+              <tr *ngFor="let item of directReportDetail">
+                <td>{{item.CreatedUserId}}</td>
+                <td>{{item.FirstName}}</td>
+                <td>{{item.lastName}}</td>
+                <td>{{item.MiddleName}}</td>
+                <td>{{item.Phone}}</td>
+                <td>{{item.Email}}</td>
+                <td>{{item.EmploymentTypeDesc}}</td>
+                <td>{{item.JobTitleDesc}}</td>
+                <td>{{employeeStartDate | date}}</td>
+                <td>{{employeeEndDate | date}}</td>
+              </tr>
+            </tbody>
           </table>
+
         </div>
       </div>
     </ng-template>
@@ -46,36 +56,55 @@
   <accordion-item>
       <ng-template accordionTitle>
         <div class="flex space-x-2">
-          <h6>Employee Users pending approval</h6>
+          <h6>Pending Approval: Employee Users </h6>
         </div>
       </ng-template>
       <ng-template accordionContent>
         <div class="p-4">
-          <h4 class="modal-title" style="font-size: 12px !important;margin-left: 884px;">Advanced Search</h4><br>
-          <div class="row">
-            <table  class="table  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+
+          <div class="row" style="overflow-x:auto;">
+            <table  class="table nowrap servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
                 <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
 
               <tr>
               <!-- <th  style="display:none;width: 0px;">b</th> -->
-              <th  style="color: white;">Employee Id</th>
-              <th  style="color: white;">Employee Frist Name</th>
+              <th  style="color: white;">User Name</th>
+              <th  style="color: white;">Frist Name</th>
               <th  style="color: white;">Last Name</th>
               <th style="color: white;">Middle Name</th>
+              <th style="color: white;">User Status</th>
+              <th style="color: white;">Approve</th>
                <th style="color: white;">Phone</th>
               <th style="color: white;">Email</th>
               <th  style="color: white;">Employment Type</th>
               <th style="color: white;">Job Title</th>
-              <th style="color: white;"> Start Date</th>
-
-
-
-
-
+              <th style="color: white;">Start Date</th>
+              <th style="color: white;">Created Date</th>
+              <th style="color: white;">Created UserId</th>
 
             </tr>
           </thead>
+          <tbody>
+            <tr *ngFor="let item of approvalEmployeeDetail">
+              <td>{{item.CreatedUserId}}</td>
+                <td>{{item.FirstName}}</td>
+                <td>{{item.lastName}}</td>
+                <td>{{item.MiddleName}}</td>
+                <td>{{item.UserStatusDesc}}</td>
+                <td> <label class="switch">
+                  <input  type="checkbox" name="outreach_active" id="outreach_activeid">
+                  <span class="slider round"></span>
+                  </label></td>
+                <td>{{item.Phone}}</td>
+                <td>{{item.Email}}</td>
+                <td>{{item.EmploymentDesc}}</td>
+                <td>{{item.JobTitleDesc}}</td>
+                <td>{{employeeApprovalStartDate | date}}</td>
+                <td>{{employeeApprovalCreatedDate | date}}</td>
+                <td>{{item.CreatedUserId}}</td>
 
+            </tr>
+          </tbody>
 
         </table>
         </div>
@@ -86,7 +115,7 @@
     <accordion-item>
       <ng-template accordionTitle>
         <div class="flex space-x-2">
-          <h6>Vendor Users pending approval</h6>
+          <h6> Pending Approval:Vendor Users</h6>
         </div>
       </ng-template>
       <ng-template accordionContent>
@@ -94,35 +123,40 @@
           <!-- <h4 class="modal-title" style="font-size: 12px !important;margin-left: 884px;">Advanced Search</h4><br> -->
           <!-- <input class="modal-title" style="font-size: 12px !important;margin-left: 827px;"type="text" placeholder="Search Text"> -->
           <label class="labelwidth"></label>
-          <div class="row">
-        <table  class="table nowrap servicecss tblnewbook"   style="border: 0.5px solid white !important;border-right: 2px solid !important;"  datatable="ng"  datatable  [dtOptions] = "dtOptions" [dtTrigger]="dtTrigger">
+          <div class="row" style="overflow-x:auto;">
+        <table  class="table nowrap servicecss tblnewbook"   style="border: 0.5px solid white !important;border-right: 2px solid !important; overflow:auto;"  datatable="ng"  datatable  [dtOptions] = "dtOptions" [dtTrigger]="dtTrigger">
           <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
 
               <tr>
               <!-- <th  style="display:none;width: 0px;">b</th> -->
-              <th  style="color: white;">Vendor Id</th>
+              <th  style="color: white;">User Name</th>
               <th  style="color: white;">Vendor Name</th>
               <th  style="color: white;">Vendor Type</th>
+              <th style="color: white;">User Status</th>
+              <th style="color: white;">Approve</th>
                <th style="color: white;">Phone</th>
               <th style="color: white;">Email</th>
-              <th style="color: white;">UserStatu</th>
               <th style="color: white;">Created Date</th>
-              <th style="color: white;">Created serId</th>
-
+              <th style="color: white;">Created UserId</th>
             </tr>
           </thead>
           <tbody >
-            <tr *ngFor="let item of Vendorlist">
+            <tr *ngFor="let item of approvalVendorDetail">
+              <td>{{item.CreatedUserId}}</td>
+              <td>{{item.vendorName}}</td>
+              <td>{{item.VendorTypeDesc}}</td>
+              <td>{{item.UserStatusDesc}}</td>
+              <td>
+                <label class="switch">
+                <input  type="checkbox" name="outreach_active" id="outreach_activeid">
+                <span class="slider round"></span>
+                </label>
+              </td>
+              <td>{{item.phone}}</td>
+              <td>{{item.Email}}</td>
+              <td>{{vendorApprovalCreatedDate | date}}</td>
+              <td>{{item.CreatedUserId}}</td>
 
-            <td>{{item.ComtractVendorId}}</td>
-            <td>{{item.ComtractVendorId}}</td>
-            <td>{{item.ComtractVendorId}}</td>
-            <td>{{item.BidStatusId}}</td>
-            <td>{{item.CreatedDate}}
-            </td>
-            <td>{{item.BidStatusId}}</td>
-            <td>{{item.BidStatusId}}</td>
-            <td>{{item.BidStatusId}}</td>
           </tr>
           </tbody>
 
@@ -135,26 +169,25 @@
     <accordion-item>
       <ng-template accordionTitle>
         <div class="flex space-x-2">
-          <h6>Bids In Drafts</h6>
+          <h6>Bids In Draft</h6>
         </div>
 
       </ng-template>
       <ng-template accordionContent>
           <div class="p-4">
             <!-- <h4 class="modal-title" style="font-size: 12px !important;margin-left: 884px;">Advanced Search</h4><br> -->
-            <div class="row">
-              <table  class="table  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+            <div class="row" style="overflow-x:auto;">
+              <table  class="table  nowrap servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;overflow:auto;">
                 <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
 
                     <tr>
-                    <!-- <th  style="display:none;width: 0px;">b</th> -->
+
                     <th  style="color: white;">Bid Number</th>
                     <th  style="color: white;">Title</th>
                     <th style="color: white;"> Status</th>
                      <th style="color: white;">Department</th>
                     <th style="color: white;"> Posted Date</th>
-                    <th  style="color: white;"> Due Date</th>
-
+                    <th  style="color: white;">Response Due Date</th>
 
                   </tr>
                 </thead>
@@ -164,8 +197,8 @@
                   <td>{{item.Title}}</td>
                   <td>{{item.BidStatusDesc}}</td>
                   <td>{{item.DepartmentName}}</td>
-                  <td>{{postedDateDraft}}</td>
-                  <td>{{dueDateDraft}}</td>
+                  <td>{{postedDateDraft | date}}</td>
+                  <td>{{dueDateDraft | date}}</td>
                 </tr>
                 </tbody>
 
@@ -184,33 +217,26 @@
       <ng-template accordionContent>
           <div class="p-4">
             <!-- <h4 class="modal-title" style="font-size: 12px !important;margin-left: 884px;">Advanced Search</h4><br> -->
-            <div class="row">
-              <table  class="table  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions" [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+            <div class="row" style="overflow-x:auto;">
+              <table  class="table nowrap servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions" [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;overflow:auto;">
                 <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
-
                     <tr>
-                    <!-- <th  style="display:none;width: 0px;">b</th> -->
                     <th  style="color: white;">Bid Number</th>
                     <th  style="color: white;">Title</th>
-                    <!-- <th  style="color: white;">Category</th> -->
                     <th style="color: white;"> Status</th>
                      <th style="color: white;">Department</th>
                     <th style="color: white;"> Posted Date</th>
-                    <th  style="color: white;"> Due Date</th>
-
-
-
+                    <th  style="color: white;">Response Due Date</th>
                   </tr>
                 </thead>
                 <tbody >
                   <tr *ngFor="let item of Bidslist">
-
                   <td>{{item.BidNumber}}</td>
                   <td>{{item.Title}}</td>
                   <td>{{item.BidStatusDesc}}</td>
                   <td>{{item.DepartmentName}}</td>
-                  <td>{{posteddate}}</td>
-                  <td>{{duedate}}</td>
+                  <td>{{posteddate | date}}</td>
+                  <td>{{duedate | date}}</td>
                 </tr>
                 </tbody>
 
@@ -224,15 +250,15 @@
     <accordion-item>
       <ng-template accordionTitle>
         <div class="flex space-x-2">
-          <h6>My contracts</h6>
+          <h6>My Contracts</h6>
         </div>
 
       </ng-template>
       <ng-template accordionContent>
           <div class="p-4">
 
-            <div class="row">
-              <table  class="table  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions" [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+            <div class="row" style="overflow-x:auto;">
+              <table  class="table nowrap servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions" [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;overflow:auto;">
                   <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
 
                     <tr>
@@ -242,11 +268,11 @@
                     <th  style="color: white;" scope="col">Title</th>
                     <th style="color: white;" scope="col"> Contract Status</th>
                      <th style="color: white;" scope="col">Department</th>
-                    <th  style="color: white;" scope="col"> Planned Start Date</th>
+                    <th  style="color: white;" scope="col">Planned Start Date</th>
                     <th style="color: white;" scope="col"> Planned End Date</th>
                     <th style="color: white;" scope="col">Actual Start Date</th>
-                    <th style="color: white;" scope="col">Actual Start Date</th>
-                    <th style="color: white;" scope="col">Contracting Officer Name</th>
+                    <th style="color: white;" scope="col">Actual End Date</th>
+                    <th style="color: white;" scope="col">Contracting Officer</th>
 
                   </tr>
                 </thead>
@@ -257,20 +283,12 @@
                     <td>{{item.Title}}</td>
                     <td>{{item.ContractStatusDesc}}</td>
                     <td>{{item.DepartmentName}}</td>
-                    <td>{{startDatePlanned}}</td>
-                    <td>{{endDatePlanned}}</td>
-                    <td>{{startDateActual}}</td>
-                    <td>{{endDateActual}}</td>
+                    <td>{{startDatePlanned | date}}</td>
+                    <td>{{endDatePlanned | date}}</td>
+                    <td>{{startDateActual | date}}</td>
+                    <td>{{endDateActual | date}}</td>
                     <td>{{item.ContractingOfficer}}</td>
-                  <!-- <td ><a class="fontwghtcls">87654322</a></td>
-                  <td >Facility Safety Upgrades</td>
-                  <td>RFQ </td>
-                  <td> Closed</td>
-                  <td >DHS</td>
-                  <td >Dec 11, 2021</td>
-                  <td >	Dec 30, 2021</td>
-                  <td >14%</td>
-                  <td >	34%</td> -->
+
                 </tr>
                 </tbody>
               </table>
