@@ -37,6 +37,23 @@
               </tr>
             </thead>
         
+            <tbody >
+              <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of vendoractivelist">           
+                
+              <td><a href="">{{item.ContractNumber}}</a></td>
+              <td>{{item.Title}}</td>
+              <td>{{item.ContractStatusDesc}}</td>
+              <td>{{item.DepartName}}</td>
+              <td>{{item.StartDatePlanned}}</td>
+              <td>{{item.EndDatePlanned}}</td>
+              <td>{{item.ActualStartDate}}</td>
+              <td>{{item.ActualEndDate}}</td>
+              <td>{{item.BidStatusId}}</td>
+            </tr>
+
+
+            </tbody>
+
             
           </table>
         </div>
@@ -65,14 +82,26 @@
                     <th style="color: white;"> Posted Date</th>
                     <th  style="color: white;"> Due Date</th>
       
-
-
-
-              
-      
             </tr>
           </thead>
-      
+          <tbody >
+            <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of BidsSubmittedlist">           
+
+            <td><a href="">{{item.BidNumber}}</a></td>
+            <td>{{item.Title}}</td>
+            <td>{{item.BidStatusDesc}}</td>
+            <td>{{item.DepartmentName}}</td>
+            <td>{{item.BidResponseDueDate}}</td>
+            <td>{{item.BidPostedDate}}</td>
+
+
+
+
+
+          </tr>
+
+
+          </tbody>
           
         </table>
         </div>
@@ -105,21 +134,16 @@
             </tr>
           </thead>
           <tbody >
-            <tr *ngFor="let item of Vendorlist">           
-        
+            <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of ResponseNotSubmittedlist">           
 
 
-
-            <td>{{item.ComtractVendorId}}</td>
-            <td>{{item.ComtractVendorId}}</td>
-            <td>{{item.ComtractVendorId}}</td>
-            <td>{{item.BidStatusId}}</td>
-            <td>{{item.CreatedDate}}
-            </td>
-            <td>{{item.BidStatusId}}</td>
-            <td>{{item.BidStatusId}}</td>
-            <td>{{item.BidStatusId}}</td>
-          </tr>
+            <td><a href="">{{item.BidNumber}}</a></td>
+            <td>{{item.Title}}</td>
+            <td>{{item.BidStatusDesc}}</td>
+            <td>{{item.DepartmentName}}</td>
+            <td>{{item.BidResponseDueDate}}</td>
+            <td>{{item.BidPostedDate}}</td>
+            
           </tbody>
           
         </table>
@@ -157,9 +181,9 @@
                   <tr *ngFor="let item of Bidslist">           
                  
       
+                    
       
-      
-                  <td>{{item.BidNumber}}</td>
+                  <td><a>{{item.BidNumber}}</a></td>
                   <td>{{item.Title}}</td>
                   <td>{{item.SolicitationTypeId}}</td>
                   <td>{{item.BidStatusId}}</td>
