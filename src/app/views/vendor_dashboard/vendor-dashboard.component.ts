@@ -11,8 +11,9 @@ import { config_url } from '../shared/constant';
 export class VendorDashboardComponent implements OnInit {
   
   Bidslist:any;
-  awarduserlist:any;
+  vendoractivelist:any;
   Vendorlist:any;
+  
   Title:any;
   SolicitationTypeId: any;
   BidStatusId: any;
@@ -23,6 +24,9 @@ export class VendorDashboardComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   title = 'datatables';
+  ResponseNotSubmittedlist: any;
+  BidsSubmittedlist: any;
+  
 
   constructor(private http: HttpClient) { }
 
@@ -39,21 +43,21 @@ export class VendorDashboardComponent implements OnInit {
       processing: true
     };
 
-    this.awarduser();
-    this.vendor();
-    this.bids();
+    this.vendoractive();
+    this.ResponseSubmitted();
+    this.ResponseNotSubmitted();
    
 
   }
   
    
-  vendor(){
+  vendoractive(){
     try
     {
-      this.http.get(config_url+'bid/GetBidOpenandDraft?BidStatusId=A').subscribe(
+      this.http.get(config_url+'contract/GetVendorActiveContracts?VendorId=34343434').subscribe(
         (data: any) => {
-          var response= data.BidOpen;
-          this.Vendorlist = response;
+          var response= data.VendorActiveContracts;
+          this.vendoractivelist = response;
            // console.log(this.bidstatus)
         });
     }
@@ -64,13 +68,13 @@ export class VendorDashboardComponent implements OnInit {
       
   }
 
-  bids(){
+  ResponseSubmitted(){
     try
     {
-      this.http.get(config_url+'bid/GetBidOpenandDraft?BidStatusId=O').subscribe(
+      this.http.get(config_url+'bid/GetBidResponseSubmittedByVendor?VendorId=34343434').subscribe(
         (data: any) => {
-          var response= data.BidOpen;
-          this.Bidslist = response;
+          var response= data.BidResponseSubmitted;
+          this.BidsSubmittedlist = response;
            // console.log(this.bidstatus)
         });
     }
@@ -81,13 +85,13 @@ export class VendorDashboardComponent implements OnInit {
       
   }
 
-  awarduser(){
+  ResponseNotSubmitted(){
     try
     {
-      this.http.get(config_url+'bid/GetConAwardByUser?CurrentUserid=1').subscribe(
+      this.http.get(config_url+'bid/GetBidResponseNotSubmittedByVendor?VendorId=34343434').subscribe(
         (data: any) => {
-          var response= data.currentuserid;
-          this.awarduserlist = response;
+          var response= data.BidResponseNotSubmitted;
+          this.ResponseNotSubmittedlist = response;
            // console.log(this.bidstatus)
         });
     }
