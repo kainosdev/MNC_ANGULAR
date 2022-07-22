@@ -436,18 +436,21 @@
                                                   <label class="common_lbl" for="social_no">CITY</label>
                                                 </div>
                                               </div>
+                                         
+
                                          <div class="col-md">
                                                 <div class="form-floating">
-                                                        <select class="form-select" formControlName="DistrictId" id="county_id" (change)="inputErrorMessage('county_id')" >
+                                                        <select class=" form-select" formControlName="Zipcode" id="regcurrentzip_id"
+                                                         (change)="inputErrorMessage('regcurrentzip_id')" >
                                                                 <option value="value"></option>
-                                                            <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
-                                                                {{statelistid.DistrictName}}</option>
-                                                             
-                                                         </select> 
-                                                          <div  class="help-block text-danger">
-                                                <div *ngIf="submitted && rcf.DistrictId.errors">Country is required</div>
-                                                 </div>
-                                                <label class="common_lbl" for="social_no">COUNTY</label>
+                                                                 <option *ngFor="let ziplist of zipcodedetail" >
+                                                                 {{ziplist.Zipcode}}</option>
+
+                                                         </select>
+                                              <div  class="help-block text-danger">
+                                                <div *ngIf="submitted && rcf.Zipcode.errors">Zip Code is required</div>
+                                            </div>
+                                                <label class="common_lbl" for="social_no">ZIP CODE</label>
                                                  </div>
                                          </div>
                         
@@ -457,17 +460,16 @@
                                         <div class="row g-4">
                                                 <div class="col-md">
                                                         <div class="form-floating">
-                                                                <select class=" form-select" formControlName="Zipcode" id="regcurrentzip_id"
-                                                                 (change)="inputErrorMessage('regcurrentzip_id')" >
+                                                                <select class="form-select" formControlName="DistrictId" id="county_id" (change)="inputErrorMessage('county_id')" >
                                                                         <option value="value"></option>
-                                                                         <option *ngFor="let ziplist of zipcodedetail" >
-                                                                         {{ziplist.Zipcode}}</option>
-
-                                                                 </select>
-                                                      <div  class="help-block text-danger">
-                                                        <div *ngIf="submitted && rcf.Zipcode.errors">Zip Code is required</div>
-                                                    </div>
-                                                        <label class="common_lbl" for="social_no">ZIP CODE</label>
+                                                                    <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
+                                                                        {{statelistid.DistrictName}}</option>
+                                                                     
+                                                                 </select> 
+                                                                  <div  class="help-block text-danger">
+                                                        <div *ngIf="submitted && rcf.DistrictId.errors">County is required</div>
+                                                         </div>
+                                                        <label class="common_lbl" for="social_no">COUNTY</label>
                                                          </div>
                                                  </div>
                                 
@@ -704,9 +706,10 @@
             <p class="mainheading heading">Primary Contact Information</p>
 
             <div class="row g-4">
+                
                 <div class="col-md">
                         <div class="form-floating">
-                       <input type="text" class="form-control" formControlName="UserId" [pattern]="uidPattern" id="userkey"  placeholder="User Id">
+                       <input type="text" class="form-control" formControlName="UserId" [pattern]="uidPattern" id="userkey"  (keyup)="inputErrorMessage('userkey')" >
                        <div  class="help-block text-danger">
                         <div *ngIf="submitted && vif.UserId.errors?.required">User Id is required</div>
                         <div *ngIf="submitted && vif.UserId.errors?.pattern">Pattern Not matched</div>
@@ -717,7 +720,7 @@
 
                  <div class="col-md">
                         <div class="form-floating">
-                       <input type="text" class="form-control" formControlName="FirstName" id="firstname_id" placeholder="FirstName">
+                       <input type="text" class="form-control" formControlName="FirstName" id="firstname_id" (keyup)="inputErrorMessage('firstname_id')" >
                          <div  class="help-block text-danger">
                               <div *ngIf="submitted && vif.FirstName.errors">First Name is required</div>
                            </div>
@@ -727,7 +730,7 @@
 
                 <div class="col-md">
                         <div class="form-floating">
-                       <input type="text" class="form-control" formControlName="LastName" id="lastname_id"  placeholder="Last Name">
+                       <input type="text" class="form-control" formControlName="LastName" id="lastname_id" (keyup)="inputErrorMessage('lastname_id')" >
                        <div  class="help-block text-danger">
                         <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
                         </div>
@@ -736,7 +739,7 @@
                  </div>
                  <div class="col-md">
                         <div class="form-floating">
-                       <input type="text" class="form-control"  formcontrolName="Middlename">
+                       <input type="text" class="form-control"  formcontrolName="Middlename"  id="middlename_id" (keyup)="inputErrorMessage('middlename_id')" >
                        <!-- <div  class="help-block text-danger">
                         <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
                         </div> -->
@@ -793,7 +796,7 @@
                         
                         <div class="col-md">
                                 <div class="form-floating">
-                               <input type="text" class="form-control" formControlName="Address1" id="currentadd_id" placeholder="FirstName">
+                               <input type="text" class="form-control" formControlName="Address1" id="currentadd_id" (keyup)="inputErrorMessage('currentadd_id')" >
                                <div  class="help-block text-danger">
                                 <div *ngIf="submitted && vif.Address1.errors">Address is required</div>
                             </div>
@@ -802,7 +805,7 @@
                          </div>
                          <div class="col-md">
                                 <div class="form-floating">
-                               <input type="text" class="form-control" formControlName="Address2"  id="currentsecadd_id"  placeholder="Address Line2">
+                               <input type="text" class="form-control" formControlName="Address2"  id="currentsecadd_id" (keyup)="inputErrorMessage('currentsecadd_id')" >
                              <label class="common_lbl" for="social_no">ADDRESS LINE2</label>
                                  </div>
                                  </div>
@@ -935,7 +938,7 @@
          <div class="col-md">
                 <div class="form-floating">
                         <div class="btn-group btn-toggle">  
-                                 <label class="question_font">WOULD YOU LIKE TO RECEIVE OUTREACH EMAILS FROM US?</label> 
+                                 <label class="question_font">OPT-IN FOR OUTREACH EMAILS?</label> 
                                  <button class="btn btn-xs ml-1 btn-primary active height">Yes</button>  
                                  <button class="btn btn-xs  btn-outline-primary height">No</button> 
                                 </div>
@@ -975,7 +978,7 @@
                                 <div class="form-floating">
                                <input type="text" class="form-control" formControlName="FirstName" id="firstname_id" (keypress)="inputErrorMessage('firstname_id');alpha($event)">
                                <div  class="help-block text-danger">
-                                <div *ngIf="submitted && vbf.FirstName.errors">First Name is required</div>
+                                <div *ngIf="submitted && vbf.FirstName.errors">Legal Business Name is required</div>
                                 </div>
                                 <label class="common_lbl" for="social_no">LEGAL BUSINESS NAME</label>
                                  </div>
@@ -1158,25 +1161,25 @@
  <p class="mainheading heading">Business Information</p>
 
  <div class="row g-4">
-         <!-- <div class="col-md">
+         <div class="col-md">
                 <div class="form-floating">
-               <input type="number" class="form-control" [textMask]="{mask: mask}"  formControlName="business_ssn" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
+               <input type="text" class="form-control" [textMask]="{mask: mask}"  formControlName="business_ssn" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
                <div  class="help-block text-danger">
-                <div *ngIf="submitted && vbf.business_ssn.errors"></div>
-                 </div>
-                <label class="common_lbl" for="social_no"></label>
-                 </div>
-         </div> -->
-         
-  <div class="col-md">
-                <div class="form-floating">
-               <input type="text" class="form-control" [textMask]="{mask: mask}" formControlName="business_ssn" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
-               <div  class="help-block text-danger">
-                <div *ngIf="submitted && vif.business_ssn.errors?.required">EIN/Tax ID is required</div>
+                <div *ngIf="submitted && vbf.business_ssn.errors">EIN/Tax ID is required</div>
                  </div>
                 <label class="common_lbl" for="social_no">EIN/TAX ID</label>
                  </div>
          </div>
+
+  <!-- <div class="col-md">
+                <div class="form-floating">
+               <input type="text" class="form-control" [textMask]="{mask: mask}" formControlName="business_ssn" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
+               <div  class="help-block text-danger">
+                <div *ngIf="submitted && vif.business_ssn.errors">EIN/Tax ID is required</div>
+                 </div>
+                <label class="common_lbl" for="social_no">EIN/TAX ID</label>
+                 </div>
+         </div> -->
 
 
 
@@ -1251,7 +1254,7 @@
                  <div class="col-md">
                         <div class="form-floating">
                                 <div class="btn-group btn-toggle">  
-                                         <label class="question_font">WOULD YOU LIKE TO RECEIVE OUTREACH EMAILS FROM US?</label>
+                                         <label class="question_font">OPT-IN FOR OUTREACH EMAILS?</label>
                                          <button class="btn btn-xs ml-1 btn-primary active height">Yes</button>  
                                           <button class="btn btn-xs  btn-outline-primary height">No</button>
                                           <!-- <button class="btn btn-xs btn-primary active height">No</button>  -->
