@@ -348,7 +348,7 @@
                          </div>
                          <div class="col-md">
                                 <div class="form-floating">
-                               <input type="text" class="form-control"  placeholder="Last Name">
+                               <input type="text" class="form-control" formControlName="MiddleName"  placeholder="Last Name">
                                <!-- <div  class="help-block text-danger">
                                 <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
                                 </div> -->
@@ -405,7 +405,7 @@
                                  <div class="row g-4">
                                         <div class="col-md">
                                                 <div class="form-floating">
-                                               <input type="password" class="form-control" formControlName="Address1" id="currentadd_id" (keypress)="inputErrorMessage('currentadd_id')">
+                                               <input type="text" class="form-control" formControlName="Address1" id="currentadd_id" (keypress)="inputErrorMessage('currentadd_id')">
                                                <div  class="help-block text-danger">
                                                 <div *ngIf="submitted && rcf.Address1.errors">Address is required</div>
                                             </div>
@@ -415,7 +415,7 @@
                         
                                          <div class="col-md">
                                                 <div class="form-floating">
-                                               <input type="password" class="form-control" formControlName="Address2"  id="currentsecadd_id" (keypress)="inputErrorMessage('currentsecadd_id')">
+                                               <input type="text" class="form-control" formControlName="Address2"  id="currentsecadd_id" (keypress)="inputErrorMessage('currentsecadd_id')">
                                                   <label class="common_lbl" for="social_no">ADDRESS LINE2</label>
                                                  </div>
                                          </div>
@@ -699,7 +699,7 @@
     <!-- vendor form individual starts here -->
 
    <div *ngIf="vendorform_individual_show">
-    <form [formGroup]="vendorform_individual" >
+    <form [formGroup]="vendorform_individual">
     <!-- <div class="row card"> -->
             <p class="mainheading heading">Primary Contact Information</p>
 
@@ -1013,7 +1013,7 @@
                                  </div>
                                 <div class="col-md">
                                         <div class="form-floating">
-                                       <input type="text" class="form-control" formControlName="conformpassword" id="comformpswd_id" (keypress)="inputErrorMessage('comformpswd_id');removepassvalidation()">
+                                       <input type="password" class="form-control" formControlName="conformpassword" id="comformpswd_id" (keypress)="inputErrorMessage('comformpswd_id');removepassvalidation()">
                                        <div  class="help-block text-danger">
                                          <div *ngIf="submitted && (vbf.conformpassword.errors != null && vbf.conformpassword.errors.required)">Confirm Password is required.</div>
                                         <div *ngIf="submitted && (vbf.conformpassword.errors != null && vbf.conformpassword.errors.notEquivalent)">Confirm Password is not matched.</div>
@@ -1156,7 +1156,7 @@
  <div class="row g-4">
          <div class="col-md">
                 <div class="form-floating">
-               <input type="password" class="form-control"  formControlName="business_ssn" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
+               <input type="number" class="form-control"  formControlName="business_ssn" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
                <div  class="help-block text-danger">
                 <div *ngIf="submitted && vbf.business_ssn.errors">EIN/Tax ID is required</div>
                  </div>
@@ -1172,7 +1172,7 @@
                                     {{beclassificationlist.BEClassificationDesc}}</option>
                           </select> 
                             <div  class="help-block text-danger">
-                <div *ngIf="submitted && vbf.CountryId.errors">Country is required</div>
+                <div *ngIf="submitted && vbf.BEClassificationId.errors">BE Classification is required</div>
         </div>
                 <label class="common_lbl" for="social_no">BE CLASSIFICATION</label>
                  </div>

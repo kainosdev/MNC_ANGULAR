@@ -17,6 +17,7 @@ export class TesingComponent implements OnInit {
   
 
   this.dtOptions = {
+    
     pagingType: 'full_numbers',
     pageLength: 5,
     processing: true,
