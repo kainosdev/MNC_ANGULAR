@@ -23,7 +23,7 @@
                                     <div  class="help-block text-danger">
                                             <div *ngIf="submitted && bfc.UserName.errors">User Name is required</div>
                                     </div>
-                                    <label class="common_lbl" for="UserName" >User Name</label>
+                                    <label class="common_lbl" for="UserName" >USER NAME</label>
     
                                     </div>
                                   </div>
@@ -34,7 +34,7 @@
       
                                    
                                        
-                                      <label class="common_lbl" for="title">User Type</label>
+                                      <label class="common_lbl" for="title">USER TYPE</label>
                                   
                                    
                                 
@@ -301,6 +301,8 @@
                                                                   <td>{{item.StateName}}</td>
                                                                   <td>{{item.CountryName}}</td>
                                                                   <td>{{item.Zipcode}}</td>
+                                                                  <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item)" ></i>
+                                                                    <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deletecontact(item)" ></i>
                                                               </tr>
                                                               <tr *ngIf="address_list.length == 0">           
                                                                   
@@ -313,20 +315,22 @@
                                                       </table>
                                                       <a class="fontwghtcls mt-1 mb-1 ">+ ADD ADDRESS</a>
                                                 <form [formGroup]="Addressform">
-                                                      
+                                                
+
+
                                                         <div class="row g-4 p-1">
                                                                 <div class="col-md">
                                                                         <div class="form-floating">
-                                                                                <select type="text" id="address_type" class="form-select" formControlName="address_type" 
+                                                                                <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId" 
                                                                                >
-                                                                               <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype ">
+                                                                               <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId">
                                                                                 {{addresstype.AddressTypeDesc}}
                                                                                </option>
                                                                             </select>
                                                                             <div  class="help-block text-danger">
-                                                                            <div *ngIf="submitted2 && rcf2.address_type.errors">ADDRESS TYPE is required</div>
+                                                                            <div *ngIf="submitted2 && rcf2.AddressTypeId.errors">ADDRESS TYPE is required</div>
                                                                             </div>
-                                                                              <label class="common_lbl" for="address_type">ADDRESS TYPE <span  class="requiredfield"> *</span></label>
+                                                                              <label class="common_lbl" for="AddressTypeId">ADDRESS TYPE <span  class="requiredfield"> *</span></label>
                   
                                                                           </div>
                                                                     </div>
@@ -352,7 +356,7 @@
                                                                     <div class="form-floating">
                                                                             <select id="currentcity_idbus" class="form-select" formControlName="CityId" [(ngModel)]="CurrentAddressDetails.CityId"
                                                                             (keypress)="EmptyErrorMessage('currentcity_id')" (change)="changeAllDetailsByCityCurrentBusiness()">
-                                                                            <option *ngFor="let c of citylist" [ngValue]="c">
+                                                                            <option *ngFor="let c of citylist" [ngValue]="c.CityId">
                                                                                 {{c.CityName}}
                                                                             </option>
                                                                             </select>
@@ -371,7 +375,7 @@
                                                                         <div class="form-floating">
                                                                                 <select type="text" id="currentcounty_id" class="form-select" formControlName="DistrictId" [(ngModel)]="CurrentAddressDetails.DistrictId"
                                                                                 (keypress)="EmptyErrorMessage('currentcounty_id')">
-                                                                                <option *ngFor="let d of districts" [ngValue]="d">
+                                                                                <option *ngFor="let d of districts" [ngValue]="d.DistrictId">
                                                                                     {{d.DistrictName}}
                                                                                 </option>
                                                                             </select>
@@ -385,7 +389,7 @@
                                                                 <div class="col-md">
                                                                   <div class="form-floating">
                                                                         <select class="form-select" id="stateprovice_id" formControlName="StateId" [(ngModel)]="CurrentAddressDetails.StateId">
-                                                                            <option *ngFor="let s of statedetail" [ngValue]="s">
+                                                                            <option *ngFor="let s of statedetail" [ngValue]="s.StateId">
                                                                                 {{s.StateName}}
                                                                             </option>
                                                                        </select>
@@ -400,7 +404,7 @@
                                                                         <div class="form-floating">
                                                                                 <select class="form-select" id="currentcountry_id" formControlName="CountryId" [(ngModel)]="CurrentAddressDetails.CountryId"
                                                                                 (change)="EmptyErrorMessage('currentcountry_id')">
-                                                                                <option *ngFor="let countrylist of countrytype" [ngValue]="countrylist" >
+                                                                                <option *ngFor="let countrylist of countrytype" [ngValue]="countrylist.CountryId" >
                                                                                     {{countrylist.CountryName}}</option>
                                                                                </select>
                                                                                 <div  class="help-block text-danger">
@@ -432,7 +436,7 @@
                                                                 <div class="col-md">
                                                                         <div class="btn-group btn-toggle mb-2"> 
                                                                           
-                                                                            <label class="question_font">Primary Address ?
+                                                                            <label class="question_font">PRIMARY ADDRESS ?
                                                                                    
                                                                                 </label>
                                                                                 <button class="btn btn-xs ml-1 btn-outline-primary">Yes</button>
@@ -468,7 +472,7 @@
                                                                 </div>
                                                                
                                                                <div class="col-md">
-                                                                    <div class="col-md  ">
+                                                                    <div class="col-md  mt-2 text-right">
                                                                             <button class="btn btn-filled  common_btn_action ml-2 text-start" type="button"  (click)="addaddress()"  >
                                                                                 <img class="img-fluid btn-img "                             
                                                                                     >Save</button>
@@ -517,18 +521,18 @@
                                                          
                                                        
                                                               <tr *ngFor="let item of contact_list">           
-                                                                  
-                                                                  <th >{{item.firstname}}</th>
-                                                                  <td>{{item.lastname}}</td>
-                                                                  <td>{{item.middlename}}</td>
-                                                                  <td>{{item.JobTitle.JobTitleDesc}}</td>
-                                                                  <td>{{item.BusinessPhone}}</td>
-                                                                  <td>{{item.BusinessEmail}}</td>
-                                                                  <td>{{item.primary}}</td>
-                                                                  <td>{{item.primary}}</td>
+                                                          
+                                                                  <th >{{item.FirstName}}</th>
+                                                                  <td>{{item.LastName}}</td>
+                                                                  <td>{{item.MiddleName}}</td>
+                                                                  <td>{{item.JobTitleDesc}}</td>
+                                                                  <td>{{item.Phone}}</td>
+                                                                  <td>{{item.Email}}</td>
+                                                                  <td>No</td>
+                                                                 
                                                                   <td>
-                                                                  <i className="fas fa-user-edit mr-3 cursor-pointer"  title="Edit"  (click)="editcontact(item)" ></i>
-                                                                  <i className="fas fa-trash-alt cursor-pointer"  title="Delete"  (click)="deletecontact(item)" ></i>
+                                                                    <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item)" ></i>
+                                                                    <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deletecontact(item)" ></i>
                                                                  </td>
                                                               </tr>
                                                            
@@ -542,51 +546,52 @@
                                                       <a class="fontwghtcls mt-1 mb-1 ">+ ADD CONTACT</a>
                                                 <form [formGroup]="Contactform">
                                                         <div class="">
-            
+                                                         
+
                                                         <div class="row g-4 p-1">
                                                                 <div class="col-md">
                                                                         <div class="form-floating">
-                                                                                <input type="text"  class="form-control" id="firstname" formControlName="firstname"  >
+                                                                                <input type="text"  class="form-control" id="FirstName" formControlName="FirstName"  >
                                                                                 <div  class="help-block text-danger">
-                                                                                   <div *ngIf="contact_submmited && cf.firstname.errors?.required">First Name is required</div>
+                                                                                   <div *ngIf="contact_submmited && cf.FirstName.errors?.required">First Name is required</div>
                                                                                  </div>
-                                                                              <label class="common_lbl" for="firstname">FIRST NAME <span  class="requiredfield"> *</span></label>
+                                                                              <label class="common_lbl" for="FirstName">FIRST NAME <span  class="requiredfield"> *</span></label>
                   
                                                                           </div>
                                                                 </div>
                                                                 <div class="col-md">
                                                                 <div class="form-floating">
-                                                                        <input type="text"  class="form-control" id="lastname" formControlName="lastname"  >
+                                                                        <input type="text"  class="form-control" id="LastName" formControlName="LastName"  >
                                                                         <div  class="help-block text-danger">
-                                                                           <div *ngIf="contact_submmited && cf.lastname.errors?.required">Last Name is required</div>
+                                                                           <div *ngIf="contact_submmited && cf.LastName.errors?.required">Last Name is required</div>
                                                                          </div>
-                                                                      <label class="common_lbl" for="lastname">LAST NAME <span  class="requiredfield"> *</span></label>
+                                                                      <label class="common_lbl" for="LastName">LAST NAME <span  class="requiredfield"> *</span></label>
             
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md">
                                                                         <div class="form-floating">
-                                                                                <input type="text"  class="form-control" id="middlename" formControlName="middlename"  >
+                                                                                <input type="text"  class="form-control" id="MiddleName" formControlName="MiddleName"  >
                                                                                 <div  class="help-block text-danger">
-                                                                                   <div *ngIf="contact_submmited && cf.middlename.errors?.required">Middle Name is required</div>
+                                                                                   <div *ngIf="contact_submmited && cf.MiddleName.errors?.required">Middle Name is required</div>
                                                                                  </div>
-                                                                              <label class="common_lbl" for="middlename">MIDDLE NAME <span  class="requiredfield"> *</span></label>
+                                                                              <label class="common_lbl" for="MiddleName">MIDDLE NAME <span  class="requiredfield"> *</span></label>
                                                                           </div>
                                                                </div>
                                                                <div class="col-md">
                                                                     <div class="form-floating">
                                                                               
                                                                        
-                                                                        <select type="text" id="JobTitle" class="form-select" formControlName="JobTitle">
-                                                                        <option *ngFor="let jobtitle of jobdetail" [ngValue]="jobtitle">
+                                                                        <select type="text" id="JobTitleId" class="form-select" formControlName="JobTitleId">
+                                                                        <option *ngFor="let jobtitle of jobdetail" [ngValue]="jobtitle.JobTitleId">
                                                                           {{jobtitle.JobTitleDesc}}</option>
                                                                         </select>
                                                                         
                                                                         <div  class="help-block text-danger">
-                                                                            <div *ngIf="contact_submmited && cf.JobTitle.errors?.required">Job Title is required</div>
+                                                                            <div *ngIf="contact_submmited && cf.JobTitleId.errors?.required">Job Title is required</div>
                                                                         </div>
                                                                               
-                                                                          <label class="common_lbl" for="JobTitle">JOB TITLE <span  class="requiredfield"> *</span></label>
+                                                                          <label class="common_lbl" for="JobTitleId">JOB TITLE <span  class="requiredfield"> *</span></label>
               
                                                                       </div>
                                                                 </div>
@@ -597,21 +602,21 @@
                                                                 <div class="col-md">
                                                                         <div class="form-floating">
                                                                            
-                                                                                <input type="text"   [textMask]="{mask: mask1}" class="form-control" id="businessphone_id"
-                                                                                formControlName="BusinessPhone" >
+                                                                                <input type="text"   [textMask]="{mask: mask1}" class="form-control" id="Phone"
+                                                                                formControlName="Phone" >
                                                                                 <div  class="help-block text-danger">
-                                                                                <div *ngIf="contact_submmited && cf.BusinessPhone.errors?.required">Phone Name is required</div>
+                                                                                <div *ngIf="contact_submmited && cf.Phone.errors?.required">Phone Name is required</div>
                                                                                 </div>
-                                                                              <label class="common_lbl" for="businessphone_id">PHONE NO <span  class="requiredfield"> *</span></label>
+                                                                              <label class="common_lbl" for="Phone">PHONE NO <span  class="requiredfield"> *</span></label>
                   
                                                                           </div>
                                                                     </div>
                                                                   <div class="col-md">
                                                                   <div class="form-floating">
-                                                                        <input type="text" class="form-control" id="businessemail_id" formControlName="BusinessEmail" 
+                                                                        <input type="text" class="form-control" id="Email" formControlName="Email" 
                                                                        >
                                                                         <div  class="help-block text-danger">
-                                                                            <div *ngIf="contact_submmited && cf.BusinessEmail.errors?.required">Email is required</div>
+                                                                            <div *ngIf="contact_submmited && cf.Email.errors?.required">Email is required</div>
                                                                          </div>
                                                                      <label class="common_lbl" for="stateprovice_id">EMAIL <span  class="requiredfield"> *</span></label>
             
@@ -620,7 +625,7 @@
                                                                 <div class="col-md">
                                                                         <div class="form-floating">
                                                                                 <div class="btn-group btn-toggle mb-2"> 
-                                                                                        <label class="question_font">Primary Address ?
+                                                                                        <label class="question_font">PRIMARY ADDRESS ?
                                                                                    
                                                                                             </label>
                                                                                             <button class="btn btn-xs ml-1   btn-outline-primary">Yes</button>
@@ -631,7 +636,7 @@
                                                                <div class="col-md">
                                                                     <div class="form-floating">
                                                                             <div class="btn-group btn-toggle mb-2"> 
-                                                                                    <label class="question_font">Active?
+                                                                                    <label class="question_font">ACTIVE?
                                                                                    
                                                                                         </label><button class="btn btn-xs ml-1  btn-outline-primary">Yes</button><button class="btn btn-xs btn-primary active">No</button>
                                                                                 </div>
@@ -650,7 +655,7 @@
                                                                 <div class="col-md">
                                                                        
                                                                </div>
-                                                               <div class="col-md">
+                                                               <div class="col-md text-right mt-2">
                                                                     <button class="btn btn-filled  common_btn_action ml-2" type="button"  (click)="addcontact()"  >
                                                                             <img class="img-fluid btn-img "                             
                                                                                 >Save</button>
