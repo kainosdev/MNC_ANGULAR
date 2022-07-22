@@ -15,7 +15,10 @@
 .col2{
   margin-left: 60px;
 }
-
+.disabled_backgroud
+{
+  background-color: #D3D3D3
+}
 // .acc1{
 //   margin-left: -60px !important;
 //   width: 950px;
@@ -55,9 +58,9 @@
       margin-right: 9px;
   }
   
-  .active:after {
-    content: "\2212" !important;
-  }
+  // .active:after {
+  //   content: "\2212" !important;
+  // }
   
   .accordion {
     box-shadow: 0px 0px 0px 1px rgb(0 0 0 / 17%), 0px 1px 0px -1px rgb(0 0 0 / 14%), 0px 3px 0px -1px rgb(0 0 0 / 12%);
@@ -614,6 +617,7 @@
 {
   font-size: 12px;
   font-weight: bold;
+  margin-left: 5px;
 }
 .common_tbl_head
 {
