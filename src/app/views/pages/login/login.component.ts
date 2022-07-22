@@ -41,11 +41,11 @@ export class LoginComponent implements OnInit {
     // console.log(this.loginForm);
     // this.toastr.success('hi');
     if(this.loginForm.UserId == "" && this.loginForm.Password == "") {
-      (document.getElementById('invalidid') as HTMLFormElement).innerHTML = "Enter Userid and Password";
+      (document.getElementById('invalidid') as HTMLFormElement).innerHTML = "Enter UserId and Password";
       return;
      }
  else if(this.loginForm.UserId == "") {
-  (document.getElementById('invalidid') as HTMLFormElement).innerHTML = "Enter Userid";
+  (document.getElementById('invalidid') as HTMLFormElement).innerHTML = "Enter UserId";
   return;
  }
  else if(this.loginForm.Password == "") {
