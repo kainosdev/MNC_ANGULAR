@@ -423,7 +423,7 @@
                                           <div class="col-md">
                                                 <div class="form-floating">
                                               
-                                                  <select class="form-select" formControlName="CityId"  id="currentcity_id"   (change)="inputErrorMessage('currentcity_id');onchangezip();onchangestate()"  >
+                                                  <select class="form-select" formControlName="CityId"  id="currentcity_id"   (change)="inputErrorMessage('currentcity_id');onchangezip()"  >
                                                         <option value="value"></option>
                     
                                                         <option *ngFor="let citylist of cityalldetail" value="{{citylist.CityId}}">
@@ -441,7 +441,7 @@
                                          <div class="col-md">
                                                 <div class="form-floating">
                                                         <select class=" form-select" formControlName="Zipcode" id="regcurrentzip_id"
-                                                         (change)="inputErrorMessage('regcurrentzip_id')" >
+                                                         (change)="inputErrorMessage('regcurrentzip_id');changeAllDeatilsByZipcodeBusPastAddr()" >
                                                                 <option value="value"></option>
                                                                  <option *ngFor="let ziplist of zipcodedetail" >
                                                                  {{ziplist.Zipcode}}</option>
@@ -462,8 +462,8 @@
                                                         <div class="form-floating">
                                                                 <select class="form-select" formControlName="DistrictId" id="county_id" (change)="inputErrorMessage('county_id')" >
                                                                         <option value="value"></option>
-                                                                    <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
-                                                                        {{statelistid.DistrictName}}</option>
+                                                                    <option *ngFor="let countydata of statedetailPastAddr " value="{{countydata.DistrictId}}">
+                                                                        {{countydata.DistrictName}}</option>
                                                                      
                                                                  </select> 
                                                                   <div  class="help-block text-danger">
@@ -476,10 +476,10 @@
                                                  <div class="col-md">
                                                         <div class="form-floating">
                                                                <select class=" form-select"  formControlName="StateId" id="curstate_id"
-                                                                        (change)="inputErrorMessage('curstate_id');onchangecountry()" >
+                                                                        (change)="inputErrorMessage('curstate_id');" >
                                                                         <option value="value"></option>
-                                                                        <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
-                                                                                {{statelistid.StateName}}</option>
+                                                                        <option *ngFor="let statelist_all of ziplistdata" value="{{statelist_all.StateId}}">
+                                                                                {{statelist_all.StateName}}</option>
 
                                                                  </select>
                                                       <div  class="help-block text-danger">
@@ -495,7 +495,7 @@
                                                       
                                                           <select class="form-select" formControlName="CountryId" id="country_id" (change)="inputErrorMessage('country_id')">
                                                                 <option value="value"></option>
-                                                                <option *ngFor="let countrylist of countrydetail" [value]="countrylist.CountryId">
+                                                                <option *ngFor="let countrylist of statetype" [value]="countrylist.CountryId">
                                                                 {{countrylist.CountryName}}</option>
                                                              
                                                          </select> 

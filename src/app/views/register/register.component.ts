@@ -58,6 +58,10 @@ public mask2 = [/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/]
   zip:any;
   zipdetail :any;
   zip2:any;
+  ziplistdata: any;
+  cityvalbyzipcode:any;
+  statedetailPastAddr:any;
+countrytypePastAddr:any;
 
 
   constructor(private frmbuilder: FormBuilder,  private http: HttpClient,
@@ -919,6 +923,7 @@ number(event: any) {
 
 
             this.zipcodedetail=data.zipcodedata;
+            console.log('zip', this.zipcodedetail);
            })
 
       }
@@ -934,6 +939,21 @@ number(event: any) {
             this.statetype=data.Statelist;
            })
 
+
+      }
+
+      onchangecountystatecountry(){
+
+        alert('testonly')
+
+        let Zipcode = (<HTMLInputElement>document.getElementById("regcurrentzip_id")).value;
+
+        this.http.get(config_url+'app/getCityDistrictStateByZipcode?Zipcode='+Zipcode).subscribe((data: any) =>
+          {
+             this.ziplistdata=data.ziplistdata;
+           })
+
+           console.log('abhi', this.ziplistdata)
       }
 
       onchangecountry(){
@@ -1202,4 +1222,56 @@ number(event: any) {
     })
 
     }
+
+
+    changeAllDeatilsByZipcodeBusPastAddr(){
+      // alert("in");
+      let currentzipcode = (<HTMLInputElement>document.getElementById("regcurrentzip_id")).value;
+      // alert(currentzipcode);
+              this.http.get(config_url+'/app/getCityByZipcode?zipcode='+currentzipcode).subscribe(data1 =>
+                {
+  
+                  this.cityvalbyzipcode=data1;
+                  // alert(this.cityvalbyzipcode.citydata[0].CityId);
+                  // console.log(this.cityvalbyzipcode.citydata[0].CityId);
+  
+                  // this.VendorMgmtBusiness.controls.BPCityId.setValue(this.cityvalbyzipcode.citydata[0].CityId);
+  
+  
+  
+                  this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+this.cityvalbyzipcode.citydata[0].CityId).subscribe(statelist =>
+                    {
+                // alert("abhi");
+                      // console.log(statelist);
+                      this.statedetailPastAddr=statelist;
+                      // let statename = this.statedetailPastAddr;
+                      
+                      alert(this.statedetailPastAddr.Statelist[0].StateId);
+                      this.employeeform.controls.StateId.setValue(this.statedetailPastAddr.Statelist[0].StateId);
+                      // this.VendorMgmtBusiness.controls.BMStateId.setValue(this.statedetailPastAddr.Statelist[0].StateId);
+                     })
+  
+                  //    this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+this.cityvalbyzipcode.citydata[0].CityId).subscribe(statelist =>
+                  //     {
+  
+  
+                  //       this.statedetailPastAddr=statelist;
+                        
+  
+  
+                  //         this.http.get(config_url+'/app/getCountryByState?stateid='+this.statedetailPastAddr.Statelist[0].StateId).subscribe(countrydata =>
+                  //           {
+                            
+                  //  this.countrytypePastAddr = countrydata;
+  
+                  //           })
+  
+                  //         })
+  
+  
+                 })
+  
+    }
+
+
 }
