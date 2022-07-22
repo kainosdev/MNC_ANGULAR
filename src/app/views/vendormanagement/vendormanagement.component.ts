@@ -185,9 +185,9 @@ export class VendormanagementComponent implements OnInit {
       Federal:[],
       NAICSCodes: [],
       CommodityCodes:[],
-      BusinessRegisteredInDistrict:[],
-      BusinessRegisteredInSCC:[],
-      BusinessIsFranchisee:[],
+      BusinessRegisteredInDistrict:[false],
+      BusinessRegisteredInSCC:[false],
+      BusinessIsFranchisee:[false],
       BusinessSize:[],
       TradeName: [],
       DUNS: [],
@@ -253,7 +253,8 @@ export class VendormanagementComponent implements OnInit {
       EndDate:['', [Validators.required]],
       DistrictId:[],
       StateId:['', [Validators.required]],
-
+      AddressId:[0],
+      VendorAddressPrimary:[1],
 
 
     });
@@ -354,12 +355,13 @@ export class VendormanagementComponent implements OnInit {
      this.address_submmited=false;
     }
   }
-  editaddress(data:any)
+  editaddress(data:any,i:any)
   {
     debugger
+    this.address_list.splice(i,1);
     this.Addressform.patchValue({ 
-      address_id : 0,
-      address_type :data.AddressTypeId,
+      AddressId : data.AddressId,
+      AddressTypeId :data.AddressTypeId,
       Address1:data.Address1,
       Address2:data.Address2,
       CityId:data.CityId,
@@ -372,6 +374,10 @@ export class VendormanagementComponent implements OnInit {
   
    });
 
+  }
+  deleteaddress(i:any)
+  {
+    this.address_list.splice(i,1);
   }
   editcontact(data:any,i:any)
   {
@@ -1109,9 +1115,11 @@ GetVendorById(){
           BusinessSize:details.BusinessSize,
           Website:details.Website,
         
+          BusinessRegisteredInDistrict:details.BusinessRegisteredInDistrict,
+          BusinessRegisteredInSCC:details.BusinessRegisteredInSCC,
+          BusinessIsFranchisee:details.BusinessIsFranchisee,
 
-
-
+        
          
 
        });  
