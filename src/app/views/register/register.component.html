@@ -616,9 +616,17 @@
                  <div class="col-md">
                         <div class="form-floating">
                                 <div class="btn-group btn-toggle">  
-                                         <label class="question_font">ADMIN USER?</label> 
-                                          <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
-                                          <button class="btn btn-xs btn-primary active height">No</button> 
+                                         <label class="question_font" style="width: 181px;">ADMIN USER?</label> 
+                                         <!-- <label class="switch">
+                                                <input  type="checkbox" name="AdminUser_name" id="AdminUser_id" formControlName="AdminUser" checked>
+                                                <span class="slider round" style="margin-left: 106px;"></span>
+                                        </label> -->
+                                        <label class="switch" for="checkbox" >
+                                                <input type="checkbox" id="checkbox" formControlName="AdminUser" />
+                                                <div class="slider round"></div>
+                                              </label>
+                                          <!-- <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
+                                          <button class="btn btn-xs btn-primary active height">No</button>  -->
                                         </div>
                              </div>
                  </div>
@@ -825,41 +833,38 @@
                                           <label class="common_lbl" for="social_no">CITY</label>
                                         </div>
                                       </div>
-
-                                      <div class="col-md">
+                                 <div class="col-md">
                                         <div class="form-floating">
                                       
-                                          <select class="form-select" formControlName="county_name" id="county_id"  (change)="inputErrorMessage('county_id')">
+                                          <select class="form-select" formControlName="Zipcode" id="regcurrentzip_id"   (change)="inputErrorMessage('regcurrentzip_id')"  >
                                                 <option value="value"></option>
-                                                <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
-                                                        {{statelistid.DistrictName}}</option>
+                                                 <option *ngFor="let ziplist of zipcodedetail" >
+                                                   {{ziplist.Zipcode}}</option>
                                           </select> 
                                           <div  class="help-block text-danger">
-                                                <div *ngIf="submitted && vif.county_name.errors">County is required</div>
-                                          </div>
-                                          <label class="common_lbl" for="floatingSelectGrid">COUNTY</label>
+                                                <div *ngIf="submitted && vif.Zipcode.errors">Address Line2 is required</div>
+                                             </div>
+                                          <label class="common_lbl" for="floatingSelectGrid">ZIP CODE</label>
                                         </div>
                                       </div>
+                                  </div>
 
-                                </div>
                                 <div class="row g-4">
-                        
                                         <div class="col-md">
                                                 <div class="form-floating">
                                               
-                                                  <select class="form-select" formControlName="Zipcode" id="regcurrentzip_id"   (change)="inputErrorMessage('regcurrentzip_id')"  >
+                                                  <select class="form-select" formControlName="county_name" id="county_id"  (change)="inputErrorMessage('county_id')">
                                                         <option value="value"></option>
-                                                         <option *ngFor="let ziplist of zipcodedetail" >
-                                                           {{ziplist.Zipcode}}</option>
+                                                        <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
+                                                                {{statelistid.DistrictName}}</option>
                                                   </select> 
                                                   <div  class="help-block text-danger">
-                                                        <div *ngIf="submitted && vif.Zipcode.errors">Address Line2 is required</div>
-                                                     </div>
-                                                  <label class="common_lbl" for="floatingSelectGrid">ZIP CODE</label>
+                                                        <div *ngIf="submitted && vif.county_name.errors">County is required</div>
+                                                  </div>
+                                                  <label class="common_lbl" for="floatingSelectGrid">COUNTY</label>
                                                 </div>
                                               </div>
-
-                                              <div class="col-md">
+                                         <div class="col-md">
                                                 <div class="form-floating">
                                               
                                                   <select class="form-select" formControlName="StateId" id="curstate_id"  (change)="inputErrorMessage('curstate_id');onchangecountry()">
@@ -938,14 +943,18 @@
          <div class="col-md">
                 <div class="form-floating">
                         <div class="btn-group btn-toggle">  
-                                 <label class="question_font">OPT-IN FOR OUTREACH EMAILS?</label> 
-                                 <button class="btn btn-xs ml-1 btn-primary active height">Yes</button>  
-                                 <button class="btn btn-xs  btn-outline-primary height">No</button> 
+                                 <label class="question_font" style="width: 181px;">OPT-IN FOR OUTREACH EMAILS?</label> 
+                                 <!-- <button class="btn btn-xs ml-1 btn-primary active height">Yes</button>  
+                                 <button class="btn btn-xs  btn-outline-primary height">No</button>  -->
+                                 <label class="switch">
+                                        <input  type="checkbox" name="outreach_active" id="outreach_activeid" formControlName="OutreachEmailOptIn" checked>
+                                        <span class="slider round"></span>
+                                </label>
                                 </div>
                      </div>
          </div>
 
- </div>
+        </div>
 
 
  <!-- </div> -->
@@ -1081,39 +1090,37 @@
                                                 </div>
                                               </div>
 
-                                        <div class="col-md">
+                                              <div class="col-md">
                                                 <div class="form-floating">
-                                                        <select class="form-select"  formControlName="county_name" id="county_id" (change)="inputErrorMessage('county_id')">
-                                                                <option value="value"></option>
-                                                                <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
-                                                                        {{statelistid.DistrictName}}</option>
-                                                          </select> 
-                                                          <div  class="help-block text-danger">
-                                                                <div *ngIf="submitted && vbf.county_name.errors">County is required</div>
+                                                               <select class="form-select"  formControlName="Zipcode" id="regcurrentzip_id" (change)="inputErrorMessage('regcurrentzip_id')">
+                                                                       <option value="value"></option>
+                                                                       <option *ngFor="let ziplist of zipcodedetail" >
+                                                                       {{ziplist.Zipcode}}</option>
+                                                                 </select> 
+                                                                 <div  class="help-block text-danger">
+                                                                       <div *ngIf="submitted && vbf.Zipcode.errors">Zip Code is required</div>
+                                                                   </div>
+                                                       <label class="common_lbl" for="social_no">ZIP CODE</label>
                                                         </div>
-                                                <label class="common_lbl" for="social_no">COUNTY</label>
-                                                 </div>
-                                         </div>
-                        
-                                        </div>
+                                                </div>
+                                         
+                                    </div>
 
                                         <div class="row g-4">
-
-                                              <div class="col-md">
+                                          <div class="col-md">
                                                         <div class="form-floating">
-                                                                <select class="form-select"  formControlName="Zipcode" id="regcurrentzip_id" (change)="inputErrorMessage('regcurrentzip_id')">
+                                                                <select class="form-select"  formControlName="county_name" id="county_id" (change)="inputErrorMessage('county_id')">
                                                                         <option value="value"></option>
-                                                                        <option *ngFor="let ziplist of zipcodedetail" >
-                                                                        {{ziplist.Zipcode}}</option>
+                                                                        <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
+                                                                                {{statelistid.DistrictName}}</option>
                                                                   </select> 
                                                                   <div  class="help-block text-danger">
-                                                                        <div *ngIf="submitted && vbf.Zipcode.errors">Zip Code is required</div>
-                                                                    </div>
-                                                        <label class="common_lbl" for="social_no">ZIP CODE</label>
+                                                                        <div *ngIf="submitted && vbf.county_name.errors">County is required</div>
+                                                                </div>
+                                                        <label class="common_lbl" for="social_no">COUNTY</label>
                                                          </div>
                                                  </div>
 
-                                                 
                                                  <div class="col-md">
                                                         <div class="form-floating">
                                                                 <select class="form-select"  formControlName="StateId" id="curstate_id" (change)="inputErrorMessage('curstate_id');onchangecountry()">
@@ -1224,9 +1231,13 @@
                 <div class="col-md">
                         <div class="form-floating">
                                 <div class="btn-group btn-toggle">  
-                                         <label class="question_font">IS THIS BUSINESS REGISTERED WITH SCC OF THIS STATE?</label> 
-                                          <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
-                                          <button class="btn btn-xs btn-primary active height">No</button> 
+                                         <label class="question_font" style="width: 181px;">IS THIS BUSINESS REGISTERED WITH SCC OF THIS STATE?</label> 
+                                         <label class="switch">
+                                                <input  type="checkbox" name="BusinessRegisteredInSCC_name" id="BusinessRegisteredInSCC_id" formControlName="BusinessRegisteredInSCC" checked>
+                                                <span class="slider round"></span>
+                                        </label>
+                                         <!-- <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
+                                          <button class="btn btn-xs btn-primary active height">No</button>  -->
                                         </div>
                              </div>
                  </div>
@@ -1234,9 +1245,13 @@
                  <div class="col-md">
                         <div class="form-floating">
                                 <div class="btn-group btn-toggle">  
-                                         <label class="question_font">IS THIS BUSINESS REGISTERED WITH THIS STATE/COUNTY?</label> 
-                                          <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
-                                          <button class="btn btn-xs btn-primary active height">No</button> 
+                                         <label class="question_font" style="width: 181px;">IS THIS BUSINESS REGISTERED WITH THIS STATE/COUNTY?</label> 
+                                         <label class="switch">
+                                                <input  type="checkbox" name="BusinessRegisteredInDistrict_name" id="BusinessRegisteredInDistrict_id" formControlName="BusinessRegisteredInDistrict" checked>
+                                                <span class="slider round"></span>
+                                        </label>
+                                          <!-- <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
+                                          <button class="btn btn-xs btn-primary active height">No</button>  -->
                                         </div>
                              </div>
                  </div>
@@ -1244,9 +1259,13 @@
                  <div class="col-md">
                         <div class="form-floating">
                                 <div class="btn-group btn-toggle">  
-                                         <label class="question_font">IS THIS BUSINESS A FRANCHISE?</label> 
-                                          <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
-                                          <button class="btn btn-xs btn-primary active height">No</button> 
+                                         <label class="question_font" style="width: 181px;">IS THIS BUSINESS A FRANCHISE?</label> 
+                                         <label class="switch">
+                                                <input  type="checkbox" name="BusinessIsFranchisee_name" id="BusinessIsFranchisee_id" formControlName="BusinessIsFranchisee" checked>
+                                                <span class="slider round"></span>
+                                        </label>
+                                          <!-- <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
+                                          <button class="btn btn-xs btn-primary active height">No</button>  -->
                                         </div>
                              </div>
                  </div>
@@ -1254,9 +1273,13 @@
                  <div class="col-md">
                         <div class="form-floating">
                                 <div class="btn-group btn-toggle">  
-                                         <label class="question_font">OPT-IN FOR OUTREACH EMAILS?</label>
-                                         <button class="btn btn-xs ml-1 btn-primary active height">Yes</button>  
-                                          <button class="btn btn-xs  btn-outline-primary height">No</button>
+                                         <label class="question_font" style="width: 181px;">OPT-IN FOR OUTREACH EMAILS?</label>
+                                         <label class="switch">
+                                                <input  type="checkbox" name="OutreachEmailOptIn_name" id="OutreachEmailOptIn_id" formControlName="OutreachEmailOptIn" checked>
+                                                <span class="slider round"></span>
+                                        </label>
+                                   <!-- <button class="btn btn-xs ml-1 btn-primary active height">Yes</button>  
+                                          <button class="btn btn-xs  btn-outline-primary height">No</button> -->
                                           <!-- <button class="btn btn-xs btn-primary active height">No</button>  -->
                                         </div>
                              </div>

@@ -4,6 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { config_url } from '../shared/constant';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -12,6 +13,9 @@ import { Subject } from 'rxjs';
   styleUrls: ['./emp-dashboard.component.scss']
 })
 export class EmpDashboardComponent implements OnInit {
+
+
+
 
   Bidslist:any;
   awarduserlist:any;
@@ -30,15 +34,26 @@ export class EmpDashboardComponent implements OnInit {
   dtElement: DataTableDirective | any;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
-  posteddate: any;
-  duedate: any;
-  postedDateDraft: any;
-  dueDateDraft: any;
-  startDatePlanned: any;
-  endDatePlanned: any;
-  startDateActual: any;
-  endDateActual: any;
+  posteddate: string = new Date().toDateString();
+  duedate: string = new Date().toDateString();
+  postedDateDraft: string = new Date().toDateString();
+  dueDateDraft: string = new Date().toDateString();
+  startDatePlanned: string = new Date().toDateString();
+  endDatePlanned: string = new Date().toDateString();
+  startDateActual: string = new Date().toDateString();
+  endDateActual:string = new Date().toDateString();
   directReportDetail: any;
+  usertypedata: any;
+  employeeStartDate: string = new Date().toDateString();
+  employeeEndDate: string = new Date().toDateString();
+  approvalEmployeeDetail: any;
+  approvalVendorDetail: any;
+  employeeApprovalStartDate: string = new Date().toDateString();
+  employeeApprovalCreatedDate: string = new Date().toDateString();
+  vendorApprovalCreatedDate: string = new Date().toDateString();
+  firstname: string | null;
+  lastname: string | null;
+  middlename: string | null;
 
   constructor(private http: HttpClient) { }
 
@@ -46,28 +61,38 @@ export class EmpDashboardComponent implements OnInit {
   //   this.Bidslist=[];
   // this.BidDraftList=[];
 
-    this.dtTrigger.next(this.Bidslist);
+    // this.dtTrigger.next(this.Bidslist);
     this.dtTrigger.next(this.BidDraftList);
+    this.dtTrigger.next(this.directReportDetail);
+
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
       processing: true,
+      scrollX: true
 
     };
 
 
+
   }
+
 
   ngOnInit(): void {
 // this.Bidslist=[];
 // this.BidDraftList=[];
 
-this.vendor();
+
 this.bidsDraft();
 this.bidsOpen();
 this.awarduser();
 this.directReport();
+this.employeeapproval();
+this.vendorapproval();
 
+this.firstname = localStorage.getItem('Firstnameses');
+    this.lastname = localStorage.getItem('LastNameses');
+    this.middlename = localStorage.getItem('Middlenameses');
 
     // this.dtOptions = {
     //   pagingType: 'full_numbers',
@@ -85,7 +110,7 @@ this.directReport();
       // Destroy the table first
       dtInstance.destroy();
       // Call the dtTrigger to rerender again
-      // this.dtTrigger.next(this.Bidslist);
+      this.dtTrigger.next(this.Bidslist);
       // this.dtTrigger.next(this.BidDraftList);
 
       // this.dtTrigger.next(this.Bidslist);
@@ -93,22 +118,7 @@ this.directReport();
     });
   }
 
-  vendor(){
-    try
-    {
-      this.http.get(config_url+'bid/GetBidOpenandDraft?BidStatusId=A').subscribe(
-        (data: any) => {
-          var response= data.BidOpen;
-          this.Vendorlist = response;
-          // console.log(this.bidstatus)
-        });
-    }
-    catch(e)
-    {
-      console.log(e);
-    }
 
-  }
 
   bidsDraft(){
     try
@@ -120,12 +130,13 @@ this.directReport();
           this.BidDraftList = response;
         //    console.log(this.Bidslist)
            this.dtTrigger.next(this.BidDraftList);
-           for (let i = 0; i < this.BidDraftList.length; i++) {
-            this.postedDateDraft = this.BidDraftList[i].BidPostedDate.split(' ')[0];
-            this.dueDateDraft = this.BidDraftList[i].BidResponseDueDate.split(' ')[0];
+          //  for (let i = 0; i < this.BidDraftList.length; i++) {
+            this.postedDateDraft = this.BidDraftList[0].BidPostedDate.split(' ')[0];
+            console.log(this.postedDateDraft.toString());
+            this.dueDateDraft = this.BidDraftList[0].BidResponseDueDate.split(' ')[0];
             // console.log(this.posteddate);
             // console.log(this.duedate);
-        }
+        // }
 
         });
     }
@@ -167,7 +178,7 @@ this.directReport();
     {
       this.http.get(config_url+'bid/GetConAwardByUser?CurrentUserid=CA01').subscribe(
         (data: any) => {
-          console.log("data1",data);
+          // console.log("data1",data);
           var response= data.currentuserid;
           this.awarduserlist = response;
           for (let i = 0; i < this.awarduserlist.length; i++) {
@@ -190,21 +201,18 @@ this.directReport();
   directReport(){
     try
     {
-      this.http.get(config_url+'employee/GetDirectReport?EmployeeId_Supervisor=4956ea2b-a56a-45f8-996c-0f2c7d3f3e46').subscribe(
+      this.http.get(config_url+'employee/GetDirectReport?EmployeeIdSupervisor=4956ea2b-a56a-45f8-996c-0f2c7d3f3e46').subscribe(
         (data: any) => {
           // console.log("data2",data);
           var response= data.DirectReport;
           this.directReportDetail = response;
-          console.log(this.directReportDetail);
-        //   for (let i = 0; i < this.awarduserlist.length; i++) {
-        //     this.startDatePlanned = this.awarduserlist[i].StartDatePlanned.split(' ')[0];
-        //     this.endDatePlanned = this.awarduserlist[i].EndDatePlanned.split(' ')[0];
-        //     this.startDateActual = this.awarduserlist[i].StartDateActual.split(' ')[0];
-        //     this.endDateActual = this.awarduserlist[i].EndDateActual.split(' ')[0];
-        //     // console.log(this.posteddate);
-        //     // console.log(this.duedate);
-        // }
-           // console.log(this.bidstatus)
+          // console.log(this.directReportDetail);
+          // this.dtTrigger.next(this.directReportDetail);
+          for (let i = 0; i < this.directReportDetail.length; i++) {
+            this.employeeStartDate = this.directReportDetail[i].StartDate.split(' ')[0];
+            this.employeeEndDate = this.directReportDetail[i].EndDate.split(' ')[0];
+
+          }
         });
     }
     catch(e)
@@ -213,7 +221,33 @@ this.directReport();
     }
 
   }
+  employeeapproval(){
+    this.http.get(config_url+'employee/GetEmployeeApproval?UserTypeId=EMPLOY&UserStatusId=N').subscribe(
+      (data: any) => {
+        // console.log("employee", data);
+        var response= data.GetApprovalForEmployee;
+        this.approvalEmployeeDetail = response;
+        for (let i = 0; i < this.approvalEmployeeDetail.length; i++) {
+          this.employeeApprovalStartDate = this.approvalEmployeeDetail[i].StartDate.split(' ')[0];
+          this.employeeApprovalCreatedDate = this.approvalEmployeeDetail[i].CreatedDate.split(' ')[0];
+          // console.log('createdDate', this.employeeApprovalCreatedDate)
 
+        }
+      })
+  }
+  vendorapproval(){
+    this.http.get(config_url+'vendor/GetVendorApproval?UserTypeId=VENDOR&UserStatusId=N').subscribe(
+      (data: any) => {
+        // console.log("VENDOR", data);
+        var response= data.GetVendorApproval;
+        this.approvalVendorDetail = response;
+        for (let i = 0; i < this.approvalVendorDetail.length; i++) {
+
+          this.vendorApprovalCreatedDate = this.approvalVendorDetail[i].CreatedDate.split(' ')[0];
+
+        }
+      })
+  }
   displayStyle = "none";
 
   openPopup() {

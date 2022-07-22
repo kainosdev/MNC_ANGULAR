@@ -243,7 +243,7 @@ export class VendormanagementComponent implements OnInit {
      });
 
      this.Addressform = this.frmbuilder.group({
-      address_type:[],
+      AddressTypeId:[],
       Address1:['', [Validators.required]],
       Address2:[],
       CityId:['', [Validators.required]], 
@@ -253,17 +253,21 @@ export class VendormanagementComponent implements OnInit {
       EndDate:['', [Validators.required]],
       DistrictId:[],
       StateId:['', [Validators.required]],
+
+
+
     });
 
     this.Contactform = this.frmbuilder.group({
-      firstname:[],
-      lastname:['', [Validators.required]],
-      middlename:[],
-      JobTitle:['', [Validators.required]], 
-      BusinessPhone:[],
-      BusinessEmail:['', [Validators.required]],
-      primary:[''],
-      active:[''],
+      FirstName:[],
+      LastName:['', [Validators.required]],
+      MiddleName:[],
+      JobTitleId:['', [Validators.required]], 
+      Phone:[],
+      Email:['', [Validators.required]],
+      VendorContactPrimary:[1],
+      VendorContactActive:[1],
+      ContactId:[0]
     
     });
 
@@ -309,20 +313,65 @@ export class VendormanagementComponent implements OnInit {
     }
     else
     {
-     this.Addressform.value.AddressTypeDesc=this.Addressform.value.address_type.AddressTypeDesc;
-     this.Addressform.value.AddressTypeId=this.Addressform.value.address_type.AddressTypeId;
-     this.Addressform.value.CityName=this.Addressform.value.CityId.CityName;
-     this.Addressform.value.CityId=this.Addressform.value.CityId.CityId;
-     this.Addressform.value.DistrictName=this.Addressform.value.DistrictId.DistrictName;
-     this.Addressform.value.DistrictId=this.Addressform.value.DistrictId.DistrictId;
-     this.Addressform.value.StateName=this.Addressform.value.StateId.StateName;
-     this.Addressform.value.StateId=this.Addressform.value.StateId.StateId;
-     this.Addressform.value.CountryName=this.Addressform.value.CountryId.CountryName;
-     this.Addressform.value.CountryId=this.Addressform.value.CountryId.CountryId;
+
+      let addresstype = this.AddressTypelist.filter((y:any) => y.AddressTypeId === this.Addressform.value.AddressTypeId);
+      if (addresstype.length > 0) 
+      {
+         this.Addressform.value.AddressTypeDesc=addresstype[0].AddressTypeDesc;
+      }
+
+
+      let city = this.citylist.filter((y:any) => y.CityId === this.Addressform.value.CityId);
+      if (city.length > 0) 
+      {
+         this.Addressform.value.CityName=city[0].CityName;
+      }
+
+      let district = this.districts.filter((y:any) => y.DistrictId === this.Addressform.value.DistrictId);
+      if (district.length > 0) 
+      {
+         this.Addressform.value.DistrictName=district[0].DistrictName;
+      }
+
+      
+      let state = this.statedetail.filter((y:any) => y.StateId === this.Addressform.value.StateId);
+      if (state.length > 0) 
+      {
+         this.Addressform.value.StateName=state[0].StateName;
+      }
+
+      let country = this.countrytype.filter((y:any) => y.CountryId === this.Addressform.value.CountryId);
+      if (country.length > 0) 
+      {
+         this.Addressform.value.CountryName=country[0].CountryName;
+      }
+
+
+
+   
      this.address_list.push(this.Addressform.value)
      this.Addressform.reset()
      this.address_submmited=false;
     }
+  }
+  editaddress(data:any)
+  {
+    debugger
+    this.Addressform.patchValue({ 
+      address_id : 0,
+      address_type :data.AddressTypeId,
+      Address1:data.Address1,
+      Address2:data.Address2,
+      CityId:data.CityId,
+      Zipcode:data.Zipcode,
+      CountryId: data.CountryId,
+      StartDate: '',
+      EndDate:'',
+      DistrictId: data.DistrictId,
+      StateId:data.StateId,
+  
+   });
+
   }
   getjobtitledata(){
         this.http.get(config_url+'/employee/selectJobTitle').subscribe( (data:any) => {
@@ -340,6 +389,12 @@ export class VendormanagementComponent implements OnInit {
     }
     else
     {
+      let jobtitle = this.jobdetail.filter((y:any) => y.JobTitleId === this.Contactform.value.JobTitleId);
+      if (jobtitle.length > 0) 
+      {
+         this.Contactform.value.JobTitleDesc=jobtitle[0].JobTitleDesc;
+      }
+     
       
      this.contact_list.push(this.Contactform.value)
      this.Contactform.reset()
@@ -1078,6 +1133,7 @@ GetVendorAddressById(){
       {
         this.address_list=response;
       }
+      console.log("AddressList>>>",this.address_list);
       // console.log(data1);
       // this.singleVendorAddressDet=data1;
       // this.singleVendorAddressDet=this.singleVendorAddressDet.SingleVendorAddressDetails;
@@ -1431,13 +1487,18 @@ GetVendorContactById(){
  
   let vendoridSes = localStorage.getItem('vendoridSes');
 
-  this.http.get(config_url+'/vendor/GetVendorContactById?VendorId='+vendoridSes+"&VendorContactPrimary=1").subscribe(data1 =>
+  this.http.get(config_url+'/vendor/GetVendorContactById?VendorId='+vendoridSes+"&VendorContactPrimary=1").subscribe((data:any) =>
     {
-
+      var response= data.SingleVendorContactDetails;
+      if(response != null && response.length>0)
+      {
+        this.contact_list=response;
+      }
+      console.log("contactlist>>>",this.contact_list);
       
-      this.SingleVendorContactDetailsArr=data1;
-      this.SingleVendorContactDetailsArr=this.SingleVendorContactDetailsArr.SingleVendorContactDetails;
-      console.log("SingleVendorContactDetailsArr>>>",this.SingleVendorContactDetailsArr);
+      // this.SingleVendorContactDetailsArr=data1;
+      // this.SingleVendorContactDetailsArr=this.SingleVendorContactDetailsArr.SingleVendorContactDetails;
+      // console.log("SingleVendorContactDetailsArr>>>",this.SingleVendorContactDetailsArr);
       
     })
 
