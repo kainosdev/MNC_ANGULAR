@@ -962,12 +962,12 @@ number(event: any) {
 
         if (this.employeeform.invalid)
         {
-          // console.log("beforeoutput");
+          console.log("beforeoutput");
             return;
         }
         else
         {
-          // console.log("output");
+          console.log("output");
           this.employeeform.value.UserTypeId="EMPLOY"
           alert(JSON.stringify(this.employeeform.value))
           this.finalsavecall(this.employeeform.value)
@@ -976,21 +976,21 @@ number(event: any) {
 
 
 
-        else if(usertype_id == "OTHER")
-        {
+        // else if(usertype_id == "OTHER")
+        // {
 
-        if (this.otherform.invalid)
-        {
-            return;
-        }
-        else
-        {
-          this.otherform.value.UserTypeId="EMPLOY"
-          alert(JSON.stringify(this.otherform.value))
-          this.finalsavecall(this.otherform.value)
+        // if (this.otherform.invalid)
+        // {
+        //     return;
+        // }
+        // else
+        // {
+        //   this.otherform.value.UserTypeId="EMPLOY"
+        //   alert(JSON.stringify(this.otherform.value))
+        //   this.finalsavecall(this.otherform.value)
 
-        }
-        }
+        // }
+        // }
 
         else if(usertype_id == "BUSINE")
         {

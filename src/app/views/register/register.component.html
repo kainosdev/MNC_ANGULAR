@@ -225,7 +225,7 @@
             <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
 
                 <select type="text"  class="County" formControlName="county_name" id="county_id" (change)="inputErrorMessage('county_id')">
-                    <!-- <option ></option> -->
+                    <option ></option>
                     <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
                         {{statelistid.DistrictName}}</option>
                  </select>
@@ -439,7 +439,7 @@
                                          <div class="col-md">
                                                 <div class="form-floating">
                                                         <select class="form-select" formControlName="DistrictId" id="county_id" (change)="inputErrorMessage('county_id')" >
-                                                               
+                                                                <option value="value"></option>
                                                             <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
                                                                 {{statelistid.DistrictName}}</option>
                                                              
@@ -591,7 +591,7 @@
                         <div class="form-floating">
                        <input type="email" class="form-control" formControlName="Email" >
                        <div  class="help-block text-danger">
-                        <div *ngIf="submitted && rcf.mail.errors">Email Address is required</div>
+                        <div *ngIf="submitted && rcf.Email.errors">Email Address is required</div>
                        </div>
                         <label class="common_lbl" for="social_no">EMAIL ADDRESS</label>
                          </div>
@@ -827,6 +827,7 @@
                                         <div class="form-floating">
                                       
                                           <select class="form-select" formControlName="county_name" id="county_id"  (change)="inputErrorMessage('county_id')">
+                                                <option value="value"></option>
                                                 <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
                                                         {{statelistid.DistrictName}}</option>
                                           </select> 
@@ -859,6 +860,7 @@
                                                 <div class="form-floating">
                                               
                                                   <select class="form-select" formControlName="StateId" id="curstate_id"  (change)="inputErrorMessage('curstate_id');onchangecountry()">
+                                                        <option value="value"></option>
                                                         <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
                                                                 {{statelistid.StateName}}</option>
                                                   </select> 
@@ -1079,6 +1081,7 @@
                                         <div class="col-md">
                                                 <div class="form-floating">
                                                         <select class="form-select"  formControlName="county_name" id="county_id" (change)="inputErrorMessage('county_id')">
+                                                                <option value="value"></option>
                                                                 <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
                                                                         {{statelistid.DistrictName}}</option>
                                                           </select> 
@@ -1111,6 +1114,7 @@
                                                  <div class="col-md">
                                                         <div class="form-floating">
                                                                 <select class="form-select"  formControlName="StateId" id="curstate_id" (change)="inputErrorMessage('curstate_id');onchangecountry()">
+                                                                        <option value="value"></option>
                                                                         <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
                                                                                 {{statelistid.StateName}}</option>
                                                                   </select> 
