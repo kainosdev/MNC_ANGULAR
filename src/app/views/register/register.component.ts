@@ -76,47 +76,67 @@ public mask1 = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/,
     this.employeeform = this.frmbuilder.group({
 
      //contact details
+     UserId:  ['', [Validators.required]],
       FirstName: ['', [Validators.required]],
-      legalbusiness: [''],
       LastName:  ['', [Validators.required]],
-      tradeName: [],
-      // UserTypeId:  ['', [Validators.required]],
-      UserId:  ['', [Validators.required]],
-      UserPassword:  ['', [Validators.required]],
-      conformpassword:  ['', [Validators.required]],
+      MiddleName: [],
+       UserPassword:  ['', [Validators.required]],
+       conformpassword:  ['', [Validators.required]],
+       Address1:  ['', [Validators.required]],
+        Address2: [],
+        CityId:  ['', [Validators.required]],
+        DistrictId: ['', [Validators.required]],
+        Zipcode: ['', [Validators.required]],
+        StateId:  ['', [Validators.required]],
+        CountryId:  ['', [Validators.required]],
+        JobTitleId:['', [Validators.required]],
+        EmploymentTypeId:['', [Validators.required]],
+        Phone:['', [Validators.required]],
+        mail:['', [Validators.required]],
+        JobStartDate: ['', [Validators.required]],
+        AdminUser:  [false],
+        UserStatusId:['N'],
 
-      Address1:  ['', [Validators.required]],
-      Address2: [],
-      StateId:  ['', [Validators.required]],
-      CityId:  ['', [Validators.required]],
-      Zipcode: ['', [Validators.required]],
-      DistrictId: ['', [Validators.required]],
-      StartDate: ['', [Validators.required]],
-      EndDate: [''],
-      CountryId:  ['', [Validators.required]],
+
+      // legalbusiness: [''],
+     
+      // tradeName: [],
+      // UserTypeId:  ['', [Validators.required]],
+     
+     
+      // conformpassword:  ['', [Validators.required]],
+
+     
+     
+     
+     
+     
+     
+      // StartDate: ['', [Validators.required]],
+      // EndDate: [''],
+    
      //employee details
-      JobTitleId:['', [Validators.required]],
-      EmploymentTypeId:['', [Validators.required]],
-      JobStartDate: ['', [Validators.required]],
-      AdminUser:  [false],
-      Phone:['', [Validators.required]],
-      mail:['', [Validators.required]],
+     
+      
+      
+      
+     
      
 
-      BusinessRegisteredInSCC: [],
-      VendorTypeId: [],
-      EIN_SSN:[],
+      // BusinessRegisteredInSCC: [],
+      // VendorTypeId: [],
+      // EIN_SSN:[],
 
 
-      OutreachEmailOptIn:[],
-      business_ssn: [],
-      BusinessSize: [],
-      BusinessRegisteredInDistrict:[],
-      BusinessIsFranchisee: [],
-      BEClassificationId: [],
+      // OutreachEmailOptIn:[],
+      // business_ssn: [],
+      // BusinessSize: [],
+      // BusinessRegisteredInDistrict:[],
+      // BusinessIsFranchisee: [],
+      // BEClassificationId: [],
 
 
-      UserStatusId:['N'],
+      
 
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
@@ -223,7 +243,8 @@ this.vendorform_business = this.frmbuilder.group({
 
   BusinessRegisteredInDistrict:[false],
   BusinessIsFranchisee: [false],
-  BEClassificationId: [],
+  BEClassificationId: ['', [Validators.required]],
+  // BEClassificationId: [],
 
   JobTitleId:[],
   EmploymentTypeId:[],
@@ -903,19 +924,23 @@ number(event: any) {
     get f() { return this.employeeform.controls; }
 
     onSubmit() {
+
+      
       // debugger
         this.submitted = true;
+      
         let usertype_id = (<HTMLInputElement>document.getElementById("usertype_id")).value;
         if(usertype_id == "EMPLOY")
         {
 
         if (this.employeeform.invalid)
         {
+          console.log("beforeoutput");
             return;
         }
         else
         {
-
+          console.log("output");
           this.employeeform.value.UserTypeId="EMPLOY"
           alert(JSON.stringify(this.employeeform.value))
           this.finalsavecall(this.employeeform.value)
