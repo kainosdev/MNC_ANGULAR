@@ -185,6 +185,8 @@ this.vendorform_individual = this.frmbuilder.group({
    EIN_SSN: ['', [Validators.required]],
    phoneindividual: ['', [Validators.required]],
    Mailindividual: ['', [Validators.required]],
+   OutreachEmailOptIn:[],
+   UserStatusId:['N'],
 
 
 
@@ -213,7 +215,7 @@ this.vendorform_individual = this.frmbuilder.group({
  
 
 
-  // OutreachEmailOptIn:[],
+  
   // business_ssn: [],
   // BusinessSize: [],
   // BusinessRegisteredInDistrict:[],
@@ -228,7 +230,7 @@ this.vendorform_individual = this.frmbuilder.group({
   // Phone:[],
   // mail:[],
   // AdminUser: [],
-  UserStatusId:['N'],
+ 
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 this.vendorform_business = this.frmbuilder.group({
@@ -250,6 +252,10 @@ this.vendorform_business = this.frmbuilder.group({
   BEClassificationId: ['', [Validators.required]],
   BusinessSize: ['', [Validators.required]],
   Mailbusiness: ['', [Validators.required]],
+  BusinessRegisteredInSCC: [false],
+  BusinessRegisteredInDistrict:[false],
+  BusinessIsFranchisee: [false],
+   OutreachEmailOptIn:[true],
   UserStatusId:['N'],
 
  
@@ -265,20 +271,20 @@ this.vendorform_business = this.frmbuilder.group({
   // VendorTypeId: [],
   // EIN_SSN:[],
 
-  // OutreachEmailOptIn:[true],
+ 
  
  
  
 
-  // BusinessRegisteredInDistrict:[false],
-  // BusinessIsFranchisee: [false],
+  
+  
  
   // BEClassificationId: [],
 
   // JobTitleId:[],
   // EmploymentTypeId:[],
   // JobStartDate: [],
-  // BusinessRegisteredInSCC: [false],
+  
 
   // Phone:[],
   // AdminUser: [],
