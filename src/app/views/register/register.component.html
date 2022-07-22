@@ -579,7 +579,7 @@
 
                  <div class="col-md">
                         <div class="form-floating">
-                       <input type="text" class="form-control" formControlName="Phone" id="phoneno_id" (keypress)="inputErrorMessage('phoneno_id'); number($event)">
+                       <input type="text" class="form-control" [textMask]="{mask: mask1}" formControlName="Phone" id="phoneno_id" (keypress)="inputErrorMessage('phoneno_id'); number($event)">
                        <div  class="help-block text-danger">
                         <div *ngIf="submitted && rcf.Phone.errors">Phone Number is required</div>
                        </div>
@@ -589,7 +589,7 @@
 
                  <div class="col-md">
                         <div class="form-floating">
-                       <input type="email" class="form-control" formControlName="Email" >
+                       <input type="text" class="form-control" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$" formControlName="Email" >
                        <div  class="help-block text-danger">
                         <div *ngIf="submitted && rcf.Email.errors">Email Address is required</div>
                        </div>
@@ -915,7 +915,7 @@
 
          <div class="col-md">
                 <div class="form-floating">
-               <input type="text" class="form-control" formControlName="phoneindividual" (keypress)="number($event)">
+               <input type="text" class="form-control" [textMask]="{mask: mask1}" formControlName="phoneindividual" (keypress)="number($event)">
                <div  class="help-block text-danger">
                 <div *ngIf="submitted && vif.phoneindividual.errors">Phone Number is required</div>
                 </div>
@@ -925,9 +925,9 @@
 
          <div class="col-md">
                 <div class="form-floating">
-               <input type="text" class="form-control" formControlName="Mailindividual" >
+               <input type="text" class="form-control" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$"  formControlName="Mailindividual" >
                <div  class="help-block text-danger">
-                <div *ngIf="submitted && vif.Mailindividual.errors">Email Address is required</div>
+                <div *ngIf="submitted && vif.Mailindividual.errors">Email Address is required</div> 
                 </div>
                 <label class="common_lbl" for="social_no">EMAIL ADDRESS</label>
                  </div>
@@ -1158,15 +1158,27 @@
  <p class="mainheading heading">Business Information</p>
 
  <div class="row g-4">
-         <div class="col-md">
+         <!-- <div class="col-md">
                 <div class="form-floating">
-               <input type="number" class="form-control"  formControlName="business_ssn" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
+               <input type="number" class="form-control" [textMask]="{mask: mask}"  formControlName="business_ssn" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
                <div  class="help-block text-danger">
-                <div *ngIf="submitted && vbf.business_ssn.errors">EIN/Tax ID is required</div>
+                <div *ngIf="submitted && vbf.business_ssn.errors"></div>
+                 </div>
+                <label class="common_lbl" for="social_no"></label>
+                 </div>
+         </div> -->
+         
+  <div class="col-md">
+                <div class="form-floating">
+               <input type="text" class="form-control" [textMask]="{mask: mask}" formControlName="business_ssn" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
+               <div  class="help-block text-danger">
+                <div *ngIf="submitted && vif.business_ssn.errors?.required">EIN/Tax ID is required</div>
                  </div>
                 <label class="common_lbl" for="social_no">EIN/TAX ID</label>
                  </div>
          </div>
+
+
 
         <div class="col-md">
                 <div class="form-floating">
@@ -1194,7 +1206,7 @@
 
          <div class="col-md">
                 <div class="form-floating">
-               <input type="text" class="form-control" formControlName="Mailbusiness">
+               <input type="text" class="form-control"  formControlName="Mailbusiness"  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$">
                <div  class="help-block text-danger">
                 <div *ngIf="submitted && vbf.Mailbusiness.errors">Email Address is required</div>
                 </div>
