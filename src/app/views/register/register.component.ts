@@ -92,7 +92,7 @@ public mask1 = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/,
         JobTitleId:['', [Validators.required]],
         EmploymentTypeId:['', [Validators.required]],
         Phone:['', [Validators.required]],
-        mail:['', [Validators.required]],
+        Email:['', [Validators.required]],
         JobStartDate: ['', [Validators.required]],
         AdminUser:  [false],
         UserStatusId:['N'],
@@ -935,12 +935,12 @@ number(event: any) {
 
         if (this.employeeform.invalid)
         {
-          console.log("beforeoutput");
+          // console.log("beforeoutput");
             return;
         }
         else
         {
-          console.log("output");
+          // console.log("output");
           this.employeeform.value.UserTypeId="EMPLOY"
           alert(JSON.stringify(this.employeeform.value))
           this.finalsavecall(this.employeeform.value)
@@ -971,10 +971,12 @@ number(event: any) {
           {
             if (this.vendorform_business.invalid)
             {
-                return;
+              console.log("invalided");
+              return;
             }
             else
             {
+              console.log("valided");
               this.vendorform_business.value.UserTypeId="BUSINE";
               this.vendorform_business.value.VendorTypeId=true;
               var int_business=parseInt(this.vendorform_business.value.BusinessSize)
