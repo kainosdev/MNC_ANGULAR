@@ -13,7 +13,6 @@ export class VendorDashboardComponent implements OnInit {
   Bidslist:any;
   vendoractivelist:any;
   Vendorlist:any;
-  
   Title:any;
   SolicitationTypeId: any;
   BidStatusId: any;
@@ -24,9 +23,8 @@ export class VendorDashboardComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   title = 'datatables';
-  ResponseNotSubmittedlist: any;
   BidsSubmittedlist: any;
-  
+  ResponseNotSubmittedlist: any;
 
   constructor(private http: HttpClient) { }
 
