@@ -20,7 +20,7 @@
         <div class="col-md">
                 <div class="form-floating">
                 <select class="form-select" [ngModel]='usertype'   id="usertype_id" (ngModelChange)="inputErrorMessage('usertype_id');vendordetails_display();displaydata()">
-                        <option *ngFor="let userlist of usertypedata" [value]="userlist.UserTypeId" [selected]="userlist.UserTypeId === 'VENDOR'">
+                        <option *ngFor="let userlist of usertypedata" [value]="userlist.UserTypeId" [selected]="userlist.UserTypeId === 'BUSINE'">
                                 {{userlist.UserTypeDesc}}</option>
                   </select> 
                   <label class="common_lbl" for="floatingSelectGrid">USER TYPE</label>
@@ -51,15 +51,15 @@
   
 
     <div class="row mt-2" *ngIf="vendortype_show">
-            <div class="form-group col-xs-4 col-md-2 col-sm-2">
+            <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
                      <label class="">Vendor Type<span class="requiredfield ">  *</span></label>
 
              </div>
              <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
 
                     <label >Individual
-                            <!-- *ngFor="let vendortyp of vendoralllist" [value]="vendortyp.VendorTypeId">
-                            {{vendortyp.VendorTypeDesc}} -->
+                            *ngFor="let vendortyp of vendoralllist" [value]="vendortyp.VendorTypeId">
+                            {{vendortyp.VendorTypeDesc}}
                          </label>
                          &nbsp;&nbsp;
                         <label class="switch">
@@ -67,7 +67,7 @@
                         <span class="slider round"></span>
                         </label>&nbsp;&nbsp;
                         <label >Business</label>
-             </div>
+             </div> -->
 
 
      </div>
@@ -439,8 +439,7 @@
                                          <div class="col-md">
                                                 <div class="form-floating">
                                                         <select class="form-select" formControlName="DistrictId" id="county_id" (change)="inputErrorMessage('county_id')" >
-                                                                <option  value="">
-                                                                        Select</option>
+                                                               
                                                             <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
                                                                 {{statelistid.DistrictName}}</option>
                                                              
@@ -466,7 +465,7 @@
 
                                                                  </select>
                                                       <div  class="help-block text-danger">
-                                                        <div *ngIf="submitted && rcf.Zipcode.errors">Address Line2 is required</div>
+                                                        <div *ngIf="submitted && rcf.Zipcode.errors">Zip Code is required</div>
                                                     </div>
                                                         <label class="common_lbl" for="social_no">ZIP CODE</label>
                                                          </div>
@@ -474,15 +473,15 @@
                                 
                                                  <div class="col-md">
                                                         <div class="form-floating">
-                                                                <select class=" form-select" formControlName="Zipcode" id="regcurrentzip_id"
-                                                                 (change)="inputErrorMessage('regcurrentzip_id')" >
+                                                               <select class=" form-select"  formControlName="StateId" id="curstate_id"
+                                                                        (change)="inputErrorMessage('curstate_id');onchangecountry()" >
                                                                         <option value="value"></option>
-                                                                         <option *ngFor="let ziplist of zipcodedetail" >
-                                                                         {{ziplist.Zipcode}}</option>
+                                                                        <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
+                                                                                {{statelistid.StateName}}</option>
 
                                                                  </select>
                                                       <div  class="help-block text-danger">
-                                                        <div *ngIf="submitted && rcf.Zipcode.errors">Address Line2 is required</div>
+                                                        <div *ngIf="submitted && rcf.Zipcode.errors">State/Province is required</div>
                                                     </div>
                                                         <label class="common_lbl" for="social_no">STATE/PROVINCE</label>
                                                          </div>
@@ -492,17 +491,16 @@
                                                   <div class="col-md">
                                                         <div class="form-floating">
                                                       
-                                                          <select class="form-select" formControlName="CityId"  id="currentcity_id"   (change)="inputErrorMessage('currentcity_id');onchangezip();onchangestate()"  >
+                                                          <select class="form-select" formControlName="CountryId" id="country_id" (change)="inputErrorMessage('country_id')">
                                                                 <option value="value"></option>
-                            
-                                                                <option *ngFor="let citylist of cityalldetail" value="{{citylist.CityId}}">
-                                                                {{citylist.CityName}}</option>
+                                                                <option *ngFor="let countrylist of countrydetail" [value]="countrylist.CountryId">
+                                                                {{countrylist.CountryName}}</option>
                                                              
                                                          </select> 
                                                          <div  class="help-block text-danger">
-                                                            <div *ngIf="submitted && rcf.CityId.errors">City is required</div>
+                                                                <div *ngIf="submitted && rcf.CountryId.errors">Country is required</div>
                                                         </div>
-                                                          <label class="common_lbl" for="social_no">CITY</label>
+                                                          <label class="common_lbl" for="social_no">COUNTRY</label>
                                                         </div>
                                                       </div>
 
@@ -524,42 +522,8 @@
                                 
                                                 </div>
 
-    <div class="row mt-2">
-      
-
-        <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                <label class="labelwidth">State/Province<span class="requiredfield "> *</span></label>
-
-        </div>
-        <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
-
-            <select class="State"  formControlName="StateId" id="curstate_id"
-            (change)="inputErrorMessage('curstate_id');onchangecountry()" >
-
-            <option  value="">
-                        Select</option>
-            <!-- <option value=""></option> -->
-            <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
-            {{statelistid.StateName}}</option>
-            </select>
-            <div  class="help-block text-danger">
-                    <div *ngIf="submitted && rcf.StateId.errors">State/Province is required</div>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-1">
-        <div class="form-group col-xs-4 col-md-2 col-sm-2">
-            <!-- <label class="labelwidth">End Date<span class="requiredfield "> *</span> </label> -->
-
-        </div>
-        <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-
-            <!-- <input type="date" class=""  formControlName="EndDate" id="enddata_id" (click)="inputErrorMessage('enddata_id')">
-
-                <div  class="help-block text-danger">
-                        <div *ngIf="submitted && rcf.EndDate.errors">End Date is required</div>
-            </div> -->
-        </div>
+   <!-- <div class="row mt-1">
+       
 
         <div class="form-group col-xs-4 col-md-2 col-sm-2">
                 <label class="labelwidth">Country<span class="requiredfield "> *</span></label>
@@ -576,61 +540,110 @@
                     <div *ngIf="submitted && rcf.CountryId.errors">Country is required</div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
             <p class="mainheading heading">Employee Information</p>
 
+            <div class="row g-4">
+                <div class="col-md">
+                        <div class="form-floating">
+                                 <select formControlName="JobTitleId" class=" form-select" id="job_title" (change)="inputErrorMessage('job_title')">
+                                 <option value=""></option>
+                                 <option *ngFor="let jobtitle of jobdetail" [value]="jobtitle.JobTitleId">
+                                     {{jobtitle.JobTitleDesc}}</option>
 
-            <div class="row mt-2">
+                                 </select>
+                                 <div  class="help-block text-danger">
+                                        <div *ngIf="submitted && rcf.JobTitleId.errors">Job Title is required</div>
+                                </div>
+                        <label class="common_lbl" for="social_no">JOB TITLE</label>
+                         </div>
+                 </div>
 
+                 <div class="col-md">
+                        <div class="form-floating">
+                             <select formControlName="EmploymentTypeId" class=" form-select" id="employee_id"
+                                           (change)="inputErrorMessage('employee_id');">
+                                        <option value="value"></option>
+                                        <option *ngFor="let employeetype of employeedetail" [value]="employeetype.EmploymentTypeId">
+                                            {{employeetype.EmploymentTypeDesc}}</option>
 
-                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Job Title <span class="requiredfield "> *</span> </label>
+                                 </select>
+                                 <div  class="help-block text-danger">
+                                        <div *ngIf="submitted && rcf.EmploymentTypeId.errors">Employment Type is required</div>
+                                </div>
+                        <label class="common_lbl" for="social_no">EMPLOYMENT TYPE</label>
+                         </div>
+                 </div>
 
-                    </div>
-                    <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                        <select formControlName="JobTitleId" class="jobtitle" id="job_title" (change)="inputErrorMessage('job_title')">
-                                <option value=""></option>
-                                <option *ngFor="let jobtitle of jobdetail" [value]="jobtitle.JobTitleId">
-                                    {{jobtitle.JobTitleDesc}}</option>
-                            </select>
-                            <div  class="help-block text-danger">
-                                    <div *ngIf="submitted && rcf.JobTitleId.errors">Job Title is required</div>
-                            </div>
-                    </div>
+                 <div class="col-md">
+                        <div class="form-floating">
+                       <input type="text" class="form-control" formControlName="Phone" id="phoneno_id" (keypress)="inputErrorMessage('phoneno_id'); number($event)">
+                       <div  class="help-block text-danger">
+                        <div *ngIf="submitted && rcf.Phone.errors">Phone Number is required</div>
+                       </div>
+                        <label class="common_lbl" for="social_no">PHONE NUMBER</label>
+                         </div>
+                 </div>
 
-                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Phone Number <span class="requiredfield "> *</span> </label>
+                 <div class="col-md">
+                        <div class="form-floating">
+                       <input type="email" class="form-control" formControlName="mail" >
+                       <div  class="help-block text-danger">
+                        <div *ngIf="submitted && rcf.mail.errors">Email Address is required</div>
+                       </div>
+                        <label class="common_lbl" for="social_no">EMAIL ADDRESS</label>
+                         </div>
+                 </div>
 
-                    </div>
-                    <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
-                            <input type="text" class=""  formControlName="Phone" id="phoneno_id"
-                            (keypress)="inputErrorMessage('phoneno_id'); number($event)">
-                            <div  class="help-block text-danger">
-                                    <div *ngIf="submitted && rcf.Phone.errors">Phone Number is required</div>
-                            </div>
-                    </div>
-            </div>
+          </div>
 
-            <div class="row mt-2">
+          <div class="row g-4">
+                <div class="col-md">
+                        <div class="form-floating">
+                       <input type="date" class="form-control" formControlName="JobStartDate" id="jobstartdate_id"
+                                (change)="inputErrorMessage('jobstartdate_id')">
+                       <div  class="help-block text-danger">
+                        <div *ngIf="submitted && rcf.JobStartDate.errors">Start Date is required</div>
+                         </div>
+                        <label class="common_lbl" for="social_no">START DATE</label>
+                         </div>
+                 </div>
 
+                 <div class="col-md">
+                        <div class="form-floating">
+                                <div class="btn-group btn-toggle">  
+                                         <label class="question_font">ADMIN USER?</label> 
+                                          <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
+                                          <button class="btn btn-xs btn-primary active height">No</button> 
+                                        </div>
+                             </div>
+                 </div>
 
-                    <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                            <label class="labelwidth">Employment Type <span class="requiredfield "> *</span> </label>
+                 <div class="col-md">
+                        <div class="form-floating">
+                       <!-- <input type="text" class="form-control" formControlName="Phone" id="phoneno_id" (keypress)="inputErrorMessage('phoneno_id'); number($event)">
+                       <div  class="help-block text-danger">
+                        <div *ngIf="submitted && rcf.Phone.errors">Phone Number is required</div>
+                       </div>
+                        <label class="common_lbl" for="social_no">PHONE NUMBER</label> -->
+                         </div>
+                 </div>
 
-                    </div>
-                    <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-                            <select formControlName="EmploymentTypeId" class="employeeid" id="employee_id"
-                            (change)="inputErrorMessage('employee_id');">
-                            <option value="value"></option>
-                            <option *ngFor="let employeetype of employeedetail" [value]="employeetype.EmploymentTypeId">
-                                {{employeetype.EmploymentTypeDesc}}</option>
-                        </select>
-                        <div  class="help-block text-danger">
-                                <div *ngIf="submitted && rcf.EmploymentTypeId.errors">Employment Type is required</div>
-                        </div>
-                    </div>
+                 <div class="col-md">
+                        <div class="form-floating">
+                       <!-- <input type="text" class="form-control" > -->
+                       <!-- <div  class="help-block text-danger">
+                        <div *ngIf="submitted && rcf.Phone.errors">Phone Number is required</div>
+                       </div> -->
+                        <!-- <label class="common_lbl" for="social_no">MAIL ADDRESS</label> -->
+                         </div>
+                 </div>
+
+          </div>
+
+  <!-- <div class="row mt-2">
 
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
                             <label class="labelwidth">Is Admin User <span class="requiredfield "> *</span> </label>
@@ -644,9 +657,9 @@
 
 
                     </div>
-            </div>
+         </div> -->
 
-            <div class="row mt-2">
+            <!-- <div class="row mt-2">
 
 
                     <div class="form-group col-xs-4 col-md-2 col-sm-2">
@@ -667,7 +680,7 @@
                     <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
 
                     </div>
-            </div>
+            </div> -->
 
 
 
@@ -900,20 +913,20 @@
 
          <div class="col-md">
                 <div class="form-floating">
-               <input type="text" class="form-control"  placeholder="Last Name">
-               <!-- <div  class="help-block text-danger">
-                <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
-                </div> -->
+               <input type="text" class="form-control" formControlName="phoneindividual" (keypress)="number($event)">
+               <div  class="help-block text-danger">
+                <div *ngIf="submitted && vif.phoneindividual.errors">Phone Number is required</div>
+                </div>
                 <label class="common_lbl" for="social_no">PHONE NUMBER</label>
                  </div>
          </div>
 
          <div class="col-md">
                 <div class="form-floating">
-               <input type="text" class="form-control"  placeholder="Last Name">
-               <!-- <div  class="help-block text-danger">
-                <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
-                </div> -->
+               <input type="text" class="form-control" formControlName="Mailindividual" >
+               <div  class="help-block text-danger">
+                <div *ngIf="submitted && vif.Mailindividual.errors">Email Address is required</div>
+                </div>
                 <label class="common_lbl" for="social_no">EMAIL ADDRESS</label>
                  </div>
          </div>
@@ -921,8 +934,8 @@
                 <div class="form-floating">
                         <div class="btn-group btn-toggle">  
                                  <label class="question_font">WOULD YOU LIKE TO RECEIVE OUTREACH EMAILS FROM US?</label> 
-                                  <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
-                                  <button class="btn btn-xs btn-primary active height">No</button> 
+                                 <button class="btn btn-xs ml-1 btn-primary active height">Yes</button>  
+                                 <button class="btn btn-xs  btn-outline-primary height">No</button> 
                                 </div>
                      </div>
          </div>
@@ -1102,7 +1115,7 @@
                                                                                 {{statelistid.StateName}}</option>
                                                                   </select> 
                                                                   <div  class="help-block text-danger">
-                                                                        <div *ngIf="submitted && vbf.CountryId.errors">Country is required</div>
+                                                                        <div *ngIf="submitted && vbf.CountryId.errors">State/Province is required</div>
                                                                 </div>
                                                         <label class="common_lbl" for="social_no">STATE/PROVINCE</label>
                                                          </div>
@@ -1161,7 +1174,7 @@
                             <div  class="help-block text-danger">
                 <div *ngIf="submitted && vbf.CountryId.errors">Country is required</div>
         </div>
-                <label class="common_lbl" for="social_no">BE Classification</label>
+                <label class="common_lbl" for="social_no">BE CLASSIFICATION</label>
                  </div>
          </div>
 
@@ -1177,10 +1190,10 @@
 
          <div class="col-md">
                 <div class="form-floating">
-               <input type="text" class="form-control" formControlName="LastName" id="lastname_id" (keypress)="inputErrorMessage('lastname_id');alpha($event)">
-               <!-- <div  class="help-block text-danger">
-                <div *ngIf="submitted && vbf.LastName.errors">Trade Name is required</div>
-                </div> -->
+               <input type="text" class="form-control" formControlName="Mailbusiness">
+               <div  class="help-block text-danger">
+                <div *ngIf="submitted && vbf.Mailbusiness.errors">Email Address is required</div>
+                </div>
                 <label class="common_lbl" for="social_no">EMAIL ADDRESS</label>
                  </div>
          </div>
@@ -1222,9 +1235,10 @@
                  <div class="col-md">
                         <div class="form-floating">
                                 <div class="btn-group btn-toggle">  
-                                         <label class="question_font">WOULD YOU LIKE TO RECEIVE OUTREACH EMAILS FROM US?</label> 
-                                          <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
-                                          <button class="btn btn-xs btn-primary active height">No</button> 
+                                         <label class="question_font">WOULD YOU LIKE TO RECEIVE OUTREACH EMAILS FROM US?</label>
+                                         <button class="btn btn-xs ml-1 btn-primary active height">Yes</button>  
+                                          <button class="btn btn-xs  btn-outline-primary height">No</button>
+                                          <!-- <button class="btn btn-xs btn-primary active height">No</button>  -->
                                         </div>
                              </div>
                  </div>
@@ -1299,11 +1313,11 @@
     </div>
     <!-- vendor form business ends here -->
 
-
+<br>
 <div class="btndiv mt-2">
-         <input type="button"  class="btn btn-primary fixedwidthcls" value="Cancel" (click)="cancelform()"/>
+         <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="onSubmit()"/>
          &nbsp;&nbsp;
-              <input type="button"   class="btn btn-primary fixedwidthcls" (click)="onSubmit()"  value="Register" />
+              <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" (click)="cancelform()"/>
     </div><br>
 <!-- </div> -->
 <!-- </form> -->

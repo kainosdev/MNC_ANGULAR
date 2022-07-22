@@ -40,12 +40,20 @@ export class LoginComponent implements OnInit {
     // alert("hi");
     // console.log(this.loginForm);
     // this.toastr.success('hi');
- if(this.loginForm.UserId == "") {
-  (document.getElementById('invalidid') as HTMLFormElement).innerHTML = "Enter your Userid";
+    if(this.loginForm.UserId == "" && this.loginForm.Password == "") {
+      (document.getElementById('invalidid') as HTMLFormElement).innerHTML = "Enter Userid and Password";
+      return;
+     }
+ else if(this.loginForm.UserId == "") {
+  (document.getElementById('invalidid') as HTMLFormElement).innerHTML = "Enter Userid";
+  return;
  }
  else if(this.loginForm.Password == "") {
-  (document.getElementById('invalidid') as HTMLFormElement).innerHTML = "Enter your Password";
+  (document.getElementById('invalidid') as HTMLFormElement).innerHTML = "Enter Password";
+  return;
  }
+
+ 
 
 else {
   //console.log(this.loginForm);
