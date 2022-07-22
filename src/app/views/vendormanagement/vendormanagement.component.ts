@@ -309,12 +309,16 @@ export class VendormanagementComponent implements OnInit {
     }
     else
     {
-      this.Addressform.value.AddressTypeDesc=this.Addressform.value.address_type.AddressTypeDesc;
+     this.Addressform.value.AddressTypeDesc=this.Addressform.value.address_type.AddressTypeDesc;
+     this.Addressform.value.AddressTypeId=this.Addressform.value.address_type.AddressTypeId;
      this.Addressform.value.CityName=this.Addressform.value.CityId.CityName;
+     this.Addressform.value.CityId=this.Addressform.value.CityId.CityId;
      this.Addressform.value.DistrictName=this.Addressform.value.DistrictId.DistrictName;
+     this.Addressform.value.DistrictId=this.Addressform.value.DistrictId.DistrictId;
      this.Addressform.value.StateName=this.Addressform.value.StateId.StateName;
+     this.Addressform.value.StateId=this.Addressform.value.StateId.StateId;
      this.Addressform.value.CountryName=this.Addressform.value.CountryId.CountryName;
-
+     this.Addressform.value.CountryId=this.Addressform.value.CountryId.CountryId;
      this.address_list.push(this.Addressform.value)
      this.Addressform.reset()
      this.address_submmited=false;
