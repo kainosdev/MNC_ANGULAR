@@ -76,47 +76,67 @@ public mask1 = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/,
     this.employeeform = this.frmbuilder.group({
 
      //contact details
+     UserId:  ['', [Validators.required]],
       FirstName: ['', [Validators.required]],
-      legalbusiness: [''],
       LastName:  ['', [Validators.required]],
-      tradeName: [],
-      // UserTypeId:  ['', [Validators.required]],
-      UserId:  ['', [Validators.required]],
-      UserPassword:  ['', [Validators.required]],
-      conformpassword:  ['', [Validators.required]],
+      MiddleName: [],
+       UserPassword:  ['', [Validators.required]],
+       conformpassword:  ['', [Validators.required]],
+       Address1:  ['', [Validators.required]],
+        Address2: [],
+        CityId:  ['', [Validators.required]],
+        DistrictId: ['', [Validators.required]],
+        Zipcode: ['', [Validators.required]],
+        StateId:  ['', [Validators.required]],
+        CountryId:  ['', [Validators.required]],
+        JobTitleId:['', [Validators.required]],
+        EmploymentTypeId:['', [Validators.required]],
+        Phone:['', [Validators.required]],
+        Email:['', [Validators.required]],
+        JobStartDate: ['', [Validators.required]],
+        AdminUser:  [false],
+        UserStatusId:['N'],
 
-      Address1:  ['', [Validators.required]],
-      Address2: [],
-      StateId:  ['', [Validators.required]],
-      CityId:  ['', [Validators.required]],
-      Zipcode: ['', [Validators.required]],
-      DistrictId: ['', [Validators.required]],
-      StartDate: ['', [Validators.required]],
-      EndDate: [''],
-      CountryId:  ['', [Validators.required]],
+
+      // legalbusiness: [''],
+     
+      // tradeName: [],
+      // UserTypeId:  ['', [Validators.required]],
+     
+     
+      // conformpassword:  ['', [Validators.required]],
+
+     
+     
+     
+     
+     
+     
+      // StartDate: ['', [Validators.required]],
+      // EndDate: [''],
+    
      //employee details
-      JobTitleId:['', [Validators.required]],
-      EmploymentTypeId:['', [Validators.required]],
-      JobStartDate: ['', [Validators.required]],
-      AdminUser:  [false],
-      Phone:['', [Validators.required]],
-      mail:['', [Validators.required]],
+     
+      
+      
+      
+     
      
 
-      BusinessRegisteredInSCC: [],
-      VendorTypeId: [],
-      EIN_SSN:[],
+      // BusinessRegisteredInSCC: [],
+      // VendorTypeId: [],
+      // EIN_SSN:[],
 
 
-      OutreachEmailOptIn:[],
-      business_ssn: [],
-      BusinessSize: [],
-      BusinessRegisteredInDistrict:[],
-      BusinessIsFranchisee: [],
-      BEClassificationId: [],
+      // OutreachEmailOptIn:[],
+      // business_ssn: [],
+      // BusinessSize: [],
+      // BusinessRegisteredInDistrict:[],
+      // BusinessIsFranchisee: [],
+      // BEClassificationId: [],
 
 
-      UserStatusId:['N'],
+      
 
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
@@ -147,92 +167,120 @@ this.otherform = this.frmbuilder.group({
 
 this.vendorform_individual = this.frmbuilder.group({
 
-
-  FirstName: ['', [Validators.required]],
-  legalbusiness: [''],
-  LastName:  ['', [Validators.required]],
-  tradeName: [],
-  // UserTypeId:  ['', [Validators.required]],
   UserId:  ['', [Validators.required]],
+  FirstName: ['', [Validators.required]],
+  LastName:  ['', [Validators.required]],
+  Middlename: [],
   UserPassword:  ['', [Validators.required]],
   conformpassword:  ['', [Validators.required]],
-
   Address1:  ['', [Validators.required]],
   Address2: [],
-  StateId:  ['', [Validators.required]],
-   CityId:  ['', [Validators.required]],
-  Zipcode: ['', [Validators.required]],
+  CityId:  ['', [Validators.required]],
   county_name: ['', [Validators.required]],
-  DistrictId: ['', [Validators.required]],
+  Zipcode: ['', [Validators.required]],
+  StateId:  ['', [Validators.required]],
   CountryId:  ['', [Validators.required]],
-  StartDate: ['', [Validators.required]],
-  EndDate: [''],
-  VendorTypeId: [],
-  EIN_SSN: ['', [Validators.required]],
-  phoneindividual: ['', [Validators.required]],
-  Mailindividual: ['', [Validators.required]],
+   EIN_SSN: ['', [Validators.required]],
+   phoneindividual: ['', [Validators.required]],
+   Mailindividual: ['', [Validators.required]],
 
 
-  OutreachEmailOptIn:[],
-  business_ssn: [],
-  BusinessSize: [],
-  BusinessRegisteredInDistrict:[],
-  BusinessIsFranchisee: [],
-  BEClassificationId: [],
 
-  JobTitleId:[],
-  EmploymentTypeId:[],
-  JobStartDate: [],
-  BusinessRegisteredInSCC: [],
+ 
+  // legalbusiness: [''],
+ 
+  // tradeName: [],
+  // UserTypeId:  ['', [Validators.required]],
+ 
+  
+ 
+
+  
+ 
+  
+  
+ 
+  
+  // DistrictId: ['', [Validators.required]],
+  
+  // StartDate: ['', [Validators.required]],
+  // EndDate: [''],
+  // VendorTypeId: [],
+ 
+ 
+ 
+
+
+  // OutreachEmailOptIn:[],
+  // business_ssn: [],
+  // BusinessSize: [],
+  // BusinessRegisteredInDistrict:[],
+  // BusinessIsFranchisee: [],
+  // BEClassificationId: [],
+
+  // JobTitleId:[],
+  // EmploymentTypeId:[],
+  // JobStartDate: [],
+  // BusinessRegisteredInSCC: [],
 
   // Phone:[],
-  mail:[],
-  AdminUser: [],
+  // mail:[],
+  // AdminUser: [],
   UserStatusId:['N'],
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 this.vendorform_business = this.frmbuilder.group({
 
-
-  FirstName: ['', [Validators.required]],
-  legalbusiness: [''],
-  LastName:  ['', [Validators.required]],
-  tradeName: [],
-  // UserTypeId:  ['', [Validators.required]],
   UserId:  ['', [Validators.required]],
+  FirstName: ['', [Validators.required]],
+  LastName:  ['', [Validators.required]],
+  AllasName:[],
   UserPassword:  ['', [Validators.required]],
   conformpassword:  ['', [Validators.required]],
-
   Address1:  ['', [Validators.required]],
   Address2: [],
-  StateId:  ['', [Validators.required]],
-   CityId:  ['', [Validators.required]],
-  Zipcode: ['', [Validators.required]],
+  CityId:  ['', [Validators.required]],
   county_name: ['', [Validators.required]],
-  DistrictId: ['', [Validators.required]],
+  Zipcode: ['', [Validators.required]],
+  StateId:  ['', [Validators.required]],
   CountryId:  ['', [Validators.required]],
-  StartDate: ['', [Validators.required]],
-  EndDate: [''],
-  VendorTypeId: [],
-  EIN_SSN:[],
-
-  OutreachEmailOptIn:[true],
   business_ssn: ['', [Validators.required]],
+  BEClassificationId: ['', [Validators.required]],
   BusinessSize: ['', [Validators.required]],
   Mailbusiness: ['', [Validators.required]],
-
-  BusinessRegisteredInDistrict:[false],
-  BusinessIsFranchisee: [false],
-  BEClassificationId: [],
-
-  JobTitleId:[],
-  EmploymentTypeId:[],
-  JobStartDate: [],
-  BusinessRegisteredInSCC: [false],
-
-  Phone:[],
-  AdminUser: [],
   UserStatusId:['N'],
+
+ 
+  // legalbusiness: [''],
+  
+  // tradeName: [],
+  // UserTypeId:  ['', [Validators.required]],
+ 
+  // DistrictId: ['', [Validators.required]],
+ 
+  // StartDate: ['', [Validators.required]],
+  // EndDate: [''],
+  // VendorTypeId: [],
+  // EIN_SSN:[],
+
+  // OutreachEmailOptIn:[true],
+ 
+ 
+ 
+
+  // BusinessRegisteredInDistrict:[false],
+  // BusinessIsFranchisee: [false],
+ 
+  // BEClassificationId: [],
+
+  // JobTitleId:[],
+  // EmploymentTypeId:[],
+  // JobStartDate: [],
+  // BusinessRegisteredInSCC: [false],
+
+  // Phone:[],
+  // AdminUser: [],
+ 
 
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
@@ -903,83 +951,135 @@ number(event: any) {
     get f() { return this.employeeform.controls; }
 
     onSubmit() {
+
+      
       // debugger
         this.submitted = true;
+      
         let usertype_id = (<HTMLInputElement>document.getElementById("usertype_id")).value;
         if(usertype_id == "EMPLOY")
         {
 
         if (this.employeeform.invalid)
         {
+          console.log("beforeoutput");
             return;
         }
         else
         {
-
+          console.log("output");
           this.employeeform.value.UserTypeId="EMPLOY"
           alert(JSON.stringify(this.employeeform.value))
           this.finalsavecall(this.employeeform.value)
         }
         }
-        else if(usertype_id == "OTHER")
+
+
+
+        // else if(usertype_id == "OTHER")
+        // {
+
+        // if (this.otherform.invalid)
+        // {
+        //     return;
+        // }
+        // else
+        // {
+        //   this.otherform.value.UserTypeId="EMPLOY"
+        //   alert(JSON.stringify(this.otherform.value))
+        //   this.finalsavecall(this.otherform.value)
+
+        // }
+        // }
+
+        else if(usertype_id == "BUSINE")
         {
 
-        if (this.otherform.invalid)
+        if (this.vendorform_business.invalid)
         {
+          console.log("invalied");
             return;
         }
         else
         {
-          this.otherform.value.UserTypeId="EMPLOY"
-          alert(JSON.stringify(this.otherform.value))
-          this.finalsavecall(this.otherform.value)
+          console.log("valied");
+          this.vendorform_business.value.UserTypeId="BUSINE"
+          alert(JSON.stringify(this.vendorform_business.value))
+          this.finalsavecall(this.vendorform_business.value)
 
         }
         }
-        else if(usertype_id == "VENDOR")
+
+        else (usertype_id == "INDIVI")
         {
 
+        if (this.vendorform_individual.invalid)
+        {
+          console.log("invalied");
+            return;
+        }
+        else
+        {
+          console.log("valied");
+          this.vendorform_individual.value.UserTypeId="INDIVI"
+          alert(JSON.stringify(this.vendorform_individual.value))
+          this.finalsavecall(this.vendorform_individual.value)
 
-         // let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
-
-          if(this.vendortype == true)
-          {
-            if (this.vendorform_business.invalid)
-            {
-                return;
-            }
-            else
-            {
-              this.vendorform_business.value.UserTypeId="BUSINE";
-              this.vendorform_business.value.VendorTypeId=true;
-              var int_business=parseInt(this.vendorform_business.value.BusinessSize)
-              this.vendorform_business.value.BusinessSize=int_business;
-              alert(JSON.stringify(this.vendorform_business.value))
-              this.finalsavecall(this.vendorform_business.value)
-
-            }
-          }
-          else
-          {
-            if (this.vendorform_individual.invalid)
-            {
-                return;
-            }
-            else
-            {
-              this.vendorform_individual.value.UserTypeId="INDIVI"
-              this.vendorform_individual.value.VendorTypeId=false;
-              var int_business=parseInt(this.vendorform_individual.value.BusinessSize)
-              this.vendorform_individual.value.BusinessSize=int_business;
-              alert(JSON.stringify(this.vendorform_individual.value))
-              this.finalsavecall(this.vendorform_individual.value)
-
-            }
-
-          }
+        }
+        }
 
 
-       }
+
+
+
+
+
+
+      //     else if(usertype_id == "VENDOR")
+      //   {
+
+      //  // let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
+
+      //     if(this.vendortype == true)
+      //     {
+      //       if (this.vendorform_business.invalid)
+      //       {
+      //         console.log("invalided");
+      //         return;
+      //       }
+      //       else
+      //       {
+      //         console.log("valided");
+      //         this.vendorform_business.value.UserTypeId="BUSINE";
+      //         this.vendorform_business.value.VendorTypeId=true;
+      //         var int_business=parseInt(this.vendorform_business.value.BusinessSize)
+      //         this.vendorform_business.value.BusinessSize=int_business;
+      //         alert(JSON.stringify(this.vendorform_business.value))
+      //         this.finalsavecall(this.vendorform_business.value)
+
+      //       }
+      //     }
+      //     else
+      //     {
+      //       if (this.vendorform_individual.invalid)
+      //       {
+      //           return;
+      //       }
+      //       else
+      //       {
+      //         this.vendorform_individual.value.UserTypeId="INDIVI"
+      //         this.vendorform_individual.value.VendorTypeId=false;
+      //         var int_business=parseInt(this.vendorform_individual.value.BusinessSize)
+      //         this.vendorform_individual.value.BusinessSize=int_business;
+      //         alert(JSON.stringify(this.vendorform_individual.value))
+      //         this.finalsavecall(this.vendorform_individual.value)
+
+      //       }
+
+      //     }
+
+
+      //  }
 
 
     }

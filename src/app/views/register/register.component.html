@@ -225,7 +225,7 @@
             <div class="form-group col-xs-4 col-lg-3 col-md-3 col-sm-4">
 
                 <select type="text"  class="County" formControlName="county_name" id="county_id" (change)="inputErrorMessage('county_id')">
-                    <!-- <option ></option> -->
+                    <option ></option>
                     <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
                         {{statelistid.DistrictName}}</option>
                  </select>
@@ -348,7 +348,7 @@
                          </div>
                          <div class="col-md">
                                 <div class="form-floating">
-                               <input type="text" class="form-control"  placeholder="Last Name">
+                               <input type="text" class="form-control" formControlName="MiddleName"  placeholder="Last Name">
                                <!-- <div  class="help-block text-danger">
                                 <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
                                 </div> -->
@@ -405,7 +405,7 @@
                                  <div class="row g-4">
                                         <div class="col-md">
                                                 <div class="form-floating">
-                                               <input type="password" class="form-control" formControlName="Address1" id="currentadd_id" (keypress)="inputErrorMessage('currentadd_id')">
+                                               <input type="text" class="form-control" formControlName="Address1" id="currentadd_id" (keypress)="inputErrorMessage('currentadd_id')">
                                                <div  class="help-block text-danger">
                                                 <div *ngIf="submitted && rcf.Address1.errors">Address is required</div>
                                             </div>
@@ -415,7 +415,7 @@
                         
                                          <div class="col-md">
                                                 <div class="form-floating">
-                                               <input type="password" class="form-control" formControlName="Address2"  id="currentsecadd_id" (keypress)="inputErrorMessage('currentsecadd_id')">
+                                               <input type="text" class="form-control" formControlName="Address2"  id="currentsecadd_id" (keypress)="inputErrorMessage('currentsecadd_id')">
                                                   <label class="common_lbl" for="social_no">ADDRESS LINE2</label>
                                                  </div>
                                          </div>
@@ -439,7 +439,7 @@
                                          <div class="col-md">
                                                 <div class="form-floating">
                                                         <select class="form-select" formControlName="DistrictId" id="county_id" (change)="inputErrorMessage('county_id')" >
-                                                               
+                                                                <option value="value"></option>
                                                             <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
                                                                 {{statelistid.DistrictName}}</option>
                                                              
@@ -589,9 +589,9 @@
 
                  <div class="col-md">
                         <div class="form-floating">
-                       <input type="email" class="form-control" formControlName="mail" >
+                       <input type="email" class="form-control" formControlName="Email" >
                        <div  class="help-block text-danger">
-                        <div *ngIf="submitted && rcf.mail.errors">Email Address is required</div>
+                        <div *ngIf="submitted && rcf.Email.errors">Email Address is required</div>
                        </div>
                         <label class="common_lbl" for="social_no">EMAIL ADDRESS</label>
                          </div>
@@ -699,7 +699,7 @@
     <!-- vendor form individual starts here -->
 
    <div *ngIf="vendorform_individual_show">
-    <form [formGroup]="vendorform_individual" >
+    <form [formGroup]="vendorform_individual">
     <!-- <div class="row card"> -->
             <p class="mainheading heading">Primary Contact Information</p>
 
@@ -736,7 +736,7 @@
                  </div>
                  <div class="col-md">
                         <div class="form-floating">
-                       <input type="text" class="form-control"  placeholder="Last Name">
+                       <input type="text" class="form-control"  formcontrolName="Middlename">
                        <!-- <div  class="help-block text-danger">
                         <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
                         </div> -->
@@ -827,6 +827,7 @@
                                         <div class="form-floating">
                                       
                                           <select class="form-select" formControlName="county_name" id="county_id"  (change)="inputErrorMessage('county_id')">
+                                                <option value="value"></option>
                                                 <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
                                                         {{statelistid.DistrictName}}</option>
                                           </select> 
@@ -859,6 +860,7 @@
                                                 <div class="form-floating">
                                               
                                                   <select class="form-select" formControlName="StateId" id="curstate_id"  (change)="inputErrorMessage('curstate_id');onchangecountry()">
+                                                        <option value="value"></option>
                                                         <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
                                                                 {{statelistid.StateName}}</option>
                                                   </select> 
@@ -990,7 +992,7 @@
                          </div>
                          <div class="col-md">
                                 <div class="form-floating">
-                               <input type="text" class="form-control"  placeholder="Last Name">
+                               <input type="text" class="form-control"formControlName="AllasName" placeholder="Last Name">
                                <!-- <div  class="help-block text-danger">
                                 <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
                                 </div> -->
@@ -1013,7 +1015,7 @@
                                  </div>
                                 <div class="col-md">
                                         <div class="form-floating">
-                                       <input type="text" class="form-control" formControlName="conformpassword" id="comformpswd_id" (keypress)="inputErrorMessage('comformpswd_id');removepassvalidation()">
+                                       <input type="password" class="form-control" formControlName="conformpassword" id="comformpswd_id" (keypress)="inputErrorMessage('comformpswd_id');removepassvalidation()">
                                        <div  class="help-block text-danger">
                                          <div *ngIf="submitted && (vbf.conformpassword.errors != null && vbf.conformpassword.errors.required)">Confirm Password is required.</div>
                                         <div *ngIf="submitted && (vbf.conformpassword.errors != null && vbf.conformpassword.errors.notEquivalent)">Confirm Password is not matched.</div>
@@ -1079,6 +1081,7 @@
                                         <div class="col-md">
                                                 <div class="form-floating">
                                                         <select class="form-select"  formControlName="county_name" id="county_id" (change)="inputErrorMessage('county_id')">
+                                                                <option value="value"></option>
                                                                 <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
                                                                         {{statelistid.DistrictName}}</option>
                                                           </select> 
@@ -1111,6 +1114,7 @@
                                                  <div class="col-md">
                                                         <div class="form-floating">
                                                                 <select class="form-select"  formControlName="StateId" id="curstate_id" (change)="inputErrorMessage('curstate_id');onchangecountry()">
+                                                                        <option value="value"></option>
                                                                         <option *ngFor="let statelistid of statetype" value="{{statelistid.StateId}}">
                                                                                 {{statelistid.StateName}}</option>
                                                                   </select> 
@@ -1156,7 +1160,7 @@
  <div class="row g-4">
          <div class="col-md">
                 <div class="form-floating">
-               <input type="password" class="form-control"  formControlName="business_ssn" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
+               <input type="number" class="form-control"  formControlName="business_ssn" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
                <div  class="help-block text-danger">
                 <div *ngIf="submitted && vbf.business_ssn.errors">EIN/Tax ID is required</div>
                  </div>
@@ -1172,7 +1176,7 @@
                                     {{beclassificationlist.BEClassificationDesc}}</option>
                           </select> 
                             <div  class="help-block text-danger">
-                <div *ngIf="submitted && vbf.CountryId.errors">Country is required</div>
+                <div *ngIf="submitted && vbf.BEClassificationId.errors">BE Classification is required</div>
         </div>
                 <label class="common_lbl" for="social_no">BE CLASSIFICATION</label>
                  </div>
