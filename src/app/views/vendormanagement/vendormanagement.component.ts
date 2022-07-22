@@ -373,6 +373,29 @@ export class VendormanagementComponent implements OnInit {
    });
 
   }
+  editcontact(data:any,i:any)
+  {
+   
+    this.contact_list.splice(i,1);
+    this.Contactform.patchValue({ 
+      FirstName:data.FirstName,
+      LastName:data.LastName,
+      MiddleName:data.MiddleName,
+      JobTitleId:data.JobTitleId,
+      Phone:data.Phone,
+      Email:data.Email,
+      VendorContactPrimary:1,
+      VendorContactActive:1,
+      ContactId:data.ContactId
+  
+   });
+
+  }
+  deletecontact(i:any)
+  {
+    this.contact_list.splice(i,1);
+  }
+
   getjobtitledata(){
         this.http.get(config_url+'/employee/selectJobTitle').subscribe( (data:any) => {
         // this.jobtitle=data;
@@ -382,6 +405,8 @@ export class VendormanagementComponent implements OnInit {
   }
   addcontact()
   {
+    
+
     this.contact_submmited=true;
     if (this.Contactform.invalid) 
     {
