@@ -111,7 +111,7 @@ this.firstname = localStorage.getItem('Firstnameses');
       dtInstance.destroy();
       // Call the dtTrigger to rerender again
       this.dtTrigger.next(this.Bidslist);
-      // this.dtTrigger.next(this.BidDraftList);
+      this.dtTrigger.next(this.BidDraftList);
 
       // this.dtTrigger.next(this.Bidslist);
 
@@ -125,7 +125,7 @@ this.firstname = localStorage.getItem('Firstnameses');
     {
       this.http.get(config_url+'bid/GetBidOpenandDraft?BidStatusId=D').subscribe(
         (data: any) => {
-          // console.log("biddrafts",data);
+          console.log("biddrafts",data);
           var response= data.BidOpen;
           this.BidDraftList = response;
         //    console.log(this.Bidslist)
