@@ -348,7 +348,7 @@
                          </div>
                          <div class="col-md">
                                 <div class="form-floating">
-                               <input type="text" class="form-control" formControlName="MiddleName"  placeholder="Last Name">
+                               <input type="text" class="form-control" formControlName="MiddleName" id="middle_name" (keypress)="inputErrorMessage('middle_name')" >
                                <!-- <div  class="help-block text-danger">
                                 <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
                                 </div> -->
@@ -934,7 +934,7 @@
                          </div>
                          <div class="col-md">
                                 <div class="form-floating">
-                               <input type="text" class="form-control"formControlName="AllasName" placeholder="Last Name">
+                               <input type="text" class="form-control"formControlName="AllasName" id="allasname_id"(keyup)="inputErrorMessage('allasname_id')" >
                                <!-- <div  class="help-block text-danger">
                                 <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
                                 </div> -->
