@@ -306,7 +306,7 @@ export class VendormanagementComponent implements OnInit {
   }
   addaddress()
   {
-    debugger
+    // debugger
     this.address_submmited=true;
     if (this.Addressform.invalid) 
     {
@@ -357,7 +357,7 @@ export class VendormanagementComponent implements OnInit {
   }
   editaddress(data:any,i:any)
   {
-    debugger
+    // debugger
     this.address_list.splice(i,1);
     this.Addressform.patchValue({ 
       AddressId : data.AddressId,
@@ -367,8 +367,8 @@ export class VendormanagementComponent implements OnInit {
       CityId:data.CityId,
       Zipcode:data.Zipcode,
       CountryId: data.CountryId,
-      StartDate: '',
-      EndDate:'',
+      StartDate: data.StartDate.split(' ')[0],
+      EndDate:data.EndDate.split(' ')[0],
       DistrictId: data.DistrictId,
       StateId:data.StateId,
   
@@ -681,7 +681,7 @@ VendorData(VendorMgmtIndividual:any){
 
 
   Userdata(vendorMgmt:any){
-    debugger
+    // debugger
     this.submitted2 = true;
     this.issubmiited=true;
     if (this.VendorMgmtBusiness.valid) {
@@ -710,7 +710,7 @@ VendorData(VendorMgmtIndividual:any){
  
     // }
 
-    this.http.post('http://localhost:8080/vendor/UpdateVendor',vendorMgmt).subscribe(
+    this.http.post('http://localhost/MNC_PHP_API/vendor/UpdVendorNew',vendorMgmt).subscribe(
     // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
       
       data => {
@@ -1156,7 +1156,7 @@ GetVendorById(){
 
 GetVendorAddressById(){
 
-  debugger
+  // debugger
   let vendoridSes = localStorage.getItem('vendoridSes');
   // let vendoridSes = "BC75E529-1F26-4993-9469-2797493CD645";
   this.http.get(config_url+'vendor/GetVendorAddressById?VendorId='+vendoridSes+"&").subscribe((data:any) =>
@@ -1208,7 +1208,7 @@ GetVendorAddressById(){
   }
 
 Getcityall_list(){
-debugger
+// debugger
   console.log('in');
   // alert('in');
 
@@ -1563,7 +1563,7 @@ GetVendorContactByNotPrimary(){
           this.showadditional=true;
         }
         for(let i=0;i<this.SingleVendorContactNotPrimary.length;i++){
-          debugger
+          // debugger
            array.push(
            this.frmbuilder.group({
              AddtionalName: [this.SingleVendorContactNotPrimary[i].ContactName],

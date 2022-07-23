@@ -19,12 +19,12 @@ export class DefaultLayoutComponent implements OnInit{
  
     {
       name: 'User Management',
-      url: '/VendorList',
+      url: '/vendordashboard',
       icon: 'fa fa-users'
      },
     {
       name: 'Vendor Management',
-      url: '/vendormanagement',
+      url: '/VendorList',
        icon: 'fa fa-user-circle'
     },
     {
@@ -78,53 +78,81 @@ export class DefaultLayoutComponent implements OnInit{
         },
       ]
     },
-    {
-      name: 'Contract Management',
-      url: '/adminmanagement',
-      // iconComponent: { name: 'cil-drop' }
-      icon: 'fa fa-handshake-o'
-    },
-    {
-      name: 'Insurance Management',
-      url: '/adminmanagement',
-      // iconComponent: { name: 'cil-drop' }
-      icon: 'fa fa-umbrella'
-    },
-    {
-      name: 'HR Management',
-      url: '/adminmanagement',
-      // iconComponent: { name: 'cil-drop' }
-      icon: 'fa fa-user-o'
-    },
-    {
-      name: 'Interface',
-      url: '/adminmanagement',
-      // iconComponent: { name: 'cil-drop' }
-      icon: 'fa fa-window-restore'
-    },
-    {
-      name: 'Reports',
-      url: '/adminmanagement',
-      // iconComponent: { name: 'cil-drop' }
-      icon: 'fa fa-line-chart'
-    },
+    // {
+    //   name: 'Contract Management',
+    //   url: '/adminmanagement',
+    //   // iconComponent: { name: 'cil-drop' }
+    //   icon: 'fa fa-handshake-o'
+    // },
+    // {
+    //   name: 'Insurance Management',
+    //   url: '/adminmanagement',
+    //   // iconComponent: { name: 'cil-drop' }
+    //   icon: 'fa fa-umbrella'
+    // },
+    // {
+    //   name: 'HR Management',
+    //   url: '/adminmanagement',
+    //   // iconComponent: { name: 'cil-drop' }
+    //   icon: 'fa fa-user-o'
+    // },
+    // {
+    //   name: 'Interface',
+    //   url: '/adminmanagement',
+    //   // iconComponent: { name: 'cil-drop' }
+    //   icon: 'fa fa-window-restore'
+    // },
+    // {
+    //   name: 'Reports',
+    //   url: '/adminmanagement',
+    //   // iconComponent: { name: 'cil-drop' }
+    //   icon: 'fa fa-line-chart'
+    // },
     
   ];
 
   navItems1: INavData[] = [
  
     {
-      name: 'Vendor Management 2 tyreytry',
-      url: '/',
-      iconComponent: { name: 'cil-drop' }
-    }
-  // }
-  ,
+      name: 'User Management',
+      url: '/empdashboard',
+      icon: 'fa fa-users'
+     },
     {
-      name: 'User Management 2 rtetrty',
-      url: '/',
-      // linkProps: { fragment: 'someAnchor' },
-      iconComponent: { name: 'cil-pencil' }
+      name: 'Vendor Management',
+      url: '/VendorList',
+       icon: 'fa fa-user-circle'
+    },
+    {
+      name: 'Certification Management',
+      url: '/buttons',
+      icon: 'fa fa-files-o'
+  
+      
+    },
+    {
+      name: 'Bid Management',
+      url: '/BidList',
+      // iconComponent: { name: 'cil-balance-scale'},
+      icon: 'fa fa-balance-scale',
+      children: [
+        {
+          name: 'View Bids',
+          url: '/BidList'
+        },
+        {
+          name: 'Create/View Bid',
+          url: '/adminmanagement'
+        },
+        {
+          name: 'Bid Responses',
+          url: '/BidResponses'
+        },
+        {
+          name: 'Award Contract',
+          url: '/adminmanagement'
+        },
+      ]
     },
 
     
