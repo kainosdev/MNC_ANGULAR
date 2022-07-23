@@ -62,6 +62,7 @@ public mask2 = [/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/]
   cityvalbyzipcode:any;
   statedetailPastAddr:any;
 countrytypePastAddr:any;
+ZCSlistdata:any;
 
 
   constructor(private frmbuilder: FormBuilder,  private http: HttpClient,
@@ -902,17 +903,7 @@ number(event: any) {
 
       }
 
-      // onchangecitybyzip(){
-      //   let zipid = (<HTMLInputElement>document.getElementById("regcurrentzip_id")).value;
-
-      //   this.http.get(config_url+'/app/getCityByZipcode?zipcode='+zipid).subscribe(zip1 =>
-      //     {
-
-      //       this.zip2=zip1;
-      //       this.cityalldetail=this.zip2.data.citydata;
-      //       })
-
-      // }
+     
 
       onchangezip(){
 
@@ -928,46 +919,43 @@ number(event: any) {
 
       }
 
-      onchangestate(){
+      // onchangestate(){
 
-        let cityid = (<HTMLInputElement>document.getElementById("currentcity_id")).value;
+      //   let cityid = (<HTMLInputElement>document.getElementById("currentcity_id")).value;
 
-        this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe((data: any) =>
-          {
-
-
-            this.statetype=data.Statelist;
-           })
+      //   this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe((data: any) =>
+      //     {
 
 
-      }
+      //       this.statetype=data.Statelist;
+      //      })
+
+
+      // }
 
       onchangecountystatecountry(){
 
-        alert('testonly')
+        let zipcode = (<HTMLInputElement>document.getElementById("regcurrentzip_id")).value;
 
-        let Zipcode = (<HTMLInputElement>document.getElementById("regcurrentzip_id")).value;
-
-        this.http.get(config_url+'app/getCityDistrictStateByZipcode?Zipcode='+Zipcode).subscribe((data: any) =>
+        this.http.get(config_url+'/app/getCityDistrictStateByZipcode?zipcode='+zipcode).subscribe((data: any) =>
           {
-             this.ziplistdata=data.ziplistdata;
+             this.ZCSlistdata=data.cityDistststatedata;
+             console.log('abhi', this.ZCSlistdata)
            })
-
-           console.log('abhi', this.ziplistdata)
       }
 
-      onchangecountry(){
+      // onchangecountry(){
 
-        let state_id = (<HTMLInputElement>document.getElementById("curstate_id")).value;
+      //   let state_id = (<HTMLInputElement>document.getElementById("curstate_id")).value;
 
-        this.http.get(config_url+'/app/getCountryByState?stateid='+state_id).subscribe((data: any) =>
-          {
+      //   this.http.get(config_url+'/app/getCountryByState?stateid='+state_id).subscribe((data: any) =>
+      //     {
 
-            this.countrydetail = data.countrydata
-          })
+      //       this.countrydetail = data.countrydata
+      //     })
 
 
-      }
+      // }
 
 
 
@@ -1222,56 +1210,4 @@ number(event: any) {
     })
 
     }
-
-
-    changeAllDeatilsByZipcodeBusPastAddr(){
-      // alert("in");
-      let currentzipcode = (<HTMLInputElement>document.getElementById("regcurrentzip_id")).value;
-      // alert(currentzipcode);
-              this.http.get(config_url+'/app/getCityByZipcode?zipcode='+currentzipcode).subscribe(data1 =>
-                {
-  
-                  this.cityvalbyzipcode=data1;
-                  // alert(this.cityvalbyzipcode.citydata[0].CityId);
-                  // console.log(this.cityvalbyzipcode.citydata[0].CityId);
-  
-                  // this.VendorMgmtBusiness.controls.BPCityId.setValue(this.cityvalbyzipcode.citydata[0].CityId);
-  
-  
-  
-                  this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+this.cityvalbyzipcode.citydata[0].CityId).subscribe(statelist =>
-                    {
-                // alert("abhi");
-                      // console.log(statelist);
-                      this.statedetailPastAddr=statelist;
-                      // let statename = this.statedetailPastAddr;
-                      
-                      alert(this.statedetailPastAddr.Statelist[0].StateId);
-                      this.employeeform.controls.StateId.setValue(this.statedetailPastAddr.Statelist[0].StateId);
-                      // this.VendorMgmtBusiness.controls.BMStateId.setValue(this.statedetailPastAddr.Statelist[0].StateId);
-                     })
-  
-                  //    this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+this.cityvalbyzipcode.citydata[0].CityId).subscribe(statelist =>
-                  //     {
-  
-  
-                  //       this.statedetailPastAddr=statelist;
-                        
-  
-  
-                  //         this.http.get(config_url+'/app/getCountryByState?stateid='+this.statedetailPastAddr.Statelist[0].StateId).subscribe(countrydata =>
-                  //           {
-                            
-                  //  this.countrytypePastAddr = countrydata;
-  
-                  //           })
-  
-                  //         })
-  
-  
-                 })
-  
-    }
-
-
 }
