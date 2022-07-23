@@ -14,7 +14,7 @@
                               <div class="col-md">
                                   <div class="form-floating">
                                 
-                                          <input type="text" class="form-control" formControlName="social_no" id="social_no" placeholder="Solicitation Number">
+                                          <input type="text" class="form-control" formControlName="social_no" id="social_no" >
                                           
                                                
                                   <div  class="help-block text-danger">
@@ -27,7 +27,7 @@
                               <div class="col-md">
                         
                                   <div class="form-floating">
-                                    <input type="text" class="form-control"  formControlName="title" id="title" placeholder="title">
+                                    <input type="text" class="form-control"  formControlName="title" id="title">
     
                                  
                                      
@@ -80,7 +80,7 @@
                                                      
                                                 <div class="col-12">
                                                     <div class="form-floating">
-                                                        <textarea class="form-control" placeholder="Leave a Description here" formControlName="description" id="description" style="height: 100px"></textarea>
+                                                        <textarea class="form-control"  formControlName="description" id="description" style="height: 100px"></textarea>
                                                         <label for="description" class="common_lbl">Description</label>
                                                       </div>
                                                   </div>
@@ -157,7 +157,7 @@
                                                   <div class="col-md">
                                                     <div class="form-floating">
                                                     
-                                                          <input type="text" class="form-control" formControlName="fund_source" id="fund_source" placeholder="Funding Source">
+                                                          <input type="text" class="form-control" formControlName="fund_source" id="fund_source" >
                         
                                                           <div  class="help-block text-danger">
                                                                 <div *ngIf="submitted && bfc.fund_source.errors">Funding Source is required</div>
@@ -182,7 +182,7 @@
                                                   </div>
                                                   <div class="col-md">
                                                       <div class="form-floating">
-                                                          <input type="text" class="form-control" formControlName="budget_amount" id="budget_amount" placeholder="Budget Amount">
+                                                          <input type="text" class="form-control" formControlName="budget_amount" id="budget_amount" >
                                                           <div  class="help-block text-danger">
                                                                       <div *ngIf="submitted && bfc.budget_amount.errors">Budget Amount is required</div>
                                                           </div> 
@@ -215,7 +215,7 @@
                                                       <div class="form-floating">
                                                     
                                                           
-                                                          <input type="text" class="form-control" formControlName="co_officer_phone" id="co_officer_phone" placeholder="Phone">
+                                                          <input type="text" class="form-control" formControlName="co_officer_phone" id="co_officer_phone" >
                                          
                                                           <div  class="help-block text-danger">
                                                                   <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Phone is required</div>
@@ -226,7 +226,7 @@
                                                     </div>
                                                     <div class="col-md">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control" formControlName="co_officer_phone" id="co_officer_phone" placeholder="Email">
+                                                            <input type="text" class="form-control" formControlName="co_officer_phone" id="co_officer_phone" >
                                           
                                                             <div  class="help-block text-danger">
                                                                     <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Email is required</div>
@@ -298,13 +298,7 @@
                                                   </div>
                                             
                           <!-- 5 row --> 
-                          <div class="row g-3 p-1">
-                              <h6>Q And A</h6>         
-                              <div class="ckeditor">
-                              
-                               <ckeditor data="<p>Hello, world!</p>"></ckeditor>
-                              </div>
-                            </div>
+                         
                          
                                                  
                                         </div>
@@ -350,6 +344,32 @@
                               </ng-template>
                             </accordion-item> -->
                             <accordion-item>
+                              <ng-template accordionTitle>
+                                <div class="flex space-x-2">
+                                  <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="none" d="M0 0h24v24H0z" />
+                                    <path
+                                      d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
+                                  </svg> -->
+                                  <h6>Questions and Answers</h6>
+                                </div>
+                              </ng-template>
+                              <ng-template accordionContent>
+                                  <div class="p-1">
+                                    <div class="row g-3 p-1">
+                                            
+                                      <div class="ckeditor">
+                                      
+                                       <ckeditor data="<p>Hello, world!</p>"></ckeditor>
+                                      </div>
+                                    </div>
+                                     
+
+                                  </div>
+                              </ng-template>
+                            </accordion-item>
+                            <accordion-item>
                                 <ng-template accordionTitle>
                                   <div class="flex space-x-2">
                                     <!-- <svg xmlns="http://www.w3.org/2000/svg"
@@ -358,7 +378,7 @@
                                       <path
                                         d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
                                     </svg> -->
-                                    <h6>Bid Documents Upload</h6>
+                                    <h6>Bid Documents</h6>
                                   </div>
                                 </ng-template>
                                 <ng-template accordionContent>
@@ -366,7 +386,7 @@
                                    
                                       <strong>Document Upload </strong>. 
 
-                                      <div class="container_upload text-center" appDnd (fileDropped)="onFileDropped($event)">
+                                      <div class="container_upload text-center mb-2" appDnd (fileDropped)="onFileDropped($event)">
                                          
                                           <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event)" />
                                           <div class="row">
@@ -378,7 +398,7 @@
               
                                           <label for="fileDropRef">Browse for file</label>
                                         </div>
-                                        <div class="files-list">
+                                        <div class="files-list mt-2">
                                             <strong class="name">Bid Documents</strong>
                                           <div class="single-file" *ngFor="let file of files; let i = index">
                                             <img src="assets/img/dnd/ic-file.svg" width="45px" alt="file">
@@ -413,7 +433,8 @@
                                   <div class="p-4">
                                     <div class="row">
                                         <table class="table">
-                                            <thead class="thead-light">
+                                           
+                                            <thead class="common_tbl_head">
                                               <tr>
                                                 <th scope="col">CLIN #</th>
                                                 <th scope="col">Desciption</th>
@@ -450,7 +471,7 @@
                                                 <div class="form-floating">
                                                     
                                                     <input type="text" class="form-control" id="clin"
-                                                        formControlName="clin" placeholder="CLIN">
+                                                        formControlName="clin" >
                                                       <div  class="help-block text-danger">
                                                             <div *ngIf="clin_submitted && clfc.clin.errors">CLIN is required</div>
                                                       </div>
@@ -462,7 +483,7 @@
                                                 <div class="form-floating">
                                                     
                                                     <input type="text" class="form-control" id="desc"
-                                                        formControlName="desc" placeholder="Description">
+                                                        formControlName="desc">
                                                       <div  class="help-block text-danger">
                                                             <div *ngIf="clin_submitted && clfc.desc.errors">Description is required</div>
                                                       </div>
@@ -528,7 +549,7 @@
                                                 <div class="col-md">
                                                    
                                                   </div>
-                                                  <div class="col-md">
+                                                  <div class="col-md text-right">
                                                       <button class="btn btn-filled  common_btn_action ml-2" type="button"  (click)="clinsave()"  >
                                                           <img class="img-fluid btn-img "                             
                                                               >Save</button>
@@ -563,13 +584,15 @@
                               </ng-template>
                             </accordion-item>
                           </accordion>
-                          <div class="row col-12">
-                            <div class="form-group text-right col-12">
-                              <input type="button"   class="btn btn-primary fixedwidthcls" (click)="generalsave()"  value="Update" />  
-                              <input type="button"   class="btn btn-primary fixedwidthcls" (click)="generalsave()"  value="Cancel" />  
-
-                            </div>
-                         </div>
+                          <div class=" mt-1 text-right">
+                              <div class="btndiv mt-2">
+                                  <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="generalsave();" />
+                                  &nbsp;&nbsp;
+                                       <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" />
+                              </div>
+      
+                          </div>
+                        
                         </div>
              
       </form>

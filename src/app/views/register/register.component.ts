@@ -58,6 +58,11 @@ public mask2 = [/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/]
   zip:any;
   zipdetail :any;
   zip2:any;
+  ziplistdata: any;
+  cityvalbyzipcode:any;
+  statedetailPastAddr:any;
+countrytypePastAddr:any;
+ZCSlistdata:any;
 
 
   constructor(private frmbuilder: FormBuilder,  private http: HttpClient,
@@ -185,6 +190,8 @@ this.vendorform_individual = this.frmbuilder.group({
    EIN_SSN: ['', [Validators.required]],
    phoneindividual: ['', [Validators.required]],
    Mailindividual: ['', [Validators.required]],
+   OutreachEmailOptIn:[],
+   UserStatusId:['N'],
 
 
 
@@ -213,7 +220,7 @@ this.vendorform_individual = this.frmbuilder.group({
  
 
 
-  // OutreachEmailOptIn:[],
+  
   // business_ssn: [],
   // BusinessSize: [],
   // BusinessRegisteredInDistrict:[],
@@ -228,7 +235,7 @@ this.vendorform_individual = this.frmbuilder.group({
   // Phone:[],
   // mail:[],
   // AdminUser: [],
-  UserStatusId:['N'],
+ 
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 this.vendorform_business = this.frmbuilder.group({
@@ -250,6 +257,10 @@ this.vendorform_business = this.frmbuilder.group({
   BEClassificationId: ['', [Validators.required]],
   BusinessSize: ['', [Validators.required]],
   Mailbusiness: ['', [Validators.required]],
+  BusinessRegisteredInSCC: [false],
+  BusinessRegisteredInDistrict:[false],
+  BusinessIsFranchisee: [false],
+   OutreachEmailOptIn:[true],
   UserStatusId:['N'],
 
  
@@ -265,20 +276,20 @@ this.vendorform_business = this.frmbuilder.group({
   // VendorTypeId: [],
   // EIN_SSN:[],
 
-  // OutreachEmailOptIn:[true],
+ 
  
  
  
 
-  // BusinessRegisteredInDistrict:[false],
-  // BusinessIsFranchisee: [false],
+  
+  
  
   // BEClassificationId: [],
 
   // JobTitleId:[],
   // EmploymentTypeId:[],
   // JobStartDate: [],
-  // BusinessRegisteredInSCC: [false],
+  
 
   // Phone:[],
   // AdminUser: [],
@@ -892,17 +903,7 @@ number(event: any) {
 
       }
 
-      // onchangecitybyzip(){
-      //   let zipid = (<HTMLInputElement>document.getElementById("regcurrentzip_id")).value;
-
-      //   this.http.get(config_url+'/app/getCityByZipcode?zipcode='+zipid).subscribe(zip1 =>
-      //     {
-
-      //       this.zip2=zip1;
-      //       this.cityalldetail=this.zip2.data.citydata;
-      //       })
-
-      // }
+     
 
       onchangezip(){
 
@@ -913,35 +914,48 @@ number(event: any) {
 
 
             this.zipcodedetail=data.zipcodedata;
+            console.log('zip', this.zipcodedetail);
            })
 
       }
 
-      onchangestate(){
+      // onchangestate(){
 
-        let cityid = (<HTMLInputElement>document.getElementById("currentcity_id")).value;
+      //   let cityid = (<HTMLInputElement>document.getElementById("currentcity_id")).value;
 
-        this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe((data: any) =>
+      //   this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe((data: any) =>
+      //     {
+
+
+      //       this.statetype=data.Statelist;
+      //      })
+
+
+      // }
+
+      onchangecountystatecountry(){
+
+        let zipcode = (<HTMLInputElement>document.getElementById("regcurrentzip_id")).value;
+
+        this.http.get(config_url+'/app/getCityDistrictStateByZipcode?zipcode='+zipcode).subscribe((data: any) =>
           {
-
-
-            this.statetype=data.Statelist;
+             this.ZCSlistdata=data.cityDistststatedata;
+             console.log('abhi', this.ZCSlistdata)
            })
-
       }
 
-      onchangecountry(){
+      // onchangecountry(){
 
-        let state_id = (<HTMLInputElement>document.getElementById("curstate_id")).value;
+      //   let state_id = (<HTMLInputElement>document.getElementById("curstate_id")).value;
 
-        this.http.get(config_url+'/app/getCountryByState?stateid='+state_id).subscribe((data: any) =>
-          {
+      //   this.http.get(config_url+'/app/getCountryByState?stateid='+state_id).subscribe((data: any) =>
+      //     {
 
-            this.countrydetail = data.countrydata
-          })
+      //       this.countrydetail = data.countrydata
+      //     })
 
 
-      }
+      // }
 
 
 
