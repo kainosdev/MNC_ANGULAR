@@ -35,7 +35,7 @@
 
       <tr *ngFor="let v of vendorDetail">
         <!-- <th scope="row">1</th> -->
-        <td (click)="ViewVendor(v.VendorId)">{{v.LegalName}}</td>
+        <td (click)="ViewVendor(v.VendorId)"><a style="cursor:pointer;text-decoration:underline">{{v.LegalName}}</a></td>
         <td>{{v.VendorTypeDesc}}</td>
         <td>{{v.StateName}}</td>
         <td>{{v.CityName}}</td>
