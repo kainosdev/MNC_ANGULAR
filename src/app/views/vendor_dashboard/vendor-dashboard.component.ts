@@ -79,8 +79,6 @@ export class VendorDashboardComponent implements OnInit {
   }
 
 
-
-
   ResponseSubmitted(){
     try
     {
