@@ -81,24 +81,6 @@ export class VendorDashboardComponent implements OnInit {
 
 
 
-  // vendoractive(){
-  //   try
-  //   {
-  //     this.http.get(config_url+'contract/GetVendorActiveContracts?VendorId=34343434').subscribe(
-  //       (data: any) => {
-  //         var response= data.VendorActiveContracts;
-  //         this.vendoractivelist = (response as any).response;
-          
-  //         // console.log(this.bidstatus)
-  //       });
-  //   }
-  //   catch(e) 
-  //   {
-  //     console.log(e); 
-  //   }
-      
-  // }
-
   ResponseSubmitted(){
     try
     {
