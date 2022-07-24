@@ -18,9 +18,7 @@
 
 
 
-<table class="table" datatable [
-
-]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" >
+<table class="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" >
     <thead>
       <tr>
         <!-- <th scope="col">#</th> -->
@@ -42,7 +40,7 @@
         <td>{{v.StateName}}</td>
         <td>{{v.CityName}}</td>
         <td>{{v.Zipcode}}</td>
-        <td>-</td>
+        <td>{{v.DistrictName}}</td>
         <td>{{v.CountryName}}</td>
       </tr>
     </tbody>
