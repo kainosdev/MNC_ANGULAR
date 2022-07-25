@@ -13,7 +13,6 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
   title = 'Vertex Management';
-  firstnameses:any;
 
   constructor(
     private router: Router,

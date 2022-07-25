@@ -12,7 +12,9 @@ import { Subject } from 'rxjs';
 })
 export class VendorDashboardComponent implements OnInit {
   firstname:any;
-  
+  lastname:any;
+  middlename :any;
+  UserId:any;
   Bidslist:any;
   vendoractivelist:any;
   Vendorlist:any;
@@ -31,8 +33,8 @@ export class VendorDashboardComponent implements OnInit {
   dtElement: DataTableDirective | any;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<void>();*/
-  
-  
+
+
   // dtOptions: DataTables.Settings = {};
   // title = 'datatables';
   dtOptions: DataTables.Settings = {};
@@ -50,14 +52,17 @@ export class VendorDashboardComponent implements OnInit {
       pageLength: 5,
       processing: true,
     };
-    
+    this.firstname = localStorage.getItem('Firstnameses');
+    this.lastname = localStorage.getItem('LastNameses');
+    this.middlename = localStorage.getItem('Middlenameses');
+    this.UserId=localStorage.getItem('CreatedUseridses');
   }
-  
+
   vendoractive(){
     try
     {
      // this.firstname = localStorage.getItem('Firstnameses');
-      this.http.get(config_url+'contract/GetVendorActiveContracts?VendorId=34343434').subscribe(
+      this.http.get(config_url+'contract/GetVendorActiveContracts?VendorId='+localStorage.getItem('CreatedUseridses')).subscribe(
         (data: any) => {
           var response= data.VendorActiveContracts;
           debugger;
@@ -70,13 +75,13 @@ export class VendorDashboardComponent implements OnInit {
            }
            this.vendoractivelist = response;
         });
-        
+
     }
-    catch(e) 
+    catch(e)
     {
-      console.log(e); 
+      console.log(e);
     }
-      
+
   }
 
 
@@ -95,13 +100,13 @@ export class VendorDashboardComponent implements OnInit {
            }
            this.BidsSubmittedlist = response;
         });
-        
+
     }
-    catch(e) 
+    catch(e)
     {
-      console.log(e); 
+      console.log(e);
     }
-      
+
   }
 
   ResponseNotSubmitted(){
@@ -121,11 +126,11 @@ export class VendorDashboardComponent implements OnInit {
         this.ResponseNotSubmittedlist = response;
         });
     }
-    catch(e) 
+    catch(e)
     {
-      console.log(e); 
+      console.log(e);
     }
-      
+
   }
 
   displayStyle = "none";
