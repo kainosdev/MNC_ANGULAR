@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { config_url } from '../shared/constant';
 import { ViewChild, ElementRef } from "@angular/core";
 
+
 @Component({
   selector: 'app-bid-management',
   templateUrl: './bid-management.component.html',
