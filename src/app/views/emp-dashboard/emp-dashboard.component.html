@@ -64,7 +64,7 @@
 
           <div class="row" style="overflow-x:auto;">
             <table  class="table servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
-                <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
+                <thead style="text-align: left;background-color: #5e6572;font-size: 13px !important;">
 
               <tr>
               <!-- <th  style="display:none;width: 0px;">b</th> -->
@@ -85,7 +85,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of approvalEmployeeDetail">
+            <tr class="tabletr" *ngFor="let item of approvalEmployeeDetail">
               <td>{{item.CreatedUserId}}</td>
                 <td>{{item.FirstName}}</td>
                 <td>{{item.lastName}}</td>
@@ -141,7 +141,7 @@
             </tr>
           </thead>
           <tbody >
-            <tr *ngFor="let item of approvalVendorDetail">
+            <tr class="tabletr" *ngFor="let item of approvalVendorDetail">
               <td>{{item.CreatedUserId}}</td>
               <td>{{item.vendorName}}</td>
               <td>{{item.VendorTypeDesc}}</td>
@@ -192,7 +192,7 @@
                   </tr>
                 </thead>
                 <tbody >
-                  <tr *ngFor="let item of BidDraftList">
+                  <tr class="tabletr" *ngFor="let item of BidDraftList">
                   <td>{{item.BidNumber}}</td>
                   <td>{{item.Title}}</td>
                   <td>{{item.BidStatusDesc}}</td>
@@ -230,9 +230,9 @@
                   </tr>
                 </thead>
                 <tbody >
-                  <tr *ngFor="let item of Bidslist">
+                  <tr class="tabletr" *ngFor="let item of Bidslist">
                   <td>{{item.BidNumber}}</td>
-                  <td>{{item.Title}}</td>
+                  <td>{{item.Title}}</td> 
                   <td>{{item.BidStatusDesc}}</td>
                   <td>{{item.DepartmentName}}</td>
                   <td>{{item.posteddate | date}}</td>
@@ -278,7 +278,7 @@
                 </thead>
 
                 <tbody >
-                  <tr *ngFor="let item of awarduserlist">
+                  <tr class="tabletr" *ngFor="let item of awarduserlist">
                     <td>{{item.ContractNumber}}</td>
                     <td>{{item.Title}}</td>
                     <td>{{item.ContractStatusDesc}}</td>
