@@ -72,12 +72,16 @@ export class VendorListComponent implements OnInit {
       console.log("hi");
        this.vendorDetail = citylistdata;
 
-       console.log(this.vendorDetail)
+
    //console.log("hi")
        this.vendorDetail = this.vendorDetail.VendorList;
        this.dtTrigger.next(this.vendorDetail);
 
         console.log("vendorDetail test>>>>",this.vendorDetail);
+        // console.log(this.vendorDetail[0].VendorTypeDesc.replace('Vendor - ',''));
+        for(let i=0;i<this.vendorDetail.length;i++){
+          this.vendorDetail[i].VendorType=this.vendorDetail[i].VendorTypeDesc?.replace('Vendor - ','');
+        }
      })
 
   }

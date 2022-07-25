@@ -26,10 +26,10 @@ export class DefaultHeaderComponent extends HeaderComponent  {
   }
 
   logout(){
-    // alert("in");
+    // alert("in")
     window.localStorage.clear();
     window.setTimeout(function(){location.reload()},1000)
-    // this.router.navigate(['/']);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
+    // this.router.navigate(['/login']);
   }
 }
