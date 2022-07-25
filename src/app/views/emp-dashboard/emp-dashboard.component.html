@@ -43,7 +43,7 @@
                 <td>{{item.EmploymentTypeDesc}}</td>
                 <td>{{item.JobTitleDesc}}</td>
                 <td>{{item.employeeStartDate | date}}</td>
-                <td>{{employeeEndDate | date}}</td>
+                <td>{{item.employeeEndDate | date}}</td>
               </tr>
             </tbody>
           </table>
@@ -63,7 +63,7 @@
         <div class="p-4">
 
           <div class="row" style="overflow-x:auto;">
-            <table  class="table nowrap servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+            <table  class="table servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
                 <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
 
               <tr>
@@ -99,8 +99,8 @@
                 <td>{{item.Email}}</td>
                 <td>{{item.EmploymentDesc}}</td>
                 <td>{{item.JobTitleDesc}}</td>
-                <td>{{employeeApprovalStartDate | date}}</td>
-                <td>{{employeeApprovalCreatedDate | date}}</td>
+                <td>{{item.employeeApprovalStartDate | date}}</td>
+                <td>{{item.employeeApprovalCreatedDate | date}}</td>
                 <td>{{item.CreatedUserId}}</td>
 
             </tr>
@@ -154,7 +154,7 @@
               </td>
               <td>{{item.phone}}</td>
               <td>{{item.Email}}</td>
-              <td>{{vendorApprovalCreatedDate | date}}</td>
+              <td>{{item.vendorApprovalCreatedDate | date}}</td>
               <td>{{item.CreatedUserId}}</td>
 
           </tr>
@@ -198,7 +198,7 @@
                   <td>{{item.BidStatusDesc}}</td>
                   <td>{{item.DepartmentName}}</td>
                   <td>{{item.postedDateDraft | date}}</td>
-                  <td>{{dueDateDraft | date}}</td>
+                  <td>{{item.dueDateDraft | date}}</td>
                 </tr>
                 </tbody>
 
@@ -235,8 +235,8 @@
                   <td>{{item.Title}}</td>
                   <td>{{item.BidStatusDesc}}</td>
                   <td>{{item.DepartmentName}}</td>
-                  <td>{{posteddate | date}}</td>
-                  <td>{{duedate | date}}</td>
+                  <td>{{item.posteddate | date}}</td>
+                  <td>{{item.duedate | date}}</td>
                 </tr>
                 </tbody>
 
@@ -283,10 +283,10 @@
                     <td>{{item.Title}}</td>
                     <td>{{item.ContractStatusDesc}}</td>
                     <td>{{item.DepartmentName}}</td>
-                    <td>{{startDatePlanned | date}}</td>
-                    <td>{{endDatePlanned | date}}</td>
-                    <td>{{startDateActual | date}}</td>
-                    <td>{{endDateActual | date}}</td>
+                    <td>{{item.startDatePlanned | date}}</td>
+                    <td>{{item.endDatePlanned | date}}</td>
+                    <td>{{item.startDateActual | date}}</td>
+                    <td>{{item.endDateActual | date}}</td>
                     <td>{{item.ContractingOfficer}}</td>
 
                 </tr>

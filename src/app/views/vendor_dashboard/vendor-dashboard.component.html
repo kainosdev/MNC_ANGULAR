@@ -15,11 +15,9 @@
     <ng-template accordionContent>
       <div class="p-4">
         <div style="overflow-x:auto;" class="row">
-          <table class="table  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  style="border: 0.5px solid white !important;border-right: 2px solid !important;">
-            
-      
-            <thead style="overflow-x:auto;"
-            style= "text-align: left;background-color: #5e6572;font-size: 12px !important;">
+          <table datatable [dtOptions]="dtOptions" class="table nowrap servicecss tblnewbook" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+              
+            <thead style= "text-align:left;font-size: 12px !important;">
         
                 <tr>
                 <!-- <th  style="display:none;width: 0px;">b</th> -->
@@ -46,12 +44,15 @@
               <td>{{item.Title}}</td>
               <td>{{item.ContractStatusDesc}}</td>
               <td>{{item.DepartName}}</td>
-              <td>{{item.AwardedDate}}</td>
-              <td>{{item.StartDatePlanned}}</td>
-              <td>{{item.EndDatePlanned}}</td>
-              <td>{{item.ActualStartDate}}</td>
-              <td>{{item.ActualEndDate}}</td>
-              <td>{{item.BidStatusId}}</td>
+              <td>-</td>
+              <td>{{item.StartDatePlanned|date : "shortDate"}}</td>
+              <td>{{item.EndDatePlanned|date : "shortDate"}}</td>
+              <td>{{item.ActualStartDate|date : "shortDate"}}</td>
+              <td>{{item.ActualEndDate|date : "shortDate"}}</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
             </tr>
 
 
@@ -92,15 +93,10 @@
             <td>{{item.Title}}</td>
             <td>{{item.BidStatusDesc}}</td>
             <td>{{item.DepartmentName}}</td>
-            <td>{{item.BidResponseDueDate}}</td>
-            <td>{{item.BidPostedDate}}</td>
-
-
-
-
+            <td>{{item.BidResponseDueDate|date : "shortDate"}}</td>
+            <td>{{item.BidPostedDate|date : "shortDate"}}</td>
 
           </tr>
-
 
           </tbody>
           
@@ -129,8 +125,9 @@
                     <th  style="color: white;">Title</th>  
                     <th style="color: white;"> Status</th>
                      <th style="color: white;">Department</th>
+                     <th  style="color: white;"> Due Date</th>
                     <th style="color: white;"> Posted Date</th>
-                    <th  style="color: white;"> Due Date</th>
+                    
       
             </tr>
           </thead>
@@ -142,8 +139,8 @@
             <td>{{item.Title}}</td>
             <td>{{item.BidStatusDesc}}</td>
             <td>{{item.DepartmentName}}</td>
-            <td>{{item.BidResponseDueDate}}</td>
-            <td>{{item.BidPostedDate}}</td>
+            <td>{{item.BidResponseDueDate|date : "shortDate"}}</td>
+            <td>{{item.BidPostedDate|date : "shortDate"}}</td>
             
           </tbody>
           
@@ -189,8 +186,8 @@
                   <td>{{item.SolicitationTypeId}}</td>
                   <td>{{item.BidStatusId}}</td>
                   <td>{{item.DepartmentId}}</td>
-                  <td>{{item.BidPostedDate}}</td>
-                  <td>{{item.BidResponseDueDate}}</td>
+                  <td>{{item.BidPostedDate|date : "dd-MM-y"}}</td>
+                  <td>{{item.BidResponseDueDate|date : "dd-MM-y"}}</td>
                 </tr>
                 </tbody>
                 
