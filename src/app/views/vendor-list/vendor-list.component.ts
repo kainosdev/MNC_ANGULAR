@@ -82,9 +82,10 @@ export class VendorListComponent implements OnInit {
 
   }
 
-  ViewVendor(vendorid :any)
+  ViewVendor(vendorid :any,vendortype:any)
   {
     localStorage.setItem("vendoridSes",vendorid);
+    localStorage.setItem("vendortype",vendortype);
       console.log(vendorid);
       this.router.navigate(['/vendormanagement']);
       // this.router.navigate(['/vendormanagement/'+vendorid]);
