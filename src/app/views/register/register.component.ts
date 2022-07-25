@@ -984,8 +984,8 @@ number(event: any) {
         else
         {
           console.log("output");
-          this.employeeform.value.UserTypeId="EMPLOY";
-                 // alert(JSON.stringify(this.employeeform.value))
+          this.employeeform.value.UserTypeId="EMPLOY"
+          //alert(JSON.stringify(this.employeeform.value))
           this.finalsavecall(this.employeeform.value)
         }
         }
@@ -1020,7 +1020,7 @@ number(event: any) {
         {
           console.log("valied");
           this.vendorform_business.value.UserTypeId="BUSINE"
-         // alert(JSON.stringify(this.vendorform_business.value))
+          // alert(JSON.stringify(this.vendorform_business.value))
           this.finalsavecall(this.vendorform_business.value)
 
         }
@@ -1038,7 +1038,7 @@ number(event: any) {
         {
           console.log("valied");
           this.vendorform_individual.value.UserTypeId="INDIVI"
-         // alert(JSON.stringify(this.vendorform_individual.value))
+          // alert(JSON.stringify(this.vendorform_individual.value))
           this.finalsavecall(this.vendorform_individual.value)
 
         }

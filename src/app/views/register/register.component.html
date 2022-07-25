@@ -1,19 +1,39 @@
-<!-- <div class="container"> -->
+<div class="row">
+
+        <div class="col-sm-1"></div>
+
+        <div class="col-sm-10">
+
         <div class="card">
                 <div class="card-body">
 
-               
+               <br> 
+               <!-- <br> -->
 
 <p class="mainheading Vendortitle" style="text-align: center;">Registration Form</p>
- <div style="padding-left: 115px;">
-    <div style=" border: 1px solid yellow;background-color: #ffff00ba;width: 825px;align-items: center !important;">
+<div class="row">
+        <div class="col-sm-3">
 
+        </div>
 
-        <p style="font-size: 15px;
-        margin-top: 6px;
-        margin-bottom: 6px;
-        padding-left: 29px;">User Id- must be between 8 to 20 characters in length.Must include upper and lower case letters and numbers 0-9</p>
-    </div></div>
+        <div class="col-sm-6">
+                <div >
+                        <div style=" border: 1px solid yellow;background-color: #ffff00ba;width: 825px;align-items: center !important;">
+                    
+                    
+                            <p style="font-size: 15px;
+                            margin-top: 6px;
+                            margin-bottom: 6px;
+                            padding-left: 29px;">User Id- must be between 8 to 20 characters in length.Must include upper and lower case letters and numbers 0-9</p>
+                        </div></div>
+        </div>
+
+        <div class="col-sm-3">
+
+        </div>
+
+</div>
+ 
     <br>
    
     <div class="row g-3">
@@ -637,7 +657,8 @@
    <div *ngIf="vendorform_individual_show">
     <form [formGroup]="vendorform_individual">
     <!-- <div class="row card"> -->
-            <p class="mainheading heading">Primary Contact Information</p>
+        <!-- <br> -->
+            <p class="mainheading heading" style="padding-top: 10px">Primary Contact Information</p>
 
             <div class="row g-4">
                 
@@ -903,7 +924,7 @@
     <div *ngIf="vendorform_business_show">
         <form [formGroup]="vendorform_business" >
         <!-- <div class="row Generaldiv mt-2"> -->
-                <p class="mainheading heading">Primary Contact Information</p>
+                <p class="mainheading heading" style="padding-top: 10px">Primary Contact Information</p>
 
                 <div class="row g-4">
                         <div class="col-md">
@@ -1332,4 +1353,9 @@
 <!-- </div> -->
 <!-- </form> -->
 </div>
+</div>
+
+</div>
+
+<div class="col-sm-1"></div>
 </div>
