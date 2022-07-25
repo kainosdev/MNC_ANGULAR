@@ -15,6 +15,7 @@ export class DefaultLayoutComponent implements OnInit{
   // public navItems1 = navItems1;
   usertypeses = localStorage.getItem('usertypeses');
 
+  // for vendor
   navItems: INavData[] = [
  
     {
@@ -66,7 +67,7 @@ export class DefaultLayoutComponent implements OnInit{
         },
         {
           name: 'Create/View Bid',
-          url: '/adminmanagement'
+          url: '/bidManagement'
         },
         {
           name: 'Bid Responses',
@@ -74,42 +75,47 @@ export class DefaultLayoutComponent implements OnInit{
         },
         {
           name: 'Award Contract',
-          url: '/adminmanagement'
+          url: '/contractaward'
         },
       ]
     },
-    // {
-    //   name: 'Contract Management',
-    //   url: '/adminmanagement',
-    //   // iconComponent: { name: 'cil-drop' }
-    //   icon: 'fa fa-handshake-o'
-    // },
-    // {
-    //   name: 'Insurance Management',
-    //   url: '/adminmanagement',
-    //   // iconComponent: { name: 'cil-drop' }
-    //   icon: 'fa fa-umbrella'
-    // },
-    // {
-    //   name: 'HR Management',
-    //   url: '/adminmanagement',
-    //   // iconComponent: { name: 'cil-drop' }
-    //   icon: 'fa fa-user-o'
-    // },
-    // {
-    //   name: 'Interface',
-    //   url: '/adminmanagement',
-    //   // iconComponent: { name: 'cil-drop' }
-    //   icon: 'fa fa-window-restore'
-    // },
-    // {
-    //   name: 'Reports',
-    //   url: '/adminmanagement',
-    //   // iconComponent: { name: 'cil-drop' }
-    //   icon: 'fa fa-line-chart'
-    // },
+    {
+      name: 'Contract Management',
+      //url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-handshake-o'
+    },
+    {
+      name: 'Insurance Management',
+      //url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-umbrella'
+    },
+    {
+      name: 'HR Management',
+      //url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-user-o'
+    },
+    {
+      name: 'Interface',
+      //url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-window-restore'
+    },
+    {
+      name: 'Reports',
+      //url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-line-chart'
+    },
     
   ];
+
+  // for vendor end 
+
+
+  // for employee start
 
   navItems1: INavData[] = [
  
@@ -142,7 +148,7 @@ export class DefaultLayoutComponent implements OnInit{
         },
         {
           name: 'Create/View Bid',
-          url: '/adminmanagement'
+          url: '/bidManagement'
         },
         {
           name: 'Bid Responses',
@@ -150,14 +156,46 @@ export class DefaultLayoutComponent implements OnInit{
         },
         {
           name: 'Award Contract',
-          url: '/adminmanagement'
+          url: '/contractaward'
         },
       ]
     },
 
+    {
+      name: 'Contract Management',
+      //url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-handshake-o'
+    },
+    {
+      name: 'Insurance Management',
+      //url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-umbrella'
+    },
+    {
+      name: 'HR Management',
+      //url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-user-o'
+    },
+    {
+      name: 'Interface',
+      //url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-window-restore'
+    },
+    {
+      name: 'Reports',
+      //url: '/adminmanagement',
+      // iconComponent: { name: 'cil-drop' }
+      icon: 'fa fa-line-chart'
+    },
     
     
   ];
+
+  // for employee end
 
   // console.log(usertypeses);
   // if(this.usertypeses == "EMPLOY") {
