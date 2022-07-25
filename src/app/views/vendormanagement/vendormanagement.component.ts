@@ -376,7 +376,7 @@ export class VendormanagementComponent implements OnInit {
   addaddress(index:any)
   {
     
-     debugger
+    //  debugger
     this.address_submmited=true;
     if (this.Addressform.invalid) 
     {
@@ -448,7 +448,7 @@ export class VendormanagementComponent implements OnInit {
   }
   editaddress(data:any,i:any)
   {
-    debugger
+    // debugger
    // this.address_list.splice(i,1);
     this.Addressform.patchValue({ 
       index:i,
@@ -504,7 +504,7 @@ export class VendormanagementComponent implements OnInit {
   }
   addcontact(index:any)
   {
-    debugger
+    // debugger
     
 
     this.contact_submmited=true;
@@ -1477,7 +1477,7 @@ onchangezipPastAddr(){
 // for both past address
 
 GetVendorContactById(){
- debugger
+//  debugger
   let vendoridSes = localStorage.getItem('vendoridSes');
 
   this.http.get(config_url+'vendor/GetVendorContactById?VendorId='+vendoridSes
