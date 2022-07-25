@@ -3,11 +3,11 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-smart-table/2.1.8/smart-table.min.js"></script> -->
 <h4>Vendor Management</h4>
-<div class="row" style="text-align:center;margin-left:-5px">
+<!-- <div class="row" style="text-align:center;margin-left:-5px">
   <div class="col-sm-4" class="vendorcount">No. of Certified Vendors : &nbsp; 6</div>
   <div class="col-sm-4" class="vendorcount2">No. of Small Businessess&nbsp;&nbsp; :&nbsp; 5</div>
   <div class="col-sm-4" class="vendorcount3">No. of Vendors with Active Contracts &nbsp; :&nbsp; 7</div>
-</div>
+</div> -->
 <div style="text-align:right;">
   <a class="popup-link" data-toggle="modal" (click)="openPopup()"><span style="
   text-align: right;
@@ -35,8 +35,8 @@
 
       <tr *ngFor="let v of vendorDetail">
         <!-- <th scope="row">1</th> -->
-        <td (click)="ViewVendor(v.VendorId)"><a style="cursor:pointer;text-decoration:underline">{{v.LegalName}}</a></td>
-        <td>{{v.VendorTypeDesc}}</td>
+        <td (click)="ViewVendor(v.VendorId,v.VendorTypeId)"><a style="cursor:pointer;text-decoration:underline">{{v.LegalName}}</a></td>
+        <td>{{v.VendorType}}</td>
         <td>{{v.StateName}}</td>
         <td>{{v.CityName}}</td>
         <td>{{v.Zipcode}}</td>

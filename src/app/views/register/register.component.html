@@ -1,22 +1,42 @@
-<!-- <div class="container"> -->
+<div class="row" >
+
+        <div class="col-sm-1"></div>
+
+        <div class="col-sm-10">
+
         <div class="card">
                 <div class="card-body">
 
-               
+               <br> 
+               <!-- <br> -->
 
 <p class="mainheading Vendortitle" style="text-align: center;">Registration Form</p>
- <div style="padding-left: 115px;">
-    <div style=" border: 1px solid yellow;background-color: #ffff00ba;width: 825px;align-items: center !important;">
+<div class="row">
+        <div class="col-sm-3">
 
+        </div>
 
-        <p style="font-size: 15px;
-        margin-top: 6px;
-        margin-bottom: 6px;
-        padding-left: 29px;">User Id- must be between 8 to 20 characters in length.Must include upper and lower case letters and numbers 0-9</p>
-    </div></div>
+        <div class="col-sm-6">
+                <div >
+                        <div style="margin-left: -129px; border: 1px solid yellow;background-color: #ffff00ba;width: 803px;align-items: center !important;">
+                    
+                    
+                            <p style="font-size: 15px;
+                            margin-top: 6px;
+                            margin-bottom: 6px;
+                            padding-left: 29px;">User Id- must be between 8 to 20 characters in length.Must include upper and lower case letters and numbers 0-9</p>
+                        </div></div>
+        </div>
+
+        <div class="col-sm-3">
+
+        </div>
+
+</div>
+ 
     <br>
    
-    <div class="row g-3">
+    <div class="row g-4">
         <div class="col-md">
                 <div class="form-floating">
                 <select class="form-select" [ngModel]='usertype'   id="usertype_id" (ngModelChange)="inputErrorMessage('usertype_id');vendordetails_display();displaydata()">
@@ -29,48 +49,24 @@
 
               <div class="col-md">
                 <div class="form-floating">
-                <!-- <select class="form-select" [ngModel]='usertype'   id="usertype_id" (ngModelChange)="inputErrorMessage('usertype_id');vendordetails_display();displaydata()">
-                        <option *ngFor="let userlist of usertypedata" [value]="userlist.UserTypeId" [selected]="userlist.UserTypeId === 'VENDOR'">
-                                {{userlist.UserTypeDesc}}</option>
-                  </select> 
-                  <label class="common_lbl" for="floatingSelectGrid">USER TYPE</label> -->
+       
                 </div>
               </div>
 
               <div class="col-md">
                 <div class="form-floating">
-                <!-- <select class="form-select" [ngModel]='usertype'   id="usertype_id" (ngModelChange)="inputErrorMessage('usertype_id');vendordetails_display();displaydata()">
-                        <option *ngFor="let userlist of usertypedata" [value]="userlist.UserTypeId" [selected]="userlist.UserTypeId === 'VENDOR'">
-                                {{userlist.UserTypeDesc}}</option>
-                  </select> 
-                  <label class="common_lbl" for="floatingSelectGrid">USER TYPE</label> -->
+               
+                </div>
+              </div>
+
+              <div class="col-md">
+                <div class="form-floating">
+               
                 </div>
               </div>
 
      </div>
   
-
-    <div class="row mt-2" *ngIf="vendortype_show">
-            <!-- <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                     <label class="">Vendor Type<span class="requiredfield ">  *</span></label>
-
-             </div>
-             <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-
-                    <label >Individual
-                            *ngFor="let vendortyp of vendoralllist" [value]="vendortyp.VendorTypeId">
-                            {{vendortyp.VendorTypeDesc}}
-                         </label>
-                         &nbsp;&nbsp;
-                        <label class="switch">
-                        <input class="" type="checkbox"  id="active"  [checked]='vendortype' (change)="vendortype = !vendortype;vendortype_display('active');" >
-                        <span class="slider round"></span>
-                        </label>&nbsp;&nbsp;
-                        <label >Business</label>
-             </div> -->
-
-
-     </div>
 
     <!-- Other Role form starts here -->
 
@@ -270,18 +266,7 @@
         </div>
     </div>
     <div class="row mt-1">
-        <div class="form-group col-xs-4 col-md-2 col-sm-2">
-            <!-- <label class="labelwidth">End Date<span class="requiredfield "> *</span> </label> -->
-
-        </div>
-        <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
-
-            <!-- <input type="date" class=""  formControlName="EndDate" id="enddata_id" (click)="inputErrorMessage('enddata_id')">
-
-                <div  class="help-block text-danger">
-                        <div *ngIf="submitted && ofv.EndDate.errors">End Date is required</div>
-               </div> -->
-        </div>
+       
 
         <div class="form-group col-xs-4 col-md-2 col-sm-2">
                 <label class="labelwidth">Country<span class="requiredfield "> *</span></label>
@@ -500,18 +485,7 @@
 
                                                  <div class="col-md">
                                                         <div class="form-floating">
-                                                                <!-- <select class="form-select" formControlName="DistrictId" id="county_id" (change)="inputErrorMessage('county_id')" >
-                                                                        <option  value="">
-                                                                                Select</option>
-                                                                    <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
-                                                                        {{statelistid.DistrictName}}</option>
-                                                                     
-                                                                 </select> 
-                                                                  <div  class="help-block text-danger">
-                                                        <div *ngIf="submitted && rcf.DistrictId.errors">Country is required</div>
-                                                         </div>
-                                                        <label class="common_lbl" for="social_no">COUNTY</label> -->
-                                                         </div>
+                                                                </div>
                                                  </div>
                                 
                                                 </div>
@@ -590,7 +564,7 @@
 
                         
 
-<div class="d-flex">
+<div class="d-flex question_font_short" >
         <div class="mr-auto mt-2">
             <label class="question_font">ADMIN USER ?  </label></div>
       
@@ -637,7 +611,8 @@
    <div *ngIf="vendorform_individual_show">
     <form [formGroup]="vendorform_individual">
     <!-- <div class="row card"> -->
-            <p class="mainheading heading">Primary Contact Information</p>
+        <!-- <br> -->
+            <p class="mainheading heading" style="padding-top: 10px">Primary Contact Information</p>
 
             <div class="row g-4">
                 
@@ -903,7 +878,7 @@
     <div *ngIf="vendorform_business_show">
         <form [formGroup]="vendorform_business" >
         <!-- <div class="row Generaldiv mt-2"> -->
-                <p class="mainheading heading">Primary Contact Information</p>
+                <p class="mainheading heading" style="padding-top: 10px">Primary Contact Information</p>
 
                 <div class="row g-4">
                         <div class="col-md">
@@ -1332,4 +1307,9 @@
 <!-- </div> -->
 <!-- </form> -->
 </div>
+</div>
+
+</div>
+
+<div class="col-sm-1"></div>
 </div>

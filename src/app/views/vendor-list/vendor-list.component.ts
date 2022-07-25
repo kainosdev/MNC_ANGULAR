@@ -67,24 +67,29 @@ export class VendorListComponent implements OnInit {
   GelAllVendors1(){
     //  alert("in");
 
-    return this.restApi.GetAllVendors().subscribe((citylistdata: {}) => {
+    this.restApi.GetAllVendors().subscribe((citylistdata: {}) => {
 
       console.log("hi");
        this.vendorDetail = citylistdata;
 
-       console.log(this.vendorDetail)
+
    //console.log("hi")
        this.vendorDetail = this.vendorDetail.VendorList;
        this.dtTrigger.next(this.vendorDetail);
 
         console.log("vendorDetail test>>>>",this.vendorDetail);
+        // console.log(this.vendorDetail[0].VendorTypeDesc.replace('Vendor - ',''));
+        for(let i=0;i<this.vendorDetail.length;i++){
+          this.vendorDetail[i].VendorType=this.vendorDetail[i].VendorTypeDesc?.replace('Vendor - ','');
+        }
      })
 
   }
 
-  ViewVendor(vendorid :any)
+  ViewVendor(vendorid :any,vendortype:any)
   {
     localStorage.setItem("vendoridSes",vendorid);
+    localStorage.setItem("vendortype",vendortype);
       console.log(vendorid);
       this.router.navigate(['/vendormanagement']);
       // this.router.navigate(['/vendormanagement/'+vendorid]);

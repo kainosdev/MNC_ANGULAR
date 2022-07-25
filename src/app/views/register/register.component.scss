@@ -246,9 +246,15 @@ input:checked + .slider:before {
 {
   height:80%
 }
-.question_font
+// .question_font
+// {
+//   font-size: 13px;
+//   font-weight: bold;
+//   opacity: 0.65 !important;
+// }
+.question_font_short
 {
-  font-size: 14px;
-  font-weight: bold;
+  padding-top: 11px;
 }
+
 

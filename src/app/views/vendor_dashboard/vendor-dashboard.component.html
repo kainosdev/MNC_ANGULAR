@@ -2,7 +2,9 @@
 
   <div class="card-body" >
 
-<h4>Jhon F</h4> 
+<h4>{{ Firstname }}</h4>
+
+
 
 
 <accordion [collapsing]="collapsing">
@@ -12,57 +14,56 @@
             <h6>My Active Contracts</h6>
           </div>
         </ng-template>
-    <ng-template accordionContent>
-      <div class="p-4">
-        <div style="overflow-x:auto;" class="row">
-          <table datatable [dtOptions]="dtOptions" class="table nowrap servicecss tblnewbook" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
-              
-            <thead style= "text-align:left;font-size: 12px !important;">
-        
+        <ng-template accordionContent>
+          <div class="p-4">
+            <div class="row" style="overflow-x:auto;">
+
+              <table  class="table nowrap  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+                  <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
+
                 <tr>
                 <!-- <th  style="display:none;width: 0px;">b</th> -->
-                <th  style="color: white;">Contract Number</th>
-                <th  style="color: white;">Title</th>
-                <th  style="color: white;">Status</th>
-                <th style="color: white;">Department</th>
-                 <th style="color: white;">Awarded Date</th>
-                <th style="color: white;">Planned Start Date</th>
-                <th  style="color: white;">Planned End Date</th>
-                <th style="color: white;">Actual Start Date</th>
-                <th style="color: white;"> Actual End Date</th>
-                <th style="color: white;"> Contracting Officer</th>
-                <th style="color: white;"> Technical Monitor</th>
-                <th style="color: white;"> Base years</th>
-                <th style="color: white;"> Option years</th>
+                      <th  style="color: white;">Contract Number</th>
+                      <th  style="color: white;">Title</th>
+                      <th style="color: white;"> Status</th>
+                       <th style="color: white;">Department</th>
+                      <th style="color: white;"> Awarded Date</th>
+                      <th  style="color: white;">Planned Start Date</th>
+                      <th  style="color: white;">Planned End Date</th>
+                      <th  style="color: white;">Actual Start Date</th>
+                      <th  style="color: white;">Actual End Date</th>
+                      <th  style="color: white;">Contracting Officer</th>
+                      <th  style="color: white;">Technical Monitor</th>
+                      <th  style="color: white;">Base years</th>
+                      <th  style="color: white;">Option years</th>
               </tr>
             </thead>
-        
             <tbody >
-              <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of vendoractivelist">           
-                
+              <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of vendoractivelist">
+
               <td><a href="">{{item.ContractNumber}}</a></td>
               <td>{{item.Title}}</td>
               <td>{{item.ContractStatusDesc}}</td>
               <td>{{item.DepartName}}</td>
               <td>-</td>
-              <td>{{item.StartDatePlanned|date : "shortDate"}}</td>
-              <td>{{item.EndDatePlanned|date : "shortDate"}}</td>
-              <td>{{item.ActualStartDate|date : "shortDate"}}</td>
-              <td>{{item.ActualEndDate|date : "shortDate"}}</td>
+              <td>{{item.StartDatePlanned|date : "MMM d, y"}}</td>
+              <td>{{item.EndDatePlanned|date : "MMM d, y"}}</td>
+              <td>{{item.ActualStartDate|date : "MMM d, y"}}</td>
+              <td>{{item.ActualEndDate|date : "MMM d, y"}}</td>
               <td>-</td>
               <td>-</td>
               <td>-</td>
               <td>-</td>
             </tr>
 
-
             </tbody>
+
           </table>
-        </div>
-      </div>
-    </ng-template>
+          </div>
+          </div>
+        </ng-template>
   </accordion-item>
-    
+
   <accordion-item>
       <ng-template accordionTitle>
         <div class="flex space-x-2">
@@ -71,41 +72,44 @@
       </ng-template>
       <ng-template accordionContent>
         <div class="p-4">
-          <div class="row">
-            <table  class="table  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+          <div class="row" style="overflow-x:auto;">
+
+            <table  class="table nowrap  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
                 <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
-      
+
               <tr>
               <!-- <th  style="display:none;width: 0px;">b</th> -->
                     <th  style="color: white;">Bid Number</th>
-                    <th  style="color: white;">Title</th>  
+                    <th  style="color: white;">Title</th>
                     <th style="color: white;"> Status</th>
                      <th style="color: white;">Department</th>
                     <th style="color: white;"> Posted Date</th>
                     <th  style="color: white;"> Due Date</th>
-      
+
             </tr>
           </thead>
           <tbody >
-            <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of BidsSubmittedlist">           
+            <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of BidsSubmittedlist">
 
             <td><a href="">{{item.BidNumber}}</a></td>
             <td>{{item.Title}}</td>
             <td>{{item.BidStatusDesc}}</td>
             <td>{{item.DepartmentName}}</td>
-            <td>{{item.BidResponseDueDate|date : "shortDate"}}</td>
-            <td>{{item.BidPostedDate|date : "shortDate"}}</td>
+            <td>{{item.BidResponseDueDate|date : "MMM d, y"}}</td>
+            <td>{{item.BidPostedDate|date : "MMM d, y"}}</td>
 
           </tr>
 
           </tbody>
-          
+
         </table>
         </div>
         </div>
       </ng-template>
     </accordion-item>
-  
+
+
+
     <accordion-item>
       <ng-template accordionTitle>
         <div class="flex space-x-2">
@@ -115,35 +119,36 @@
       <ng-template accordionContent>
         <div class="p-4">
            <label class="labelwidth"></label>
-          <div class="row">
-            <table  class="table  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  style="border: 0.5px solid white !important;border-right: 2px solid !important;">
-              <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
-          
+           <div class="row" style="overflow-x:auto;">
+
+            <table  class="table nowrap  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+                <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
+
               <tr>
               <!-- <th  style="display:none;width: 0px;">b</th> -->
               <th  style="color: white;">Bid Number</th>
-                    <th  style="color: white;">Title</th>  
+                    <th  style="color: white;">Title</th>
                     <th style="color: white;"> Status</th>
                      <th style="color: white;">Department</th>
                      <th  style="color: white;"> Due Date</th>
                     <th style="color: white;"> Posted Date</th>
-                    
-      
+
+
             </tr>
           </thead>
           <tbody >
-            <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of ResponseNotSubmittedlist">           
+            <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of ResponseNotSubmittedlist">
 
 
             <td><a href="">{{item.BidNumber}}</a></td>
             <td>{{item.Title}}</td>
             <td>{{item.BidStatusDesc}}</td>
             <td>{{item.DepartmentName}}</td>
-            <td>{{item.BidResponseDueDate|date : "shortDate"}}</td>
-            <td>{{item.BidPostedDate|date : "shortDate"}}</td>
-            
+            <td>{{item.BidResponseDueDate|date : "MMM d, y"}}</td>
+            <td>{{item.BidPostedDate|date : "MMM d, y"}}</td>
+
           </tbody>
-          
+
         </table>
         </div>
         </div>
@@ -155,59 +160,48 @@
         <div class="flex space-x-2">
           <h6>Wish List of Bids or Favorite Bids of Interest to Submit Response</h6>
         </div>
-        
+
       </ng-template>
       <ng-template accordionContent>
-          <div class="p-4">
-            <div class="row">
-              <table  class="table  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+        <div class="p-4">
+           <label class="labelwidth"></label>
+           <div class="row" style="overflow-x:auto;">
+
+            <table  class="table nowrap  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
                 <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
-            
-                    <tr>
-                    <!-- <th  style="display:none;width: 0px;">b</th> -->
-                    <th  style="color: white;">Bid Number</th>
-                    <th  style="color: white;">Title</th>  
+
+              <tr>
+              <!-- <th  style="display:none;width: 0px;">b</th> -->
+              <th  style="color: white;">Bid Number</th>
+                    <th  style="color: white;">Title</th>
                     <th style="color: white;"> Status</th>
                      <th style="color: white;">Department</th>
+                     <th  style="color: white;"> Due Date</th>
                     <th style="color: white;"> Posted Date</th>
-                    <th  style="color: white;"> Due Date</th>
-            
-            
-                  </tr>
-                </thead>
-                <tbody >
-                  <tr *ngFor="let item of Bidslist">           
-                 
-      
-                    
-      
-                  <td><a>{{item.BidNumber}}</a></td>
-                  <td>{{item.Title}}</td>
-                  <td>{{item.SolicitationTypeId}}</td>
-                  <td>{{item.BidStatusId}}</td>
-                  <td>{{item.DepartmentId}}</td>
-                  <td>{{item.BidPostedDate|date : "dd-MM-y"}}</td>
-                  <td>{{item.BidResponseDueDate|date : "dd-MM-y"}}</td>
-                </tr>
-                </tbody>
-                
-              </table>
-            </div>
-          </div>
+
+
+            </tr>
+          </thead>
+          <tbody >
+            <tr style="text-align: left;font-size: 12px !important;">
+
+
+            <td><a>-</a></td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+
+          </tbody>
+
+        </table>
+        </div>
+        </div>
       </ng-template>
     </accordion-item>
 
 
-
-
-
-
-
-
-
-
-    
-  
 </accordion>
 </div>
 </div>

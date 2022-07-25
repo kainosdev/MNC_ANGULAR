@@ -188,6 +188,13 @@ a {
 
 }
 
+.question_font
+{
+  font-size: 14px;
+  font-weight: bolder !important;
+  opacity: 0.65 !important;
+}
+
 input[type=button] {
     // padding: 7px 32px;
     width: 95px;
@@ -201,7 +208,17 @@ input[type=button] {
   .btndiv{
      text-align: right;
    }
+
+
+   html:not([dir=rtl]) .sidebar-nav .nav-group-items .nav-link {
+    padding-left: 5rem;
+}
    table.dataTable > tbody > tr {
     background-color: transparent;
     font-size: 13px !important;
   }
+//   :root {
+//       scrollbar-width: thin;
+//      scrollbar-color: #fff transparent;
+      
+// }

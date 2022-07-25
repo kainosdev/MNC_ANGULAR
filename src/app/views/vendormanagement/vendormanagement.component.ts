@@ -40,6 +40,7 @@ export class VendormanagementComponent implements OnInit {
   submitted = false;
   submitted1 = false;
   submitted2 = false;
+  indsubmitted =false;
   [x: string]: any;
   Vendortypevalue:any;
   classList: any;
@@ -52,6 +53,7 @@ export class VendormanagementComponent implements OnInit {
   opened = false;
   opened2 = false;
   opened3 = false;
+  type:any;
   issubmiited:boolean=false;
   address_submmited:boolean=false;
   contact_submmited:boolean=false;
@@ -153,7 +155,7 @@ export class VendormanagementComponent implements OnInit {
  
   ngOnInit(): void {
     // debugger
-  
+    this.type=localStorage.getItem('vendortype')
     let vendoridSes = localStorage.getItem('vendoridSes');
     console.log(vendoridSes);
     this.getbeclassificationdata();
@@ -179,69 +181,51 @@ export class VendormanagementComponent implements OnInit {
       //LastName: ['', [Validators.required]],
       MiddleName: [],
       EIN_SSN: ['', [Validators.required]],
-      Email: [],
+     
       Phone:[],
       OutreachEmailOptIn:[],
-      AliasName:[],
+     
       LegalName: ['', [Validators.required]],
+      TradeName: ['', [Validators.required]],
+      AliasName:[],
       Federal:[],
-      NAICSCodes: [],
-      CommodityCodes:[],
+      NAICSCodes: ['', [Validators.required]],
+      CommodityCodes:['', [Validators.required]],
       BusinessRegisteredInDistrict:[false],
       BusinessRegisteredInSCC:[false],
       BusinessIsFranchisee:[false],
-      BusinessSize:[],
-      TradeName: [],
-      DUNS: [],
-      Website:[],
-      BEClassificationId:[]
+      BusinessSize:['', [Validators.required]],
+    
+      DUNS: ['', [Validators.required]],
+      Website:['', [Validators.required]],
+      BEClassificationId:['', [Validators.required]]
      
       
      });
    
 
      this.VendorMgmtIndividual = this.frmbuilder.group({
-      UserName :[],
+     
+      UserName :new FormControl({value: '', disabled: true}, Validators.required),
       // active: [],
-      VendorTypeId:[],
-      VendorId:[localStorage.getItem('vendoridSes')],
-      CreatedUserId:[localStorage.getItem("CreatedUseridses")],
-      FirstName: ['', [Validators.required]],
+      VendorTypeId:new FormControl({value: '', disabled: true}, Validators.required),
+
+      FirstName:  ['', [Validators.required]],
+      LastName:  ['', [Validators.required]],
+      MiddleName: ['', [Validators.required]],
+
+      // VendorId:[localStorage.getItem('vendoridSes')],
+      // CreatedUserId:[localStorage.getItem("CreatedUseridses")],
+     
+    
+      Email: ['', [Validators.required]],
+    
+      Phone: ['', [Validators.required]],
       EIN_SSN: ['', [Validators.required]],
-      LastName:['', [Validators.required]],
-      Email:[],
-      MiddleName:[],
-      Phone:[],
       OutreachEmailOptIn:[],
-      Address1:['', [Validators.required]],
-      Address2:[],
-      CityId:['', [Validators.required]], 
-      CountryId:[],
-      Zipcode:['', [Validators.required]],
-      StartDate:['', [Validators.required]],
-      EndDate:['', [Validators.required]],
-      DistrictId:[],
-      StateId:['', [Validators.required]],
 
-      IMAddress1:[],
-      IMAddress2:[],
-      IMCityId:[],
-      IMCountryId:[],
-      IMZipcode:[],
-      IMStartDate:[],
-      IMDistrictId:[],
-      IMEndDate:[],
-      IMStateId:[],
 
-      IPAddress1:[],
-      IPAddress2:[],
-      IPCityId:[],
-      IPCountryId:[],
-      IPZipcode:[],
-      IPStartDate:[],
-      IPDistrictId:[],
-      IPEndDate:[],
-      IPStateId:[],
+
      });
 
      this.Addressform = this.frmbuilder.group({
@@ -257,7 +241,7 @@ export class VendormanagementComponent implements OnInit {
       DistrictId:[],
       StateId:['', [Validators.required]],
       AddressId:[0],
-      VendorAddressPrimary:[1],
+      VendorAddressPrimary:[0],
 
 
     });
@@ -302,7 +286,23 @@ export class VendormanagementComponent implements OnInit {
       let already_checked = this.contact_list.filter((y:any) => y.VendorContactPrimary === 1);
       if (already_checked.length > 1) 
       {
-        this.Contactform.patchValue({VendorContactPrimary:0});
+        if(already_checked.length == 1 && already_checked[0].index == indexval)
+        {
+          e.target.checked=true;
+          this.Contactform.patchValue({VendorContactPrimary:1});
+          Swal.fire({
+            icon: 'error',
+            title: 'Warning!...',
+            text: 'Atleast One Address to be Primary Address!',
+
+          })
+
+        }
+        else
+        {
+          this.Contactform.patchValue({VendorContactPrimary:0});
+        }
+        
       }
       else
       {
@@ -337,9 +337,25 @@ export class VendormanagementComponent implements OnInit {
     else
     {
       let already_checked = this.address_list.filter((y:any) => y.VendorAddressPrimary === 1);
-      if (already_checked.length > 1) 
+      if (already_checked.length > 0) 
       {
-        this.Addressform.patchValue({VendorAddressPrimary:0});
+        if(already_checked.length == 1 && already_checked[0].index == indexval)
+        {
+          e.target.checked=true;
+        this.Addressform.patchValue({VendorAddressPrimary:1});
+        Swal.fire({
+          icon: 'error',
+          title: 'Warning!...',
+          text: 'Atleast One Address to be Primary Address!',
+
+        })
+
+        }
+        else
+        {
+          this.Addressform.patchValue({VendorAddressPrimary:0});
+        }
+       
       }
       else
       {
@@ -393,10 +409,20 @@ export class VendormanagementComponent implements OnInit {
         // console.log("country",countrydata)
   });
   }
+  canceladdress()
+  {
+    this.Addressform.reset()
+    var indexval=this.address_list.length;
+    this.Addressform.patchValue({
+      index:indexval
+    })
+     this.address_submmited=false;
+  }
+ 
   addaddress(index:any)
   {
     
-     debugger
+      debugger
     this.address_submmited=true;
     if (this.Addressform.invalid) 
     {
@@ -418,20 +444,20 @@ export class VendormanagementComponent implements OnInit {
          this.Addressform.value.CityName=city[0].CityName;
       }
 
-      let district = this.districts.filter((y:any) => y.DistrictId === this.Addressform.value.DistrictId);
+      let district = this.ZCSlistdata.filter((y:any) => y.DistrictId === this.Addressform.value.DistrictId);
       if (district.length > 0) 
       {
          this.Addressform.value.DistrictName=district[0].DistrictName;
       }
 
       
-      let state = this.statedetail.filter((y:any) => y.StateId === this.Addressform.value.StateId);
+      let state = this.ZCSlistdata.filter((y:any) => y.StateId === this.Addressform.value.StateId);
       if (state.length > 0) 
       {
          this.Addressform.value.StateName=state[0].StateName;
       }
 
-      let country = this.countrytype.filter((y:any) => y.CountryId === this.Addressform.value.CountryId);
+      let country = this.ZCSlistdata.filter((y:any) => y.CountryId === this.Addressform.value.CountryId);
       if (country.length > 0) 
       {
          this.Addressform.value.CountryName=country[0].CountryName;
@@ -468,7 +494,7 @@ export class VendormanagementComponent implements OnInit {
   }
   editaddress(data:any,i:any)
   {
-    debugger
+    // debugger
    // this.address_list.splice(i,1);
     this.Addressform.patchValue({ 
       index:i,
@@ -479,12 +505,14 @@ export class VendormanagementComponent implements OnInit {
       CityId:data.CityId,
       Zipcode:data.Zipcode,
       CountryId: data.CountryId,
-      StartDate: data.StartDate.split(' ')[0],
-      EndDate:data.EndDate.split(' ')[0],
       DistrictId: data.DistrictId,
       StateId:data.StateId,
+      StartDate: data.StartDate.split(' ')[0],
+      EndDate:data.EndDate.split(' ')[0],
+     
   
    });
+   this.onchangecountystatecountry();
 
   }
   deleteaddress(i:any)
@@ -522,9 +550,19 @@ export class VendormanagementComponent implements OnInit {
         this.jobdetail=data.JobTitle;
        });
   }
+  cancelcontact()
+  {
+    this.Contactform.reset()
+    var indexval=this.contact_list.length;
+    this.Contactform.patchValue({
+      index:indexval
+    })
+   
+    this.contact_submmited=false;
+  }
   addcontact(index:any)
   {
-    debugger
+    // debugger
     
 
     this.contact_submmited=true;
@@ -799,35 +837,15 @@ VendorData(VendorMgmtIndividual:any){
 }
 
 
-  Userdata(vendorMgmt:any){
-    // debugger
+businessUserdata(vendorMgmt:any){
+  debugger
+   
     this.submitted2 = true;
     this.issubmiited=true;
     if (this.VendorMgmtBusiness.valid) {
       vendorMgmt.Newcontact = this.contact_list;
       vendorMgmt.Address = this.address_list;
    
-    // console.log('alldata',vendorMgmt);
-    // if(this.contactList !=null)
-    // {
-    //   this.AdditionalContactList=[]
-    //   this.contactsform.controls["contactarray"].value.forEach((element: any) => {
-     
-    //     var addcontactData = {
-    //       "AddtionalName": element.AddtionalName,
-    //       "AddtionalTitle": element.AddtionalTitle,
-    //       "AddtionalBusinessMail": element.AddtionalBusinessMail,
-    //       "AddtionalBusinessPhone": element.AddtionalBusinessPhone,
-    //       "AddtionalContactActive": element.AddtionalContactActive,
-    //       "ContactId": element.ContactId
-    //     };
-  
-    //     this.AdditionalContactList.push(addcontactData)
-    //   });
-    //   vendorMgmt.Newcontact = this.AdditionalContactList;
-    //   console.log(vendorMgmt);
- 
-    // }
 
     this.http.post('http://localhost/MNC_PHP_API/vendor/UpdVendorNew',vendorMgmt).subscribe(
     // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
@@ -848,200 +866,41 @@ VendorData(VendorMgmtIndividual:any){
       }
       );
     }
-    
-    // this.http.post('http://localhost/MNC_PHP_API/vendor/UpdateVendor',vendorMgmt).subscribe(
-    // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
-      
-     
 
-    // console.log('contactindividual>>>', contactindividual);
-
-//      if(this.is_business == 'individual'){
-
-
-      
-//        let FirstName = this.vendorMgmt.get('FirstName').value;
-//        let LastName = this.vendorMgmt.get('LastName').value;
-//        let EIN_SSN = this.vendorMgmt.get('EIN_SSN').value;
-//        let Email = this.vendorMgmt.get('Email').value;
-//        let Phone =this.vendorMgmt.get('Phone').value;
-
-       
-
-
-
-//        let Address1 =this.vendorMgmt.get('Address1').value;
-//        let Address2 =this.vendorMgmt.get('Address2').value;
-//        let StateId =this.vendorMgmt.get('StateId').value;
-//        let CityId= this.vendorMgmt.get('CityId').value;
-//        let Zipcode =this.vendorMgmt.get('Zipcode').value;
-//        let DistrictId =this.vendorMgmt.get('DistrictId').value;
-//        let CountryId =this.vendorMgmt.get('CountryId').value;
-
-//        if(FirstName == null){
-//         (document.getElementById('firstname_id') as HTMLFormElement).classList.add("validation");
-//        }
-//        if(LastName == null ){
-//         (document.getElementById('lastname_id') as HTMLFormElement).classList.add("validation");
-//        }
-//        if(EIN_SSN == null ){
-//         (document.getElementById('socialsecurity_id') as HTMLFormElement).classList.add("validation");
-//        }
-//        if(Email == null ){
-//         (document.getElementById('email_id') as HTMLFormElement).classList.add("validation");
-//        }
-//        if(Phone == null ){
-//         (document.getElementById('phone_id') as HTMLFormElement).classList.add("validation");
-//        }
-//        if(Address1 == null  ){
-//         (document.getElementById('currentaddress_id') as HTMLFormElement).classList.add("validation");
-//        }
-//        if(Address2 == null){
-//         (document.getElementById('currentstreet_id') as HTMLFormElement).classList.add("validation");
-//        }
-//        if(StateId == null){
-//         (document.getElementById('stateprovice_id') as HTMLFormElement).classList.add("validation");
-//        }
-//        if(CityId == null){
-//         (document.getElementById('currentcity_id') as HTMLFormElement).classList.add("validation");
-//        }
-//        if(Zipcode== null){
-//         (document.getElementById('currentzipcode_id') as HTMLFormElement).classList.add("validation");
-//        }
-//        if(DistrictId == null){
-//         (document.getElementById('currentcounty_id' ) as HTMLFormElement).classList.add("validation");
-//        }
-//        if(CountryId == null){
-//         (document.getElementById('currentcountry_id') as HTMLFormElement).classList.add("validation");
-//        }
-
-//        if(!Email.match(this.mailformat)){
-//         (document.getElementById('email_id') as HTMLFormElement).classList.add("validation");
-//     //   (document.getElementById('email_idmsg') as HTMLFormElement).innerHTML = "Enter valid email address";
-//     //   (document.getElementById('email_idmsg') as HTMLFormElement).focus();
-//     //  return;
-//   }
-//   if(!EIN_SSN.match(this.socialno)){
-//     (document.getElementById('socialsecurity_id') as HTMLFormElement).classList.add("validation");
-// }
-// if(!Phone.match(this.phoneformat)){
-//   (document.getElementById('phone_id') as HTMLFormElement).classList.add("validation");
-// }
-// }
-
-//   else{
-
-//     let LegalName = this.vendorMgmt.get('LegalName').value;
-//     let NAICSCodes=this.vendorMgmt.get('NAICSCodes').value;
-//     let BusinessSize=this.vendorMgmt.get('BusinessSize').value;
-//     // alert(naicscode);
-//     let CommodityCodes=this.vendorMgmt.get('CommodityCodes').value;
-//     // alert(commoditycode);
-//     let federal = this.vendorMgmt.get('federal').value;
-//     let TradeName = this. vendorMgmt.get('TradeName').value;
-//     let DUNS = this.vendorMgmt.get('DUNS').value;
-//     let Website = this.vendorMgmt.get('Website').value;
-
-//       let Address1 =this.vendorMgmt.get('Address1').value;
-//        let Address2 =this.vendorMgmt.get('Address2').value;
-//        let StateId =this.vendorMgmt.get('StateId').value;
-//        let CityId= this.vendorMgmt.get('CityId:').value;
-//        let  Zipcode =this.vendorMgmt.get(' Zipcode').value;
-//        let DistrictId =this.vendorMgmt.get('DistrictId').value;
-//        let CountryId =this.vendorMgmt.get('CountryId').value;
-
-
-//     let ContactName = this.vendorMgmt.get('ContactName').value;
-//     let BusinessPhone = this.vendorMgmt.get('BusinessPhone').value;
-//     let Title= this.vendorMgmt.get('Title').value;
-//     let BusinessEmail = this.vendorMgmt.get('BusinessEmail').value;
-
-
-// if(LegalName == null){
-//   (document.getElementById('legalbusiness_id') as HTMLFormElement).classList.add("validation");
-// }
-// if(federal == null){
-//   (document.getElementById('federal_id') as HTMLFormElement).classList.add("validation");
-// }
-// if(TradeName == null){
-//   (document.getElementById('tradename_id') as HTMLFormElement).classList.add("validation");
-// }
-// if(DUNS == null){
-//   (document.getElementById('dunsno_id') as HTMLFormElement).classList.add("validation");
-// }
-// if(Website == null){
-//   (document.getElementById('businesswebsite_id') as HTMLFormElement).classList.add("validation");
-// }
-// if(Address1 == null  ){
-//   (document.getElementById('currentaddress_id') as HTMLFormElement).classList.add("validation");
-//  }
-//  if(Address2 == null){
-//   (document.getElementById('currentstreet_id') as HTMLFormElement).classList.add("validation");
-//  }
-//  if(StateId == null){
-//   (document.getElementById('stateprovice_id') as HTMLFormElement).classList.add("validation");
-//  }
-//  if(CityId == null){
-//   (document.getElementById('currentcity_id') as HTMLFormElement).classList.add("validation");
-//  }
-//  if( Zipcode == null){
-//   (document.getElementById('currentzipcode_id') as HTMLFormElement).classList.add("validation");
-//  }
-//  if(DistrictId == null){
-//   (document.getElementById('currentcounty_id' ) as HTMLFormElement).classList.add("validation");
-//  }
-//  if(CountryId == null){
-//   (document.getElementById('currentcountry_id') as HTMLFormElement).classList.add("validation");
-//  }
-//  if(ContactName==null){
-//   (document.getElementById('contactperson_id') as HTMLFormElement).classList.add("validation");
-//  }
-//  if(BusinessPhone ==  null){
-//   (document.getElementById('businessphone_id') as HTMLFormElement).classList.add("validation");
-//  }
-//  if(Title == null){
-//   (document.getElementById('title_id') as HTMLFormElement).classList.add("validation");
-//  }
-//  if(BusinessEmail == null){
-//   (document.getElementById('businessemail_id') as HTMLFormElement).classList.add("validation");
-//  }
-
-
-//     //  if(Legal_business == null && federal == null && trade_name == null  && duns_no == null && business_website == null &&
-//     //   physical_address == null  && street == null && state_province == null && city == null && zip_code == null && county == null && country == null &&
-//     //   contact_name == null && business_phone ==  null && title == null  && business_email == null ){
-
-
-        
-//     //   (document.getElementById('legalbusiness_id') as HTMLFormElement).classList.add("validation");
-//     //   (document.getElementById('federal_id') as HTMLFormElement).classList.add("validation");
-//     //   (document.getElementById('tradename_id') as HTMLFormElement).classList.add("validation");
-//     //   (document.getElementById('dunsno_id') as HTMLFormElement).classList.add("validation");
-//     //   (document.getElementById('businesswebsite_id') as HTMLFormElement).classList.add("validation");
-
-//     //   (document.getElementById('currentaddress_id') as HTMLFormElement).classList.add("validation");
-//     //   (document.getElementById('currentstreet_id') as HTMLFormElement).classList.add("validation");
-//     //   (document.getElementById('stateprovice_id') as HTMLFormElement).classList.add("validation");
-//     //   (document.getElementById('currentcity_id') as HTMLFormElement).classList.add("validation");
-//     //   (document.getElementById('currentzipcode_id') as HTMLFormElement).classList.add("validation");
-//     //   (document.getElementById('currentcounty_id' ) as HTMLFormElement).classList.add("validation");
-//     //   (document.getElementById('currentcountry_id') as HTMLFormElement).classList.add("validation");
-
-
-//     //    (document.getElementById('contactperson_id') as HTMLFormElement).classList.add("validation");
-//     //    (document.getElementById('businessphone_id') as HTMLFormElement).classList.add("validation");
-//     //    (document.getElementById('title_id') as HTMLFormElement).classList.add("validation");
-//     //    (document.getElementById('businessemail_id') as HTMLFormElement).classList.add("validation");
-   
-   
-//     //   }
-
-
-//   }
-  
- 
 
  }
+
+ individualUserdata(vendorMgmt:any){
+  // debugger
+  this.indsubmitted = true;
+  this.issubmiited=true;
+  if (this.VendorMgmtIndividual.valid) {
+    vendorMgmt.Newcontact = this.contact_list;
+    vendorMgmt.Address = this.address_list;
+ 
+
+  this.http.post('http://localhost/MNC_PHP_API/vendor/UpdVendorNew',vendorMgmt).subscribe(
+  // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
+    
+    data => {
+      console.log("data");
+        console.log('POST Request is successful >>>>>>>>', data);
+
+    },
+    success => {
+      // Swal.fire({
+      //   position: 'top',
+      //   icon: 'success',
+      //   title: 'Successfully Registered',
+      //   showConfirmButton: false,
+      //   timer: 3000
+      // })
+    }
+    );
+  }
+
+
+}
 
 EmptyErrorMessage(errormessage: any) {
 
@@ -1138,70 +997,70 @@ display_addresstypeBusiness(addresstype:any){
   }
 }
  
-Address_swipingIndividual(){
-  //alert("in");
+// Address_swipingIndividual(){
+//   //alert("in");
 
-      let individualMailQn = (<HTMLInputElement>document.getElementById("individualMailQn")).checked;
-      // alert(individualMailQn);
-      if(individualMailQn == true){
-        // alert(this.VendorMgmtIndividual.get('Address1').value)
-        this.VendorMgmtIndividual.controls.IMAddress1.setValue(this.VendorMgmtIndividual.get('Address1').value); 
-        this.VendorMgmtIndividual.controls.IMAddress2.setValue(this.VendorMgmtIndividual.get('Address2').value);
-        this.VendorMgmtIndividual.controls.IMCityId.setValue(this.VendorMgmtIndividual.get('CityId').value);
-        this.VendorMgmtIndividual.controls.IMCountryId.setValue(this.VendorMgmtIndividual.get('CountryId').value);
-        this.VendorMgmtIndividual.controls.IMZipcode.setValue(this.VendorMgmtIndividual.get('Zipcode').value);
-        this.VendorMgmtIndividual.controls.IMStartDate.setValue(this.VendorMgmtIndividual.get('StartDate').value);
-        this.VendorMgmtIndividual.controls.IMEndDate.setValue(this.VendorMgmtIndividual.get('EndDate').value);
-        this.VendorMgmtIndividual.controls.IMDistrictId.setValue(this.VendorMgmtIndividual.get('DistrictId').value);
-        this.VendorMgmtIndividual.controls.IMStateId.setValue(this.VendorMgmtIndividual.get('StateId').value);
+//       let individualMailQn = (<HTMLInputElement>document.getElementById("individualMailQn")).checked;
+//       // alert(individualMailQn);
+//       if(individualMailQn == true){
+//         // alert(this.VendorMgmtIndividual.get('Address1').value)
+//         this.VendorMgmtIndividual.controls.IMAddress1.setValue(this.VendorMgmtIndividual.get('Address1').value); 
+//         this.VendorMgmtIndividual.controls.IMAddress2.setValue(this.VendorMgmtIndividual.get('Address2').value);
+//         this.VendorMgmtIndividual.controls.IMCityId.setValue(this.VendorMgmtIndividual.get('CityId').value);
+//         this.VendorMgmtIndividual.controls.IMCountryId.setValue(this.VendorMgmtIndividual.get('CountryId').value);
+//         this.VendorMgmtIndividual.controls.IMZipcode.setValue(this.VendorMgmtIndividual.get('Zipcode').value);
+//         this.VendorMgmtIndividual.controls.IMStartDate.setValue(this.VendorMgmtIndividual.get('StartDate').value);
+//         this.VendorMgmtIndividual.controls.IMEndDate.setValue(this.VendorMgmtIndividual.get('EndDate').value);
+//         this.VendorMgmtIndividual.controls.IMDistrictId.setValue(this.VendorMgmtIndividual.get('DistrictId').value);
+//         this.VendorMgmtIndividual.controls.IMStateId.setValue(this.VendorMgmtIndividual.get('StateId').value);
 
- }
- else{
+//  }
+//  else{
 
-  this.VendorMgmtIndividual.controls.IMAddress1.setValue(""); 
-  this.VendorMgmtIndividual.controls.IMAddress2.setValue("");
-  this.VendorMgmtIndividual.controls.IMCountryId.setValue("");
-  this.VendorMgmtIndividual.controls.IMCityId.setValue("");
-  this.VendorMgmtIndividual.controls.IMZipcode.setValue("");
-  this.VendorMgmtIndividual.controls.IMStartDate.setValue("");
-  this.VendorMgmtIndividual.controls.IMEndDate.setValue("");
-  this.VendorMgmtIndividual.controls.IMDistrictId.setValue("");
-  this.VendorMgmtIndividual.controls.IMStateId.setValue("");
- }
-}
+//   this.VendorMgmtIndividual.controls.IMAddress1.setValue(""); 
+//   this.VendorMgmtIndividual.controls.IMAddress2.setValue("");
+//   this.VendorMgmtIndividual.controls.IMCountryId.setValue("");
+//   this.VendorMgmtIndividual.controls.IMCityId.setValue("");
+//   this.VendorMgmtIndividual.controls.IMZipcode.setValue("");
+//   this.VendorMgmtIndividual.controls.IMStartDate.setValue("");
+//   this.VendorMgmtIndividual.controls.IMEndDate.setValue("");
+//   this.VendorMgmtIndividual.controls.IMDistrictId.setValue("");
+//   this.VendorMgmtIndividual.controls.IMStateId.setValue("");
+//  }
+// }
 
 
-Address_swipingBusiness(){
-  //alert("in");
+// Address_swipingBusiness(){
+//   //alert("in");
 
-      let individualMailQn = (<HTMLInputElement>document.getElementById("BusinessMailQn")).checked;
-      // alert(individualMailQn);
-      if(individualMailQn == true){
-        // alert(this.VendorMgmtIndividual.get('Address1').value)
-        this.VendorMgmtBusiness.controls.BMAddress1.setValue(this.VendorMgmtBusiness.get('Address1').value); 
-        this.VendorMgmtBusiness.controls.BMAddress2.setValue(this.VendorMgmtBusiness.get('Address2').value);
-        this.VendorMgmtBusiness.controls.BMCityId.setValue(this.VendorMgmtBusiness.get('CityId').value);
-        this.VendorMgmtBusiness.controls.BMCountryId.setValue(this.VendorMgmtBusiness.get('CountryId').value);
-        this.VendorMgmtBusiness.controls.BMZipcode1.setValue(this.VendorMgmtBusiness.get('Zipcode').value);
-        this.VendorMgmtBusiness.controls.BMStartDate.setValue(this.VendorMgmtBusiness.get('StartDate').value);
-        this.VendorMgmtBusiness.controls.BMEndDate.setValue(this.VendorMgmtBusiness.get('EndDate').value);
-        this.VendorMgmtBusiness.controls.BMDistrictId.setValue(this.VendorMgmtBusiness.get('DistrictId').value);
-        this.VendorMgmtBusiness.controls.BMStateId1.setValue(this.VendorMgmtBusiness.get('StateId').value);
+//       let individualMailQn = (<HTMLInputElement>document.getElementById("BusinessMailQn")).checked;
+//       // alert(individualMailQn);
+//       if(individualMailQn == true){
+//         // alert(this.VendorMgmtIndividual.get('Address1').value)
+//         this.VendorMgmtBusiness.controls.BMAddress1.setValue(this.VendorMgmtBusiness.get('Address1').value); 
+//         this.VendorMgmtBusiness.controls.BMAddress2.setValue(this.VendorMgmtBusiness.get('Address2').value);
+//         this.VendorMgmtBusiness.controls.BMCityId.setValue(this.VendorMgmtBusiness.get('CityId').value);
+//         this.VendorMgmtBusiness.controls.BMCountryId.setValue(this.VendorMgmtBusiness.get('CountryId').value);
+//         this.VendorMgmtBusiness.controls.BMZipcode1.setValue(this.VendorMgmtBusiness.get('Zipcode').value);
+//         this.VendorMgmtBusiness.controls.BMStartDate.setValue(this.VendorMgmtBusiness.get('StartDate').value);
+//         this.VendorMgmtBusiness.controls.BMEndDate.setValue(this.VendorMgmtBusiness.get('EndDate').value);
+//         this.VendorMgmtBusiness.controls.BMDistrictId.setValue(this.VendorMgmtBusiness.get('DistrictId').value);
+//         this.VendorMgmtBusiness.controls.BMStateId1.setValue(this.VendorMgmtBusiness.get('StateId').value);
 
- }
- else{
+//  }
+//  else{
 
-  this.VendorMgmtBusiness.controls.BMAddress1.setValue(""); 
-  this.VendorMgmtBusiness.controls.BMAddress2.setValue("");
-  this.VendorMgmtBusiness.controls.BMCountryId.setValue("");
-  this.VendorMgmtBusiness.controls.BMCityId.setValue("");
-  this.VendorMgmtBusiness.controls.BMZipcode1.setValue("");
-  this.VendorMgmtBusiness.controls.BMStartDate.setValue("");
-  this.VendorMgmtBusiness.controls.BMEndDate.setValue("");
-  this.VendorMgmtBusiness.controls.BMDistrictId.setValue("");
-  this.VendorMgmtBusiness.controls.BMStateId1.setValue("");
- }
-}
+//   this.VendorMgmtBusiness.controls.BMAddress1.setValue(""); 
+//   this.VendorMgmtBusiness.controls.BMAddress2.setValue("");
+//   this.VendorMgmtBusiness.controls.BMCountryId.setValue("");
+//   this.VendorMgmtBusiness.controls.BMCityId.setValue("");
+//   this.VendorMgmtBusiness.controls.BMZipcode1.setValue("");
+//   this.VendorMgmtBusiness.controls.BMStartDate.setValue("");
+//   this.VendorMgmtBusiness.controls.BMEndDate.setValue("");
+//   this.VendorMgmtBusiness.controls.BMDistrictId.setValue("");
+//   this.VendorMgmtBusiness.controls.BMStateId1.setValue("");
+//  }
+// }
 
 
 GetVendorById(){
@@ -1215,33 +1074,63 @@ GetVendorById(){
       if(response != null && response.length>0)
       {
         var details = response[0];
-        this.VendorMgmtBusiness.patchValue({ 
+        this.type=localStorage.getItem('vendortype')
 
+        if(this.type == "I")
+        {
+          
+            this.VendorMgmtIndividual.patchValue({ 
 
-        
-          UserName :details.TradeName,
-          EIN_SSN:details.EIN_SSN,
-          // active: [],VendorTypeId
-          BEClassificationId:details.BEClassificationId,
-          VendorTypeId:details.VendorTypeId =="B"?"Business":"Individual",
-          LegalName: details.LegalName,
-          TradeName: details.TradeName,
-          AliasName:details.AliasName,
-          DUNS: details.DUNS,
-       
-          NAICSCodes:details.NAICSCodes,
-          CommodityCodes:details.CommodityCodes,
-          BusinessSize:details.BusinessSize,
-          Website:details.Website,
-        
-          BusinessRegisteredInDistrict:details.BusinessRegisteredInDistrict,
-          BusinessRegisteredInSCC:details.BusinessRegisteredInSCC,
-          BusinessIsFranchisee:details.BusinessIsFranchisee,
+            UserName :details.TradeName,
+            // active: [],
+            VendorTypeId:details.VendorTypeId =="B"?"Business":"Individual",
+      
+            FirstName: details.LegalName,
+            LastName:details.LegalName,
+            MiddleName:details.AliasName,
+      
+            VendorId:[localStorage.getItem('vendoridSes')],
+            CreatedUserId:[localStorage.getItem("CreatedUseridses")],
+           
+          
+            Email:details.Email,
+          
+            Phone:details.Phone,
+            EIN_SSN:details.EIN_SSN,
+            OutreachEmailOptIn:details.OutreachEmailOptIn,
+      
+      
+      
+           });
 
-        
+        }
+        else if(this.type == "B")
+        {
+          this.VendorMgmtBusiness.patchValue({ 
+
+            UserName :details.TradeName,
+            EIN_SSN:details.EIN_SSN,
+            // active: [],VendorTypeId
+            BEClassificationId:details.BEClassificationId,
+            VendorTypeId:details.VendorTypeId =="B"?"Business":"Individual",
+            LegalName: details.LegalName,
+            TradeName: details.TradeName,
+            AliasName:details.AliasName,
+            DUNS: details.DUNS,
          
+            NAICSCodes:details.NAICSCodes,
+            CommodityCodes:details.CommodityCodes,
+            BusinessSize:details.BusinessSize,
+            Website:details.Website,
+          
+            BusinessRegisteredInDistrict:details.BusinessRegisteredInDistrict,
+            BusinessRegisteredInSCC:details.BusinessRegisteredInSCC,
+            BusinessIsFranchisee:details.BusinessIsFranchisee,
+  
+  
+         });  
+        }
 
-       });  
       }
 
       // this.singleVendorDet=data1;
@@ -1484,6 +1373,10 @@ cancelform()
     return this.VendorMgmtBusiness.controls;
   }
 
+  get vifc() {
+    return this.VendorMgmtIndividual.controls;
+  }
+
   get af() {
     return this.Addressform.controls;
   }
@@ -1645,7 +1538,7 @@ onchangezipPastAddr(){
 // for both past address
 
 GetVendorContactById(){
- debugger
+//  debugger
   let vendoridSes = localStorage.getItem('vendoridSes');
 
   this.http.get(config_url+'vendor/GetVendorContactById?VendorId='+vendoridSes
@@ -1854,57 +1747,57 @@ changeAllDetailsByCityPastBusiness(){
 
 
 
-// current address
-changeAllDetailsByCityCurrentBusiness(){
-  // alert("in");
-  let cityid = (<HTMLInputElement>document.getElementById("currentcity_idbus")).value;
+// // current address
+// changeAllDetailsByCityCurrentBusiness(){
+//   // alert("in");
+//   let cityid = (<HTMLInputElement>document.getElementById("currentcity_idbus")).value;
   
-          this.http.get(config_url+'/app/getZipcodeByCity?cityid='+cityid).subscribe(data1 =>
-            {
+//           this.http.get(config_url+'/app/getZipcodeByCity?cityid='+cityid).subscribe(data1 =>
+//             {
   
-              this.zipcodeValPastAddr=data1;
-              console.log(this.zipcodeValPastAddr.zipcodedata[0].Zipcode);
+//               this.zipcodeValPastAddr=data1;
+//               console.log(this.zipcodeValPastAddr.zipcodedata[0].Zipcode);
               
-              this.VendorMgmtBusiness.controls.Zipcode.setValue(this.zipcodeValPastAddr.zipcodedata[0].Zipcode);
+//               this.VendorMgmtBusiness.controls.Zipcode.setValue(this.zipcodeValPastAddr.zipcodedata[0].Zipcode);
               
-             })
+//              })
 
-             this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe(statelist =>
-              {
+//              this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe(statelist =>
+//               {
     
-                // console.log(statelist);
-                this.statedetailPastAddr=statelist;
+//                 // console.log(statelist);
+//                 this.statedetailPastAddr=statelist;
                 
-                this.VendorMgmtBusiness.controls.StateId.setValue(this.statedetailPastAddr.Statelist[0].StateId);
-               })
+//                 this.VendorMgmtBusiness.controls.StateId.setValue(this.statedetailPastAddr.Statelist[0].StateId);
+//                })
 
-               this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe(statelist =>
-                {
+//                this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe(statelist =>
+//                 {
       
                   
-                  this.statedetailPastAddr=statelist;
-                  // this.indBusPastAddressStateFinal=this.statedetailPastAddr.Statelist;
-                  this.VendorMgmtBusiness.controls.DistrictId.setValue(this.statedetailPastAddr.Statelist[0].DistrictId);
-                 })
+//                   this.statedetailPastAddr=statelist;
+//                   // this.indBusPastAddressStateFinal=this.statedetailPastAddr.Statelist;
+//                   this.VendorMgmtBusiness.controls.DistrictId.setValue(this.statedetailPastAddr.Statelist[0].DistrictId);
+//                  })
 
-                 this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe(statelist =>
-                  {
+//                  this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe(statelist =>
+//                   {
         
-                    // console.log(statelist);
-                    this.statedetailPastAddr=statelist;
+//                     // console.log(statelist);
+//                     this.statedetailPastAddr=statelist;
                     
-                    this.VendorMgmtBusiness.controls.StateId.setValue(this.statedetailPastAddr.Statelist[0].StateId);
+//                     this.VendorMgmtBusiness.controls.StateId.setValue(this.statedetailPastAddr.Statelist[0].StateId);
                     
 
-                    this.http.get(config_url+'/app/getCountryByState?stateid='+this.statedetailPastAddr.Statelist[0].StateId).subscribe(countrydata =>
-                      {
-                        // alert(this.globalStateid);
-             this.countrytypePastAddr = countrydata;
+//                     this.http.get(config_url+'/app/getCountryByState?stateid='+this.statedetailPastAddr.Statelist[0].StateId).subscribe(countrydata =>
+//                       {
+//                         // alert(this.globalStateid);
+//              this.countrytypePastAddr = countrydata;
                         
-                        this.VendorMgmtBusiness.controls.CountryId.setValue(this.countrytypePastAddr.countrydata[0].CountryId);
-                      })
-                   })
-}
+//                         this.VendorMgmtBusiness.controls.CountryId.setValue(this.countrytypePastAddr.countrydata[0].CountryId);
+//                       })
+//                    })
+// }
 
 
 
