@@ -309,7 +309,7 @@
                                                         <tbody>
                                                          
                                                        
-                                                              <tr *ngFor="let item of address_list">           
+                                                              <tr *ngFor="let item of address_list;let i = index;">           
                                                                   
                                                                   <th >{{item.AddressTypeDesc}}</th>
                                                                   <td>{{item.Address1}}</td>
@@ -391,8 +391,9 @@
                                                             <div class="col-md">
                                                                 <div class="form-floating">
                                                                         <select id="currentzipcode_id_mailbus" class="form-select" formControlName="Zipcode" [(ngModel)]="CurrentAddressDetails.Zipcode"
-                                                                        (keypress)="EmptyErrorMessage('currentzipcode_id');" (change)="changeAllDeatilsByZipcodeBusCurrentAddr()">
-                                                                        <option *ngFor="let z of zipcodeVal" [ngValue]="z.Zipcode">
+                                                                        (keypress)="EmptyErrorMessage('currentzipcode_id');" (change)="onchangecountystatecountry()">
+                                                                        <option value="value"></option>
+                                                                        <option *ngFor="let z of zipcodeVal" >
                                                                             {{z.Zipcode}}
                                                                         </option>
                                                                        </select>
@@ -407,7 +408,7 @@
                                                                         <div class="form-floating">
                                                                                 <select type="text" id="currentcounty_id" class="form-select" formControlName="DistrictId" [(ngModel)]="CurrentAddressDetails.DistrictId"
                                                                                 (keypress)="EmptyErrorMessage('currentcounty_id')">
-                                                                                <option *ngFor="let d of districts" [ngValue]="d.DistrictId">
+                                                                                <option *ngFor="let d of ZCSlistdata" [ngValue]="d.DistrictId">
                                                                                     {{d.DistrictName}}
                                                                                 </option>
                                                                             </select>
@@ -421,7 +422,7 @@
                                                                 <div class="col-md">
                                                                   <div class="form-floating">
                                                                         <select class="form-select" id="stateprovice_id" formControlName="StateId" [(ngModel)]="CurrentAddressDetails.StateId">
-                                                                            <option *ngFor="let s of statedetail" [ngValue]="s.StateId">
+                                                                            <option *ngFor="let s of ZCSlistdata" [ngValue]="s.StateId">
                                                                                 {{s.StateName}}
                                                                             </option>
                                                                        </select>
@@ -436,7 +437,7 @@
                                                                         <div class="form-floating">
                                                                                 <select class="form-select" id="currentcountry_id" formControlName="CountryId" [(ngModel)]="CurrentAddressDetails.CountryId"
                                                                                 (change)="EmptyErrorMessage('currentcountry_id')">
-                                                                                <option *ngFor="let countrylist of countrytype" [ngValue]="countrylist.CountryId" >
+                                                                                <option *ngFor="let countrylist of ZCSlistdata" [ngValue]="countrylist.CountryId" >
                                                                                     {{countrylist.CountryName}}</option>
                                                                                </select>
                                                                                 <div  class="help-block text-danger">
@@ -459,7 +460,7 @@
                                                                           </label></div>
                                                                       
                                                                         <div class="mt-2"><label class="switch float-right">
-                                                                            <input  type="checkbox" name="VendorAddressPrimary" id="VendorAddressPrimary" formControlName="VendorAddressPrimary" checked>
+                                                                            <input  type="checkbox" name="VendorAddressPrimary" (change)="addressprimarychange($event,Addressform.get('index').value)" id="VendorAddressPrimary" formControlName="VendorAddressPrimary" checked>
                                                                             <span class="slider round"></span>
                                                                           </label>
                                                                         </div>
@@ -499,9 +500,9 @@
                                                                       
 
                                                                           <div class="btndiv mt-2">
-                                                                              <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="addaddress()"/>
+                                                                              <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="addaddress(Addressform.get('index').value)"/>
                                                                               &nbsp;&nbsp;
-                                                                                   <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" />
+                                                                                   <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" (click)="canceladdress()"/>
                                                                           </div>
                                                                           
                                                                      </div>
@@ -558,7 +559,7 @@
                                                                  
                                                                   <td>
                                                                     <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editcontact(item,i)" ></i>
-                                                                    <i class="fa fa-trash ml-1 cursor-pointer"  title="Delete"  (click)="deletecontact(i)" ></i>
+                                                                    <!-- <i class="fa fa-trash ml-1 cursor-pointer"  title="Delete"  (click)="deletecontact(i)" ></i> -->
                                                                  </td>
                                                               </tr>
                                                            
@@ -656,7 +657,7 @@
                                                                           </label></div>
                                                                       
                                                                         <div class="mt-2"><label class="switch float-right">
-                                                                            <input  type="checkbox" name="VendorContactPrimary" id="VendorContactPrimary" formControlName="VendorContactPrimary" checked>
+                                                                            <input  type="checkbox" name="VendorContactPrimary" (change)="contactprimarychange($event,Contactform.get('index').value)" id="VendorContactPrimary" formControlName="VendorContactPrimary" checked>
                                                                             <span class="slider round"></span>
                                                                           </label>
                                                                         </div>
@@ -677,7 +678,7 @@
                                                                         </label></div>
                                                                     
                                                                       <div class="mt-2"><label class="switch float-right">
-                                                                          <input  type="checkbox" name="VendorContactActive" id="VendorContactActive" formControlName="VendorContactActive" checked>
+                                                                          <input  type="checkbox" name="VendorContactActive"  id="VendorContactActive" formControlName="VendorContactActive" checked>
                                                                           <span class="slider round"></span>
                                                                         </label>
                                                                       </div>
@@ -698,7 +699,7 @@
                                                                </div>
                                                                <div class="col-md text-right mt-2">
                                                                   <div class="btndiv mt-2">
-                                                                      <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="addcontact()"/>
+                                                                      <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="addcontact(Contactform.get('index').value)"/>
                                                                       &nbsp;&nbsp;
                                                                            <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" />
                                                                   </div>
@@ -719,7 +720,7 @@
                           
                            
                              
-                            </accordion>
+                            </accordion><br>
                             <div class=" mt-1 text-right">
                                 <div class="btndiv mt-2">
                                     <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="Userdata(VendorMgmtBusiness.value);" />

@@ -118,6 +118,8 @@ export class VendormanagementComponent implements OnInit {
   contact_list:any =[];
   SingleVendorContactNotPrimary:any;
 
+  ZCSlistdata:any;
+
   constructor(
     private frmbuilder: FormBuilder,private http: HttpClient,
   ) { 
@@ -243,6 +245,7 @@ export class VendormanagementComponent implements OnInit {
      });
 
      this.Addressform = this.frmbuilder.group({
+      index:0,
       AddressTypeId:[],
       Address1:['', [Validators.required]],
       Address2:[],
@@ -260,13 +263,14 @@ export class VendormanagementComponent implements OnInit {
     });
 
     this.Contactform = this.frmbuilder.group({
+      index:0,
       FirstName:[],
       LastName:['', [Validators.required]],
       MiddleName:[],
       JobTitleId:['', [Validators.required]], 
       Phone:[],
       Email:['', [Validators.required]],
-      VendorContactPrimary:[1],
+      VendorContactPrimary:[0],
       VendorContactActive:[1],
       ContactId:[0]
     
@@ -275,6 +279,91 @@ export class VendormanagementComponent implements OnInit {
   //  this.setUserCategoryValidators();
   this.GetVendorContactByNotPrimary();
  
+  }
+
+  contactprimarychange(e:any,indexval:any) 
+  {
+    if(e.target.checked)
+    {    
+      this.contact_list.forEach((element:any,index:any) => {
+        if(indexval == index)
+        {
+          element.VendorContactPrimary=1;
+        }
+        else
+        {
+          element.VendorContactPrimary=0;
+        }
+        
+      });
+    }
+    else
+    {
+      let already_checked = this.contact_list.filter((y:any) => y.VendorContactPrimary === 1);
+      if (already_checked.length > 1) 
+      {
+        this.Contactform.patchValue({VendorContactPrimary:0});
+      }
+      else
+      {
+        e.target.checked=true;
+        this.Contactform.patchValue({VendorContactPrimary:1});
+        Swal.fire({
+          icon: 'error',
+          title: 'Warning!...',
+          text: 'Atleast One Contact to be Primary Contact!',
+
+        })
+      }
+    }
+  }
+
+  addressprimarychange(e:any,indexval:any) 
+  {
+    if(e.target.checked)
+    {    
+      this.address_list.forEach((element:any,index:any) => {
+        if(indexval == index)
+        {
+          element.VendorAddressPrimary=1;
+        }
+        else
+        {
+          element.VendorAddressPrimary=0;
+        }
+        
+      });
+    }
+    else
+    {
+      let already_checked = this.address_list.filter((y:any) => y.VendorAddressPrimary === 1);
+      if (already_checked.length > 1) 
+      {
+        this.Addressform.patchValue({VendorAddressPrimary:0});
+      }
+      else
+      {
+        e.target.checked=true;
+        this.Addressform.patchValue({VendorAddressPrimary:1});
+        Swal.fire({
+          icon: 'error',
+          title: 'Warning!...',
+          text: 'Atleast One Address to be Primary Address!',
+
+        })
+      }
+    }
+  }
+  
+  onchangecountystatecountry(){
+
+    let zipcode = (<HTMLInputElement>document.getElementById("currentzipcode_id_mailbus")).value;
+
+    this.http.get(config_url+'/app/getCityDistrictStateByZipcode?zipcode='+zipcode).subscribe((data: any) =>
+      {
+         this.ZCSlistdata=data.cityDistststatedata;
+         console.log('alldata-state_country', this.ZCSlistdata)
+       })
   }
   toggleContact(i:any) {
     if(this.ContactToggle[i]!=null)
@@ -304,9 +393,10 @@ export class VendormanagementComponent implements OnInit {
         // console.log("country",countrydata)
   });
   }
-  addaddress()
+  addaddress(index:any)
   {
-    // debugger
+    
+     debugger
     this.address_submmited=true;
     if (this.Addressform.invalid) 
     {
@@ -349,17 +439,39 @@ export class VendormanagementComponent implements OnInit {
 
 
 
-   
-     this.address_list.push(this.Addressform.value)
-     this.Addressform.reset()
+    // this.address_list.splice( index, 0, this.Addressform.value );
+    //   this.addlistToarray(this.Addressform.value,this.address_list)
+    // this.address_list.push(this.Addressform.value)
+    this.addlistToarray(this.Addressform.value,this.address_list)
+    // this.contact_list.splice( index, 0, this.Contactform.value );
+    //this.contact_list.push(this.Contactform.value)
+    this.Addressform.reset()
+    var indexval=this.address_list.length;
+    this.Addressform.patchValue({
+      index:indexval
+    })
+    // this.Addressform.reset()
      this.address_submmited=false;
+    }
+  }
+  addlistToarray(obj:any,list:any) {
+    let elmIndex = -1;
+    const found = list.some((el:any, index:any) => {
+      elmIndex = index; 
+      return el.index === obj.index;
+    })
+    if (!found){
+      list.push(obj);
+    } else{
+      list[elmIndex] = obj;
     }
   }
   editaddress(data:any,i:any)
   {
-    // debugger
-    this.address_list.splice(i,1);
+    debugger
+   // this.address_list.splice(i,1);
     this.Addressform.patchValue({ 
+      index:i,
       AddressId : data.AddressId,
       AddressTypeId :data.AddressTypeId,
       Address1:data.Address1,
@@ -382,16 +494,17 @@ export class VendormanagementComponent implements OnInit {
   editcontact(data:any,i:any)
   {
    
-    this.contact_list.splice(i,1);
+   // this.contact_list.splice(i,1);
     this.Contactform.patchValue({ 
+      index:i,
       FirstName:data.FirstName,
       LastName:data.LastName,
       MiddleName:data.MiddleName,
       JobTitleId:data.JobTitleId,
       Phone:data.Phone,
       Email:data.Email,
-      VendorContactPrimary:1,
-      VendorContactActive:1,
+      VendorContactPrimary:data.VendorContactPrimary,
+      VendorContactActive:data.VendorContactActive,
       ContactId:data.ContactId
   
    });
@@ -409,8 +522,9 @@ export class VendormanagementComponent implements OnInit {
         this.jobdetail=data.JobTitle;
        });
   }
-  addcontact()
+  addcontact(index:any)
   {
+    debugger
     
 
     this.contact_submmited=true;
@@ -425,10 +539,15 @@ export class VendormanagementComponent implements OnInit {
       {
          this.Contactform.value.JobTitleDesc=jobtitle[0].JobTitleDesc;
       }
-     
-      
-     this.contact_list.push(this.Contactform.value)
+      this.addlistToarray(this.Contactform.value,this.contact_list)
+     // this.contact_list.splice( index, 0, this.Contactform.value );
+     //this.contact_list.push(this.Contactform.value)
      this.Contactform.reset()
+     var indexval=this.contact_list.length;
+     this.Contactform.patchValue({
+       index:indexval
+     })
+    
      this.contact_submmited=false;
    
     }
@@ -1165,6 +1284,14 @@ GetVendorAddressById(){
       if(response != null && response.length>0)
       {
         this.address_list=response;
+        
+        this.address_list.forEach((element:any,index:any) => {
+          element.index=index;
+        });
+        var indexval=response.length+1;
+        this.Addressform.patchValue({
+          index:indexval
+        })
       }
       console.log("AddressList>>>",this.address_list);
       // console.log(data1);
@@ -1303,6 +1430,7 @@ getAllDistricts(){
       this.indBusPastAddressDistrictFinal = this.districts.selectAllDistricts;
 
       this.districts = this.districts.selectAllDistricts;
+      
       // console.log("districts",this.districts);
 
       
@@ -1517,7 +1645,7 @@ onchangezipPastAddr(){
 // for both past address
 
 GetVendorContactById(){
- 
+ debugger
   let vendoridSes = localStorage.getItem('vendoridSes');
 
   this.http.get(config_url+'vendor/GetVendorContactById?VendorId='+vendoridSes
@@ -1527,7 +1655,15 @@ GetVendorContactById(){
       var response= data.SingleVendorContactDetails;
       if(response != null && response.length>0)
       {
+      
         this.contact_list=response;
+        this.contact_list.forEach((element:any,index:any) => {
+          element.index=index;
+        });
+        var indexval=response.length+1;
+        this.Contactform.patchValue({
+          index:indexval
+        })
       }
       console.log("contactlist>>>",this.contact_list);
       

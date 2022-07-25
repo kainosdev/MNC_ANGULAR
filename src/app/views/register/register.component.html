@@ -119,7 +119,7 @@
             </div>
 
             <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                <label class="labelwidth">Address Line2</label>
+                <label class="labelwidth">Address Line 2</label>
 
            </div>
 
@@ -408,7 +408,7 @@
                                          <div class="col-md">
                                                 <div class="form-floating">
                                                <input type="text" class="form-control" formControlName="Address2"  id="currentsecadd_id" (keypress)="inputErrorMessage('currentsecadd_id')">
-                                                  <label class="common_lbl" for="social_no">ADDRESS LINE2</label>
+                                                  <label class="common_lbl" for="social_no">ADDRESS LINE 2</label>
                                                  </div>
                                          </div>
 
@@ -587,49 +587,45 @@
                  </div>
 
                  <div class="col-md">
-                        <div class="form-floating">
+
+                        
+
+<div class="d-flex">
+        <div class="mr-auto mt-2">
+            <label class="question_font">ADMIN USER ?  </label></div>
+      
+        <div class="mt-2"><label class="switch float-right">
+            <input  type="checkbox" name="AdminUser_name" id="AdminUser_id" formControlName="AdminUser" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+   <!-- <div class="form-floating">
                                 <div class="btn-group btn-toggle">  
                                          <label class="question_font" style="width: 181px;">ADMIN USER?</label> 
-                                         <!-- <label class="switch">
-                                                <input  type="checkbox" name="AdminUser_name" id="AdminUser_id" formControlName="AdminUser" checked>
-                                                <span class="slider round" style="margin-left: 106px;"></span>
-                                        </label> -->
-                                        <label class="switch" for="checkbox" >
+                                         <label class="switch" for="checkbox" >
                                                 <input type="checkbox" id="checkbox" formControlName="AdminUser" />
                                                 <div class="slider round"></div>
                                               </label>
-                                          <!-- <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
-                                          <button class="btn btn-xs btn-primary active height">No</button>  -->
                                         </div>
-                             </div>
+                             </div> -->
                  </div>
 
                  <div class="col-md">
                         <div class="form-floating">
-                       <!-- <input type="text" class="form-control" formControlName="Phone" id="phoneno_id" (keypress)="inputErrorMessage('phoneno_id'); number($event)">
-                       <div  class="help-block text-danger">
-                        <div *ngIf="submitted && rcf.Phone.errors">Phone Number is required</div>
-                       </div>
-                        <label class="common_lbl" for="social_no">PHONE NUMBER</label> -->
+                   
                          </div>
                  </div>
 
                  <div class="col-md">
                         <div class="form-floating">
-                       <!-- <input type="text" class="form-control" > -->
-                       <!-- <div  class="help-block text-danger">
-                        <div *ngIf="submitted && rcf.Phone.errors">Phone Number is required</div>
-                       </div> -->
-                        <!-- <label class="common_lbl" for="social_no">MAIL ADDRESS</label> -->
+                  
                          </div>
                  </div>
 
           </div>
 
-  
-
-        <!-- </div> -->
-        </form>
+         </form>
     </div>
 
     <!-- Employee form ends here -->
@@ -744,7 +740,7 @@
                          <div class="col-md">
                                 <div class="form-floating">
                                <input type="text" class="form-control" formControlName="Address2"  id="currentsecadd_id" (keyup)="inputErrorMessage('currentsecadd_id')" >
-                             <label class="common_lbl" for="social_no">ADDRESS LINE2</label>
+                             <label class="common_lbl" for="social_no">ADDRESS LINE 2</label>
                                  </div>
                                  </div>
 
@@ -772,7 +768,7 @@
                                                    {{ziplist.Zipcode}}</option>
                                           </select> 
                                           <div  class="help-block text-danger">
-                                                <div *ngIf="submitted && vif.Zipcode.errors">Address Line2 is required</div>
+                                                <div *ngIf="submitted && vif.Zipcode.errors">Address Line 2 is required</div>
                                              </div>
                                           <label class="common_lbl" for="floatingSelectGrid">ZIP CODE</label>
                                         </div>
@@ -871,24 +867,32 @@
                  </div>
          </div>
          <div class="col-md">
-                <div class="form-floating">
+                <div class="d-flex">
+                        <div class="mr-auto mt-2">
+                           <label class="question_font">OPT-IN FOR OUTREACH EMAILS?</label></div>
+                         <div class="mt-2"><label class="switch float-right">
+                            <input  type="checkbox" name="outreach_active" id="outreach_activeid" formControlName="OutreachEmailOptIn" checked >
+                            <span class="slider round"></span>
+                          </label>
+                        </div>
+                        </div>
+
+
+                <!-- <div class="form-floating">
                         <div class="btn-group btn-toggle">  
                                  <label class="question_font" style="width: 181px;">OPT-IN FOR OUTREACH EMAILS?</label> 
-                                 <!-- <button class="btn btn-xs ml-1 btn-primary active height">Yes</button>  
-                                 <button class="btn btn-xs  btn-outline-primary height">No</button>  -->
+                                 <button class="btn btn-xs ml-1 btn-primary active height">Yes</button>  
+                                 <button class="btn btn-xs  btn-outline-primary height">No</button> 
                                  <label class="switch">
                                         <input  type="checkbox" name="outreach_active" id="outreach_activeid" formControlName="OutreachEmailOptIn" checked>
                                         <span class="slider round"></span>
                                 </label>
                                 </div>
-                     </div>
+                     </div> -->
          </div>
 
         </div>
-
-
- <!-- </div> -->
-    </form>
+         </form>
    </div>
 
    <!-- vendor form individual ends here -->
@@ -1001,7 +1005,7 @@
                                          <div class="col-md">
                                                 <div class="form-floating">
                                                <input type="text" class="form-control" formControlName="Address2"  id="currentsecadd_id" (keypress)="inputErrorMessage('currentsecadd_id')">
-                                               <label class="common_lbl" for="social_no">ADDRESS LINE2</label>
+                                               <label class="common_lbl" for="social_no">ADDRESS LINE 2</label>
                                                  </div>
                                          </div>
                         
@@ -1159,60 +1163,94 @@
 
         <div class="row g-4">
                 <div class="col-md">
-                        <div class="form-floating">
+
+                        <div class="d-flex">
+                                <div class="mr-auto mt-2">
+                                    <label class="question_font">IS THIS BUSINESS REGISTERED WITH SCC OF THIS STATE?</label>
+                                </div>
+                               <div class="mt-2">
+                                <label class="switch float-right">
+                                    <input  type="checkbox" name="BusinessRegisteredInSCC_name" id="BusinessRegisteredInSCC_id" formControlName="BusinessRegisteredInSCC" checked>
+                                    <span class="slider round"></span>
+                                  </label>
+                                </div>
+                                </div>
+
+
+                        <!-- <div class="form-floating">
                                 <div class="btn-group btn-toggle">  
                                          <label class="question_font" style="width: 181px;">IS THIS BUSINESS REGISTERED WITH SCC OF THIS STATE?</label> 
                                          <label class="switch">
                                                 <input  type="checkbox" name="BusinessRegisteredInSCC_name" id="BusinessRegisteredInSCC_id" formControlName="BusinessRegisteredInSCC" checked>
                                                 <span class="slider round"></span>
                                         </label>
-                                         <!-- <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
-                                          <button class="btn btn-xs btn-primary active height">No</button>  -->
-                                        </div>
-                             </div>
+                                         </div>
+                             </div> -->
                  </div>
        
                  <div class="col-md">
-                        <div class="form-floating">
-                                <div class="btn-group btn-toggle">  
-                                         <label class="question_font" style="width: 181px;">IS THIS BUSINESS REGISTERED WITH THIS STATE/COUNTY?</label> 
-                                         <label class="switch">
-                                                <input  type="checkbox" name="BusinessRegisteredInDistrict_name" id="BusinessRegisteredInDistrict_id" formControlName="BusinessRegisteredInDistrict" checked>
-                                                <span class="slider round"></span>
-                                        </label>
-                                          <!-- <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
-                                          <button class="btn btn-xs btn-primary active height">No</button>  -->
-                                        </div>
+
+                        <div class="d-flex">
+                                <div class="mr-auto mt-2">
+                                  
+                                    <label class="question_font">IS THIS BUSINESS REGISTERED WITH THIS STATE/COUNTY? </label></div>
+                              
+                                <div class="mt-2"><label class="switch float-right">
+                                    <input  type="checkbox" name="BusinessRegisteredInDistrict_name" id="BusinessRegisteredInDistrict_id" formControlName="BusinessRegisteredInDistrict" checked>
+                                    <span class="slider round"></span>
+                                  </label>
+                                </div>
+                                </div>
                              </div>
-                 </div>
        
                  <div class="col-md">
-                        <div class="form-floating">
+
+                        <div class="d-flex">
+                                <div class="mr-auto mt-2">
+                                  
+                                    <label class="question_font">IS THIS BUSINESS A FRANCHISE?</label></div>
+                              
+                                <div class="mt-2"><label class="switch float-right">
+                                    <input  type="checkbox" name="BusinessIsFranchisee_name" id="BusinessIsFranchisee_id" formControlName="BusinessIsFranchisee" checked>
+                                    <span class="slider round"></span>
+                                  </label>
+                                </div>
+                                </div>
+
+
+                        <!-- <div class="form-floating">
                                 <div class="btn-group btn-toggle">  
                                          <label class="question_font" style="width: 181px;">IS THIS BUSINESS A FRANCHISE?</label> 
                                          <label class="switch">
                                                 <input  type="checkbox" name="BusinessIsFranchisee_name" id="BusinessIsFranchisee_id" formControlName="BusinessIsFranchisee" checked>
                                                 <span class="slider round"></span>
                                         </label>
-                                          <!-- <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
-                                          <button class="btn btn-xs btn-primary active height">No</button>  -->
-                                        </div>
-                             </div>
+                                          </div>
+                             </div> -->
                  </div>
        
                  <div class="col-md">
-                        <div class="form-floating">
+                        <div class="d-flex">
+                                <div class="mr-auto mt-2">
+                                  
+                                    <label class="question_font">OPT-IN FOR OUTREACH EMAILS?</label></div>
+                              
+                                <div class="mt-2"><label class="switch float-right">
+                                    <input  type="checkbox" name="OutreachEmailOptIn_name" id="OutreachEmailOptIn_id" formControlName="OutreachEmailOptIn" checked >
+                                    <span class="slider round"></span>
+                                  </label>
+                                </div>
+                                </div>
+
+                        <!-- <div class="form-floating">
                                 <div class="btn-group btn-toggle">  
                                          <label class="question_font" style="width: 181px;">OPT-IN FOR OUTREACH EMAILS?</label>
                                          <label class="switch">
                                                 <input  type="checkbox" name="OutreachEmailOptIn_name" id="OutreachEmailOptIn_id" formControlName="OutreachEmailOptIn" checked>
                                                 <span class="slider round"></span>
                                         </label>
-                                   <!-- <button class="btn btn-xs ml-1 btn-primary active height">Yes</button>  
-                                          <button class="btn btn-xs  btn-outline-primary height">No</button> -->
-                                          <!-- <button class="btn btn-xs btn-primary active height">No</button>  -->
-                                        </div>
-                             </div>
+                                   </div>
+                             </div> -->
                  </div>
                
        
