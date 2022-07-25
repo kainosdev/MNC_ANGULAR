@@ -158,7 +158,7 @@ export class EmpDashboardComponent implements OnInit {
   awarduser() {
     try {
       this.http
-        .get(config_url + 'bid/GetConAwardByUser?CurrentUserid=CA01')
+        .get(config_url + 'bid/GetConAwardByUser?CurrentUserid='+localStorage.getItem('CreatedUseridses'))
         .subscribe((data: any) => {
           // console.log("data1",data);
           var response = data.currentuserid;

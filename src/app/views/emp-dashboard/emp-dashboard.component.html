@@ -232,7 +232,7 @@
                 <tbody >
                   <tr class="tabletr" *ngFor="let item of Bidslist">
                   <td>{{item.BidNumber}}</td>
-                  <td>{{item.Title}}</td> 
+                  <td>{{item.Title}}</td>
                   <td>{{item.BidStatusDesc}}</td>
                   <td>{{item.DepartmentName}}</td>
                   <td>{{item.posteddate | date}}</td>
@@ -268,6 +268,7 @@
                     <th  style="color: white;" scope="col">Title</th>
                     <th style="color: white;" scope="col"> Contract Status</th>
                      <th style="color: white;" scope="col">Department</th>
+                     <th style="color: white;" scope="col">Awarded Date</th>
                     <th  style="color: white;" scope="col">Planned Start Date</th>
                     <th style="color: white;" scope="col"> Planned End Date</th>
                     <th style="color: white;" scope="col">Actual Start Date</th>
@@ -283,6 +284,7 @@
                     <td>{{item.Title}}</td>
                     <td>{{item.ContractStatusDesc}}</td>
                     <td>{{item.DepartmentName}}</td>
+                    <td>{{item.ContractAwardedDate | date:'MMM d,Y'}}</td>
                     <td>{{item.startDatePlanned | date}}</td>
                     <td>{{item.endDatePlanned | date}}</td>
                     <td>{{item.startDateActual | date}}</td>
