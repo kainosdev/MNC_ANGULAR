@@ -140,17 +140,20 @@ export class DefaultLayoutComponent implements OnInit{
     },
     {
       name: 'Bid Management',
+      // id: 1,
       url: '/bid',
       // iconComponent: { name: 'cil-balance-scale'},
       icon: 'fa fa-balance-scale',
       children: [
         {
+          
           name: 'View Bids',
           url: '/BidList'
         },
         {
+        
           name: 'Create/View Bid',
-          url: '/bidManagement'
+           url: '/bidManagement'
         },
         {
           name: 'Bid Responses',

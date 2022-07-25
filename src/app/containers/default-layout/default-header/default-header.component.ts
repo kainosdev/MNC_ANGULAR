@@ -28,6 +28,8 @@ export class DefaultHeaderComponent extends HeaderComponent  {
   logout(){
     // alert("in")
     window.localStorage.clear();
-    this.router.navigate(['/login']);
+    window.setTimeout(function(){location.reload()},1000)
+    this.router.navigate(['/']);
+    // this.router.navigate(['/login']);
   }
 }
