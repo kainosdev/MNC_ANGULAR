@@ -28,26 +28,15 @@ export class EmpDashboardComponent implements OnInit {
   dtElement: DataTableDirective | any;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
-  posteddate: string = new Date().toDateString();
-  duedate: string = new Date().toDateString();
-  postedDateDraft: string = new Date().toDateString();
-  dueDateDraft: string = new Date().toDateString();
-  startDatePlanned: string = new Date().toDateString();
-  endDatePlanned: string = new Date().toDateString();
-  startDateActual: string = new Date().toDateString();
-  endDateActual: string = new Date().toDateString();
+
   directReportDetail: any;
   usertypedata: any;
-  employeeStartDate: string = new Date().toDateString();
-  employeeEndDate: string = new Date().toDateString();
   approvalEmployeeDetail: any;
   approvalVendorDetail: any;
-  employeeApprovalStartDate: string = new Date().toDateString();
-  employeeApprovalCreatedDate: string = new Date().toDateString();
-  vendorApprovalCreatedDate: string = new Date().toDateString();
   firstname: string | null;
   lastname: string | null;
   middlename: string | null;
+  UserId : string | null;
 
   constructor(private http: HttpClient) {}
 
@@ -82,6 +71,7 @@ export class EmpDashboardComponent implements OnInit {
     this.firstname = localStorage.getItem('Firstnameses');
     this.lastname = localStorage.getItem('LastNameses');
     this.middlename = localStorage.getItem('Middlenameses');
+    this.UserId=localStorage.getItem('CreatedUseridses');
 
     // this.dtOptions = {
     //   pagingType: 'full_numbers',
@@ -112,20 +102,18 @@ export class EmpDashboardComponent implements OnInit {
           // console.log("biddrafts",data);
           var response = data.BidOpen;
           this.BidDraftList = response;
-          //    console.log(this.Bidslist)
+            //  console.log(this.BidDraftList)
           //  this.dtTrigger.next(this.BidDraftList);
           //   this.BidDraftList.forEach(function (value:any) {
           //     console.log(value.BidPostedDate);
 
           // });
-          for (let i = 0; i < this.BidDraftList.length; i++) {
-            this.BidDraftList[i].postedDateDraft =
-              this.BidDraftList[i].BidPostedDate?.split(' ')[0];
-              this.BidDraftList[i].dueDateDraft =
-              this.BidDraftList[i].BidResponseDueDate?.split(' ')[0];
-            // console.log(this.posteddate);
-            // console.log(this.duedate);
-          }
+          // for (let i = 0; i < this.BidDraftList.length; i++) {
+          //   this.BidDraftList[i].postedDateDraft =
+          //     this.BidDraftList[i].BidPostedDate?.split(' ')[0];
+          //     this.BidDraftList[i].dueDateDraft =
+          //     this.BidDraftList[i].BidResponseDueDate?.split(' ')[0];
+          // }
         });
     } catch (e) {
       console.log(e);
@@ -141,12 +129,12 @@ export class EmpDashboardComponent implements OnInit {
           this.Bidslist = response;
           //  console.log(this.Bidslist)
           this.dtTrigger.next(this.Bidslist);
-          for (let i = 0; i < this.Bidslist.length; i++) {
-            this.Bidslist[i].posteddate = this.Bidslist[i].BidPostedDate?.split(' ')[0];
-            this.Bidslist[i].duedate = this.Bidslist[i].BidResponseDueDate?.split(' ')[0];
-            // console.log(this.posteddate);
-            // console.log(this.duedate);
-          }
+          // for (let i = 0; i < this.Bidslist.length; i++) {
+          //   this.Bidslist[i].posteddate = this.Bidslist[i].BidPostedDate?.split(' ')[0];
+          //   this.Bidslist[i].duedate = this.Bidslist[i].BidResponseDueDate?.split(' ')[0];
+          //   // console.log(this.posteddate);
+          //   // console.log(this.duedate);
+          // }
         });
     } catch (e) {
       console.log(e);
@@ -156,23 +144,24 @@ export class EmpDashboardComponent implements OnInit {
   awarduser() {
     try {
       this.http
-        .get(config_url + 'bid/GetConAwardByUser?CurrentUserid=CA01')
+        .get(config_url + 'bid/GetConAwardByUser?CurrentUserid='+localStorage.getItem('CreatedUseridses'))
         .subscribe((data: any) => {
           // console.log("data1",data);
           var response = data.currentuserid;
           this.awarduserlist = response;
-          for (let i = 0; i < this.awarduserlist.length; i++) {
-            this.awarduserlist[i].startDatePlanned =
-              this.awarduserlist[i].StartDatePlanned?.split(' ')[0];
-              this.awarduserlist[i].endDatePlanned =
-              this.awarduserlist[i].EndDatePlanned?.split(' ')[0];
-              this.awarduserlist[i].startDateActual =
-              this.awarduserlist[i].StartDateActual?.split(' ')[0];
-              this.awarduserlist[i].endDateActual =
-              this.awarduserlist[i].EndDateActual?.split(' ')[0];
-            // console.log(this.posteddate);
-            // console.log(this.duedate);
-          }
+          console.log(this.awarduserlist);
+          // for (let i = 0; i < this.awarduserlist.length; i++) {
+          //   this.awarduserlist[i].startDatePlanned =
+          //     this.awarduserlist[i].StartDatePlanned?.split(' ')[0];
+          //     this.awarduserlist[i].endDatePlanned =
+          //     this.awarduserlist[i].EndDatePlanned?.split(' ')[0];
+          //     this.awarduserlist[i].startDateActual =
+          //     this.awarduserlist[i].StartDateActual?.split(' ')[0];
+          //     this.awarduserlist[i].endDateActual =
+          //     this.awarduserlist[i].EndDateActual?.split(' ')[0];
+          //   // console.log(this.posteddate);
+          //   // console.log(this.duedate);
+          // }
           // console.log(this.bidstatus)
         });
     } catch (e) {
@@ -184,22 +173,22 @@ export class EmpDashboardComponent implements OnInit {
       this.http
         .get(
           config_url +
-            'employee/GetDirectReport?EmployeeIdSupervisor=Emp123@345'
+            'employee/GetDirectReport?EmployeeIdSupervisor='+localStorage.getItem('CreatedUseridses')
         )
         .subscribe((data: any) => {
           console.log('data2', data);
           var response = data.DirectReport;
           this.directReportDetail = response;
 
-          console.log(this.directReportDetail);
+          // console.log(this.directReportDetail);
           // this.dtTrigger.next(this.directReportDetail);
-          for (let i = 0; i < this.directReportDetail.length; i++) {
-            console.log(this.directReportDetail[i].StartDate);
-            this.directReportDetail[i].employeeStartDate =
-              this.directReportDetail[i].StartDate?.split(' ')[0];
-            this.directReportDetail[i].employeeEndDate =
-              this.directReportDetail[i].EndDate?.split(' ')[0];
-          }
+          // for (let i = 0; i < this.directReportDetail.length; i++) {
+          //   console.log(this.directReportDetail[i].StartDate);
+          //   this.directReportDetail[i].employeeStartDate =
+          //     this.directReportDetail[i].StartDate?.split(' ')[0];
+          //   this.directReportDetail[i].employeeEndDate =
+          //     this.directReportDetail[i].EndDate?.split(' ')[0];
+          // }
         });
     } catch (e) {
       console.log(e);
@@ -215,28 +204,30 @@ export class EmpDashboardComponent implements OnInit {
         // console.log("employee", data);
         var response = data.GetApprovalForEmployee;
         this.approvalEmployeeDetail = response;
-        for (let i = 0; i < this.approvalEmployeeDetail.length; i++) {
-          this.approvalEmployeeDetail[i].employeeApprovalStartDate =
-            this.approvalEmployeeDetail[i].StartDate?.split(' ')[0];
-            this.approvalEmployeeDetail[i].employeeApprovalCreatedDate =
-            this.approvalEmployeeDetail[i].CreatedDate?.split(' ')[0];
-          // console.log('createdDate', this.employeeApprovalCreatedDate)
-        }
+        // console.log(this.approvalEmployeeDetail);
+        // for (let i = 0; i < this.approvalEmployeeDetail.length; i++) {
+        //   this.approvalEmployeeDetail[i].employeeApprovalStartDate =
+        //     this.approvalEmployeeDetail[i].StartDate?.split(' ')[0];
+        //     this.approvalEmployeeDetail[i].employeeApprovalCreatedDate =
+        //     this.approvalEmployeeDetail[i].CreatedDate?.split(' ')[0];
+        //   // console.log('createdDate', this.employeeApprovalCreatedDate)
+        // }
       });
   }
   vendorapproval() {
     this.http
       .get(
-        config_url + 'vendor/GetVendorApproval?UserTypeId=VENDOR&UserStatusId=N'
+        config_url + 'vendor/GetVendorApproval?UserTypeId1=EMPLOY&UserStatusId=N'
       )
       .subscribe((data: any) => {
         // console.log("VENDOR", data);
         var response = data.GetVendorApproval;
         this.approvalVendorDetail = response;
-        for (let i = 0; i < this.approvalVendorDetail.length; i++) {
-          this.approvalVendorDetail[i].vendorApprovalCreatedDate =
-            this.approvalVendorDetail[i].CreatedDate?.split(' ')[0];
-        }
+        console.log(this.approvalVendorDetail);
+        // for (let i = 0; i < this.approvalVendorDetail.length; i++) {
+        //   this.approvalVendorDetail[i].vendorApprovalCreatedDate =
+        //     this.approvalVendorDetail[i].CreatedDate?.split(' ')[0];
+        // }
       });
   }
   displayStyle = 'none';

@@ -106,29 +106,29 @@ ZCSlistdata:any;
 
 
       // legalbusiness: [''],
-     
+
       // tradeName: [],
       // UserTypeId:  ['', [Validators.required]],
-     
-     
+
+
       // conformpassword:  ['', [Validators.required]],
 
-     
-     
-     
-     
-     
-     
+
+
+
+
+
+
       // StartDate: ['', [Validators.required]],
       // EndDate: [''],
-    
+
      //employee details
-     
-      
-      
-      
-     
-     
+
+
+
+
+
+
 
       // BusinessRegisteredInSCC: [],
       // VendorTypeId: [],
@@ -143,7 +143,7 @@ ZCSlistdata:any;
       // BEClassificationId: [],
 
 
-      
+
 
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
@@ -195,32 +195,32 @@ this.vendorform_individual = this.frmbuilder.group({
 
 
 
- 
+
   // legalbusiness: [''],
- 
+
   // tradeName: [],
   // UserTypeId:  ['', [Validators.required]],
- 
-  
- 
 
-  
- 
-  
-  
- 
-  
+
+
+
+
+
+
+
+
+
   // DistrictId: ['', [Validators.required]],
-  
+
   // StartDate: ['', [Validators.required]],
   // EndDate: [''],
   // VendorTypeId: [],
- 
- 
- 
 
 
-  
+
+
+
+
   // business_ssn: [],
   // BusinessSize: [],
   // BusinessRegisteredInDistrict:[],
@@ -235,7 +235,7 @@ this.vendorform_individual = this.frmbuilder.group({
   // Phone:[],
   // mail:[],
   // AdminUser: [],
- 
+
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 this.vendorform_business = this.frmbuilder.group({
@@ -263,37 +263,37 @@ this.vendorform_business = this.frmbuilder.group({
    OutreachEmailOptIn:[true],
   UserStatusId:['N'],
 
- 
+
   // legalbusiness: [''],
-  
+
   // tradeName: [],
   // UserTypeId:  ['', [Validators.required]],
- 
+
   // DistrictId: ['', [Validators.required]],
- 
+
   // StartDate: ['', [Validators.required]],
   // EndDate: [''],
   // VendorTypeId: [],
   // EIN_SSN:[],
 
- 
- 
- 
- 
 
-  
-  
- 
+
+
+
+
+
+
+
   // BEClassificationId: [],
 
   // JobTitleId:[],
   // EmploymentTypeId:[],
   // JobStartDate: [],
-  
+
 
   // Phone:[],
   // AdminUser: [],
- 
+
 
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
@@ -744,7 +744,7 @@ number(event: any) {
        // this.vendorform_individual_show=true;
         this.submitted = false;
        this.vendorform_business_show=false;
-        this.vendorform_individual_show =true; 
+        this.vendorform_individual_show =true;
 
         // this.vendortype_display(true)
 
@@ -756,7 +756,7 @@ number(event: any) {
        // this.vendorform_individual_show=true;
         this.submitted = false;
        this.vendorform_business_show=true;
-        this.vendorform_individual_show =false; 
+        this.vendorform_individual_show =false;
 
         // this.vendortype_display(true)
 
@@ -903,7 +903,7 @@ number(event: any) {
 
       }
 
-     
+
 
       onchangezip(){
 
@@ -968,10 +968,10 @@ number(event: any) {
 
     onSubmit() {
 
-      
+
       // debugger
         this.submitted = true;
-      
+
         let usertype_id = (<HTMLInputElement>document.getElementById("usertype_id")).value;
         if(usertype_id == "EMPLOY")
         {

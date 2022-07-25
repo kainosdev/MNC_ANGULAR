@@ -42,8 +42,8 @@
                 <td>{{item.Email}}</td>
                 <td>{{item.EmploymentTypeDesc}}</td>
                 <td>{{item.JobTitleDesc}}</td>
-                <td>{{item.employeeStartDate | date}}</td>
-                <td>{{item.employeeEndDate | date}}</td>
+                <td>{{item.StartDate | date: "MMM d, y"}}</td>
+                <td>{{item.EndDate | date: "MMM d, y"}}</td>
               </tr>
             </tbody>
           </table>
@@ -63,7 +63,7 @@
         <div class="p-4">
 
           <div class="row" style="overflow-x:auto;">
-            <table  class="table servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+            <table  class="table nowrap servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
                 <thead style="text-align: left;background-color: #5e6572;font-size: 13px !important;">
 
               <tr>
@@ -97,10 +97,10 @@
                   </label></td>
                 <td>{{item.Phone}}</td>
                 <td>{{item.Email}}</td>
-                <td>{{item.EmploymentDesc}}</td>
+                <td>{{item.asEmploymentDesc}}</td>
                 <td>{{item.JobTitleDesc}}</td>
-                <td>{{item.employeeApprovalStartDate | date}}</td>
-                <td>{{item.employeeApprovalCreatedDate | date}}</td>
+                <td>{{item.StartDate | date: "MMM d, y"}}</td>
+                <td>{{item.CreatedDate | date: "MMM d, y"}}</td>
                 <td>{{item.CreatedUserId}}</td>
 
             </tr>
@@ -154,7 +154,7 @@
               </td>
               <td>{{item.phone}}</td>
               <td>{{item.Email}}</td>
-              <td>{{item.vendorApprovalCreatedDate | date}}</td>
+              <td>{{item.CreatedDate | date: "MMM d, y"}}</td>
               <td>{{item.CreatedUserId}}</td>
 
           </tr>
@@ -197,8 +197,8 @@
                   <td>{{item.Title}}</td>
                   <td>{{item.BidStatusDesc}}</td>
                   <td>{{item.DepartmentName}}</td>
-                  <td>{{item.postedDateDraft | date}}</td>
-                  <td>{{item.dueDateDraft | date}}</td>
+                  <td>{{item.BidPostedDate | date: "MMM d, y"}}</td>
+                  <td>{{item.BidResponseDueDate | date: "MMM d, y"}}</td>
                 </tr>
                 </tbody>
 
@@ -232,11 +232,11 @@
                 <tbody >
                   <tr class="tabletr" *ngFor="let item of Bidslist">
                   <td>{{item.BidNumber}}</td>
-                  <td>{{item.Title}}</td> 
+                  <td>{{item.Title}}</td>
                   <td>{{item.BidStatusDesc}}</td>
                   <td>{{item.DepartmentName}}</td>
-                  <td>{{item.posteddate | date}}</td>
-                  <td>{{item.duedate | date}}</td>
+                  <td>{{item.BidPostedDate | date: "MMM d, y"}}</td>
+                  <td>{{item.BidResponseDueDate | date: "MMM d, y"}}</td>
                 </tr>
                 </tbody>
 
@@ -268,11 +268,14 @@
                     <th  style="color: white;" scope="col">Title</th>
                     <th style="color: white;" scope="col"> Contract Status</th>
                      <th style="color: white;" scope="col">Department</th>
+                     <th style="color: white;" scope="col">Awarded Date</th>
                     <th  style="color: white;" scope="col">Planned Start Date</th>
                     <th style="color: white;" scope="col"> Planned End Date</th>
                     <th style="color: white;" scope="col">Actual Start Date</th>
                     <th style="color: white;" scope="col">Actual End Date</th>
                     <th style="color: white;" scope="col">Contracting Officer</th>
+                    <th style="color: white;" scope="col">Base year</th>
+                    <th style="color: white;" scope="col">Option year</th>
 
                   </tr>
                 </thead>
@@ -282,13 +285,15 @@
                     <td>{{item.ContractNumber}}</td>
                     <td>{{item.Title}}</td>
                     <td>{{item.ContractStatusDesc}}</td>
-                    <td>{{item.DepartmentName}}</td>
-                    <td>{{item.startDatePlanned | date}}</td>
-                    <td>{{item.endDatePlanned | date}}</td>
-                    <td>{{item.startDateActual | date}}</td>
-                    <td>{{item.endDateActual | date}}</td>
-                    <td>{{item.ContractingOfficer}}</td>
-
+                    <td>{{item.DeptName}}</td>
+                    <td>{{item.ContractAwardedDate | date:'MMM d,Y'}}</td>
+                    <td>{{item.PlannedStartDate | date:'MMM d,Y'}}</td>
+                    <td>{{item.PlannedEndDate | date:'MMM d,Y'}}</td>
+                    <td>{{item.StartDateActual | date:'MMM d,Y'}}</td>
+                    <td>{{item.EndDateActual | date:'MMM d,Y'}}</td>
+                    <td>{{item.FirstName}}</td>
+                    <td>{{item.BaseYear}}</td>
+                    <td>{{item.OptionYeat}}</td>
                 </tr>
                 </tbody>
               </table>
