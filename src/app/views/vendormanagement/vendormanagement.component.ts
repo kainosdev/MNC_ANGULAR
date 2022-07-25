@@ -213,8 +213,8 @@ export class VendormanagementComponent implements OnInit {
       LastName:  ['', [Validators.required]],
       MiddleName: ['', [Validators.required]],
 
-      VendorId:[localStorage.getItem('vendoridSes')],
-      CreatedUserId:[localStorage.getItem("CreatedUseridses")],
+      // VendorId:[localStorage.getItem('vendoridSes')],
+      // CreatedUserId:[localStorage.getItem("CreatedUseridses")],
      
     
       Email: ['', [Validators.required]],

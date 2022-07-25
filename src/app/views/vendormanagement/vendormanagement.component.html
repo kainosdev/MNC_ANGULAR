@@ -21,7 +21,7 @@
                               
                                    
                       <div  class="help-block text-danger">
-                              <div *ngIf="submitted && vifc.UserName.errors">User Name is required</div>
+                              <div *ngIf="indsubmitted && vifc.UserName.errors">User Name is required</div>
                       </div>
                       <label class="common_lbl" for="UserName" >USER NAME</label>
 
@@ -39,7 +39,7 @@
                      
                   
                      <div  class="help-block text-danger">
-                        <div *ngIf="submitted && vifc.title.errors">User Type required</div>
+                        <div *ngIf="indsubmitted && vifc.title.errors">User Type required</div>
                       </div>
                     </div>
                     </div>
