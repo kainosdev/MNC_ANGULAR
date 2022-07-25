@@ -9,7 +9,7 @@ import { AdminmanagementComponent } from './views/adminmanagement/adminmanagemen
 import { ContractawardComponent } from './views/contractaward/contractaward.component';
 import { TesingComponent } from './tesing/tesing.component';
 // import { BidmanagementComponent } from './bidmanagement/bidmanagement.component';
-// import { BidmanagementModule } from './views/bid-management/bid-management.module';
+import { RegisterComponent } from './views/register/register.component';
 import { Title } from 'chart.js';
 
 const newLocal = './views/register/register.module';
@@ -22,7 +22,7 @@ const routes: Routes = [
   { path:'', component:TesingComponent, data: { title: 'tesingcomponent'}},
   
 
-  // { path: '', component:BidmanagementComponent, data: { title: 'bidmanagement'}},
+  { path: 'register', component:RegisterComponent, data: { title: 'Register'}},
   
   // {path:'', component:RegisterComponent,data: { title: "registerpage"}},
   // { path:'', component:RegisterComponent, data: { title: 'register1'}},
@@ -82,7 +82,7 @@ const routes: Routes = [
           import('./views/logout/logout.module').then((m) => m.LogoutModule)
       },
       {
-        path: 'register',
+        path: 'registertest',
         loadChildren: () =>
           import('./views/register/register.module').then((m) => m.RegisterModule)
       },

@@ -57,7 +57,7 @@ export class DefaultLayoutComponent implements OnInit{
     },
     {
       name: 'Bid Management',
-      url: '/BidList',
+      //url: '/BidList',
       // iconComponent: { name: 'cil-balance-scale'},
       icon: 'fa fa-balance-scale',
       children: [
@@ -138,16 +138,16 @@ export class DefaultLayoutComponent implements OnInit{
     },
     {
       name: 'Bid Management',
-      url: '/BidList',
+      //url: '/BidList',
       // iconComponent: { name: 'cil-balance-scale'},
       icon: 'fa fa-balance-scale',
       children: [
         {
-          name: 'View Bids',
+          name: '     View Bids',
           url: '/BidList'
         },
         {
-          name: 'Create/View Bid',
+          name: '     Create/View Bid',
           url: '/bidManagement'
         },
         {

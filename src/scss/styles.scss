@@ -201,3 +201,8 @@ input[type=button] {
   .btndiv{
      text-align: right;
    }
+
+
+   html:not([dir=rtl]) .sidebar-nav .nav-group-items .nav-link {
+    padding-left: 5rem;
+}
