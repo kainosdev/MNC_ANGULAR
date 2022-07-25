@@ -118,6 +118,8 @@ export class VendormanagementComponent implements OnInit {
   contact_list:any =[];
   SingleVendorContactNotPrimary:any;
 
+  ZCSlistdata:any;
+
   constructor(
     private frmbuilder: FormBuilder,private http: HttpClient,
   ) { 
@@ -351,6 +353,17 @@ export class VendormanagementComponent implements OnInit {
         })
       }
     }
+  }
+  
+  onchangecountystatecountry(){
+
+    let zipcode = (<HTMLInputElement>document.getElementById("currentzipcode_id_mailbus")).value;
+
+    this.http.get(config_url+'/app/getCityDistrictStateByZipcode?zipcode='+zipcode).subscribe((data: any) =>
+      {
+         this.ZCSlistdata=data.cityDistststatedata;
+         console.log('alldata-state_country', this.ZCSlistdata)
+       })
   }
   toggleContact(i:any) {
     if(this.ContactToggle[i]!=null)
@@ -1417,6 +1430,7 @@ getAllDistricts(){
       this.indBusPastAddressDistrictFinal = this.districts.selectAllDistricts;
 
       this.districts = this.districts.selectAllDistricts;
+      
       // console.log("districts",this.districts);
 
       
