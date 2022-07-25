@@ -10,6 +10,7 @@ import { INavData } from '@coreui/angular';
 })
 
 export class DefaultLayoutComponent implements OnInit{
+  
   // usertypeses:any;
   // public navItems = navItems;
   // public navItems1 = navItems1;
@@ -67,7 +68,8 @@ export class DefaultLayoutComponent implements OnInit{
         },
         {
           name: 'Create/View Bid',
-          url: '/bidManagement'
+          url: '/bidManagement',
+       
         },
         {
           name: 'Bid Responses',
@@ -138,16 +140,16 @@ export class DefaultLayoutComponent implements OnInit{
     },
     {
       name: 'Bid Management',
-      //url: '/BidList',
+      url: '/bid',
       // iconComponent: { name: 'cil-balance-scale'},
       icon: 'fa fa-balance-scale',
       children: [
         {
-          name: '     View Bids',
+          name: 'View Bids',
           url: '/BidList'
         },
         {
-          name: '     Create/View Bid',
+          name: 'Create/View Bid',
           url: '/bidManagement'
         },
         {
@@ -160,6 +162,7 @@ export class DefaultLayoutComponent implements OnInit{
         },
       ]
     },
+    
 
     {
       name: 'Contract Management',
