@@ -206,3 +206,7 @@ input[type=button] {
    html:not([dir=rtl]) .sidebar-nav .nav-group-items .nav-link {
     padding-left: 5rem;
 }
+   table.dataTable > tbody > tr {
+    background-color: transparent;
+    font-size: 13px !important;
+  }

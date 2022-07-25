@@ -20,7 +20,7 @@
                                   <div  class="help-block text-danger">
                                           <div *ngIf="submitted && bfc.social_no.errors">Solicitation Number is required</div>
                                   </div>
-                                  <label class="common_lbl" for="social_no">Solicitation Number</label>
+                                  <label class="common_lbl" for="social_no">SOLICITATION NUMBER</label>
   
                                   </div>
                                 </div>
@@ -81,7 +81,7 @@
                                                 <div class="col-12">
                                                     <div class="form-floating">
                                                         <textarea class="form-control"  formControlName="description" id="description" style="height: 100px"></textarea>
-                                                        <label for="description" class="common_lbl">Description</label>
+                                                        <label for="description" class="common_lbl">DESCRIPTION</label>
                                                       </div>
                                                   </div>
                                                
@@ -209,7 +209,7 @@
                                                 </div>
 
       <!-- 3 row -->
-                                                <div class="row g-3 p-1">
+                                                <div class="row g-4 p-1">
                                                     
                                                     <div class="col-md">
                                                       <div class="form-floating">
@@ -394,12 +394,12 @@
                                               <img  class="upload_file_img" src="assets/img/dnd/ic-upload-file.svg" alt="">
                                               <h3>Drag and drop file here or upload</h3>
                                             </div>
-                                          </div>
-              
-                                          <label for="fileDropRef">Browse for file</label>
-                                        </div>
+                                          </div><br>
+                                          <label for="fileDropRef">Browse for file</label><br>
+                                        </div><br><br>
+
                                         <div class="files-list mt-2">
-                                            <strong class="name">Bid Documents</strong>
+                                            <!-- <strong class="name">Bid Documents</strong> -->
                                           <div class="single-file" *ngFor="let file of files; let i = index">
                                             <img src="assets/img/dnd/ic-file.svg" width="45px" alt="file">
                                             <div class="info">
@@ -416,7 +416,7 @@
                                         </div>
                                     </div>
                                 </ng-template>
-                              </accordion-item>
+                              </accordion-item><br>
                             <accordion-item>
                               <ng-template accordionTitle>
                                 <div class="flex space-x-2">
@@ -549,13 +549,31 @@
                                                 <div class="col-md">
                                                    
                                                   </div>
-                                                  <div class="col-md text-right">
-                                                      <button class="btn btn-filled  common_btn_action ml-2" type="button"  (click)="clinsave()"  >
+                                                  <div class="col-md text-right" style="padding-top: 11px;">
+                                                      <!-- <button class="btn btn-filled  common_btn_action ml-2" type="button"  (click)="clinsave()"  >
                                                           <img class="img-fluid btn-img "                             
-                                                              >Save</button>
-                                                              <button class="btn btn-filled btn-delete common_btn_cancel ml-1" type="button" >                                                           Cancel
-                                                                </button>
+                                                              >Save</button> -->
+
+                                                              <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="clinsave();" />
+                                                              &nbsp;&nbsp;
+                                                              <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" />
+
+                                                              <!-- <button class="btn btn-filled btn-delete common_btn_cancel ml-1" type="button" >                                                           Cancel
+                                                                </button> -->
                                                     </div>
+
+                                                    <!-- <div class=" mt-1 text-right">
+                                                      <div class="btndiv mt-2">
+                                                          <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="generalsave();" />
+                                                          &nbsp;&nbsp;
+                                                               <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" />
+                                                      </div>
+                              
+                                                  </div> -->
+
+
+
+
                                               </div>
                                           
                                          
@@ -583,7 +601,7 @@
                                     </div>
                               </ng-template>
                             </accordion-item>
-                          </accordion>
+                          </accordion><br>
                           <div class=" mt-1 text-right">
                               <div class="btndiv mt-2">
                                   <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="generalsave();" />
