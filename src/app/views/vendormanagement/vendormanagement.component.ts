@@ -40,6 +40,7 @@ export class VendormanagementComponent implements OnInit {
   submitted = false;
   submitted1 = false;
   submitted2 = false;
+  indsubmitted =false;
   [x: string]: any;
   Vendortypevalue:any;
   classList: any;
@@ -180,22 +181,24 @@ export class VendormanagementComponent implements OnInit {
       //LastName: ['', [Validators.required]],
       MiddleName: [],
       EIN_SSN: ['', [Validators.required]],
-      Email: [],
+      Email: ['', [Validators.required]],
       Phone:[],
       OutreachEmailOptIn:[],
-      AliasName:[],
+     
       LegalName: ['', [Validators.required]],
+      TradeName: ['', [Validators.required]],
+      AliasName:[],
       Federal:[],
-      NAICSCodes: [],
-      CommodityCodes:[],
+      NAICSCodes: ['', [Validators.required]],
+      CommodityCodes:['', [Validators.required]],
       BusinessRegisteredInDistrict:[false],
       BusinessRegisteredInSCC:[false],
       BusinessIsFranchisee:[false],
-      BusinessSize:[],
-      TradeName: [],
-      DUNS: [],
-      Website:[],
-      BEClassificationId:[]
+      BusinessSize:['', [Validators.required]],
+    
+      DUNS: ['', [Validators.required]],
+      Website:['', [Validators.required]],
+      BEClassificationId:['', [Validators.required]]
      
       
      });
@@ -206,18 +209,18 @@ export class VendormanagementComponent implements OnInit {
       // active: [],
       VendorTypeId:[],
 
-      FirstName: ['', [Validators.required]],
-      LastName:['', [Validators.required]],
-      MiddleName:[''],
+      FirstName:  ['', [Validators.required]],
+      LastName:  ['', [Validators.required]],
+      MiddleName: ['', [Validators.required]],
 
       VendorId:[localStorage.getItem('vendoridSes')],
       CreatedUserId:[localStorage.getItem("CreatedUseridses")],
      
     
-      Email:[],
+      Email: ['', [Validators.required]],
     
-      Phone:[],
-      EIN_SSN:['', [Validators.required]],
+      Phone: ['', [Validators.required]],
+      EIN_SSN: ['', [Validators.required]],
       OutreachEmailOptIn:[],
 
 
@@ -465,6 +468,7 @@ export class VendormanagementComponent implements OnInit {
       StateId:data.StateId,
   
    });
+   this.onchangecountystatecountry();
 
   }
   deleteaddress(i:any)
@@ -813,7 +817,7 @@ businessUserdata(vendorMgmt:any){
 
  individualUserdata(vendorMgmt:any){
   // debugger
-  this.submitted2 = true;
+  this.indsubmitted = true;
   this.issubmiited=true;
   if (this.VendorMgmtIndividual.valid) {
     vendorMgmt.Newcontact = this.contact_list;

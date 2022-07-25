@@ -21,7 +21,7 @@
                               
                                    
                       <div  class="help-block text-danger">
-                              <div *ngIf="submitted && bfc.UserName.errors">User Name is required</div>
+                              <div *ngIf="submitted && vifc.UserName.errors">User Name is required</div>
                       </div>
                       <label class="common_lbl" for="UserName" >USER NAME</label>
 
@@ -39,7 +39,7 @@
                      
                   
                      <div  class="help-block text-danger">
-                        <div *ngIf="submitted && bfc.title.errors">User Type required</div>
+                        <div *ngIf="submitted && vifc.title.errors">User Type required</div>
                       </div>
                     </div>
                     </div>
@@ -72,9 +72,9 @@
                                       
                                               <input type="text"  class="form-control" formControlName="FirstName"  >
                                               <div  class="help-block text-danger">
-                                                 <div *ngIf="submitted2 && vifc.FirstName.errors">First Name is required</div>
+                                                 <div *ngIf="indsubmitted && vifc.FirstName.errors">First Name is required</div>
                                               </div>
-                                        <label class="common_lbl" for="floatingInputGrid">FIRST NAME</label>
+                                        <label class="common_lbl" for="floatingInputGrid">FIRST NAME *</label>
                                             
                                       </div>
                                     </div>
@@ -83,9 +83,9 @@
                                         <div class="form-floating">
                                               <input type="text"  class="form-control"  formControlName="LastName">
                                               <div  class="help-block text-danger">
-                                                <div *ngIf="submitted2 && vifc.LastName.errors">Last Name is required</div>
+                                                <div *ngIf="indsubmitted && vifc.LastName.errors">Last Name is required</div>
                                               </div>
-                                              <label class="common_lbl" for="buying_entry">LAST NAME</label>
+                                              <label class="common_lbl" for="buying_entry">LAST NAME *</label>
                                         </div>
                                    </div>
                                       
@@ -93,7 +93,7 @@
                                           <div class="form-floating">
                                                   <input type="text" class="form-control" formControlName="MiddleName" >
                                                   <!-- <div  class="help-block text-danger">
-                                                      <div *ngIf="submitted2 && vifc.MiddleName.errors">MiddleName  is required</div>
+                                                      <div *ngIf="indsubmitted && vifc.MiddleName.errors">MiddleName  is required</div>
                                                   </div> -->
                                             <label class="common_lbl" for="set_aside">MIDDLE NAME</label>
 
@@ -113,10 +113,10 @@
                                           
                                               <input type="text"  class="form-control" formControlName="Phone" id="Phone" >
                                               <div  class="help-block text-danger">
-                                              <div *ngIf="submitted2 && rcf2.Federal.errors">Phone is required</div>
+                                              <div *ngIf="indsubmitted && vifc.Phone.errors">Phone is required</div>
                                               </div>
                                             
-                                               <label class="common_lbl" for="federal_id">PHONE</label>
+                                               <label class="common_lbl" for="federal_id">PHONE *</label>
                                         </div>
                                       </div>
                                       <div class="col-md">
@@ -124,19 +124,19 @@
                                               
                                               <input type="text"  class="form-control"  id="Email" formControlName="Email">
                                               <div  class="help-block text-danger">
-                                              <div *ngIf="submitted2 && rcf2.Email.errors">Email is required</div>
+                                              <div *ngIf="indsubmitted && vifc.Email.errors">Email is required</div>
                                               </div>
                                             
-                                                 <label class="common_lbl" for="Email">EMAIL</label>
+                                                 <label class="common_lbl" for="Email">EMAIL *</label>
                                         </div>
                                       </div>
                                       <div class="col-md">
                                         <div class="form-floating">
                                        <input type="text" class="form-control" [textMask]="{mask: mask}" formControlName="EIN_SSN" id="socialno_id" (keypress)="inputErrorMessage('socialno_id')">
                                        <div  class="help-block text-danger">
-                                        <div *ngIf="submitted && vif.EIN_SSN.errors?.required">Social Security Number is required</div>
+                                        <div *ngIf="indsubmitted && vifc.EIN_SSN.errors?.required">Social Security Number is required</div>
                                          </div>
-                                        <label class="common_lbl" for="social_no">SOCIAL SECURITY NUMBER</label>
+                                        <label class="common_lbl" for="social_no">SOCIAL SECURITY NUMBER *</label>
                                          </div>
                                       </div>
                                     
@@ -500,7 +500,7 @@
                                               <div  class="help-block text-danger">
                                                  <div *ngIf="submitted2 && rcf2.LegalName.errors">Legal Business Name is required</div>
                                               </div>
-                                        <label class="common_lbl" for="floatingInputGrid">LEGAL BUSINESS NAME</label>
+                                        <label class="common_lbl" for="floatingInputGrid">LEGAL BUSINESS NAME *</label>
                                             
                                       </div>
                                     </div>
@@ -511,7 +511,7 @@
                                               <div  class="help-block text-danger">
                                                   <div *ngIf="submitted2 && rcf2.TradeName.errors">Trade Name is required</div>
                                               </div>
-                                        <label class="common_lbl" for="floatingSelectGrid">TRADE NAME</label>
+                                        <label class="common_lbl" for="floatingSelectGrid">TRADE NAME *</label>
                                       </div>
                                     </div>
                                     <div class="col-md">
@@ -530,7 +530,7 @@
                                                   <div  class="help-block text-danger">
                                                       <div *ngIf="submitted2 && rcf2.DUNS.errors">Duns No is required</div>
                                                   </div>
-                                            <label class="common_lbl" for="set_aside">DUNS NUMBER</label>
+                                            <label class="common_lbl" for="set_aside">DUNS NUMBER *</label>
 
                                           </div>
                                         </div>
@@ -547,10 +547,10 @@
                                           
                                               <input type="text"  class="form-control" formControlName="EIN_SSN" id="EIN_SSN" [textMask]="{mask: mask}">
                                               <div  class="help-block text-danger">
-                                              <div *ngIf="submitted2 && rcf2.Federal.errors">Federal is required</div>
+                                              <div *ngIf="submitted2 && rcf2.EIN_SSN.errors">EIN/TAX Id is required</div>
                                               </div>
                                             
-                                               <label class="common_lbl" for="federal_id">EIN/TAX ID</label>
+                                               <label class="common_lbl" for="federal_id">EIN/TAX ID *</label>
                                         </div>
                                       </div>
                                       <div class="col-md">
@@ -561,7 +561,7 @@
                                               <div *ngIf="submitted2 && rcf2.NAICSCodes.errors">NAICS Code is required</div>
                                               </div>
                                             
-                                                 <label class="common_lbl" for="naics">NAICS CODE</label>
+                                                 <label class="common_lbl" for="naics">NAICS CODE *</label>
                                         </div>
                                       </div>
                                       <div class="col-md">
@@ -570,7 +570,7 @@
                                                   <div  class="help-block text-danger">
                                                       <div *ngIf="submitted2 && rcf2.CommodityCodes.errors">Commodity Code is required</div>
                                                   </div>
-                                          <label class="common_lbl" for="buying_entry">COMODITY CODE</label>
+                                          <label class="common_lbl" for="buying_entry">COMODITY CODE *</label>
                                           </div>
                                         </div>
                                         <div class="col-md">
@@ -583,7 +583,7 @@
                                                   <div  class="help-block text-danger">
                                                       <div *ngIf="submitted2 && rcf2.BEClassificationId.errors">BE Classification is required</div>
                                                   </div>
-                                                 <label class="common_lbl" for="buying_entry">BE CLASSIFICATION</label>
+                                                 <label class="common_lbl" for="buying_entry">BE CLASSIFICATION *</label>
                                                 
                                             </div>
                                           </div>
@@ -602,7 +602,7 @@
                                                       <div *ngIf="submitted2 && rcf2.Website.errors">Website is required</div>
                                                   </div>
                                                
-                                                   <label class="common_lbl" for="businesswebsite_id">BUSINESS WEBSITE</label>
+                                                   <label class="common_lbl" for="businesswebsite_id">BUSINESS WEBSITE *</label>
                                           </div>
                                         </div>
                                         <div class="col-md">
@@ -612,7 +612,7 @@
                                                   <div  class="help-block text-danger">
                                                       <div *ngIf="submitted2 && rcf2.BusinessSize.errors">Business Size is required </div>
                                                   </div>
-                                            <label class="common_lbl" for="businesssize_id">BUSINESS SIZE</label>
+                                            <label class="common_lbl" for="businesssize_id">BUSINESS SIZE *</label>
                                             </div>
                                           </div>
                                           <div class="col-md">
