@@ -984,8 +984,8 @@ number(event: any) {
         else
         {
           console.log("output");
-          this.employeeform.value.UserTypeId="EMPLOY"
-         // alert(JSON.stringify(this.employeeform.value))
+          this.employeeform.value.UserTypeId="EMPLOY";
+                 // alert(JSON.stringify(this.employeeform.value))
           this.finalsavecall(this.employeeform.value)
         }
         }
