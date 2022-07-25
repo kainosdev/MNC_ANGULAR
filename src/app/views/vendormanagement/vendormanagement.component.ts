@@ -205,9 +205,10 @@ export class VendormanagementComponent implements OnInit {
    
 
      this.VendorMgmtIndividual = this.frmbuilder.group({
-      UserName :[],
+     
+      UserName :new FormControl({value: '', disabled: true}, Validators.required),
       // active: [],
-      VendorTypeId:[],
+      VendorTypeId:new FormControl({value: '', disabled: true}, Validators.required),
 
       FirstName:  ['', [Validators.required]],
       LastName:  ['', [Validators.required]],
@@ -942,70 +943,70 @@ display_addresstypeBusiness(addresstype:any){
   }
 }
  
-Address_swipingIndividual(){
-  //alert("in");
+// Address_swipingIndividual(){
+//   //alert("in");
 
-      let individualMailQn = (<HTMLInputElement>document.getElementById("individualMailQn")).checked;
-      // alert(individualMailQn);
-      if(individualMailQn == true){
-        // alert(this.VendorMgmtIndividual.get('Address1').value)
-        this.VendorMgmtIndividual.controls.IMAddress1.setValue(this.VendorMgmtIndividual.get('Address1').value); 
-        this.VendorMgmtIndividual.controls.IMAddress2.setValue(this.VendorMgmtIndividual.get('Address2').value);
-        this.VendorMgmtIndividual.controls.IMCityId.setValue(this.VendorMgmtIndividual.get('CityId').value);
-        this.VendorMgmtIndividual.controls.IMCountryId.setValue(this.VendorMgmtIndividual.get('CountryId').value);
-        this.VendorMgmtIndividual.controls.IMZipcode.setValue(this.VendorMgmtIndividual.get('Zipcode').value);
-        this.VendorMgmtIndividual.controls.IMStartDate.setValue(this.VendorMgmtIndividual.get('StartDate').value);
-        this.VendorMgmtIndividual.controls.IMEndDate.setValue(this.VendorMgmtIndividual.get('EndDate').value);
-        this.VendorMgmtIndividual.controls.IMDistrictId.setValue(this.VendorMgmtIndividual.get('DistrictId').value);
-        this.VendorMgmtIndividual.controls.IMStateId.setValue(this.VendorMgmtIndividual.get('StateId').value);
+//       let individualMailQn = (<HTMLInputElement>document.getElementById("individualMailQn")).checked;
+//       // alert(individualMailQn);
+//       if(individualMailQn == true){
+//         // alert(this.VendorMgmtIndividual.get('Address1').value)
+//         this.VendorMgmtIndividual.controls.IMAddress1.setValue(this.VendorMgmtIndividual.get('Address1').value); 
+//         this.VendorMgmtIndividual.controls.IMAddress2.setValue(this.VendorMgmtIndividual.get('Address2').value);
+//         this.VendorMgmtIndividual.controls.IMCityId.setValue(this.VendorMgmtIndividual.get('CityId').value);
+//         this.VendorMgmtIndividual.controls.IMCountryId.setValue(this.VendorMgmtIndividual.get('CountryId').value);
+//         this.VendorMgmtIndividual.controls.IMZipcode.setValue(this.VendorMgmtIndividual.get('Zipcode').value);
+//         this.VendorMgmtIndividual.controls.IMStartDate.setValue(this.VendorMgmtIndividual.get('StartDate').value);
+//         this.VendorMgmtIndividual.controls.IMEndDate.setValue(this.VendorMgmtIndividual.get('EndDate').value);
+//         this.VendorMgmtIndividual.controls.IMDistrictId.setValue(this.VendorMgmtIndividual.get('DistrictId').value);
+//         this.VendorMgmtIndividual.controls.IMStateId.setValue(this.VendorMgmtIndividual.get('StateId').value);
 
- }
- else{
+//  }
+//  else{
 
-  this.VendorMgmtIndividual.controls.IMAddress1.setValue(""); 
-  this.VendorMgmtIndividual.controls.IMAddress2.setValue("");
-  this.VendorMgmtIndividual.controls.IMCountryId.setValue("");
-  this.VendorMgmtIndividual.controls.IMCityId.setValue("");
-  this.VendorMgmtIndividual.controls.IMZipcode.setValue("");
-  this.VendorMgmtIndividual.controls.IMStartDate.setValue("");
-  this.VendorMgmtIndividual.controls.IMEndDate.setValue("");
-  this.VendorMgmtIndividual.controls.IMDistrictId.setValue("");
-  this.VendorMgmtIndividual.controls.IMStateId.setValue("");
- }
-}
+//   this.VendorMgmtIndividual.controls.IMAddress1.setValue(""); 
+//   this.VendorMgmtIndividual.controls.IMAddress2.setValue("");
+//   this.VendorMgmtIndividual.controls.IMCountryId.setValue("");
+//   this.VendorMgmtIndividual.controls.IMCityId.setValue("");
+//   this.VendorMgmtIndividual.controls.IMZipcode.setValue("");
+//   this.VendorMgmtIndividual.controls.IMStartDate.setValue("");
+//   this.VendorMgmtIndividual.controls.IMEndDate.setValue("");
+//   this.VendorMgmtIndividual.controls.IMDistrictId.setValue("");
+//   this.VendorMgmtIndividual.controls.IMStateId.setValue("");
+//  }
+// }
 
 
-Address_swipingBusiness(){
-  //alert("in");
+// Address_swipingBusiness(){
+//   //alert("in");
 
-      let individualMailQn = (<HTMLInputElement>document.getElementById("BusinessMailQn")).checked;
-      // alert(individualMailQn);
-      if(individualMailQn == true){
-        // alert(this.VendorMgmtIndividual.get('Address1').value)
-        this.VendorMgmtBusiness.controls.BMAddress1.setValue(this.VendorMgmtBusiness.get('Address1').value); 
-        this.VendorMgmtBusiness.controls.BMAddress2.setValue(this.VendorMgmtBusiness.get('Address2').value);
-        this.VendorMgmtBusiness.controls.BMCityId.setValue(this.VendorMgmtBusiness.get('CityId').value);
-        this.VendorMgmtBusiness.controls.BMCountryId.setValue(this.VendorMgmtBusiness.get('CountryId').value);
-        this.VendorMgmtBusiness.controls.BMZipcode1.setValue(this.VendorMgmtBusiness.get('Zipcode').value);
-        this.VendorMgmtBusiness.controls.BMStartDate.setValue(this.VendorMgmtBusiness.get('StartDate').value);
-        this.VendorMgmtBusiness.controls.BMEndDate.setValue(this.VendorMgmtBusiness.get('EndDate').value);
-        this.VendorMgmtBusiness.controls.BMDistrictId.setValue(this.VendorMgmtBusiness.get('DistrictId').value);
-        this.VendorMgmtBusiness.controls.BMStateId1.setValue(this.VendorMgmtBusiness.get('StateId').value);
+//       let individualMailQn = (<HTMLInputElement>document.getElementById("BusinessMailQn")).checked;
+//       // alert(individualMailQn);
+//       if(individualMailQn == true){
+//         // alert(this.VendorMgmtIndividual.get('Address1').value)
+//         this.VendorMgmtBusiness.controls.BMAddress1.setValue(this.VendorMgmtBusiness.get('Address1').value); 
+//         this.VendorMgmtBusiness.controls.BMAddress2.setValue(this.VendorMgmtBusiness.get('Address2').value);
+//         this.VendorMgmtBusiness.controls.BMCityId.setValue(this.VendorMgmtBusiness.get('CityId').value);
+//         this.VendorMgmtBusiness.controls.BMCountryId.setValue(this.VendorMgmtBusiness.get('CountryId').value);
+//         this.VendorMgmtBusiness.controls.BMZipcode1.setValue(this.VendorMgmtBusiness.get('Zipcode').value);
+//         this.VendorMgmtBusiness.controls.BMStartDate.setValue(this.VendorMgmtBusiness.get('StartDate').value);
+//         this.VendorMgmtBusiness.controls.BMEndDate.setValue(this.VendorMgmtBusiness.get('EndDate').value);
+//         this.VendorMgmtBusiness.controls.BMDistrictId.setValue(this.VendorMgmtBusiness.get('DistrictId').value);
+//         this.VendorMgmtBusiness.controls.BMStateId1.setValue(this.VendorMgmtBusiness.get('StateId').value);
 
- }
- else{
+//  }
+//  else{
 
-  this.VendorMgmtBusiness.controls.BMAddress1.setValue(""); 
-  this.VendorMgmtBusiness.controls.BMAddress2.setValue("");
-  this.VendorMgmtBusiness.controls.BMCountryId.setValue("");
-  this.VendorMgmtBusiness.controls.BMCityId.setValue("");
-  this.VendorMgmtBusiness.controls.BMZipcode1.setValue("");
-  this.VendorMgmtBusiness.controls.BMStartDate.setValue("");
-  this.VendorMgmtBusiness.controls.BMEndDate.setValue("");
-  this.VendorMgmtBusiness.controls.BMDistrictId.setValue("");
-  this.VendorMgmtBusiness.controls.BMStateId1.setValue("");
- }
-}
+//   this.VendorMgmtBusiness.controls.BMAddress1.setValue(""); 
+//   this.VendorMgmtBusiness.controls.BMAddress2.setValue("");
+//   this.VendorMgmtBusiness.controls.BMCountryId.setValue("");
+//   this.VendorMgmtBusiness.controls.BMCityId.setValue("");
+//   this.VendorMgmtBusiness.controls.BMZipcode1.setValue("");
+//   this.VendorMgmtBusiness.controls.BMStartDate.setValue("");
+//   this.VendorMgmtBusiness.controls.BMEndDate.setValue("");
+//   this.VendorMgmtBusiness.controls.BMDistrictId.setValue("");
+//   this.VendorMgmtBusiness.controls.BMStateId1.setValue("");
+//  }
+// }
 
 
 GetVendorById(){
@@ -1023,7 +1024,9 @@ GetVendorById(){
 
         if(this.type == "I")
         {
-          this.VendorMgmtIndividual = this.frmbuilder.group({
+          
+            this.VendorMgmtIndividual.patchValue({ 
+
             UserName :details.TradeName,
             // active: [],
             VendorTypeId:details.VendorTypeId =="B"?"Business":"Individual",

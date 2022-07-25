@@ -17,7 +17,7 @@
                   <div class="col-md">
                       <div class="form-floating">
                     
-                              <input type="text" [disabled]="true" class="form-control disabled_backgroud"  formControlName="UserName" id="UserName" placeholder="User Name">
+                              <input type="text"  class="form-control disabled_backgroud"  formControlName="UserName" id="UserName" placeholder="User Name">
                               
                                    
                       <div  class="help-block text-danger">
@@ -30,7 +30,7 @@
                   <div class="col-md">
             
                       <div class="form-floating">
-                        <input type="text" class="form-control disabled_backgroud"  [disabled]="true" formControlName="VendorTypeId" id="VendorTypeId" placeholder="title">
+                        <input type="text" class="form-control disabled_backgroud"  formControlName="VendorTypeId" id="VendorTypeId" placeholder="title">
 
                      
                          
@@ -39,7 +39,7 @@
                      
                   
                      <div  class="help-block text-danger">
-                        <div *ngIf="indsubmitted && vifc.title.errors">User Type required</div>
+                        <div *ngIf="indsubmitted && vifc.VendorTypeId.errors">User Type required</div>
                       </div>
                     </div>
                     </div>
@@ -443,7 +443,7 @@
                   <div class="col-md">
                       <div class="form-floating">
                     
-                              <input type="text" [disabled]="true" class="form-control disabled_backgroud"  formControlName="UserName" id="UserName" placeholder="User Name">
+                              <input type="text"  class="form-control disabled_backgroud"  formControlName="UserName" id="UserName" placeholder="User Name">
                               
                                    
                       <div  class="help-block text-danger">
@@ -456,7 +456,7 @@
                   <div class="col-md">
             
                       <div class="form-floating">
-                        <input type="text" class="form-control disabled_backgroud"  [disabled]="true" formControlName="VendorTypeId" id="VendorTypeId" placeholder="title">
+                        <input type="text" class="form-control disabled_backgroud"   formControlName="VendorTypeId" id="VendorTypeId" placeholder="title">
 
                      
                          
