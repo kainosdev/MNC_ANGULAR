@@ -33,8 +33,8 @@ export class AppComponent implements OnInit {
       }
     });
 
-    // if(localStorage.getItem('Firstnameses') != null){
-    //   this.router.navigate(['/']);
-    // }
+    if(localStorage.getItem('Firstnameses') == null){
+      this.router.navigate(['/']);
+    }
   }
 }
