@@ -624,6 +624,10 @@
   font-weight: bold;
   margin-left: 5px;
 }
+.question_font_short
+{
+  padding-top: 11px;
+}
 .common_tbl_head
 {
 background-color: #5E6572;
@@ -682,3 +686,5 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+
