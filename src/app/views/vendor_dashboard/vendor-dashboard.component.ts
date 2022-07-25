@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { config_url } from '../shared/constant';
-//import { DataTableDirective } from 'angular-datatables';
+import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
+
 
 @Component({
   selector: 'vendor-dashboard',
@@ -12,9 +13,7 @@ import { Subject } from 'rxjs';
 })
 export class VendorDashboardComponent implements OnInit {
   firstname:any;
-  lastname:any;
-  middlename :any;
-  UserId:any;
+  
   Bidslist:any;
   vendoractivelist:any;
   Vendorlist:any;
@@ -28,18 +27,36 @@ export class VendorDashboardComponent implements OnInit {
   BidsSubmittedlist: any;
   ResponseNotSubmittedlist: any;
 
-/*
   @ViewChild(DataTableDirective)
   dtElement: DataTableDirective | any;
   dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject<void>();*/
-
-
+  dtTrigger: Subject<any> = new Subject<void>();
+  legalname: string | null;
+  Firstname: string | null;
+  LastName: string | null;
+  
+  
   // dtOptions: DataTables.Settings = {};
   // title = 'datatables';
-  dtOptions: DataTables.Settings = {};
+  //dtOptions: DataTables.Settings = {};
 
   constructor(private http: HttpClient) { }
+    ngAfterViewInit(): void {
+      
+  
+      this.dtTrigger.next(this.vendoractivelist);
+      //console.log (this.vendoractivelist)
+      this.dtTrigger.next(this.BidsSubmittedlist);
+      this.dtTrigger.next(this.ResponseNotSubmittedlist);
+  
+  
+      this.dtOptions = {
+        pagingType: 'full_numbers',
+        pageLength: 5,
+        processing: true,
+        scrollX: true,
+      };
+    }
 
   ngOnInit(): void {
 
@@ -47,41 +64,63 @@ export class VendorDashboardComponent implements OnInit {
     this.ResponseSubmitted();
     this.ResponseNotSubmitted();
 
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      processing: true,
-    };
-    this.firstname = localStorage.getItem('Firstnameses');
-    this.lastname = localStorage.getItem('LastNameses');
-    this.middlename = localStorage.getItem('Middlenameses');
-    this.UserId=localStorage.getItem('CreatedUseridses');
+    // this.dtOptions = {
+    //   pagingType: 'full_numbers',
+    //   pageLength: 5,
+    //   processing: true,
+    //   scrollX: true,
+    // };
+    this.Firstname = localStorage.getItem('Firstnameses');
+    this.LastName = localStorage.getItem('LastNameses');
   }
 
+  rerender(): void {
+    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      // Destroy the table first
+      dtInstance.destroy();
+      // Call the dtTrigger to rerender again
+      this.dtTrigger.next(this.vendoractivelist);
+      this.dtTrigger.next(this.BidsSubmittedlist);
+      this.dtTrigger.next(this.ResponseNotSubmittedlist);
+      //this.dtTrigger.next(this.directReportDetail);
+
+      // this.dtTrigger.next(this.Bidslist);
+    });
+  }
+  
+  // ngOnDestroy(): void {
+  //   this.dtTrigger.unsubscribe();
+  // }
+
+
   vendoractive(){
+    
     try
     {
      // this.firstname = localStorage.getItem('Firstnameses');
-      this.http.get(config_url+'contract/GetVendorActiveContracts?VendorId='+localStorage.getItem('CreatedUseridses')).subscribe(
+      this.http.get(config_url+'contract/GetVendorActiveContracts?VendorId=34343434').subscribe(
         (data: any) => {
           var response= data.VendorActiveContracts;
-          debugger;
+          this.vendoractivelist = response;
+          this.dtTrigger.next(this.vendoractivelist);
+          // debugger;
            // console.log(this.bidstatus)
            for (let i = 0; i < response.length; i++) {
             response[i].StartDatePlanned = response[i].StartDatePlanned.split(' ')[0];
             response[i].EndDatePlanned = response[i].EndDatePlanned.split(' ')[0];
             response[i].ActualStartDate = response[i].ActualStartDate.split(' ')[0];
             response[i].ActualEndDate = response[i].ActualEndDate.split(' ')[0];
-           }
-           this.vendoractivelist = response;
+             
+          }
+          
         });
-
+        
     }
-    catch(e)
+    catch(e) 
     {
-      console.log(e);
+      console.log(e); 
     }
-
+      
   }
 
 
@@ -99,14 +138,15 @@ export class VendorDashboardComponent implements OnInit {
             response[i].BidPostedDate = response[i].BidPostedDate.split(' ')[0];
            }
            this.BidsSubmittedlist = response;
+           //this.dtTrigger.next(this.BidsSubmittedlist);
         });
-
+        
     }
-    catch(e)
+    catch(e) 
     {
-      console.log(e);
+      console.log(e); 
     }
-
+      
   }
 
   ResponseNotSubmitted(){
@@ -124,13 +164,14 @@ export class VendorDashboardComponent implements OnInit {
             // console.log(this.duedate);
         }
         this.ResponseNotSubmittedlist = response;
+       // this.dtTrigger.next(this.ResponseNotSubmittedlist);
         });
     }
-    catch(e)
+    catch(e) 
     {
-      console.log(e);
+      console.log(e); 
     }
-
+      
   }
 
   displayStyle = "none";
@@ -144,3 +185,5 @@ export class VendorDashboardComponent implements OnInit {
   }
 
 }
+
+
