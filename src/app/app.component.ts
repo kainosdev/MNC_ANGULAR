@@ -13,6 +13,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
   title = 'Vertex Management';
+  firstnameses:any;
 
   constructor(
     private router: Router,
@@ -31,5 +32,9 @@ export class AppComponent implements OnInit {
         return;
       }
     });
+
+    // if(localStorage.getItem('Firstnameses') != null){
+    //   this.router.navigate(['/']);
+    // }
   }
 }
