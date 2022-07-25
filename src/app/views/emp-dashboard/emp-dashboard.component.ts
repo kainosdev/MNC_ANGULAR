@@ -184,7 +184,7 @@ export class EmpDashboardComponent implements OnInit {
       this.http
         .get(
           config_url +
-            'employee/GetDirectReport?EmployeeIdSupervisor=4956ea2b-a56a-45f8-996c-0f2c7d3f3e46'
+            'employee/GetDirectReport?EmployeeIdSupervisor=Emp123@345'
         )
         .subscribe((data: any) => {
           console.log('data2', data);

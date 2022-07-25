@@ -1520,7 +1520,9 @@ GetVendorContactById(){
  
   let vendoridSes = localStorage.getItem('vendoridSes');
 
-  this.http.get(config_url+'/vendor/GetVendorContactById?VendorId='+vendoridSes+"&VendorContactPrimary=1").subscribe((data:any) =>
+  this.http.get(config_url+'vendor/GetVendorContactById?VendorId='+vendoridSes
+  //  +"&VendorContactActive=1"
+  ).subscribe((data:any) =>
     {
       var response= data.SingleVendorContactDetails;
       if(response != null && response.length>0)

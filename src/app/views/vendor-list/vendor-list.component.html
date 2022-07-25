@@ -40,7 +40,7 @@
         <td>{{v.StateName}}</td>
         <td>{{v.CityName}}</td>
         <td>{{v.Zipcode}}</td>
-        <td>-</td>
+        <td>{{v.DistrictName}}</td>
         <td>{{v.CountryName}}</td>
       </tr>
     </tbody>
@@ -53,7 +53,7 @@
 
       <div class="modal-content innerlinefont">
         <div class="model-header" style="text-align: center;">
-          <button type="button" class="close" data-dismiss="modal" (click)="closePopup()">×</button>
+          <button type="button" class="close" data-dismiss="modal" (click)="closePopup()">×</button><br>
           <h3 class="modal-title subheadingcls">Vendor Management</h3>
           <span class="modal-title subheadingcls">Advanced Search</span>
         </div>
@@ -135,7 +135,7 @@
             <div class="form-group form-inline">
               <label class="vendorpopup_lbl1" for="email">Custom Search Field 1</label>
 
-              <input type="text" class=" heightfieldcls" style="height:28px;width:250px !important; ">
+              <input type="text" class=" heightfieldcls" style="height:28px;width:259px !important; ">
 
 
             </div>
@@ -156,8 +156,14 @@
                 <span class="slider round"></span>
               </label>
             </div>
-            <div class="modal-footer" style="text-align:center">
-              <input type="submit" id="localityaddBtn" data-dismiss="modal" name="save" class="btn btn-primary"
+            <!-- <div class="btndiv mt-2">
+              <input type="button"  class="btn btn-primary fixedwidthcls" value="Save" />
+              &nbsp;&nbsp;
+                   <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" (click)="cancelform()"/>
+         </div> -->
+
+            <div class="modal-footer btndiv" style="text-align:center">
+              <input type="button" id="localityaddBtn" data-dismiss="modal" name="save" class="btn btn-primary fixedwidthcls"
                 value="Search">
 
             </div>
