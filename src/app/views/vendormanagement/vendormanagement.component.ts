@@ -181,7 +181,7 @@ export class VendormanagementComponent implements OnInit {
       //LastName: ['', [Validators.required]],
       MiddleName: [],
       EIN_SSN: ['', [Validators.required]],
-      Email: ['', [Validators.required]],
+     
       Phone:[],
       OutreachEmailOptIn:[],
      
@@ -838,7 +838,8 @@ VendorData(VendorMgmtIndividual:any){
 
 
 businessUserdata(vendorMgmt:any){
-    // debugger
+  debugger
+   
     this.submitted2 = true;
     this.issubmiited=true;
     if (this.VendorMgmtBusiness.valid) {
