@@ -309,7 +309,7 @@
                                                         <tbody>
                                                          
                                                        
-                                                              <tr *ngFor="let item of address_list">           
+                                                              <tr *ngFor="let item of address_list;let i = index;">           
                                                                   
                                                                   <th >{{item.AddressTypeDesc}}</th>
                                                                   <td>{{item.Address1}}</td>
@@ -459,7 +459,7 @@
                                                                           </label></div>
                                                                       
                                                                         <div class="mt-2"><label class="switch float-right">
-                                                                            <input  type="checkbox" name="VendorAddressPrimary" id="VendorAddressPrimary" formControlName="VendorAddressPrimary" checked>
+                                                                            <input  type="checkbox" name="VendorAddressPrimary" (change)="addressprimarychange($event,Addressform.get('index').value)" id="VendorAddressPrimary" formControlName="VendorAddressPrimary" checked>
                                                                             <span class="slider round"></span>
                                                                           </label>
                                                                         </div>
@@ -499,7 +499,7 @@
                                                                       
 
                                                                           <div class="btndiv mt-2">
-                                                                              <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="addaddress()"/>
+                                                                              <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="addaddress(Addressform.get('index').value)"/>
                                                                               &nbsp;&nbsp;
                                                                                    <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" />
                                                                           </div>
@@ -656,7 +656,7 @@
                                                                           </label></div>
                                                                       
                                                                         <div class="mt-2"><label class="switch float-right">
-                                                                            <input  type="checkbox" name="VendorContactPrimary" id="VendorContactPrimary" formControlName="VendorContactPrimary" checked>
+                                                                            <input  type="checkbox" name="VendorContactPrimary" (change)="contactprimarychange($event,Contactform.get('index').value)" id="VendorContactPrimary" formControlName="VendorContactPrimary" checked>
                                                                             <span class="slider round"></span>
                                                                           </label>
                                                                         </div>
@@ -677,7 +677,7 @@
                                                                         </label></div>
                                                                     
                                                                       <div class="mt-2"><label class="switch float-right">
-                                                                          <input  type="checkbox" name="VendorContactActive" id="VendorContactActive" formControlName="VendorContactActive" checked>
+                                                                          <input  type="checkbox" name="VendorContactActive"  id="VendorContactActive" formControlName="VendorContactActive" checked>
                                                                           <span class="slider round"></span>
                                                                         </label>
                                                                       </div>
@@ -698,7 +698,7 @@
                                                                </div>
                                                                <div class="col-md text-right mt-2">
                                                                   <div class="btndiv mt-2">
-                                                                      <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="addcontact()"/>
+                                                                      <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="addcontact(Contactform.get('index').value)"/>
                                                                       &nbsp;&nbsp;
                                                                            <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" />
                                                                   </div>
