@@ -369,7 +369,7 @@
                                                   <div class="col-md">
                                                           <div class="form-floating">
                                                                   <input type="date" id="mailingfromdata_id" class="form-control" 
-                                                                  [(ngModel)]="CurrentAddrStartDate"
+                                                                 
                                                                   formControlName="StartDate"                             
                                                                        (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                                                                   <div  class="help-block text-danger">
@@ -382,7 +382,7 @@
                                                   <div class="col-md">
                                                     <div class="form-floating">
                                                           <input type="date" id="EndDate" class="form-control" 
-                                                              [(ngModel)]="CurrentAddrEndDate"
+                                                            
                                                               formControlName="EndDate"                             
                                                                   (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                                                           
@@ -779,7 +779,7 @@
                                                       </div>
                                                   <div class="col-md">
                                                     <div class="form-floating">
-                                                          <input type="text"  class="form-control" id="Address1" formControlName="Address1"  [(ngModel)]="CurrentAddressDetails.Address1">
+                                                          <input type="text"  class="form-control" id="Address1" formControlName="Address1"  >
                                                           <div  class="help-block text-danger">
                                                              <div *ngIf="address_submmited && af.Address1.errors">Address is required</div>
                                                           </div>
@@ -789,7 +789,7 @@
                                                   </div>
                                                   <div class="col-md">
                                                           <div class="form-floating">
-                                                                  <input type="text" class="form-control"  id="Address2"  formControlName="Address2" [(ngModel)]="CurrentAddressDetails.Address2">
+                                                                  <input type="text" class="form-control"  id="Address2"  formControlName="Address2" >
                                                                   
                                                                  <label class="common_lbl" for="Address2">ADDRESS 2 <span  class="requiredfield"> *</span></label>
     
@@ -797,7 +797,7 @@
                                                  </div>
                                                  <div class="col-md">
                                                       <div class="form-floating">
-                                                              <select id="currentcity_idbus" class="form-select" formControlName="CityId" [(ngModel)]="CurrentAddressDetails.CityId"
+                                                              <select id="currentcity_idbus" class="form-select" formControlName="CityId" 
                                                               (keypress)="EmptyErrorMessage('currentcity_id')" >
                                                               <option *ngFor="let c of citylist" [ngValue]="c.CityId">
                                                                   {{c.CityName}}
@@ -816,7 +816,7 @@
                                           <div class="row g-4 p-1">
                                               <div class="col-md">
                                                   <div class="form-floating">
-                                                          <select id="currentzipcode_id_mailbus" class="form-select" formControlName="Zipcode" [(ngModel)]="CurrentAddressDetails.Zipcode"
+                                                          <select id="currentzipcode_id_mailbus" class="form-select" formControlName="Zipcode" 
                                                           (keypress)="EmptyErrorMessage('currentzipcode_id');" (change)="onchangecountystatecountry()">
                                                           <option value="value"></option>
                                                           <option *ngFor="let z of zipcodeVal" >
@@ -832,7 +832,7 @@
                                               </div>
                                                   <div class="col-md">
                                                           <div class="form-floating">
-                                                                  <select type="text" id="currentcounty_id" class="form-select" formControlName="DistrictId" [(ngModel)]="CurrentAddressDetails.DistrictId"
+                                                                  <select type="text" id="currentcounty_id" class="form-select" formControlName="DistrictId" 
                                                                   (keypress)="EmptyErrorMessage('currentcounty_id')">
                                                                   <option *ngFor="let d of ZCSlistdata" [ngValue]="d.DistrictId">
                                                                       {{d.DistrictName}}
@@ -847,7 +847,7 @@
                                                       </div>
                                                   <div class="col-md">
                                                     <div class="form-floating">
-                                                          <select class="form-select" id="stateprovice_id" formControlName="StateId" [(ngModel)]="CurrentAddressDetails.StateId">
+                                                          <select class="form-select" id="stateprovice_id" formControlName="StateId" >
                                                               <option *ngFor="let s of ZCSlistdata" [ngValue]="s.StateId">
                                                                   {{s.StateName}}
                                                               </option>
@@ -861,7 +861,7 @@
                                                   </div>
                                                   <div class="col-md">
                                                           <div class="form-floating">
-                                                                  <select class="form-select" id="currentcountry_id" formControlName="CountryId" [(ngModel)]="CurrentAddressDetails.CountryId"
+                                                                  <select class="form-select" id="currentcountry_id" formControlName="CountryId" 
                                                                   (change)="EmptyErrorMessage('currentcountry_id')">
                                                                   <option *ngFor="let countrylist of ZCSlistdata" [ngValue]="countrylist.CountryId" >
                                                                       {{countrylist.CountryName}}</option>
@@ -896,7 +896,7 @@
                                                   <div class="col-md">
                                                           <div class="form-floating">
                                                                   <input type="date" id="mailingfromdata_id" class="form-control" 
-                                                                  [(ngModel)]="CurrentAddrStartDate"
+                                                                 
                                                                   formControlName="StartDate"                             
                                                                        (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                                                                   <div  class="help-block text-danger">
@@ -909,7 +909,7 @@
                                                   <div class="col-md">
                                                     <div class="form-floating">
                                                           <input type="date" id="EndDate" class="form-control" 
-                                                              [(ngModel)]="CurrentAddrEndDate"
+                                                            
                                                               formControlName="EndDate"                             
                                                                   (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                                                           
