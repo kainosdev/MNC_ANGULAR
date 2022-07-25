@@ -48,6 +48,7 @@ export class EmpDashboardComponent implements OnInit {
   firstname: string | null;
   lastname: string | null;
   middlename: string | null;
+  UserId : string | null;
 
   constructor(private http: HttpClient) {}
 
@@ -82,6 +83,7 @@ export class EmpDashboardComponent implements OnInit {
     this.firstname = localStorage.getItem('Firstnameses');
     this.lastname = localStorage.getItem('LastNameses');
     this.middlename = localStorage.getItem('Middlenameses');
+    this.UserId=localStorage.getItem('CreatedUseridses');
 
     // this.dtOptions = {
     //   pagingType: 'full_numbers',
@@ -184,7 +186,7 @@ export class EmpDashboardComponent implements OnInit {
       this.http
         .get(
           config_url +
-            'employee/GetDirectReport?EmployeeIdSupervisor=Emp123@345'
+            'employee/GetDirectReport?EmployeeIdSupervisor='+localStorage.getItem('CreatedUseridses')
         )
         .subscribe((data: any) => {
           console.log('data2', data);
@@ -227,7 +229,7 @@ export class EmpDashboardComponent implements OnInit {
   vendorapproval() {
     this.http
       .get(
-        config_url + 'vendor/GetVendorApproval?UserTypeId=VENDOR&UserStatusId=N'
+        config_url + 'vendor/GetVendorApproval?UserTypeId1=EMPLOY&UserStatusId=N'
       )
       .subscribe((data: any) => {
         // console.log("VENDOR", data);
