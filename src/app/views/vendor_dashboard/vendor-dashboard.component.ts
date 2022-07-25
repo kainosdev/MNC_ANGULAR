@@ -11,8 +11,8 @@ import { Subject } from 'rxjs';
   styleUrls: ['./vendor-dashboard.component.scss']
 })
 export class VendorDashboardComponent implements OnInit {
-
-
+  firstname:any;
+  
   Bidslist:any;
   vendoractivelist:any;
   Vendorlist:any;
@@ -56,6 +56,7 @@ export class VendorDashboardComponent implements OnInit {
   vendoractive(){
     try
     {
+     // this.firstname = localStorage.getItem('Firstnameses');
       this.http.get(config_url+'contract/GetVendorActiveContracts?VendorId=34343434').subscribe(
         (data: any) => {
           var response= data.VendorActiveContracts;
