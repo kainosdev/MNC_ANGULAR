@@ -109,11 +109,11 @@
 
 
 
-<table  class="table  servicecss tblnewbook"   datatable="ng"  datatable  [dtOptions] = "dtOptions" [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+<!-- <table  class="table  servicecss tblnewbook"   datatable="ng"  datatable  [dtOptions] = "dtOptions" [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
     <thead class="tablehead">
 
         <tr>
-        <!-- <th  style="display:none;width: 0px;">b</th> -->
+        <th  style="display:none;width: 0px;">b</th>
         <th  style="color: white;">Solicitation Number</th>
         <th  style="color: white;">Title</th>
         <th  style="color: white;">Category</th>
@@ -147,4 +147,52 @@
        </tr>
      
     </tbody>
-  </table>
+  </table> -->
+
+
+
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead class="tablehead">
+        <tr>
+            <th>Solicitation Number</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Department</th>
+            <th>Funding Source</th>
+            <th>Budget Amount ($)</th>
+            <th>Posted Date</th>
+            <th> Due Date</th>
+            <th>DBE Goal (%)</th>
+            <th># of Responses</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Original</td>
+            <td>Document1.jpg</td>
+            <td>2021-11-05</td>
+            <td>notes1</td>
+            <td>notes1</td>
+            <td>notes1</td>
+            <td>notes1</td>
+            <td>notes1</td>
+            <td>notes1</td>
+            <td>notes1</td>
+            <td>notes1</td>
+        </tr>
+        <tr>
+            <td>Original1</td>
+            <td>Document2.jpg</td>
+            <td>2021-11-06</td>
+            <td>notes2</td>
+            <td>notes1</td>
+            <td>notes1</td>
+            <td>notes1</td>
+            <td>notes1</td>
+            <td>notes1</td>
+            <td>notes1</td>
+            <td>notes1</td>
+        </tr>
+    </tbody>
+</table>
