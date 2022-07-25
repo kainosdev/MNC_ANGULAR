@@ -25,7 +25,7 @@
   height: 17px;
 }
 
-.switch input {
+.switch input { 
   opacity: 0;
   width: 0;
   height: 0;
@@ -146,7 +146,7 @@ input[type=button] {
     height: 28px;
   }
   .btndiv{
-    padding-right: 62px;
+    padding-right: 62px; 
     text-align: right;
     padding-top: 0px;
 }
@@ -169,7 +169,7 @@ input[type=button] {
 .invalid-feedback {
   position: absolute;
   bottom: -17px;
-
+ 
   text-align: left;
   font-size: 10px;
   font-weight: 600;
@@ -270,7 +270,7 @@ input[type=button] {
   margin-bottom: 10px;
   letter-spacing: 2px;
   font-weight: bold;
-
+  
 }
 .fs-subtitle {
   font-weight: normal;
@@ -383,9 +383,9 @@ button {
   flex-grow: 1;
 }
 #wrapper{
-  padding: 16px;
-  min-height: 100%;
-  height: 100%;
+  padding: 16px; 
+  min-height: 100%; 
+  height: 100%; 
   box-sizing: border-box;/*new*/
 }
 #tab-group{
@@ -404,69 +404,12 @@ button {
 }
 .tabletr{
   border-bottom:1px solid #aeaeae;
-  font-size: 13px;
+  font-size: 12px;
 }
  .number{
   width: 162px;
  }
-//slider css start
- .switch {
-  position: relative;
-  display: inline-block;
-  width: 41px;
-  height: 17px;
+ th{
+  background-color: #5e6572;
 }
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 12px;
-  width: 14px;
-  left: -1px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-// slider start ends
+ 

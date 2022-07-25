@@ -42,8 +42,8 @@
 
     <c-sidebar visible >
       <c-sidebar-brand><img src="http://demo.kainosinnovative.com/assets/dist/img/Kainos_logo.png" width="100" height="46" alt="logo"></c-sidebar-brand>
-      <c-sidebar-nav *ngIf="usertypeses=='EMPLOY'" [navItems]="navItems"></c-sidebar-nav>
-      <c-sidebar-nav *ngIf="usertypeses=='45646' " [navItems]="navItems1"></c-sidebar-nav>
+      <c-sidebar-nav *ngIf="usertypeses=='BUSINE' || usertypeses=='INDIVI' || usertypeses=='VENDOR'" [navItems]="navItems"></c-sidebar-nav>
+      <c-sidebar-nav *ngIf="usertypeses=='EMPLOY' " [navItems]="navItems1"></c-sidebar-nav>
       <!-- <c-sidebar-toggler></c-sidebar-toggler> -->
     </c-sidebar>
 

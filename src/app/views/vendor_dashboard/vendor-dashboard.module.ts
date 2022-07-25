@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TextMaskModule } from 'angular2-text-mask';
-import { AccordionModule } from "../../lib/accordion/accordion.module";
 
 import {
   AvatarModule,
@@ -15,21 +13,20 @@ import {
   ProgressModule,
   TableModule,
   TabsModule
-
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
 
-import { VendorManagementRoutingModule } from './vendormanagement-routing.module';
-import { VendormanagementComponent } from './vendormanagement.component';
+import { VendorDashboardRoutingModule } from './vendor-dashboard-routing.module';
+import { VendorDashboardComponent } from './vendor-dashboard.component';
+import {DataTablesModule} from 'angular-datatables';
+import { AccordionModule } from "../../lib/accordion/accordion.module";
 
 
-
-// import { WidgetsModule } from '../widgets/widgets.module';
 
 @NgModule({
   imports: [
-    VendorManagementRoutingModule,
+    VendorDashboardRoutingModule,
     CardModule,
     NavModule,
     IconModule,
@@ -44,12 +41,11 @@ import { VendormanagementComponent } from './vendormanagement.component';
     ButtonGroupModule,
     ChartjsModule,
     AvatarModule,
+    AccordionModule,
     TableModule,
-    TextMaskModule,
-    AccordionModule
+    DataTablesModule,
     // WidgetsModule
   ],
-  declarations: [VendormanagementComponent]
+  declarations: [VendorDashboardComponent]
 })
-export class VendorModule {
-}
+export class VendordashboardModule { }

@@ -31,6 +31,11 @@ $enable-rtl: true;
 // html, body { height: 100%; }
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.page-item.active .page-link {
+    z-index: 3;
+    background-color: #1f52be !important;
+    border-color: #1f52be !important;
+}
 
 .labelheight{
     height: 36px;
@@ -111,14 +116,14 @@ color: white !important;
 }
 
 .sidebar-nav .nav-link {
-    
+
     color: black !important;
-   
+
     background: white !important;
     font-size: 14px !important;
     // padding-left: 0px !important;
     height: 36px;
-    
+
 }
 
 .sidebar-nav .nav-link.active {
@@ -131,13 +136,19 @@ color: white !important;
 
 
 .sidebar-brand {
-   
+
     background: white;
 }
 .btn-primary {
     color: #fff;
     background-color: #10295f !important;
     border-color: #10295f !important;
+}
+
+.btn-primary-red {
+    color: #fff !important;
+    background-color: #A01D1D !important;
+    border-color: #A01D1D !important;
 }
 
 a {
@@ -161,6 +172,7 @@ a {
     z-index: 3;
     background-color: #1f52be !important;
     border-color: #1f52be !important;
+    color: #fff !important;
 }
 
 .tablehead{
@@ -175,3 +187,26 @@ a {
   opacity: 0.65 !important;
 
 }
+
+input[type=button] {
+    // padding: 7px 32px;
+    width: 95px;
+    background: #1593E4;
+    border: 0 none;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    
+  }
+
+  .btndiv{
+     text-align: right;
+   }
+
+
+   html:not([dir=rtl]) .sidebar-nav .nav-group-items .nav-link {
+    padding-left: 5rem;
+}
+   table.dataTable > tbody > tr {
+    background-color: transparent;
+    font-size: 13px !important;
+  }

@@ -82,15 +82,15 @@ input:checked + .slider:before {
   border: 1px solid red;
 }
 
-input[type=button] {
-  padding: 4px 27px;
-  background: #1593E4;
-  border: 0 none;
-  /* cursor: pointer;
-  -webkit-border-radius: 5px; */
-  border-radius: 100px;
-  font-size: 12px !important;
-}
+// input[type=button] {
+//   padding: 4px 27px;
+//   background: #1593E4;
+//   border: 0 none;
+//   /* cursor: pointer;
+//   -webkit-border-radius: 5px; */
+//   border-radius: 100px;
+//   font-size: 12px !important;
+// }
 .Generaldiv{
     border: 1px solid black !important;
     width: 100%;
@@ -144,11 +144,11 @@ input[type=button] {
     width: 243px !important;
     height: 28px;
   }
-  .btndiv{
-    padding-right: 62px; 
-    text-align: right;
-    padding-top: 0px;
-}
+//   .btndiv{
+//     padding-right: 62px; 
+//     text-align: right;
+//     padding-top: 0px;
+// }
 .jobtitle{
   width: 200px !important;
   height: 28px;
@@ -454,7 +454,7 @@ button {
   }
 
   h3 {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     color: #38424c;
   }
@@ -557,5 +557,15 @@ button {
   100% {
     transform: translate(1px, -2px) rotate(-1deg);
   }
+}
+.common_tbl_head
+{
+background-color: #5E6572;
+
+}
+
+.table thead th
+{
+  color: white;
 }
  

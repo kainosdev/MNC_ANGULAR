@@ -26,6 +26,8 @@ vendorform_business:FormGroup | any;
 uidPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,15}";
 public mask = [/\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
 public mask1 = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+public mask2 = [/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/]
+
 
  submitted = false;
  usertype="VENDOR";
@@ -56,6 +58,11 @@ public mask1 = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/,
   zip:any;
   zipdetail :any;
   zip2:any;
+  ziplistdata: any;
+  cityvalbyzipcode:any;
+  statedetailPastAddr:any;
+countrytypePastAddr:any;
+ZCSlistdata:any;
 
 
   constructor(private frmbuilder: FormBuilder,  private http: HttpClient,
@@ -76,47 +83,67 @@ public mask1 = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/,
     this.employeeform = this.frmbuilder.group({
 
      //contact details
+     UserId:  ['', [Validators.required]],
       FirstName: ['', [Validators.required]],
-      legalbusiness: [''],
       LastName:  ['', [Validators.required]],
-      tradeName: [],
+      MiddleName: [],
+       UserPassword:  ['', [Validators.required]],
+       conformpassword:  ['', [Validators.required]],
+       Address1:  ['', [Validators.required]],
+        Address2: [],
+        CityId:  ['', [Validators.required]],
+        DistrictId: ['', [Validators.required]],
+        Zipcode: ['', [Validators.required]],
+        StateId:  ['', [Validators.required]],
+        CountryId:  ['', [Validators.required]],
+        JobTitleId:['', [Validators.required]],
+        EmploymentTypeId:['', [Validators.required]],
+        Phone:['', [Validators.required]],
+        Email:['', [Validators.required]],
+        JobStartDate: ['', [Validators.required]],
+        AdminUser:  [false],
+        UserStatusId:['N'],
+
+
+      // legalbusiness: [''],
+     
+      // tradeName: [],
       // UserTypeId:  ['', [Validators.required]],
-      UserId:  ['', [Validators.required]],
-      UserPassword:  ['', [Validators.required]],
-      conformpassword:  ['', [Validators.required]],
+     
+     
+      // conformpassword:  ['', [Validators.required]],
 
-      Address1:  ['', [Validators.required]],
-      Address2: [],
-      StateId:  ['', [Validators.required]],
-      CityId:  ['', [Validators.required]],
-      Zipcode: ['', [Validators.required]],
-      DistrictId: ['', [Validators.required]],
-      StartDate: ['', [Validators.required]],
-      EndDate: [''],
-      CountryId:  ['', [Validators.required]],
+     
+     
+     
+     
+     
+     
+      // StartDate: ['', [Validators.required]],
+      // EndDate: [''],
+    
      //employee details
-      JobTitleId:['', [Validators.required]],
-      EmploymentTypeId:['', [Validators.required]],
-      JobStartDate: ['', [Validators.required]],
-      AdminUser:  [false],
-      Phone:['', [Validators.required]],
+     
+      
+      
+      
+     
+     
+
+      // BusinessRegisteredInSCC: [],
+      // VendorTypeId: [],
+      // EIN_SSN:[],
 
 
-
-      BusinessRegisteredInSCC: [],
-      VendorTypeId: [],
-      EIN_SSN:[],
-
-
-      OutreachEmailOptIn:[],
-      business_ssn: [],
-      BusinessSize: [],
-      BusinessRegisteredInDistrict:[],
-      BusinessIsFranchisee: [],
-      BEClassificationId: [],
+      // OutreachEmailOptIn:[],
+      // business_ssn: [],
+      // BusinessSize: [],
+      // BusinessRegisteredInDistrict:[],
+      // BusinessIsFranchisee: [],
+      // BEClassificationId: [],
 
 
-      UserStatusId:['N'],
+      
 
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
@@ -147,87 +174,126 @@ this.otherform = this.frmbuilder.group({
 
 this.vendorform_individual = this.frmbuilder.group({
 
-
-  FirstName: ['', [Validators.required]],
-  legalbusiness: [''],
-  LastName:  ['', [Validators.required]],
-  tradeName: [],
-  // UserTypeId:  ['', [Validators.required]],
   UserId:  ['', [Validators.required]],
+  FirstName: ['', [Validators.required]],
+  LastName:  ['', [Validators.required]],
+  Middlename: [],
   UserPassword:  ['', [Validators.required]],
   conformpassword:  ['', [Validators.required]],
-
   Address1:  ['', [Validators.required]],
   Address2: [],
-  StateId:  ['', [Validators.required]],
-   CityId:  ['', [Validators.required]],
-  Zipcode: ['', [Validators.required]],
+  CityId:  ['', [Validators.required]],
   county_name: ['', [Validators.required]],
-  DistrictId: ['', [Validators.required]],
+  Zipcode: ['', [Validators.required]],
+  StateId:  ['', [Validators.required]],
   CountryId:  ['', [Validators.required]],
-  StartDate: ['', [Validators.required]],
-  EndDate: [''],
-  VendorTypeId: [],
-  EIN_SSN: ['', [Validators.required]],
+   EIN_SSN: ['', [Validators.required]],
+   phoneindividual: ['', [Validators.required]],
+   Mailindividual: ['', [Validators.required]],
+   OutreachEmailOptIn:[],
+   UserStatusId:['N'],
 
 
-  OutreachEmailOptIn:[],
-  business_ssn: [],
-  BusinessSize: [],
-  BusinessRegisteredInDistrict:[],
-  BusinessIsFranchisee: [],
-  BEClassificationId: [],
 
-  JobTitleId:[],
-  EmploymentTypeId:[],
-  JobStartDate: [],
-  BusinessRegisteredInSCC: [],
+ 
+  // legalbusiness: [''],
+ 
+  // tradeName: [],
+  // UserTypeId:  ['', [Validators.required]],
+ 
+  
+ 
 
-  Phone:[],
-  AdminUser: [],
-  UserStatusId:['N'],
+  
+ 
+  
+  
+ 
+  
+  // DistrictId: ['', [Validators.required]],
+  
+  // StartDate: ['', [Validators.required]],
+  // EndDate: [''],
+  // VendorTypeId: [],
+ 
+ 
+ 
+
+
+  
+  // business_ssn: [],
+  // BusinessSize: [],
+  // BusinessRegisteredInDistrict:[],
+  // BusinessIsFranchisee: [],
+  // BEClassificationId: [],
+
+  // JobTitleId:[],
+  // EmploymentTypeId:[],
+  // JobStartDate: [],
+  // BusinessRegisteredInSCC: [],
+
+  // Phone:[],
+  // mail:[],
+  // AdminUser: [],
+ 
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 this.vendorform_business = this.frmbuilder.group({
 
-
-  FirstName: ['', [Validators.required]],
-  legalbusiness: [''],
-  LastName:  ['', [Validators.required]],
-  tradeName: [],
-  // UserTypeId:  ['', [Validators.required]],
   UserId:  ['', [Validators.required]],
+  FirstName: ['', [Validators.required]],
+  LastName:  ['', [Validators.required]],
+  AllasName:[],
   UserPassword:  ['', [Validators.required]],
   conformpassword:  ['', [Validators.required]],
-
   Address1:  ['', [Validators.required]],
   Address2: [],
-  StateId:  ['', [Validators.required]],
-   CityId:  ['', [Validators.required]],
-  Zipcode: ['', [Validators.required]],
+  CityId:  ['', [Validators.required]],
   county_name: ['', [Validators.required]],
-  DistrictId: ['', [Validators.required]],
+  Zipcode: ['', [Validators.required]],
+  StateId:  ['', [Validators.required]],
   CountryId:  ['', [Validators.required]],
-  StartDate: ['', [Validators.required]],
-  EndDate: [''],
-  VendorTypeId: [],
-  EIN_SSN:[],
-
-  OutreachEmailOptIn:[true],
   business_ssn: ['', [Validators.required]],
+  BEClassificationId: ['', [Validators.required]],
   BusinessSize: ['', [Validators.required]],
+  Mailbusiness: ['', [Validators.required]],
+  BusinessRegisteredInSCC: [false],
   BusinessRegisteredInDistrict:[false],
   BusinessIsFranchisee: [false],
-  BEClassificationId: [],
-
-  JobTitleId:[],
-  EmploymentTypeId:[],
-  JobStartDate: [],
-  BusinessRegisteredInSCC: [false],
-
-  Phone:[],
-  AdminUser: [],
+   OutreachEmailOptIn:[true],
   UserStatusId:['N'],
+
+ 
+  // legalbusiness: [''],
+  
+  // tradeName: [],
+  // UserTypeId:  ['', [Validators.required]],
+ 
+  // DistrictId: ['', [Validators.required]],
+ 
+  // StartDate: ['', [Validators.required]],
+  // EndDate: [''],
+  // VendorTypeId: [],
+  // EIN_SSN:[],
+
+ 
+ 
+ 
+ 
+
+  
+  
+ 
+  // BEClassificationId: [],
+
+  // JobTitleId:[],
+  // EmploymentTypeId:[],
+  // JobStartDate: [],
+  
+
+  // Phone:[],
+  // AdminUser: [],
+ 
 
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
@@ -671,16 +737,28 @@ number(event: any) {
         this.submitted = false;
         this.vendortype_show =false;
       }
-      else if(usertype_id == 'VENDOR')
+      else if(usertype_id == 'INDIVI')
       {
         this.otherform_show=false;
         this.employeeform_show=false;
        // this.vendorform_individual_show=true;
         this.submitted = false;
-       // this.vendorform_business_show=false;
-        this.vendortype_show =true;
+       this.vendorform_business_show=false;
+        this.vendorform_individual_show =true; 
 
-        this.vendortype_display(true)
+        // this.vendortype_display(true)
+
+      }
+      else if(usertype_id == 'BUSINE')
+      {
+        this.otherform_show=false;
+        this.employeeform_show=false;
+       // this.vendorform_individual_show=true;
+        this.submitted = false;
+       this.vendorform_business_show=true;
+        this.vendorform_individual_show =false; 
+
+        // this.vendortype_display(true)
 
       }
 
@@ -825,17 +903,7 @@ number(event: any) {
 
       }
 
-      // onchangecitybyzip(){
-      //   let zipid = (<HTMLInputElement>document.getElementById("regcurrentzip_id")).value;
-
-      //   this.http.get(config_url+'/app/getCityByZipcode?zipcode='+zipid).subscribe(zip1 =>
-      //     {
-
-      //       this.zip2=zip1;
-      //       this.cityalldetail=this.zip2.data.citydata;
-      //       })
-
-      // }
+     
 
       onchangezip(){
 
@@ -846,35 +914,48 @@ number(event: any) {
 
 
             this.zipcodedetail=data.zipcodedata;
+            console.log('zip', this.zipcodedetail);
            })
 
       }
 
-      onchangestate(){
+      // onchangestate(){
 
-        let cityid = (<HTMLInputElement>document.getElementById("currentcity_id")).value;
+      //   let cityid = (<HTMLInputElement>document.getElementById("currentcity_id")).value;
 
-        this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe((data: any) =>
+      //   this.http.get(config_url+'/app/getdistrictstatebycity?cityid='+cityid).subscribe((data: any) =>
+      //     {
+
+
+      //       this.statetype=data.Statelist;
+      //      })
+
+
+      // }
+
+      onchangecountystatecountry(){
+
+        let zipcode = (<HTMLInputElement>document.getElementById("regcurrentzip_id")).value;
+
+        this.http.get(config_url+'/app/getCityDistrictStateByZipcode?zipcode='+zipcode).subscribe((data: any) =>
           {
-
-
-            this.statetype=data.Statelist;
+             this.ZCSlistdata=data.cityDistststatedata;
+             console.log('abhi', this.ZCSlistdata)
            })
-
       }
 
-      onchangecountry(){
+      // onchangecountry(){
 
-        let state_id = (<HTMLInputElement>document.getElementById("curstate_id")).value;
+      //   let state_id = (<HTMLInputElement>document.getElementById("curstate_id")).value;
 
-        this.http.get(config_url+'/app/getCountryByState?stateid='+state_id).subscribe((data: any) =>
-          {
+      //   this.http.get(config_url+'/app/getCountryByState?stateid='+state_id).subscribe((data: any) =>
+      //     {
 
-            this.countrydetail = data.countrydata
-          })
+      //       this.countrydetail = data.countrydata
+      //     })
 
 
-      }
+      // }
 
 
 
@@ -886,83 +967,135 @@ number(event: any) {
     get f() { return this.employeeform.controls; }
 
     onSubmit() {
+
+      
       // debugger
         this.submitted = true;
+      
         let usertype_id = (<HTMLInputElement>document.getElementById("usertype_id")).value;
         if(usertype_id == "EMPLOY")
         {
 
         if (this.employeeform.invalid)
         {
+          console.log("beforeoutput");
             return;
         }
         else
         {
-
+          console.log("output");
           this.employeeform.value.UserTypeId="EMPLOY"
-          alert(JSON.stringify(this.employeeform.value))
+          //alert(JSON.stringify(this.employeeform.value))
           this.finalsavecall(this.employeeform.value)
         }
         }
-        else if(usertype_id == "OTHER")
+
+
+
+        // else if(usertype_id == "OTHER")
+        // {
+
+        // if (this.otherform.invalid)
+        // {
+        //     return;
+        // }
+        // else
+        // {
+        //   this.otherform.value.UserTypeId="EMPLOY"
+        //   alert(JSON.stringify(this.otherform.value))
+        //   this.finalsavecall(this.otherform.value)
+
+        // }
+        // }
+
+        else if(usertype_id == "BUSINE")
         {
 
-        if (this.otherform.invalid)
+        if (this.vendorform_business.invalid)
         {
+          console.log("invalied");
             return;
         }
         else
         {
-          this.otherform.value.UserTypeId="EMPLOY"
-          alert(JSON.stringify(this.otherform.value))
-          this.finalsavecall(this.otherform.value)
+          console.log("valied");
+          this.vendorform_business.value.UserTypeId="BUSINE"
+          // alert(JSON.stringify(this.vendorform_business.value))
+          this.finalsavecall(this.vendorform_business.value)
 
         }
         }
-        else if(usertype_id == "VENDOR")
+
+        else (usertype_id == "INDIVI")
         {
 
+        if (this.vendorform_individual.invalid)
+        {
+          console.log("invalied");
+            return;
+        }
+        else
+        {
+          console.log("valied");
+          this.vendorform_individual.value.UserTypeId="INDIVI"
+          // alert(JSON.stringify(this.vendorform_individual.value))
+          this.finalsavecall(this.vendorform_individual.value)
 
-         // let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
-
-          if(this.vendortype == true)
-          {
-            if (this.vendorform_business.invalid)
-            {
-                return;
-            }
-            else
-            {
-              this.vendorform_business.value.UserTypeId="VENDOR";
-              this.vendorform_business.value.VendorTypeId=true;
-              var int_business=parseInt(this.vendorform_business.value.BusinessSize)
-              this.vendorform_business.value.BusinessSize=int_business;
-              alert(JSON.stringify(this.vendorform_business.value))
-              this.finalsavecall(this.vendorform_business.value)
-
-            }
-          }
-          else
-          {
-            if (this.vendorform_individual.invalid)
-            {
-                return;
-            }
-            else
-            {
-              this.vendorform_individual.value.UserTypeId="VENDOR"
-              this.vendorform_individual.value.VendorTypeId=false;
-              var int_business=parseInt(this.vendorform_individual.value.BusinessSize)
-              this.vendorform_individual.value.BusinessSize=int_business;
-              alert(JSON.stringify(this.vendorform_individual.value))
-              this.finalsavecall(this.vendorform_individual.value)
-
-            }
-
-          }
+        }
+        }
 
 
-       }
+
+
+
+
+
+
+      //     else if(usertype_id == "VENDOR")
+      //   {
+
+      //  // let active1 = (<HTMLInputElement>document.getElementById("active")).checked;
+
+      //     if(this.vendortype == true)
+      //     {
+      //       if (this.vendorform_business.invalid)
+      //       {
+      //         console.log("invalided");
+      //         return;
+      //       }
+      //       else
+      //       {
+      //         console.log("valided");
+      //         this.vendorform_business.value.UserTypeId="BUSINE";
+      //         this.vendorform_business.value.VendorTypeId=true;
+      //         var int_business=parseInt(this.vendorform_business.value.BusinessSize)
+      //         this.vendorform_business.value.BusinessSize=int_business;
+      //         alert(JSON.stringify(this.vendorform_business.value))
+      //         this.finalsavecall(this.vendorform_business.value)
+
+      //       }
+      //     }
+      //     else
+      //     {
+      //       if (this.vendorform_individual.invalid)
+      //       {
+      //           return;
+      //       }
+      //       else
+      //       {
+      //         this.vendorform_individual.value.UserTypeId="INDIVI"
+      //         this.vendorform_individual.value.VendorTypeId=false;
+      //         var int_business=parseInt(this.vendorform_individual.value.BusinessSize)
+      //         this.vendorform_individual.value.BusinessSize=int_business;
+      //         alert(JSON.stringify(this.vendorform_individual.value))
+      //         this.finalsavecall(this.vendorform_individual.value)
+
+      //       }
+
+      //     }
+
+
+      //  }
 
 
     }
