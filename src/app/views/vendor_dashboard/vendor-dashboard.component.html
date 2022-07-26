@@ -38,6 +38,7 @@
                       <th  style="color: white;">Option years</th>
               </tr>
             </thead>
+            
             <tbody >
               <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of vendoractivelist">
 
@@ -45,7 +46,7 @@
               <td>{{item.Title}}</td>
               <td>{{item.ContractStatusDesc}}</td>
               <td>{{item.DepartmentMName}}</td>
-              <td>{{item.ContractAwardedDate}}</td>
+              <td>{{item.ContractAwardedDate|date : "MMM d, y"}}</td>
               <td>{{item.StartDatePlanned|date : "MMM d, y"}}</td>
               <td>{{item.EndDatePlanned|date : "MMM d, y"}}</td>
               <td>{{item.ActualStartDate|date : "MMM d, y"}}</td>
@@ -183,7 +184,7 @@
             </tr>
           </thead>
           <tbody >
-            <tr style="text-align: left;font-size: 12px !important;">
+            <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of favoritebidlist">
 
 
             <td><a>-</a></td>
