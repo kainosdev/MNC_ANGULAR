@@ -20,7 +20,7 @@
                                   <div  class="help-block text-danger">
                                           <div *ngIf="submitted && bfc.social_no.errors">Solicitation Number is required</div>
                                   </div>
-                                  <label class="common_lbl" for="social_no">SOLICITATION NUMBER *</label>
+                                  <label class="common_lbl" for="social_no">SOLICITATION NUMBER <span class="requiredfield ">  *</span></label>
   
                                   </div>
                                 </div>
@@ -31,7 +31,7 @@
     
                                  
                                      
-                                   <label class="common_lbl" for="title">TITLE *</label>
+                                   <label class="common_lbl" for="title">TITLE <span class="requiredfield ">  *</span></label>
                                 
                                  
                               
@@ -48,7 +48,7 @@
                                   </option>
                                 </select>
                                 
-                              <label class="common_lbl" for="bidstatus">BID STATUS *</label>
+                              <label class="common_lbl" for="bidstatus">BID STATUS <span class="requiredfield ">  *</span></label>
                               <div  class="help-block text-danger">
                                 <div *ngIf="submitted && bfc.bidstatus.errors">Bid Status is required</div>
                              </div>  
@@ -81,7 +81,7 @@
                                                 <div class="col-12">
                                                     <div class="form-floating">
                                                         <textarea class="form-control"  formControlName="description" id="description" style="height: 100px"></textarea>
-                                                        <label for="description" class="common_lbl">DESCRIPTION *</label>
+                                                        <label for="description" class="common_lbl">DESCRIPTION<span class="requiredfield ">  *</span></label>
                                                       </div>
                                                   </div>
                                                
@@ -99,7 +99,7 @@
                                                         </select>  
                                                         <div  class="help-block text-danger">
                                                             <div *ngIf="submitted && bfc.opportunity_type.errors">Opportunity Type is required</div>
-                                                    </div>                                                    <label class="common_lbl" for="floatingInputGrid">OPPORTUNITY TYPE *</label>
+                                                    </div>                                                    <label class="common_lbl" for="floatingInputGrid">OPPORTUNITY TYPE<span class="requiredfield ">  *</span></label>
                                                         
                                                   </div>
                                                 </div>
@@ -114,7 +114,7 @@
                                                    <div  class="help-block text-danger">
                                                         <div *ngIf="submitted && bfc.category.errors">Category is required</div>
                                                    </div>
-                                                    <label class="common_lbl" for="floatingSelectGrid">CATEGORY *</label>
+                                                    <label class="common_lbl" for="floatingSelectGrid">CATEGORY<span class="requiredfield ">  *</span></label>
                                                   </div>
                                                 </div>
                                                 <div class="col-md">
@@ -129,7 +129,7 @@
                                                     <div  class="help-block text-danger">
                                                             <div *ngIf="submitted && bfc.buying_entry.errors">Buying Entry is required</div>
                                                    </div>  
-                                                    <label class="common_lbl" for="buying_entry">BUYING ENTRY *</label>
+                                                    <label class="common_lbl" for="buying_entry">BUYING ENTRY<span class="requiredfield ">  *</span></label>
                                                     </div>
                                                   </div>
                                                   
@@ -143,7 +143,7 @@
                                                       <div  class="help-block text-danger">
                                                               <div *ngIf="submitted && bfc.set_aside.errors">Set Aside is required</div>
                                                       </div>
-                                                      <label class="common_lbl" for="set_aside">SET ASIDE *</label>
+                                                      <label class="common_lbl" for="set_aside">SET ASIDE<span class="requiredfield ">  *</span></label>
   
                                                       </div>
                                                     </div>
@@ -163,7 +163,7 @@
                                                                 <div *ngIf="submitted && bfc.fund_source.errors">Funding Source is required</div>
                                                            </div>
                                                         
-                                                           <label class="common_lbl" for="fund_source">FUNDING SOURCE *</label>
+                                                           <label class="common_lbl" for="fund_source">FUNDING SOURCE<span class="requiredfield ">  *</span></label>
                                                     </div>
                                                   </div>
                                                   <div class="col-md">
@@ -177,7 +177,7 @@
                                                             <div  class="help-block text-danger">
                                                                         <div *ngIf="submitted && bfc.contract_vehicle.errors">Contract Vehicle is required</div>
                                                             </div>
-                                                             <label class="common_lbl" for="floatingSelectGrid">CONTRACT VEHICLE *</label>
+                                                             <label class="common_lbl" for="floatingSelectGrid">CONTRACT VEHICLE<span class="requiredfield ">  *</span></label>
                                                     </div>
                                                   </div>
                                                   <div class="col-md">
@@ -186,7 +186,7 @@
                                                           <div  class="help-block text-danger">
                                                                       <div *ngIf="submitted && bfc.budget_amount.errors">Budget Amount is required</div>
                                                           </div> 
-                                                      <label class="common_lbl" for="buying_entry">BUDGET AMOUNT *</label>
+                                                      <label class="common_lbl" for="buying_entry">BUDGET AMOUNT<span class="requiredfield ">  *</span></label>
                                                       </div>
                                                     </div>
                                                     <div class="col-md">
@@ -202,7 +202,7 @@
                                                                     <div *ngIf="submitted && bfc.set_aside.errors">Contract Officer is required</div>
                                                            </div>
                                                             
-                                                               <label class="common_lbl" for="contrcat_officer">CONTRACT OFFICER *</label>
+                                                               <label class="common_lbl" for="contrcat_officer">CONTRACT OFFICER<span class="requiredfield ">  *</span></label>
                                                         </div>
                                                       </div>
 
@@ -221,7 +221,7 @@
                                                                   <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Phone is required</div>
                                                          </div>
                                                            
-                                                               <label class="common_lbl" for="co_officer_phone">OFFICER PHONE *</label>
+                                                               <label class="common_lbl" for="co_officer_phone">OFFICER PHONE <span class="requiredfield ">  *</span></label>
                                                       </div>
                                                     </div>
                                                     <div class="col-md">
@@ -231,7 +231,7 @@
                                                             <div  class="help-block text-danger">
                                                                     <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Email is required</div>
                                                             </div>
-                                                        <label class="common_lbl" for="co_officer_phone">CONTRACT OFFICER EMAIL*</label>
+                                                        <label class="common_lbl" for="co_officer_phone">CONTRACT OFFICER EMAIL<span class="requiredfield ">*</span></label>
                                                         </div>
                                                       </div>
                                                       <div class="col-md">
@@ -242,7 +242,7 @@
                                                                         <div *ngIf="submitted && bfc.posted_date.errors">Posted Date is required</div>
                                                             </div>
                                                               
-                                                                 <label class="common_lbl" for="posted_date">POSTED DATE *</label>
+                                                                 <label class="common_lbl" for="posted_date">POSTED DATE<span class="requiredfield ">  *</span></label>
                                                           </div>
                                                         </div>
                                                         <div class="col-md">
@@ -255,7 +255,7 @@
                                                                     <div *ngIf="submitted && bfc.question_due_date.errors">Question Due Date is required</div>
                                                             </div>
                                                                
-                                                                   <label class="common_lbl" for="question_due_date">QUESTION DUE DATE *</label>
+                                                                   <label class="common_lbl" for="question_due_date">QUESTION DUE DATE<span class="requiredfield ">  *</span></label>
                                                           </div>
                                                         </div>
                                                   </div>
@@ -272,7 +272,7 @@
                                                                     <div  class="help-block text-danger">
                                                                             <div *ngIf="submitted && bfc.StartDate.errors">Response Due Date is required</div>
                                                                    </div>
-                                                        <label class="common_lbl" for="response_due_date">RESPONSE DUE DATE *</label>
+                                                        <label class="common_lbl" for="response_due_date">RESPONSE DUE DATE<span class="requiredfield ">  *</span></label>
                                                         </div>
                                                       </div>
                                                       <div class="col-md">
@@ -288,7 +288,7 @@
                                                                       <div *ngIf="submitted && bfc.set_aside.errors">Technical Monitor is required</div>
                                                              </div>
                                                               
-                                                                 <label class="common_lbl" for="contrcat_officer">TECHNICAL MONITOR *</label>
+                                                                 <label class="common_lbl" for="contrcat_officer">TECHNICAL MONITOR <span class="requiredfield ">  *</span></label>
                                                           </div>
                                                         </div>
                                                         <div class="col-md">
@@ -475,7 +475,7 @@
                                                       <div  class="help-block text-danger">
                                                             <div *ngIf="clin_submitted && clfc.clin.errors">CLIN is required</div>
                                                       </div>
-                                                      <label class="common_lbl" for="clin" >CLIN *</label>
+                                                      <label class="common_lbl" for="clin" >CLIN<span class="requiredfield ">  *</span></label>
                                                 </div>
                                               </div>
                                               <div class="col-md">
@@ -487,7 +487,7 @@
                                                       <div  class="help-block text-danger">
                                                             <div *ngIf="clin_submitted && clfc.desc.errors">Description is required</div>
                                                       </div>
-                                                      <label class="common_lbl" for="clin" >DESCRIPTION *</label>
+                                                      <label class="common_lbl" for="clin" >DESCRIPTION<span class="requiredfield ">  *</span></label>
                                                 </div>
                                               </div>
                                               <div class="col-md">
@@ -503,7 +503,7 @@
                                                       <div  class="help-block text-danger">
                                                             <div *ngIf="clin_submitted && clfc.service_type.errors">Service Type is required</div>
                                                       </div>
-                                                      <label class="common_lbl" for="service_type">SERVICE TYPE *</label>
+                                                      <label class="common_lbl" for="service_type">SERVICE TYPE<span class="requiredfield ">  *</span></label>
                                                   </div>
                                                 </div>
                                                 <div class="col-md">
@@ -517,7 +517,7 @@
                                                            <div  class="help-block text-danger">
                                                               <div *ngIf="clin_submitted && clfc.dbe_goal_type.errors">DBE Goal Type is required</div>
                                                            </div>
-                                                        <label class="common_lbl" for="dbe_goal_type">DBE GOAL TYPE *</label>
+                                                        <label class="common_lbl" for="dbe_goal_type">DBE GOAL TYPE<span class="requiredfield ">  *</span></label>
                                                     </div>
                                                   </div>
                                             </div>
@@ -531,7 +531,7 @@
                                                    <div  class="help-block text-danger">
                                                     <div *ngIf="clin_submitted && clfc.dbe_goal.errors">DBE Goal is required</div>
                                                     </div>
-                                                        <label class="common_lbl" for="dbe_goal" >DBE GOAL *</label>
+                                                        <label class="common_lbl" for="dbe_goal" >DBE GOAL<span class="requiredfield ">  *</span></label>
                                                   </div>
                                                 </div>
                                                 <div class="col-md">
@@ -543,7 +543,7 @@
                                                           <div  class="help-block text-danger">
                                                               <div *ngIf="clin_submitted && clfc.dbe_budget.errors">DBE Budget is required</div>
                                                            </div>
-                                                        <label class="common_lbl" for="dbe_budget" >DBE BUDGET ($) *</label>
+                                                        <label class="common_lbl" for="dbe_budget" >DBE BUDGET ($)<span class="requiredfield ">  *</span></label>
                                                   </div>
                                                 </div>
                                                 <div class="col-md">
