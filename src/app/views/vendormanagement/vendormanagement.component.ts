@@ -965,7 +965,7 @@ businessUserdata(vendorMgmt:any){
     // vendorMgmt.Address = this.address_list;
 
 
-  this.http.post('http://localhost/MNC_PHP_API/vendor/UpdVendorNew',vendorMgmt).subscribe(
+  this.http.post('http://localhost/MNC_PHP_API/vendor/UpdVenIndividual',vendorMgmt).subscribe(
   // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
 
     data => {
@@ -1172,7 +1172,7 @@ GetVendorById(){
             VendorTypeId:details.VendorTypeId =="B"?"Business":"Individual",
 
             FirstName: details.LegalName,
-            LastName:details.LegalName,
+            LastName:details.TradeName,
             MiddleName:details.AliasName,
 
             VendorId:[localStorage.getItem('vendoridSes')],
