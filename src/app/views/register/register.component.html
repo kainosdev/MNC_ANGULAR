@@ -850,12 +850,18 @@
                                <input type="text" class="form-control"  formControlName="UserId" [pattern]="uidPattern" id="userkey" (keypress)="inputErrorMessage('userkey');">
                                <div  class="help-block text-danger">
                                 <div *ngIf="submitted && vbf.UserId.errors?.required">User Id is required</div>
-                                <div *ngIf="submitted && vbf.UserId.errors?.pattern">Pattern Not matched</div>
+                                <div *ngIf="submitted && vbf.UserId.errors?.pattern">Pattern Not matched
+                                        <span><img class="m-1 question_mark"
+                                                (mouseover)="informationPopup(info)" ></span>
+                                </div>
                                  </div>
-                                <label class="common_lbl" for="social_no">USER ID <span class="requiredfield ">  *</span></label>
-                                <span><img class="m-1 question_mark"
-                                        (mouseover)="informationPopup(info)" ></span> 
-                                 </div>
+                                 <!-- <div> -->
+                                <label class="common_lbl" for="social_no">USER ID 
+                                        <span class="requiredfield ">*</span>
+                                       
+                                     </label>
+                                        <!-- </div> -->
+                                  </div>
                          </div>
         
                          <div class="col-md">
@@ -1112,7 +1118,8 @@
                         <div class="d-flex">
                                 <div class="mr-auto mt-2">
                                   
-                                    <label class="question_font">IS THIS BUSINESS A FRANCHISE?</label></div>
+                                    <label class="question_font">IS THIS BUSINESS A FRANCHISE?<span><img class="m-1 question_mark"
+                                        (mouseover)="informationPopup(info)" ></span></label></div>
                               
                                 <div class="mt-2"><label class="switch float-right">
                                     <input  type="checkbox" name="BusinessIsFranchisee_name" id="BusinessIsFranchisee_id" formControlName="BusinessIsFranchisee" checked>
@@ -1171,7 +1178,7 @@
         </div>
         <div class="modal-body">
           <div >
-            <p>User Id must have 6 digit numbers and 1 uppercase and 1 lower case and 1 special character.</p>
+            <p>User Id- Must be between 8 to 20 characters in length and include Special Characters,lower & Upper Case letters and numbers 0-9</p>
             </div>     
               <div class="text-center">
               <button type="button" class="btn btn-primary fixedwidthcls" (click)="modal.dismiss('Cross click')">Ok</button>

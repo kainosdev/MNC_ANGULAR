@@ -256,5 +256,10 @@ input:checked + .slider:before {
 {
   padding-top: 11px;
 }
+.question_mark
+{
+  //content:url("./assets/images/Heacock-Assets-Quote-Portal/question-mark-icon.svg");
+   content:url("../../../assets/images/question-mark-icon.png");
+}
 
 
