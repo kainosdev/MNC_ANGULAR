@@ -455,7 +455,7 @@ export class VendormanagementComponent implements OnInit {
       this.Addressform.value.VendorId=localStorage.getItem('vendoridSes');
       this.Addressform.value.CreatedUserId=localStorage.getItem("CreatedUseridses");
       this.http.post('http://localhost:8080/vendor/AddUpdVendorAddress',this.Addressform.value).subscribe(
-        data => {s
+        data => {
           console.log("data");
             console.log('POST Request is successful >>>>>>>>', data);
             this.GetVendorAddressById()
