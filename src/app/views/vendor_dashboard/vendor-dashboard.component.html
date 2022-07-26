@@ -38,7 +38,7 @@
                       <th  style="color: white;">Option years</th>
               </tr>
             </thead>
-            
+
             <tbody >
               <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of vendoractivelist">
 
@@ -170,7 +170,6 @@
 
             <table  class="table nowrap  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions3"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
                 <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
-
               <tr>
               <!-- <th  style="display:none;width: 0px;">b</th> -->
               <th  style="color: white;">Bid Number</th>
@@ -184,16 +183,13 @@
             </tr>
           </thead>
           <tbody >
-            <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of favoritebidlist">
-
-
-            <td><a>-</a></td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-
+            <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of vendorfavoritelist">
+            <td>{{item.BidNumber}}</td>
+            <td>{{item.Title}}</td>
+            <td>{{item.BidStatusDesc}}</td>
+            <td>{{item.DepartmentName}}</td>
+            <td>{{item.BidPostedDate |date : "MMM d, y"}}</td>
+            <td>{{item.BidResponseDueDate |date : "MMM d, y"}}</td>
           </tbody>
 
         </table>
@@ -201,7 +197,6 @@
         </div>
       </ng-template>
     </accordion-item>
-
 
 </accordion>
 </div>

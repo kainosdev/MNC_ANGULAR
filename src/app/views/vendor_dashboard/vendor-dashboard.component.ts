@@ -49,6 +49,7 @@ export class VendorDashboardComponent implements OnInit {
   middlename: string | null;
   UserId: string | null;
   favoritebidlist: any;
+  vendorfavoritelist: any;
 
 
   // dtOptions: DataTables.Settings = {};
@@ -100,6 +101,7 @@ export class VendorDashboardComponent implements OnInit {
     this.vendoractive();
     this.ResponseSubmitted();
     this.ResponseNotSubmitted();
+    this.vendorfavorite();
 
 
     this.firstname = localStorage.getItem('Firstnameses');
@@ -171,7 +173,7 @@ export class VendorDashboardComponent implements OnInit {
 
 
 
-  
+
 
   ResponseSubmitted(){
     try
@@ -238,6 +240,22 @@ export class VendorDashboardComponent implements OnInit {
         }
         this.favoritebidlist = response;
       //  this.dtTrigger2.next(this.ResponseNotSubmittedlist);
+        });
+    }
+    catch(e)
+    {
+      console.log(e);
+    }
+
+  }
+  vendorfavorite(){
+    try
+    {
+      this.http.get(config_url+'vendor/GetVendorFavorite?VendorId='+localStorage.getItem('CreatedUseridses')).subscribe(
+        (data: any) => {
+          var response= data.GetVendorFavorite;
+          this.vendorfavoritelist = response;
+
         });
     }
     catch(e)
