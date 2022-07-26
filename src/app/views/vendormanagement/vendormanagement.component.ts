@@ -1172,7 +1172,7 @@ GetVendorById(){
             VendorTypeId:details.VendorTypeId =="B"?"Business":"Individual",
 
             FirstName: details.LegalName,
-            LastName:details.LegalName,
+            LastName:details.TradeName,
             MiddleName:details.AliasName,
 
             VendorId:[localStorage.getItem('vendoridSes')],
