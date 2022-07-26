@@ -143,7 +143,7 @@ export class VendorDashboardComponent implements OnInit {
   ResponseSubmitted(){
     try
     {
-      this.http.get(config_url+'bid/GetBidResponseSubmittedByVendor?VendorId'+localStorage.getItem('CreatedUseridses')).subscribe(
+      this.http.get(config_url+'bid/GetBidResponseSubmittedByVendor?VendorId='+localStorage.getItem('CreatedUseridses')).subscribe(
         (data: any) => {
           var response= data.BidResponseSubmitted;
           // debugger;
@@ -167,7 +167,7 @@ export class VendorDashboardComponent implements OnInit {
   ResponseNotSubmitted(){
     try
     {
-      this.http.get(config_url+'bid/GetBidResponseNotSubmittedByVendor?VendorId=34343434').subscribe(
+      this.http.get(config_url+'bid/GetBidResponseNotSubmittedByVendor?VendorId='+localStorage.getItem('CreatedUseridses')).subscribe(
         (data: any) => {
           var response= data.BidResponseNotSubmitted;
           debugger;
