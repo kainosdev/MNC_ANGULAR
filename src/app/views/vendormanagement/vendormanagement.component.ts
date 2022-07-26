@@ -461,13 +461,13 @@ export class VendormanagementComponent implements OnInit {
         },
         success => {
           this.GetVendorAddressById()
-          // Swal.fire({
-          //   position: 'top',
-          //   icon: 'success',
-          //   title: 'Successfully Registered',
-          //   showConfirmButton: false,
-          //   timer: 3000
-          // })
+          Swal.fire({
+            position: 'top',
+            icon: 'success',
+            title: 'Address Successfully Updated',
+            showConfirmButton: false,
+            timer: 3000
+          })
         }
         );
       }
