@@ -42,8 +42,8 @@
                 <td>{{item.Email}}</td>
                 <td>{{item.EmploymentTypeDesc}}</td>
                 <td>{{item.JobTitleDesc}}</td>
-                <td>{{item.employeeStartDate | date}}</td>
-                <td>{{item.employeeEndDate | date}}</td>
+                <td>{{item.StartDate | date:'MMM d,Y'}}</td>
+                <td>{{item.EndDate | date:'MMM d,Y'}}</td>
               </tr>
             </tbody>
           </table>
@@ -63,7 +63,7 @@
         <div class="p-4">
 
           <div class="row" style="overflow-x:auto;">
-            <table  class="table servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+            <table  class="table servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions1"  [dtTrigger]="dtTrigger1" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
                 <thead style="text-align: left;background-color: #5e6572;font-size: 13px !important;">
 
               <tr>
@@ -99,8 +99,8 @@
                 <td>{{item.Email}}</td>
                 <td>{{item.EmploymentDesc}}</td>
                 <td>{{item.JobTitleDesc}}</td>
-                <td>{{item.employeeApprovalStartDate | date}}</td>
-                <td>{{item.employeeApprovalCreatedDate | date}}</td>
+                <td>{{item.StartDate | date:'MMM d,Y'}}</td>
+                <td>{{item.CreatedDate | date:'MMM d,Y'}}</td>
                 <td>{{item.CreatedUserId}}</td>
 
             </tr>
@@ -124,7 +124,7 @@
           <!-- <input class="modal-title" style="font-size: 12px !important;margin-left: 827px;"type="text" placeholder="Search Text"> -->
           <label class="labelwidth"></label>
           <div class="row" style="overflow-x:auto;">
-        <table  class="table nowrap servicecss tblnewbook"   style="border: 0.5px solid white !important;border-right: 2px solid !important; overflow:auto;"  datatable="ng"  datatable  [dtOptions] = "dtOptions" [dtTrigger]="dtTrigger">
+        <table  class="table nowrap servicecss tblnewbook"   style="border: 0.5px solid white !important;border-right: 2px solid !important; overflow:auto;"  datatable="ng"  datatable  [dtOptions] = "dtOptions2" [dtTrigger]="dtTrigger2">
           <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
 
               <tr>
@@ -154,7 +154,7 @@
               </td>
               <td>{{item.phone}}</td>
               <td>{{item.Email}}</td>
-              <td>{{item.vendorApprovalCreatedDate | date}}</td>
+              <td>{{item.CreatedDate | date:'MMM d,Y'}}</td>
               <td>{{item.CreatedUserId}}</td>
 
           </tr>
@@ -177,7 +177,7 @@
           <div class="p-4">
             <!-- <h4 class="modal-title" style="font-size: 12px !important;margin-left: 884px;">Advanced Search</h4><br> -->
             <div class="row" style="overflow-x:auto;">
-              <table  class="table  nowrap servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;overflow:auto;">
+              <table  class="table  nowrap servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions3"  [dtTrigger]="dtTrigger3" style="border: 0.5px solid white !important;border-right: 2px solid !important;overflow:auto;">
                 <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
 
                     <tr>
@@ -197,8 +197,8 @@
                   <td>{{item.Title}}</td>
                   <td>{{item.BidStatusDesc}}</td>
                   <td>{{item.DepartmentName}}</td>
-                  <td>{{item.postedDateDraft | date}}</td>
-                  <td>{{item.dueDateDraft | date}}</td>
+                  <td>{{item.BidPostedDate | date:'MMM d,Y'}}</td>
+                  <td>{{item.BidResponseDueDate | date:'MMM d,Y'}}</td>
                 </tr>
                 </tbody>
 
@@ -207,6 +207,7 @@
           </div>
       </ng-template>
     </accordion-item>
+
     <accordion-item>
       <ng-template accordionTitle>
         <div class="flex space-x-2">
@@ -218,7 +219,7 @@
           <div class="p-4">
             <!-- <h4 class="modal-title" style="font-size: 12px !important;margin-left: 884px;">Advanced Search</h4><br> -->
             <div class="row" style="overflow-x:auto;">
-              <table  class="table nowrap servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions" [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;overflow:auto;">
+              <table  class="table nowrap servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions4" [dtTrigger]="dtTrigger4" style="border: 0.5px solid white !important;border-right: 2px solid !important;overflow:auto;">
                 <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
                     <tr>
                     <th  style="color: white;">Bid Number</th>
@@ -235,8 +236,8 @@
                   <td>{{item.Title}}</td>
                   <td>{{item.BidStatusDesc}}</td>
                   <td>{{item.DepartmentName}}</td>
-                  <td>{{item.posteddate | date}}</td>
-                  <td>{{item.duedate | date}}</td>
+                  <td>{{item.BidPostedDate | date:'MMM d,Y'}}</td>
+                  <td>{{item.BidResponseDueDate | date:'MMM d,Y'}}</td>
                 </tr>
                 </tbody>
 
@@ -258,7 +259,7 @@
           <div class="p-4">
 
             <div class="row" style="overflow-x:auto;">
-              <table  class="table nowrap servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions" [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;overflow:auto;">
+              <table  class="table nowrap servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions5" [dtTrigger]="dtTrigger5" style="border: 0.5px solid white !important;border-right: 2px solid !important;overflow:auto;">
                   <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
 
                     <tr>
@@ -274,6 +275,9 @@
                     <th style="color: white;" scope="col">Actual Start Date</th>
                     <th style="color: white;" scope="col">Actual End Date</th>
                     <th style="color: white;" scope="col">Contracting Officer</th>
+                    <th style="color: white;" scope="col">Technical Monitor Name</th>
+                    <th style="color: white;" scope="col">Base year</th>
+                    <th style="color: white;" scope="col">Option year</th>
 
                   </tr>
                 </thead>
@@ -283,13 +287,16 @@
                     <td>{{item.ContractNumber}}</td>
                     <td>{{item.Title}}</td>
                     <td>{{item.ContractStatusDesc}}</td>
-                    <td>{{item.DepartmentName}}</td>
+                    <td>{{item.DeptName}}</td>
                     <td>{{item.ContractAwardedDate | date:'MMM d,Y'}}</td>
-                    <td>{{item.startDatePlanned | date}}</td>
-                    <td>{{item.endDatePlanned | date}}</td>
-                    <td>{{item.startDateActual | date}}</td>
-                    <td>{{item.endDateActual | date}}</td>
-                    <td>{{item.ContractingOfficer}}</td>
+                    <td>{{item.PlannedStartDate | date:'MMM d,Y'}}</td>
+                    <td>{{item.PlannedEndDate | date:'MMM d,Y'}}</td>
+                    <td>{{item.StartDateActual | date:'MMM d,Y'}}</td>
+                    <td>{{item.EndDateActual | date:'MMM d,Y'}}</td>
+                    <td>{{item.FirstName}}</td>
+                    <td>-</td>
+                    <td>{{item.BaseYear}}</td>
+                    <td>{{item.OptionYeat}}</td>
 
                 </tr>
                 </tbody>
