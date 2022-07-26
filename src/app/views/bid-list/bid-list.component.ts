@@ -21,6 +21,8 @@ export class BidListComponent implements OnInit {
   viewbiddetail: any;
   posteddate: any;
   duedate: any;
+  BidPostedDate: any;
+  BidResponseDueDate: any;
 
   constructor(private http: HttpClient,
     private restApi: RestApiService
@@ -70,10 +72,10 @@ export class BidListComponent implements OnInit {
       this.dtTrigger.next(this.viewbiddetail);
 
       for (let i = 0; i < this.viewbiddetail.length; i++) {
-        this.posteddate = this.viewbiddetail[i].BidPostedDate.split(' ')[0];
-        this.duedate = this.viewbiddetail[i].BidResponseDueDate.split(' ')[0];
-        console.log(this.posteddate);
-        console.log(this.duedate);
+        this.BidPostedDate = this.viewbiddetail[i].BidPostedDate.split(' ')[0];
+        this.BidResponseDueDate = this.viewbiddetail[i].BidResponseDueDate.split(' ')[0];
+        //console.log(this.posteddate);
+        //console.log(this.duedate);
     }
     });
   }
