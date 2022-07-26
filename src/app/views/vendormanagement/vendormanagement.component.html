@@ -74,7 +74,7 @@
                                               <div  class="help-block text-danger">
                                                  <div *ngIf="indsubmitted && vifc.FirstName.errors">First Name is required</div>
                                               </div>
-                                        <label class="common_lbl" for="floatingInputGrid">FIRST NAME *</label>
+                                        <label class="common_lbl" for="floatingInputGrid">FIRST NAME <span class="requiredfield"> *</span></label>
                                             
                                       </div>
                                     </div>
@@ -85,7 +85,7 @@
                                               <div  class="help-block text-danger">
                                                 <div *ngIf="indsubmitted && vifc.LastName.errors">Last Name is required</div>
                                               </div>
-                                              <label class="common_lbl" for="buying_entry">LAST NAME *</label>
+                                              <label class="common_lbl" for="buying_entry">LAST NAME <span class="requiredfield"> *</span></label>
                                         </div>
                                    </div>
                                       
@@ -116,7 +116,7 @@
                                               <div *ngIf="indsubmitted && vifc.Phone.errors">Phone is required</div>
                                               </div>
                                             
-                                               <label class="common_lbl" for="federal_id">PHONE *</label>
+                                               <label class="common_lbl" for="federal_id">PHONE <span class="requiredfield"> *</span></label>
                                         </div>
                                       </div>
                                       <div class="col-md">
@@ -127,7 +127,7 @@
                                               <div *ngIf="indsubmitted && vifc.Email.errors">Email is required</div>
                                               </div>
                                             
-                                                 <label class="common_lbl" for="Email">EMAIL *</label>
+                                                 <label class="common_lbl" for="Email">EMAIL <span class="requiredfield"> *</span></label>
                                         </div>
                                       </div>
                                       <div class="col-md">
@@ -136,7 +136,7 @@
                                        <div  class="help-block text-danger">
                                         <div *ngIf="indsubmitted && vifc.EIN_SSN.errors?.required">Social Security Number is required</div>
                                          </div>
-                                        <label class="common_lbl" for="social_no">SOCIAL SECURITY NUMBER *</label>
+                                        <label class="common_lbl" for="social_no">SOCIAL SECURITY NUMBER <span class="requiredfield"> *</span></label>
                                          </div>
                                       </div>
                                     
@@ -245,7 +245,7 @@
                                                               <div  class="help-block text-danger">
                                                               <div *ngIf="address_submmited && af.AddressTypeId.errors">ADDRESS TYPE is required</div>
                                                               </div>
-                                                                <label class="common_lbl" for="AddressTypeId">ADDRESS TYPE *</label>
+                                                                <label class="common_lbl" for="AddressTypeId">ADDRESS TYPE <span class="requiredfield"> *</span></label>
     
                                                             </div>
                                                       </div>
@@ -255,7 +255,7 @@
                                                           <div  class="help-block text-danger">
                                                              <div *ngIf="address_submmited && af.Address1.errors">Address is required</div>
                                                           </div>
-                                                          <label class="common_lbl" for="Address1">ADDRESS *</label>
+                                                          <label class="common_lbl" for="Address1">ADDRESS <span class="requiredfield"> *</span></label>
 
                                                       </div>
                                                   </div>
@@ -271,6 +271,7 @@
                                                       <div class="form-floating">
                                                               <select id="currentcity_idbus" class="form-select" formControlName="CityId" 
                                                               (keypress)="EmptyErrorMessage('currentcity_id')" >
+                                                              <option value="">Select</option>
                                                               <option *ngFor="let c of citylist" [ngValue]="c.CityId">
                                                                   {{c.CityName}}
                                                               </option>
@@ -278,7 +279,7 @@
                                                                   <div  class="help-block text-danger">
                                                                      <div *ngIf="address_submmited && af.CityId.errors">City is required</div>
                                                                   </div>
-                                                            <label class="common_lbl" for="currentcity_idbus">CITY *</label>
+                                                            <label class="common_lbl" for="currentcity_idbus">CITY <span class="requiredfield"> *</span></label>
 
                                                         </div>
                                                   </div>
@@ -290,7 +291,7 @@
                                                   <div class="form-floating">
                                                           <select id="currentzipcode_id_mailbus" class="form-select" formControlName="Zipcode" 
                                                           (keypress)="EmptyErrorMessage('currentzipcode_id');" (change)="onchangecountystatecountry()">
-                                                          <option value="value"></option>
+                                                          <option value="">Select</option>
                                                           <option *ngFor="let z of zipcodeVal" >
                                                               {{z.Zipcode}}
                                                           </option>
@@ -298,7 +299,7 @@
                                                           <div  class="help-block text-danger">
                                                           <div *ngIf="address_submmited && af.Zipcode.errors">Zipcode is required</div>
                                                           </div>
-                                                        <label class="common_lbl" for="currentzipcode_id_mailbus">ZIPCODE *</label>
+                                                        <label class="common_lbl" for="currentzipcode_id_mailbus">ZIPCODE <span class="requiredfield"> *</span></label>
 
                                                     </div>
                                               </div>
@@ -306,6 +307,7 @@
                                                           <div class="form-floating">
                                                                   <select type="text" id="currentcounty_id" class="form-select" formControlName="DistrictId" 
                                                                   (keypress)="EmptyErrorMessage('currentcounty_id')">
+                                                                  <option value="">Select</option>
                                                                   <option *ngFor="let d of ZCSlistdata" [ngValue]="d.DistrictId">
                                                                       {{d.DistrictName}}
                                                                   </option>
@@ -313,13 +315,14 @@
                                                               <div  class="help-block text-danger">
                                                               <div *ngIf="address_submmited && af.DistrictId.errors">County is required</div>
                                                               </div>
-                                                                <label class="common_lbl" for="currentcounty_id">COUNTY *</label>
+                                                                <label class="common_lbl" for="currentcounty_id">COUNTY <span class="requiredfield"> *</span></label>
     
                                                             </div>
                                                       </div>
                                                   <div class="col-md">
                                                     <div class="form-floating">
                                                           <select class="form-select" id="stateprovice_id" formControlName="StateId" >
+                                                              <option value="">Select</option>
                                                               <option *ngFor="let s of ZCSlistdata" [ngValue]="s.StateId">
                                                                   {{s.StateName}}
                                                               </option>
@@ -327,7 +330,7 @@
                                                          <div  class="help-block text-danger">
                                                             <div *ngIf="address_submmited && af.StateId.errors">State is required</div>
                                                          </div>
-                                                       <label class="common_lbl" for="stateprovice_id">STATE *</label>
+                                                       <label class="common_lbl" for="stateprovice_id">STATE <span class="requiredfield"> *</span></label>
 
                                                    </div>
                                                   </div>
@@ -335,13 +338,14 @@
                                                           <div class="form-floating">
                                                                   <select class="form-select" id="currentcountry_id" formControlName="CountryId" 
                                                                   (change)="EmptyErrorMessage('currentcountry_id')">
+                                                                  <option value="">Select</option>
                                                                   <option *ngFor="let countrylist of ZCSlistdata" [ngValue]="countrylist.CountryId" >
                                                                       {{countrylist.CountryName}}</option>
                                                                  </select>
                                                                   <div  class="help-block text-danger">
                                                                       <div *ngIf="address_submmited && af.CountryId.errors">CountryId is required</div>
                                                                   </div>                                                                    
-                                                                 <label class="common_lbl" for="currentcountry_id">COUNTRY *</label>
+                                                                 <label class="common_lbl" for="currentcountry_id">COUNTRY <span class="requiredfield"> *</span></label>
     
                                                             </div>
                                                  </div>
@@ -499,7 +503,7 @@
                                               <div  class="help-block text-danger">
                                                  <div *ngIf="submitted2 && rcf2.LegalName.errors">Legal Business Name is required</div>
                                               </div>
-                                        <label class="common_lbl" for="floatingInputGrid">LEGAL BUSINESS NAME *</label>
+                                        <label class="common_lbl" for="floatingInputGrid">LEGAL BUSINESS NAME <span class="requiredfield"> *</span></label>
                                             
                                       </div>
                                     </div>
@@ -510,7 +514,7 @@
                                               <div  class="help-block text-danger">
                                                   <div *ngIf="submitted2 && rcf2.TradeName.errors">Trade Name is required</div>
                                               </div>
-                                        <label class="common_lbl" for="floatingSelectGrid">TRADE NAME *</label>
+                                        <label class="common_lbl" for="floatingSelectGrid">TRADE NAME <span class="requiredfield"> *</span></label>
                                       </div>
                                     </div>
                                     <div class="col-md">
@@ -529,7 +533,7 @@
                                                   <div  class="help-block text-danger">
                                                       <div *ngIf="submitted2 && rcf2.DUNS.errors">Duns No is required</div>
                                                   </div>
-                                            <label class="common_lbl" for="set_aside">DUNS NUMBER *</label>
+                                            <label class="common_lbl" for="set_aside">DUNS NUMBER <span class="requiredfield"> *</span></label>
 
                                           </div>
                                         </div>
@@ -549,7 +553,7 @@
                                               <div *ngIf="submitted2 && rcf2.EIN_SSN.errors">EIN/TAX Id is required</div>
                                               </div>
                                             
-                                               <label class="common_lbl" for="federal_id">EIN/TAX ID *</label>
+                                               <label class="common_lbl" for="federal_id">EIN/TAX ID <span class="requiredfield"> *</span></label>
                                         </div>
                                       </div>
                                       <div class="col-md">
@@ -560,7 +564,7 @@
                                               <div *ngIf="submitted2 && rcf2.NAICSCodes.errors">NAICS Code is required</div>
                                               </div>
                                             
-                                                 <label class="common_lbl" for="naics">NAICS CODE *</label>
+                                                 <label class="common_lbl" for="naics">NAICS CODE <span class="requiredfield"> *</span></label>
                                         </div>
                                       </div>
                                       <div class="col-md">
@@ -569,7 +573,7 @@
                                                   <div  class="help-block text-danger">
                                                       <div *ngIf="submitted2 && rcf2.CommodityCodes.errors">Commodity Code is required</div>
                                                   </div>
-                                          <label class="common_lbl" for="buying_entry">COMODITY CODE *</label>
+                                          <label class="common_lbl" for="buying_entry">COMODITY CODE <span class="requiredfield"> *</span></label>
                                           </div>
                                         </div>
                                         <div class="col-md">
@@ -582,7 +586,7 @@
                                                   <div  class="help-block text-danger">
                                                       <div *ngIf="submitted2 && rcf2.BEClassificationId.errors">BE Classification is required</div>
                                                   </div>
-                                                 <label class="common_lbl" for="buying_entry">BE CLASSIFICATION *</label>
+                                                 <label class="common_lbl" for="buying_entry">BE CLASSIFICATION <span class="requiredfield"> *</span></label>
                                                 
                                             </div>
                                           </div>
@@ -601,7 +605,7 @@
                                                       <div *ngIf="submitted2 && rcf2.Website.errors">Website is required</div>
                                                   </div>
                                                
-                                                   <label class="common_lbl" for="businesswebsite_id">BUSINESS WEBSITE *</label>
+                                                   <label class="common_lbl" for="businesswebsite_id">BUSINESS WEBSITE <span class="requiredfield"> *</span></label>
                                           </div>
                                         </div>
                                         <div class="col-md">
@@ -611,7 +615,7 @@
                                                   <div  class="help-block text-danger">
                                                       <div *ngIf="submitted2 && rcf2.BusinessSize.errors">Business Size is required </div>
                                                   </div>
-                                            <label class="common_lbl" for="businesssize_id">BUSINESS SIZE *</label>
+                                            <label class="common_lbl" for="businesssize_id">BUSINESS SIZE <span class="requiredfield"> *</span></label>
                                             </div>
                                           </div>
                                           <div class="col-md">
@@ -772,7 +776,7 @@
                                                               <div  class="help-block text-danger">
                                                               <div *ngIf="address_submmited && af.AddressTypeId.errors">ADDRESS TYPE is required</div>
                                                               </div>
-                                                                <label class="common_lbl" for="AddressTypeId">ADDRESS TYPE *</label>
+                                                                <label class="common_lbl" for="AddressTypeId">ADDRESS TYPE <span class="requiredfield"> *</span></label>
     
                                                             </div>
                                                       </div>
@@ -782,7 +786,7 @@
                                                           <div  class="help-block text-danger">
                                                              <div *ngIf="address_submmited && af.Address1.errors">Address is required</div>
                                                           </div>
-                                                          <label class="common_lbl" for="Address1">ADDRESS *</label>
+                                                          <label class="common_lbl" for="Address1">ADDRESS <span class="requiredfield"> *</span></label>
 
                                                       </div>
                                                   </div>
@@ -805,7 +809,7 @@
                                                                   <div  class="help-block text-danger">
                                                                      <div *ngIf="address_submmited && af.CityId.errors">City is required</div>
                                                                   </div>
-                                                            <label class="common_lbl" for="currentcity_idbus">CITY *</label>
+                                                            <label class="common_lbl" for="currentcity_idbus">CITY <span class="requiredfield"> *</span></label>
 
                                                         </div>
                                                   </div>
@@ -817,7 +821,7 @@
                                                   <div class="form-floating">
                                                           <select id="currentzipcode_id_mailbus" class="form-select" formControlName="Zipcode" 
                                                           (keypress)="EmptyErrorMessage('currentzipcode_id');" (change)="onchangecountystatecountry()">
-                                                          <option value="value"></option>
+                                                          <option value="">Select</option>
                                                           <option *ngFor="let z of zipcodeVal" >
                                                               {{z.Zipcode}}
                                                           </option>
@@ -825,7 +829,7 @@
                                                           <div  class="help-block text-danger">
                                                           <div *ngIf="address_submmited && af.Zipcode.errors">Zipcode is required</div>
                                                           </div>
-                                                        <label class="common_lbl" for="currentzipcode_id_mailbus">ZIPCODE *</label>
+                                                        <label class="common_lbl" for="currentzipcode_id_mailbus">ZIPCODE <span class="requiredfield"> *</span></label>
 
                                                     </div>
                                               </div>
@@ -833,6 +837,7 @@
                                                           <div class="form-floating">
                                                                   <select type="text" id="currentcounty_id" class="form-select" formControlName="DistrictId" 
                                                                   (keypress)="EmptyErrorMessage('currentcounty_id')">
+                                                                  <option value="">Select</option>
                                                                   <option *ngFor="let d of ZCSlistdata" [ngValue]="d.DistrictId">
                                                                       {{d.DistrictName}}
                                                                   </option>
@@ -840,21 +845,22 @@
                                                               <div  class="help-block text-danger">
                                                               <div *ngIf="address_submmited && af.DistrictId.errors">County is required</div>
                                                               </div>
-                                                                <label class="common_lbl" for="currentcounty_id">COUNTY *</label>
+                                                                <label class="common_lbl" for="currentcounty_id">COUNTY <span class="requiredfield"> *</span></label>
     
                                                             </div>
                                                       </div>
                                                   <div class="col-md">
                                                     <div class="form-floating">
                                                           <select class="form-select" id="stateprovice_id" formControlName="StateId" >
-                                                              <option *ngFor="let s of ZCSlistdata" [ngValue]="s.StateId">
+                                                              <option value="">Select</option>
+                                                            <option *ngFor="let s of ZCSlistdata" [ngValue]="s.StateId">
                                                                   {{s.StateName}}
                                                               </option>
                                                          </select>
                                                          <div  class="help-block text-danger">
                                                             <div *ngIf="address_submmited && af.StateId.errors">State is required</div>
                                                          </div>
-                                                       <label class="common_lbl" for="stateprovice_id">STATE *</label>
+                                                       <label class="common_lbl" for="stateprovice_id">STATE <span class="requiredfield"> *</span></label>
 
                                                    </div>
                                                   </div>
@@ -862,13 +868,14 @@
                                                           <div class="form-floating">
                                                                   <select class="form-select" id="currentcountry_id" formControlName="CountryId" 
                                                                   (change)="EmptyErrorMessage('currentcountry_id')">
+                                                                  <option value="">Select</option>
                                                                   <option *ngFor="let countrylist of ZCSlistdata" [ngValue]="countrylist.CountryId" >
                                                                       {{countrylist.CountryName}}</option>
                                                                  </select>
                                                                   <div  class="help-block text-danger">
                                                                       <div *ngIf="address_submmited && af.CountryId.errors">CountryId is required</div>
                                                                   </div>                                                                    
-                                                                 <label class="common_lbl" for="currentcountry_id">COUNTRY *</label>
+                                                                 <label class="common_lbl" for="currentcountry_id">COUNTRY <span class="requiredfield"> *</span></label>
     
                                                             </div>
                                                  </div>
@@ -902,7 +909,7 @@
                                                                   <div  class="help-block text-danger">
                                                                       <div *ngIf="address_submmited && af.StartDate.errors">From Date is required</div>
                                                                   </div>
-                                                                <label class="common_lbl" for="mailingfromdata_id">FROM DATE *</label>
+                                                                <label class="common_lbl" for="mailingfromdata_id">FROM DATE <span class="requiredfield"> *</span></label>
     
                                                             </div>
                                                       </div>
@@ -916,7 +923,7 @@
                                                           <div  class="help-block text-danger">
                                                               <div *ngIf="address_submmited && af.EndDate.errors">End Date is required</div>
                                                           </div>
-                                                          <label class="common_lbl" for="EndDate">END DATE *</label>
+                                                          <label class="common_lbl" for="EndDate">END DATE <span class="requiredfield"> *</span></label>
 
                                                       </div>
                                                   </div>
@@ -1008,7 +1015,7 @@
                                                                   <div  class="help-block text-danger">
                                                                      <div *ngIf="contact_submmited && cf.FirstName.errors?.required">First Name is required</div>
                                                                    </div>
-                                                                <label class="common_lbl" for="FirstName">FIRST NAME *</label>
+                                                                <label class="common_lbl" for="FirstName">FIRST NAME <span class="requiredfield"> *</span></label>
     
                                                             </div>
                                                   </div>
@@ -1018,7 +1025,7 @@
                                                           <div  class="help-block text-danger">
                                                              <div *ngIf="contact_submmited && cf.LastName.errors?.required">Last Name is required</div>
                                                            </div>
-                                                        <label class="common_lbl" for="LastName">LAST NAME *</label>
+                                                        <label class="common_lbl" for="LastName">LAST NAME <span class="requiredfield"> *</span></label>
 
                                                       </div>
                                                   </div>
@@ -1044,7 +1051,7 @@
                                                               <div *ngIf="contact_submmited && cf.JobTitleId.errors?.required">Job Title is required</div>
                                                           </div>
                                                                 
-                                                            <label class="common_lbl" for="JobTitleId">JOB TITLE *</label>
+                                                            <label class="common_lbl" for="JobTitleId">JOB TITLE <span class="requiredfield"> *</span></label>
 
                                                         </div>
                                                   </div>
@@ -1060,7 +1067,7 @@
                                                                   <div  class="help-block text-danger">
                                                                   <div *ngIf="contact_submmited && cf.Phone.errors?.required">Phone Name is required</div>
                                                                   </div>
-                                                                <label class="common_lbl" for="Phone">PHONE NO *</label>
+                                                                <label class="common_lbl" for="Phone">PHONE NO <span class="requiredfield"> *</span></label>
     
                                                             </div>
                                                       </div>
@@ -1071,7 +1078,7 @@
                                                           <div  class="help-block text-danger">
                                                               <div *ngIf="contact_submmited && cf.Email.errors?.required">Email is required</div>
                                                            </div>
-                                                       <label class="common_lbl" for="stateprovice_id">EMAIL *</label>
+                                                       <label class="common_lbl" for="stateprovice_id">EMAIL <span class="requiredfield"> *</span></label>
 
                                                    </div>
                                                   </div>
