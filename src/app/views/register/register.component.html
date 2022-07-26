@@ -17,7 +17,7 @@
         </div>
 
         <div class="col-sm-6">
-                <div >
+                <!-- <div >
                         <div style="margin-left: -129px; border: 1px solid yellow;background-color: #ffff00ba;width: 803px;align-items: center !important;">
                     
                     
@@ -25,7 +25,7 @@
                             margin-top: 6px;
                             margin-bottom: 6px;
                             padding-left: 29px;">User Id- must be between 8 to 20 characters in length.Must include upper and lower case letters and numbers 0-9</p>
-                        </div></div>
+                        </div></div> -->
         </div>
 
         <div class="col-sm-3">
@@ -138,7 +138,10 @@
                 <input type="text" class="tradename"  [pattern]="uidPattern" formControlName="UserId" id="userkey" (keypress)="inputErrorMessage('userkey');">
                 <div  class="help-block text-danger">
                             <div *ngIf="submitted && ofv.UserId.errors?.required">User Id is required</div>
-                            <div *ngIf="submitted && ofv.UserId.errors?.pattern">Pattern Not matched</div>
+                            <div *ngIf="submitted && ofv.UserId.errors?.pattern">Pattern Not matched
+                                <span><img class="m-1 question_mark"
+                                        (mouseover)="informationPopup(info)" ></span>
+                            </div>
                 </div>
               </div>
 
@@ -306,7 +309,10 @@
                                <input type="text" class="form-control" formControlName="UserId" [pattern]="uidPattern" id="userkey" (keypress)="inputErrorMessage('userkey');">
                                <div  class="help-block text-danger">
                                 <div *ngIf="submitted && rcf.UserId.errors?.required">User Id is required</div>
-                                <div *ngIf="submitted && rcf.UserId.errors?.pattern">Pattern Not matched</div>
+                                <div *ngIf="submitted && rcf.UserId.errors?.pattern">Pattern Not matched
+                                        <span><img class="m-1 question_mark"
+                                                (click)="informationPopup(info)" ></span>
+                                </div>
                         </div>
                                 <label class="common_lbl" for="social_no">USER ID<span class="requiredfield ">  *</span></label>
                                  </div>
@@ -613,7 +619,10 @@
                        <input type="text" class="form-control" formControlName="UserId" [pattern]="uidPattern" id="userkey"  (keyup)="inputErrorMessage('userkey')" >
                        <div  class="help-block text-danger">
                         <div *ngIf="submitted && vif.UserId.errors?.required">User Id is required</div>
-                        <div *ngIf="submitted && vif.UserId.errors?.pattern">Pattern Not matched</div>
+                        <div *ngIf="submitted && vif.UserId.errors?.pattern">Pattern Not matched
+                                <span><img class="m-1 question_mark"
+                                        (click)="informationPopup(info)" ></span>
+                        </div>
                     </div>
                         <label class="common_lbl" for="social_no">USER ID<span class="requiredfield ">  *</span></label>
                          </div>
@@ -852,7 +861,7 @@
                                 <div *ngIf="submitted && vbf.UserId.errors?.required">User Id is required</div>
                                 <div *ngIf="submitted && vbf.UserId.errors?.pattern">Pattern Not matched
                                         <span><img class="m-1 question_mark"
-                                                (mouseover)="informationPopup(info)" ></span>
+                                                (click)="informationPopup(info)" ></span>
                                 </div>
                                  </div>
                                  <!-- <div> -->
@@ -1118,8 +1127,10 @@
                         <div class="d-flex">
                                 <div class="mr-auto mt-2">
                                   
-                                    <label class="question_font">IS THIS BUSINESS A FRANCHISE?<span><img class="m-1 question_mark"
-                                        (mouseover)="informationPopup(info)" ></span></label></div>
+                                    <label class="question_font">IS THIS BUSINESS A FRANCHISE?
+                                        <!-- <span><img class="m-1 question_mark"
+                                        (mouseover)="informationPopup(info)" ></span> -->
+                                </label></div>
                               
                                 <div class="mt-2"><label class="switch float-right">
                                     <input  type="checkbox" name="BusinessIsFranchisee_name" id="BusinessIsFranchisee_id" formControlName="BusinessIsFranchisee" checked>
