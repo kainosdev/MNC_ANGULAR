@@ -546,6 +546,7 @@ export class VendormanagementComponent implements OnInit {
   }
   editaddress(data:any,i:any)
   {
+
     // debugger
    // this.address_list.splice(i,1);
     this.Addressform.patchValue({
@@ -561,6 +562,7 @@ export class VendormanagementComponent implements OnInit {
       StateId:data.StateId,
       StartDate: data.StartDate.split(' ')[0],
       EndDate:data.EndDate.split(' ')[0],
+      VendorAddressPrimary:data.VendorAddressPrimary
 
 
    });
