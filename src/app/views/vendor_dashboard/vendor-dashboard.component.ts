@@ -33,6 +33,9 @@ export class VendorDashboardComponent implements OnInit {
   @ViewChild(DataTableDirective)
   dtElement: DataTableDirective | any;
   dtOptions: DataTables.Settings = {};
+  dtOptions1: DataTables.Settings = {};
+  dtOptions2: DataTables.Settings = {};
+  dtOptions3: DataTables.Settings = {};
 
 
   dtTrigger: Subject<any> = new Subject<void>();
@@ -55,15 +58,38 @@ export class VendorDashboardComponent implements OnInit {
     ngAfterViewInit(): void {
 
 
-      this.dtTrigger.next(this.vendoractivelist);
-      this.dtTrigger.next(this.BidsSubmittedlist);
-      this.dtTrigger.next(this.ResponseNotSubmittedlist);
+    //  this.dtTrigger.next(this.vendoractivelist);
+     // this.dtTrigger.next(this.BidsSubmittedlist);
+      //this.dtTrigger.next(this.ResponseNotSubmittedlist);
       this.dtOptions = {
         pagingType: 'full_numbers',
         pageLength: 5,
         processing: true,
         scrollX: true,
+        destroy:true,
       };
+      this.dtOptions1 = {
+        pagingType: 'full_numbers',
+        pageLength: 5,
+        processing: true,
+        scrollX: true,
+        destroy:true,
+      };
+      this.dtOptions2 = {
+        pagingType: 'full_numbers',
+        pageLength: 5,
+        processing: true,
+        scrollX: true,
+        destroy:true,
+      };
+      this.dtOptions3 = {
+        pagingType: 'full_numbers',
+        pageLength: 5,
+        processing: true,
+        scrollX: true,
+        destroy:true,
+      };
+
 
 
     }
