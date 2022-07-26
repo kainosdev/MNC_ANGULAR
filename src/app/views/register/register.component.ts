@@ -68,13 +68,33 @@ ZCSlistdata:any;
 informationText:any;
 descInfo: any;
 closeResult: any;
-ModalDismissReasons: any;
+// ModalDismissReasons: any;
 
 
 
   constructor(private frmbuilder: FormBuilder,  private http: HttpClient,private modalService: NgbModal,
   //  private toastr: ToastrService
-    ) { }
+    ) { 
+      $('.btn-toggle').click(function() {
+        $(this).find('.btn').toggleClass('active');  
+        
+        if ($(this).find('.btn-primary').length>0) {
+          $(this).find('.btn').toggleClass('btn-primary');
+        }
+        if ($(this).find('.btn-danger').length>0) {
+          $(this).find('.btn').toggleClass('btn-danger');
+        }
+        if ($(this).find('.btn-success').length>0) {
+          $(this).find('.btn').toggleClass('btn-success');
+        }
+        if ($(this).find('.btn-info').length>0) {
+          $(this).find('.btn').toggleClass('btn-info');
+        }
+        
+        $(this).find('.btn').toggleClass('btn-default');
+           
+    });
+    }
 
   ngOnInit(): void {
 
@@ -110,47 +130,6 @@ ModalDismissReasons: any;
         JobStartDate: ['', [Validators.required]],
         AdminUser:  [false],
         UserStatusId:['N'],
-
-
-      // legalbusiness: [''],
-
-      // tradeName: [],
-      // UserTypeId:  ['', [Validators.required]],
-
-
-      // conformpassword:  ['', [Validators.required]],
-
-
-
-
-
-
-
-      // StartDate: ['', [Validators.required]],
-      // EndDate: [''],
-
-     //employee details
-
-
-
-
-
-
-
-      // BusinessRegisteredInSCC: [],
-      // VendorTypeId: [],
-      // EIN_SSN:[],
-
-
-      // OutreachEmailOptIn:[],
-      // business_ssn: [],
-      // BusinessSize: [],
-      // BusinessRegisteredInDistrict:[],
-      // BusinessIsFranchisee: [],
-      // BEClassificationId: [],
-
-
-
 
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
@@ -200,49 +179,6 @@ this.vendorform_individual = this.frmbuilder.group({
    OutreachEmailOptIn:[],
    UserStatusId:['N'],
 
-
-
-
-  // legalbusiness: [''],
-
-  // tradeName: [],
-  // UserTypeId:  ['', [Validators.required]],
-
-
-
-
-
-
-
-
-
-
-  // DistrictId: ['', [Validators.required]],
-
-  // StartDate: ['', [Validators.required]],
-  // EndDate: [''],
-  // VendorTypeId: [],
-
-
-
-
-
-
-  // business_ssn: [],
-  // BusinessSize: [],
-  // BusinessRegisteredInDistrict:[],
-  // BusinessIsFranchisee: [],
-  // BEClassificationId: [],
-
-  // JobTitleId:[],
-  // EmploymentTypeId:[],
-  // JobStartDate: [],
-  // BusinessRegisteredInSCC: [],
-
-  // Phone:[],
-  // mail:[],
-  // AdminUser: [],
-
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 this.vendorform_business = this.frmbuilder.group({
@@ -270,38 +206,6 @@ this.vendorform_business = this.frmbuilder.group({
    OutreachEmailOptIn:[true],
   UserStatusId:['N'],
 
-
-  // legalbusiness: [''],
-
-  // tradeName: [],
-  // UserTypeId:  ['', [Validators.required]],
-
-  // DistrictId: ['', [Validators.required]],
-
-  // StartDate: ['', [Validators.required]],
-  // EndDate: [''],
-  // VendorTypeId: [],
-  // EIN_SSN:[],
-
-
-
-
-
-
-
-
-
-  // BEClassificationId: [],
-
-  // JobTitleId:[],
-  // EmploymentTypeId:[],
-  // JobStartDate: [],
-
-
-  // Phone:[],
-  // AdminUser: [],
-
-
 },{validator: this.checkIfMatchingPasswords('UserPassword', 'conformpassword')});
 
 
@@ -309,7 +213,7 @@ this.vendorform_business = this.frmbuilder.group({
 }
 
 informationPopup(info:any) {
-  debugger
+  // debugger
   this.informationText = info;
   this.descInfo ='description';
   if(this.descInfo != undefined && this.descInfo != '' && this.descInfo != null)
@@ -322,6 +226,15 @@ informationPopup(info:any) {
   }, (reason) => {
     this.closeResult = `Dismissed ${this.ModalDismissReasons(reason)}`;
   });
+}
+private ModalDismissReasons(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return `with: ${reason}`;
+  }
 }
 
 
