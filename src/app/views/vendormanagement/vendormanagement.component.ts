@@ -932,9 +932,49 @@ businessUserdata(vendorMgmt:any){
     this.http.post(config_url+'vendor/UpdVendorNew',vendorMgmt).subscribe(
     // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
 
-      data => {
+      (data:any) => {
         console.log("data");
           console.log('POST Request is successful >>>>>>>>', data);
+          if(data != null && data.length >0)
+          {
+  
+  
+            var errorcode=data[0].ErrorCodeID;
+  
+            if(errorcode=="9999")
+            {
+  
+              Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'Successfully Updated',
+                showConfirmButton: false,
+                timer: 3000
+              });
+              this.router.navigate(['/VendorList']);
+            }
+       
+            else
+            {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+  
+              })
+              this.router.navigate(['/VendorList']);
+            }
+  
+          }
+          else
+          {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+  
+            })
+          }
 
       },
       success => {
