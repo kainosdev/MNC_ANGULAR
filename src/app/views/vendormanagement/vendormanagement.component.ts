@@ -439,8 +439,10 @@ export class VendormanagementComponent implements OnInit {
     this.Addressform.reset()
     var indexval=this.address_list.length;
     this.Addressform.patchValue({
-      index:indexval
-    })
+      index:indexval,
+      AddressId : 0,
+      VendorAddressPrimary:0
+   });
      this.address_submmited=false;
   }
 
@@ -467,10 +469,15 @@ export class VendormanagementComponent implements OnInit {
               timer: 3000
             })
              this.Addressform.reset()
+             this.Addressform.patchValue({
+              AddressId : 0,
+              VendorAddressPrimary:0
+           });
              this.address_submmited=false;
         },
         success => {
      
+          
            
         }
         );
@@ -546,6 +553,7 @@ export class VendormanagementComponent implements OnInit {
   }
   editaddress(data:any,i:any)
   {
+
     // debugger
    // this.address_list.splice(i,1);
     this.Addressform.patchValue({
@@ -561,6 +569,7 @@ export class VendormanagementComponent implements OnInit {
       StateId:data.StateId,
       StartDate: data.StartDate.split(' ')[0],
       EndDate:data.EndDate.split(' ')[0],
+      VendorAddressPrimary:data.VendorAddressPrimary
 
 
    });
