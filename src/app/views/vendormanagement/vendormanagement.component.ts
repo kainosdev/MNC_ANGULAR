@@ -232,15 +232,15 @@ export class VendormanagementComponent implements OnInit {
 
      this.Addressform = this.frmbuilder.group({
       index:0,
-      AddressTypeId:['',[Validators.required]],
+      AddressTypeId:[],
       Address1:['', [Validators.required]],
       Address2:[],
       CityId:['', [Validators.required]],
-      CountryId:['',[Validators.required]],
+      CountryId:[],
       Zipcode:['', [Validators.required]],
       StartDate:['', [Validators.required]],
       EndDate:['', [Validators.required]],
-      DistrictId:['',[Validators.required]],
+      DistrictId:[],
       StateId:['', [Validators.required]],
       AddressId:[0],
       VendorAddressPrimary:[0],
@@ -448,30 +448,27 @@ export class VendormanagementComponent implements OnInit {
   {
 
       debugger
-      this.address_submmited=true;
+
       if (this.Addressform.valid) {
 
 
       this.Addressform.value.VendorId=localStorage.getItem('vendoridSes');
       this.Addressform.value.CreatedUserId=localStorage.getItem("CreatedUseridses");
-      this.http.post('http://localhost:8080/vendor/AddUpdVendorAddress',this.Addressform.value).subscribe(
+      this.http.post('http://localhost/MNC_PHP_API/vendor/UpdVendorNew',this.Addressform.value).subscribe(
         data => {
           console.log("data");
             console.log('POST Request is successful >>>>>>>>', data);
-            this.GetVendorAddressById()
-            Swal.fire({
-              position: 'top',
-              icon: 'success',
-              title: 'Address Successfully Updated',
-              showConfirmButton: false,
-              timer: 3000
-            })
-             this.Addressform.reset()
-             this.address_submmited=false;
+
         },
         success => {
-     
-           
+          this.GetVendorAddressById()
+          Swal.fire({
+            position: 'top',
+            icon: 'success',
+            title: 'Address Successfully Updated',
+            showConfirmButton: false,
+            timer: 3000
+          })
         }
         );
       }
@@ -546,6 +543,7 @@ export class VendormanagementComponent implements OnInit {
   }
   editaddress(data:any,i:any)
   {
+
     // debugger
    // this.address_list.splice(i,1);
     this.Addressform.patchValue({
@@ -561,6 +559,7 @@ export class VendormanagementComponent implements OnInit {
       StateId:data.StateId,
       StartDate: data.StartDate.split(' ')[0],
       EndDate:data.EndDate.split(' ')[0],
+      VendorAddressPrimary:data.VendorAddressPrimary
 
 
    });

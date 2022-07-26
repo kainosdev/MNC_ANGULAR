@@ -237,13 +237,14 @@
                                           <div class="row g-4 p-1">
                                                   <div class="col-md">
                                                           <div class="form-floating">
-                                                                  <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId">
-                                                                    <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId">
-                                                                      {{addresstype.AddressTypeDesc}}
-                                                                    </option>
-                                                                </select>
+                                                                  <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId" 
+                                                                 >
+                                                                 <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId">
+                                                                  {{addresstype.AddressTypeDesc}}
+                                                                 </option>
+                                                              </select>
                                                               <div  class="help-block text-danger">
-                                                              <div *ngIf="address_submmited && af.AddressTypeId.errors">ADDRESS TYPE is required</div>
+                                                              <div *ngIf="submitted2 && rcf2.AddressTypeId.errors">ADDRESS TYPE is required</div>
                                                               </div>
                                                                 <label class="common_lbl" for="AddressTypeId">ADDRESS TYPE *</label>
     
@@ -358,7 +359,7 @@
                                                             </label></div>
                                                         
                                                           <div class="mt-2"><label class="switch float-right">
-                                                              <input  type="checkbox" name="VendorAddressPrimary"  id="VendorAddressPrimary" formControlName="VendorAddressPrimary" checked>
+                                                              <input  type="checkbox" name="VendorAddressPrimary" (change)="addressprimarychange($event,Addressform.get('index').value)" id="VendorAddressPrimary" formControlName="VendorAddressPrimary" checked>
                                                               <span class="slider round"></span>
                                                             </label>
                                                           </div>
