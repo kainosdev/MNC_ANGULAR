@@ -439,8 +439,10 @@ export class VendormanagementComponent implements OnInit {
     this.Addressform.reset()
     var indexval=this.address_list.length;
     this.Addressform.patchValue({
-      index:indexval
-    })
+      index:indexval,
+      AddressId : 0,
+      VendorAddressPrimary:0
+   });
      this.address_submmited=false;
   }
 
@@ -467,6 +469,10 @@ export class VendormanagementComponent implements OnInit {
               timer: 3000
             })
              this.Addressform.reset()
+             this.Addressform.patchValue({
+              AddressId : 0,
+              VendorAddressPrimary:0
+           });
              this.address_submmited=false;
         },
         success => {
