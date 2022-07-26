@@ -40,6 +40,8 @@ export class BidListComponent implements OnInit {
     };
   }
 
+
+  
   displayStyle = "none";
 
   rerender(): void {
