@@ -921,6 +921,9 @@ businessUserdata(vendorMgmt:any){
     this.submitted2 = true;
     this.issubmiited=true;
     if (this.VendorMgmtBusiness.valid) {
+      vendorMgmt.VendorId=localStorage.getItem('vendoridSes');
+      vendorMgmt.CreatedUserId=localStorage.getItem("CreatedUseridses");
+      vendorMgmt.VendorTypeId=localStorage.getItem('vendortype')
       vendorMgmt.Newcontact = this.contact_list;
       vendorMgmt.Address = this.address_list;
 
@@ -953,8 +956,13 @@ businessUserdata(vendorMgmt:any){
   this.indsubmitted = true;
   this.issubmiited=true;
   if (this.VendorMgmtIndividual.valid) {
-    vendorMgmt.Newcontact = this.contact_list;
-    vendorMgmt.Address = this.address_list;
+    vendorMgmt.VendorId=localStorage.getItem('vendoridSes');
+    vendorMgmt.CreatedUserId=localStorage.getItem("CreatedUseridses");
+    vendorMgmt.VendorTypeId=localStorage.getItem('vendortype')
+   
+    
+    // vendorMgmt.Newcontact = this.contact_list;
+    // vendorMgmt.Address = this.address_list;
 
 
   this.http.post('http://localhost/MNC_PHP_API/vendor/UpdVendorNew',vendorMgmt).subscribe(
