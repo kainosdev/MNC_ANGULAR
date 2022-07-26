@@ -33,7 +33,12 @@ export class VendorDashboardComponent implements OnInit {
   @ViewChild(DataTableDirective)
   dtElement: DataTableDirective | any;
   dtOptions: DataTables.Settings = {};
+
+
   dtTrigger: Subject<any> = new Subject<void>();
+
+
+
   legalname: string | null;
   Firstname: string | null;
   LastName: string | null;
@@ -51,7 +56,6 @@ export class VendorDashboardComponent implements OnInit {
 
 
       this.dtTrigger.next(this.vendoractivelist);
-      console.log (this.vendoractivelist)
       this.dtTrigger.next(this.BidsSubmittedlist);
       this.dtTrigger.next(this.ResponseNotSubmittedlist);
       this.dtOptions = {
@@ -84,7 +88,7 @@ export class VendorDashboardComponent implements OnInit {
       // Call the dtTrigger to rerender again
   this.dtTrigger.next(this.vendoractivelist);
   this.dtTrigger.next(this.BidsSubmittedlist);
-    this.dtTrigger.next(this.ResponseNotSubmittedlist);
+  this.dtTrigger.next(this.ResponseNotSubmittedlist);
 
 
       // this.dtTrigger.next(this.Bidslist);
