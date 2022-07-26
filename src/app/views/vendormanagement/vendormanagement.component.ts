@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { config_url } from '../shared/constant';
 import Swal from 'sweetalert2';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Router,ActivatedRoute,ParamMap, Params, NavigationEnd  } from '@angular/router';
 
 
 @Component({
@@ -125,7 +126,7 @@ export class VendormanagementComponent implements OnInit {
   ZCSlistdata:any;
 
   constructor(
-    private frmbuilder: FormBuilder,private http: HttpClient,private modalService: NgbModal,
+    private frmbuilder: FormBuilder,private http: HttpClient,private modalService: NgbModal,private router:Router,
   ) {
 
     // this.contactsform = this.frmbuilder.group({
@@ -965,12 +966,52 @@ businessUserdata(vendorMgmt:any){
     // vendorMgmt.Address = this.address_list;
 
 
-  this.http.post(config_url+'vendor/UpdVendorNew',vendorMgmt).subscribe(
-  // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
+  this.http.post(config_url+'vendor/UpdVenIndividual',vendorMgmt).subscribe(
+  // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdVenIndividual',vendorMgmt).subscribe(
 
-    data => {
+    (data:any) => {
       console.log("data");
         console.log('POST Request is successful >>>>>>>>', data);
+        if(data != null && data.length >0)
+        {
+
+
+          var errorcode=data[0].ErrorCodeID;
+
+          if(errorcode=="9999")
+          {
+
+            Swal.fire({
+              position: 'top',
+              icon: 'success',
+              title: 'Successfully Updated',
+              showConfirmButton: false,
+              timer: 3000
+            });
+            this.router.navigate(['/VendorList']);
+          }
+     
+          else
+          {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+
+            })
+            this.router.navigate(['/VendorList']);
+          }
+
+        }
+        else
+        {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+
+          })
+        }
 
     },
     success => {
