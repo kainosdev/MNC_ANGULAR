@@ -6,6 +6,7 @@ import { config_url } from '../shared/constant';
 import { MustMatch } from '../_helpers/must-match.validator';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -64,8 +65,14 @@ public mask2 = [/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/]
 countrytypePastAddr:any;
 ZCSlistdata:any;
 
+informationText:any;
+descInfo: any;
+closeResult: any;
+ModalDismissReasons: any;
 
-  constructor(private frmbuilder: FormBuilder,  private http: HttpClient,
+
+
+  constructor(private frmbuilder: FormBuilder,  private http: HttpClient,private modalService: NgbModal,
   //  private toastr: ToastrService
     ) { }
 
@@ -300,6 +307,24 @@ this.vendorform_business = this.frmbuilder.group({
 
 
 }
+
+informationPopup(info:any) {
+  debugger
+  this.informationText = info;
+  this.descInfo ='description';
+  if(this.descInfo != undefined && this.descInfo != '' && this.descInfo != null)
+  {
+    this.informationText = this.descInfo;
+  }
+  this.modalService.dismissAll('');
+  this.modalService.open(info, { windowClass: 'info-popup' }).result.then((result:any) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.ModalDismissReasons(reason)}`;
+  });
+}
+
+
 
 phoneformat= /^[0-9]{10}$/;
 socialno =  /^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$/;
@@ -1210,4 +1235,5 @@ number(event: any) {
     })
 
     }
+   
 }

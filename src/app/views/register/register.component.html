@@ -77,7 +77,7 @@
 
             <div class="row mt-2">
                 <div class="form-group col-xs-4 col-md-2 col-sm-2">
-                    <label class="labelwidth">First Name<span class="requiredfield ">  *</span></label>
+                    <label class="labelwidth">First Name<span class="requiredfield"> *</span></label>
 
               </div>
               <div class="form-group col-xs-4 col-lg-3 col-md-4 col-sm-4">
@@ -308,7 +308,7 @@
                                 <div *ngIf="submitted && rcf.UserId.errors?.required">User Id is required</div>
                                 <div *ngIf="submitted && rcf.UserId.errors?.pattern">Pattern Not matched</div>
                         </div>
-                                <label class="common_lbl" for="social_no">USER ID</label>
+                                <label class="common_lbl" for="social_no">USER ID<span class="requiredfield ">  *</span></label>
                                  </div>
                          </div>
         
@@ -318,7 +318,7 @@
                                <div  class="help-block text-danger">
                                 <div *ngIf="submitted && rcf.FirstName.errors">First Name is required</div>
                                 </div>
-                                <label class="common_lbl" for="social_no">FIRST NAME</label>
+                                <label class="common_lbl" for="social_no">FIRST NAME<span class="requiredfield ">  *</span></label>
                                  </div>
                          </div>
         
@@ -328,7 +328,7 @@
                                <div  class="help-block text-danger">
                                 <div *ngIf="submitted && rcf.LastName.errors">Last Name is required</div>
                                  </div>
-                                <label class="common_lbl" for="social_no">LAST NAME</label>
+                                <label class="common_lbl" for="social_no">LAST NAME<span class="requiredfield ">  *</span></label>
                                  </div>
                          </div>
                          <div class="col-md">
@@ -350,7 +350,7 @@
                                        <div  class="help-block text-danger">
                                         <div *ngIf="submitted && rcf.UserPassword.errors">Password is required</div>
                                          </div>
-                                        <label class="common_lbl" for="social_no">PASSWORD</label>
+                                        <label class="common_lbl" for="social_no">PASSWORD<span class="requiredfield ">  *</span></label>
                                          </div>
                                  </div>
                 
@@ -362,7 +362,7 @@
                                         <div *ngIf="submitted && (rcf.conformpassword.errors != null && rcf.conformpassword.errors.notEquivalent)">Confirm Password is not matched.</div>
                 
                                 </div>
-                                        <label class="common_lbl" for="social_no">CONFIRM PASSWORD</label>
+                                        <label class="common_lbl" for="social_no">CONFIRM PASSWORD<span class="requiredfield ">  *</span></label>
                                          </div>
                                  </div>
                 
@@ -386,14 +386,14 @@
                                                <div  class="help-block text-danger">
                                                 <div *ngIf="submitted && rcf.Address1.errors">Address is required</div>
                                             </div>
-                                                <label class="common_lbl" for="social_no">ADDRESS</label>
+                                                <label class="common_lbl" for="social_no">ADDRESS<span class="requiredfield ">  *</span></label>
                                                  </div>
                                          </div>
                         
                                          <div class="col-md">
                                                 <div class="form-floating">
                                                <input type="text" class="form-control" formControlName="Address2"  id="currentsecadd_id" (keypress)="inputErrorMessage('currentsecadd_id')">
-                                                  <label class="common_lbl" for="social_no">ADDRESS LINE 2</label>
+                                                  <label class="common_lbl" for="social_no">ADDRESS LINE 2 </label>
                                                  </div>
                                          </div>
 
@@ -410,7 +410,7 @@
                                                  <div  class="help-block text-danger">
                                                     <div *ngIf="submitted && rcf.CityId.errors">City is required</div>
                                                 </div>
-                                                  <label class="common_lbl" for="social_no">CITY</label>
+                                                  <label class="common_lbl" for="social_no">CITY<span class="requiredfield ">  *</span></label>
                                                 </div>
                                               </div>
                                          
@@ -427,7 +427,7 @@
                                               <div  class="help-block text-danger">
                                                 <div *ngIf="submitted && rcf.Zipcode.errors">Zip Code is required</div>
                                             </div>
-                                                <label class="common_lbl" for="social_no">ZIP CODE</label>
+                                                <label class="common_lbl" for="social_no">ZIP CODE<span class="requiredfield ">  *</span></label>
                                                  </div>
                                          </div>
                         
@@ -446,7 +446,7 @@
                                                                   <div  class="help-block text-danger">
                                                         <div *ngIf="submitted && rcf.DistrictId.errors">County is required</div>
                                                          </div>
-                                                        <label class="common_lbl" for="social_no">COUNTY</label>
+                                                        <label class="common_lbl" for="social_no">COUNTY<span class="requiredfield ">  *</span></label>
                                                          </div>
                                                  </div>
                                 
@@ -462,7 +462,7 @@
                                                       <div  class="help-block text-danger">
                                                         <div *ngIf="submitted && rcf.Zipcode.errors">State/Province is required</div>
                                                     </div>
-                                                        <label class="common_lbl" for="social_no">STATE/PROVINCE</label>
+                                                        <label class="common_lbl" for="social_no">STATE/PROVINCE<span class="requiredfield ">  *</span></label>
                                                          </div>
                                                  </div>
 
@@ -479,7 +479,7 @@
                                                          <div  class="help-block text-danger">
                                                                 <div *ngIf="submitted && rcf.CountryId.errors">Country is required</div>
                                                         </div>
-                                                          <label class="common_lbl" for="social_no">COUNTRY</label>
+                                                          <label class="common_lbl" for="social_no">COUNTRY<span class="requiredfield ">  *</span></label>
                                                         </div>
                                                       </div>
 
@@ -506,7 +506,7 @@
                                  <div  class="help-block text-danger">
                                         <div *ngIf="submitted && rcf.JobTitleId.errors">Job Title is required</div>
                                 </div>
-                        <label class="common_lbl" for="social_no">JOB TITLE</label>
+                        <label class="common_lbl" for="social_no">JOB TITLE<span class="requiredfield ">  *</span></label>
                          </div>
                  </div>
 
@@ -522,7 +522,7 @@
                                  <div  class="help-block text-danger">
                                         <div *ngIf="submitted && rcf.EmploymentTypeId.errors">Employment Type is required</div>
                                 </div>
-                        <label class="common_lbl" for="social_no">EMPLOYMENT TYPE</label>
+                        <label class="common_lbl" for="social_no">EMPLOYMENT TYPE<span class="requiredfield ">  *</span></label>
                          </div>
                  </div>
 
@@ -532,7 +532,7 @@
                        <div  class="help-block text-danger">
                         <div *ngIf="submitted && rcf.Phone.errors">Phone Number is required</div>
                        </div>
-                        <label class="common_lbl" for="social_no">PHONE NUMBER</label>
+                        <label class="common_lbl" for="social_no">PHONE NUMBER<span class="requiredfield ">  *</span></label>
                          </div>
                  </div>
 
@@ -542,7 +542,7 @@
                        <div  class="help-block text-danger">
                         <div *ngIf="submitted && rcf.Email.errors">Email Address is required</div>
                        </div>
-                        <label class="common_lbl" for="social_no">EMAIL ADDRESS</label>
+                        <label class="common_lbl" for="social_no">EMAIL ADDRESS<span class="requiredfield ">  *</span></label>
                          </div>
                  </div>
 
@@ -556,7 +556,7 @@
                        <div  class="help-block text-danger">
                         <div *ngIf="submitted && rcf.JobStartDate.errors">Start Date is required</div>
                          </div>
-                        <label class="common_lbl" for="social_no">START DATE</label>
+                        <label class="common_lbl" for="social_no">START DATE<span class="requiredfield ">  *</span></label>
                          </div>
                  </div>
 
@@ -574,15 +574,7 @@
           </label>
         </div>
       </div>
-   <!-- <div class="form-floating">
-                                <div class="btn-group btn-toggle">  
-                                         <label class="question_font" style="width: 181px;">ADMIN USER?</label> 
-                                         <label class="switch" for="checkbox" >
-                                                <input type="checkbox" id="checkbox" formControlName="AdminUser" />
-                                                <div class="slider round"></div>
-                                              </label>
-                                        </div>
-                             </div> -->
+  
                  </div>
 
                  <div class="col-md">
@@ -623,7 +615,7 @@
                         <div *ngIf="submitted && vif.UserId.errors?.required">User Id is required</div>
                         <div *ngIf="submitted && vif.UserId.errors?.pattern">Pattern Not matched</div>
                     </div>
-                        <label class="common_lbl" for="social_no">USER ID</label>
+                        <label class="common_lbl" for="social_no">USER ID<span class="requiredfield ">  *</span></label>
                          </div>
                  </div>
 
@@ -633,7 +625,7 @@
                          <div  class="help-block text-danger">
                               <div *ngIf="submitted && vif.FirstName.errors">First Name is required</div>
                            </div>
-                        <label class="common_lbl" for="social_no">FIRST NAME</label>
+                        <label class="common_lbl" for="social_no">FIRST NAME <span class="requiredfield ">  *</span></label>
                          </div>
                  </div>
 
@@ -643,7 +635,7 @@
                        <div  class="help-block text-danger">
                         <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
                         </div>
-                        <label class="common_lbl" for="social_no">LAST NAME</label>
+                        <label class="common_lbl" for="social_no">LAST NAME<span class="requiredfield ">  *</span></label>
                          </div>
                  </div>
                  <div class="col-md">
@@ -666,7 +658,7 @@
                                <div  class="help-block text-danger">
                                 <div *ngIf="submitted && vif.UserPassword.errors">Password is required</div>
                                  </div>
-                                <label class="common_lbl" for="social_no">PASSWORD</label>
+                                <label class="common_lbl" for="social_no">PASSWORD<span class="requiredfield ">  *</span></label>
                                  </div>
                          </div>
                          <div class="col-md">
@@ -676,27 +668,17 @@
                                 <div *ngIf="submitted && (vif.conformpassword.errors != null && vif.conformpassword.errors.required)">Confirm Password is required.</div>
                                 <div *ngIf="submitted && (vif.conformpassword.errors != null && vif.conformpassword.errors.notEquivalent)">Confirm Password is not matched.</div>
                                  </div>
-                                <label class="common_lbl" for="social_no">CONFIRM PASSWORD</label>
+                                <label class="common_lbl" for="social_no">CONFIRM PASSWORD<span class="requiredfield ">  *</span></label>
                                  </div>
                          </div>
                          <div class="col-md">
                                 <div class="form-floating">
-                               <!-- <input type="password" class="form-control" formControlName="conformpassword" id="comformpswd_id" (keypress)="inputErrorMessage('comformpswd_id');removepassvalidation()">
-                               <div  class="help-block text-danger">
-                                <div *ngIf="submitted && (vif.conformpassword.errors != null && vif.conformpassword.errors.required)">Confirm Password is required.</div>
-                                <div *ngIf="submitted && (vif.conformpassword.errors != null && vif.conformpassword.errors.notEquivalent)">Confirm Password is not matched.</div>
-                                 </div>
-                                <label class="common_lbl" for="social_no">Confirm Password</label> -->
+                             
                                  </div>
                          </div>
                          <div class="col-md">
                                 <div class="form-floating">
-                               <!-- <input type="password" class="form-control" formControlName="conformpassword" id="comformpswd_id" (keypress)="inputErrorMessage('comformpswd_id');removepassvalidation()">
-                               <div  class="help-block text-danger">
-                                <div *ngIf="submitted && (vif.conformpassword.errors != null && vif.conformpassword.errors.required)">Confirm Password is required.</div>
-                                <div *ngIf="submitted && (vif.conformpassword.errors != null && vif.conformpassword.errors.notEquivalent)">Confirm Password is not matched.</div>
-                                 </div>
-                                <label class="common_lbl" for="social_no">Confirm Password</label> -->
+       
                                  </div>
                          </div>
 
@@ -709,7 +691,7 @@
                                <div  class="help-block text-danger">
                                 <div *ngIf="submitted && vif.Address1.errors">Address is required</div>
                             </div>
-                                <label class="common_lbl" for="social_no">ADDRESS</label>
+                                <label class="common_lbl" for="social_no">ADDRESS <span class="requiredfield ">  *</span></label>
                                  </div>
                          </div>
                          <div class="col-md">
@@ -731,7 +713,7 @@
                                          <div  class="help-block text-danger">
                                                 <div *ngIf="submitted && vif.CityId.errors">City is required</div>
                                              </div>
-                                          <label class="common_lbl" for="social_no">CITY</label>
+                                          <label class="common_lbl" for="social_no">CITY <span class="requiredfield ">  *</span></label>
                                         </div>
                                       </div>
                                  <div class="col-md">
@@ -745,7 +727,7 @@
                                           <div  class="help-block text-danger">
                                                 <div *ngIf="submitted && vif.Zipcode.errors">Address Line 2 is required</div>
                                              </div>
-                                          <label class="common_lbl" for="floatingSelectGrid">ZIP CODE</label>
+                                          <label class="common_lbl" for="floatingSelectGrid">ZIP CODE<span class="requiredfield ">  *</span></label>
                                         </div>
                                       </div>
                                   </div>
@@ -762,7 +744,7 @@
                                                   <div  class="help-block text-danger">
                                                         <div *ngIf="submitted && vif.county_name.errors">County is required</div>
                                                   </div>
-                                                  <label class="common_lbl" for="floatingSelectGrid">COUNTY</label>
+                                                  <label class="common_lbl" for="floatingSelectGrid">COUNTY <span class="requiredfield ">  *</span></label>
                                                 </div>
                                               </div>
                                          <div class="col-md">
@@ -776,7 +758,7 @@
                                                   <div  class="help-block text-danger">
                                                         <div *ngIf="submitted && vif.StateId.errors">State/Province is required</div>
                                                  </div>
-                                                  <label class="common_lbl" for="floatingSelectGrid">STATE/PROVINCE</label>
+                                                  <label class="common_lbl" for="floatingSelectGrid">STATE/PROVINCE<span class="requiredfield ">  *</span></label>
                                                 </div>
                                               </div>
 
@@ -791,17 +773,12 @@
           <div  class="help-block text-danger">
                 <div *ngIf="submitted && vif.CountryId.errors">Country is required</div>
           </div>
-          <label class="common_lbl" for="floatingSelectGrid">COUNTRY</label>
+          <label class="common_lbl" for="floatingSelectGrid">COUNTRY <span class="requiredfield ">  *</span></label>
         </div>
       </div>
                                          <div class="col-md">
                                                 <div class="form-floating">
-                                               <!-- <input type="password" class="form-control" formControlName="conformpassword" id="comformpswd_id" (keypress)="inputErrorMessage('comformpswd_id');removepassvalidation()">
-                                               <div  class="help-block text-danger">
-                                                <div *ngIf="submitted && (vif.conformpassword.errors != null && vif.conformpassword.errors.required)">Confirm Password is required.</div>
-                                                <div *ngIf="submitted && (vif.conformpassword.errors != null && vif.conformpassword.errors.notEquivalent)">Confirm Password is not matched.</div>
-                                                 </div>
-                                                <label class="common_lbl" for="social_no">Confirm Password</label> -->
+                                          
                                                  </div>
                                          </div>
                 
@@ -818,7 +795,7 @@
                <div  class="help-block text-danger">
                 <div *ngIf="submitted && vif.EIN_SSN.errors?.required">Social Security Number is required</div>
                  </div>
-                <label class="common_lbl" for="social_no">SOCIAL SECURITY NUMBER</label>
+                <label class="common_lbl" for="social_no">SOCIAL SECURITY NUMBER <span class="requiredfield ">  *</span></label>
                  </div>
          </div>
 
@@ -828,7 +805,7 @@
                <div  class="help-block text-danger">
                 <div *ngIf="submitted && vif.phoneindividual.errors">Phone Number is required</div>
                 </div>
-                <label class="common_lbl" for="social_no">PHONE NUMBER</label>
+                <label class="common_lbl" for="social_no">PHONE NUMBER <span class="requiredfield ">  *</span></label>
                  </div>
          </div>
 
@@ -838,7 +815,7 @@
                <div  class="help-block text-danger">
                 <div *ngIf="submitted && vif.Mailindividual.errors">Email Address is required</div> 
                 </div>
-                <label class="common_lbl" for="social_no">EMAIL ADDRESS</label>
+                <label class="common_lbl" for="social_no">EMAIL ADDRESS <span class="requiredfield ">  *</span></label>
                  </div>
          </div>
          <div class="col-md">
@@ -851,20 +828,7 @@
                           </label>
                         </div>
                         </div>
-
-
-                <!-- <div class="form-floating">
-                        <div class="btn-group btn-toggle">  
-                                 <label class="question_font" style="width: 181px;">OPT-IN FOR OUTREACH EMAILS?</label> 
-                                 <button class="btn btn-xs ml-1 btn-primary active height">Yes</button>  
-                                 <button class="btn btn-xs  btn-outline-primary height">No</button> 
-                                 <label class="switch">
-                                        <input  type="checkbox" name="outreach_active" id="outreach_activeid" formControlName="OutreachEmailOptIn" checked>
-                                        <span class="slider round"></span>
-                                </label>
-                                </div>
-                     </div> -->
-         </div>
+                </div>
 
         </div>
          </form>
@@ -888,7 +852,9 @@
                                 <div *ngIf="submitted && vbf.UserId.errors?.required">User Id is required</div>
                                 <div *ngIf="submitted && vbf.UserId.errors?.pattern">Pattern Not matched</div>
                                  </div>
-                                <label class="common_lbl" for="social_no">USER ID</label>
+                                <label class="common_lbl" for="social_no">USER ID <span class="requiredfield ">  *</span></label>
+                                <span><img class="m-1 question_mark"
+                                        (mouseover)="informationPopup(info)" ></span> 
                                  </div>
                          </div>
         
@@ -898,7 +864,7 @@
                                <div  class="help-block text-danger">
                                 <div *ngIf="submitted && vbf.FirstName.errors">Legal Business Name is required</div>
                                 </div>
-                                <label class="common_lbl" for="social_no">LEGAL BUSINESS NAME</label>
+                                <label class="common_lbl" for="social_no">LEGAL BUSINESS NAME <span class="requiredfield ">  *</span></label>
                                  </div>
                          </div>
         
@@ -908,7 +874,7 @@
                                <div  class="help-block text-danger">
                                 <div *ngIf="submitted && vbf.LastName.errors">Trade Name is required</div>
                                 </div>
-                                <label class="common_lbl" for="social_no">TRADE NAME</label>
+                                <label class="common_lbl" for="social_no">TRADE NAME <span class="requiredfield ">  *</span></label>
                                  </div>
                          </div>
                          <div class="col-md">
@@ -931,7 +897,7 @@
                                        <div  class="help-block text-danger">
                                         <div *ngIf="submitted && vbf.UserPassword.errors">Password is required</div>
                                           </div>
-                                        <label class="common_lbl" for="social_no">PASSWORD</label>
+                                        <label class="common_lbl" for="social_no">PASSWORD <span class="requiredfield ">  *</span></label>
                                          </div>
                                  </div>
                                 <div class="col-md">
@@ -941,26 +907,18 @@
                                          <div *ngIf="submitted && (vbf.conformpassword.errors != null && vbf.conformpassword.errors.required)">Confirm Password is required.</div>
                                         <div *ngIf="submitted && (vbf.conformpassword.errors != null && vbf.conformpassword.errors.notEquivalent)">Confirm Password is not matched.</div>
                                            </div>
-                                        <label class="common_lbl" for="social_no">CONFIRM PASSWORD</label>
+                                        <label class="common_lbl" for="social_no">CONFIRM PASSWORD <span class="requiredfield ">  *</span></label>
                                          </div>
                                  </div>
                 
                                  <div class="col-md">
                                         <div class="form-floating">
-                                       <!-- <input type="text" class="form-control" formControlName="LastName" id="lastname_id" (keypress)="inputErrorMessage('lastname_id');alpha($event)">
-                                       <div  class="help-block text-danger">
-                                        <div *ngIf="submitted && vbf.LastName.errors">Trade Name is required</div>
-                                        </div>
-                                        <label class="common_lbl" for="social_no">TRADE NAME</label> -->
+                                     
                                          </div>
                                  </div>
                                  <div class="col-md">
                                         <div class="form-floating">
-                                       <!-- <input type="text" class="form-control"  placeholder="Last Name"> -->
-                                       <!-- <div  class="help-block text-danger">
-                                        <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
-                                        </div> -->
-                                        <!-- <label class="common_lbl" for="social_no">ALLAS NAME</label> -->
+                                      
                                          </div>
                                  </div>
                 
@@ -974,7 +932,7 @@
                                                <div  class="help-block text-danger">
                                                 <div *ngIf="submitted && vbf.Address1.errors">Address is required</div>
                                             </div>
-                                                <label class="common_lbl" for="social_no">ADDRESS</label>
+                                                <label class="common_lbl" for="social_no">ADDRESS <span class="requiredfield ">  *</span></label>
                                                  </div>
                                          </div>
                                          <div class="col-md">
@@ -995,7 +953,7 @@
                                                   <div  class="help-block text-danger">
                                                         <div *ngIf="submitted && vbf.CityId.errors">City is required</div>
                                                     </div>
-                                                  <label class="common_lbl" for="floatingSelectGrid">CITY</label>
+                                                  <label class="common_lbl" for="floatingSelectGrid">CITY <span class="requiredfield ">  *</span></label>
                                                 </div>
                                               </div>
 
@@ -1009,7 +967,7 @@
                                                                  <div  class="help-block text-danger">
                                                                        <div *ngIf="submitted && vbf.Zipcode.errors">Zip Code is required</div>
                                                                    </div>
-                                                       <label class="common_lbl" for="social_no">ZIP CODE</label>
+                                                       <label class="common_lbl" for="social_no">ZIP CODE <span class="requiredfield ">  *</span></label>
                                                         </div>
                                                 </div>
                                          
@@ -1026,7 +984,7 @@
                                                                   <div  class="help-block text-danger">
                                                                         <div *ngIf="submitted && vbf.county_name.errors">County is required</div>
                                                                 </div>
-                                                        <label class="common_lbl" for="social_no">COUNTY</label>
+                                                        <label class="common_lbl" for="social_no">COUNTY <span class="requiredfield ">  *</span></label>
                                                          </div>
                                                  </div>
 
@@ -1040,7 +998,7 @@
                                                                   <div  class="help-block text-danger">
                                                                         <div *ngIf="submitted && vbf.CountryId.errors">State/Province is required</div>
                                                                 </div>
-                                                        <label class="common_lbl" for="social_no">STATE/PROVINCE</label>
+                                                        <label class="common_lbl" for="social_no">STATE/PROVINCE <span class="requiredfield ">  *</span></label>
                                                          </div>
                                                  </div>
                                 
@@ -1055,20 +1013,13 @@
                                                           <div  class="help-block text-danger">
                                                                 <div *ngIf="submitted && vbf.CountryId.errors">Country is required</div>
                                                         </div>
-                                                          <label class="common_lbl" for="floatingSelectGrid">COUNTRY</label>
+                                                          <label class="common_lbl" for="floatingSelectGrid">COUNTRY <span class="requiredfield ">  *</span></label>
                                                         </div>
                                                       </div>
         
                                                 <div class="col-md">
                                                         <div class="form-floating">
-                                                                <!-- <select class="form-select"  formControlName="county_name" id="county_id" (change)="inputErrorMessage('county_id')">
-                                                                        <option *ngFor="let statelistid of statetype" value="{{statelistid.DistrictId}}">
-                                                                                {{statelistid.DistrictName}}</option>
-                                                                  </select> 
-                                                                  <div  class="help-block text-danger">
-                                                                        <div *ngIf="submitted && vbf.county_name.errors">County is required</div>
-                                                                </div>
-                                                        <label class="common_lbl" for="social_no">COUNTY</label> -->
+                                                               
                                                          </div>
                                                  </div>
                                 
@@ -1083,23 +1034,11 @@
                <div  class="help-block text-danger">
                 <div *ngIf="submitted && vbf.business_ssn.errors">EIN/Tax ID is required</div>
                  </div>
-                <label class="common_lbl" for="social_no">EIN/TAX ID</label>
+                <label class="common_lbl" for="social_no">EIN/TAX ID <span class="requiredfield ">  *</span></label>
                  </div>
          </div>
 
-  <!-- <div class="col-md">
-                <div class="form-floating">
-               <input type="text" class="form-control" [textMask]="{mask: mask}" formControlName="business_ssn" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')">
-               <div  class="help-block text-danger">
-                <div *ngIf="submitted && vif.business_ssn.errors">EIN/Tax ID is required</div>
-                 </div>
-                <label class="common_lbl" for="social_no">EIN/TAX ID</label>
-                 </div>
-         </div> -->
-
-
-
-        <div class="col-md">
+      <div class="col-md">
                 <div class="form-floating">
                         <select class="form-select"  formControlName="BEClassificationId" id="be_classificationid" (change)="inputErrorMessage('be_classificationid')">
                                 <option value="value"></option>
@@ -1109,7 +1048,7 @@
                             <div  class="help-block text-danger">
                 <div *ngIf="submitted && vbf.BEClassificationId.errors">BE Classification is required</div>
         </div>
-                <label class="common_lbl" for="social_no">BE CLASSIFICATION</label>
+                <label class="common_lbl" for="social_no">BE CLASSIFICATION <span class="requiredfield ">  *</span></label>
                  </div>
          </div>
 
@@ -1119,7 +1058,7 @@
                      <div  class="help-block text-danger">
                         <div *ngIf="submitted && vbf.BusinessSize.errors">Business Size is required</div>
                </div>
-                <label class="common_lbl" for="social_no">BUSINESS SIZE</label>
+                <label class="common_lbl" for="social_no">BUSINESS SIZE <span class="requiredfield ">  *</span></label>
                  </div>
          </div>
 
@@ -1129,7 +1068,7 @@
                <div  class="help-block text-danger">
                 <div *ngIf="submitted && vbf.Mailbusiness.errors">Email Address is required</div>
                 </div>
-                <label class="common_lbl" for="social_no">EMAIL ADDRESS</label>
+                <label class="common_lbl" for="social_no">EMAIL ADDRESS <span class="requiredfield ">  *</span></label>
                  </div>
          </div>
         
@@ -1151,16 +1090,6 @@
                                 </div>
                                 </div>
 
-
-                        <!-- <div class="form-floating">
-                                <div class="btn-group btn-toggle">  
-                                         <label class="question_font" style="width: 181px;">IS THIS BUSINESS REGISTERED WITH SCC OF THIS STATE?</label> 
-                                         <label class="switch">
-                                                <input  type="checkbox" name="BusinessRegisteredInSCC_name" id="BusinessRegisteredInSCC_id" formControlName="BusinessRegisteredInSCC" checked>
-                                                <span class="slider round"></span>
-                                        </label>
-                                         </div>
-                             </div> -->
                  </div>
        
                  <div class="col-md">
@@ -1192,16 +1121,6 @@
                                 </div>
                                 </div>
 
-
-                        <!-- <div class="form-floating">
-                                <div class="btn-group btn-toggle">  
-                                         <label class="question_font" style="width: 181px;">IS THIS BUSINESS A FRANCHISE?</label> 
-                                         <label class="switch">
-                                                <input  type="checkbox" name="BusinessIsFranchisee_name" id="BusinessIsFranchisee_id" formControlName="BusinessIsFranchisee" checked>
-                                                <span class="slider round"></span>
-                                        </label>
-                                          </div>
-                             </div> -->
                  </div>
        
                  <div class="col-md">
@@ -1217,83 +1136,11 @@
                                 </div>
                                 </div>
 
-                        <!-- <div class="form-floating">
-                                <div class="btn-group btn-toggle">  
-                                         <label class="question_font" style="width: 181px;">OPT-IN FOR OUTREACH EMAILS?</label>
-                                         <label class="switch">
-                                                <input  type="checkbox" name="OutreachEmailOptIn_name" id="OutreachEmailOptIn_id" formControlName="OutreachEmailOptIn" checked>
-                                                <span class="slider round"></span>
-                                        </label>
-                                   </div>
-                             </div> -->
                  </div>
                
        
                </div>
 
-
-   <!-- <div class="row mt-1">
-
-
-                    <div class="form-group col-xs-6 col-md-4 col-sm-4">
-                            <label class="">Is this Business registered with this State Corporation Commission ? </label>
-
-                    </div>
-                    <div class="form-group col-xs-4  col-md-1 col-sm-2">
-
-                            <label class="switch">
-                                    <input  type="checkbox" name="statecoms_active" id="statecms_activeid" formControlName="BusinessRegisteredInSCC" checked>
-                                    <span class="slider round"></span>
-                            </label>
-
-                    </div>
-                    <div class="form-group col-xs-4 col-md-4 col-sm-4">
-                            <label class="">Is this Business Registered with this County/State ?</label>
-
-                    </div>
-                    <div class="form-group col-xs-4  col-md-1 col-sm-2">
-
-                            <label class="switch">
-                                    <input  type="checkbox" name="state_active" id="state_activeid" formControlName="BusinessRegisteredInDistrict" checked>
-                                    <span class="slider round"></span>
-                                    </label>
-
-                    </div>
-
-                </div> -->
-
-            
-                <!-- <div class="row mt-1">
-                        <div class="form-group col-xs-4 col-md-4 col-sm-4">
-                                <label class="">Is this Business a Franchisee ? </label>
-
-                        </div>
-                        <div class="form-group col-xs-4  col-md-1 col-sm-2">
-
-                                <label class="switch">
-                                        <input  type="checkbox" name="franchisee_active" id="franchisee_activeid" formControlName="BusinessIsFranchisee" checked>
-                                        <span class="slider round"></span>
-                                        </label>
-
-                        </div>
-                        <div class="form-group col-xs-4 col-md-4 col-sm-4">
-                                <label class="">Would you like to receive outreach emails from us ?</label>
-
-                        </div>
-                        <div class="form-group col-xs-4  col-md-2 col-sm-2">
-
-                                <label class="switch">
-                                        <input  type="checkbox" name="outreach_active"  checked>
-                                        <span class="slider round"></span>
-                                </label>
-
-                        </div>
-                </div> -->
-
-            
-
-
-        <!-- </div> -->
         </form>
     </div>
     <!-- vendor form business ends here -->
@@ -1313,3 +1160,21 @@
 
 <div class="col-sm-1"></div>
 </div>
+
+<ng-template #info let-modal>
+        <div class="modal-header btn-primary">
+           <h4 class="modal-title"><img class="img-fluid" src="../../../assets/images/popup-info-icon.png">
+              Information
+           </h4>
+           <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"> <span
+                 aria-hidden="true">×</span> </button>
+        </div>
+        <div class="modal-body">
+          <div >
+            <p>User Id must have 6 digit numbers and 1 uppercase and 1 lower case and 1 special character.</p>
+            </div>     
+              <div class="text-center">
+              <button type="button" class="btn btn-primary fixedwidthcls" (click)="modal.dismiss('Cross click')">Ok</button>
+           </div>
+        </div>
+     </ng-template>
