@@ -458,9 +458,17 @@ export class VendormanagementComponent implements OnInit {
       this.Addressform.value.VendorId=localStorage.getItem('vendoridSes');
       this.Addressform.value.CreatedUserId=localStorage.getItem("CreatedUseridses");
       this.http.post(config_url+'vendor/AddUpdVendorAddress',this.Addressform.value).subscribe(
-        data => {
+        (data:any) => {
           console.log("data");
             console.log('POST Request is successful >>>>>>>>', data);
+            if(data != null && data.length >0)
+            {
+    
+    
+              var errorcode=data[0].ErrorCodeID;
+    
+              if(errorcode=="9999")
+              {
             this.GetVendorAddressById()
             Swal.fire({
               position: 'top',
@@ -475,6 +483,26 @@ export class VendormanagementComponent implements OnInit {
               VendorAddressPrimary:0
            });
              this.address_submmited=false;
+          }
+          else
+          {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+
+            })
+          }
+        }
+        else
+        {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+
+          })
+        }
         },
         success => {
      
@@ -643,31 +671,94 @@ export class VendormanagementComponent implements OnInit {
   {
     // debugger
 
-
+    debugger
     this.contact_submmited=true;
-    if (this.Contactform.invalid)
-    {
-        return;
-    }
-    else
-    {
-      let jobtitle = this.jobdetail.filter((y:any) => y.JobTitleId === this.Contactform.value.JobTitleId);
-      if (jobtitle.length > 0)
-      {
-         this.Contactform.value.JobTitleDesc=jobtitle[0].JobTitleDesc;
+    if (this.Contactform.valid) {
+
+
+    this.Contactform.value.VendorId=localStorage.getItem('vendoridSes');
+    this.Contactform.value.CreatedUserId=localStorage.getItem("CreatedUseridses");
+    this.http.post(config_url+'vendor/AddVendorBusinessContact',this.Contactform.value).subscribe(
+      (data:any) => {
+        console.log("data");
+          console.log('POST Request is successful >>>>>>>>', data);
+          if(data != null && data.length >0)
+          {
+  
+  
+            var errorcode=data[0].ErrorCodeID;
+  
+            if(errorcode=="9999")
+            {
+              this.GetVendorContactById()
+              Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'Contact Details Successfully Updated',
+                showConfirmButton: false,
+                timer: 3000
+              })
+              this.Contactform.reset()
+              var indexval=this.contact_list.length;
+              this.Contactform.patchValue({
+                index:indexval
+              })
+              this.contact_submmited=false;
+          }
+          else
+          {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+
+            })
+          }
+
       }
-      this.addlistToarray(this.Contactform.value,this.contact_list)
-     // this.contact_list.splice( index, 0, this.Contactform.value );
-     //this.contact_list.push(this.Contactform.value)
-     this.Contactform.reset()
-     var indexval=this.contact_list.length;
-     this.Contactform.patchValue({
-       index:indexval
-     })
+      else
+      {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
 
-     this.contact_submmited=false;
+        })
+      }
+      },
+      success => {
+   
 
+         
+      }
+      );
     }
+
+
+    // this.contact_submmited=true;
+    // if (this.Contactform.invalid)
+    // {
+    //     return;
+    // }
+    // else
+    // {
+    //   let jobtitle = this.jobdetail.filter((y:any) => y.JobTitleId === this.Contactform.value.JobTitleId);
+    //   if (jobtitle.length > 0)
+    //   {
+    //      this.Contactform.value.JobTitleDesc=jobtitle[0].JobTitleDesc;
+    //   }
+    //   this.addlistToarray(this.Contactform.value,this.contact_list)
+    //  // this.contact_list.splice( index, 0, this.Contactform.value );
+    //  //this.contact_list.push(this.Contactform.value)
+    //  this.Contactform.reset()
+    //  var indexval=this.contact_list.length;
+    //  this.Contactform.patchValue({
+    //    index:indexval
+    //  })
+
+    //  this.contact_submmited=false;
+
+    // }
   }
   removeContact(index:any,contactsform:any) {
 
@@ -962,7 +1053,7 @@ businessUserdata(vendorMgmt:any){
                 text: 'Something went wrong!',
   
               })
-              this.router.navigate(['/VendorList']);
+           
             }
   
           }
@@ -1039,7 +1130,7 @@ businessUserdata(vendorMgmt:any){
               text: 'Something went wrong!',
 
             })
-            this.router.navigate(['/VendorList']);
+           
           }
 
         }
