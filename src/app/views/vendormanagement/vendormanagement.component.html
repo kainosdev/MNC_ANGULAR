@@ -218,7 +218,7 @@
                                                     <td>{{item.CountryName}}</td>
                                                     <td>{{item.Zipcode}}</td>
                                                     <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
-                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(i)" ></i>
+                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(item.AddressId)" ></i>
                                                 </tr>
                                                 <tr *ngIf="address_list.length == 0">           
                                                     
@@ -748,7 +748,7 @@
                                                     <td>{{item.CountryName}}</td>
                                                     <td>{{item.Zipcode}}</td>
                                                     <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
-                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(i)" ></i>
+                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(item.AddressId)" ></i>
                                                 </tr>
                                                 <tr *ngIf="address_list.length == 0">           
                                                     
@@ -991,7 +991,7 @@
                                                    
                                                     <td>
                                                       <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editcontact(item,i)" ></i>
-                                                      <!-- <i class="fa fa-trash ml-1 cursor-pointer"  title="Delete"  (click)="deletecontact(i)" ></i> -->
+                                                      <i class="fa fa-trash ml-1 cursor-pointer"  title="Delete"  (click)="deletecontact(item.ContactId)" ></i>
                                                    </td>
                                                 </tr>
                                              

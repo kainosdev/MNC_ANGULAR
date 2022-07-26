@@ -446,7 +446,58 @@ export class VendormanagementComponent implements OnInit {
    });
      this.address_submmited=false;
   }
+  deleteaddress(id:any)
+  {
+    this.http.get(config_url+'vendor/DeleteVendorAdress?AddressId='+id).subscribe(
+      (data:any) => {
+        console.log("data");
+          console.log('Delete Request is successful >>>>>>>>', data);
+          if(data != null && data.length >0)
+          {
+  
+  
+            var errorcode=data[0].ErrorCodeID;
+  
+            if(errorcode=="9999")
+            {
+              this.GetVendorAddressById()
+              Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'Address Details Successfully deleted',
+                showConfirmButton: false,
+                timer: 3000
+              })
+             
+          }
+          else
+          {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
 
+            })
+          }
+
+      }
+      else
+      {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+
+        })
+      }
+      },
+      success => {
+   
+
+         
+      }
+      );
+  }
   addaddress(index:any)
   {
 
@@ -460,7 +511,7 @@ export class VendormanagementComponent implements OnInit {
       this.http.post(config_url+'vendor/AddUpdVendorAddress',this.Addressform.value).subscribe(
         (data:any) => {
           console.log("data");
-            console.log('POST Request is successful >>>>>>>>', data);
+            console.log('Add Request is successful >>>>>>>>', data);
             if(data != null && data.length >0)
             {
     
@@ -622,7 +673,7 @@ export class VendormanagementComponent implements OnInit {
    this.onchangecountystatecountry();
 
   }
-  deleteaddress(i:any)
+  deleteaddress1(i:any)
   {
     this.address_list.splice(i,1);
   }
@@ -645,7 +696,7 @@ export class VendormanagementComponent implements OnInit {
    });
 
   }
-  deletecontact(i:any)
+  deletecontact1(i:any)
   {
     this.contact_list.splice(i,1);
   }
@@ -667,6 +718,64 @@ export class VendormanagementComponent implements OnInit {
 
     this.contact_submmited=false;
   }
+  deletecontact(id:any)
+  {
+    this.http.get(config_url+'vendor/DeleteVendorContact?ContactId='+id).subscribe(
+      (data:any) => {
+        console.log("data");
+          console.log('POST Request is successful >>>>>>>>', data);
+          if(data != null && data.length >0)
+          {
+  
+  
+            var errorcode=data[0].ErrorCodeID;
+  
+            if(errorcode=="9999")
+            {
+              this.GetVendorContactById()
+              Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'Contact Details Successfully deleted',
+                showConfirmButton: false,
+                timer: 3000
+              })
+              this.Contactform.reset()
+              var indexval=this.contact_list.length;
+              this.Contactform.patchValue({
+                index:indexval
+              })
+              this.contact_submmited=false;
+          }
+          else
+          {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+
+            })
+          }
+
+      }
+      else
+      {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+
+        })
+      }
+      },
+      success => {
+   
+
+         
+      }
+      );
+  }
+
   addcontact(index:any)
   {
     // debugger
