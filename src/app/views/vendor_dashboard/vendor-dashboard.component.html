@@ -45,13 +45,13 @@
               <td>{{item.Title}}</td>
               <td>{{item.ContractStatusDesc}}</td>
               <td>{{item.DepartmentMName}}</td>
-              <td>{{item.ContractAwardedDate}}</td>
+              <td>{{item.ContractAwardedDate|date : "MMM d, y"}}</td>
               <td>{{item.StartDatePlanned|date : "MMM d, y"}}</td>
               <td>{{item.EndDatePlanned|date : "MMM d, y"}}</td>
               <td>{{item.ActualStartDate|date : "MMM d, y"}}</td>
               <td>{{item.ActualEndDate|date : "MMM d, y"}}</td>
-              <td>-</td>
               <td>{{item.FirstName}}</td>
+              <td>John</td>
               <td>{{item.OptionYear}}</td>
               <td>{{item.BaseYear}}</td>
             </tr>
@@ -84,7 +84,7 @@
                     <th style="color: white;"> Status</th>
                      <th style="color: white;">Department</th>
                     <th style="color: white;"> Posted Date</th>
-                    <th  style="color: white;"> Due Date</th>
+                    <th  style="color: white;"> Response Due Date</th>
 
             </tr>
           </thead>
@@ -95,8 +95,9 @@
             <td>{{item.Title}}</td>
             <td>{{item.BidStatusDesc}}</td>
             <td>{{item.DepartmentName}}</td>
-            <td>{{item.BidResponseDueDate|date : "MMM d, y"}}</td>
+
             <td>{{item.BidPostedDate|date : "MMM d, y"}}</td>
+            <td>{{item.BidResponseDueDate|date : "MMM d, y"}}</td>
 
           </tr>
 
@@ -130,8 +131,9 @@
                     <th  style="color: white;">Title</th>
                     <th style="color: white;"> Status</th>
                      <th style="color: white;">Department</th>
-                     <th  style="color: white;"> Due Date</th>
-                    <th style="color: white;"> Posted Date</th>
+                     <th style="color: white;"> Posted Date</th>
+                     <th  style="color: white;"> Response Due Date</th>
+
 
 
             </tr>
@@ -144,8 +146,9 @@
             <td>{{item.Title}}</td>
             <td>{{item.BidStatusDesc}}</td>
             <td>{{item.DepartmentName}}</td>
-            <td>{{item.BidResponseDueDate|date : "MMM d, y"}}</td>
             <td>{{item.BidPostedDate|date : "MMM d, y"}}</td>
+            <td>{{item.BidResponseDueDate|date : "MMM d, y"}}</td>
+
 
           </tbody>
 
