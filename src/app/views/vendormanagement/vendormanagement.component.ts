@@ -48,7 +48,7 @@ export class VendormanagementComponent implements OnInit {
   classList: any;
   nextElementSibling: any;
   citylist:any;
-
+  isDisabled:true;
   zipcodeVal:any;
   countrytype:any;
   districts:any;
@@ -214,7 +214,7 @@ export class VendormanagementComponent implements OnInit {
 
       FirstName:  ['', [Validators.required]],
       LastName:  ['', [Validators.required]],
-      MiddleName: ['', [Validators.required]],
+      MiddleName: [''],
 
       // VendorId:[localStorage.getItem('vendoridSes')],
       // CreatedUserId:[localStorage.getItem("CreatedUseridses")],
@@ -477,7 +477,7 @@ export class VendormanagementComponent implements OnInit {
         },
         success => {
      
-          
+
            
         }
         );
@@ -538,6 +538,16 @@ export class VendormanagementComponent implements OnInit {
     // // this.Addressform.reset()
     //  this.address_submmited=false;
     // }
+  }
+  addresstypeChange(data:any) {
+    debugger
+    var value=data.target.value;
+    if(value == "P")
+    {
+      this.Addressform.patchValue({
+        VendorAddressPrimary :new FormControl({value: 0, disabled: true}),
+       });
+    }
   }
   addlistToarray(obj:any,list:any) {
     let elmIndex = -1;
