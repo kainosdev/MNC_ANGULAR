@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators,FormArray, FormControl} from '@angul
 import { HttpClient } from '@angular/common/http';
 import { config_url } from '../shared/constant';
 import Swal from 'sweetalert2';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-vendormanagement',
@@ -123,7 +125,7 @@ export class VendormanagementComponent implements OnInit {
   ZCSlistdata:any;
 
   constructor(
-    private frmbuilder: FormBuilder,private http: HttpClient,
+    private frmbuilder: FormBuilder,private http: HttpClient,private modalService: NgbModal,
   ) { 
    
     // this.contactsform = this.frmbuilder.group({
@@ -264,7 +266,30 @@ export class VendormanagementComponent implements OnInit {
   this.GetVendorContactByNotPrimary();
  
   }
-
+  informationPopup(info:any) {
+    debugger
+    this.informationText = info;
+    this.descInfo ='description';
+    if(this.descInfo != undefined && this.descInfo != '' && this.descInfo != null)
+    {
+      this.informationText = this.descInfo;
+    }
+    this.modalService.dismissAll('');
+    this.modalService.open(info, { windowClass: 'info-popup' }).result.then((result:any) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.ModalDismissReasons(reason)}`;
+    });
+  }
+  private ModalDismissReasons(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
   contactprimarychange(e:any,indexval:any) 
   {
     if(e.target.checked)
@@ -423,62 +448,85 @@ export class VendormanagementComponent implements OnInit {
   {
     
       debugger
-    this.address_submmited=true;
-    if (this.Addressform.invalid) 
-    {
-        return;
-    }
-    else
-    {
 
-      let addresstype = this.AddressTypelist.filter((y:any) => y.AddressTypeId === this.Addressform.value.AddressTypeId);
-      if (addresstype.length > 0) 
-      {
-         this.Addressform.value.AddressTypeDesc=addresstype[0].AddressTypeDesc;
+      if (this.Addressform.valid) {
+        
+     
+  
+      this.http.post('http://localhost/MNC_PHP_API/vendor/UpdVendorNew',this.Addressform.value).subscribe(   
+        data => {
+          console.log("data");
+            console.log('POST Request is successful >>>>>>>>', data);
+  
+        },
+        success => {
+          this.GetVendorAddressById()
+          Swal.fire({
+            position: 'top',
+            icon: 'success',
+            title: 'Address Successfully Updated',
+            showConfirmButton: false,
+            timer: 3000
+          })
+        }
+        );
       }
+    // this.address_submmited=true;
+    // if (this.Addressform.invalid) 
+    // {
+    //     return;
+    // }
+    // else
+    // {
+
+    //   let addresstype = this.AddressTypelist.filter((y:any) => y.AddressTypeId === this.Addressform.value.AddressTypeId);
+    //   if (addresstype.length > 0) 
+    //   {
+    //      this.Addressform.value.AddressTypeDesc=addresstype[0].AddressTypeDesc;
+    //   }
 
 
-      let city = this.citylist.filter((y:any) => y.CityId === this.Addressform.value.CityId);
-      if (city.length > 0) 
-      {
-         this.Addressform.value.CityName=city[0].CityName;
-      }
+    //   let city = this.citylist.filter((y:any) => y.CityId === this.Addressform.value.CityId);
+    //   if (city.length > 0) 
+    //   {
+    //      this.Addressform.value.CityName=city[0].CityName;
+    //   }
 
-      let district = this.ZCSlistdata.filter((y:any) => y.DistrictId === this.Addressform.value.DistrictId);
-      if (district.length > 0) 
-      {
-         this.Addressform.value.DistrictName=district[0].DistrictName;
-      }
+    //   let district = this.ZCSlistdata.filter((y:any) => y.DistrictId === this.Addressform.value.DistrictId);
+    //   if (district.length > 0) 
+    //   {
+    //      this.Addressform.value.DistrictName=district[0].DistrictName;
+    //   }
 
       
-      let state = this.ZCSlistdata.filter((y:any) => y.StateId === this.Addressform.value.StateId);
-      if (state.length > 0) 
-      {
-         this.Addressform.value.StateName=state[0].StateName;
-      }
+    //   let state = this.ZCSlistdata.filter((y:any) => y.StateId === this.Addressform.value.StateId);
+    //   if (state.length > 0) 
+    //   {
+    //      this.Addressform.value.StateName=state[0].StateName;
+    //   }
 
-      let country = this.ZCSlistdata.filter((y:any) => y.CountryId === this.Addressform.value.CountryId);
-      if (country.length > 0) 
-      {
-         this.Addressform.value.CountryName=country[0].CountryName;
-      }
+    //   let country = this.ZCSlistdata.filter((y:any) => y.CountryId === this.Addressform.value.CountryId);
+    //   if (country.length > 0) 
+    //   {
+    //      this.Addressform.value.CountryName=country[0].CountryName;
+    //   }
 
 
 
-    // this.address_list.splice( index, 0, this.Addressform.value );
-    //   this.addlistToarray(this.Addressform.value,this.address_list)
-    // this.address_list.push(this.Addressform.value)
-    this.addlistToarray(this.Addressform.value,this.address_list)
-    // this.contact_list.splice( index, 0, this.Contactform.value );
-    //this.contact_list.push(this.Contactform.value)
-    this.Addressform.reset()
-    var indexval=this.address_list.length;
-    this.Addressform.patchValue({
-      index:indexval
-    })
+    // // this.address_list.splice( index, 0, this.Addressform.value );
+    // //   this.addlistToarray(this.Addressform.value,this.address_list)
+    // // this.address_list.push(this.Addressform.value)
+    // this.addlistToarray(this.Addressform.value,this.address_list)
+    // // this.contact_list.splice( index, 0, this.Contactform.value );
+    // //this.contact_list.push(this.Contactform.value)
     // this.Addressform.reset()
-     this.address_submmited=false;
-    }
+    // var indexval=this.address_list.length;
+    // this.Addressform.patchValue({
+    //   index:indexval
+    // })
+    // // this.Addressform.reset()
+    //  this.address_submmited=false;
+    // }
   }
   addlistToarray(obj:any,list:any) {
     let elmIndex = -1;
