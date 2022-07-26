@@ -111,7 +111,7 @@
                                         <div class="form-floating">
                                         
                                           
-                                              <input type="text"  class="form-control" formControlName="Phone" id="Phone" >
+                                              <input type="text"  class="form-control" formControlName="Phone" id="Phone"  [textMask]="{mask: mask1}">
                                               <div  class="help-block text-danger">
                                               <div *ngIf="indsubmitted && vifc.Phone.errors">Phone is required</div>
                                               </div>
@@ -237,8 +237,8 @@
                                           <div class="row g-4 p-1">
                                                   <div class="col-md">
                                                           <div class="form-floating">
-                                                                  <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId">
-                                                                    <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId">
+                                                                  <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId" (change)="addresstypeChange($event)">
+                                                                    <option *ngFor="let addresstype of AddressTypelist" [value]="addresstype.AddressTypeId">
                                                                       {{addresstype.AddressTypeDesc}}
                                                                     </option>
                                                                 </select>
