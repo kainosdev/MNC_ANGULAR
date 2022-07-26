@@ -452,7 +452,8 @@ export class VendormanagementComponent implements OnInit {
       if (this.Addressform.valid) {
 
 
-
+      this.Addressform.value.VendorId=localStorage.getItem('vendoridSes');
+      this.Addressform.value.CreatedUserId=localStorage.getItem("CreatedUseridses");
       this.http.post('http://localhost/MNC_PHP_API/vendor/UpdVendorNew',this.Addressform.value).subscribe(
         data => {
           console.log("data");
