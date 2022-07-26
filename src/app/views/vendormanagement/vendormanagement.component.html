@@ -882,7 +882,10 @@
                                                       <div class="d-flex">
                                                           <div class="mr-auto mt-2">
                                                               <label class="question_font">PRIMARY ADDRESS ?
-                                                                     
+                                                                <span class="text-danger">*</span><span><img class="m-1 question_mark"
+                                                                  (mouseover)="informationPopup(info)"
+                                                                 
+                                                                 ></span>    
                                                             </label></div>
                                                         
                                                           <div class="mt-2"><label class="switch float-right">
@@ -1162,6 +1165,23 @@
     
     </div>
   </div>
+  <ng-template #info let-modal>
+    <div class="modal-header btn-primary">
+       <h4 class="modal-title"><img class="img-fluid" src="../../../assets/images/popup-info-icon.png">
+          Information
+       </h4>
+       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"> <span
+             aria-hidden="true">×</span> </button>
+    </div>
+    <div class="modal-body">
+      <div >
+        <p>User Id must have 6 digit numbers and 1 uppercase and 1 lower case and 1 special character.</p>
+        </div>     
+          <div class="text-center">
+          <button type="button" class="btn btn-primary fixedwidthcls" (click)="modal.dismiss('Cross click')">Ok</button>
+       </div>
+    </div>
+ </ng-template>
   
   
   
