@@ -456,7 +456,7 @@ export class VendormanagementComponent implements OnInit {
 
       this.Addressform.value.VendorId=localStorage.getItem('vendoridSes');
       this.Addressform.value.CreatedUserId=localStorage.getItem("CreatedUseridses");
-      this.http.post('http://localhost:8080/vendor/AddUpdVendorAddress',this.Addressform.value).subscribe(
+      this.http.post(config_url+'vendor/AddUpdVendorAddress',this.Addressform.value).subscribe(
         data => {
           console.log("data");
             console.log('POST Request is successful >>>>>>>>', data);
@@ -928,7 +928,7 @@ businessUserdata(vendorMgmt:any){
       vendorMgmt.Address = this.address_list;
 
 
-    this.http.post('http://localhost/MNC_PHP_API/vendor/UpdVendorNew',vendorMgmt).subscribe(
+    this.http.post(config_url+'vendor/UpdVendorNew',vendorMgmt).subscribe(
     // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
 
       data => {
@@ -965,7 +965,7 @@ businessUserdata(vendorMgmt:any){
     // vendorMgmt.Address = this.address_list;
 
 
-  this.http.post('http://localhost/MNC_PHP_API/vendor/UpdVendorNew',vendorMgmt).subscribe(
+  this.http.post(config_url+'vendor/UpdVendorNew',vendorMgmt).subscribe(
   // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
 
     data => {
