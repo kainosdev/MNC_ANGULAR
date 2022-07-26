@@ -48,6 +48,7 @@ export class VendorDashboardComponent implements OnInit {
   lastname: string | null;
   middlename: string | null;
   UserId: string | null;
+  favoritebidlist: any;
 
 
   // dtOptions: DataTables.Settings = {};
@@ -154,7 +155,7 @@ export class VendorDashboardComponent implements OnInit {
             response[i].EndDatePlanned = response[i].EndDatePlanned.split(' ')[0];
             response[i].ActualStartDate = response[i].ActualStartDate.split(' ')[0];
             response[i].ActualEndDate = response[i].ActualEndDate.split(' ')[0];
-
+            response[i].ContractAwardedDate = response[i].ContractAwardedDate.split(' ')[0];
           }
           this.dtTrigger.next(this.vendoractivelist);
 
@@ -169,6 +170,8 @@ export class VendorDashboardComponent implements OnInit {
   }
 
 
+
+  
 
   ResponseSubmitted(){
     try
@@ -209,6 +212,31 @@ export class VendorDashboardComponent implements OnInit {
             // console.log(this.duedate);
         }
         this.ResponseNotSubmittedlist = response;
+      //  this.dtTrigger2.next(this.ResponseNotSubmittedlist);
+        });
+    }
+    catch(e)
+    {
+      console.log(e);
+    }
+
+  }
+
+  favoritebid(){
+    try
+    {
+      this.http.get(config_url+'bid/GetBidResponseNotSubmittedByVendor?VendorId='+localStorage.getItem('CreatedUseridses')).subscribe(
+        (data: any) => {
+          var response= data.Bidfavoritebid;
+          debugger;
+           // console.log(this.bidstatus)
+           for (let i = 0; i < response.length; i++) {
+            response[i].BidPostedDate = response[i].BidPostedDate.split(' ')[0];
+            response[i].BidResponseDueDate = response[i].BidResponseDueDate.split(' ')[0];
+            // console.log(this.posteddate);
+            // console.log(this.duedate);
+        }
+        this.favoritebidlist = response;
       //  this.dtTrigger2.next(this.ResponseNotSubmittedlist);
         });
     }
