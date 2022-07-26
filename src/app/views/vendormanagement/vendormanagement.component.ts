@@ -477,6 +477,7 @@ export class VendormanagementComponent implements OnInit {
         },
         success => {
      
+          
            
         }
         );

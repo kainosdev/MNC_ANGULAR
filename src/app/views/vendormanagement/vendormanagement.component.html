@@ -4,181 +4,54 @@
          <!-- Tabs navs -->
 
 
-<div class="card"> <!-- give it an id -->
+         <div class="card"> <!-- give it an id -->
 
-    <div class="card-body" >
-      <h5 class="card-title">Vendor Management</h5>
-      <div *ngIf="type==='I'">
-        <form [formGroup]="VendorMgmtIndividual"> 
-                
-          <div >
-              
-              <div class="row g-3 p-1">
-                  <div class="col-md">
-                      <div class="form-floating">
-                    
-                              <input type="text"  class="form-control disabled_backgroud"  formControlName="UserName" id="UserName" placeholder="User Name">
-                              
-                                   
-                      <div  class="help-block text-danger">
-                              <div *ngIf="indsubmitted && vifc.UserName.errors">User Name is required</div>
-                      </div>
-                      <label class="common_lbl" for="UserName" >USER NAME</label>
-
-                      </div>
-                    </div>
-                  <div class="col-md">
-            
-                      <div class="form-floating">
-                        <input type="text" class="form-control disabled_backgroud"  formControlName="VendorTypeId" id="VendorTypeId" placeholder="title">
-
-                     
-                         
-                        <label class="common_lbl" for="title">USER TYPE</label>
-                    
-                     
-                  
-                     <div  class="help-block text-danger">
-                        <div *ngIf="indsubmitted && vifc.VendorTypeId.errors">User Type required</div>
-                      </div>
-                    </div>
-                    </div>
-                <div class="col-md">
-                 
-                </div>
-            
-             
-              </div>
-              <accordion [collapsing]="collapsing">
-                <accordion-item >
-                    <ng-template accordionTitle>
-                        <div class="flex space-x-2 ">
-                          <!-- <svg xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24" width="20" height="20">
-                            <path fill="none" d="M0 0h24v24H0z" />
-                            <path
-                              d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
-                          </svg> -->
-                          <h6>General Information</h6>
-                        </div>
-                      </ng-template>
-                  <ng-template accordionContent>
-                    <div class="card ">
-                       
-                            <div class="">
-                                <div class="row g-4 p-1 ">
-                                    <div class="col-md">
-                                      <div class="form-floating">
-                                      
-                                              <input type="text"  class="form-control" formControlName="FirstName"  >
-                                              <div  class="help-block text-danger">
-                                                 <div *ngIf="indsubmitted && vifc.FirstName.errors">First Name is required</div>
-                                              </div>
-                                        <label class="common_lbl" for="floatingInputGrid">FIRST NAME <span class="requiredfield"> *</span></label>
-                                            
-                                      </div>
-                                    </div>
-                                  
-                                    <div class="col-md">
-                                        <div class="form-floating">
-                                              <input type="text"  class="form-control"  formControlName="LastName">
-                                              <div  class="help-block text-danger">
-                                                <div *ngIf="indsubmitted && vifc.LastName.errors">Last Name is required</div>
-                                              </div>
-                                              <label class="common_lbl" for="buying_entry">LAST NAME <span class="requiredfield"> *</span></label>
-                                        </div>
-                                   </div>
-                                      
-                                      <div class="col-md">
-                                          <div class="form-floating">
-                                                  <input type="text" class="form-control" formControlName="MiddleName" >
-                                                  <!-- <div  class="help-block text-danger">
-                                                      <div *ngIf="indsubmitted && vifc.MiddleName.errors">MiddleName  is required</div>
-                                                  </div> -->
-                                            <label class="common_lbl" for="set_aside">MIDDLE NAME</label>
-
-                                          </div>
-                                        </div>
-                                        
-                                  </div>
-
-
-
-<!-- 2 row -->
-
-                                  <div class="row g-4 p-1">
-                                      <div class="col-md">
-                                        <div class="form-floating">
-                                        
-                                          
-                                              <input type="text"  class="form-control" formControlName="Phone" id="Phone" >
-                                              <div  class="help-block text-danger">
-                                              <div *ngIf="indsubmitted && vifc.Phone.errors">Phone is required</div>
-                                              </div>
-                                            
-                                               <label class="common_lbl" for="federal_id">PHONE <span class="requiredfield"> *</span></label>
-                                        </div>
-                                      </div>
-                                      <div class="col-md">
-                                        <div class="form-floating">
-                                              
-                                              <input type="text"  class="form-control"  id="Email" formControlName="Email">
-                                              <div  class="help-block text-danger">
-                                              <div *ngIf="indsubmitted && vifc.Email.errors">Email is required</div>
-                                              </div>
-                                            
-                                                 <label class="common_lbl" for="Email">EMAIL <span class="requiredfield"> *</span></label>
-                                        </div>
-                                      </div>
-                                      <div class="col-md">
-                                        <div class="form-floating">
-                                       <input type="text" class="form-control" [textMask]="{mask: mask}" formControlName="EIN_SSN" id="socialno_id" (keypress)="inputErrorMessage('socialno_id')">
-                                       <div  class="help-block text-danger">
-                                        <div *ngIf="indsubmitted && vifc.EIN_SSN.errors?.required">Social Security Number is required</div>
-                                         </div>
-                                        <label class="common_lbl" for="social_no">SOCIAL SECURITY NUMBER <span class="requiredfield"> *</span></label>
-                                         </div>
-                                      </div>
-                                    
-
-                                    </div>
-
-<!-- 3 row -->
-                                    <div class="row g-3 p-1">
-                                        
-                                        <div class="col-md">
-                                          <div class="d-flex">
-                                            <div class="mr-auto mt-2">
-                                               <label class="question_font">OPT-IN FOR OUTREACH EMAILS?</label></div>
-                                             <div class="mt-2"><label class="switch float-right">
-                                                <input  type="checkbox" name="outreach_active" id="outreach_activeid" formControlName="OutreachEmailOptIn" checked >
-                                                <span class="slider round"></span>
-                                              </label>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md"></div>
-                                        <div class="col-md"></div>
-                                      </div>
-
-          <!-- 4 row --> 
-
-                                    
-                                
-          
-             
-                                     
-                            </div>
-                        
-                       
-                       
+          <div class="card-body" >
+            <h5 class="card-title">Vendor Management</h5>
+            <div *ngIf="type==='I'">
+              <form [formGroup]="VendorMgmtIndividual"> 
                       
-            
+                <div >
+                    
+                    <div class="row g-3 p-1">
+                        <div class="col-md">
+                            <div class="form-floating">
+                          
+                                    <input type="text"  class="form-control disabled_backgroud"  formControlName="UserName" id="UserName" placeholder="User Name">
+                                    
+                                         
+                            <div  class="help-block text-danger">
+                                    <div *ngIf="indsubmitted && vifc.UserName.errors">User Name is required</div>
+                            </div>
+                            <label class="common_lbl" for="UserName" >USER NAME</label>
+      
+                            </div>
+                          </div>
+                        <div class="col-md">
+                  
+                            <div class="form-floating">
+                              <input type="text" class="form-control disabled_backgroud"  formControlName="VendorTypeId" id="VendorTypeId" placeholder="title">
+      
+                           
+                               
+                              <label class="common_lbl" for="title">USER TYPE</label>
+                          
+                           
+                        
+                           <div  class="help-block text-danger">
+                              <div *ngIf="indsubmitted && vifc.VendorTypeId.errors">User Type required</div>
+                            </div>
+                          </div>
+                          </div>
+                      <div class="col-md">
+                       
+                      </div>
+                  
+                   
                     </div>
-                  </ng-template>
-                </accordion-item>
-                <accordion-item >
-                      <ng-template accordionTitle>
+                    <accordion [collapsing]="collapsing">
+                      <accordion-item >
+                          <ng-template accordionTitle>
                               <div class="flex space-x-2 ">
                                 <!-- <svg xmlns="http://www.w3.org/2000/svg"
                                   viewBox="0 0 24 24" width="20" height="20">
@@ -186,1028 +59,1155 @@
                                   <path
                                     d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
                                 </svg> -->
-                                <h6>Address Information</h6>
+                                <h6>General Information</h6>
                               </div>
                             </ng-template>
-                            <ng-template accordionContent>
-                                  <div class="p-4">
-                                  <div class="row">
-                                  <table class="table">
-                                          <thead class="common_tbl_head">
-                                            <tr>
-                                              <th scope="col">Address Type</th>
-                                              <th scope="col">Address</th>
-                                              <th scope="col">City</th>
-                                              <th scope="col">County</th>
-                                              <th scope="col">State</th>
-                                              <th scope="col">Country</th>
-                                              <th scope="col">ZipCode</th>
-                                               <th scope="col">Action</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                           
-                                         
-                                                <tr *ngFor="let item of address_list;let i = index;">           
-                                                    
-                                                    <th >{{item.AddressTypeDesc}}</th>
-                                                    <td>{{item.Address1}}</td>
-                                                    <td>{{item.CityName}}</td>
-                                                    <td>{{item.DistrictName}}</td>
-                                                    <td>{{item.StateName}}</td>
-                                                    <td>{{item.CountryName}}</td>
-                                                    <td>{{item.Zipcode}}</td>
-                                                    <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
-                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(i)" ></i>
-                                                </tr>
-                                                <tr *ngIf="address_list.length == 0">           
-                                                    
-                                                     No Address Found.
-                                              </tr>
-                                             
-                                     
-                                       
-                                          </tbody>
-                                        </table>
-                                        <a class="fontwghtcls mt-1 mb-1 ">+ ADD ADDRESS</a>
-                                  <form [formGroup]="Addressform">
-                                  
-
-
-                                          <div class="row g-4 p-1">
-                                                  <div class="col-md">
-                                                          <div class="form-floating">
-                                                                  <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId">
-                                                                    <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId">
-                                                                      {{addresstype.AddressTypeDesc}}
-                                                                    </option>
-                                                                </select>
-                                                              <div  class="help-block text-danger">
-                                                              <div *ngIf="address_submmited && af.AddressTypeId.errors">ADDRESS TYPE is required</div>
-                                                              </div>
-                                                                <label class="common_lbl" for="AddressTypeId">ADDRESS TYPE <span class="requiredfield"> *</span></label>
-    
-                                                            </div>
-                                                      </div>
-                                                  <div class="col-md">
-                                                    <div class="form-floating">
-                                                          <input type="text"  class="form-control" id="Address1" formControlName="Address1"  >
-                                                          <div  class="help-block text-danger">
-                                                             <div *ngIf="address_submmited && af.Address1.errors">Address is required</div>
-                                                          </div>
-                                                          <label class="common_lbl" for="Address1">ADDRESS <span class="requiredfield"> *</span></label>
-
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-md">
-                                                          <div class="form-floating">
-                                                                  <input type="text" class="form-control"  id="Address2"  formControlName="Address2" >
-                                                                  
-                                                                 <label class="common_lbl" for="Address2">ADDRESS 2 </label>
-    
-                                                            </div>
-                                                 </div>
-                                                 <div class="col-md">
-                                                      <div class="form-floating">
-                                                              <select id="currentcity_idbus" class="form-select" formControlName="CityId" 
-                                                              (keypress)="EmptyErrorMessage('currentcity_id')" >
-                                                              <option value="">Select</option>
-                                                              <option *ngFor="let c of citylist" [ngValue]="c.CityId">
-                                                                  {{c.CityName}}
-                                                              </option>
-                                                              </select>
-                                                                  <div  class="help-block text-danger">
-                                                                     <div *ngIf="address_submmited && af.CityId.errors">City is required</div>
-                                                                  </div>
-                                                            <label class="common_lbl" for="currentcity_idbus">CITY <span class="requiredfield"> *</span></label>
-
-                                                        </div>
-                                                  </div>
-                                      
-                                          </div>
-
-                                          <div class="row g-4 p-1">
-                                              <div class="col-md">
-                                                  <div class="form-floating">
-                                                          <select id="currentzipcode_id_mailbus" class="form-select" formControlName="Zipcode" 
-                                                          (keypress)="EmptyErrorMessage('currentzipcode_id');" (change)="onchangecountystatecountry()">
-                                                          <option value="">Select</option>
-                                                          <option *ngFor="let z of zipcodeVal" >
-                                                              {{z.Zipcode}}
-                                                          </option>
-                                                         </select>
-                                                          <div  class="help-block text-danger">
-                                                          <div *ngIf="address_submmited && af.Zipcode.errors">Zipcode is required</div>
-                                                          </div>
-                                                        <label class="common_lbl" for="currentzipcode_id_mailbus">ZIPCODE <span class="requiredfield"> *</span></label>
-
-                                                    </div>
-                                              </div>
-                                                  <div class="col-md">
-                                                          <div class="form-floating">
-                                                                  <select type="text" id="currentcounty_id" class="form-select" formControlName="DistrictId" 
-                                                                  (keypress)="EmptyErrorMessage('currentcounty_id')">
-                                                                  <option value="">Select</option>
-                                                                  <option *ngFor="let d of ZCSlistdata" [ngValue]="d.DistrictId">
-                                                                      {{d.DistrictName}}
-                                                                  </option>
-                                                              </select>
-                                                              <div  class="help-block text-danger">
-                                                              <div *ngIf="address_submmited && af.DistrictId.errors">County is required</div>
-                                                              </div>
-                                                                <label class="common_lbl" for="currentcounty_id">COUNTY <span class="requiredfield"> *</span></label>
-    
-                                                            </div>
-                                                      </div>
-                                                  <div class="col-md">
-                                                    <div class="form-floating">
-                                                          <select class="form-select" id="stateprovice_id" formControlName="StateId" >
-                                                              <option value="">Select</option>
-                                                              <option *ngFor="let s of ZCSlistdata" [ngValue]="s.StateId">
-                                                                  {{s.StateName}}
-                                                              </option>
-                                                         </select>
-                                                         <div  class="help-block text-danger">
-                                                            <div *ngIf="address_submmited && af.StateId.errors">State is required</div>
-                                                         </div>
-                                                       <label class="common_lbl" for="stateprovice_id">STATE <span class="requiredfield"> *</span></label>
-
-                                                   </div>
-                                                  </div>
-                                                  <div class="col-md">
-                                                          <div class="form-floating">
-                                                                  <select class="form-select" id="currentcountry_id" formControlName="CountryId" 
-                                                                  (change)="EmptyErrorMessage('currentcountry_id')">
-                                                                  <option value="">Select</option>
-                                                                  <option *ngFor="let countrylist of ZCSlistdata" [ngValue]="countrylist.CountryId" >
-                                                                      {{countrylist.CountryName}}</option>
-                                                                 </select>
-                                                                  <div  class="help-block text-danger">
-                                                                      <div *ngIf="address_submmited && af.CountryId.errors">CountryId is required</div>
-                                                                  </div>                                                                    
-                                                                 <label class="common_lbl" for="currentcountry_id">COUNTRY <span class="requiredfield"> *</span></label>
-    
-                                                            </div>
-                                                 </div>
-                                              
-                              
-                                          </div>
-
-                                          <div class="row g-4 p-1">
-                                                  <div class="col-md">
-                                                      <div class="d-flex question_font_short">
-                                                          <div class="mr-auto mt-2">
-                                                              <label class="question_font ">PRIMARY ADDRESS ?
-                                                                     
-                                                            </label></div>
-                                                        
-                                                          <div class="mt-2"><label class="switch float-right">
-                                                              <input  type="checkbox" name="VendorAddressPrimary"  id="VendorAddressPrimary" formControlName="VendorAddressPrimary" checked>
-                                                              <span class="slider round"></span>
-                                                            </label>
-                                                          </div>
-                                                        </div>
-                                                        
-                                                 </div>
-                                                  <div class="col-md">
-                                                          <div class="form-floating">
-                                                                  <input type="date" id="mailingfromdata_id" class="form-control" 
-                                                                 
-                                                                  formControlName="StartDate"                             
-                                                                       (keypress)="EmptyErrorMessage('mailingfromdata_id')">
-                                                                  <div  class="help-block text-danger">
-                                                                      <div *ngIf="address_submmited && af.StartDate.errors">From Date is required</div>
-                                                                  </div>
-                                                                <label class="common_lbl" for="mailingfromdata_id">FROM DATE *</label>
-    
-                                                            </div>
-                                                      </div>
-                                                  <div class="col-md">
-                                                    <div class="form-floating">
-                                                          <input type="date" id="EndDate" class="form-control" 
-                                                            
-                                                              formControlName="EndDate"                             
-                                                                  (keypress)="EmptyErrorMessage('mailingfromdata_id')">
-                                                          
-                                                          <div  class="help-block text-danger">
-                                                              <div *ngIf="address_submmited && af.EndDate.errors">End Date is required</div>
-                                                          </div>
-                                                          <label class="common_lbl" for="EndDate">END DATE *</label>
-
-                                                      </div>
-                                                  </div>
-                                                 
-                                                 <div class="col-md">
-                                                      <div class=" mt-2 text-right">
-                                                        
-
-                                                            <div class="btndiv mt-2">
-                                                                <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="addaddress(Addressform.get('index').value)"/>
-                                                                &nbsp;&nbsp;
-                                                                     <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" (click)="canceladdress()"/>
-                                                            </div>
-                                                            
-                                                       </div>
-                                                  </div>
-                                      
-                                          </div>
-                              
-                                  </form>
-                                 </div>
-                              </div>
-                           </ng-template>
-                                 
-              </accordion-item>
-           
-            
-               
-            
-             
-               
-              </accordion><br>
-              <div class=" mt-1 text-right">
-                  <div class="btndiv mt-2">
-                      <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="individualUserdata(VendorMgmtBusiness.value);" />
-                      &nbsp;&nbsp;
-                           <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" />
-                  </div>
-
-             </div>
-            </div>
- 
-</form>
-      </div>
-      <div *ngIf="type==='B'">
-        <form [formGroup]="VendorMgmtBusiness"> 
-                
-          <div >
-              
-              <div class="row g-3 p-1">
-                  <div class="col-md">
-                      <div class="form-floating">
-                    
-                              <input type="text"  class="form-control disabled_backgroud"  formControlName="UserName" id="UserName" placeholder="User Name">
-                              
-                                   
-                      <div  class="help-block text-danger">
-                              <div *ngIf="submitted && bfc.UserName.errors">User Name is required</div>
-                      </div>
-                      <label class="common_lbl" for="UserName" >USER NAME</label>
-
-                      </div>
-                    </div>
-                  <div class="col-md">
-            
-                      <div class="form-floating">
-                        <input type="text" class="form-control disabled_backgroud"   formControlName="VendorTypeId" id="VendorTypeId" placeholder="title">
-
-                     
-                         
-                        <label class="common_lbl" for="title">USER TYPE</label>
-                    
-                     
-                  
-                     <div  class="help-block text-danger">
-                        <div *ngIf="submitted && bfc.title.errors">User Type required</div>
-                      </div>
-                    </div>
-                    </div>
-                <div class="col-md">
-                 
-                </div>
-            
-             
-              </div>
-              <accordion [collapsing]="collapsing">
-                <accordion-item >
-                    <ng-template accordionTitle>
-                        <div class="flex space-x-2 ">
-                          <!-- <svg xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24" width="20" height="20">
-                            <path fill="none" d="M0 0h24v24H0z" />
-                            <path
-                              d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
-                          </svg> -->
-                          <h6>General Information</h6>
-                        </div>
-                      </ng-template>
-                  <ng-template accordionContent>
-                    <div class="card ">
-                       
-                            <div class="">
-                                <div class="row g-4 p-1 ">
-                                    <div class="col-md">
-                                      <div class="form-floating">
-                                      
-                                              <input type="text"  class="form-control" formControlName="LegalName"  >
-                                              <div  class="help-block text-danger">
-                                                 <div *ngIf="submitted2 && rcf2.LegalName.errors">Legal Business Name is required</div>
-                                              </div>
-                                        <label class="common_lbl" for="floatingInputGrid">LEGAL BUSINESS NAME <span class="requiredfield"> *</span></label>
-                                            
-                                      </div>
-                                    </div>
-                                    <div class="col-md">
-                                      <div class="form-floating">
-                                    
-                                              <input type="text" class="form-control"   formControlName="TradeName" >
-                                              <div  class="help-block text-danger">
-                                                  <div *ngIf="submitted2 && rcf2.TradeName.errors">Trade Name is required</div>
-                                              </div>
-                                        <label class="common_lbl" for="floatingSelectGrid">TRADE NAME <span class="requiredfield"> *</span></label>
-                                      </div>
-                                    </div>
-                                    <div class="col-md">
-                                        <div class="form-floating">
-                                              <input type="text"  class="form-control"  formControlName="AliasName">
-                                              <div  class="help-block text-danger">
-                                                 <div *ngIf="submitted2 && rcf2.AliasName.errors">Alias Name is required</div>
-                                              </div>  
-                                              <label class="common_lbl" for="buying_entry">ALIAS NAME</label>
-                                        </div>
-                                   </div>
-                                      
-                                      <div class="col-md">
-                                          <div class="form-floating">
-                                                  <input type="text" class="form-control" formControlName="DUNS" >
-                                                  <div  class="help-block text-danger">
-                                                      <div *ngIf="submitted2 && rcf2.DUNS.errors">Duns No is required</div>
-                                                  </div>
-                                            <label class="common_lbl" for="set_aside">DUNS NUMBER <span class="requiredfield"> *</span></label>
-
-                                          </div>
-                                        </div>
-                                  </div>
-
-
-
-<!-- 2 row -->
-
-                                  <div class="row g-4 p-1">
-                                      <div class="col-md">
-                                        <div class="form-floating">
-                                        
-                                          
-                                              <input type="text"  class="form-control" formControlName="EIN_SSN" id="EIN_SSN" [textMask]="{mask: mask}">
-                                              <div  class="help-block text-danger">
-                                              <div *ngIf="submitted2 && rcf2.EIN_SSN.errors">EIN/TAX Id is required</div>
-                                              </div>
-                                            
-                                               <label class="common_lbl" for="federal_id">EIN/TAX ID <span class="requiredfield"> *</span></label>
-                                        </div>
-                                      </div>
-                                      <div class="col-md">
-                                        <div class="form-floating">
-                                              
-                                              <input type="text"  class="form-control"  id="naics" formControlName="NAICSCodes">
-                                              <div  class="help-block text-danger">
-                                              <div *ngIf="submitted2 && rcf2.NAICSCodes.errors">NAICS Code is required</div>
-                                              </div>
-                                            
-                                                 <label class="common_lbl" for="naics">NAICS CODE <span class="requiredfield"> *</span></label>
-                                        </div>
-                                      </div>
-                                      <div class="col-md">
-                                          <div class="form-floating">
-                                                  <input type="number"   class="form-control" formControlName="CommodityCodes" >
-                                                  <div  class="help-block text-danger">
-                                                      <div *ngIf="submitted2 && rcf2.CommodityCodes.errors">Commodity Code is required</div>
-                                                  </div>
-                                          <label class="common_lbl" for="buying_entry">COMODITY CODE <span class="requiredfield"> *</span></label>
-                                          </div>
-                                        </div>
-                                        <div class="col-md">
-                                            <div class="form-floating">
-                                              <select id="BEClassificationId" class="form-select" formControlName="BEClassificationId">
-                                              <option *ngFor="let beclassificationlist of beclassificationdetail" [value]="beclassificationlist.BEClassificationId">
-                                                {{beclassificationlist.BEClassificationDesc}}</option>
-                                              </select>
-                                               
-                                                  <div  class="help-block text-danger">
-                                                      <div *ngIf="submitted2 && rcf2.BEClassificationId.errors">BE Classification is required</div>
-                                                  </div>
-                                                 <label class="common_lbl" for="buying_entry">BE CLASSIFICATION <span class="requiredfield"> *</span></label>
-                                                
-                                            </div>
-                                          </div>
-
-                                    </div>
-
-<!-- 3 row -->
-                                    <div class="row g-3 p-1">
-                                        
-                                        <div class="col-md">
-                                          <div class="form-floating">
-                                        
-                                                  <input type="text"   class="form-control" id="businesswebsite_id"
-                                                  formControlName="Website" >
-                                                  <div  class="help-block text-danger">
-                                                      <div *ngIf="submitted2 && rcf2.Website.errors">Website is required</div>
-                                                  </div>
-                                               
-                                                   <label class="common_lbl" for="businesswebsite_id">BUSINESS WEBSITE <span class="requiredfield"> *</span></label>
-                                          </div>
-                                        </div>
-                                        <div class="col-md">
-                                            <div class="form-floating">
-                                                  <input type="text"   class="form-control" id="businesssize_id"
-                                                  formControlName="BusinessSize" >
-                                                  <div  class="help-block text-danger">
-                                                      <div *ngIf="submitted2 && rcf2.BusinessSize.errors">Business Size is required </div>
-                                                  </div>
-                                            <label class="common_lbl" for="businesssize_id">BUSINESS SIZE <span class="requiredfield"> *</span></label>
-                                            </div>
-                                          </div>
+                        <ng-template accordionContent>
+                          <div class="card ">
+                             
+                                  <div class="">
+                                      <div class="row g-4 p-1 ">
                                           <div class="col-md">
-                                              <div class="d-flex">
-                                                  <div class="mr-auto mt-2">
-                                                    
-                                                      <label class="question_font">IS THIS BUSINESS REGISTERED WITH THIS COUNTRY/STATE?
-
-                                                             
-                                                    </label></div>
+                                            <div class="form-floating">
+                                            
+                                                    <input type="text"  class="form-control" formControlName="FirstName"  >
+                                                    <div  class="help-block text-danger">
+                                                       <div *ngIf="indsubmitted && vifc.FirstName.errors">First Name is required</div>
+                                                    </div>
+                                              <label class="common_lbl" for="floatingInputGrid">FIRST NAME <span class="requiredfield"> *</span></label>
+                                                  
+                                            </div>
+                                          </div>
+                                        
+                                          <div class="col-md">
+                                              <div class="form-floating">
+                                                    <input type="text"  class="form-control"  formControlName="LastName">
+                                                    <div  class="help-block text-danger">
+                                                      <div *ngIf="indsubmitted && vifc.LastName.errors">Last Name is required</div>
+                                                    </div>
+                                                    <label class="common_lbl" for="buying_entry">LAST NAME <span class="requiredfield"> *</span></label>
+                                              </div>
+                                         </div>
+                                            
+                                            <div class="col-md">
+                                                <div class="form-floating">
+                                                        <input type="text" class="form-control" formControlName="MiddleName" >
+                                                        <!-- <div  class="help-block text-danger">
+                                                            <div *ngIf="indsubmitted && vifc.MiddleName.errors">MiddleName  is required</div>
+                                                        </div> -->
+                                                  <label class="common_lbl" for="set_aside">MIDDLE NAME</label>
+      
+                                                </div>
+                                              </div>
+                                              
+                                        </div>
+      
+      
+      
+      <!-- 2 row -->
+      
+                                        <div class="row g-4 p-1">
+                                            <div class="col-md">
+                                              <div class="form-floating">
+                                              
                                                 
-                                                  <div class="mt-2"><label class="switch float-right">
-                                                      <input  type="checkbox" name="BusinessRegisteredInDistrict" id="BusinessRegisteredInDistrict" formControlName="BusinessRegisteredInDistrict" checked>
+                                                    <input type="text"  class="form-control" formControlName="Phone" id="Phone" >
+                                                    <div  class="help-block text-danger">
+                                                    <div *ngIf="indsubmitted && vifc.Phone.errors">Phone is required</div>
+                                                    </div>
+                                                  
+                                                     <label class="common_lbl" for="federal_id">PHONE <span class="requiredfield"> *</span></label>
+                                              </div>
+                                            </div>
+                                            <div class="col-md">
+                                              <div class="form-floating">
+                                                    
+                                                    <input type="text"  class="form-control"  id="Email" formControlName="Email">
+                                                    <div  class="help-block text-danger">
+                                                    <div *ngIf="indsubmitted && vifc.Email.errors">Email is required</div>
+                                                    </div>
+                                                  
+                                                       <label class="common_lbl" for="Email">EMAIL <span class="requiredfield"> *</span></label>
+                                              </div>
+                                            </div>
+                                            <div class="col-md">
+                                              <div class="form-floating">
+                                             <input type="text" class="form-control" [textMask]="{mask: mask}" formControlName="EIN_SSN" id="socialno_id" (keypress)="inputErrorMessage('socialno_id')">
+                                             <div  class="help-block text-danger">
+                                              <div *ngIf="indsubmitted && vifc.EIN_SSN.errors?.required">Social Security Number is required</div>
+                                               </div>
+                                              <label class="common_lbl" for="social_no">SOCIAL SECURITY NUMBER <span class="requiredfield"> *</span></label>
+                                               </div>
+                                            </div>
+                                          
+      
+                                          </div>
+      
+      <!-- 3 row -->
+                                          <div class="row g-3 p-1">
+                                              
+                                              <div class="col-md">
+                                                <div class="d-flex">
+                                                  <div class="mr-auto mt-2">
+                                                     <label class="question_font">OPT-IN FOR OUTREACH EMAILS?</label></div>
+                                                   <div class="mt-2"><label class="switch float-right">
+                                                      <input  type="checkbox" name="outreach_active" id="outreach_activeid" formControlName="OutreachEmailOptIn" checked >
                                                       <span class="slider round"></span>
                                                     </label>
                                                   </div>
-                                                </div>
-                                        
-                                            </div>
-                                            <div class="col-md">
-                                                <div class="d-flex">
-                                                    <div class="mr-auto mt-2">
-                                                      
-                                                            <label class="question_font"> IS THIS BUSINESS A FRANCHISEE?                                                                                  
-
-                                                               
-                                                      </label></div>
-                                                  
-                                                    <div class="mt-2"><label class="switch float-right">
-                                                        <input  type="checkbox" name="BusinessIsFranchisee" id="BusinessIsFranchisee" formControlName="BusinessIsFranchisee" checked>
-                                                        <span class="slider round"></span>
-                                                      </label>
-                                                    </div>
                                                   </div>
-                                            
-                                            </div>
-                                      </div>
-
-          <!-- 4 row --> 
-
-                                      <div class="row g-4 p-1">
-                                 
-                                        <div class="col-md">
-                                            <div class="d-flex">
-                                                <div class="mr-auto mt-2">
-                                                  
-                                                    <label class="question_font">IS THIS BUSINESS REGISTERED WITH THIS STATE CORPORATION COMMISSION?
-
-                                                           
-                                                  </label></div>
-                                              
-                                                <div class="mt-2"><label class="switch float-right">
-                                                    <input  type="checkbox" name="BusinessRegisteredInSCC" id="BusinessRegisteredInSCC" formControlName="BusinessRegisteredInSCC" checked>
-                                                    <span class="slider round"></span>
-                                                  </label>
-                                                </div>
                                               </div>
-                                            <!-- <div class="form-floating">
-                                                  <div class="btn-group btn-toggle"> 
-                                                          <label class="question_font">IS THIS BUSINESS REGISTERED WITH THIS STATE CORPORATION COMMISSION?
-                                                                                                                                                 
+                                              <div class="col-md"></div>
+                                              <div class="col-md"></div>
+                                            </div>
+      
+                <!-- 4 row --> 
+      
+                                          
+                                      
+                
+                   
+                                           
+                                  </div>
+                              
+                             
+                             
+                            
+                  
+                          </div>
+                        </ng-template>
+                      </accordion-item>
+                      <accordion-item >
+                            <ng-template accordionTitle>
+                                    <div class="flex space-x-2 ">
+                                      <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" width="20" height="20">
+                                        <path fill="none" d="M0 0h24v24H0z" />
+                                        <path
+                                          d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
+                                      </svg> -->
+                                      <h6>Address Information</h6>
+                                    </div>
+                                  </ng-template>
+                                  <ng-template accordionContent>
+                                        <div class="p-4">
+                                        <div class="row">
+                                        <table class="table">
+                                                <thead class="common_tbl_head">
+                                                  <tr>
+                                                    <th scope="col">Address Type</th>
+                                                    <th scope="col">Address</th>
+                                                    <th scope="col">City</th>
+                                                    <th scope="col">County</th>
+                                                    <th scope="col">State</th>
+                                                    <th scope="col">Country</th>
+                                                    <th scope="col">ZipCode</th>
+                                                     <th scope="col">Action</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                 
+                                               
+                                                      <tr *ngFor="let item of address_list;let i = index;">           
+                                                          
+                                                          <th >{{item.AddressTypeDesc}}</th>
+                                                          <td>{{item.Address1}}</td>
+                                                          <td>{{item.CityName}}</td>
+                                                          <td>{{item.DistrictName}}</td>
+                                                          <td>{{item.StateName}}</td>
+                                                          <td>{{item.CountryName}}</td>
+                                                          <td>{{item.Zipcode}}</td>
+                                                          <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
+                                                            <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(i)" ></i>
+                                                      </tr>
+                                                      <tr *ngIf="address_list.length == 0">           
+                                                          
+                                                           No Address Found.
+                                                    </tr>
+                                                   
+                                           
+                                             
+                                                </tbody>
+                                              </table>
+                                              <a class="fontwghtcls mt-1 mb-1 ">+ ADD ADDRESS</a>
+                                        <form [formGroup]="Addressform">
+                                        
+      
+      
+                                                <div class="row g-4 p-1">
+                                                        <div class="col-md">
+                                                                <div class="form-floating">
+                                                                        <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId">
+                                                                          <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId">
+                                                                            {{addresstype.AddressTypeDesc}}
+                                                                          </option>
+                                                                      </select>
+                                                                    <div  class="help-block text-danger">
+                                                                    <div *ngIf="address_submmited && af.AddressTypeId.errors">ADDRESS TYPE is required</div>
+                                                                    </div>
+                                                                      <label class="common_lbl" for="AddressTypeId">ADDRESS TYPE <span class="requiredfield"> *</span></label>
+          
+                                                                  </div>
+                                                            </div>
+                                                        <div class="col-md">
+                                                          <div class="form-floating">
+                                                                <input type="text"  class="form-control" id="Address1" formControlName="Address1"  >
+                                                                <div  class="help-block text-danger">
+                                                                   <div *ngIf="address_submmited && af.Address1.errors">Address is required</div>
+                                                                </div>
+                                                                <label class="common_lbl" for="Address1">ADDRESS <span class="requiredfield"> *</span></label>
+      
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md">
+                                                                <div class="form-floating">
+                                                                        <input type="text" class="form-control"  id="Address2"  formControlName="Address2" >
+                                                                        
+                                                                       <label class="common_lbl" for="Address2">ADDRESS 2 </label>
+          
+                                                                  </div>
+                                                       </div>
+                                                       <div class="col-md">
+                                                            <div class="form-floating">
+                                                                    <select id="currentcity_idbus" class="form-select" formControlName="CityId" 
+                                                                    (keypress)="EmptyErrorMessage('currentcity_id')" >
+                                                                    <option value="">Select</option>
+                                                                    <option *ngFor="let c of citylist" [ngValue]="c.CityId">
+                                                                        {{c.CityName}}
+                                                                    </option>
+                                                                    </select>
+                                                                        <div  class="help-block text-danger">
+                                                                           <div *ngIf="address_submmited && af.CityId.errors">City is required</div>
+                                                                        </div>
+                                                                  <label class="common_lbl" for="currentcity_idbus">CITY <span class="requiredfield"> *</span></label>
+      
+                                                              </div>
+                                                        </div>
+                                            
+                                                </div>
+      
+                                                <div class="row g-4 p-1">
+                                                    <div class="col-md">
+                                                        <div class="form-floating">
+                                                                <select id="currentzipcode_id_mailbus" class="form-select" formControlName="Zipcode" 
+                                                                (keypress)="EmptyErrorMessage('currentzipcode_id');" (change)="onchangecountystatecountry()">
+                                                                <option value="">Select</option>
+                                                                <option *ngFor="let z of zipcodeVal" >
+                                                                    {{z.Zipcode}}
+                                                                </option>
+                                                               </select>
+                                                                <div  class="help-block text-danger">
+                                                                <div *ngIf="address_submmited && af.Zipcode.errors">Zipcode is required</div>
+                                                                </div>
+                                                              <label class="common_lbl" for="currentzipcode_id_mailbus">ZIPCODE <span class="requiredfield"> *</span></label>
+      
+                                                          </div>
+                                                    </div>
+                                                        <div class="col-md">
+                                                                <div class="form-floating">
+                                                                        <select type="text" id="currentcounty_id" class="form-select" formControlName="DistrictId" 
+                                                                        (keypress)="EmptyErrorMessage('currentcounty_id')">
+                                                                        <option value="">Select</option>
+                                                                        <option *ngFor="let d of ZCSlistdata" [ngValue]="d.DistrictId">
+                                                                            {{d.DistrictName}}
+                                                                        </option>
+                                                                    </select>
+                                                                    <div  class="help-block text-danger">
+                                                                    <div *ngIf="address_submmited && af.DistrictId.errors">County is required</div>
+                                                                    </div>
+                                                                      <label class="common_lbl" for="currentcounty_id">COUNTY <span class="requiredfield"> *</span></label>
+          
+                                                                  </div>
+                                                            </div>
+                                                        <div class="col-md">
+                                                          <div class="form-floating">
+                                                                <select class="form-select" id="stateprovice_id" formControlName="StateId" >
+                                                                    <option value="">Select</option>
+                                                                    <option *ngFor="let s of ZCSlistdata" [ngValue]="s.StateId">
+                                                                        {{s.StateName}}
+                                                                    </option>
+                                                               </select>
+                                                               <div  class="help-block text-danger">
+                                                                  <div *ngIf="address_submmited && af.StateId.errors">State is required</div>
+                                                               </div>
+                                                             <label class="common_lbl" for="stateprovice_id">STATE <span class="requiredfield"> *</span></label>
+      
+                                                         </div>
+                                                        </div>
+                                                        <div class="col-md">
+                                                                <div class="form-floating">
+                                                                        <select class="form-select" id="currentcountry_id" formControlName="CountryId" 
+                                                                        (change)="EmptyErrorMessage('currentcountry_id')">
+                                                                        <option value="">Select</option>
+                                                                        <option *ngFor="let countrylist of ZCSlistdata" [ngValue]="countrylist.CountryId" >
+                                                                            {{countrylist.CountryName}}</option>
+                                                                       </select>
+                                                                        <div  class="help-block text-danger">
+                                                                            <div *ngIf="address_submmited && af.CountryId.errors">CountryId is required</div>
+                                                                        </div>                                                                    
+                                                                       <label class="common_lbl" for="currentcountry_id">COUNTRY <span class="requiredfield"> *</span></label>
+          
+                                                                  </div>
+                                                       </div>
+                                                    
+                                    
+                                                </div>
+      
+                                                <div class="row g-4 p-1">
+                                                        <div class="col-md">
+                                                            <div class="d-flex question_font_short">
+                                                                <div class="mr-auto mt-2">
+                                                                    <label class="question_font ">PRIMARY ADDRESS ?
+                                                                           
+                                                                  </label></div>
+                                                              
+                                                                <div class="mt-2"><label class="switch float-right">
+                                                                    <input  type="checkbox" name="VendorAddressPrimary"  id="VendorAddressPrimary" formControlName="VendorAddressPrimary" checked>
+                                                                    <span class="slider round"></span>
+                                                                  </label>
+                                                                </div>
+                                                              </div>
+                                                              
+                                                       </div>
+                                                        <div class="col-md">
+                                                                <div class="form-floating">
+                                                                        <input type="date" id="mailingfromdata_id" class="form-control" 
+                                                                       
+                                                                        formControlName="StartDate"                             
+                                                                             (keypress)="EmptyErrorMessage('mailingfromdata_id')">
+                                                                        <div  class="help-block text-danger">
+                                                                            <div *ngIf="address_submmited && af.StartDate.errors">From Date is required</div>
+                                                                        </div>
+                                                                      <label class="common_lbl" for="mailingfromdata_id">FROM DATE *</label>
+          
+                                                                  </div>
+                                                            </div>
+                                                        <div class="col-md">
+                                                          <div class="form-floating">
+                                                                <input type="date" id="EndDate" class="form-control" 
+                                                                  
+                                                                    formControlName="EndDate"                             
+                                                                        (keypress)="EmptyErrorMessage('mailingfromdata_id')">
                                                                 
-                                                          </label>
-                                                          <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
-                                                          <button class="btn btn-xs btn-primary active height">No</button>
-
-                                                           
-                                                      </div>
-                                            </div> -->
+                                                                <div  class="help-block text-danger">
+                                                                    <div *ngIf="address_submmited && af.EndDate.errors">End Date is required</div>
+                                                                </div>
+                                                                <label class="common_lbl" for="EndDate">END DATE *</label>
+      
+                                                            </div>
+                                                        </div>
+                                                       
+                                                       <div class="col-md">
+                                                            <div class=" mt-2 text-right">
+                                                              
+      
+                                                                  <div class="btndiv mt-2">
+                                                                      <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="addaddress(Addressform.get('index').value)"/>
+                                                                      &nbsp;&nbsp;
+                                                                           <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" (click)="canceladdress()"/>
+                                                                  </div>
+                                                                  
+                                                             </div>
+                                                        </div>
+                                            
+                                                </div>
+                                    
+                                        </form>
+                                       </div>
+                                    </div>
+                                 </ng-template>
+                                       
+                    </accordion-item>
+                 
+                  
+                     
+                  
+                   
+                     
+                    </accordion><br>
+                    <div class=" mt-1 text-right">
+                        <div class="btndiv mt-2">
+                            <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="individualUserdata(VendorMgmtBusiness.value);" />
+                            &nbsp;&nbsp;
+                                 <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" />
+                        </div>
+      
+                   </div>
+                  </div>
+       
+      </form>
+            </div>
+            <div *ngIf="type==='B'">
+              <form [formGroup]="VendorMgmtBusiness"> 
+                      
+                <div >
+                    
+                    <div class="row g-3 p-1">
+                        <div class="col-md">
+                            <div class="form-floating">
+                          
+                                    <input type="text"  class="form-control disabled_backgroud"  formControlName="UserName" id="UserName" placeholder="User Name">
+                                    
+                                         
+                            <div  class="help-block text-danger">
+                                    <div *ngIf="submitted && bfc.UserName.errors">User Name is required</div>
+                            </div>
+                            <label class="common_lbl" for="UserName" >USER NAME</label>
+      
+                            </div>
+                          </div>
+                        <div class="col-md">
+                  
+                            <div class="form-floating">
+                              <input type="text" class="form-control disabled_backgroud"   formControlName="VendorTypeId" id="VendorTypeId" placeholder="title">
+      
+                           
+                               
+                              <label class="common_lbl" for="title">USER TYPE</label>
+                          
+                           
+                        
+                           <div  class="help-block text-danger">
+                              <div *ngIf="submitted && bfc.title.errors">User Type required</div>
+                            </div>
+                          </div>
+                          </div>
+                      <div class="col-md">
+                       
+                      </div>
+                  
+                   
+                    </div>
+                    <accordion [collapsing]="collapsing">
+                      <accordion-item >
+                          <ng-template accordionTitle>
+                              <div class="flex space-x-2 ">
+                                <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24" width="20" height="20">
+                                  <path fill="none" d="M0 0h24v24H0z" />
+                                  <path
+                                    d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
+                                </svg> -->
+                                <h6>General Information</h6>
+                              </div>
+                            </ng-template>
+                        <ng-template accordionContent>
+                          <div class="card ">
+                             
+                                  <div class="">
+                                      <div class="row g-4 p-1 ">
+                                          <div class="col-md">
+                                            <div class="form-floating">
+                                            
+                                                    <input type="text"  class="form-control" formControlName="LegalName"  >
+                                                    <div  class="help-block text-danger">
+                                                       <div *ngIf="submitted2 && rcf2.LegalName.errors">Legal Business Name is required</div>
+                                                    </div>
+                                              <label class="common_lbl" for="floatingInputGrid">LEGAL BUSINESS NAME <span class="requiredfield"> *</span></label>
+                                                  
+                                            </div>
                                           </div>
                                           <div class="col-md">
+                                            <div class="form-floating">
+                                          
+                                                    <input type="text" class="form-control"   formControlName="TradeName" >
+                                                    <div  class="help-block text-danger">
+                                                        <div *ngIf="submitted2 && rcf2.TradeName.errors">Trade Name is required</div>
+                                                    </div>
+                                              <label class="common_lbl" for="floatingSelectGrid">TRADE NAME <span class="requiredfield"> *</span></label>
+                                            </div>
+                                          </div>
+                                          <div class="col-md">
+                                              <div class="form-floating">
+                                                    <input type="text"  class="form-control"  formControlName="AliasName">
+                                                    <div  class="help-block text-danger">
+                                                       <div *ngIf="submitted2 && rcf2.AliasName.errors">Alias Name is required</div>
+                                                    </div>  
+                                                    <label class="common_lbl" for="buying_entry">ALIAS NAME</label>
+                                              </div>
+                                         </div>
+                                            
+                                            <div class="col-md">
+                                                <div class="form-floating">
+                                                        <input type="text" class="form-control" formControlName="DUNS" >
+                                                        <div  class="help-block text-danger">
+                                                            <div *ngIf="submitted2 && rcf2.DUNS.errors">Duns No is required</div>
+                                                        </div>
+                                                  <label class="common_lbl" for="set_aside">DUNS NUMBER <span class="requiredfield"> *</span></label>
+      
+                                                </div>
+                                              </div>
+                                        </div>
+      
+      
+      
+      <!-- 2 row -->
+      
+                                        <div class="row g-4 p-1">
+                                            <div class="col-md">
+                                              <div class="form-floating">
                                               
+                                                
+                                                    <input type="text"  class="form-control" formControlName="EIN_SSN" id="EIN_SSN" [textMask]="{mask: mask}">
+                                                    <div  class="help-block text-danger">
+                                                    <div *ngIf="submitted2 && rcf2.EIN_SSN.errors">EIN/TAX Id is required</div>
+                                                    </div>
+                                                  
+                                                     <label class="common_lbl" for="federal_id">EIN/TAX ID <span class="requiredfield"> *</span></label>
+                                              </div>
                                             </div>
                                             <div class="col-md">
-                                              </div>
-                                              <div class="col-md">
-                                                </div>
-                                      </div>
-                                
-          
-             
-                                     
-                            </div>
-                        
-                       
-                       
-                      
-            
-                    </div>
-                  </ng-template>
-                </accordion-item>
-                <accordion-item >
-                      <ng-template accordionTitle>
-                              <div class="flex space-x-2 ">
-                                <!-- <svg xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24" width="20" height="20">
-                                  <path fill="none" d="M0 0h24v24H0z" />
-                                  <path
-                                    d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
-                                </svg> -->
-                                <h6>Address Information</h6>
-                              </div>
-                            </ng-template>
-                            <ng-template accordionContent>
-                                  <div class="p-4">
-                                  <div class="row">
-                                  <table class="table">
-                                          <thead class="common_tbl_head">
-                                            <tr>
-                                              <th scope="col">Address Type</th>
-                                              <th scope="col">Address</th>
-                                              <th scope="col">City</th>
-                                              <th scope="col">County</th>
-                                              <th scope="col">State</th>
-                                              <th scope="col">Country</th>
-                                              <th scope="col">ZipCode</th>
-                                               <th scope="col">Action</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                           
-                                         
-                                                <tr *ngFor="let item of address_list;let i = index;">           
+                                              <div class="form-floating">
                                                     
-                                                    <th >{{item.AddressTypeDesc}}</th>
-                                                    <td>{{item.Address1}}</td>
-                                                    <td>{{item.CityName}}</td>
-                                                    <td>{{item.DistrictName}}</td>
-                                                    <td>{{item.StateName}}</td>
-                                                    <td>{{item.CountryName}}</td>
-                                                    <td>{{item.Zipcode}}</td>
-                                                    <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
-                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(i)" ></i>
-                                                </tr>
-                                                <tr *ngIf="address_list.length == 0">           
-                                                    
-                                                     No Address Found.
-                                              </tr>
-                                             
-                                     
-                                       
-                                          </tbody>
-                                        </table>
-                                        <a class="fontwghtcls mt-1 mb-1 ">+ ADD ADDRESS</a>
-                                  <form [formGroup]="Addressform">
-                                  
-
-
-                                          <div class="row g-4 p-1">
-                                                  <div class="col-md">
-                                                          <div class="form-floating">
-                                                                  <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId" 
-                                                                 >
-                                                                 <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId">
-                                                                  {{addresstype.AddressTypeDesc}}
-                                                                 </option>
-                                                              </select>
-                                                              <div  class="help-block text-danger">
-                                                              <div *ngIf="address_submmited && af.AddressTypeId.errors">ADDRESS TYPE is required</div>
-                                                              </div>
-                                                                <label class="common_lbl" for="AddressTypeId">ADDRESS TYPE <span class="requiredfield"> *</span></label>
-    
-                                                            </div>
-                                                      </div>
-                                                  <div class="col-md">
-                                                    <div class="form-floating">
-                                                          <input type="text"  class="form-control" id="Address1" formControlName="Address1"  >
-                                                          <div  class="help-block text-danger">
-                                                             <div *ngIf="address_submmited && af.Address1.errors">Address is required</div>
-                                                          </div>
-                                                          <label class="common_lbl" for="Address1">ADDRESS <span class="requiredfield"> *</span></label>
-
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-md">
-                                                          <div class="form-floating">
-                                                                  <input type="text" class="form-control"  id="Address2"  formControlName="Address2" >
-                                                                  
-                                                                 <label class="common_lbl" for="Address2">ADDRESS 2 </label>
-    
-                                                            </div>
-                                                 </div>
-                                                 <div class="col-md">
-                                                      <div class="form-floating">
-                                                              <select id="currentcity_idbus" class="form-select" formControlName="CityId" 
-                                                              (keypress)="EmptyErrorMessage('currentcity_id')" >
-                                                              <option *ngFor="let c of citylist" [ngValue]="c.CityId">
-                                                                  {{c.CityName}}
-                                                              </option>
-                                                              </select>
-                                                                  <div  class="help-block text-danger">
-                                                                     <div *ngIf="address_submmited && af.CityId.errors">City is required</div>
-                                                                  </div>
-                                                            <label class="common_lbl" for="currentcity_idbus">CITY <span class="requiredfield"> *</span></label>
-
-                                                        </div>
-                                                  </div>
-                                      
-                                          </div>
-
-                                          <div class="row g-4 p-1">
-                                              <div class="col-md">
-                                                  <div class="form-floating">
-                                                          <select id="currentzipcode_id_mailbus" class="form-select" formControlName="Zipcode" 
-                                                          (keypress)="EmptyErrorMessage('currentzipcode_id');" (change)="onchangecountystatecountry()">
-                                                          <option value="">Select</option>
-                                                          <option *ngFor="let z of zipcodeVal" >
-                                                              {{z.Zipcode}}
-                                                          </option>
-                                                         </select>
-                                                          <div  class="help-block text-danger">
-                                                          <div *ngIf="address_submmited && af.Zipcode.errors">Zipcode is required</div>
-                                                          </div>
-                                                        <label class="common_lbl" for="currentzipcode_id_mailbus">ZIPCODE <span class="requiredfield"> *</span></label>
-
+                                                    <input type="text"  class="form-control"  id="naics" formControlName="NAICSCodes">
+                                                    <div  class="help-block text-danger">
+                                                    <div *ngIf="submitted2 && rcf2.NAICSCodes.errors">NAICS Code is required</div>
                                                     </div>
+                                                  
+                                                       <label class="common_lbl" for="naics">NAICS CODE <span class="requiredfield"> *</span></label>
                                               </div>
-                                                  <div class="col-md">
-                                                          <div class="form-floating">
-                                                                  <select type="text" id="currentcounty_id" class="form-select" formControlName="DistrictId" 
-                                                                  (keypress)="EmptyErrorMessage('currentcounty_id')">
-                                                                  <option value="">Select</option>
-                                                                  <option *ngFor="let d of ZCSlistdata" [ngValue]="d.DistrictId">
-                                                                      {{d.DistrictName}}
-                                                                  </option>
-                                                              </select>
-                                                              <div  class="help-block text-danger">
-                                                              <div *ngIf="address_submmited && af.DistrictId.errors">County is required</div>
-                                                              </div>
-                                                                <label class="common_lbl" for="currentcounty_id">COUNTY <span class="requiredfield"> *</span></label>
-    
-                                                            </div>
-                                                      </div>
-                                                  <div class="col-md">
-                                                    <div class="form-floating">
-                                                          <select class="form-select" id="stateprovice_id" formControlName="StateId" >
-                                                              <option value="">Select</option>
-                                                            <option *ngFor="let s of ZCSlistdata" [ngValue]="s.StateId">
-                                                                  {{s.StateName}}
-                                                              </option>
-                                                         </select>
-                                                         <div  class="help-block text-danger">
-                                                            <div *ngIf="address_submmited && af.StateId.errors">State is required</div>
-                                                         </div>
-                                                       <label class="common_lbl" for="stateprovice_id">STATE <span class="requiredfield"> *</span></label>
-
-                                                   </div>
-                                                  </div>
-                                                  <div class="col-md">
-                                                          <div class="form-floating">
-                                                                  <select class="form-select" id="currentcountry_id" formControlName="CountryId" 
-                                                                  (change)="EmptyErrorMessage('currentcountry_id')">
-                                                                  <option value="">Select</option>
-                                                                  <option *ngFor="let countrylist of ZCSlistdata" [ngValue]="countrylist.CountryId" >
-                                                                      {{countrylist.CountryName}}</option>
-                                                                 </select>
-                                                                  <div  class="help-block text-danger">
-                                                                      <div *ngIf="address_submmited && af.CountryId.errors">CountryId is required</div>
-                                                                  </div>                                                                    
-                                                                 <label class="common_lbl" for="currentcountry_id">COUNTRY <span class="requiredfield"> *</span></label>
-    
-                                                            </div>
-                                                 </div>
-                                              
-                              
-                                          </div>
-
-                                          <div class="row g-4 p-1">
-                                                  <div class="col-md">
-                                                      <div class="d-flex">
-                                                          <div class="mr-auto mt-2">
-                                                              <label class="question_font">PRIMARY ADDRESS ?
-                                                              
-                                                            </label></div>
-                                                        
-                                                          <div class="mt-2"><label class="switch float-right">
-                                                              <input  type="checkbox" name="VendorAddressPrimary" (change)="addressprimarychange($event,Addressform.get('index').value)" id="VendorAddressPrimary" formControlName="VendorAddressPrimary" checked>
-                                                              <span class="slider round"></span>
-                                                            </label>
-                                                          </div>
+                                            </div>
+                                            <div class="col-md">
+                                                <div class="form-floating">
+                                                        <input type="number"   class="form-control" formControlName="CommodityCodes" >
+                                                        <div  class="help-block text-danger">
+                                                            <div *ngIf="submitted2 && rcf2.CommodityCodes.errors">Commodity Code is required</div>
                                                         </div>
-                                                        
-                                                 </div>
-                                                  <div class="col-md">
-                                                          <div class="form-floating">
-                                                                  <input type="date" id="mailingfromdata_id" class="form-control" 
-                                                                 
-                                                                  formControlName="StartDate"                             
-                                                                       (keypress)="EmptyErrorMessage('mailingfromdata_id')">
-                                                                  <div  class="help-block text-danger">
-                                                                      <div *ngIf="address_submmited && af.StartDate.errors">From Date is required</div>
-                                                                  </div>
-                                                                <label class="common_lbl" for="mailingfromdata_id">FROM DATE <span class="requiredfield"> *</span></label>
-    
-                                                            </div>
-                                                      </div>
-                                                  <div class="col-md">
-                                                    <div class="form-floating">
-                                                          <input type="date" id="EndDate" class="form-control" 
-                                                            
-                                                              formControlName="EndDate"                             
-                                                                  (keypress)="EmptyErrorMessage('mailingfromdata_id')">
-                                                          
-                                                          <div  class="help-block text-danger">
-                                                              <div *ngIf="address_submmited && af.EndDate.errors">End Date is required</div>
-                                                          </div>
-                                                          <label class="common_lbl" for="EndDate">END DATE <span class="requiredfield"> *</span></label>
-
-                                                      </div>
-                                                  </div>
-                                                 
-                                                 <div class="col-md">
-                                                      <div class=" mt-2 text-right">
-                                                        
-
-                                                            <div class="btndiv mt-2">
-                                                                <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="addaddress(Addressform.get('index').value)"/>
-                                                                &nbsp;&nbsp;
-                                                                     <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" (click)="canceladdress()"/>
-                                                            </div>
-                                                            
-                                                       </div>
-                                                  </div>
-                                      
-                                          </div>
-                              
-                                  </form>
-                                 </div>
-                              </div>
-                           </ng-template>
-                                 
-              </accordion-item>
-              <accordion-item >
-                      <ng-template accordionTitle>
-                              <div class="flex space-x-2 ">
-                                <!-- <svg xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24" width="20" height="20">
-                                  <path fill="none" d="M0 0h24v24H0z" />
-                                  <path
-                                    d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
-                                </svg> -->
-                                <h6>Contact Information</h6>
-                              </div>
-                            </ng-template>
-                            <ng-template accordionContent>
-                              <div class="p-4">
-                                  <div class="row ">
-                                  <table class="table">
-                                          <thead class="common_tbl_head">
-                                            <tr>
-                                              <th scope="col">First Name</th>
-                                              <th scope="col">Last Name</th>
-                                              <th scope="col">Middle Name</th>
-                                              <th scope="col">Job Title</th>
-                                              <th scope="col">Phone</th>
-                                              <th scope="col">Email</th>
-                                            
-                                              <th scope="col">Action</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                           
-                                         
-                                                <tr *ngFor="let item of contact_list;let i = index;">           
-                                            
-                                                    <th >{{item.FirstName}}</th>
-                                                    <td>{{item.LastName}}</td>
-                                                    <td>{{item.MiddleName}}</td>
-                                                    <td>{{item.JobTitleDesc}}</td>
-                                                    <td>{{item.Phone}}</td>
-                                                    <td>{{item.Email}}</td>
-                                                 
-                                                   
-                                                    <td>
-                                                      <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editcontact(item,i)" ></i>
-                                                      <!-- <i class="fa fa-trash ml-1 cursor-pointer"  title="Delete"  (click)="deletecontact(i)" ></i> -->
-                                                   </td>
-                                                </tr>
-                                             
-                                                <tr *ngIf="address_list.length == 0">           
-                                                    
-                                                  No Contact Found.
-                                               </tr>
-                                       
-                                          </tbody>
-                                        </table>
-                                        <a class="fontwghtcls mt-1 mb-1 ">+ ADD CONTACT</a>
-                                  <form [formGroup]="Contactform">
-                                          <div class="">
-                                           
-
-                                          <div class="row g-4 p-1">
-                                                  <div class="col-md">
-                                                          <div class="form-floating">
-                                                                  <input type="text"  class="form-control" id="FirstName" formControlName="FirstName"  >
-                                                                  <div  class="help-block text-danger">
-                                                                     <div *ngIf="contact_submmited && cf.FirstName.errors?.required">First Name is required</div>
-                                                                   </div>
-                                                                <label class="common_lbl" for="FirstName">FIRST NAME <span class="requiredfield"> *</span></label>
-    
-                                                            </div>
-                                                  </div>
-                                                  <div class="col-md">
+                                                <label class="common_lbl" for="buying_entry">COMODITY CODE <span class="requiredfield"> *</span></label>
+                                                </div>
+                                              </div>
+                                              <div class="col-md">
                                                   <div class="form-floating">
-                                                          <input type="text"  class="form-control" id="LastName" formControlName="LastName"  >
-                                                          <div  class="help-block text-danger">
-                                                             <div *ngIf="contact_submmited && cf.LastName.errors?.required">Last Name is required</div>
-                                                           </div>
-                                                        <label class="common_lbl" for="LastName">LAST NAME <span class="requiredfield"> *</span></label>
-
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-md">
-                                                          <div class="form-floating">
-                                                                  <input type="text"  class="form-control" id="MiddleName" formControlName="MiddleName"  >
-                                                                  <div  class="help-block text-danger">
-                                                                     <div *ngIf="contact_submmited && cf.MiddleName.errors?.required">Middle Name is required</div>
-                                                                   </div>
-                                                                <label class="common_lbl" for="MiddleName">MIDDLE NAME </label>
-                                                            </div>
-                                                 </div>
-                                                 <div class="col-md">
-                                                      <div class="form-floating">
-                                                                
-                                                         
-                                                          <select type="text" id="JobTitleId" class="form-select" formControlName="JobTitleId">
-                                                          <option *ngFor="let jobtitle of jobdetail" [ngValue]="jobtitle.JobTitleId">
-                                                            {{jobtitle.JobTitleDesc}}</option>
-                                                          </select>
-                                                          
-                                                          <div  class="help-block text-danger">
-                                                              <div *ngIf="contact_submmited && cf.JobTitleId.errors?.required">Job Title is required</div>
-                                                          </div>
-                                                                
-                                                            <label class="common_lbl" for="JobTitleId">JOB TITLE <span class="requiredfield"> *</span></label>
-
+                                                    <select id="BEClassificationId" class="form-select" formControlName="BEClassificationId">
+                                                    <option *ngFor="let beclassificationlist of beclassificationdetail" [value]="beclassificationlist.BEClassificationId">
+                                                      {{beclassificationlist.BEClassificationDesc}}</option>
+                                                    </select>
+                                                     
+                                                        <div  class="help-block text-danger">
+                                                            <div *ngIf="submitted2 && rcf2.BEClassificationId.errors">BE Classification is required</div>
                                                         </div>
+                                                       <label class="common_lbl" for="buying_entry">BE CLASSIFICATION <span class="requiredfield"> *</span></label>
+                                                      
                                                   </div>
-                                      
+                                                </div>
+      
                                           </div>
-
-                                          <div class="row g-4 p-1">
-                                                  <div class="col-md">
-                                                          <div class="form-floating">
-                                                             
-                                                                  <input type="text"   [textMask]="{mask: mask1}" class="form-control" id="Phone"
-                                                                  formControlName="Phone" >
-                                                                  <div  class="help-block text-danger">
-                                                                  <div *ngIf="contact_submmited && cf.Phone.errors?.required">Phone Name is required</div>
-                                                                  </div>
-                                                                <label class="common_lbl" for="Phone">PHONE NO <span class="requiredfield"> *</span></label>
-    
-                                                            </div>
-                                                      </div>
-                                                    <div class="col-md">
-                                                    <div class="form-floating">
-                                                          <input type="text" class="form-control" id="Email" formControlName="Email" 
-                                                         >
-                                                          <div  class="help-block text-danger">
-                                                              <div *ngIf="contact_submmited && cf.Email.errors?.required">Email is required</div>
-                                                           </div>
-                                                       <label class="common_lbl" for="stateprovice_id">EMAIL <span class="requiredfield"> *</span></label>
-
-                                                   </div>
-                                                  </div>
-                                                  <div class="col-md">
-                                                          
-                                                      <div class="d-flex question_font_short">
-                                                          <div class="mr-auto mt-2"><label class="question_font">PRIMARY CONTACT?
-                                                                     
-                                                            </label></div>
-                                                        
-                                                          <div class="mt-2"><label class="switch float-right">
-                                                              <input  type="checkbox" name="VendorContactPrimary" (change)="contactprimarychange($event,Contactform.get('index').value)" id="VendorContactPrimary" formControlName="VendorContactPrimary" checked>
-                                                              <span class="slider round"></span>
-                                                            </label>
-                                                          </div>
+      
+      <!-- 3 row -->
+                                          <div class="row g-3 p-1">
+                                              
+                                              <div class="col-md">
+                                                <div class="form-floating">
+                                              
+                                                        <input type="text"   class="form-control" id="businesswebsite_id"
+                                                        formControlName="Website" >
+                                                        <div  class="help-block text-danger">
+                                                            <div *ngIf="submitted2 && rcf2.Website.errors">Website is required</div>
                                                         </div>
-                                                                          
-                                                                            
-                                                                          
-                                                                           
-                                                                              <!-- <button class="btn btn-xs ml-1   btn-outline-primary">Yes</button>
-                                                                              <button class="btn btn-xs btn-primary active">No</button> -->
-                                                                    
+                                                     
+                                                         <label class="common_lbl" for="businesswebsite_id">BUSINESS WEBSITE <span class="requiredfield"> *</span></label>
+                                                </div>
+                                              </div>
+                                              <div class="col-md">
+                                                  <div class="form-floating">
+                                                        <input type="text"   class="form-control" id="businesssize_id"
+                                                        formControlName="BusinessSize" >
+                                                        <div  class="help-block text-danger">
+                                                            <div *ngIf="submitted2 && rcf2.BusinessSize.errors">Business Size is required </div>
+                                                        </div>
+                                                  <label class="common_lbl" for="businesssize_id">BUSINESS SIZE <span class="requiredfield"> *</span></label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="d-flex">
+                                                        <div class="mr-auto mt-2">
                                                           
-                                                 </div>
-                                                 <div class="col-md">
-                                                    <div class="d-flex question_font_short">
-                                                        <div class="mr-auto mt-2"> <label class="question_font">ACTIVE?
+                                                            <label class="question_font">IS THIS BUSINESS REGISTERED WITH THIS COUNTRY/STATE?
+      
                                                                    
                                                           </label></div>
                                                       
                                                         <div class="mt-2"><label class="switch float-right">
-                                                            <input  type="checkbox" name="VendorContactActive"  id="VendorContactActive" formControlName="VendorContactActive" checked>
+                                                            <input  type="checkbox" name="BusinessRegisteredInDistrict" id="BusinessRegisteredInDistrict" formControlName="BusinessRegisteredInDistrict" checked>
                                                             <span class="slider round"></span>
                                                           </label>
                                                         </div>
                                                       </div>
-                                                   
+                                              
                                                   </div>
-                              
-                                          </div>
-                                          <div class="row g-4 p-1">
                                                   <div class="col-md">
-                                                          
-                                                      </div>
-                                                    <div class="col-md">
+                                                      <div class="d-flex">
+                                                          <div class="mr-auto mt-2">
+                                                            
+                                                                  <label class="question_font"> IS THIS BUSINESS A FRANCHISEE?                                                                                  
+      
+                                                                     
+                                                            </label></div>
+                                                        
+                                                          <div class="mt-2"><label class="switch float-right">
+                                                              <input  type="checkbox" name="BusinessIsFranchisee" id="BusinessIsFranchisee" formControlName="BusinessIsFranchisee" checked>
+                                                              <span class="slider round"></span>
+                                                            </label>
+                                                          </div>
+                                                        </div>
                                                   
                                                   </div>
-                                                  <div class="col-md">
-                                                         
-                                                 </div>
-                                                 <div class="col-md text-right mt-2">
-                                                    <div class="btndiv mt-2">
-                                                        <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="addcontact(Contactform.get('index').value)"/>
-                                                        &nbsp;&nbsp;
-                                                             <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" (click)="cancelcontact()"/>
-                                                    </div>
-                                                     
-                                                  </div>
-                              
-                                          </div>
-
-                                 </div>
-                                  </form>
-                                 </div>
-                                </div>
-                           </ng-template>
-                                 
-              </accordion-item>
-            
-               
-            
-             
-               
-              </accordion><br>
-              <div class=" mt-1 text-right">
-                  <div class="btndiv mt-2">
-                      <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="businessUserdata(VendorMgmtBusiness.value);" />
-                      &nbsp;&nbsp;
-                           <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" />
-                  </div>
-
-             </div>
-            </div>
- 
-</form>
-      </div>
-    
-    </div>
-  </div>
-  <ng-template #info let-modal>
-    <div class="modal-header btn-primary">
-       <h4 class="modal-title"><img class="img-fluid" src="../../../assets/images/popup-info-icon.png">
-          Information
-       </h4>
-       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"> <span
-             aria-hidden="true">×</span> </button>
-    </div>
-    <div class="modal-body">
-      <div >
-        <p>User Id must have 6 digit numbers and 1 uppercase and 1 lower case and 1 special character.</p>
-        </div>     
-          <div class="text-center">
-          <button type="button" class="btn btn-primary fixedwidthcls" (click)="modal.dismiss('Cross click')">Ok</button>
-       </div>
-    </div>
- </ng-template>
-  
-  
-  
-  
-
-
-
-
+                                            </div>
       
-     
-            
+                <!-- 4 row --> 
+      
+                                            <div class="row g-4 p-1">
+                                       
+                                              <div class="col-md">
+                                                  <div class="d-flex">
+                                                      <div class="mr-auto mt-2">
+                                                        
+                                                          <label class="question_font">IS THIS BUSINESS REGISTERED WITH THIS STATE CORPORATION COMMISSION?
+      
+                                                                 
+                                                        </label></div>
+                                                    
+                                                      <div class="mt-2"><label class="switch float-right">
+                                                          <input  type="checkbox" name="BusinessRegisteredInSCC" id="BusinessRegisteredInSCC" formControlName="BusinessRegisteredInSCC" checked>
+                                                          <span class="slider round"></span>
+                                                        </label>
+                                                      </div>
+                                                    </div>
+                                                  <!-- <div class="form-floating">
+                                                        <div class="btn-group btn-toggle"> 
+                                                                <label class="question_font">IS THIS BUSINESS REGISTERED WITH THIS STATE CORPORATION COMMISSION?
+                                                                                                                                                       
+                                                                      
+                                                                </label>
+                                                                <button class="btn btn-xs ml-1 btn-outline-primary height">Yes</button>
+                                                                <button class="btn btn-xs btn-primary active height">No</button>
+      
+                                                                 
+                                                            </div>
+                                                  </div> -->
+                                                </div>
+                                                <div class="col-md">
+                                                    
+                                                  </div>
+                                                  <div class="col-md">
+                                                    </div>
+                                                    <div class="col-md">
+                                                      </div>
+                                            </div>
+                                      
+                
+                   
+                                           
+                                  </div>
+                              
+                             
+                             
+                            
+                  
+                          </div>
+                        </ng-template>
+                      </accordion-item>
+                      <accordion-item >
+                            <ng-template accordionTitle>
+                                    <div class="flex space-x-2 ">
+                                      <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" width="20" height="20">
+                                        <path fill="none" d="M0 0h24v24H0z" />
+                                        <path
+                                          d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
+                                      </svg> -->
+                                      <h6>Address Information</h6>
+                                    </div>
+                                  </ng-template>
+                                  <ng-template accordionContent>
+                                        <div class="p-4">
+                                        <div class="row">
+                                        <table class="table">
+                                                <thead class="common_tbl_head">
+                                                  <tr>
+                                                    <th scope="col">Address Type</th>
+                                                    <th scope="col">Address</th>
+                                                    <th scope="col">City</th>
+                                                    <th scope="col">County</th>
+                                                    <th scope="col">State</th>
+                                                    <th scope="col">Country</th>
+                                                    <th scope="col">ZipCode</th>
+                                                     <th scope="col">Action</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                 
+                                               
+                                                      <tr *ngFor="let item of address_list;let i = index;">           
+                                                          
+                                                          <th >{{item.AddressTypeDesc}}</th>
+                                                          <td>{{item.Address1}}</td>
+                                                          <td>{{item.CityName}}</td>
+                                                          <td>{{item.DistrictName}}</td>
+                                                          <td>{{item.StateName}}</td>
+                                                          <td>{{item.CountryName}}</td>
+                                                          <td>{{item.Zipcode}}</td>
+                                                          <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
+                                                            <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(i)" ></i>
+                                                      </tr>
+                                                      <tr *ngIf="address_list.length == 0">           
+                                                          
+                                                           No Address Found.
+                                                    </tr>
+                                                   
+                                           
+                                             
+                                                </tbody>
+                                              </table>
+                                              <a class="fontwghtcls mt-1 mb-1 ">+ ADD ADDRESS</a>
+                                        <form [formGroup]="Addressform">
+                                        
+      
+      
+                                                <div class="row g-4 p-1">
+                                                        <div class="col-md">
+                                                                <div class="form-floating">
+                                                                        <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId" 
+                                                                       >
+                                                                       <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId">
+                                                                        {{addresstype.AddressTypeDesc}}
+                                                                       </option>
+                                                                    </select>
+                                                                    <div  class="help-block text-danger">
+                                                                    <div *ngIf="address_submmited && af.AddressTypeId.errors">ADDRESS TYPE is required</div>
+                                                                    </div>
+                                                                      <label class="common_lbl" for="AddressTypeId">ADDRESS TYPE <span class="requiredfield"> *</span></label>
+          
+                                                                  </div>
+                                                            </div>
+                                                        <div class="col-md">
+                                                          <div class="form-floating">
+                                                                <input type="text"  class="form-control" id="Address1" formControlName="Address1"  >
+                                                                <div  class="help-block text-danger">
+                                                                   <div *ngIf="address_submmited && af.Address1.errors">Address is required</div>
+                                                                </div>
+                                                                <label class="common_lbl" for="Address1">ADDRESS <span class="requiredfield"> *</span></label>
+      
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md">
+                                                                <div class="form-floating">
+                                                                        <input type="text" class="form-control"  id="Address2"  formControlName="Address2" >
+                                                                        
+                                                                       <label class="common_lbl" for="Address2">ADDRESS 2 </label>
+          
+                                                                  </div>
+                                                       </div>
+                                                       <div class="col-md">
+                                                            <div class="form-floating">
+                                                                    <select id="currentcity_idbus" class="form-select" formControlName="CityId" 
+                                                                    (keypress)="EmptyErrorMessage('currentcity_id')" >
+                                                                    <option *ngFor="let c of citylist" [ngValue]="c.CityId">
+                                                                        {{c.CityName}}
+                                                                    </option>
+                                                                    </select>
+                                                                        <div  class="help-block text-danger">
+                                                                           <div *ngIf="address_submmited && af.CityId.errors">City is required</div>
+                                                                        </div>
+                                                                  <label class="common_lbl" for="currentcity_idbus">CITY <span class="requiredfield"> *</span></label>
+      
+                                                              </div>
+                                                        </div>
+                                            
+                                                </div>
+      
+                                                <div class="row g-4 p-1">
+                                                    <div class="col-md">
+                                                        <div class="form-floating">
+                                                                <select id="currentzipcode_id_mailbus" class="form-select" formControlName="Zipcode" 
+                                                                (keypress)="EmptyErrorMessage('currentzipcode_id');" (change)="onchangecountystatecountry()">
+                                                                <option value="">Select</option>
+                                                                <option *ngFor="let z of zipcodeVal" >
+                                                                    {{z.Zipcode}}
+                                                                </option>
+                                                               </select>
+                                                                <div  class="help-block text-danger">
+                                                                <div *ngIf="address_submmited && af.Zipcode.errors">Zipcode is required</div>
+                                                                </div>
+                                                              <label class="common_lbl" for="currentzipcode_id_mailbus">ZIPCODE <span class="requiredfield"> *</span></label>
+      
+                                                          </div>
+                                                    </div>
+                                                        <div class="col-md">
+                                                                <div class="form-floating">
+                                                                        <select type="text" id="currentcounty_id" class="form-select" formControlName="DistrictId" 
+                                                                        (keypress)="EmptyErrorMessage('currentcounty_id')">
+                                                                        <option value="">Select</option>
+                                                                        <option *ngFor="let d of ZCSlistdata" [ngValue]="d.DistrictId">
+                                                                            {{d.DistrictName}}
+                                                                        </option>
+                                                                    </select>
+                                                                    <div  class="help-block text-danger">
+                                                                    <div *ngIf="address_submmited && af.DistrictId.errors">County is required</div>
+                                                                    </div>
+                                                                      <label class="common_lbl" for="currentcounty_id">COUNTY <span class="requiredfield"> *</span></label>
+          
+                                                                  </div>
+                                                            </div>
+                                                        <div class="col-md">
+                                                          <div class="form-floating">
+                                                                <select class="form-select" id="stateprovice_id" formControlName="StateId" >
+                                                                    <option value="">Select</option>
+                                                                  <option *ngFor="let s of ZCSlistdata" [ngValue]="s.StateId">
+                                                                        {{s.StateName}}
+                                                                    </option>
+                                                               </select>
+                                                               <div  class="help-block text-danger">
+                                                                  <div *ngIf="address_submmited && af.StateId.errors">State is required</div>
+                                                               </div>
+                                                             <label class="common_lbl" for="stateprovice_id">STATE <span class="requiredfield"> *</span></label>
+      
+                                                         </div>
+                                                        </div>
+                                                        <div class="col-md">
+                                                                <div class="form-floating">
+                                                                        <select class="form-select" id="currentcountry_id" formControlName="CountryId" 
+                                                                        (change)="EmptyErrorMessage('currentcountry_id')">
+                                                                        <option value="">Select</option>
+                                                                        <option *ngFor="let countrylist of ZCSlistdata" [ngValue]="countrylist.CountryId" >
+                                                                            {{countrylist.CountryName}}</option>
+                                                                       </select>
+                                                                        <div  class="help-block text-danger">
+                                                                            <div *ngIf="address_submmited && af.CountryId.errors">CountryId is required</div>
+                                                                        </div>                                                                    
+                                                                       <label class="common_lbl" for="currentcountry_id">COUNTRY <span class="requiredfield"> *</span></label>
+          
+                                                                  </div>
+                                                       </div>
+                                                    
+                                    
+                                                </div>
+      
+                                                <div class="row g-4 p-1">
+                                                        <div class="col-md">
+                                                            <div class="d-flex">
+                                                                <div class="mr-auto mt-2">
+                                                                    <label class="question_font">PRIMARY ADDRESS ?
+                                                                    
+                                                                  </label></div>
+                                                              
+                                                                <div class="mt-2"><label class="switch float-right">
+                                                                    <input  type="checkbox" name="VendorAddressPrimary" (change)="addressprimarychange($event,Addressform.get('index').value)" id="VendorAddressPrimary" formControlName="VendorAddressPrimary" checked>
+                                                                    <span class="slider round"></span>
+                                                                  </label>
+                                                                </div>
+                                                              </div>
+                                                              
+                                                       </div>
+                                                        <div class="col-md">
+                                                                <div class="form-floating">
+                                                                        <input type="date" id="mailingfromdata_id" class="form-control" 
+                                                                       
+                                                                        formControlName="StartDate"                             
+                                                                             (keypress)="EmptyErrorMessage('mailingfromdata_id')">
+                                                                        <div  class="help-block text-danger">
+                                                                            <div *ngIf="address_submmited && af.StartDate.errors">From Date is required</div>
+                                                                        </div>
+                                                                      <label class="common_lbl" for="mailingfromdata_id">FROM DATE <span class="requiredfield"> *</span></label>
+          
+                                                                  </div>
+                                                            </div>
+                                                        <div class="col-md">
+                                                          <div class="form-floating">
+                                                                <input type="date" id="EndDate" class="form-control" 
+                                                                  
+                                                                    formControlName="EndDate"                             
+                                                                        (keypress)="EmptyErrorMessage('mailingfromdata_id')">
+                                                                
+                                                                <div  class="help-block text-danger">
+                                                                    <div *ngIf="address_submmited && af.EndDate.errors">End Date is required</div>
+                                                                </div>
+                                                                <label class="common_lbl" for="EndDate">END DATE <span class="requiredfield"> *</span></label>
+      
+                                                            </div>
+                                                        </div>
+                                                       
+                                                       <div class="col-md">
+                                                            <div class=" mt-2 text-right">
+                                                              
+      
+                                                                  <div class="btndiv mt-2">
+                                                                      <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="addaddress(Addressform.get('index').value)"/>
+                                                                      &nbsp;&nbsp;
+                                                                           <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" (click)="canceladdress()"/>
+                                                                  </div>
+                                                                  
+                                                             </div>
+                                                        </div>
+                                            
+                                                </div>
+                                    
+                                        </form>
+                                       </div>
+                                    </div>
+                                 </ng-template>
+                                       
+                    </accordion-item>
+                    <accordion-item >
+                            <ng-template accordionTitle>
+                                    <div class="flex space-x-2 ">
+                                      <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" width="20" height="20">
+                                        <path fill="none" d="M0 0h24v24H0z" />
+                                        <path
+                                          d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
+                                      </svg> -->
+                                      <h6>Contact Information</h6>
+                                    </div>
+                                  </ng-template>
+                                  <ng-template accordionContent>
+                                    <div class="p-4">
+                                        <div class="row ">
+                                        <table class="table">
+                                                <thead class="common_tbl_head">
+                                                  <tr>
+                                                    <th scope="col">First Name</th>
+                                                    <th scope="col">Last Name</th>
+                                                    <th scope="col">Middle Name</th>
+                                                    <th scope="col">Job Title</th>
+                                                    <th scope="col">Phone</th>
+                                                    <th scope="col">Email</th>
+                                                  
+                                                    <th scope="col">Action</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                 
+                                               
+                                                      <tr *ngFor="let item of contact_list;let i = index;">           
+                                                  
+                                                          <th >{{item.FirstName}}</th>
+                                                          <td>{{item.LastName}}</td>
+                                                          <td>{{item.MiddleName}}</td>
+                                                          <td>{{item.JobTitleDesc}}</td>
+                                                          <td>{{item.Phone}}</td>
+                                                          <td>{{item.Email}}</td>
+                                                       
+                                                         
+                                                          <td>
+                                                            <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editcontact(item,i)" ></i>
+                                                            <!-- <i class="fa fa-trash ml-1 cursor-pointer"  title="Delete"  (click)="deletecontact(i)" ></i> -->
+                                                         </td>
+                                                      </tr>
+                                                   
+                                                      <tr *ngIf="address_list.length == 0">           
+                                                          
+                                                        No Contact Found.
+                                                     </tr>
+                                             
+                                                </tbody>
+                                              </table>
+                                              <a class="fontwghtcls mt-1 mb-1 ">+ ADD CONTACT</a>
+                                        <form [formGroup]="Contactform">
+                                                <div class="">
+                                                 
+      
+                                                <div class="row g-4 p-1">
+                                                        <div class="col-md">
+                                                                <div class="form-floating">
+                                                                        <input type="text"  class="form-control" id="FirstName" formControlName="FirstName"  >
+                                                                        <div  class="help-block text-danger">
+                                                                           <div *ngIf="contact_submmited && cf.FirstName.errors?.required">First Name is required</div>
+                                                                         </div>
+                                                                      <label class="common_lbl" for="FirstName">FIRST NAME <span class="requiredfield"> *</span></label>
+          
+                                                                  </div>
+                                                        </div>
+                                                        <div class="col-md">
+                                                        <div class="form-floating">
+                                                                <input type="text"  class="form-control" id="LastName" formControlName="LastName"  >
+                                                                <div  class="help-block text-danger">
+                                                                   <div *ngIf="contact_submmited && cf.LastName.errors?.required">Last Name is required</div>
+                                                                 </div>
+                                                              <label class="common_lbl" for="LastName">LAST NAME <span class="requiredfield"> *</span></label>
+      
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md">
+                                                                <div class="form-floating">
+                                                                        <input type="text"  class="form-control" id="MiddleName" formControlName="MiddleName"  >
+                                                                        <div  class="help-block text-danger">
+                                                                           <div *ngIf="contact_submmited && cf.MiddleName.errors?.required">Middle Name is required</div>
+                                                                         </div>
+                                                                      <label class="common_lbl" for="MiddleName">MIDDLE NAME </label>
+                                                                  </div>
+                                                       </div>
+                                                       <div class="col-md">
+                                                            <div class="form-floating">
+                                                                      
+                                                               
+                                                                <select type="text" id="JobTitleId" class="form-select" formControlName="JobTitleId">
+                                                                <option *ngFor="let jobtitle of jobdetail" [ngValue]="jobtitle.JobTitleId">
+                                                                  {{jobtitle.JobTitleDesc}}</option>
+                                                                </select>
+                                                                
+                                                                <div  class="help-block text-danger">
+                                                                    <div *ngIf="contact_submmited && cf.JobTitleId.errors?.required">Job Title is required</div>
+                                                                </div>
+                                                                      
+                                                                  <label class="common_lbl" for="JobTitleId">JOB TITLE <span class="requiredfield"> *</span></label>
+      
+                                                              </div>
+                                                        </div>
+                                            
+                                                </div>
+      
+                                                <div class="row g-4 p-1">
+                                                        <div class="col-md">
+                                                                <div class="form-floating">
+                                                                   
+                                                                        <input type="text"   [textMask]="{mask: mask1}" class="form-control" id="Phone"
+                                                                        formControlName="Phone" >
+                                                                        <div  class="help-block text-danger">
+                                                                        <div *ngIf="contact_submmited && cf.Phone.errors?.required">Phone Name is required</div>
+                                                                        </div>
+                                                                      <label class="common_lbl" for="Phone">PHONE NO <span class="requiredfield"> *</span></label>
+          
+                                                                  </div>
+                                                            </div>
+                                                          <div class="col-md">
+                                                          <div class="form-floating">
+                                                                <input type="text" class="form-control" id="Email" formControlName="Email" 
+                                                               >
+                                                                <div  class="help-block text-danger">
+                                                                    <div *ngIf="contact_submmited && cf.Email.errors?.required">Email is required</div>
+                                                                 </div>
+                                                             <label class="common_lbl" for="stateprovice_id">EMAIL <span class="requiredfield"> *</span></label>
+      
+                                                         </div>
+                                                        </div>
+                                                        <div class="col-md">
+                                                                
+                                                            <div class="d-flex question_font_short">
+                                                                <div class="mr-auto mt-2"><label class="question_font">PRIMARY CONTACT?
+                                                                           
+                                                                  </label></div>
+                                                              
+                                                                <div class="mt-2"><label class="switch float-right">
+                                                                    <input  type="checkbox" name="VendorContactPrimary" (change)="contactprimarychange($event,Contactform.get('index').value)" id="VendorContactPrimary" formControlName="VendorContactPrimary" checked>
+                                                                    <span class="slider round"></span>
+                                                                  </label>
+                                                                </div>
+                                                              </div>
+                                                                                
+                                                                                  
+                                                                                
+                                                                                 
+                                                                                    <!-- <button class="btn btn-xs ml-1   btn-outline-primary">Yes</button>
+                                                                                    <button class="btn btn-xs btn-primary active">No</button> -->
+                                                                          
+                                                                
+                                                       </div>
+                                                       <div class="col-md">
+                                                          <div class="d-flex question_font_short">
+                                                              <div class="mr-auto mt-2"> <label class="question_font">ACTIVE?
+                                                                         
+                                                                </label></div>
+                                                            
+                                                              <div class="mt-2"><label class="switch float-right">
+                                                                  <input  type="checkbox" name="VendorContactActive"  id="VendorContactActive" formControlName="VendorContactActive" checked>
+                                                                  <span class="slider round"></span>
+                                                                </label>
+                                                              </div>
+                                                            </div>
+                                                         
+                                                        </div>
+                                    
+                                                </div>
+                                                <div class="row g-4 p-1">
+                                                        <div class="col-md">
+                                                                
+                                                            </div>
+                                                          <div class="col-md">
+                                                        
+                                                        </div>
+                                                        <div class="col-md">
+                                                               
+                                                       </div>
+                                                       <div class="col-md text-right mt-2">
+                                                          <div class="btndiv mt-2">
+                                                              <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="addcontact(Contactform.get('index').value)"/>
+                                                              &nbsp;&nbsp;
+                                                                   <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" (click)="cancelcontact()"/>
+                                                          </div>
+                                                           
+                                                        </div>
+                                    
+                                                </div>
+      
+                                       </div>
+                                        </form>
+                                       </div>
+                                      </div>
+                                 </ng-template>
+                                       
+                    </accordion-item>
+                  
+                     
+                  
+                   
+                     
+                    </accordion><br>
+                    <div class=" mt-1 text-right">
+                        <div class="btndiv mt-2">
+                            <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="businessUserdata(VendorMgmtBusiness.value);" />
+                            &nbsp;&nbsp;
+                                 <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" />
+                        </div>
+      
+                   </div>
+                  </div>
        
-
-     
-    
-    
+      </form>
+            </div>
+          
+          </div>
+        </div>
+        <ng-template #info let-modal>
+          <div class="modal-header btn-primary">
+             <h4 class="modal-title"><img class="img-fluid" src="../../../assets/images/popup-info-icon.png">
+                Information
+             </h4>
+             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"> <span
+                   aria-hidden="true">×</span> </button>
+          </div>
+          <div class="modal-body">
+            <div >
+              <p>User Id must have 6 digit numbers and 1 uppercase and 1 lower case and 1 special character.</p>
+              </div>     
+                <div class="text-center">
+                <button type="button" class="btn btn-primary fixedwidthcls" (click)="modal.dismiss('Cross click')">Ok</button>
+             </div>
+          </div>
+       </ng-template>
         
- 
-     
-    
-   
-    
         
-  
-    
-    <!-- </div> -->
+        
+        
+      
+      
+      
+      
+            
+           
+                  
+             
+      
+           
+          
+          
+              
+       
+           
+          
+         
+          
+              
+        
+          
+          <!-- </div> -->
