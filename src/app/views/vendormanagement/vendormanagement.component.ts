@@ -448,7 +448,7 @@ export class VendormanagementComponent implements OnInit {
   }
   deleteaddress(id:any)
   {
-    this.http.get(config_url+'vendor/DeleteVendorAdress?AddressId='+id).subscribe(
+    this.http.get(config_url+'vendor/DeleteVendorAddress?AddressId='+id).subscribe(
       (data:any) => {
         console.log("data");
           console.log('Delete Request is successful >>>>>>>>', data);
