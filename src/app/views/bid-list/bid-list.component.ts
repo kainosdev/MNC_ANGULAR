@@ -4,6 +4,7 @@ import { config_url } from '../shared/constant';
 import { RestApiService } from '../shared/rest-api.service';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
+import { Router,ActivatedRoute,ParamMap, Params, NavigationEnd  } from '@angular/router';
 
 
 @Component({
@@ -23,8 +24,9 @@ export class BidListComponent implements OnInit {
   duedate: any;
   BidPostedDate: any;
   BidResponseDueDate: any;
+  
 
-  constructor(private http: HttpClient,
+  constructor(private http: HttpClient,private router:Router,
     private restApi: RestApiService
 ) { }
 
@@ -59,6 +61,15 @@ export class BidListComponent implements OnInit {
   closePopup(){
     this.displayStyle = "none";
   }
+
+  ViewBid(BidNumber:any)
+  {
+      localStorage.setItem("BidNumber",BidNumber);
+      //debugger;
+        this.router.navigate(['/bidManagement']);
+  
+    }
+
   GetViewBid1(){
     //  alert("in");
 

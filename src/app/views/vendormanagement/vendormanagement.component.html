@@ -217,9 +217,11 @@
                                                     <td>{{item.StateName}}</td>
                                                     <td>{{item.CountryName}}</td>
                                                     <td>{{item.Zipcode}}</td>
+                                                    <td>
                                                     <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
-                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(item.AddressId)" ></i>
-                                                </tr>
+                                                      <i class="fa fa-trash cursor-pointer ml-2"  title="Delete"  *ngIf="item.VendorAddressPrimary == 0" (click)="deleteaddress(item.AddressId)" ></i>
+                                                    </td>
+                                                  </tr>
                                                 <tr *ngIf="address_list.length == 0">
 
                                                      No Address Found.
@@ -384,7 +386,7 @@
                                                       </div>
                                                   <div class="col-md">
                                                     <div class="form-floating">
-                                                          <input type="date" id="EndDate" class="form-control"
+                                                          <input type="date" id="EndDate" class="form-control"  [min]="Addressform.controls.StartDate.value"
 
                                                               formControlName="EndDate"
                                                                   (keypress)="EmptyErrorMessage('mailingfromdata_id')">
@@ -747,9 +749,11 @@
                                                     <td>{{item.StateName}}</td>
                                                     <td>{{item.CountryName}}</td>
                                                     <td>{{item.Zipcode}}</td>
-                                                    <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
-                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(item.AddressId)" ></i>
-                                                </tr>
+                                                    <td>
+                                                      <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
+                                                      <i class="fa fa-trash cursor-pointer ml-2"  title="Delete" *ngIf="item.VendorAddressPrimary == 0" (click)="deleteaddress(item.AddressId)" ></i>
+                                                    </td>
+                                                    </tr>
                                                 <tr *ngIf="address_list.length == 0">
 
                                                      No Address Found.
@@ -767,9 +771,9 @@
                                           <div class="row g-4 p-1">
                                                   <div class="col-md">
                                                           <div class="form-floating">
-                                                                  <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId"
+                                                                  <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId" (change)="addresstypeChange($event)"
                                                                  >
-                                                                 <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId">
+                                                                 <option *ngFor="let addresstype of AddressTypelist" [value]="addresstype.AddressTypeId" >
                                                                   {{addresstype.AddressTypeDesc}}
                                                                  </option>
                                                               </select>
@@ -914,7 +918,7 @@
                                                       </div>
                                                   <div class="col-md">
                                                     <div class="form-floating">
-                                                          <input type="date" id="EndDate" class="form-control"
+                                                          <input type="date" id="EndDate" [min]="Addressform.controls.StartDate.value" class="form-control" 
 
                                                               formControlName="EndDate"
                                                                   (keypress)="EmptyErrorMessage('mailingfromdata_id')">
@@ -922,6 +926,9 @@
                                                           <div  class="help-block text-danger">
                                                               <div *ngIf="address_submmited && af.EndDate.errors">End Date is required</div>
                                                           </div>
+                                                          <div *ngIf="error.isError" class="alert alert-danger">
+                                                            {{ error.errorMessage }}
+                                                           </div>
                                                           <label class="common_lbl" for="EndDate">END DATE <span class="requiredfield"> *</span></label>
 
                                                       </div>
@@ -994,13 +1001,13 @@
 
                                                     <td>
                                                       <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editcontact(item,i)" ></i>
-                                                      <i class="fa fa-trash ml-1 cursor-pointer"  title="Delete"  (click)="deletecontact(item.ContactId)" ></i>
+                                                      <i class="fa fa-trash ml-2 cursor-pointer"  title="Delete"  (click)="deletecontact(item.ContactId)" ></i>
                                                    </td>
                                                 </tr>
 
-                                                <tr *ngIf="address_list.length == 0">
+                                                <tr *ngIf="contact_list.length == 0">
 
-                                                  No Contact Found.
+                                                     No Contact Found.
                                                </tr>
 
                                           </tbody>

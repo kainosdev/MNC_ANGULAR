@@ -174,7 +174,7 @@
 <tbody >
   <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of viewbiddetail">
 
-<td>{{item.BidNumber}}</td>
+<td (click)="ViewBid(item.BidNumber)"><a style="cursor:pointer;text-decoration:underline">{{item.BidNumber}}</a></td>
 <td>{{item.Title}}</td>
 <td>{{item.BitstatusDesc}}</td>
 <td>{{item.DepartmentName}}</td>
