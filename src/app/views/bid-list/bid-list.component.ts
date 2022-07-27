@@ -40,6 +40,8 @@ export class BidListComponent implements OnInit {
     };
   }
 
+
+
   displayStyle = "none";
 
   rerender(): void {
@@ -50,8 +52,6 @@ export class BidListComponent implements OnInit {
       this.dtTrigger.next(this.viewbiddetail);
     });
   }
-
-
   openPopup() {
     this.displayStyle = "block";
   }

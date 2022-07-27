@@ -205,7 +205,7 @@ export class VendorDashboardComponent implements OnInit {
       this.http.get(config_url+'bid/GetBidResponseNotSubmittedByVendor?VendorId='+localStorage.getItem('CreatedUseridses')).subscribe(
         (data: any) => {
           var response= data.BidResponseNotSubmitted;
-          debugger;
+          //debugger;
            // console.log(this.bidstatus)
            for (let i = 0; i < response.length; i++) {
             response[i].BidPostedDate = response[i].BidPostedDate.split(' ')[0];
