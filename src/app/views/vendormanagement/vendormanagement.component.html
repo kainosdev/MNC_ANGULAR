@@ -111,7 +111,7 @@
                                         <div class="form-floating">
 
 
-                                              <input type="text"  class="form-control" formControlName="Phone" id="Phone" >
+                                              <input type="text"  class="form-control" formControlName="Phone" id="Phone"  [textMask]="{mask: mask1}">
                                               <div  class="help-block text-danger">
                                               <div *ngIf="indsubmitted && vifc.Phone.errors">Phone is required</div>
                                               </div>
@@ -218,7 +218,7 @@
                                                     <td>{{item.CountryName}}</td>
                                                     <td>{{item.Zipcode}}</td>
                                                     <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
-                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(i)" ></i>
+                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(item.AddressId)" ></i>
                                                 </tr>
                                                 <tr *ngIf="address_list.length == 0">
 
@@ -237,8 +237,8 @@
                                           <div class="row g-4 p-1">
                                                   <div class="col-md">
                                                           <div class="form-floating">
-                                                                  <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId">
-                                                                    <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId">
+                                                                  <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId" (change)="addresstypeChange($event)">
+                                                                    <option *ngFor="let addresstype of AddressTypelist" [value]="addresstype.AddressTypeId">
                                                                       {{addresstype.AddressTypeDesc}}
                                                                     </option>
                                                                 </select>
@@ -427,7 +427,7 @@
               </accordion><br>
               <div class=" mt-1 text-right">
                   <div class="btndiv mt-2">
-                      <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="individualUserdata(VendorMgmtBusiness.value);" />
+                      <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="individualUserdata(VendorMgmtIndividual.value);" />
                       &nbsp;&nbsp;
                            <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" />
                   </div>
@@ -748,7 +748,7 @@
                                                     <td>{{item.CountryName}}</td>
                                                     <td>{{item.Zipcode}}</td>
                                                     <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
-                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(i)" ></i>
+                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(item.AddressId)" ></i>
                                                 </tr>
                                                 <tr *ngIf="address_list.length == 0">
 
@@ -991,7 +991,7 @@
 
                                                     <td>
                                                       <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editcontact(item,i)" ></i>
-                                                      <!-- <i class="fa fa-trash ml-1 cursor-pointer"  title="Delete"  (click)="deletecontact(i)" ></i> -->
+                                                      <i class="fa fa-trash ml-1 cursor-pointer"  title="Delete"  (click)="deletecontact(item.ContactId)" ></i>
                                                    </td>
                                                 </tr>
 
