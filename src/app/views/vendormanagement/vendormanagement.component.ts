@@ -28,7 +28,7 @@ export class VendormanagementComponent implements OnInit {
   countrytypePastAddr:any;
   zipcodeValPastAddr:any;
   statedetailPastAddr:any;
-
+  error:any={isError:false,errorMessage:''};
   SingleVendorContactDetailsArr:any;
 
   CurrentAddrStartDate:any;
@@ -267,6 +267,15 @@ export class VendormanagementComponent implements OnInit {
   this.GetVendorContactByNotPrimary();
 
   }
+//   compareTwoDates(){
+//     if(new Date(this.Addressform.controls['EndDate'].value)<new Date(this.Addressform.controls['StartDate'].value)){
+//        this.error={isError:true,errorMessage:'End Date cant before start date'};
+//     }
+//     else
+//     {
+//       this.error={isError:false,errorMessage:''};
+//     }
+//  }
   informationPopup(info:any) {
     // debugger
     this.informationText = info;

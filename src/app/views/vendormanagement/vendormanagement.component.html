@@ -384,7 +384,7 @@
                                                       </div>
                                                   <div class="col-md">
                                                     <div class="form-floating">
-                                                          <input type="date" id="EndDate" class="form-control"
+                                                          <input type="date" id="EndDate" class="form-control"  [min]="Addressform.controls.StartDate.value"
 
                                                               formControlName="EndDate"
                                                                   (keypress)="EmptyErrorMessage('mailingfromdata_id')">
@@ -914,7 +914,7 @@
                                                       </div>
                                                   <div class="col-md">
                                                     <div class="form-floating">
-                                                          <input type="date" id="EndDate" class="form-control"
+                                                          <input type="date" id="EndDate" [min]="Addressform.controls.StartDate.value" class="form-control" 
 
                                                               formControlName="EndDate"
                                                                   (keypress)="EmptyErrorMessage('mailingfromdata_id')">
@@ -922,6 +922,9 @@
                                                           <div  class="help-block text-danger">
                                                               <div *ngIf="address_submmited && af.EndDate.errors">End Date is required</div>
                                                           </div>
+                                                          <div *ngIf="error.isError" class="alert alert-danger">
+                                                            {{ error.errorMessage }}
+                                                           </div>
                                                           <label class="common_lbl" for="EndDate">END DATE <span class="requiredfield"> *</span></label>
 
                                                       </div>
