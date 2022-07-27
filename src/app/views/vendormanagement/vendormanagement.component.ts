@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { config_url } from '../shared/constant';
 import Swal from 'sweetalert2';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Router,ActivatedRoute,ParamMap, Params, NavigationEnd  } from '@angular/router';
 
 
 @Component({
@@ -48,7 +49,7 @@ export class VendormanagementComponent implements OnInit {
   classList: any;
   nextElementSibling: any;
   citylist:any;
-
+  isDisabled:true;
   zipcodeVal:any;
   countrytype:any;
   districts:any;
@@ -125,7 +126,7 @@ export class VendormanagementComponent implements OnInit {
   ZCSlistdata:any;
 
   constructor(
-    private frmbuilder: FormBuilder,private http: HttpClient,private modalService: NgbModal,
+    private frmbuilder: FormBuilder,private http: HttpClient,private modalService: NgbModal,private router:Router,
   ) {
 
     // this.contactsform = this.frmbuilder.group({
@@ -214,7 +215,7 @@ export class VendormanagementComponent implements OnInit {
 
       FirstName:  ['', [Validators.required]],
       LastName:  ['', [Validators.required]],
-      MiddleName: ['', [Validators.required]],
+      MiddleName: [''],
 
       // VendorId:[localStorage.getItem('vendoridSes')],
       // CreatedUserId:[localStorage.getItem("CreatedUseridses")],
@@ -445,7 +446,58 @@ export class VendormanagementComponent implements OnInit {
    });
      this.address_submmited=false;
   }
+  deleteaddress(id:any)
+  {
+    this.http.get(config_url+'vendor/DeleteVendorAdress?AddressId='+id).subscribe(
+      (data:any) => {
+        console.log("data");
+          console.log('Delete Request is successful >>>>>>>>', data);
+          if(data != null && data.length >0)
+          {
+  
+  
+            var errorcode=data[0].ErrorCodeID;
+  
+            if(errorcode=="9999")
+            {
+              this.GetVendorAddressById()
+              Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'Address Details Successfully deleted',
+                showConfirmButton: false,
+                timer: 3000
+              })
+             
+          }
+          else
+          {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
 
+            })
+          }
+
+      }
+      else
+      {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+
+        })
+      }
+      },
+      success => {
+   
+
+         
+      }
+      );
+  }
   addaddress(index:any)
   {
 
@@ -456,10 +508,18 @@ export class VendormanagementComponent implements OnInit {
 
       this.Addressform.value.VendorId=localStorage.getItem('vendoridSes');
       this.Addressform.value.CreatedUserId=localStorage.getItem("CreatedUseridses");
-      this.http.post('http://localhost:8080/vendor/AddUpdVendorAddress',this.Addressform.value).subscribe(
-        data => {
+      this.http.post(config_url+'vendor/AddUpdVendorAddress',this.Addressform.value).subscribe(
+        (data:any) => {
           console.log("data");
-            console.log('POST Request is successful >>>>>>>>', data);
+            console.log('Add Request is successful >>>>>>>>', data);
+            if(data != null && data.length >0)
+            {
+    
+    
+              var errorcode=data[0].ErrorCodeID;
+    
+              if(errorcode=="9999")
+              {
             this.GetVendorAddressById()
             Swal.fire({
               position: 'top',
@@ -474,10 +534,30 @@ export class VendormanagementComponent implements OnInit {
               VendorAddressPrimary:0
            });
              this.address_submmited=false;
+          }
+          else
+          {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+
+            })
+          }
+        }
+        else
+        {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+
+          })
+        }
         },
         success => {
      
-          
+
            
         }
         );
@@ -539,6 +619,23 @@ export class VendormanagementComponent implements OnInit {
     //  this.address_submmited=false;
     // }
   }
+  addresstypeChange(data:any) {
+    debugger
+    var value=data.target.value;
+    if(value == "P")
+    {
+      this.Addressform.get('VendorAddressPrimary').disable();
+      this.Addressform.get('VendorAddressPrimary').setValue(0)
+      // this.Addressform.patchValue({
+      //   VendorAddressPrimary :new FormControl({value: 0, disabled: true}),
+      //  });
+    }
+    else
+    {
+      this.Addressform.get('VendorAddressPrimary').enable();
+
+    }
+  }
   addlistToarray(obj:any,list:any) {
     let elmIndex = -1;
     const found = list.some((el:any, index:any) => {
@@ -576,7 +673,7 @@ export class VendormanagementComponent implements OnInit {
    this.onchangecountystatecountry();
 
   }
-  deleteaddress(i:any)
+  deleteaddress1(i:any)
   {
     this.address_list.splice(i,1);
   }
@@ -599,7 +696,7 @@ export class VendormanagementComponent implements OnInit {
    });
 
   }
-  deletecontact(i:any)
+  deletecontact1(i:any)
   {
     this.contact_list.splice(i,1);
   }
@@ -621,35 +718,156 @@ export class VendormanagementComponent implements OnInit {
 
     this.contact_submmited=false;
   }
+  deletecontact(id:any)
+  {
+    this.http.get(config_url+'vendor/DeleteVendorContact?ContactId='+id).subscribe(
+      (data:any) => {
+        console.log("data");
+          console.log('POST Request is successful >>>>>>>>', data);
+          if(data != null && data.length >0)
+          {
+  
+  
+            var errorcode=data[0].ErrorCodeID;
+  
+            if(errorcode=="9999")
+            {
+              this.GetVendorContactById()
+              Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'Contact Details Successfully deleted',
+                showConfirmButton: false,
+                timer: 3000
+              })
+              this.Contactform.reset()
+              var indexval=this.contact_list.length;
+              this.Contactform.patchValue({
+                index:indexval
+              })
+              this.contact_submmited=false;
+          }
+          else
+          {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+
+            })
+          }
+
+      }
+      else
+      {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+
+        })
+      }
+      },
+      success => {
+   
+
+         
+      }
+      );
+  }
+
   addcontact(index:any)
   {
     // debugger
 
-
+    debugger
     this.contact_submmited=true;
-    if (this.Contactform.invalid)
-    {
-        return;
-    }
-    else
-    {
-      let jobtitle = this.jobdetail.filter((y:any) => y.JobTitleId === this.Contactform.value.JobTitleId);
-      if (jobtitle.length > 0)
-      {
-         this.Contactform.value.JobTitleDesc=jobtitle[0].JobTitleDesc;
+    if (this.Contactform.valid) {
+
+
+    this.Contactform.value.VendorId=localStorage.getItem('vendoridSes');
+    this.Contactform.value.CreatedUserId=localStorage.getItem("CreatedUseridses");
+    this.http.post(config_url+'vendor/AddVendorBusinessContact',this.Contactform.value).subscribe(
+      (data:any) => {
+        console.log("data");
+          console.log('POST Request is successful >>>>>>>>', data);
+          if(data != null && data.length >0)
+          {
+  
+  
+            var errorcode=data[0].ErrorCodeID;
+  
+            if(errorcode=="9999")
+            {
+              this.GetVendorContactById()
+              Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'Contact Details Successfully Updated',
+                showConfirmButton: false,
+                timer: 3000
+              })
+              this.Contactform.reset()
+              var indexval=this.contact_list.length;
+              this.Contactform.patchValue({
+                index:indexval
+              })
+              this.contact_submmited=false;
+          }
+          else
+          {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+
+            })
+          }
+
       }
-      this.addlistToarray(this.Contactform.value,this.contact_list)
-     // this.contact_list.splice( index, 0, this.Contactform.value );
-     //this.contact_list.push(this.Contactform.value)
-     this.Contactform.reset()
-     var indexval=this.contact_list.length;
-     this.Contactform.patchValue({
-       index:indexval
-     })
+      else
+      {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
 
-     this.contact_submmited=false;
+        })
+      }
+      },
+      success => {
+   
 
+         
+      }
+      );
     }
+
+
+    // this.contact_submmited=true;
+    // if (this.Contactform.invalid)
+    // {
+    //     return;
+    // }
+    // else
+    // {
+    //   let jobtitle = this.jobdetail.filter((y:any) => y.JobTitleId === this.Contactform.value.JobTitleId);
+    //   if (jobtitle.length > 0)
+    //   {
+    //      this.Contactform.value.JobTitleDesc=jobtitle[0].JobTitleDesc;
+    //   }
+    //   this.addlistToarray(this.Contactform.value,this.contact_list)
+    //  // this.contact_list.splice( index, 0, this.Contactform.value );
+    //  //this.contact_list.push(this.Contactform.value)
+    //  this.Contactform.reset()
+    //  var indexval=this.contact_list.length;
+    //  this.Contactform.patchValue({
+    //    index:indexval
+    //  })
+
+    //  this.contact_submmited=false;
+
+    // }
   }
   removeContact(index:any,contactsform:any) {
 
@@ -904,16 +1122,59 @@ businessUserdata(vendorMgmt:any){
     this.submitted2 = true;
     this.issubmiited=true;
     if (this.VendorMgmtBusiness.valid) {
+      vendorMgmt.VendorId=localStorage.getItem('vendoridSes');
+      vendorMgmt.CreatedUserId=localStorage.getItem("CreatedUseridses");
+      vendorMgmt.VendorTypeId=localStorage.getItem('vendortype')
       vendorMgmt.Newcontact = this.contact_list;
       vendorMgmt.Address = this.address_list;
 
 
-    this.http.post('http://localhost/MNC_PHP_API/vendor/UpdVendorNew',vendorMgmt).subscribe(
+    this.http.post(config_url+'vendor/UpdVendorNew',vendorMgmt).subscribe(
     // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
 
-      data => {
+      (data:any) => {
         console.log("data");
           console.log('POST Request is successful >>>>>>>>', data);
+          if(data != null && data.length >0)
+          {
+  
+  
+            var errorcode=data[0].ErrorCodeID;
+  
+            if(errorcode=="9999")
+            {
+  
+              Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'Successfully Updated',
+                showConfirmButton: false,
+                timer: 3000
+              });
+              this.router.navigate(['/VendorList']);
+            }
+       
+            else
+            {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+  
+              })
+           
+            }
+  
+          }
+          else
+          {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+  
+            })
+          }
 
       },
       success => {
@@ -936,16 +1197,61 @@ businessUserdata(vendorMgmt:any){
   this.indsubmitted = true;
   this.issubmiited=true;
   if (this.VendorMgmtIndividual.valid) {
-    vendorMgmt.Newcontact = this.contact_list;
-    vendorMgmt.Address = this.address_list;
+    vendorMgmt.VendorId=localStorage.getItem('vendoridSes');
+    vendorMgmt.CreatedUserId=localStorage.getItem("CreatedUseridses");
+    vendorMgmt.VendorTypeId=localStorage.getItem('vendortype')
+   
+    
+    // vendorMgmt.Newcontact = this.contact_list;
+    // vendorMgmt.Address = this.address_list;
 
 
-  this.http.post('http://localhost/MNC_PHP_API/vendor/UpdVendorNew',vendorMgmt).subscribe(
-  // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdateVendor',vendorMgmt).subscribe(
+  this.http.post(config_url+'vendor/UpdVenIndividual',vendorMgmt).subscribe(
+  // // this.http.post("http://localhost/VERTEX-PHP-API/"+'vendor/UpdVenIndividual',vendorMgmt).subscribe(
 
-    data => {
+    (data:any) => {
       console.log("data");
         console.log('POST Request is successful >>>>>>>>', data);
+        if(data != null && data.length >0)
+        {
+
+
+          var errorcode=data[0].ErrorCodeID;
+
+          if(errorcode=="9999")
+          {
+
+            Swal.fire({
+              position: 'top',
+              icon: 'success',
+              title: 'Successfully Updated',
+              showConfirmButton: false,
+              timer: 3000
+            });
+            this.router.navigate(['/VendorList']);
+          }
+     
+          else
+          {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+
+            })
+           
+          }
+
+        }
+        else
+        {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+
+          })
+        }
 
     },
     success => {
@@ -1147,7 +1453,7 @@ GetVendorById(){
             VendorTypeId:details.VendorTypeId =="B"?"Business":"Individual",
 
             FirstName: details.LegalName,
-            LastName:details.LegalName,
+            LastName:details.TradeName,
             MiddleName:details.AliasName,
 
             VendorId:[localStorage.getItem('vendoridSes')],

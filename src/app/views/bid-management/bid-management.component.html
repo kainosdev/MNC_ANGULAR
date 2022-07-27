@@ -6,35 +6,35 @@
   <div class="card-body" >
     <h5 class="card-title">Create/View Bid</h5>
 
-    <form [formGroup]="bid_form"> 
-              
+    <form [formGroup]="bid_form">
+
                       <div >
-                          
+
                           <div class="row g-3 p-1">
                               <div class="col-md">
                                   <div class="form-floating">
-                                
+
                                           <input type="text" class="form-control" formControlName="social_no" id="social_no" >
-                                          
-                                               
+
+
                                   <div  class="help-block text-danger">
                                           <div *ngIf="submitted && bfc.social_no.errors">Solicitation Number is required</div>
                                   </div>
                                   <label class="common_lbl" for="social_no">SOLICITATION NUMBER <span class="requiredfield ">  *</span></label>
-  
+
                                   </div>
                                 </div>
                               <div class="col-md">
-                        
+
                                   <div class="form-floating">
                                     <input type="text" class="form-control"  formControlName="title" id="title">
-    
-                                 
-                                     
+
+
+
                                    <label class="common_lbl" for="title">TITLE <span class="requiredfield ">  *</span></label>
-                                
-                                 
-                              
+
+
+
                                  <div  class="help-block text-danger">
                                     <div *ngIf="submitted && bfc.title.errors">Title is required</div>
                                   </div>
@@ -47,16 +47,16 @@
                                       {{item.BidStatusDesc}}
                                   </option>
                                 </select>
-                                
+
                               <label class="common_lbl" for="bidstatus">BID STATUS <span class="requiredfield ">  *</span></label>
                               <div  class="help-block text-danger">
                                 <div *ngIf="submitted && bfc.bidstatus.errors">Bid Status is required</div>
-                             </div>  
-                                    
+                             </div>
+
                               </div>
                             </div>
-                        
-                         
+
+
                           </div>
                           <accordion [collapsing]="collapsing">
                             <accordion-item >
@@ -73,44 +73,44 @@
                                   </ng-template>
                               <ng-template accordionContent>
                                 <div class="card ">
-                                   
+
                                         <div class="">
                                             <div class="row g-3 p-1">
-                                                     
-                                                     
+
+
                                                 <div class="col-12">
                                                     <div class="form-floating">
                                                         <textarea class="form-control"  formControlName="description" id="description" style="height: 100px"></textarea>
                                                         <label for="description" class="common_lbl">DESCRIPTION<span class="requiredfield ">  *</span></label>
                                                       </div>
                                                   </div>
-                                               
-                                                  
+
+
                                               </div>
                                             <div class="row g-4 p-1 ">
                                                 <div class="col-md">
                                                   <div class="form-floating">
-                                                  
+
                                                         <select class="form-select" formControlName="opportunity_type" id="bidstatus" (change)="inputErrorMessage('bidstatus')" >
                                                             <option *ngFor="let item of opportunity_type_list" [value]="item.SolicitationTypeId ">
                                                                 {{item.SolicitationTypeDesc}}
                                                             </option>
-                                                               
-                                                        </select>  
+
+                                                        </select>
                                                         <div  class="help-block text-danger">
                                                             <div *ngIf="submitted && bfc.opportunity_type.errors">Opportunity Type is required</div>
                                                     </div>                                                    <label class="common_lbl" for="floatingInputGrid">OPPORTUNITY TYPE<span class="requiredfield ">  *</span></label>
-                                                        
+
                                                   </div>
                                                 </div>
                                                 <div class="col-md">
                                                   <div class="form-floating">
-                                                
+
                                                     <select class="form-select" formControlName="category" id="category" (change)="inputErrorMessage('bidstatus')" >
                                                         <option value="Open">Open</option>
                                                         <option value="Closed">Closed</option>
-                                                       
-                                                   </select> 
+
+                                                   </select>
                                                    <div  class="help-block text-danger">
                                                         <div *ngIf="submitted && bfc.category.errors">Category is required</div>
                                                    </div>
@@ -120,31 +120,31 @@
                                                 <div class="col-md">
                                                     <div class="form-floating">
                                                         <select class="form-select" formControlName="buying_entry" id="buying_entry" (change)="inputErrorMessage('bidstatus')" >
-                                                           
+
                                                             <option *ngFor="let item of BuyingEntitylist" [value]="item.BuyingEntityTypeId">
                                                               {{item.BuyingEntityTypeDesc}}
                                                           </option>
-                                                    </select> 
-                                                  
+                                                    </select>
+
                                                     <div  class="help-block text-danger">
                                                             <div *ngIf="submitted && bfc.buying_entry.errors">Buying Entry is required</div>
-                                                   </div>  
+                                                   </div>
                                                     <label class="common_lbl" for="buying_entry">BUYING ENTRY<span class="requiredfield ">  *</span></label>
                                                     </div>
                                                   </div>
-                                                  
+
                                                   <div class="col-md">
                                                       <div class="form-floating">
                                                         <select class="form-select" formControlName="set_aside" id="set_aside" (change)="inputErrorMessage('bidstatus')" >
                                                           <option *ngFor="let item of aside_type_list" [value]="item.SetAsideTypeId ">
                                                               {{item.SetAsideTypeDesc}}
                                                           </option>
-                                                      </select>                   
+                                                      </select>
                                                       <div  class="help-block text-danger">
                                                               <div *ngIf="submitted && bfc.set_aside.errors">Set Aside is required</div>
                                                       </div>
                                                       <label class="common_lbl" for="set_aside">SET ASIDE<span class="requiredfield ">  *</span></label>
-  
+
                                                       </div>
                                                     </div>
                                               </div>
@@ -156,19 +156,19 @@
                                               <div class="row g-4 p-1">
                                                   <div class="col-md">
                                                     <div class="form-floating">
-                                                    
+
                                                           <input type="text" class="form-control" formControlName="fund_source" id="fund_source" >
-                        
+
                                                           <div  class="help-block text-danger">
                                                                 <div *ngIf="submitted && bfc.fund_source.errors">Funding Source is required</div>
                                                            </div>
-                                                        
+
                                                            <label class="common_lbl" for="fund_source">FUNDING SOURCE<span class="requiredfield ">  *</span></label>
                                                     </div>
                                                   </div>
                                                   <div class="col-md">
                                                     <div class="form-floating">
-                                                  
+
                                                         <select class="form-select" id="contract_vehicle" formControlName="contract_vehicle"  >
                                                             <option *ngFor="let item of contractVehicle" [value]="item.ContractVehicleId ">
                                                                 {{item.ContractVehicleDesc}}
@@ -185,23 +185,23 @@
                                                           <input type="text" class="form-control" formControlName="budget_amount" id="budget_amount" >
                                                           <div  class="help-block text-danger">
                                                                       <div *ngIf="submitted && bfc.budget_amount.errors">Budget Amount is required</div>
-                                                          </div> 
+                                                          </div>
                                                       <label class="common_lbl" for="buying_entry">BUDGET AMOUNT<span class="requiredfield ">  *</span></label>
                                                       </div>
                                                     </div>
                                                     <div class="col-md">
                                                         <div class="form-floating">
-                                                        
+
                                                             <select class="form-select" formControlName="contrcat_officer" id="contrcat_officer" (change)="inputErrorMessage('bidstatus')" >
                                                                 <option *ngFor="let item of contract_officer_list" [value]="item.JobTitleId ">
                                                                     {{item.JobTitleDesc}}
                                                                 </option>
-                                                                   
-                                                            </select>                   
+
+                                                            </select>
                                                             <div  class="help-block text-danger">
                                                                     <div *ngIf="submitted && bfc.set_aside.errors">Contract Officer is required</div>
                                                            </div>
-                                                            
+
                                                                <label class="common_lbl" for="contrcat_officer">CONTRACT OFFICER<span class="requiredfield ">  *</span></label>
                                                         </div>
                                                       </div>
@@ -210,24 +210,24 @@
 
       <!-- 3 row -->
                                                 <div class="row g-4 p-1">
-                                                    
+
                                                     <div class="col-md">
                                                       <div class="form-floating">
-                                                    
-                                                          
+
+
                                                           <input type="text" class="form-control" formControlName="co_officer_phone" id="co_officer_phone" >
-                                         
+
                                                           <div  class="help-block text-danger">
                                                                   <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Phone is required</div>
                                                          </div>
-                                                           
+
                                                                <label class="common_lbl" for="co_officer_phone">OFFICER PHONE <span class="requiredfield ">  *</span></label>
                                                       </div>
                                                     </div>
                                                     <div class="col-md">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control" formControlName="co_officer_phone" id="co_officer_phone" >
-                                          
+
                                                             <div  class="help-block text-danger">
                                                                     <div *ngIf="submitted && bfc.co_officer_phone.errors">Contract Officer Email is required</div>
                                                             </div>
@@ -237,38 +237,38 @@
                                                       <div class="col-md">
                                                           <div class="form-floating">
                                                             <input type="date" class="form-control" formControlName="posted_date" id="posted_date" >
-                            
+
                                                             <div  class="help-block text-danger">
                                                                         <div *ngIf="submitted && bfc.posted_date.errors">Posted Date is required</div>
                                                             </div>
-                                                              
+
                                                                  <label class="common_lbl" for="posted_date">POSTED DATE<span class="requiredfield ">  *</span></label>
                                                           </div>
                                                         </div>
                                                         <div class="col-md">
                                                           <div class="form-floating">
-                                                        
+
                                                             <input type="date" class="form-control" formControlName="question_due_date" id="question_due_date" >
-                            
-                                                              
+
+
                                                             <div  class="help-block text-danger">
                                                                     <div *ngIf="submitted && bfc.question_due_date.errors">Question Due Date is required</div>
                                                             </div>
-                                                               
+
                                                                    <label class="common_lbl" for="question_due_date">QUESTION DUE DATE<span class="requiredfield ">  *</span></label>
                                                           </div>
                                                         </div>
                                                   </div>
 
-                      <!-- 4 row --> 
+                      <!-- 4 row -->
 
                                                   <div class="row g-4 p-1">
-                                             
+
                                                     <div class="col-md">
                                                         <div class="form-floating">
                                                           <input type="date" class="form-control" formControlName="response_due_date" id="question_due_date" >
-                        
-                                                                  
+
+
                                                                     <div  class="help-block text-danger">
                                                                             <div *ngIf="submitted && bfc.StartDate.errors">Response Due Date is required</div>
                                                                    </div>
@@ -277,17 +277,17 @@
                                                       </div>
                                                       <div class="col-md">
                                                           <div class="form-floating">
-                                                        
+
                                                               <select class="form-select" formControlName="contrcat_officer" id="contrcat_officer" (change)="inputErrorMessage('bidstatus')" >
                                                                   <option *ngFor="let item of contract_officer_list" [value]="item.JobTitleId ">
                                                                       {{item.JobTitleDesc}}
                                                                   </option>
-                                                                     
-                                                              </select>                   
+
+                                                              </select>
                                                               <div  class="help-block text-danger">
                                                                       <div *ngIf="submitted && bfc.set_aside.errors">Technical Monitor is required</div>
                                                              </div>
-                                                              
+
                                                                  <label class="common_lbl" for="contrcat_officer">TECHNICAL MONITOR <span class="requiredfield ">  *</span></label>
                                                           </div>
                                                         </div>
@@ -296,21 +296,21 @@
                                                           <div class="col-md">
                                                             </div>
                                                   </div>
-                                            
-                          <!-- 5 row --> 
-                         
-                         
-                                                 
+
+                          <!-- 5 row -->
+
+
+
                                         </div>
-                                    
-                                   
-                                   
-                                  
-                        
+
+
+
+
+
                                 </div>
                               </ng-template>
                             </accordion-item>
-                        
+
                             <!-- <accordion-item>
                               <ng-template accordionHeader let-toggle="toggle">
                                 <div class="row">
@@ -318,7 +318,7 @@
                                       <p> Custom Header <span class="text-xs text-gray-700">(  toggle button)</span>
                                       </p>
                                   </div>
-                        
+
                                   <div class="col-sm-4">
                                       <button (click)="toggle()" class="accordion__toggle-btn"> <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -326,11 +326,11 @@
                                   <path fill="none" d="M0 0h24v24H0z" />
                                   <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/>
                                 </svg></button>
-                                      
+
                                   </div>
                                 </div>
                                 <div class="flex items-center justify-between px-4 h-12 bg-purple-200">
-                                 
+
                                   <div class="flex space-x-2">
                                   </div>
                                 </div>
@@ -358,13 +358,13 @@
                               <ng-template accordionContent>
                                   <div class="p-1">
                                     <div class="row g-3 p-1">
-                                            
+
                                       <div class="ckeditor">
-                                      
+
                                        <ckeditor data="<p>Hello, world!</p>"></ckeditor>
                                       </div>
                                     </div>
-                                     
+
 
                                   </div>
                               </ng-template>
@@ -383,11 +383,11 @@
                                 </ng-template>
                                 <ng-template accordionContent>
                                     <div class="p-1">
-                                   
-                                      <strong>Document Upload </strong>. 
+
+                                      <strong>Document Upload </strong>.
 
                                       <div class="container_upload text-center mb-2" appDnd (fileDropped)="onFileDropped($event)">
-                                         
+
                                           <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event)" />
                                           <div class="row">
                                             <div class="col-12">
@@ -433,11 +433,11 @@
                                   <div class="p-4">
                                     <div class="row">
                                         <table class="table">
-                                           
+
                                             <thead class="common_tbl_head">
                                               <tr>
                                                 <th scope="col">CLIN #</th>
-                                                <th scope="col">Desciption</th>
+                                                <th scope="col">Description</th>
                                                 <th scope="col">Service Type</th>
                                                 <th scope="col">DBE Goal Type</th>
                                                 <th scope="col">DBE Goal (%)</th>
@@ -445,10 +445,10 @@
                                               </tr>
                                             </thead>
                                             <tbody>
-                                             
-                                           
-                                                  <tr *ngFor="let item of clin_list">           
-                                                      
+
+
+                                                  <tr *ngFor="let item of clin_list">
+
                                                       <th scope="row">{{item.clin}}</th>
                                                       <td>{{item.desc}}</td>
                                                       <td>{{item.service_type}}</td>
@@ -456,9 +456,9 @@
                                                       <td>{{item.dbe_goal}}</td>
                                                       <td>{{item.dbe_budget}}</td>
                                                   </tr>
-                                               
-                                       
-                                         
+
+
+
                                             </tbody>
                                           </table>
                                         <form [formGroup]="clinform" >
@@ -469,7 +469,7 @@
                                           <div class="row g-4">
                                               <div class="col-md">
                                                 <div class="form-floating">
-                                                    
+
                                                     <input type="text" class="form-control" id="clin"
                                                         formControlName="clin" >
                                                       <div  class="help-block text-danger">
@@ -479,9 +479,9 @@
                                                 </div>
                                               </div>
                                               <div class="col-md">
-                                          
+
                                                 <div class="form-floating">
-                                                    
+
                                                     <input type="text" class="form-control" id="desc"
                                                         formControlName="desc">
                                                       <div  class="help-block text-danger">
@@ -492,14 +492,14 @@
                                               </div>
                                               <div class="col-md">
                                                   <div class="form-floating">
-                                                    
+
                                                       <select class="form-select" id="service_type" formControlName="service_type"  >
                                                           <option *ngFor="let item of service_type_list" [value]="item.ServiceTypeId ">
                                                               {{item.ServiceTypeDesc}}
                                                           </option>
                                                       </select>
-                                                         
-                                                  
+
+
                                                       <div  class="help-block text-danger">
                                                             <div *ngIf="clin_submitted && clfc.service_type.errors">Service Type is required</div>
                                                       </div>
@@ -508,7 +508,7 @@
                                                 </div>
                                                 <div class="col-md">
                                                     <div class="form-floating">
-                                                      
+
                                                         <select class="form-control" id="dbe_goal_type" formControlName="dbe_goal_type"  >
                                                             <option *ngFor="let item of dbe_list" [value]="item.BEGoalTypeId ">
                                                                 {{item.BEGoalTypeDesc}}
@@ -525,7 +525,7 @@
                                             <div class="row g-4">
                                                 <div class="col-md">
                                                   <div class="form-floating">
-                                                      
+
                                                   <input type="text" class="form-control" id="dbe_goal"
                                                                   formControlName="dbe_goal">
                                                    <div  class="help-block text-danger">
@@ -535,10 +535,10 @@
                                                   </div>
                                                 </div>
                                                 <div class="col-md">
-                                            
+
                                                   <div class="form-floating">
-                                                      
-                                                   
+
+
                                                       <input type="text" class="form-control" id="dbe_budget" formControlName="dbe_budget">
                                                           <div  class="help-block text-danger">
                                                               <div *ngIf="clin_submitted && clfc.dbe_budget.errors">DBE Budget is required</div>
@@ -547,44 +547,44 @@
                                                   </div>
                                                 </div>
                                                 <div class="col-md">
-                                                   
+
                                                   </div>
                                                   <div class="col-md text-right" style="padding-top: 11px;">
                                                       <!-- <button class="btn btn-filled  common_btn_action ml-2" type="button"  (click)="clinsave()"  >
-                                                          <img class="img-fluid btn-img "                             
+                                                          <img class="img-fluid btn-img "
                                                               >Save</button> -->
 
-                                                              <input type="button"  class="btn btn-primary fixedwidthcls" value="Save"  (click)="clinsave();" />
+                                                              <input type="button"  class="btn btn-primary fixedwidthcls1" value="Save"  (click)="clinsave();" />
                                                               &nbsp;&nbsp;
-                                                              <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" />
+                                                              <input type="button"  class="btn btn-primary-red fixedwidthcls1" value="Cancel" />
 
                                                               <!-- <button class="btn btn-filled btn-delete common_btn_cancel ml-1" type="button" >                                                           Cancel
                                                                 </button> -->
                                                     </div>
                                  </div>
-                                          
-                                         
-                                         
-      
+
+
+
+
                                       </div>
-                                     
+
                                         </form>
-                                
+
                                   </div>
                                     </div>
                               </ng-template>
                             </accordion-item>
                             <accordion-item title="Vendors Matching" [disabled]="true">
-                              <ng-template> 
+                              <ng-template>
                               <div class="flex space-x-2">
-                                   
+
                                     <h6>Vendors Matching</h6>
                                   </div>
                                 </ng-template>
                               <ng-template accordionContent>
                                   <div class="p-4">
                                       This is a simple implementation where the
-                                      <strong>Vendors Matching Items</strong>. 
+                                      <strong>Vendors Matching Items</strong>.
                                     </div>
                               </ng-template>
                             </accordion-item>
@@ -595,11 +595,11 @@
                                   &nbsp;&nbsp;
                                        <input type="button"  class="btn btn-primary-red fixedwidthcls" value="Cancel" />
                               </div>
-      
+
                           </div>
-                        
+
                         </div>
-             
+
       </form>
   </div>
 </div>

@@ -378,13 +378,8 @@
                                                                   <div  class="help-block text-danger">
                                                                       <div *ngIf="address_submmited && af.StartDate.errors">From Date is required</div>
                                                                   </div>
-                                                                <label class="common_lbl" for="mailingfromdata_id">FROM DATE <span class="requiredfield">*</span></label>
-    
-                                                            </div>
-                                                      </div>
                                                   <div class="col-md">
                                                     <div class="form-floating">
-                                                          <input type="date" id="EndDate" class="form-control" 
                                                             
                                                               formControlName="EndDate"                             
                                                                   (keypress)="EmptyErrorMessage('mailingfromdata_id')">
@@ -397,20 +392,11 @@
                                                       </div>
                                                   </div>
                                                  
-                                                 <div class="col-md">
-                                                      <div class=" mt-2 text-right">
-                                                        
-
-                                                            <div class="btndiv mt-2">
-                                                                <input type="button"  class="btn btn-primary fixedwidthcls1" value="Save"  (click)="addaddress(Addressform.get('index').value)"/>
-                                                                &nbsp;&nbsp;
-                                                                     <input type="button"  class="btn btn-primary-red fixedwidthcls1" value="Cancel" (click)="canceladdress()"/>
                                                             </div>
-                                                            
                                                        </div>
                                                   </div>
                                       
-                                          </div>
+                                          <!-- </div> -->
                               
                                   </form>
                                  </div>
