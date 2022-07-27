@@ -767,9 +767,9 @@
                                           <div class="row g-4 p-1">
                                                   <div class="col-md">
                                                           <div class="form-floating">
-                                                                  <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId"
+                                                                  <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId" (change)="addresstypeChange($event)"
                                                                  >
-                                                                 <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId">
+                                                                 <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId" >
                                                                   {{addresstype.AddressTypeDesc}}
                                                                  </option>
                                                               </select>

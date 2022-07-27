@@ -645,6 +645,20 @@ export class VendormanagementComponent implements OnInit {
       this.Addressform.get('VendorAddressPrimary').enable();
 
     }
+    if(value == "C")
+    {
+      this.Addressform.get('EndDate').disable();
+     
+      // this.Addressform.patchValue({
+      //   VendorAddressPrimary :new FormControl({value: 0, disabled: true}),
+      //  });
+    }
+    else
+    {
+      this.Addressform.get('EndDate').enable();
+
+    }
+
   }
   addlistToarray(obj:any,list:any) {
     let elmIndex = -1;
