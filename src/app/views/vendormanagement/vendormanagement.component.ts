@@ -251,13 +251,13 @@ export class VendormanagementComponent implements OnInit {
 
     this.Contactform = this.frmbuilder.group({
       index:0,
-      FirstName:[],
+      FirstName:['', [Validators.required]],
       LastName:['', [Validators.required]],
       MiddleName:[],
       JobTitleId:['', [Validators.required]],
-      Phone:[],
+      Phone:['', [Validators.required]],
       Email:['', [Validators.required]],
-      VendorContactPrimary:[0],
+      VendorContactPrimary:[1],
       VendorContactActive:[1],
       ContactId:[0]
 
@@ -315,7 +315,11 @@ export class VendormanagementComponent implements OnInit {
         if(already_checked.length == 1 && already_checked[0].index == indexval)
         {
           e.target.checked=true;
-          this.Contactform.patchValue({VendorContactPrimary:1});
+          this.Contactform.patchValue({
+            VendorContactPrimary:0,
+          
+            VendorContactActive:1,
+          });
           Swal.fire({
             icon: 'error',
             title: 'Warning!...',
@@ -326,14 +330,20 @@ export class VendormanagementComponent implements OnInit {
         }
         else
         {
-          this.Contactform.patchValue({VendorContactPrimary:0});
+          this.Contactform.patchValue({
+            VendorContactPrimary:0,
+          
+            VendorContactActive:1,});
         }
 
       }
       else
       {
         e.target.checked=true;
-        this.Contactform.patchValue({VendorContactPrimary:1});
+        this.Contactform.patchValue({
+          VendorContactPrimary:0,
+          
+          VendorContactActive:1});
         Swal.fire({
           icon: 'error',
           title: 'Warning!...',
@@ -713,7 +723,9 @@ export class VendormanagementComponent implements OnInit {
     this.Contactform.reset()
     var indexval=this.contact_list.length;
     this.Contactform.patchValue({
-      index:indexval
+      index:indexval,
+      VendorContactPrimary:0,
+      VendorContactActive:1,
     })
 
     this.contact_submmited=false;
@@ -732,7 +744,7 @@ export class VendormanagementComponent implements OnInit {
   
             if(errorcode=="9999")
             {
-              this.GetVendorContactById()
+             
               Swal.fire({
                 position: 'top',
                 icon: 'success',
@@ -743,9 +755,12 @@ export class VendormanagementComponent implements OnInit {
               this.Contactform.reset()
               var indexval=this.contact_list.length;
               this.Contactform.patchValue({
-                index:indexval
+                index:indexval,
+                VendorContactPrimary:0,
+                VendorContactActive:1,
               })
               this.contact_submmited=false;
+              this.GetVendorContactById()
           }
           else
           {
@@ -810,7 +825,9 @@ export class VendormanagementComponent implements OnInit {
               this.Contactform.reset()
               var indexval=this.contact_list.length;
               this.Contactform.patchValue({
-                index:indexval
+                index:indexval,
+                VendorContactPrimary:0,
+                VendorContactActive:1,
               })
               this.contact_submmited=false;
           }
@@ -1922,7 +1939,9 @@ GetVendorContactById(){
         });
         var indexval=response.length+1;
         this.Contactform.patchValue({
-          index:indexval
+          index:indexval,
+          VendorContactPrimary:0,
+          VendorContactActive:1,
         })
       }
       console.log("contactlist>>>",this.contact_list);
