@@ -67,9 +67,7 @@
       cDropdownToggle
       class="py-0"
     >
-      <c-avatar
-       
-      >
+      <c-avatar >
       {{firstname}} 
       <!-- - {{lastname}} -->
       </c-avatar>
@@ -94,7 +92,7 @@
       >
       </c-avatar>
     </button>
-    <ul cDropdownMenu class="pt-0 pr-5 w-auto">
+    <ul cDropdownMenu class="">
       <!-- <li>
         <h6 cDropdownHeader class="bg-light fw-semibold py-2">Account</h6>
       </li> -->
@@ -146,8 +144,8 @@
       </li> -->
       <li>
         <a routerLink="/" (click)="logout()"  cDropdownItem>
-          <!-- <svg cIcon class="me-2" name="cilSettings"></svg> -->
-          Logout 
+          <svg cIcon class="me-2" name="cilLockLocked"></svg>
+          Logout
         </a>
       </li>
       <!-- <li>
@@ -170,14 +168,14 @@
       </li> -->
       <!-- <li>
         <hr cDropdownDivider/>
-      </li>
-      <li>
-        <a routerLink="./" cDropdownItem>
+      </li>-->
+      <!-- <li>
+        <a routerLink="./" (click)="logout()" cDropdownItem>
           <svg cIcon class="me-2" name="cilLockLocked"></svg>
           Lock Account
         </a>
-      </li> -->
-      <li></li>
+      </li>  -->
+      <!-- <li></li> -->
     </ul>
   </c-dropdown>
 </ng-template>

@@ -28,7 +28,7 @@ export class VendormanagementComponent implements OnInit {
   countrytypePastAddr:any;
   zipcodeValPastAddr:any;
   statedetailPastAddr:any;
-
+  error:any={isError:false,errorMessage:''};
   SingleVendorContactDetailsArr:any;
 
   CurrentAddrStartDate:any;
@@ -251,13 +251,13 @@ export class VendormanagementComponent implements OnInit {
 
     this.Contactform = this.frmbuilder.group({
       index:0,
-      FirstName:[],
+      FirstName:['', [Validators.required]],
       LastName:['', [Validators.required]],
       MiddleName:[],
       JobTitleId:['', [Validators.required]],
-      Phone:[],
+      Phone:['', [Validators.required]],
       Email:['', [Validators.required]],
-      VendorContactPrimary:[0],
+      VendorContactPrimary:[1],
       VendorContactActive:[1],
       ContactId:[0]
 
@@ -267,6 +267,15 @@ export class VendormanagementComponent implements OnInit {
   this.GetVendorContactByNotPrimary();
 
   }
+//   compareTwoDates(){
+//     if(new Date(this.Addressform.controls['EndDate'].value)<new Date(this.Addressform.controls['StartDate'].value)){
+//        this.error={isError:true,errorMessage:'End Date cant before start date'};
+//     }
+//     else
+//     {
+//       this.error={isError:false,errorMessage:''};
+//     }
+//  }
   informationPopup(info:any) {
     // debugger
     this.informationText = info;
@@ -315,7 +324,11 @@ export class VendormanagementComponent implements OnInit {
         if(already_checked.length == 1 && already_checked[0].index == indexval)
         {
           e.target.checked=true;
-          this.Contactform.patchValue({VendorContactPrimary:1});
+          this.Contactform.patchValue({
+            VendorContactPrimary:0,
+          
+            VendorContactActive:1,
+          });
           Swal.fire({
             icon: 'error',
             title: 'Warning!...',
@@ -326,14 +339,20 @@ export class VendormanagementComponent implements OnInit {
         }
         else
         {
-          this.Contactform.patchValue({VendorContactPrimary:0});
+          this.Contactform.patchValue({
+            VendorContactPrimary:0,
+          
+            VendorContactActive:1,});
         }
 
       }
       else
       {
         e.target.checked=true;
-        this.Contactform.patchValue({VendorContactPrimary:1});
+        this.Contactform.patchValue({
+          VendorContactPrimary:0,
+          
+          VendorContactActive:1});
         Swal.fire({
           icon: 'error',
           title: 'Warning!...',
@@ -448,7 +467,7 @@ export class VendormanagementComponent implements OnInit {
   }
   deleteaddress(id:any)
   {
-    this.http.get(config_url+'vendor/DeleteVendorAdress?AddressId='+id).subscribe(
+    this.http.get(config_url+'vendor/DeleteVendorAddress?AddressId='+id).subscribe(
       (data:any) => {
         console.log("data");
           console.log('Delete Request is successful >>>>>>>>', data);
@@ -635,6 +654,20 @@ export class VendormanagementComponent implements OnInit {
       this.Addressform.get('VendorAddressPrimary').enable();
 
     }
+    if(value == "C")
+    {
+      this.Addressform.get('EndDate').disable();
+     
+      // this.Addressform.patchValue({
+      //   VendorAddressPrimary :new FormControl({value: 0, disabled: true}),
+      //  });
+    }
+    else
+    {
+      this.Addressform.get('EndDate').enable();
+
+    }
+
   }
   addlistToarray(obj:any,list:any) {
     let elmIndex = -1;
@@ -713,7 +746,9 @@ export class VendormanagementComponent implements OnInit {
     this.Contactform.reset()
     var indexval=this.contact_list.length;
     this.Contactform.patchValue({
-      index:indexval
+      index:indexval,
+      VendorContactPrimary:0,
+      VendorContactActive:1,
     })
 
     this.contact_submmited=false;
@@ -732,7 +767,7 @@ export class VendormanagementComponent implements OnInit {
   
             if(errorcode=="9999")
             {
-              this.GetVendorContactById()
+             
               Swal.fire({
                 position: 'top',
                 icon: 'success',
@@ -743,9 +778,12 @@ export class VendormanagementComponent implements OnInit {
               this.Contactform.reset()
               var indexval=this.contact_list.length;
               this.Contactform.patchValue({
-                index:indexval
+                index:indexval,
+                VendorContactPrimary:0,
+                VendorContactActive:1,
               })
               this.contact_submmited=false;
+              this.GetVendorContactById()
           }
           else
           {
@@ -810,7 +848,9 @@ export class VendormanagementComponent implements OnInit {
               this.Contactform.reset()
               var indexval=this.contact_list.length;
               this.Contactform.patchValue({
-                index:indexval
+                index:indexval,
+                VendorContactPrimary:0,
+                VendorContactActive:1,
               })
               this.contact_submmited=false;
           }
@@ -1922,7 +1962,9 @@ GetVendorContactById(){
         });
         var indexval=response.length+1;
         this.Contactform.patchValue({
-          index:indexval
+          index:indexval,
+          VendorContactPrimary:0,
+          VendorContactActive:1,
         })
       }
       console.log("contactlist>>>",this.contact_list);

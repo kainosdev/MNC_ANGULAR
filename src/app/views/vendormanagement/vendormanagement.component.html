@@ -384,7 +384,7 @@
                                                       </div>
                                                   <div class="col-md">
                                                     <div class="form-floating">
-                                                          <input type="date" id="EndDate" class="form-control"
+                                                          <input type="date" id="EndDate" class="form-control"  [min]="Addressform.controls.StartDate.value"
 
                                                               formControlName="EndDate"
                                                                   (keypress)="EmptyErrorMessage('mailingfromdata_id')">
@@ -767,9 +767,9 @@
                                           <div class="row g-4 p-1">
                                                   <div class="col-md">
                                                           <div class="form-floating">
-                                                                  <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId"
+                                                                  <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId" (change)="addresstypeChange($event)"
                                                                  >
-                                                                 <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId">
+                                                                 <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId" >
                                                                   {{addresstype.AddressTypeDesc}}
                                                                  </option>
                                                               </select>
@@ -914,7 +914,7 @@
                                                       </div>
                                                   <div class="col-md">
                                                     <div class="form-floating">
-                                                          <input type="date" id="EndDate" class="form-control"
+                                                          <input type="date" id="EndDate" [min]="Addressform.controls.StartDate.value" class="form-control" 
 
                                                               formControlName="EndDate"
                                                                   (keypress)="EmptyErrorMessage('mailingfromdata_id')">
@@ -922,6 +922,9 @@
                                                           <div  class="help-block text-danger">
                                                               <div *ngIf="address_submmited && af.EndDate.errors">End Date is required</div>
                                                           </div>
+                                                          <div *ngIf="error.isError" class="alert alert-danger">
+                                                            {{ error.errorMessage }}
+                                                           </div>
                                                           <label class="common_lbl" for="EndDate">END DATE <span class="requiredfield"> *</span></label>
 
                                                       </div>
@@ -933,7 +936,10 @@
 
                                                             <div class="btndiv mt-2">
                                                                 <input type="button"  class="btn btn-primary fixedwidthcls1" value="Save"  (click)="addaddress(Addressform.get('index').value)"/>
+
                                                                 &nbsp;&nbsp;
+
+                                                                &nbsp;
                                                                      <input type="button"  class="btn btn-primary-red fixedwidthcls1" value="Cancel" (click)="canceladdress()"/>
                                                             </div>
 
@@ -995,9 +1001,9 @@
                                                    </td>
                                                 </tr>
 
-                                                <tr *ngIf="address_list.length == 0">
+                                                <tr *ngIf="contact_list.length == 0">
 
-                                                  No Contact Found.
+                                                     No Contact Found.
                                                </tr>
 
                                           </tbody>

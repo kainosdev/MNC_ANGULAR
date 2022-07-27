@@ -227,12 +227,17 @@ export class BidmanagementComponent implements OnInit {
   {
     try
     {
-      this.http.get(config_url+'/bid/GetBidByNumber?BidNumber=87654322').subscribe(
-        (data: any) => {
+      let BidNumber = localStorage.getItem('BidNumber');
+
+      this.http.get(config_url+'/bid/GetBidByNumber?BidNumber='+localStorage.getItem('BidNumber')).subscribe((data: any) =>
+       {
           var response= data.BidDetails;
           if(response != null && response.length>0)
+          //debugger;
           {
             this.biddetails = response[0];
+            console.log(this.biddetails )
+           // debugger;
             this.bid_form.patchValue({ 
             social_no: this.biddetails.BidNumber,
             bidstatus: this.biddetails.BidStatusId,
@@ -242,7 +247,7 @@ export class BidmanagementComponent implements OnInit {
             category:this.biddetails.BidStatusId,
             buying_entry:this.biddetails.BuyingEntityTypeId,
             set_aside:this.biddetails.SetAsideTypeId,
-            contrcat_officer:this.biddetails.ContractingOfficer,
+            contrcat_officer:'',
             co_officer_phone:this.biddetails.ContractNumber,
             co_officer_email:this.biddetails.BidStatusId,
             no_of_response:this.biddetails.BidStatusId,
@@ -252,7 +257,7 @@ export class BidmanagementComponent implements OnInit {
             contract_vehicle:this.biddetails.ContractVehicleId,
             budget_amount:this.biddetails.BidBudgetAmount,
             posted_date:this.biddetails.BidPostedDate.split(" ")[0],
-            question_due_date:this.biddetails.QandADueDate.split(" ")[0],
+            question_due_date:'',
             response_due_date:this.biddetails.BidResponseDueDate.split(" ")[0],
             dbe_goal:this.biddetails.BidBudgetAmount,
            });  
