@@ -21,7 +21,7 @@
                 <tr>
                 <!-- <th  style="display:none;width: 0px;">b</th> -->
                 <th  style="color: white;">User Name</th>
-                <th  style="color: white;">Frist Name</th>
+                <th  style="color: white;">First Name</th>
                 <th  style="color: white;">Last Name</th>
                 <th style="color: white;">Middle Name</th>
                  <th style="color: white;">Phone</th>
@@ -63,13 +63,13 @@
         <div class="p-4">
 
           <div class="row" style="overflow-x:auto;">
-            <table  class="table servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions1"  [dtTrigger]="dtTrigger1" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
+            <table  class="table nowrap servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions1"  [dtTrigger]="dtTrigger1" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
                 <thead style="text-align: left;background-color: #5e6572;font-size: 13px !important;">
 
               <tr>
               <!-- <th  style="display:none;width: 0px;">b</th> -->
               <th  style="color: white;">User Name</th>
-              <th  style="color: white;">Frist Name</th>
+              <th  style="color: white;">First Name</th>
               <th  style="color: white;">Last Name</th>
               <th style="color: white;">Middle Name</th>
               <th style="color: white;">User Status</th>
@@ -115,7 +115,7 @@
     <accordion-item>
       <ng-template accordionTitle>
         <div class="flex space-x-2">
-          <h6> Pending Approval:Vendor Users</h6>
+          <h6> Pending Approval: Vendor Users</h6>
         </div>
       </ng-template>
       <ng-template accordionContent>
@@ -274,8 +274,8 @@
                     <th style="color: white;" scope="col">Actual End Date</th>
                     <th style="color: white;" scope="col">Contracting Officer</th>
                     <th style="color: white;" scope="col">Technical Monitor Name</th>
-                    <th style="color: white;" scope="col">Base year</th>
-                    <th style="color: white;" scope="col">Option year</th>
+                    <th style="color: white;" scope="col">Base years</th>
+                    <th style="color: white;" scope="col">Option years</th>
 
                   </tr>
                 </thead>
@@ -292,7 +292,7 @@
                     <td>{{item.StartDateActual | date:'MMM d,Y'}}</td>
                     <td>{{item.EndDateActual | date:'MMM d,Y'}}</td>
                     <td>{{item.FirstName}}</td>
-                    <td>-</td>
+                    <td>Thomas</td>
                     <td>{{item.BaseYear}}</td>
                     <td>{{item.OptionYeat}}</td>
 

@@ -38,7 +38,7 @@
                       <th  style="color: white;">Option years</th>
               </tr>
             </thead>
-            
+
             <tbody >
               <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of vendoractivelist">
 
@@ -51,8 +51,8 @@
               <td>{{item.EndDatePlanned|date : "MMM d, y"}}</td>
               <td>{{item.ActualStartDate|date : "MMM d, y"}}</td>
               <td>{{item.ActualEndDate|date : "MMM d, y"}}</td>
-              <td>-</td>
               <td>{{item.FirstName}}</td>
+              <td>John</td>
               <td>{{item.OptionYear}}</td>
               <td>{{item.BaseYear}}</td>
             </tr>
@@ -85,7 +85,7 @@
                     <th style="color: white;"> Status</th>
                      <th style="color: white;">Department</th>
                     <th style="color: white;"> Posted Date</th>
-                    <th  style="color: white;"> Due Date</th>
+                    <th  style="color: white;"> Response Due Date</th>
 
             </tr>
           </thead>
@@ -96,8 +96,9 @@
             <td>{{item.Title}}</td>
             <td>{{item.BidStatusDesc}}</td>
             <td>{{item.DepartmentName}}</td>
-            <td>{{item.BidResponseDueDate|date : "MMM d, y"}}</td>
+
             <td>{{item.BidPostedDate|date : "MMM d, y"}}</td>
+            <td>{{item.BidResponseDueDate|date : "MMM d, y"}}</td>
 
           </tr>
 
@@ -131,8 +132,9 @@
                     <th  style="color: white;">Title</th>
                     <th style="color: white;"> Status</th>
                      <th style="color: white;">Department</th>
-                     <th  style="color: white;"> Due Date</th>
-                    <th style="color: white;"> Posted Date</th>
+                     <th style="color: white;"> Posted Date</th>
+                     <th  style="color: white;"> Response Due Date</th>
+
 
 
             </tr>
@@ -145,8 +147,9 @@
             <td>{{item.Title}}</td>
             <td>{{item.BidStatusDesc}}</td>
             <td>{{item.DepartmentName}}</td>
-            <td>{{item.BidResponseDueDate|date : "MMM d, y"}}</td>
             <td>{{item.BidPostedDate|date : "MMM d, y"}}</td>
+            <td>{{item.BidResponseDueDate|date : "MMM d, y"}}</td>
+
 
           </tbody>
 
@@ -170,30 +173,27 @@
 
             <table  class="table nowrap  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions3"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
                 <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
-
               <tr>
               <!-- <th  style="display:none;width: 0px;">b</th> -->
               <th  style="color: white;">Bid Number</th>
                     <th  style="color: white;">Title</th>
                     <th style="color: white;"> Status</th>
                      <th style="color: white;">Department</th>
-                     <th style="color: white;">Reponse Posted Date</th>
-                     <th  style="color: white;"> Due Date</th>
+
+                    <th style="color: white;"> Posted Date</th>
+                    <th  style="color: white;">Response Due Date</th>
 
 
             </tr>
           </thead>
           <tbody >
-            <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of favoritebidlist">
-
-
-            <td><a>-</a></td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-
+            <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of vendorfavoritelist">
+            <td>{{item.BidNumber}}</td>
+            <td>{{item.Title}}</td>
+            <td>{{item.BidStatusDesc}}</td>
+            <td>{{item.DepartmentName}}</td>
+            <td>{{item.BidPostedDate |date : "MMM d, y"}}</td>
+            <td>{{item.BidResponseDueDate |date : "MMM d, y"}}</td>
           </tbody>
 
         </table>
@@ -201,7 +201,6 @@
         </div>
       </ng-template>
     </accordion-item>
-
 
 </accordion>
 </div>

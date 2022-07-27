@@ -7,25 +7,25 @@
         <div class="card">
                 <div class="card-body">
 
-               <br> 
+               <br>
                <!-- <br> -->
 
-<p class="mainheading Vendortitle" style="text-align: center;">Registration Form</p>
+<p class="registrationform Vendortitle" style="text-align: center;">Registration Form</p>
 <div class="row">
         <div class="col-sm-3">
 
         </div>
 
         <div class="col-sm-6">
-                <div >
+                <!-- <div >
                         <div style="margin-left: -129px; border: 1px solid yellow;background-color: #ffff00ba;width: 803px;align-items: center !important;">
-                    
-                    
+
+
                             <p style="font-size: 15px;
                             margin-top: 6px;
                             margin-bottom: 6px;
                             padding-left: 29px;">User Id- must be between 8 to 20 characters in length.Must include upper and lower case letters and numbers 0-9</p>
-                        </div></div>
+                        </div></div> -->
         </div>
 
         <div class="col-sm-3">
@@ -33,40 +33,40 @@
         </div>
 
 </div>
- 
+
     <br>
-   
+
     <div class="row g-4">
         <div class="col-md">
                 <div class="form-floating">
                 <select class="form-select" [ngModel]='usertype'   id="usertype_id" (ngModelChange)="inputErrorMessage('usertype_id');vendordetails_display();displaydata()">
                         <option *ngFor="let userlist of usertypedata" [value]="userlist.UserTypeId" [selected]="userlist.UserTypeId === 'BUSINE'">
                                 {{userlist.UserTypeDesc}}</option>
-                  </select> 
+                  </select>
                   <label class="common_lbl" for="floatingSelectGrid">USER TYPE</label>
                 </div>
               </div>
 
               <div class="col-md">
                 <div class="form-floating">
-       
+
                 </div>
               </div>
 
               <div class="col-md">
                 <div class="form-floating">
-               
+
                 </div>
               </div>
 
               <div class="col-md">
                 <div class="form-floating">
-               
+
                 </div>
               </div>
 
      </div>
-  
+
 
     <!-- Other Role form starts here -->
 
@@ -138,7 +138,10 @@
                 <input type="text" class="tradename"  [pattern]="uidPattern" formControlName="UserId" id="userkey" (keypress)="inputErrorMessage('userkey');">
                 <div  class="help-block text-danger">
                             <div *ngIf="submitted && ofv.UserId.errors?.required">User Id is required</div>
-                            <div *ngIf="submitted && ofv.UserId.errors?.pattern">Pattern Not matched</div>
+                            <div *ngIf="submitted && ofv.UserId.errors?.pattern">Pattern Not matched
+                                <span><img class="m-1 question_mark"
+                                        (mouseover)="informationPopup(info)" ></span>
+                            </div>
                 </div>
               </div>
 
@@ -266,7 +269,7 @@
         </div>
     </div>
     <div class="row mt-1">
-       
+
 
         <div class="form-group col-xs-4 col-md-2 col-sm-2">
                 <label class="labelwidth">Country<span class="requiredfield "> *</span></label>
@@ -306,12 +309,15 @@
                                <input type="text" class="form-control" formControlName="UserId" [pattern]="uidPattern" id="userkey" (keypress)="inputErrorMessage('userkey');">
                                <div  class="help-block text-danger">
                                 <div *ngIf="submitted && rcf.UserId.errors?.required">User Id is required</div>
-                                <div *ngIf="submitted && rcf.UserId.errors?.pattern">Pattern Not matched</div>
+                                <div *ngIf="submitted && rcf.UserId.errors?.pattern">Pattern Not matched
+                                        <span><img class="m-1 question_mark"
+                                                (click)="informationPopup(info)" ></span>
+                                </div>
                         </div>
                                 <label class="common_lbl" for="social_no">USER ID<span class="requiredfield ">  *</span></label>
                                  </div>
                          </div>
-        
+
                          <div class="col-md">
                                 <div class="form-floating">
                                <input type="text" class="form-control" formControlName="FirstName" id="firstname_id" (keypress)="inputErrorMessage('firstname_id');alpha($event)">
@@ -321,7 +327,7 @@
                                 <label class="common_lbl" for="social_no">FIRST NAME<span class="requiredfield ">  *</span></label>
                                  </div>
                          </div>
-        
+
                         <div class="col-md">
                                 <div class="form-floating">
                                <input type="text" class="form-control" formControlName="LastName" id="lastname_id" (keypress)="inputErrorMessage('lastname_id');alpha($event)">
@@ -340,7 +346,7 @@
                                 <label class="common_lbl" for="social_no">MIDDLE NAME</label>
                                  </div>
                          </div>
-        
+
                         </div>
 
                         <div class="row g-4">
@@ -353,30 +359,30 @@
                                         <label class="common_lbl" for="social_no">PASSWORD<span class="requiredfield ">  *</span></label>
                                          </div>
                                  </div>
-                
+
                                  <div class="col-md">
                                         <div class="form-floating">
                                        <input type="password" class="form-control" formControlName="conformpassword" id="comformpswd_id" (keypress)="inputErrorMessage('comformpswd_id');removepassvalidation()">
                                        <div  class="help-block text-danger">
                                         <div *ngIf="submitted && (rcf.conformpassword.errors != null && rcf.conformpassword.errors.required)">Confirm Password is required.</div>
                                         <div *ngIf="submitted && (rcf.conformpassword.errors != null && rcf.conformpassword.errors.notEquivalent)">Confirm Password is not matched.</div>
-                
+
                                 </div>
                                         <label class="common_lbl" for="social_no">CONFIRM PASSWORD<span class="requiredfield ">  *</span></label>
                                          </div>
                                  </div>
-                
+
                                 <div class="col-md">
                                         <div class="form-floating">
-                                    
+
                                          </div>
                                  </div>
                                  <div class="col-md">
                                         <div class="form-floating">
-                                      
+
                                          </div>
                                  </div>
-                
+
                                 </div>
 
                                  <div class="row g-4">
@@ -389,7 +395,7 @@
                                                 <label class="common_lbl" for="social_no">ADDRESS<span class="requiredfield ">  *</span></label>
                                                  </div>
                                          </div>
-                        
+
                                          <div class="col-md">
                                                 <div class="form-floating">
                                                <input type="text" class="form-control" formControlName="Address2"  id="currentsecadd_id" (keypress)="inputErrorMessage('currentsecadd_id')">
@@ -399,21 +405,21 @@
 
                                           <div class="col-md">
                                                 <div class="form-floating">
-                                              
+
                                                   <select class="form-select" formControlName="CityId"  id="currentcity_id"   (change)="inputErrorMessage('currentcity_id');onchangezip()"  >
                                                         <option value="value"></option>
-                    
+
                                                         <option *ngFor="let citylist of cityalldetail" value="{{citylist.CityId}}">
                                                         {{citylist.CityName}}</option>
-                                                     
-                                                 </select> 
+
+                                                 </select>
                                                  <div  class="help-block text-danger">
                                                     <div *ngIf="submitted && rcf.CityId.errors">City is required</div>
                                                 </div>
                                                   <label class="common_lbl" for="social_no">CITY<span class="requiredfield ">  *</span></label>
                                                 </div>
                                               </div>
-                                         
+
 
                                          <div class="col-md">
                                                 <div class="form-floating">
@@ -430,7 +436,7 @@
                                                 <label class="common_lbl" for="social_no">ZIP CODE<span class="requiredfield ">  *</span></label>
                                                  </div>
                                          </div>
-                        
+
                                         </div>
 
 
@@ -441,15 +447,15 @@
                                                                         <option value="value"></option>
                                                                     <option *ngFor="let countydata of ZCSlistdata " value="{{countydata.DistrictId}}">
                                                                         {{countydata.DistrictName}}</option>
-                                                                     
-                                                                 </select> 
+
+                                                                 </select>
                                                                   <div  class="help-block text-danger">
                                                         <div *ngIf="submitted && rcf.DistrictId.errors">County is required</div>
                                                          </div>
                                                         <label class="common_lbl" for="social_no">COUNTY<span class="requiredfield ">  *</span></label>
                                                          </div>
                                                  </div>
-                                
+
                                                  <div class="col-md">
                                                         <div class="form-floating">
                                                                <select class=" form-select"  formControlName="StateId" id="curstate_id"
@@ -466,16 +472,16 @@
                                                          </div>
                                                  </div>
 
-        
+
                                                   <div class="col-md">
                                                         <div class="form-floating">
-                                                      
+
                                                           <select class="form-select" formControlName="CountryId" id="country_id" (change)="inputErrorMessage('country_id')">
                                                                 <option value="value"></option>
                                                                 <option *ngFor="let countrylist of ZCSlistdata" [value]="countrylist.CountryId">
                                                                 {{countrylist.CountryName}}</option>
-                                                             
-                                                         </select> 
+
+                                                         </select>
                                                          <div  class="help-block text-danger">
                                                                 <div *ngIf="submitted && rcf.CountryId.errors">Country is required</div>
                                                         </div>
@@ -487,10 +493,10 @@
                                                         <div class="form-floating">
                                                                 </div>
                                                  </div>
-                                
+
                                                 </div>
 
-   
+
 
             <p class="mainheading heading">Employee Information</p>
 
@@ -562,30 +568,30 @@
 
                  <div class="col-md">
 
-                        
+
 
 <div class="d-flex question_font_short" >
         <div class="mr-auto mt-2">
             <label class="question_font">ADMIN USER ?  </label></div>
-      
+
         <div class="mt-2"><label class="switch float-right">
             <input  type="checkbox" name="AdminUser_name" id="AdminUser_id" formControlName="AdminUser" checked>
             <span class="slider round"></span>
           </label>
         </div>
       </div>
-  
+
                  </div>
 
                  <div class="col-md">
                         <div class="form-floating">
-                   
+
                          </div>
                  </div>
 
                  <div class="col-md">
                         <div class="form-floating">
-                  
+
                          </div>
                  </div>
 
@@ -607,13 +613,16 @@
             <p class="mainheading heading" style="padding-top: 10px">Primary Contact Information</p>
 
             <div class="row g-4">
-                
+
                 <div class="col-md">
                         <div class="form-floating">
                        <input type="text" class="form-control" formControlName="UserId" [pattern]="uidPattern" id="userkey"  (keyup)="inputErrorMessage('userkey')" >
                        <div  class="help-block text-danger">
                         <div *ngIf="submitted && vif.UserId.errors?.required">User Id is required</div>
-                        <div *ngIf="submitted && vif.UserId.errors?.pattern">Pattern Not matched</div>
+                        <div *ngIf="submitted && vif.UserId.errors?.pattern">Pattern Not matched
+                                <span><img class="m-1 question_mark"
+                                        (click)="informationPopup(info)" ></span>
+                        </div>
                     </div>
                         <label class="common_lbl" for="social_no">USER ID<span class="requiredfield ">  *</span></label>
                          </div>
@@ -648,10 +657,10 @@
                          </div>
                  </div>
 
-                </div> 
+                </div>
 
                 <div class="row g-4">
-                        
+
                         <div class="col-md">
                                 <div class="form-floating">
                                <input type="password" class="form-control" formControlName="UserPassword" id="userpswd_id"  (keypress)="inputErrorMessage('userpswd_id');removepassvalidation()">
@@ -673,18 +682,18 @@
                          </div>
                          <div class="col-md">
                                 <div class="form-floating">
-                             
+
                                  </div>
                          </div>
                          <div class="col-md">
                                 <div class="form-floating">
-       
+
                                  </div>
                          </div>
 
                  </div>
                  <div class="row g-4">
-                        
+
                         <div class="col-md">
                                 <div class="form-floating">
                                <input type="text" class="form-control" formControlName="Address1" id="currentadd_id" (keyup)="inputErrorMessage('currentadd_id')" >
@@ -703,13 +712,13 @@
 
                                  <div class="col-md">
                                         <div class="form-floating">
-                                      
+
                                           <select class="form-select" formControlName="CityId"  id="currentcity_id"  (change)="inputErrorMessage('currentcity_id');onchangezip();"  >
                                                 <option value="value"></option>
                                                  <option *ngFor="let citylist of cityalldetail" value="{{citylist.CityId}}">
                                                   {{citylist.CityName}}</option>
-                                             
-                                         </select> 
+
+                                         </select>
                                          <div  class="help-block text-danger">
                                                 <div *ngIf="submitted && vif.CityId.errors">City is required</div>
                                              </div>
@@ -718,12 +727,12 @@
                                       </div>
                                  <div class="col-md">
                                         <div class="form-floating">
-                                      
+
                                           <select class="form-select" formControlName="Zipcode" id="regcurrentzip_id"   (change)="inputErrorMessage('regcurrentzip_id');onchangecountystatecountry()"  >
                                                 <option value="value"></option>
                                                  <option *ngFor="let ziplist of zipcodedetail" >
                                                    {{ziplist.Zipcode}}</option>
-                                          </select> 
+                                          </select>
                                           <div  class="help-block text-danger">
                                                 <div *ngIf="submitted && vif.Zipcode.errors">Address Line 2 is required</div>
                                              </div>
@@ -735,12 +744,12 @@
                                 <div class="row g-4">
                                         <div class="col-md">
                                                 <div class="form-floating">
-                                              
+
                                                   <select class="form-select" formControlName="county_name" id="county_id"  (change)="inputErrorMessage('county_id')">
                                                         <option value="value"></option>
                                                         <option *ngFor="let statelistid of ZCSlistdata" value="{{statelistid.DistrictId}}">
                                                                 {{statelistid.DistrictName}}</option>
-                                                  </select> 
+                                                  </select>
                                                   <div  class="help-block text-danger">
                                                         <div *ngIf="submitted && vif.county_name.errors">County is required</div>
                                                   </div>
@@ -749,12 +758,12 @@
                                               </div>
                                          <div class="col-md">
                                                 <div class="form-floating">
-                                              
+
                                                   <select class="form-select" formControlName="StateId" id="curstate_id"  (change)="inputErrorMessage('curstate_id');">
                                                         <option value="value"></option>
                                                         <option *ngFor="let statelistid of ZCSlistdata" value="{{statelistid.StateId}}">
                                                                 {{statelistid.StateName}}</option>
-                                                  </select> 
+                                                  </select>
                                                   <div  class="help-block text-danger">
                                                         <div *ngIf="submitted && vif.StateId.errors">State/Province is required</div>
                                                  </div>
@@ -764,12 +773,12 @@
 
                                          <div class="col-md">
         <div class="form-floating">
-      
+
           <select class="form-select" formControlName="CountryId" id="country_id" (change)="inputErrorMessage('country_id')">
                 <option value="value"></option>
                 <option *ngFor="let countrylist of ZCSlistdata" [value]="countrylist.CountryId">
                    {{countrylist.CountryName}}</option>
-          </select> 
+          </select>
           <div  class="help-block text-danger">
                 <div *ngIf="submitted && vif.CountryId.errors">Country is required</div>
           </div>
@@ -778,17 +787,17 @@
       </div>
                                          <div class="col-md">
                                                 <div class="form-floating">
-                                          
+
                                                  </div>
                                          </div>
-                
+
                                  </div>
 
 
 <p class="mainheading heading">Vendor Information </p>
 
 <div class="row g-4">
-                        
+
         <div class="col-md">
                 <div class="form-floating">
                <input type="text" class="form-control" [textMask]="{mask: mask}" formControlName="EIN_SSN" id="socialno_id" (keypress)="inputErrorMessage('socialno_id')">
@@ -813,7 +822,7 @@
                 <div class="form-floating">
                <input type="text" class="form-control" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$"  formControlName="Mailindividual" >
                <div  class="help-block text-danger">
-                <div *ngIf="submitted && vif.Mailindividual.errors">Email Address is required</div> 
+                <div *ngIf="submitted && vif.Mailindividual.errors">Email Address is required</div>
                 </div>
                 <label class="common_lbl" for="social_no">EMAIL ADDRESS <span class="requiredfield ">  *</span></label>
                  </div>
@@ -852,18 +861,18 @@
                                 <div *ngIf="submitted && vbf.UserId.errors?.required">User Id is required</div>
                                 <div *ngIf="submitted && vbf.UserId.errors?.pattern">Pattern Not matched
                                         <span><img class="m-1 question_mark"
-                                                (mouseover)="informationPopup(info)" ></span>
+                                                (click)="informationPopup(info)" ></span>
                                 </div>
                                  </div>
                                  <!-- <div> -->
-                                <label class="common_lbl" for="social_no">USER ID 
+                                <label class="common_lbl" for="social_no">USER ID
                                         <span class="requiredfield ">*</span>
-                                       
+
                                      </label>
                                         <!-- </div> -->
                                   </div>
                          </div>
-        
+
                          <div class="col-md">
                                 <div class="form-floating">
                                <input type="text" class="form-control" formControlName="FirstName" id="firstname_id" (keypress)="inputErrorMessage('firstname_id');alpha($event)">
@@ -873,7 +882,7 @@
                                 <label class="common_lbl" for="social_no">LEGAL BUSINESS NAME <span class="requiredfield ">  *</span></label>
                                  </div>
                          </div>
-        
+
                          <div class="col-md">
                                 <div class="form-floating">
                                <input type="text" class="form-control" formControlName="LastName" id="lastname_id" (keypress)="inputErrorMessage('lastname_id');alpha($event)">
@@ -889,14 +898,14 @@
                                <!-- <div  class="help-block text-danger">
                                 <div *ngIf="submitted && vif.LastName.errors">Last Name is required</div>
                                 </div> -->
-                                <label class="common_lbl" for="social_no">ALLAS NAME</label>
+                                <label class="common_lbl" for="social_no">ALIAS NAME</label>
                                  </div>
                          </div>
-        
+
                         </div>
 
                         <div class="row g-4">
-                               
+
                                 <div class="col-md">
                                         <div class="form-floating">
                                        <input type="password" class="form-control"  formControlName="UserPassword" id="userpswd_id" (keypress)="inputErrorMessage('userpswd_id');removepassvalidation()">
@@ -916,22 +925,22 @@
                                         <label class="common_lbl" for="social_no">CONFIRM PASSWORD <span class="requiredfield ">  *</span></label>
                                          </div>
                                  </div>
-                
+
                                  <div class="col-md">
                                         <div class="form-floating">
-                                     
+
                                          </div>
                                  </div>
                                  <div class="col-md">
                                         <div class="form-floating">
-                                      
+
                                          </div>
                                  </div>
-                
+
                                 </div>
 
                                 <div class="row g-4">
-                               
+
                                         <div class="col-md">
                                                 <div class="form-floating">
                                                <input type="text" class="form-control"  formControlName="Address1" id="currentadd_id" (keypress)="inputErrorMessage('currentadd_id')">
@@ -947,15 +956,15 @@
                                                <label class="common_lbl" for="social_no">ADDRESS LINE 2</label>
                                                  </div>
                                          </div>
-                        
+
                                          <div class="col-md">
                                                 <div class="form-floating">
-                                              
+
                                                   <select class="form-select"  formControlName="CityId"  id="currentcity_id"  (change)="inputErrorMessage('currentcity_id');onchangezip();">
                                                         <option value="value"></option>
                                                          <option *ngFor="let citylist of cityalldetail" value="{{citylist.CityId}}">
                                                                 {{citylist.CityName}}</option>
-                                                  </select> 
+                                                  </select>
                                                   <div  class="help-block text-danger">
                                                         <div *ngIf="submitted && vbf.CityId.errors">City is required</div>
                                                     </div>
@@ -969,14 +978,14 @@
                                                                        <option value="value"></option>
                                                                        <option *ngFor="let ziplist of zipcodedetail" >
                                                                        {{ziplist.Zipcode}}</option>
-                                                                 </select> 
+                                                                 </select>
                                                                  <div  class="help-block text-danger">
                                                                        <div *ngIf="submitted && vbf.Zipcode.errors">Zip Code is required</div>
                                                                    </div>
                                                        <label class="common_lbl" for="social_no">ZIP CODE <span class="requiredfield ">  *</span></label>
                                                         </div>
                                                 </div>
-                                         
+
                                     </div>
 
                                         <div class="row g-4">
@@ -986,7 +995,7 @@
                                                                         <option value="value"></option>
                                                                         <option *ngFor="let statelistid of ZCSlistdata" value="{{statelistid.DistrictId}}">
                                                                                 {{statelistid.DistrictName}}</option>
-                                                                  </select> 
+                                                                  </select>
                                                                   <div  class="help-block text-danger">
                                                                         <div *ngIf="submitted && vbf.county_name.errors">County is required</div>
                                                                 </div>
@@ -1000,35 +1009,35 @@
                                                                         <option value="value"></option>
                                                                         <option *ngFor="let statelistid of ZCSlistdata" value="{{statelistid.StateId}}">
                                                                                 {{statelistid.StateName}}</option>
-                                                                  </select> 
+                                                                  </select>
                                                                   <div  class="help-block text-danger">
                                                                         <div *ngIf="submitted && vbf.CountryId.errors">State/Province is required</div>
                                                                 </div>
                                                         <label class="common_lbl" for="social_no">STATE/PROVINCE <span class="requiredfield ">  *</span></label>
                                                          </div>
                                                  </div>
-                                
+
                                                  <div class="col-md">
                                                         <div class="form-floating">
-                                                      
+
                                                           <select class="form-select"  formControlName="CountryId" id="country_id" (change)="inputErrorMessage('country_id')">
                                                                 <option value="value"></option>
                                                                 <option *ngFor="let countrylist of ZCSlistdata" [value]="countrylist.CountryId">
                                                                  {{countrylist.CountryName}}</option>
-                                                          </select> 
+                                                          </select>
                                                           <div  class="help-block text-danger">
                                                                 <div *ngIf="submitted && vbf.CountryId.errors">Country is required</div>
                                                         </div>
                                                           <label class="common_lbl" for="floatingSelectGrid">COUNTRY <span class="requiredfield ">  *</span></label>
                                                         </div>
                                                       </div>
-        
+
                                                 <div class="col-md">
                                                         <div class="form-floating">
-                                                               
+
                                                          </div>
                                                  </div>
-                                
+
                                                 </div>
 
  <p class="mainheading heading">Business Information</p>
@@ -1050,7 +1059,7 @@
                                 <option value="value"></option>
                                 <option *ngFor="let beclassificationlist of beclassificationdetail" [value]="beclassificationlist.BEClassificationId">
                                     {{beclassificationlist.BEClassificationDesc}}</option>
-                          </select> 
+                          </select>
                             <div  class="help-block text-danger">
                 <div *ngIf="submitted && vbf.BEClassificationId.errors">BE Classification is required</div>
         </div>
@@ -1060,7 +1069,7 @@
 
          <div class="col-md">
                 <div class="form-floating">
-                     <input  type="number" max-length="2" class="form-control" formControlName="BusinessSize" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')" > 
+                     <input  type="number" max-length="2" class="form-control" formControlName="BusinessSize" id="busssn_id" (keypress)="inputErrorMessage('busssn_id')" >
                      <div  class="help-block text-danger">
                         <div *ngIf="submitted && vbf.BusinessSize.errors">Business Size is required</div>
                </div>
@@ -1077,7 +1086,7 @@
                 <label class="common_lbl" for="social_no">EMAIL ADDRESS <span class="requiredfield ">  *</span></label>
                  </div>
          </div>
-        
+
 
         </div>
 
@@ -1097,14 +1106,14 @@
                                 </div>
 
                  </div>
-       
+
                  <div class="col-md">
 
                         <div class="d-flex">
                                 <div class="mr-auto mt-2">
-                                  
+
                                     <label class="question_font">IS THIS BUSINESS REGISTERED WITH THIS STATE/COUNTY? </label></div>
-                              
+
                                 <div class="mt-2"><label class="switch float-right">
                                     <input  type="checkbox" name="BusinessRegisteredInDistrict_name" id="BusinessRegisteredInDistrict_id" formControlName="BusinessRegisteredInDistrict" checked>
                                     <span class="slider round"></span>
@@ -1112,15 +1121,17 @@
                                 </div>
                                 </div>
                              </div>
-       
+
                  <div class="col-md">
 
                         <div class="d-flex">
                                 <div class="mr-auto mt-2">
-                                  
-                                    <label class="question_font">IS THIS BUSINESS A FRANCHISE?<span><img class="m-1 question_mark"
-                                        (mouseover)="informationPopup(info)" ></span></label></div>
-                              
+
+                                    <label class="question_font">IS THIS BUSINESS A FRANCHISE?
+                                        <!-- <span><img class="m-1 question_mark"
+                                        (mouseover)="informationPopup(info)" ></span> -->
+                                </label></div>
+
                                 <div class="mt-2"><label class="switch float-right">
                                     <input  type="checkbox" name="BusinessIsFranchisee_name" id="BusinessIsFranchisee_id" formControlName="BusinessIsFranchisee" checked>
                                     <span class="slider round"></span>
@@ -1129,13 +1140,13 @@
                                 </div>
 
                  </div>
-       
+
                  <div class="col-md">
                         <div class="d-flex">
                                 <div class="mr-auto mt-2">
-                                  
+
                                     <label class="question_font">OPT-IN FOR OUTREACH EMAILS?</label></div>
-                              
+
                                 <div class="mt-2"><label class="switch float-right">
                                     <input  type="checkbox" name="OutreachEmailOptIn_name" id="OutreachEmailOptIn_id" formControlName="OutreachEmailOptIn" checked >
                                     <span class="slider round"></span>
@@ -1144,8 +1155,8 @@
                                 </div>
 
                  </div>
-               
-       
+
+
                </div>
 
         </form>
@@ -1179,7 +1190,7 @@
         <div class="modal-body">
           <div >
             <p>User Id- Must be between 8 to 20 characters in length and include Special Characters,lower & Upper Case letters and numbers 0-9</p>
-            </div>     
+            </div>
               <div class="text-center">
               <button type="button" class="btn btn-primary fixedwidthcls" (click)="modal.dismiss('Cross click')">Ok</button>
            </div>
