@@ -218,7 +218,7 @@
                                                     <td>{{item.CountryName}}</td>
                                                     <td>{{item.Zipcode}}</td>
                                                     <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
-                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(item.AddressId)" ></i>
+                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  *ngIf="item.VendorAddressPrimary == 0" (click)="deleteaddress(item.AddressId)" ></i>
                                                 </tr>
                                                 <tr *ngIf="address_list.length == 0">
 
@@ -748,7 +748,7 @@
                                                     <td>{{item.CountryName}}</td>
                                                     <td>{{item.Zipcode}}</td>
                                                     <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
-                                                      <i class="fa fa-trash cursor-pointer"  title="Delete"  (click)="deleteaddress(item.AddressId)" ></i>
+                                                      <i class="fa fa-trash cursor-pointer"  title="Delete" *ngIf="item.VendorAddressPrimary == 0" (click)="deleteaddress(item.AddressId)" ></i>
                                                 </tr>
                                                 <tr *ngIf="address_list.length == 0">
 
@@ -769,7 +769,7 @@
                                                           <div class="form-floating">
                                                                   <select type="text" id="AddressTypeId" class="form-select" formControlName="AddressTypeId" (change)="addresstypeChange($event)"
                                                                  >
-                                                                 <option *ngFor="let addresstype of AddressTypelist" [ngValue]="addresstype.AddressTypeId" >
+                                                                 <option *ngFor="let addresstype of AddressTypelist" [value]="addresstype.AddressTypeId" >
                                                                   {{addresstype.AddressTypeDesc}}
                                                                  </option>
                                                               </select>
