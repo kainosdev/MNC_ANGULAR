@@ -511,7 +511,7 @@ export class VendormanagementComponent implements OnInit {
   addaddress(index:any)
   {
 
-      debugger
+      
       this.address_submmited=true;
       if (this.Addressform.valid) {
 
