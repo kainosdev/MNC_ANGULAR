@@ -144,7 +144,7 @@
             <tr class="tabletr" *ngFor="let item of approvalVendorDetail">
               <td>{{item.CreatedUserId}}</td>
               <td>{{item.vendorName}}</td>
-              <td>{{item.VendorTypeDesc}}</td>
+              <td>{{item.VendorType}}</td>
               <td>{{item.UserStatusDesc}}</td>
               <td>
                 <label class="switch">
@@ -156,10 +156,8 @@
               <td>{{item.Email}}</td>
               <td>{{item.CreatedDate | date:'MMM d,Y'}}</td>
               <td>{{item.CreatedUserId}}</td>
-
           </tr>
           </tbody>
-
         </table>
         </div>
         </div>

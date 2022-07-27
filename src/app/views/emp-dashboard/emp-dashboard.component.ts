@@ -284,12 +284,20 @@ export class EmpDashboardComponent implements OnInit {
         // console.log("VENDOR", data);
         var response = data.GetVendorApproval;
         this.approvalVendorDetail = response;
+
+        for(let i=0;i<this.approvalVendorDetail.length;i++){
+this.approvalVendorDetail[i].VendorType=this.approvalVendorDetail[i].VendorTypeDesc?.replace('Vendor -','');
+          
+        }
         // for (let i = 0; i < this.approvalVendorDetail.length; i++) {
         //   this.approvalVendorDetail[i].vendorApprovalCreatedDate =
         //     this.approvalVendorDetail[i].CreatedDate?.split(' ')[0];
         // }
         this.dtTrigger2.next(this.approvalVendorDetail);
       });
+  }
+  VendorType(VendorType: any) {
+    throw new Error('Method not implemented.');
   }
   displayStyle = 'none';
 
