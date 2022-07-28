@@ -21,24 +21,31 @@ export class EmpDashboardComponent implements OnInit {
    displayedColumns2: string[] = ['UserName', 'VendorName', 'VendorType', 'UserStatus',
    'Approve', 'Phone',
    'Email', 'CreatedDate', 'CreatedUserId'];
+   displayedColumns3: string[] = ['BidNumber', 'Title', 'Status', 'Department',
+   'PostedDate', 'Response Due Date'];
 
   dataSource = new MatTableDataSource();
   dataSource1 = new MatTableDataSource();
   dataSource2 = new MatTableDataSource();
+  dataSource3 = new MatTableDataSource();
 
   @ViewChild('paginator') paginator: MatPaginator;
   @ViewChild('paginator1') paginator1: MatPaginator;
   @ViewChild('paginator2') paginator2: MatPaginator;
+  @ViewChild('paginator3') paginator3: MatPaginator;
 
-  // @ViewChild(MatPaginator) paginator :any = MatPaginator;
-  // @ViewChild( MatPaginator) paginator1 :any = MatPaginator;
+
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatSort) sort1: MatSort;
   @ViewChild(MatSort) sort2: MatSort;
+  @ViewChild(MatSort) sort3: MatSort;
 
 
   directReportDetail:any;
+  approvalEmployeeDetail: any;
+  approvalVendorDetail: any;
+
   lastname: string | null;
   firstname: string | null;
   middlename: string | null;
@@ -47,20 +54,22 @@ export class EmpDashboardComponent implements OnInit {
 
   displayNoRecords: boolean;
   displayNoRecords1: boolean;
-
-  approvalEmployeeDetail: any;
-  approvalVendorDetail: any;
   displayNoRecords2: boolean;
+  displayNoRecords3: boolean;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource1.paginator = this.paginator1;
     this.dataSource2.paginator = this.paginator2;
+    this.dataSource3.paginator = this.paginator3;
+
+
 
 
     this.dataSource.sort = this.sort;
     this.dataSource1.sort = this.sort1;
     this.dataSource2.sort = this.sort2;
+    this.dataSource3.sort = this.sort3;
 
 
   }
