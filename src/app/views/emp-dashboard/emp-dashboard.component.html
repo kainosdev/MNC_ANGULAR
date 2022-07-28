@@ -1,5 +1,6 @@
 <h4>{{firstname}}</h4>
 <accordion [collapsing]="collapsing">
+  <!--direct Report starts-->
   <accordion-item>
     <ng-template accordionTitle>
       <div class="flex space-x-2 ">
@@ -12,8 +13,7 @@
         <div class="row">
 
 
-          <input matInput (keyup)="applyFilter($event)" class="searchbar"
-            placeholder="Search" #input>
+          <input matInput (keyup)="applyFilter($event)" class="searchbar" placeholder="Search" #input>
 
           <div class="mat-elevation-z8">
 
@@ -79,11 +79,11 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
-            </div>
+
             <!-- <table>
     <tr *ngIf="!dataSource.data.length">
       <td style="text-align: center;" [attr.colspan]="displayedColumns.length">
-        No Records Found!
+        No Records Found!  
       </td>
     </tr>
   </table> -->
@@ -94,18 +94,16 @@
             <div *ngIf="displayNoRecords" style="text-align: center;">
               No Records Found!
             </div>
-            <mat-paginator
-            #paginator="matPaginator"
-            [hidden]="!dataSource.data.length"
-            [pageSizeOptions]="[5, 10, 25]"
-             showFirstLastButtons>
+          </div>
+            <mat-paginator #paginator="matPaginator" [hidden]="!dataSource.data.length" [pageSizeOptions]="[5, 10, 25]"
+              showFirstLastButtons>
             </mat-paginator>
           </div>
         </div>
       </div>
     </ng-template>
   </accordion-item>
-
+  <!--direct Report ends-->
 
   <!--employee approval start-->
   <accordion-item>
@@ -116,113 +114,116 @@
     </ng-template>
     <ng-template accordionContent>
       <div class="p-4">
-        <input matInput (keyup)="applyFilter1($event)" class="searchbar"
-          placeholder="Search" #input>
-      </div>
-      <div class="mat-elevation-z8">
+        <div class="row">
+          <input matInput (keyup)="applyFilter1($event)" class="searchbar" placeholder="Search" #input>
+
+          <div class="mat-elevation-z8">
 
 
-        <div style="overflow-x: auto;">
-          <table mat-table matSort [dataSource]="dataSource1" #sort1="matSort">
+            <div style="overflow-x: auto;">
+              <table mat-table  [dataSource]="dataSource1" matSort #sort1="matSort">
 
-            <!-- Position Column -->
-            <ng-container matColumnDef="UserName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> User Name</th>
-              <td mat-cell *matCellDef="let element"> {{element.CreatedUserId}} </td>
-            </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="UserName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> User Name</th>
+                  <td mat-cell *matCellDef="let element"> {{element.CreatedUserId}} </td>
+                </ng-container>
 
-            <!-- Name Column -->
-            <ng-container matColumnDef="FirstName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.FirstName}} </td>
-            </ng-container>
+                <!-- Name Column -->
+                <ng-container matColumnDef="FirstName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.FirstName}} </td>
+                </ng-container>
 
-            <!-- Weight Column -->
-            <ng-container matColumnDef="LastName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
-            </ng-container>
+                <!-- Weight Column -->
+                <ng-container matColumnDef="LastName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+                </ng-container>
 
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="MiddleName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Middle Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.MiddleName}} </td>
-            </ng-container>
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="MiddleName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Middle Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.MiddleName}} </td>
+                </ng-container>
 
-            <ng-container matColumnDef="UserStatus">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> User Status </th>
-              <td mat-cell *matCellDef="let element"> {{element.UserStatusDesc}} </td>
-            </ng-container>
+                <ng-container matColumnDef="UserStatus">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> User Status </th>
+                  <td mat-cell *matCellDef="let element"> {{element.UserStatusDesc}} </td>
+                </ng-container>
 
-            <ng-container matColumnDef="Approve">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Approve </th>
-              <td mat-cell *matCellDef="let element">
-                <label class="switch">
-                  <input  type="checkbox">
-                  <span class="slider round"></span>
-                  </label>
-              </td>
-            </ng-container>
+                <ng-container matColumnDef="Approve">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Approve </th>
+                  <td mat-cell *matCellDef="let element">
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </td>
+                </ng-container>
 
-            <ng-container matColumnDef="Phone">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
-              <td mat-cell *matCellDef="let element"> {{element.Phone}} </td>
-            </ng-container>
+                <ng-container matColumnDef="Phone">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Phone}} </td>
+                </ng-container>
 
-            <ng-container matColumnDef="Email">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-              <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
-            </ng-container>
+                <ng-container matColumnDef="Email">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+                </ng-container>
 
-            <ng-container matColumnDef="EmploymentType">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Employment Type </th>
-              <td mat-cell *matCellDef="let element"> {{element.asEmploymentDesc}} </td>
-            </ng-container>
+                <ng-container matColumnDef="EmploymentType">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Employment Type </th>
+                  <td mat-cell *matCellDef="let element"> {{element.asEmploymentDesc}} </td>
+                </ng-container>
 
-            <ng-container matColumnDef="JobTitle">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Job Title </th>
-              <td mat-cell *matCellDef="let element"> {{element.JobTitleDesc}} </td>
-            </ng-container>
+                <ng-container matColumnDef="JobTitle">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Job Title </th>
+                  <td mat-cell *matCellDef="let element"> {{element.JobTitleDesc}} </td>
+                </ng-container>
 
-            <ng-container matColumnDef="StartDate">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Start Date </th>
-              <td mat-cell *matCellDef="let element"> {{element.StartDate | date:'MMM d,Y'}} </td>
-            </ng-container>
+                <ng-container matColumnDef="StartDate">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Start Date </th>
+                  <td mat-cell *matCellDef="let element"> {{element.StartDate | date:'MMM d,Y'}} </td>
+                </ng-container>
 
-            <ng-container matColumnDef="CreatedDate">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </th>
-              <td mat-cell *matCellDef="let element"> {{element.CreatedDate | date:'MMM d,Y'}} </td>
-            </ng-container>
+                <ng-container matColumnDef="CreatedDate">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </th>
+                  <td mat-cell *matCellDef="let element"> {{element.CreatedDate | date:'MMM d,Y'}} </td>
+                </ng-container>
 
-            <ng-container matColumnDef="CreatedUserId">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Created UserId </th>
-              <td mat-cell *matCellDef="let element"> {{element.CreatedUserId}} </td>
-            </ng-container>
+                <ng-container matColumnDef="CreatedUserId">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Created UserId </th>
+                  <td mat-cell *matCellDef="let element"> {{element.CreatedUserId}} </td>
+                </ng-container>
 
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
-          </table>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+              </table>
+
+
+            <div *ngIf="!dataSource1.data.length" style="text-align: center;">
+              No Records Found!
+            </div>
+
+            <div *ngIf="displayNoRecords1" style="text-align: center;">
+              No Records Found!
+            </div>
+          </div>
+            <mat-paginator #paginator1="matPaginator" [hidden]="!dataSource1.data.length"
+              [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons>
+            </mat-paginator>
+          </div>
         </div>
-
-        <div *ngIf="!dataSource1.data.length" style="text-align: center;">
-          No Records Found!
-        </div>
-
-        <div *ngIf="displayNoRecords1" style="text-align: center;">
-          No Records Found!
-        </div>
-        <mat-paginator
-        #paginator1="matPaginator"
-        [hidden]="!dataSource1.data.length"
-        [pageSizeOptions]="[5, 10, 25]"
-        showFirstLastButtons>
-        </mat-paginator>
       </div>
     </ng-template>
   </accordion-item>
-   <!--employee approval ends-->
-   <accordion-item>
+  <!--employee approval ends-->
+
+  <!--vendor approval starts-->
+
+  <accordion-item>
     <ng-template accordionTitle>
       <div class="flex space-x-2">
         <h6> Pending Approval: Vendor Users</h6>
@@ -230,93 +231,359 @@
     </ng-template>
     <ng-template accordionContent>
       <div class="p-4">
-        <input matInput (keyup)="applyFilter2($event)" class="searchbar"
-          placeholder="Search" #input>
-      </div>
-      <div class="mat-elevation-z8">
+        <!-- <div class="row"> -->
+          <input matInput (keyup)="applyFilter2($event)" class="searchbar" placeholder="Search" #input>
 
-        <div style="overflow-x: auto;">
-          <table mat-table matSort [dataSource]="dataSource2" #sort2="matSort">
+          <div class="mat-elevation-z8">
 
-            <ng-container matColumnDef="UserName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> User Name</th>
-              <td mat-cell *matCellDef="let element"> {{element.CreatedUserId}} </td>
-            </ng-container>
+            <div style="overflow-x: auto;">
+              <table mat-table  [dataSource]="dataSource2" matSort #sort2="matSort">
 
+                <ng-container matColumnDef="UserName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>User Name</th>
+                  <td mat-cell *matCellDef="let element">{{element.CreatedUserId}}</td>
+                </ng-container>
 
-            <ng-container matColumnDef="VendorName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.vendorName}} </td>
-            </ng-container>
-
-
-            <ng-container matColumnDef="VendorType">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Vendor Type </th>
-              <td mat-cell *matCellDef="let element"> {{element.VendorType}} </td>
-            </ng-container>
+                <ng-container matColumnDef="VendorName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor Name</th>
+                  <td mat-cell *matCellDef="let element">{{element.vendorName}}</td>
+                </ng-container>
 
 
-
-            <ng-container matColumnDef="UserStatus">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> User Status </th>
-              <td mat-cell *matCellDef="let element"> {{element.UserStatusDesc}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="Approve">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Approve </th>
-              <td mat-cell *matCellDef="let element">
-                <label class="switch">
-                  <input  type="checkbox">
-                  <span class="slider round"></span>
-                  </label>
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="Phone">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
-              <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="Email">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-              <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
-            </ng-container>
+                <ng-container matColumnDef="VendorType">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Vendor Type </th>
+                  <td mat-cell *matCellDef="let element"> {{element.VendorType}} </td>
+                </ng-container>
 
 
 
-            <ng-container matColumnDef="CreatedDate">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </th>
-              <td mat-cell *matCellDef="let element"> {{element.CreatedDate | date:'MMM d,Y'}} </td>
-            </ng-container>
+                <ng-container matColumnDef="UserStatus">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> User Status </th>
+                  <td mat-cell *matCellDef="let element"> {{element.UserStatusDesc}} </td>
+                </ng-container>
 
-            <ng-container matColumnDef="CreatedUserId">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Created UserId </th>
-              <td mat-cell *matCellDef="let element"> {{element.CreatedUserId }} </td>
-            </ng-container>
+                <ng-container matColumnDef="Approve">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Approve</th>
+                  <td mat-cell *matCellDef="let element">
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Phone">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+                  <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Email">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+                </ng-container>
+
+
+
+                <ng-container matColumnDef="CreatedDate">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </th>
+                  <td mat-cell *matCellDef="let element"> {{element.CreatedDate | date:'MMM d,Y'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="CreatedUserId">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Created UserId </th>
+                  <td mat-cell *matCellDef="let element"> {{element.CreatedUserId }} </td>
+                </ng-container>
 
 
 
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
-          </table>
-        </div>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+              </table>
 
-        <div *ngIf="!dataSource2.data.length" style="text-align: center;">
-          No Records Found!
-        </div>
 
-        <div *ngIf="displayNoRecords2" style="text-align: center;">
-          No Records Found!
-        </div>
-        <mat-paginator
-        #paginator2="matPaginator"
-        [hidden]="!dataSource2.data.length"
-        [pageSizeOptions]="[5, 10, 25]"
-        showFirstLastButtons>
-        </mat-paginator>
+            <div *ngIf="!dataSource2.data.length" style="text-align: center;">
+              No Records Found!
+            </div>
+
+            <div *ngIf="displayNoRecords2" style="text-align: center;">
+              No Records Found!
+            </div>
+          </div>
+            <mat-paginator #paginator2="matPaginator" [hidden]="!dataSource2.data.length"
+              [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons>
+            </mat-paginator>
+          </div>
+        <!-- </div> -->
       </div>
     </ng-template>
-   </accordion-item>
+  </accordion-item>
+  <!--vendor approval ends-->
 
+  <!--bids Draft starts-->
+  <accordion-item>
+    <ng-template accordionTitle>
+      <div class="flex space-x-2">
+        <h6>Bids In Draft</h6>
+      </div>
+    </ng-template>
+    <ng-template accordionContent>
+      <div class="p-4">
+        <div class="row">
+          <input matInput (keyup)="applyFilter3($event)" class="searchbar" placeholder="Search" #input>
+
+          <div class="mat-elevation-z8">
+
+            <div style="overflow-x: auto;">
+              <table mat-table  [dataSource]="dataSource3" matSort #sort3="matSort">
+
+                <ng-container matColumnDef="BidNumber">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Bid Number</th>
+                  <td mat-cell *matCellDef="let element"> {{element.BidNumber}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="Title">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Title </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Title}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="Status">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                  <td mat-cell *matCellDef="let element"> {{element.BidStatusDesc}} </td>
+                </ng-container>
+
+
+
+                <ng-container matColumnDef="Department">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+                  <td mat-cell *matCellDef="let element"> {{element.DepartmentName}} </td>
+                </ng-container>
+
+
+
+                <ng-container matColumnDef="PostedDate">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Posted Date </th>
+                  <td mat-cell *matCellDef="let element"> {{element.BidPostedDate | date:'MMM d,Y'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="ResponseDueDate">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Response Due Date </th>
+                  <td mat-cell *matCellDef="let element"> {{element.BidResponseDueDate | date:'MMM d,Y'}} </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+              </table>
+
+
+            <div *ngIf="!dataSource3.data.length" style="text-align: center;">
+              No Records Found!
+            </div>
+
+            <div *ngIf="displayNoRecords3" style="text-align: center;">
+              No Records Found!
+            </div>
+          </div>
+            <mat-paginator #paginator3="matPaginator" [hidden]="!dataSource3.data.length"
+              [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons>
+            </mat-paginator>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </accordion-item>
+  <!--bids Draft ends-->
+
+  <!--bids open starts-->
+  <accordion-item>
+    <ng-template accordionTitle>
+      <div class="flex space-x-2">
+        <h6>Open Bids</h6>
+      </div>
+    </ng-template>
+    <ng-template accordionContent>
+      <div class="p-4">
+        <div class="row">
+          <input matInput (keyup)="applyFilter4($event)" class="searchbar" placeholder="Search" #input>
+
+          <div class="mat-elevation-z8">
+
+            <div style="overflow-x: auto;">
+              <table mat-table  [dataSource]="dataSource4" matSort #sort4="matSort">
+
+                <ng-container matColumnDef="BidNumber">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Bid Number</th>
+                  <td mat-cell *matCellDef="let element"> {{element.BidNumber}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="Title">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Title </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Title}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="Status">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                  <td mat-cell *matCellDef="let element"> {{element.BidStatusDesc}} </td>
+                </ng-container>
+
+
+
+                <ng-container matColumnDef="Department">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+                  <td mat-cell *matCellDef="let element"> {{element.DepartmentName}} </td>
+                </ng-container>
+
+
+
+                <ng-container matColumnDef="PostedDate">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Posted Date </th>
+                  <td mat-cell *matCellDef="let element"> {{element.BidPostedDate | date:'MMM d,Y'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="ResponseDueDate">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Response Due Date </th>
+                  <td mat-cell *matCellDef="let element"> {{element.BidResponseDueDate | date:'MMM d,Y'}} </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns4"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns4;"></tr>
+              </table>
+
+
+            <div *ngIf="!dataSource4.data.length" style="text-align: center;">
+              No Records Found!
+            </div>
+
+            <div *ngIf="displayNoRecords4" style="text-align: center;">
+              No Records Found!
+            </div>
+
+          </div>
+            <mat-paginator #paginator4="matPaginator" [hidden]="!dataSource4.data.length"
+              [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons>
+            </mat-paginator>
+          </div>
+        </div>
+      </div>
+
+    </ng-template>
+  </accordion-item>
+  <!--bids open ends-->
+
+  <!--My Contracts starts-->
+<accordion-item>
+  <ng-template accordionTitle>
+    <div class="flex space-x-2">
+      <h6>My Contracts</h6>
+    </div>
+  </ng-template>
+  <ng-template accordionContent>
+    <div class="p-4">
+      <div class="row">
+        <input matInput (keyup)="applyFilter5($event)" class="searchbar" placeholder="Search" #input>
+        <div class="mat-elevation-z8">
+
+          <div style="overflow-x: auto;">
+            <table mat-table [dataSource]="dataSource5" matSort #sort5="matSort">
+
+              <ng-container matColumnDef="ContractNumber">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Contract Number</th>
+                <td mat-cell *matCellDef="let element"> {{element.ContractNumber}} </td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="Title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Title </th>
+                <td mat-cell *matCellDef="let element"> {{element.Title}} </td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="ContractStatus">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Contract Status</th>
+                <td mat-cell *matCellDef="let element"> {{element.ContractStatusDesc}} </td>
+              </ng-container>
+
+
+
+              <ng-container matColumnDef="Department">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+                <td mat-cell *matCellDef="let element"> {{element.DeptName}} </td>
+              </ng-container>
+
+
+
+              <ng-container matColumnDef="AwardedDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Awarded Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.ContractAwardedDate | date:'MMM d,Y'}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="PlannedStartDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Planned Start Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.PlannedStartDate | date:'MMM d,Y'}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="PlannedEndDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Planned End Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.PlannedEndDate | date:'MMM d,Y'}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="ActualStartDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Actual Start Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.StartDateActual | date:'MMM d,Y'}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="ActualEndDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Actual End Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.EndDateActual | date:'MMM d,Y'}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="ContractingOfficer">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Contracting Officer </th>
+                <td mat-cell *matCellDef="let element"> {{element.FirstName }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="TechnicalMonitorName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Technical Monitor Name </th>
+                <td mat-cell *matCellDef="let element"> - </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Baseyears">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Base years </th>
+                <td mat-cell *matCellDef="let element"> {{element.BaseYear }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Optionyears">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Option years</th>
+                <td mat-cell *matCellDef="let element"> {{element.OptionYeat }} </td>
+              </ng-container>
+
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns5"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns5;"></tr>
+            </table>
+
+
+          <div *ngIf="!dataSource5.data.length" style="text-align: center;">
+            No Records Found!
+          </div>
+
+          <div *ngIf="displayNoRecords5" style="text-align: center;">
+            No Records Found!
+          </div>
+        </div>
+          <mat-paginator #paginator5="matPaginator" [hidden]="!dataSource5.data.length"
+            [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons>
+          </mat-paginator>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</accordion-item>
+ <!--My Contracts ends-->
 </accordion>
