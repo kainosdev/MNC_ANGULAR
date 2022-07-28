@@ -5,8 +5,6 @@
 <h4>{{ Firstname }}</h4>
 
 
-
-
 <accordion [collapsing]="collapsing">
   <accordion-item >
       <ng-template accordionTitle>
@@ -16,54 +14,120 @@
         </ng-template>
         <ng-template accordionContent>
           <div class="p-4">
-            <div class="row" style="overflow-x:auto;">
+    
+            <div class="row">
+              <input matInput (keyup)="applyFilter($event)" style="width: 200px; margin-left: 78%;margin-bottom: 10px;" class="searchbar"
+              placeholder="Search" #input>
+  
+    <div class="mat-elevation-z8">
+      <!-- <mat-form-field appearance="standard">
+        <input matInput (keyup)="applyFilter($event)"  placeholder="Search" #input>
+      </mat-form-field> -->
+    
+     <div style="overflow-x: auto;">
+      <table mat-table [dataSource]="dataSource" matSort>
+    
+        <!-- Position Column -->
+        <ng-container matColumnDef="ContractNumber">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Contract Number</th>
+          <td mat-cell *matCellDef="let element"> {{element.ContractNumber}} </td>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="Title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Title </th>
+          <td mat-cell *matCellDef="let element"> {{element.Title}} </td>
+        </ng-container>
+    
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+          <td mat-cell *matCellDef="let element"> {{element.ContractStatusDesc}} </td>
+        </ng-container>
+    
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Department">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+          <td mat-cell *matCellDef="let element"> {{element.DepartmentMName}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="AwardedDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Awarded Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.ContractAwardedDate|date : "MMM d, y"}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="PlannedStartDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Planned Start Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.StartDatePlanned|date : "MMM d, y"}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="PlannedEndDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Planned End Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.EndDatePlanned|date : "MMM d, y"}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="ActualStartDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Actual Start Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.ActualStartDate|date : "MMM d, y"}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="ActualEndDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Actual End Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.ActualEndDate|date :"MMM d, y"}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="ContractingOfficer">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Contracting Officer </th>
+          <td mat-cell *matCellDef="let element"> {{element.FirstName}} </td>
+        </ng-container>
 
-              <table  class="table nowrap  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
-                  <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
+        <ng-container matColumnDef="TechnicalMonitor">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Technical Monitor </th>
+          <td mat-cell *matCellDef="let element"> John </td>
+        </ng-container>
 
-                <tr>
-                <!-- <th  style="display:none;width: 0px;">b</th> -->
-                      <th  style="color: white;">Contract Number</th>
-                      <th  style="color: white;">Title</th>
-                      <th style="color: white;"> Status</th>
-                       <th style="color: white;">Department</th>
-                      <th style="color: white;"> Awarded Date</th>
-                      <th  style="color: white;">Planned Start Date</th>
-                      <th  style="color: white;">Planned End Date</th>
-                      <th  style="color: white;">Actual Start Date</th>
-                      <th  style="color: white;">Actual End Date</th>
-                      <th  style="color: white;">Contracting Officer</th>
-                      <th  style="color: white;">Technical Monitor</th>
-                      <th  style="color: white;">Base years</th>
-                      <th  style="color: white;">Option years</th>
-              </tr>
-            </thead>
-
-            <tbody >
-              <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of vendoractivelist">
-
-              <td><a href="">{{item.ContractNumber}}</a></td>
-              <td>{{item.Title}}</td>
-              <td>{{item.ContractStatusDesc}}</td>
-              <td>{{item.DepartmentMName}}</td>
-              <td>{{item.ContractAwardedDate|date : "MMM d, y"}}</td>
-              <td>{{item.StartDatePlanned|date : "MMM d, y"}}</td>
-              <td>{{item.EndDatePlanned|date : "MMM d, y"}}</td>
-              <td>{{item.ActualStartDate|date : "MMM d, y"}}</td>
-              <td>{{item.ActualEndDate|date : "MMM d, y"}}</td>
-              <td>{{item.FirstName}}</td>
-              <td>John</td>
-              <td>{{item.OptionYear}}</td>
-              <td>{{item.BaseYear}}</td>
-            </tr>
-
-            </tbody>
-
-          </table>
-          </div>
+        <ng-container matColumnDef="Baseyears">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Base years </th>
+          <td mat-cell *matCellDef="let element"> {{element.BaseYear}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Optionyears">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Option years </th>
+          <td mat-cell *matCellDef="let element"> {{element.OptionYear}} </td>
+        </ng-container>
+    
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+      <!-- <table>
+        <tr *ngIf="!dataSource.data.length">
+          <td style="text-align: center;" [attr.colspan]="displayedColumns.length">
+            No Records Found!
+          </td>
+        </tr>
+      </table> -->
+      <div *ngIf="!dataSource.data.length" style="text-align: center;">
+        No Records Found!
+      </div>
+    
+    <div *ngIf="displayNoRecords" style="text-align: center;">
+      No Records Found!
+    </div>
+    <mat-paginator
+    #paginator="matPaginator"
+    [hidden]="!dataSource.data.length"
+    [pageSizeOptions]="[5, 10, 25]"
+     showFirstLastButtons>
+    </mat-paginator>
+    </div>
+            </div>
           </div>
         </ng-template>
   </accordion-item>
+
+
+
 
   <accordion-item>
       <ng-template accordionTitle>
@@ -73,42 +137,74 @@
       </ng-template>
       <ng-template accordionContent>
         <div class="p-4">
-          <div class="row" style="overflow-x:auto;">
-
-            <table  class="table nowrap  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions1"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
-                <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
-
-              <tr>
-              <!-- <th  style="display:none;width: 0px;">b</th> -->
-                    <th  style="color: white;">Bid Number</th>
-                    <th  style="color: white;">Title</th>
-                    <th style="color: white;"> Status</th>
-                     <th style="color: white;">Department</th>
-                    <th style="color: white;"> Posted Date</th>
-                    <th  style="color: white;"> Response Due Date</th>
-
-            </tr>
-          </thead>
-          <tbody >
-            <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of BidsSubmittedlist">
-
-            <td><a href="">{{item.BidNumber}}</a></td>
-            <td>{{item.Title}}</td>
-            <td>{{item.BidStatusDesc}}</td>
-            <td>{{item.DepartmentName}}</td>
-
-            <td>{{item.BidPostedDate|date : "MMM d, y"}}</td>
-            <td>{{item.BidResponseDueDate|date : "MMM d, y"}}</td>
-
-          </tr>
-
-          </tbody>
-
-        </table>
+          <input matInput (keyup)="applyFilter1($event)" style="width: 200px; margin-left: 78%;margin-bottom: 10px;"
+          class="searchbar"
+            placeholder="Search" #input>
+        
+        <div class="mat-elevation-z8">
+  
+  
+          <div style="overflow-x: auto;">
+            <table mat-table matSort [dataSource]="dataSource1" #sort1="matSort">
+  
+              <!-- Position Column -->
+              <ng-container matColumnDef="BidNumber">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Bid Number</th>
+                <td mat-cell *matCellDef="let element"> {{element.BidNumber}} </td>
+              </ng-container>
+  
+              <!-- Name Column -->
+              <ng-container matColumnDef="Title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Title </th>
+                <td mat-cell *matCellDef="let element"> {{element.Title}} </td>
+              </ng-container>
+  
+              <!-- Weight Column -->
+              <ng-container matColumnDef="Status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <td mat-cell *matCellDef="let element"> {{element.BidStatusDesc}} </td>
+              </ng-container>
+  
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="Department">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+                <td mat-cell *matCellDef="let element"> {{element.DepartmentName}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="PostedDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Posted Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.BidPostedDate|date : "MMM d, y"}} </td>
+              </ng-container>
+  
+  
+              <ng-container matColumnDef="ResponseDueDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Response Due Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.BidResponseDueDate|date : "MMM d, y"}} </td>
+              </ng-container>
+  
+              
+              <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+            </table>
+          </div>
+  
+          <div *ngIf="!dataSource1.data.length" style="text-align: center;">
+            No Records Found!
+          </div>
+  
+          <div *ngIf="displayNoRecords1" style="text-align: center;">
+            No Records Found!
+          </div>
+          <mat-paginator
+          #paginator1="matPaginator"
+          [hidden]="!dataSource1.data.length"
+          [pageSizeOptions]="[5, 10, 25]"
+          showFirstLastButtons>
+          </mat-paginator>
         </div>
-        </div>
+      </div>
       </ng-template>
-    </accordion-item>
+  </accordion-item>
 
 
 
@@ -120,40 +216,69 @@
       </ng-template>
       <ng-template accordionContent>
         <div class="p-4">
-           <label class="labelwidth"></label>
-           <div class="row" style="overflow-x:auto;">
-
-            <table  class="table nowrap  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions2"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
-                <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
-
-              <tr>
-              <!-- <th  style="display:none;width: 0px;">b</th> -->
-              <th  style="color: white;">Bid Number</th>
-                    <th  style="color: white;">Title</th>
-                    <th style="color: white;"> Status</th>
-                     <th style="color: white;">Department</th>
-                     <th style="color: white;"> Posted Date</th>
-                     <th  style="color: white;"> Response Due Date</th>
-
-
-
-            </tr>
-          </thead>
-          <tbody >
-            <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of ResponseNotSubmittedlist">
-
-
-            <td><a href="">{{item.BidNumber}}</a></td>
-            <td>{{item.Title}}</td>
-            <td>{{item.BidStatusDesc}}</td>
-            <td>{{item.DepartmentName}}</td>
-            <td>{{item.BidPostedDate|date : "MMM d, y"}}</td>
-            <td>{{item.BidResponseDueDate|date : "MMM d, y"}}</td>
-
-
-          </tbody>
-
-        </table>
+          <input matInput (keyup)="applyFilter2($event)" style="width: 200px; margin-left: 78%;margin-bottom: 10px;" class="searchbar"
+            placeholder="Search" #input>
+       
+        <div class="mat-elevation-z8">
+  
+          <div style="overflow-x: auto;">
+            <table mat-table matSort [dataSource]="dataSource2" #sort2="matSort">
+  
+              <ng-container matColumnDef="BidNumber">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Bid Number</th>
+                <td mat-cell *matCellDef="let element"> {{element.BidNumber}} </td>
+              </ng-container>
+  
+  
+              <ng-container matColumnDef="Title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+                <td mat-cell *matCellDef="let element"> {{element.Title}} </td>
+              </ng-container>
+  
+  
+              <ng-container matColumnDef="Status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <td mat-cell *matCellDef="let element"> {{element.BidStatusDesc}} </td>
+              </ng-container>
+  
+  
+  
+              <ng-container matColumnDef="Department">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+                <td mat-cell *matCellDef="let element"> {{element.DepartmentName}} </td>
+              </ng-container>
+  
+              
+  
+              <ng-container matColumnDef="PostedDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Posted Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.BidPostedDate|date : "MMM d, y"}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="ResponseDueDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Response Due Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.BidResponseDueDate|date : "MMM d, y"}} </td>
+              </ng-container>
+  
+  
+              <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+            </table>
+          </div>
+  
+          <div *ngIf="!dataSource2.data.length" style="text-align: center;">
+            No Records Found!
+          </div>
+  
+          <div *ngIf="displayNoRecords2" style="text-align: center;">
+            No Records Found!
+          </div>
+          <mat-paginator
+          #paginator2="matPaginator"
+          [hidden]="!dataSource2.data.length"
+          [pageSizeOptions]="[5, 10, 25]"
+          showFirstLastButtons>
+          </mat-paginator>
         </div>
         </div>
       </ng-template>
@@ -168,38 +293,73 @@
       </ng-template>
       <ng-template accordionContent>
         <div class="p-4">
-           <label class="labelwidth"></label>
-           <div class="row" style="overflow-x:auto;">
-
-            <table  class="table nowrap  servicecss tblnewbook" datatable="ng"  datatable  [dtOptions] = "dtOptions3"  [dtTrigger]="dtTrigger" style="border: 0.5px solid white !important;border-right: 2px solid !important;">
-                <thead style="text-align: left;background-color: #5e6572;font-size: 12px !important;">
-              <tr>
-              <!-- <th  style="display:none;width: 0px;">b</th> -->
-              <th  style="color: white;">Bid Number</th>
-                    <th  style="color: white;">Title</th>
-                    <th style="color: white;"> Status</th>
-                     <th style="color: white;">Department</th>
-
-                    <th style="color: white;"> Posted Date</th>
-                    <th  style="color: white;">Response Due Date</th>
-
-
-            </tr>
-          </thead>
-          <tbody >
-            <tr style="text-align: left;font-size: 12px !important;" *ngFor="let item of vendorfavoritelist">
-            <td>{{item.BidNumber}}</td>
-            <td>{{item.Title}}</td>
-            <td>{{item.BidStatusDesc}}</td>
-            <td>{{item.DepartmentName}}</td>
-            <td>{{item.BidPostedDate |date : "MMM d, y"}}</td>
-            <td>{{item.BidResponseDueDate |date : "MMM d, y"}}</td>
-          </tbody>
-
-        </table>
+          <input matInput (keyup)="applyFilter3($event)" style="width: 200px; margin-left: 78%;margin-bottom: 10px;" class="searchbar"
+            placeholder="Search" #input>
+        
+        <div class="mat-elevation-z8">
+  
+          <div style="overflow-x: auto;">
+            <table mat-table matSort [dataSource]="dataSource3" #sort3="matSort">
+  
+              <ng-container matColumnDef="BidNumber">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Bid Number</th>
+                <td mat-cell *matCellDef="let element"> {{element.BidNumber}} </td>
+              </ng-container>
+  
+  
+              <ng-container matColumnDef="Title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+                <td mat-cell *matCellDef="let element"> {{element.Title}} </td>
+              </ng-container>
+  
+  
+              <ng-container matColumnDef="Status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <td mat-cell *matCellDef="let element"> {{element.BidStatusDesc}} </td>
+              </ng-container>
+  
+  
+  
+              <ng-container matColumnDef="Department">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+                <td mat-cell *matCellDef="let element"> {{element.DepartmentName}} </td>
+              </ng-container>
+  
+              
+  
+              <ng-container matColumnDef="PostedDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Posted Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.BidPostedDate |date : "MMM d, y"}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="ResponseDueDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Response Due Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.BidResponseDueDate |date : "MMM d, y"}} </td>
+              </ng-container>
+  
+  
+              <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+            </table>
+          </div>
+  
+          <div *ngIf="!dataSource3.data.length" style="text-align: center;">
+            No Records Found!
+          </div>
+  
+          <div *ngIf="displayNoRecords3" style="text-align: center;">
+            No Records Found!
+          </div>
+          <mat-paginator
+          #paginator3="matPaginator"
+          [hidden]="!dataSource3.data.length"
+          [pageSizeOptions]="[5, 10, 25]"
+          showFirstLastButtons>
+          </mat-paginator>
         </div>
-        </div>
+      </div>
       </ng-template>
+    
     </accordion-item>
 
 </accordion>
