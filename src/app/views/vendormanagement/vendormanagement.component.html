@@ -234,6 +234,7 @@
                                         <a class="fontwghtcls mt-1 mb-1 ">+ ADD ADDRESS</a>
                                   <form [formGroup]="Addressform">
 
+                                    
 
 
                                           <div class="row g-4 p-1">
@@ -621,7 +622,7 @@
                                             </div>
                                           </div>
                                           <div class="col-md">
-                                              <div class="d-flex ">
+                                              <div class="d-flex">
                                                   <div class="mr-auto mt-2">
 
                                                       <label class="question_font">IS THIS BUSINESS REGISTERED WITH THIS COUNTY/STATE?
@@ -638,7 +639,7 @@
 
                                             </div>
                                             <div class="col-md">
-                                                <div class="d-flex ">
+                                                <div class="d-flex">
                                                     <div class="mr-auto mt-2">
 
                                                             <label class="question_font"> IS THIS BUSINESS A FRANCHISEE?
@@ -896,7 +897,7 @@
                                                             </label></div>
 
                                                           <div class="mt-2"><label class="switch float-right">
-                                                              <input  type="checkbox" name="VendorAddressPrimary" (change)="addressprimarychange($event,Addressform.get('index').value)" id="VendorAddressPrimary" formControlName="VendorAddressPrimary" checked>
+                                                              <input  type="checkbox" name="VendorAddressPrimary" (change)="addressprimarychange($event,Addressform.get('AddressId').value)" id="VendorAddressPrimary" formControlName="VendorAddressPrimary" checked>
                                                               <span class="slider round"></span>
                                                             </label>
                                                           </div>
@@ -1001,7 +1002,7 @@
 
                                                     <td>
                                                       <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editcontact(item,i)" ></i>
-                                                      <i class="fa fa-trash ml-2 cursor-pointer"  title="Delete"  (click)="deletecontact(item.ContactId)" ></i>
+                                                      <i class="fa fa-trash ml-2 cursor-pointer"  title="Delete"  *ngIf="item.VendorContactPrimary == 0" (click)="deletecontact(item.ContactId)" ></i>
                                                    </td>
                                                 </tr>
 
@@ -1093,13 +1094,13 @@
                                                   </div>
                                                   <div class="col-md">
 
-                                                      <div class="d-flex">
-                                                          <div class="mr-auto mt-2"><label class="question_font">PRIMARY CONTACT?
+                                                      <div class="d-flex question_font_short">
+                                                          <div class="mr-auto mt-2"><label class="question_font_short">PRIMARY CONTACT?
 
                                                             </label></div>
 
                                                           <div class="mt-2"><label class="switch float-right">
-                                                              <input  type="checkbox" name="VendorContactPrimary" (change)="contactprimarychange($event,Contactform.get('index').value)" id="VendorContactPrimary" formControlName="VendorContactPrimary" checked>
+                                                              <input  type="checkbox" name="VendorContactPrimary" (change)="contactprimarychange($event,Contactform.get('ContactId').value)" id="VendorContactPrimary" formControlName="VendorContactPrimary" checked>
                                                               <span class="slider round"></span>
                                                             </label>
                                                           </div>
@@ -1114,8 +1115,8 @@
 
                                                  </div>
                                                  <div class="col-md">
-                                                    <div class="d-flex">
-                                                        <div class="mr-auto mt-2"> <label class="question_font">ACTIVE?
+                                                    <div class="d-flex question_font_short">
+                                                        <div class="mr-auto mt-2"> <label class="question_font_short">ACTIVE?
 
                                                           </label></div>
 

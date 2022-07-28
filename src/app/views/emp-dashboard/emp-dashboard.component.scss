@@ -1,12 +1,17 @@
 table {
   width: 100%;
+  height: auto;
+  font-size: 12px;
 }
 th
 {
+  height: 28px;
   color:white;
   background-color:#5e6572;
   width: fit-content;
+
 }
+
 .mat-table {
   overflow-x: scroll;
 }
@@ -26,4 +31,5 @@ th
 .mat-row,
 .mat-header-row {
   display: table-row;
+  height:35px;
 }

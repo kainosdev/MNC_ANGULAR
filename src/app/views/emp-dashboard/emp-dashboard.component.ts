@@ -26,6 +26,7 @@ export class EmpDashboardComponent  {
   middlename: string | null;
   UserId: string | null;
   collapsing = true;
+  displayNoRecords: boolean;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -37,7 +38,14 @@ export class EmpDashboardComponent  {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
+    this.dataSource.filter = filterValue;
+ if(this.dataSource.filteredData.length==0){
+   this.displayNoRecords=true;
+ }else{
+   this.displayNoRecords=false;
+
+ }
+}
   ngOnInit(): void {
     this.directReport();
     this.firstname = localStorage.getItem('Firstnameses');
