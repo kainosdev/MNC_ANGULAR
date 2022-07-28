@@ -606,6 +606,15 @@
        .heading{
         padding-bottom: 5px;
       }
+
+  .g-4, .gy-4 {
+    --bs-gutter-y: 0rem !important;
+  }
+   .labelheight{
+    height: 72px;
+   }
+  
+
   }
 
   .help-block
@@ -700,5 +709,11 @@ input:checked + .slider:before {
 .fixedwidthcls1 {
   width: 100px;
 }
+
+// @media screen and (max-width: 768px) {
+
+
+
+// }
 
 
