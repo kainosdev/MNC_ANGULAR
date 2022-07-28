@@ -696,8 +696,8 @@ export class VendormanagementComponent implements OnInit {
       CountryId: data.CountryId,
       DistrictId: data.DistrictId,
       StateId:data.StateId,
-      StartDate: data.StartDate.split(' ')[0],
-      EndDate:data.EndDate.split(' ')[0],
+      StartDate: this.getdate(data.StartDate),
+      EndDate:this.getdate(data.EndDate),
       VendorAddressPrimary:data.VendorAddressPrimary
 
 
@@ -735,9 +735,35 @@ export class VendormanagementComponent implements OnInit {
    this.onchangecountystatecountry();
 
   }
+  getdate(data:any)
+  {
+    if(data != null)
+    {
+      return  data.split(' ')[0]
+    }
+    else
+    {
+      return  ''
+    }
+   
+  }
   deleteaddress1(i:any)
   {
     this.address_list.splice(i,1);
+  }
+  getenddate(enddate:any,type:any)
+  {
+    debugger
+    if(type=='C')
+    {
+      return '';
+    }
+    else
+    {
+      return enddate.split(' ')[0];
+    }
+    console.log(enddate)
+
   }
   editcontact(data:any,i:any)
   {

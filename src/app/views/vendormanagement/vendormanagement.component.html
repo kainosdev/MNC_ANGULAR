@@ -202,6 +202,8 @@
                                               <th scope="col">State</th>
                                               <th scope="col">Country</th>
                                               <th scope="col">ZipCode</th>
+                                              <th scope="col">StartDate</th>
+                                              <th scope="col">EndDate</th>
                                                <th scope="col">Action</th>
                                             </tr>
                                           </thead>
@@ -217,15 +219,17 @@
                                                     <td>{{item.StateName}}</td>
                                                     <td>{{item.CountryName}}</td>
                                                     <td>{{item.Zipcode}}</td>
+                                                    <td>{{item.StartDate.split(' ')[0]}}</td>
+                                                    <td>{{getenddate(item.EndDate,item.AddressTypeId)}}</td>
                                                     <td>
                                                     <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
-                                                      <i class="fa fa-trash cursor-pointer ml-2"  title="Delete"  *ngIf="item.VendorAddressPrimary == 0" (click)="deleteaddress(item.AddressId)" ></i>
+                                                      <i class="fa fa-trash cursor-pointer ml-2"  title="Delete"  *ngIf="item.VendorAddressPrimary != '1' && item.AddressTypeId != 'C'" (click)="deleteaddress(item.AddressId)" ></i>
                                                     </td>
                                                   </tr>
                                                 <tr *ngIf="address_list.length == 0">
 
                                                      No Address Found.
-                                              </tr>
+                                                </tr>
 
 
 
@@ -371,7 +375,7 @@
                                                             </label></div>
 
                                                           <div class="mt-2"><label class="switch float-right">
-                                                              <input  type="checkbox" name="VendorAddressPrimary"  id="VendorAddressPrimary" formControlName="VendorAddressPrimary" checked>
+                                                              <input  type="checkbox" name="VendorAddressPrimary"  id="VendorAddressPrimary" (change)="addressprimarychange($event,Addressform.get('AddressId').value)" formControlName="VendorAddressPrimary" checked>
                                                               <span class="slider round"></span>
                                                             </label>
                                                           </div>
@@ -741,6 +745,8 @@
                                               <th scope="col">State</th>
                                               <th scope="col">Country</th>
                                               <th scope="col">ZipCode</th>
+                                              <th scope="col">StartDate</th>
+                                              <th scope="col">EndDate</th>
                                                <th scope="col">Action</th>
                                             </tr>
                                           </thead>
@@ -756,6 +762,8 @@
                                                     <td>{{item.StateName}}</td>
                                                     <td>{{item.CountryName}}</td>
                                                     <td>{{item.Zipcode}}</td>
+                                                    <td>{{item.StartDate.split(' ')[0]}}</td>
+                                                    <td>{{getenddate(item.EndDate,item.AddressTypeId)}}</td>
                                                     <td>
                                                       <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
                                                       <i class="fa fa-trash cursor-pointer ml-2"  title="Delete" *ngIf="item.VendorAddressPrimary != '1' && item.AddressTypeId != 'C'" (click)="deleteaddress(item.AddressId)" ></i>
