@@ -447,14 +447,18 @@ export class VendormanagementComponent implements OnInit {
   }
   canceladdress()
   {
-    this.Addressform.reset()
+    this.Addressform.reset();
     var indexval=this.address_list.length;
     this.Addressform.patchValue({
       index:indexval,
       AddressId : 0,
       VendorAddressPrimary:0
    });
-     this.address_submmited=false;
+   this.Addressform.get('VendorAddressPrimary').enable();
+   this.Addressform.get('EndDate').enable();
+   this.Addressform.get('AddressTypeId').enable();
+   
+   this.address_submmited=false;
   }
   deleteaddress(id:any)
   {
@@ -543,6 +547,9 @@ export class VendormanagementComponent implements OnInit {
               AddressId : 0,
               VendorAddressPrimary:0
            });
+           this.Addressform.get('VendorAddressPrimary').enable();
+           this.Addressform.get('EndDate').enable();
+           this.Addressform.get('AddressTypeId').enable();
              this.address_submmited=false;
           }
           else
@@ -660,6 +667,7 @@ export class VendormanagementComponent implements OnInit {
     }
 
   }
+ 
   addlistToarray(obj:any,list:any) {
     let elmIndex = -1;
     const found = list.some((el:any, index:any) => {
@@ -711,6 +719,7 @@ export class VendormanagementComponent implements OnInit {
     if(value == "C")
     {
       this.Addressform.get('EndDate').disable();
+      this.Addressform.get('AddressTypeId').disable();
      
       // this.Addressform.patchValue({
       //   VendorAddressPrimary :new FormControl({value: 0, disabled: true}),
@@ -719,6 +728,7 @@ export class VendormanagementComponent implements OnInit {
     else
     {
       this.Addressform.get('EndDate').enable();
+      this.Addressform.get('AddressTypeId').enable();
 
     }
    this.onchangecountystatecountry();

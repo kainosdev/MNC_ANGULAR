@@ -752,7 +752,7 @@
                                                     <td>{{item.Zipcode}}</td>
                                                     <td>
                                                       <i class="fa fa-edit cursor-pointer"  title="Edit"  (click)="editaddress(item,i)" ></i>
-                                                      <i class="fa fa-trash cursor-pointer ml-2"  title="Delete" *ngIf="item.VendorAddressPrimary == 0" (click)="deleteaddress(item.AddressId)" ></i>
+                                                      <i class="fa fa-trash cursor-pointer ml-2"  title="Delete" *ngIf="item.VendorAddressPrimary != '1' && item.AddressTypeId != 'C'" (click)="deleteaddress(item.AddressId)" ></i>
                                                     </td>
                                                     </tr>
                                                 <tr *ngIf="address_list.length == 0">
