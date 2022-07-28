@@ -263,4 +263,15 @@ input:checked + .slider:before {
    content:url("../../../assets/images/question-mark-icon.png");
 }
 
+@media screen and (max-width: 768px) {
+
+  .g-4, .gy-4 {
+    --bs-gutter-y: 0rem !important;
+  }
+   .labelheight{
+    height: 72px;
+   }
+  
+}
+
 

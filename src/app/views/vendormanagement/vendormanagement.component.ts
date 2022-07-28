@@ -300,57 +300,51 @@ export class VendormanagementComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-  contactprimarychange(e:any,indexval:any)
+  contactprimarychange(e:any,ContactId:any)
   {
     if(e.target.checked)
     {
-      this.contact_list.forEach((element:any,index:any) => {
-        if(indexval == index)
-        {
-          element.VendorContactPrimary=1;
-        }
-        else
-        {
-          element.VendorContactPrimary=0;
-        }
+      // this.contact_list.forEach((element:any,index:any) => {
+      //   if(indexval == index)
+      //   {
+      //     element.VendorContactPrimary=1;
+      //   }
+      //   else
+      //   {
+      //     element.VendorContactPrimary=0;
+      //   }
 
-      });
+      // });
     }
     else
     {
       let already_checked = this.contact_list.filter((y:any) => y.VendorContactPrimary === 1);
-      if (already_checked.length > 1)
+      if (already_checked.length > 0)
       {
-        if(already_checked.length == 1 && already_checked[0].index == indexval)
+        if(already_checked.length == 1 && already_checked[0].ContactId == ContactId)
         {
           e.target.checked=true;
           this.Contactform.patchValue({
-            VendorContactPrimary:0,
+            VendorContactPrimary:1,
           
             VendorContactActive:1,
           });
           Swal.fire({
             icon: 'error',
             title: 'Warning!...',
-            text: 'Atleast One Address to be Primary Address!',
+            text: 'Atleast One Contact to be Primary Contact!',
 
           })
 
         }
-        else
-        {
-          this.Contactform.patchValue({
-            VendorContactPrimary:0,
-          
-            VendorContactActive:1,});
-        }
+      
 
       }
       else
       {
         e.target.checked=true;
         this.Contactform.patchValue({
-          VendorContactPrimary:0,
+          VendorContactPrimary:1,
           
           VendorContactActive:1});
         Swal.fire({
@@ -363,28 +357,28 @@ export class VendormanagementComponent implements OnInit {
     }
   }
 
-  addressprimarychange(e:any,indexval:any)
+  addressprimarychange(e:any,AddressId:any)
   {
     if(e.target.checked)
     {
-      this.address_list.forEach((element:any,index:any) => {
-        if(indexval == index)
-        {
-          element.VendorAddressPrimary=1;
-        }
-        else
-        {
-          element.VendorAddressPrimary=0;
-        }
+      // this.address_list.forEach((element:any,index:any) => {
+      //   if(indexval == index)
+      //   {
+      //     element.VendorAddressPrimary=1;
+      //   }
+      //   else
+      //   {
+      //     element.VendorAddressPrimary=0;
+      //   }
 
-      });
+      // });
     }
     else
     {
       let already_checked = this.address_list.filter((y:any) => y.VendorAddressPrimary === 1);
       if (already_checked.length > 0)
       {
-        if(already_checked.length == 1 && already_checked[0].index == indexval)
+        if(already_checked.length == 1 && already_checked[0].AddressId == AddressId)
         {
           e.target.checked=true;
         this.Addressform.patchValue({VendorAddressPrimary:1});
@@ -396,10 +390,7 @@ export class VendormanagementComponent implements OnInit {
         })
 
         }
-        else
-        {
-          this.Addressform.patchValue({VendorAddressPrimary:0});
-        }
+        
 
       }
       else
@@ -520,14 +511,14 @@ export class VendormanagementComponent implements OnInit {
   addaddress(index:any)
   {
 
-      debugger
+      
       this.address_submmited=true;
       if (this.Addressform.valid) {
 
-
-      this.Addressform.value.VendorId=localStorage.getItem('vendoridSes');
-      this.Addressform.value.CreatedUserId=localStorage.getItem("CreatedUseridses");
-      this.http.post(config_url+'vendor/AddUpdVendorAddress',this.Addressform.value).subscribe(
+      var data=this.Addressform.getRawValue()
+      data.VendorId=localStorage.getItem('vendoridSes');
+      data.CreatedUserId=localStorage.getItem("CreatedUseridses");
+      this.http.post(config_url+'vendor/AddUpdVendorAddress',data).subscribe(
         (data:any) => {
           console.log("data");
             console.log('Add Request is successful >>>>>>>>', data);
@@ -849,10 +840,10 @@ export class VendormanagementComponent implements OnInit {
     this.contact_submmited=true;
     if (this.Contactform.valid) {
 
-
-    this.Contactform.value.VendorId=localStorage.getItem('vendoridSes');
-    this.Contactform.value.CreatedUserId=localStorage.getItem("CreatedUseridses");
-    this.http.post(config_url+'vendor/AddVendorBusinessContact',this.Contactform.value).subscribe(
+    var data=this.Contactform.getRawValue();
+    data.VendorId=localStorage.getItem('vendoridSes');
+    data.CreatedUserId=localStorage.getItem("CreatedUseridses");
+    this.http.post(config_url+'vendor/AddVendorBusinessContact',data).subscribe(
       (data:any) => {
         console.log("data");
           console.log('POST Request is successful >>>>>>>>', data);
@@ -1604,6 +1595,7 @@ GetVendorAddressById(){
   this.http.get(config_url+'vendor/GetVendorAddressById?VendorId='+vendoridSes+"&").subscribe((data:any) =>
     {
       var response= data.SingleVendorAddressDetails;
+      this.address_list=[];
       if(response != null && response.length>0)
       {
         this.address_list=response;

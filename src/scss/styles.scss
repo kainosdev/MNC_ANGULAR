@@ -190,15 +190,15 @@ a {
 
 .question_font
 {
-  font-size: 14px;
-  font-weight: bolder !important;
+  font-size: 13px;
+  font-weight: 700 !important;
   opacity: 0.65 !important;
 }
 .question_font_short
 {
   padding-top: 11px;
   font-size: 14px;
-  font-weight: bolder !important;
+  font-weight: 700 !important;
   opacity: 0.65 !important;
 }
 
@@ -234,4 +234,9 @@ input[type=button] {
         font-size: 18px !important;
         font-weight: 700;
       }
+
+      .container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
+  --cui-gutter-x: 1.5rem;
+  --cui-gutter-y: 0;
+}
   
