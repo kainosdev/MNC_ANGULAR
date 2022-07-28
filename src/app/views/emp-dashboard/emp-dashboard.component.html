@@ -91,12 +91,18 @@
     </ng-template>
     <ng-template accordionContent>
       <div class="p-4">
+
         <div class="row">
 <!-- <button mat-button (click)="removeRow()">Remove Row 1 by 1</button> -->
 
-
+  <input matInput (keyup)="applyFilter($event)"   style="width: 200px; margin-left: 82%;margin-bottom: 10px;" placeholder="Search" #input>
+<br>
 <div class="mat-elevation-z8">
-  <input matInput (keyup)="applyFilter($event)" style="float:right;margin-bottom: 10px;" placeholder="Search" #input>
+  <!-- <mat-form-field appearance="standard">
+    <input matInput (keyup)="applyFilter($event)"  placeholder="Search" #input>
+  </mat-form-field> -->
+
+ <div style="overflow-x: auto;">
   <table mat-table [dataSource]="dataSource" matSort>
 
     <!-- Position Column -->
@@ -154,21 +160,28 @@
     </ng-container>
 
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <table>
+    </table>
+</div>
+  <!-- <table>
     <tr *ngIf="!dataSource.data.length">
       <td style="text-align: center;" [attr.colspan]="displayedColumns.length">
         No Records Found!
       </td>
     </tr>
-  </table>
+  </table> -->
+  <div *ngIf="!dataSource.data.length" style="text-align: center;">
+    No Records Found!
+  </div>
 
+<div *ngIf="displayNoRecords" style="text-align: center;">
+  No Records Found!
+</div>
   <mat-paginator
   [hidden]="!dataSource.data.length"
-  hidePageSize="true"
-  
+
+
   [pageSizeOptions]="[5, 10, 25]"
                  showFirstLastButtons
                  >
@@ -178,5 +191,16 @@
       </div>
     </ng-template>
   </accordion-item >
+  <accordion-item>
+    <ng-template accordionTitle>
+      <div class="flex space-x-2">
+        <h6>Pending Approval: Employee Users </h6>
+      </div>
+    </ng-template>
+    <ng-template accordionContent>
+      <div class="p-4">
 
+      </div>
+    </ng-template>
+  </accordion-item>
   </accordion>
