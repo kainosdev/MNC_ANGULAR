@@ -277,7 +277,7 @@ export class VendormanagementComponent implements OnInit {
 //     }
 //  }
   informationPopup(info:any) {
-    // debugger
+     debugger
     this.informationText = info;
     this.descInfo ='description';
     if(this.descInfo != undefined && this.descInfo != '' && this.descInfo != null)
