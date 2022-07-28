@@ -707,9 +707,7 @@ export class VendormanagementComponent implements OnInit {
     {
       this.Addressform.get('VendorAddressPrimary').disable();
       this.Addressform.get('VendorAddressPrimary').setValue(0)
-      // this.Addressform.patchValue({
-      //   VendorAddressPrimary :new FormControl({value: 0, disabled: true}),
-      //  });
+     
     }
     else
     {
@@ -721,6 +719,9 @@ export class VendormanagementComponent implements OnInit {
       this.Addressform.get('EndDate').disable();
       this.Addressform.get('AddressTypeId').disable();
      
+      this.Addressform.patchValue({
+        EndDate :'',
+       });
       // this.Addressform.patchValue({
       //   VendorAddressPrimary :new FormControl({value: 0, disabled: true}),
       //  });
