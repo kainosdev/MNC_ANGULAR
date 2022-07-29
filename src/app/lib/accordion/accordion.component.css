@@ -25,7 +25,8 @@
     height: var(--accordion-header-height);
     cursor: pointer;
     background: #f3f3f3ff !important;
-    background-color: #f3f3f3ff
+    background-color: #f3f3f3ff !important;
+    border-bottom: 1px solid grey;
   }
   
   /* Default toggle button styles */
