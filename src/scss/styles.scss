@@ -190,9 +190,29 @@ a {
 
 .question_font
 {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700 !important;
-  opacity: 0.65 !important;
+  opacity: 1 !important;
+}
+.userid    
+{
+    pointer-events: all !important;
+    width:100% !important;
+    
+    height: 64% !important;
+    
+}
+.info_icon
+{
+    width: 10% !important;
+    height: 250% !important;
+    margin-bottom: 5px !important;
+}
+
+label.common_lbl {
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 1 !important;
 }
 .instructfont
 {
