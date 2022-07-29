@@ -420,6 +420,17 @@
 
   @media screen and (max-width: 768px) {
 
+    .btn-phone{
+      margin-left: 56px;
+      width: 98px;
+    }
+
+    .tablescroll{
+      overflow-x: auto !important;
+      width: 100%;
+      overflow: visible;
+    }
+
       .usernamediv{
           margin-left: 24px;
       }
@@ -641,6 +652,7 @@ background-color: #5E6572;
 {
   //content:url("./assets/images/Heacock-Assets-Quote-Portal/question-mark-icon.svg");
    content:url("../../../assets/images/question-mark-icon.png");
+   width: 17px;
 }
 .table thead th
 {
