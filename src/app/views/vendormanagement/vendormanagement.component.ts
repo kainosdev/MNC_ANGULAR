@@ -277,7 +277,7 @@ export class VendormanagementComponent implements OnInit {
 //     }
 //  }
   informationPopup(info:any) {
-    //  debugger
+     debugger
     this.informationText = info;
     this.descInfo ='description';
     if(this.descInfo != undefined && this.descInfo != '' && this.descInfo != null)
@@ -637,7 +637,7 @@ export class VendormanagementComponent implements OnInit {
     // }
   }
   addresstypeChange(data:any) {
-    // debugger
+    debugger
     var value=data.target.value;
     if(value == "P")
     {
@@ -753,7 +753,7 @@ export class VendormanagementComponent implements OnInit {
   }
   getenddate(enddate:any,type:any)
   {
-    // debugger
+    
     if(type=='C')
     {
       return '';
@@ -873,7 +873,7 @@ export class VendormanagementComponent implements OnInit {
   {
     // debugger
 
-    // debugger
+    debugger
     this.contact_submmited=true;
     if (this.Contactform.valid) {
 

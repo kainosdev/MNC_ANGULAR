@@ -310,39 +310,150 @@
                                 </div>
                               </ng-template>
                             </accordion-item>
-
-                            <!-- <accordion-item>
-                              <ng-template accordionHeader let-toggle="toggle">
-                                <div class="row">
-                                  <div class="col-sm-8">
-                                      <p> Custom Header <span class="text-xs text-gray-700">(  toggle button)</span>
-                                      </p>
-                                  </div>
-
-                                  <div class="col-sm-4">
-                                      <button (click)="toggle()" class="accordion__toggle-btn"> <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24" width="24" height="24">
-                                  <path fill="none" d="M0 0h24v24H0z" />
-                                  <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/>
-                                </svg></button>
-
-                                  </div>
-                                </div>
-                                <div class="flex items-center justify-between px-4 h-12 bg-purple-200">
-
-                                  <div class="flex space-x-2">
-                                  </div>
+                            <accordion-item>
+                              <ng-template accordionTitle>
+                                <div class="flex space-x-2">
+                                  <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="none" d="M0 0h24v24H0z" />
+                                    <path
+                                      d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
+                                  </svg> -->
+                                  <h6>Bid Response Reviewers</h6>
                                 </div>
                               </ng-template>
                               <ng-template accordionContent>
                                   <div class="p-4">
-                                    This is a <strong>complete custom header</strong> implementation. The
-                                    whole header section can be customized to you liking. Toggle method
-                                    will be exposed which can be used to open/close the section.
+                                    <div class="row">
+                                        <table class="table">
+
+                                            <thead class="common_tbl_head">
+                                              <tr>
+                                                <th scope="col">Response Reviewer Name</th>
+                                                <th scope="col">Job Title</th>
+                                                <th scope="col">Phone Number</th>
+                                                <th scope="col">Email Address</th>
+                                              
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+
+
+                                                  <tr *ngFor="let item of clin_list">
+
+                                                      <th scope="row">{{item.clin}}</th>
+                                                      <td>{{item.desc}}</td>
+                                                      <td>{{item.service_type}}</td>
+                                                      <td>{{item.dbe_goal_type}}</td>
+                                                     
+                                                  </tr>
+
+
+
+                                            </tbody>
+                                          </table>
+                                        <form [formGroup]="clinform" >
+                                            <a class="fontwghtcls">+ ADD REVIEWER
+
+                                            </a>
+
+                                      <div class="row col-12">
+
+                                          <div class="row g-4">
+                                              <div class="col-md">
+                                                <div class="form-floating">
+
+                                                    <input type="text" class="form-control" id="clin"
+                                                        formControlName="clin" >
+                                                      <div  class="help-block text-danger">
+                                                            <div *ngIf="clin_submitted && clfc.clin.errors">CLIN is required</div>
+                                                      </div>
+                                                      <label class="common_lbl" for="clin" >RESPONSE REVIEWER NAME<span class="requiredfield ">  *</span></label>
+                                                </div>
+                                              </div>
+                                              <div class="col-md">
+
+                                                <div class="form-floating">
+
+                                                    <input type="text" class="form-control" id="desc"
+                                                        formControlName="desc">
+                                                      <div  class="help-block text-danger">
+                                                            <div *ngIf="clin_submitted && clfc.desc.errors">Description is required</div>
+                                                      </div>
+                                                      <label class="common_lbl" for="clin" >JOB TITLE <span class="requiredfield ">  *</span></label>
+                                                </div>
+                                              </div>
+                                              <div class="col-md">
+                                                  <div class="form-floating">
+
+                                                      <select class="form-select" id="service_type" formControlName="service_type"  >
+                                                          <option *ngFor="let item of service_type_list" [value]="item.ServiceTypeId ">
+                                                              {{item.ServiceTypeDesc}}
+                                                          </option>
+                                                      </select>
+
+
+                                                      <div  class="help-block text-danger">
+                                                            <div *ngIf="clin_submitted && clfc.service_type.errors">Service Type is required</div>
+                                                      </div>
+                                                      <label class="common_lbl" for="service_type">PHONE NUMBER
+                                                        <span class="requiredfield ">  *</span></label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md">
+                                                    <div class="form-floating">
+
+                                                        <select class="form-control" id="dbe_goal_type" formControlName="dbe_goal_type"  >
+                                                            <option *ngFor="let item of dbe_list" [value]="item.BEGoalTypeId ">
+                                                                {{item.BEGoalTypeDesc}}
+                                                            </option>
+                                                           </select>
+                                                           <div  class="help-block text-danger">
+                                                              <div *ngIf="clin_submitted && clfc.dbe_goal_type.errors">DBE Goal Type is required</div>
+                                                           </div>
+                                                        <label class="common_lbl" for="dbe_goal_type">EMAIL ADDRESS
+                                                          <span class="requiredfield ">  *</span></label>
+                                                    </div>
+                                                  </div>
+                                            </div>
+
+                                            <div class="row g-4">
+                                                <div class="col-md">
+                                                 
+                                                </div>
+                                                <div class="col-md">
+
+                                              
+                                                </div>
+                                                <div class="col-md">
+
+                                                  </div>
+                                                  <div class="col-md text-right" style="padding-top: 11px;">
+                                                      <!-- <button class="btn btn-filled  common_btn_action ml-2" type="button"  (click)="clinsave()"  >
+                                                          <img class="img-fluid btn-img "
+                                                              >Save</button> -->
+
+                                                              <input type="button"  class="btn btn-primary fixedwidthcls1" value="Save"  (click)="clinsave();" />
+                                                              &nbsp;&nbsp;
+                                                              <input type="button"  class="btn btn-primary-red fixedwidthcls1" value="Cancel" />
+
+                                                              <!-- <button class="btn btn-filled btn-delete common_btn_cancel ml-1" type="button" >                                                           Cancel
+                                                                </button> -->
+                                                    </div>
+                                 </div>
+
+
+
+
+                                      </div>
+
+                                        </form>
+
                                   </div>
+                                    </div>
                               </ng-template>
-                            </accordion-item> -->
+                            </accordion-item>
+              
                             <accordion-item>
                               <ng-template accordionTitle>
                                 <div class="flex space-x-2">
@@ -574,7 +685,295 @@
                                     </div>
                               </ng-template>
                             </accordion-item>
-                            <accordion-item title="Vendors Matching" [disabled]="true">
+                            <accordion-item>
+                              <ng-template accordionTitle>
+                                <div class="flex space-x-2">
+                                  <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="none" d="M0 0h24v24H0z" />
+                                    <path
+                                      d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
+                                  </svg> -->
+                                  <h6>Subcontracting Plan</h6>
+                                </div>
+                              </ng-template>
+                              <ng-template accordionContent>
+                                  <div class="p-4">
+                                    <div class="row">
+                                        <table class="table">
+
+                                            <thead class="common_tbl_head">
+                                              <tr>
+                                                <th scope="col">BE Classification ID #</th>
+                                                <th scope="col">Contract Percentage</th>
+                                                <th scope="col">Contract Amount</th>
+                                            
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+
+
+                                                  <tr *ngFor="let item of clin_list">
+
+                                                      <th scope="row">{{item.clin}}</th>
+                                                      <td>{{item.desc}}</td>
+                                                      <td>{{item.service_type}}</td>
+                                                     
+                                                  </tr>
+
+
+
+                                            </tbody>
+                                          </table>
+                                        <form [formGroup]="clinform" >
+                                            <a class="fontwghtcls">+ ADD BE CLASSIFICATION</a>
+
+                                      <div class="row col-12">
+
+                                          <div class="row g-4">
+                                              <div class="col-md">
+                                                <div class="form-floating">
+
+                                                    <input type="text" class="form-control" id="clin"
+                                                        formControlName="clin" >
+                                                      <div  class="help-block text-danger">
+                                                            <div *ngIf="clin_submitted && clfc.clin.errors">CLIN is required</div>
+                                                      </div>
+                                                      <label class="common_lbl" for="clin" >BE CLASSIFICATION ID
+                                                        <span class="requiredfield ">  *</span></label>
+                                                </div>
+                                              </div>
+                                              <div class="col-md">
+
+                                                <div class="form-floating">
+
+                                                    <input type="text" class="form-control" id="desc"
+                                                        formControlName="desc">
+                                                      <div  class="help-block text-danger">
+                                                            <div *ngIf="clin_submitted && clfc.desc.errors">Description is required</div>
+                                                      </div>
+                                                      <label class="common_lbl" for="clin" >CONTRACT PERCENTAGE
+                                                        <span class="requiredfield ">  *</span></label>
+                                                </div>
+                                              </div>
+                                              <div class="col-md">
+                                                  <div class="form-floating">
+
+                                                      <select class="form-select" id="service_type" formControlName="service_type"  >
+                                                          <option *ngFor="let item of service_type_list" [value]="item.ServiceTypeId ">
+                                                              {{item.ServiceTypeDesc}}
+                                                          </option>
+                                                      </select>
+
+
+                                                      <div  class="help-block text-danger">
+                                                            <div *ngIf="clin_submitted && clfc.service_type.errors">Service Type is required</div>
+                                                      </div>
+                                                      <label class="common_lbl" for="service_type">CONTRACT AMOUNT <span class="requiredfield ">  *</span></label>
+                                                  </div>
+                                                </div>
+                                               
+                                            </div>
+
+                                            <div class="row g-4">
+                                                <div class="col-md">
+                                                
+                                                </div>
+                                                <div class="col-md">
+
+                                             
+                                                </div>
+                                                <div class="col-md">
+
+                                                  </div>
+                                                  <div class="col-md text-right" style="padding-top: 11px;">
+                                                      <!-- <button class="btn btn-filled  common_btn_action ml-2" type="button"  (click)="clinsave()"  >
+                                                          <img class="img-fluid btn-img "
+                                                              >Save</button> -->
+
+                                                              <input type="button"  class="btn btn-primary fixedwidthcls1" value="Save"  (click)="clinsave();" />
+                                                              &nbsp;&nbsp;
+                                                              <input type="button"  class="btn btn-primary-red fixedwidthcls1" value="Cancel" />
+
+                                                              <!-- <button class="btn btn-filled btn-delete common_btn_cancel ml-1" type="button" >                                                           Cancel
+                                                                </button> -->
+                                                    </div>
+                                 </div>
+
+
+
+
+                                      </div>
+
+                                        </form>
+
+                                  </div>
+                                    </div>
+                              </ng-template>
+                            </accordion-item>
+                            <accordion-item>
+                              <ng-template accordionTitle>
+                                <div class="flex space-x-2">
+                                  <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="none" d="M0 0h24v24H0z" />
+                                    <path
+                                      d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
+                                  </svg> -->
+                                  <h6>Bid Response Evaluation Criteria</h6>
+                                </div>
+                              </ng-template>
+                              <ng-template accordionContent>
+                                  <div class="p-4">
+                                    <div class="row">
+                                        <table class="table">
+
+                                            <thead class="common_tbl_head">
+                                              <tr>
+                                                <th scope="col">Evaluation Criteria</th>
+                                                <th scope="col">Percentage</th>
+                                              
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+
+
+                                                  <tr *ngFor="let item of clin_list">
+
+                                                      <th scope="row">{{item.clin}}</th>
+                                                      <td>{{item.desc}}</td>
+                                                      <td>{{item.service_type}}</td>
+                                                      <td>{{item.dbe_goal_type}}</td>
+                                                      <td>{{item.dbe_goal}}</td>
+                                                      <td>{{item.dbe_budget}}</td>
+                                                  </tr>
+
+
+
+                                            </tbody>
+                                          </table>
+                                        <form [formGroup]="clinform" >
+                                            <a class="fontwghtcls">+ ADD EVALUATION CRITERIA </a>
+
+                                      <div class="row col-12">
+
+                                          <div class="row g-4">
+                                              <div class="col-md">
+                                                <div class="form-floating">
+
+                                                    <input type="text" class="form-control" id="clin"
+                                                        formControlName="clin" >
+                                                      <div  class="help-block text-danger">
+                                                            <div *ngIf="clin_submitted && clfc.clin.errors">CLIN is required</div>
+                                                      </div>
+                                                      <label class="common_lbl" for="clin" >EVALUATION CRITERIA<span class="requiredfield ">  *</span></label>
+                                                </div>
+                                              </div>
+                                              <div class="col-md">
+
+                                                <div class="form-floating">
+
+                                                    <input type="text" class="form-control" id="desc"
+                                                        formControlName="desc">
+                                                      <div  class="help-block text-danger">
+                                                            <div *ngIf="clin_submitted && clfc.desc.errors">Description is required</div>
+                                                      </div>
+                                                      <label class="common_lbl" for="clin" >PERCENTAGE<span class="requiredfield ">  *</span></label>
+                                                </div>
+                                              </div>
+                                              <div class="col-md">
+                                             
+                                                </div>
+                                                <div class="col-md">
+                                               
+                                                  <input type="button"  class="btn btn-primary fixedwidthcls1" value="Save"  (click)="clinsave();" />
+                                                  &nbsp;&nbsp;
+                                                  <input type="button"  class="btn btn-primary-red fixedwidthcls1" value="Cancel" />
+
+                                                  </div>
+                                            </div>
+
+
+
+
+
+                                      </div>
+
+                                        </form>
+
+                                  </div>
+                                    </div>
+                              </ng-template>
+                            </accordion-item>
+                            <accordion-item>
+                                <ng-template accordionTitle>
+                                  <div class="flex space-x-2">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg"
+                                      viewBox="0 0 24 24" width="20" height="20">
+                                      <path fill="none" d="M0 0h24v24H0z" />
+                                      <path
+                                        d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
+                                    </svg> -->
+                                    <h6>Post Bid</h6>
+                                  </div>
+                                </ng-template>
+                                <ng-template accordionContent>
+          <div class="row col-12">
+              <div class="row col-6 mt-2 mb-2">
+                <form [formGroup]="clinform" >
+                    <div class="row g-2">
+                      <div class="col-md">
+                        <div class="form-floating">
+
+                            <input type="text" class="form-control" id="clin"
+                                formControlName="clin" >
+                              <div  class="help-block text-danger">
+                                    <div *ngIf="clin_submitted && clfc.clin.errors">CLIN is required</div>
+                              </div>
+                              <label class="common_lbl" for="clin" >EMAIL<span class="requiredfield ">  *</span></label>
+                        </div>
+                      </div>
+                      <div class="col-md">
+                          <input type="button"  class="btn btn-primary fixedwidthcls1 mt-2" value="Send Email"  (click)="clinsave();" />
+                      </div>
+                    </div>
+                </form>
+              </div>
+              <div class="row col-6 mt-2 mb-2">
+                  <form [formGroup]="clinform" >
+                      <div class="row g-2">
+                        <div class="col-md">
+                          <div class="form-floating">
+  
+                              <select class="form-select" id="service_type" formControlName="service_type"  >
+                                  <option>
+                                           Xml
+                                  </option>
+                                  <option >
+                                      PDF
+                                   </option>
+                              </select>
+
+                              
+                                <div  class="help-block text-danger">
+                                      <div *ngIf="clin_submitted && clfc.clin.errors">CLIN is required</div>
+                                </div>
+                                <label class="common_lbl" for="clin" >DOWNLOAD TYPE<span class="requiredfield ">  *</span></label>
+                          </div>
+                        </div>
+                        <div class="col-md">
+                            <input type="button"  class="btn btn-primary fixedwidthcls1 mt-2" value="Download"  (click)="clinsave();" />
+                        </div>
+                      </div>
+                  </form>
+                </div>
+            </div>
+                                   
+                               
+                                </ng-template>
+                              </accordion-item>
+                            <!-- <accordion-item title="Vendors Matching" [disabled]="true"> -->
+                                <!-- <accordion-item title="Download Bid" >
                               <ng-template>
                               <div class="flex space-x-2">
 
@@ -587,7 +986,7 @@
                                       <strong>Vendors Matching Items</strong>.
                                     </div>
                               </ng-template>
-                            </accordion-item>
+                            </accordion-item> -->
                           </accordion><br>
                           <div class=" mt-1 text-right">
                               <div class="btndiv mt-2">

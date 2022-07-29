@@ -87,6 +87,7 @@ export class BidmanagementComponent implements OnInit {
       response_due_date:['', [Validators.required]],
       dbe_goal:['', [Validators.required]],
 
+      
 
       //contact details
        FirstName: ['', [Validators.required]],

@@ -198,9 +198,9 @@
       width: 109px;
   }
 
-//   .fixedwidthcls1 {
-//     width: 100px;
-// }
+  .fixedwidthcls1 {
+    width: 100px;
+}
 
 
 
@@ -606,15 +606,6 @@
        .heading{
         padding-bottom: 5px;
       }
-
-  .g-4, .gy-4 {
-    --bs-gutter-y: 0rem !important;
-  }
-   .labelheight{
-    height: 72px;
-   }
-  
-
   }
 
   .help-block
@@ -709,7 +700,5 @@ input:checked + .slider:before {
 .fixedwidthcls1 {
   width: 100px;
 }
-
-
 
 
