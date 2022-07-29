@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
     });
 
     if(localStorage.getItem('Firstnameses') == null){
+      window.localStorage.clear();
       this.router.navigate(['/']);
     }
   }

@@ -60,7 +60,7 @@ import { LogoutComponent } from './views/logout/logout.component';
 // import { BidmanagementComponent } from './views/bid-management/bid-management.component';
 import { TesingComponent } from './tesing/tesing.component';
 import { BidResponsesComponent } from './views/bid-responses/bid-responses.component';
-import { BidListComponent } from './views/bid-list/bid-list.component';
+import { BidListComponent } from './views/View-Bid/View-Bid.component';
 import { ViewBidresponsesComponent } from './views/view-bidresponses/view-bidresponses.component';
 // import { BidlistComponent } from './bidlist/bidlist.component';
 

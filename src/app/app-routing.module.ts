@@ -57,9 +57,9 @@ const routes: Routes = [
           import('./views/bid-responses/bid-responses.module').then((m) => m.BidResponsesModule)
       },
       {
-        path: 'BidList',
+        path: 'ViewBid',
         loadChildren: () =>
-          import('./views/bid-list/bid-list.module').then((m) => m.BidListModule)
+          import('./views/View-Bid/View-Bid.module').then((m) => m.BidListModule)
       },
       {
         path: 'empdashboard',

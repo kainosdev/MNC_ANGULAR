@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BidListComponent } from './bid-list.component';
+import { BidListComponent } from './View-Bid.component';
 
 describe('BidListComponent', () => {
   let component: BidListComponent;

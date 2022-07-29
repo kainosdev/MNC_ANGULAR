@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { BidListComponent } from './bid-list.component';
+import { BidListComponent } from './View-Bid.component';
 
 const routes: Routes = [
   {

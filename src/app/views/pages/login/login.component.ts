@@ -116,9 +116,10 @@ else {
   parseJwt (token:any) {
     //alert(token);
     // let token1 = token.split('VERTEX-LMS');
-    // alert(token1[1]);
+   
     if(token.includes("VERTEX-LMS") == true) {
       let token1 = token.split('VERTEX-LMS');
+      // alert(token1[2]);
       localStorage.setItem("usertypeses", token1[2]);
  
   

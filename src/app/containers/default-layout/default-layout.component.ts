@@ -64,7 +64,7 @@ export class DefaultLayoutComponent implements OnInit{
       children: [
         {
           name: 'View Bids',
-          url: '/BidList'
+          url: '/ViewBid'
         },
         {
           name: 'Create/View Bid',
@@ -148,7 +148,7 @@ export class DefaultLayoutComponent implements OnInit{
         {
           
           name: 'View Bids',
-          url: '/BidList'
+          url: '/ViewBid'
         },
         {
         
