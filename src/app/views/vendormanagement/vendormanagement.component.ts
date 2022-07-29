@@ -753,7 +753,7 @@ export class VendormanagementComponent implements OnInit {
   }
   getenddate(enddate:any,type:any)
   {
-    debugger
+    
     if(type=='C')
     {
       return '';

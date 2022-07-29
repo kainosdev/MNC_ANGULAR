@@ -239,7 +239,7 @@
                                        
                                   <form [formGroup]="Addressform">
 
-                                      <label class="fontwghtcls mt-1 mb-1 ">+ ADD ADDRESS<span class="text-danger"></span> <span><img class="m-1 question_mark"
+                                      <label class="fontwghtcls mt-1 mb-1 ">+ ADD ADDRESS<span class="text-danger"></span> <span><img src="../../../assets/images/question-mark-icon.png" class="m-1 info_icon_vendor"
                                         (mouseover)="informationPopup(info)"
                                          alt="help-img"></span>
                                        </label>  
@@ -259,8 +259,9 @@
                                                               <div *ngIf="address_submmited && af.AddressTypeId.errors">ADDRESS TYPE is required</div>
                                                               </div>
                                                                 <label class="common_lbl" for="AddressTypeId">ADDRESS TYPE <span class="requiredfield"> *</span></label>
-
+                                                                
                                                             </div>
+                                                         
                                                       </div>
                                                   <div class="col-md">
                                                     <div class="form-floating">
@@ -1206,12 +1207,15 @@
     </div>
     <div class="modal-body">
       <div>
-        <p>1.Current Address should not be deletable.Must have one current address.</p>
-        <p>2.Must have one Primary address.</p>
-        <p>3.If edit current address address type should not be editable.</p>
-        <p>4.If More current address added means old current address to be past address type.</p>
-        <p>5.Mailing address to be only one.</p>
-        <p>6.If More Mailing address added means old Mailing address to be past address type.</p>
+        <ul>
+        <li>Current Address should not be deletable.Must have one current address.</li>
+        <li>Must have one Primary address.</li>
+        <li>If edit current address address type should not be editable.</li>
+        <li>If More current address added means old current address to be past address type.</li>
+        <li>Mailing address to be only one.</li>
+        <li>If More Mailing address added means old Mailing address to be past address type.</li>
+       </ul>
+
         </div>
           <div class="text-center">
           <button type="button" class="btn btn-primary fixedwidthcls" (click)="modal.dismiss('Cross click')">Ok</button>
