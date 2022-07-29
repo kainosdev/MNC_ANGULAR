@@ -1,15 +1,15 @@
-<div class="card"> <!-- give it an id -->
+<div class="card"> 
 
   <div class="card-body" >
 
-<h4>{{ Firstname }}</h4>
+<div class="Topheading">{{ Firstname }}</div>
 
 
 <accordion [collapsing]="collapsing">
   <accordion-item >
       <ng-template accordionTitle>
           <div class="flex space-x-2 ">
-            <h6>My Active Contracts</h6>
+            <p class="mainheading">My Active Contracts</p>
           </div>
         </ng-template>
         <ng-template accordionContent>
@@ -25,7 +25,7 @@
       </mat-form-field> -->
     
      <div style="overflow-x: auto;">
-      <table mat-table [dataSource]="dataSource" matSort>
+      <table  mat-table [dataSource]="dataSource" matSort>
     
         <!-- Position Column -->
         <ng-container matColumnDef="ContractNumber">
@@ -132,7 +132,7 @@
   <accordion-item>
       <ng-template accordionTitle>
         <div class="flex space-x-2">
-          <h6>Responses Submitted, Pending Review/Award</h6>
+          <p class="mainheading">Responses Submitted, Pending Review/Award</p>
         </div>
       </ng-template>
       <ng-template accordionContent>
@@ -211,7 +211,7 @@
     <accordion-item>
       <ng-template accordionTitle>
         <div class="flex space-x-2">
-          <h6>Responses in Progress, Yet to be Submitted</h6>
+          <p class="mainheading">Responses in Progress, Yet to be Submitted</p>
         </div>
       </ng-template>
       <ng-template accordionContent>
@@ -287,7 +287,7 @@
     <accordion-item>
       <ng-template accordionTitle>
         <div class="flex space-x-2">
-          <h6>Wish List of Bids or Favorite Bids of Interest to Submit Response</h6>
+          <p class="mainheading">Wish List of Bids or Favorite Bids of Interest to Submit Response</p>
         </div>
 
       </ng-template>

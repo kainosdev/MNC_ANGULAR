@@ -7,7 +7,7 @@
 <div class="card"> <!-- give it an id -->
 
     <div class="card-body" >
-      <h5 class="card-title">Vendor Management</h5>
+      <div class="page-title">Vendor Management</div>
       <div *ngIf="type==='I'">
         <form [formGroup]="VendorMgmtIndividual">
 
@@ -59,7 +59,7 @@
                             <path
                               d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
                           </svg> -->
-                          <h6>General Information</h6>
+                          <p class="accordion-title">General Information</p>
                         </div>
                       </ng-template>
                   <ng-template accordionContent>
@@ -186,14 +186,14 @@
                                   <path
                                     d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
                                 </svg> -->
-                                <h6>Address Information</h6>
+                                <p class="accordion-title">Address Information</p>
                               </div>
                             </ng-template>
                             <ng-template accordionContent>
                                   <div class="p-4">
                                   <div class="row">
                                   <table class="table">
-                                          <thead class="common_tbl_head">
+                                          <thead class="tablehead">
                                             <tr>
                                               <th scope="col">Address Type</th>
                                               <th scope="col">Address</th>
@@ -210,7 +210,7 @@
                                           <tbody>
 
 
-                                                <tr *ngFor="let item of address_list;let i = index;">
+                                                <tr class="tabletr" *ngFor="let item of address_list;let i = index;">
 
                                                     <th >{{item.AddressTypeDesc}}</th>
                                                     <td>{{item.Address1}}</td>
@@ -239,7 +239,7 @@
                                        
                                   <form [formGroup]="Addressform">
 
-                                      <label class="fontwghtcls mt-1 mb-1 ">+ ADD ADDRESS<span class="text-danger"></span> <span><img class="m-1 question_mark"
+                                      <label class="common_lbl">+ ADD ADDRESS<span class="text-danger"></span> <span><img class="m-1 question_mark"
                                         (mouseover)="informationPopup(info)"
                                          alt="help-img"></span>
                                        </label>  
@@ -501,7 +501,7 @@
                             <path
                               d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
                           </svg> -->
-                          <h6>General Information</h6>
+                          <p class="accordion-title">General Information</p>
                         </div>
                       </ng-template>
                   <ng-template accordionContent>
@@ -729,7 +729,7 @@
                                   <path
                                     d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
                                 </svg> -->
-                                <h6>Address Information</h6>
+                                <p class="accordion-title">Address Information</p>
                               </div>
                             </ng-template>
                             <ng-template accordionContent>
@@ -985,7 +985,7 @@
                                   <path
                                     d="M11 2.05V13h10.95c-.501 5.053-4.765 9-9.95 9-5.523 0-10-4.477-10-10 0-5.185 3.947-9.449 9-9.95zm2 0A10.003 10.003 0 0 1 21.95 11H13V2.05z"/>
                                 </svg> -->
-                                <h6>Contact Information</h6>
+                                <p class="accordion-title">Contact Information</p>
                               </div>
                             </ng-template>
                             <ng-template accordionContent>
