@@ -250,8 +250,8 @@ export class EmpDashboardComponent implements OnInit {
       this.http
         .get(
           config_url +
-           //'employee/Updateemplyeestatus?Id='+post.EmployeeId+'&UserStatusId=N&UpdatedUserId='+localStorage.getItem('CreatedUseridses')
-           'employee/Updateemplyeestatus?Id='+localStorage.getItem('CreatedUseridses')+'&UserStatusId=N&UpdatedUserId='+post.EmployeeId
+           'employee/Updateemplyeestatus?Id='+post.CreatedUserId+'&UserStatusId=N&UpdatedUserId='+localStorage.getItem('CreatedUseridses')
+          // 'employee/Updateemplyeestatus?Id='+localStorage.getItem('CreatedUseridses')+'&UserStatusId=A&UpdatedUserId='+post.CreatedUserId
         )
         .subscribe((data: any) => {
         console.log(data)
