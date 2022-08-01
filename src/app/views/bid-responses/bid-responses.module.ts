@@ -14,12 +14,17 @@ import {
   TableModule,
   TabsModule
 } from '@coreui/angular';
+
 import { IconModule } from '@coreui/icons-angular';
 import { ChartjsModule } from '@coreui/angular-chartjs';
 
 import { BidResponsesRoutingModule } from './bid-responses-routing.module';
 import { BidResponsesComponent } from './bid-responses.component';
-import {DataTablesModule} from 'angular-datatables';
+import { AccordionModule } from "../../lib/accordion/accordion.module";
+import {MatTabsModule} from '@angular/material/tabs';
+import { SharedModule } from '../../shared/shared.module';
+import { ProgressComponent } from '../../../components/progress/progress.component';
+import { DndDirective } from '../../directives/dnd.directive';
 
 
 
@@ -27,23 +32,24 @@ import {DataTablesModule} from 'angular-datatables';
   imports: [
     BidResponsesRoutingModule,
     CardModule,
-    NavModule,
-    IconModule,
-    TabsModule,
-    CommonModule,
-    GridModule,
-    ProgressModule,
-    ReactiveFormsModule,
-    ButtonModule,
-    FormModule,
-    ButtonModule,
-    ButtonGroupModule,
-    ChartjsModule,
-    AvatarModule, 
-    TableModule,
-    DataTablesModule,
-    // 
-    // WidgetsModule
+      NavModule,
+      IconModule,
+      TabsModule,
+      CommonModule,
+      GridModule,
+      ProgressModule,
+      ReactiveFormsModule,
+      ButtonModule,
+      FormModule,
+      ButtonModule,
+      ButtonGroupModule,
+      ChartjsModule,
+      AvatarModule,
+      TableModule,
+      AccordionModule,
+      MatTabsModule,
+      SharedModule
+      // WidgetsModule
   ],
   declarations: [BidResponsesComponent]
 })

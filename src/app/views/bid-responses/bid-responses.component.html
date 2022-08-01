@@ -1,189 +1,110 @@
-<p style="font-weight: 500;">Bid Responses</p>
 
-<div id="wrapper">
-  <div fxLayout="row" fxLayoutGap="16px" fxFill>
-    <div fxFlex="80" fxFill>
-      <!-- <mat-tab-group id="tab-group" mat-align-tabs="start"> -->
+<div class="card"> 
+  <div class="card-body" >
+<h5 class="card-title">Bid Response</h5>
 
-      <!-- </mat-tab-group> -->
+<form [formGroup]="bid_form">
+  <div >
+    <div class="row g-3 p-1">
+      <div class="col-md">
+          <div class="form-floating">
+
+                  <input type="text" class="form-control" formControlName="social_no" id="social_no" >
 
 
-    </div>
-  </div>
-</div>
+          <div  class="help-block text-danger">
+                  <div *ngIf="submitted && bfc.social_no.errors">Solicitation Number is required</div>
+          </div>
+          <label class="common_lbl" for="social_no">SOLICITATION NUMBER <span class="requiredfield ">  *</span></label>
 
-<div class="form-inline">
-  <label class="labelwidth" style="font-size: 14px;">Solicitation Number</label>
-  <input type="text" style="height: 23px;">
- </div>
+          </div>
+        </div>
+      <div class="col-md">
 
- <p style="margin-top: 11px; font-weight: 500;">Responses Received</p>
+          <div class="form-floating">
+            <input type="text" class="form-control"  formControlName="title" id="title">
 
- <div class="row">
-  <div class="col-sm-8" style=" border: 1px solid black !important; height: 160px;">
-    <div class="row">
-<div class="col-sm-6">
-    <div class="form-inline" style="margin-top: 10px;">
-      <label class="" style="font-size: 14px;    width: 98px;">Vendor Name</label>
-      <input type="text" style="width: 176px;margin-left: 12px;">
-     </div><br>
-     <div class="form-inline">
-      <label class="" style="font-size: 14px;    width: 98px;">Submitted Date</label>
-      <input type="text" style="width: 176px;margin-left: 12px;">
-     </div><br>
-     <div class="form-inline">
-      <label class="" style="font-size: 14px;    width: 98px;">Total Score</label>
-      <input type="text" style="width: 176px;margin-left: 12px;">
+
+
+           <label class="common_lbl" for="title">TITLE <span class="requiredfield ">  *</span></label>
+
+
+
+         <div  class="help-block text-danger">
+            <div *ngIf="submitted && bfc.title.errors">Title is required</div>
+          </div>
+        </div>
+        </div>
+    <div class="col-md">
+      <div class="form-floating">
+        <select class="form-select" id="bidstatus" formControlName="bidstatus" aria-label="Floating label select example" placeholder="bidstatus" >
+          <option *ngFor="let item of bidstatus" [value]="item.BidStatusId ">
+              {{item.BidStatusDesc}}
+          </option>
+        </select>
+
+      <label class="common_lbl" for="bidstatus">BID RESPONSE STATUS<span class="requiredfield ">  *</span></label>
+      <div  class="help-block text-danger">
+        <div *ngIf="submitted && bfc.bidstatus.errors">Bid Status is required</div>
      </div>
- </div>
 
-<div class="col-sm-4">
-<div class="form-inline">
-  <label class="" style="margin-left: 25px;margin-top: 10px;
-  font-size: 14px;
-  width: 145px;">Qualified Response</label>
-  <label class="switch">
-    <input  type="checkbox" name="franchisee_active" id="franchisee_activeid" formControlName="BusinessIsFranchisee" checked>
-    <span class="slider round"></span>
-    </label>
-  </div><br>
-
-  <div class="form-inline">
-    <label class="" style="margin-left: 25px;
-    font-size: 14px;
-    width: 145px;">Demo/Oral</label>
-    <label class="switch">
-      <input  type="checkbox" name="franchisee_active" id="franchisee_activeid" formControlName="BusinessIsFranchisee" checked>
-      <span class="slider round"></span>
-      </label>
+      </div>
     </div>
-  </div></div>
+
+
+  </div>
+
+  <accordion [collapsing]="collapsing">
+    <accordion-item >
+      <ng-template accordionTitle>
+        <div class="flex space-x-2 ">
+          <h6>Bid Response Documents</h6>
+        </div>
+      </ng-template>
+      <ng-template accordionContent>
+
+      </ng-template>
+    </accordion-item>
+
+
+
+    <accordion-item >
+      <ng-template accordionTitle>
+        <div class="flex space-x-2 ">
+          <h6>Subcontracting Plan</h6>
+        </div>
+      </ng-template>
+      <ng-template accordionContent>
+
+      </ng-template>
+    </accordion-item>
+
+
+      <accordion-item >
+        <ng-template accordionTitle>
+          <div class="flex space-x-2 ">
+            <h6>Response Notes</h6>
+          </div>
+        </ng-template>
+        <ng-template accordionContent>
+          <div class="p-1">
+            <div class="row g-3 p-1">
+              <div class="ckeditor">
+                <ckeditor data="<p>Hello, world!</p>"></ckeditor>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </accordion-item>
+
+    
+
+
+
+  </accordion>
+
+
 </div>
- 
-
-  <div class="col-sm-3" style=" border: 1px solid black !important;margin-left: 11px;height: 160px;">
-    <p style="font-size: 14px;height: 15px;"> Evaluation Criteria</p>
-    <p style="font-size: 14px;height: 15px;">Response header</p>
-   <p style="font-size: 14px;height: 15px;"> Subcontractor Plan</p>
-   <p style="font-size: 14px;height: 15px;">Submitted Date</p>
-   <p style="font-size: 14px;height: 15px;">Response comment</p> 
+</form>
 </div>
-
- </div>
- <br>
-
-<table    datatable="ng"  datatable  [dtOptions] = "dtOptions" >
-    <thead class="tablehead" >
-
-        <tr>
-        <!-- <th  style="display:none;width: 0px;">b</th> -->
-        <th >Vendor Name </th>
-        <th >Vendor Type</th>
-        <th >Certified</th>
-        <th >Response Files</th>
-         <th>Response Received Date</th>
-         <th>Reviewed By Contracting Officer</th>
-        <th >Qualified Response?</th>
-        <th > Demo/Oral</th>
-        <th > Total Score</th>
-        <th > Response</th>
-       </tr>
-    </thead>
-
-    <tbody >
-      <tr >
-
-         <td ><a class="fontwghtcls">Safeguard Privacy Protection Services </a></td>
-        <td >Individual</td>
-        <td></td>
-        <td>
-          <a href="#" style="text-decoration:underline;"> Response Files(0)</a>
-        </td>
-        <td >05/11/2021</td>
-        <td >James Watson</td>
-        <td style="text-align:center;">
-          <input type="checkbox" checked="">
-        </td>
-        <td style="text-align:center;">
-          <input type="checkbox" checked="">
-        </td>
-        <td >	91</td>
-        <td >
-          <a href="#" style="text-decoration:underline;">View/Edit</a>
-        </td>
-      </tr>
-
-      <tr >
-        <td ><a class="fontwghtcls">Leroy Jethro Gibbs</a></td>
-       <td >Business</td>
-       <td></td>
-       <td>
-        <a href="#" style="text-decoration:underline;"> Response Files(1)</a>
-       </td>
-       <td >23/06/2021</td>
-       <td >James Watson</td>
-       <td style="text-align:center;">
-         <input type="checkbox" checked="">
-       </td>
-       <td style="text-align:center;">
-         <input type="checkbox" >
-       </td>
-       <td >72</td>
-       <td >
-         <a href="#" style="text-decoration:underline;" >View/Edit</a>
-       </td>
-     </tr>
-
-     <tr >
-      <td ><a class="fontwghtcls">Koios Systems & Technology LLC</a></td>
-     <td >Individual</td>
-     <td>S,M,V</td>
-     <td>
-      <a href="#" style="text-decoration:underline;"> Response Files(2)</a>
-     </td>
-     <td >18/01/2020</td>
-     <td >Benjamin Moore </td>
-     <td style="text-align:center;">
-       <input type="checkbox" checked="">
-     </td>
-     <td style="text-align:center;">
-       <input type="checkbox" >
-     </td>
-     <td >66</td>
-     <td >
-       <a href="#" style="text-decoration:underline;" >View/Edit</a>
-     </td>
-   </tr>
-
-   <tr>
-    <td ><a class="fontwghtcls">Lees Welding Service</a></td>
-   <td >Individual</td>
-   <td>O,S,M</td>
-   <td>
-    <a href="#" style="text-decoration:underline;"> Response Files(3)</a>
-   </td>
-   <td >04/04/2021</td>
-   <td >James Watson</td>
-   <td style="text-align:center;">
-     <input type="checkbox" checked="">
-   </td>
-   <td style="text-align:center;">
-     <input type="checkbox" >
-   </td>
-   <td >32</td>
-   <td >
-     <a href="#" style="text-decoration:underline;" >View/Edit</a>
-   </td>
- </tr>
-
-  </tbody>
-  </table>
-
-  <div class="col-sm-12" style="text-align:right">
-    <br>
-    <a style="text-decoration:underline;" data-toggle="tab" href="#menu3"><button type="button" id="buttoncontract" class="btn btn-primary fixedwidthcls3">Contract Award</button></a> &nbsp;&nbsp;
-
-     <a href="#"><button type="button" class="btn btn-primary prevnextbtn" style="word-wrap: break-word;">Send Email Invitation to Vendor <br> for Demo/Oral Presentation</button> </a>&nbsp;&nbsp;
-
-    <button type="button" class="btn btn-primary fixedwidthcls" id="nxtbidresponse">Next &gt;&gt;</button>
- </div>
+</div>
