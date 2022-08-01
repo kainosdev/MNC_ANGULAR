@@ -31,7 +31,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { SharedModule } from '../../shared/shared.module';
 // import { ProgressComponent } from '../../../components/progress/progress.component';
 //import { DndDirective } from '../../directives/dnd.directive';
-
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 @NgModule({
   imports: [
@@ -58,7 +58,8 @@ import { SharedModule } from '../../shared/shared.module';
       SharedModule,
       MatPaginatorModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    NgxDaterangepickerMd.forRoot()
   ],
   declarations: [BidListComponent
     //ProgressComponent

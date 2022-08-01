@@ -1,4 +1,10 @@
+
+
+<!-- <div class="row" > -->
 <h5 class="card-title">View Bids</h5>
+
+
+
 
 <accordion [collapsing]="collapsing" *ngIf="usertype==='EMPLOY'">
   <accordion-item >
@@ -19,14 +25,17 @@
                   <div class="col-md">
                       <div class="form-floating">
 
-                        <select type="text" class="form-select" formControlName="BidStatusId" >
+                        <select type="text" class="form-select" formControlName="BidStatusId" (change)="RemoveErrorMsgEmp()">
                           <option >
                             
                           </option>
                       </select>
-                    <div  class="help-block text-danger">
+                      <div  class="help-block text-danger" >
+                        <!-- <div id="ErrormsgForEmp" style="display:none">Please Fill Atleast One Field</div> -->
+                        </div>
+                    <!-- <div  class="help-block text-danger">
                     <div *ngIf="Empsubmitted && vf.BidStatusId.errors">Bid Status is required</div>
-                    </div>
+                    </div> -->
                       <label class="common_lbl" for="AddressTypeId">BID STATUS
                          <!-- <span class="requiredfield"> *</span> -->
                         </label>
@@ -38,14 +47,14 @@
                     <div class="col-md">
                       <div class="form-floating">
 
-                        <select type="text" class="form-select" formControlName="OpportunityType" >
+                        <select type="text" class="form-select" formControlName="OpportunityType" (change)="RemoveErrorMsgEmp()">
                           <option >
                             
                           </option>
                       </select>
-                      <div  class="help-block text-danger">
+                      <!-- <div  class="help-block text-danger">
                         <div *ngIf="Empsubmitted && vf.OpportunityType.errors">Opportunity Type is required</div>
-                        </div>
+                        </div> -->
                       <label class="common_lbl" for="AddressTypeId">OPPORTUNITY TYPE
                          <!-- <span class="requiredfield"> *</span> -->
                         </label>
@@ -57,14 +66,14 @@
                     <div class="col-md">
                       <div class="form-floating">
 
-                        <select type="text" class="form-select" formControlName="Category" >
+                        <select type="text" class="form-select" formControlName="Category" (change)="RemoveErrorMsgEmp()">
                           <option >
                             
                           </option>
                       </select>
-                      <div  class="help-block text-danger">
+                      <!-- <div  class="help-block text-danger">
                         <div *ngIf="Empsubmitted && vf.Category.errors">Category is required</div>
-                        </div>
+                        </div> -->
                       <label class="common_lbl" for="AddressTypeId">CATEGORY
                          <!-- <span class="requiredfield"> *</span> -->
                         </label>
@@ -77,14 +86,14 @@
                     <div class="col-md">
                       <div class="form-floating">
 
-                        <select type="text" class="form-select" formControlName="SetAsideTypeId" >
+                        <select type="text" class="form-select" formControlName="SetAsideTypeId" (change)="RemoveErrorMsgEmp()">
                           <option >
                             
                           </option>
                       </select>
-                      <div  class="help-block text-danger">
+                      <!-- <div  class="help-block text-danger">
                         <div *ngIf="Empsubmitted && vf.SetAsideTypeId.errors">SetAside is required</div>
-                        </div>
+                        </div> -->
                       <label class="common_lbl" for="AddressTypeId">SET ASIDE
                          <!-- <span class="requiredfield"> *</span> -->
                         </label>
@@ -101,13 +110,13 @@
                     <div class="col-md">
                         <div class="form-floating">
   
-                          <select type="text" class="form-select" formControlName="ContactingOfficer" >
+                          <select type="text" class="form-select" formControlName="ContactingOfficer" (change)="RemoveErrorMsgEmp()">
                             <option >
                               
                             </option>
                         </select>
                         <div  class="help-block text-danger">
-                          <div *ngIf="Empsubmitted && vf.ContactingOfficer.errors">Contacting Officer is required</div>
+                          <!-- <div *ngIf="Empsubmitted && vf.ContactingOfficer.errors">Contacting Officer is required</div> -->
                           </div>
                         <label class="common_lbl" for="AddressTypeId">CONTRACTING OFFICER
                            <!-- <span class="requiredfield"> *</span> -->
@@ -119,11 +128,11 @@
 
                       <div class="col-md">
                         <div class="form-floating">
-                                <input type="text" class="form-control"   formControlName="BudgetAmountOver" >
+                                <input type="text" class="form-control"   formControlName="BudgetAmountOver" (keypress)="RemoveErrorMsgEmp()">
 
-                                <div  class="help-block text-danger">
+                                <!-- <div  class="help-block text-danger">
                                   <div *ngIf="Empsubmitted && vf.BudgetAmountOver.errors">Budget Amount Over is required</div>
-                                  </div>
+                                  </div> -->
 
                                <label class="common_lbl" for="Address2">BUDGET AMOUNT OVER </label>
 
@@ -132,22 +141,20 @@
 
                <div class="col-md">
                 <div class="form-floating">
-                        <input type="text" class="form-control"    formControlName="BudgetAmountUnder" >
-                        <div  class="help-block text-danger">
+                        <input type="text" class="form-control"    formControlName="BudgetAmountUnder" (keypress)="RemoveErrorMsgEmp()">
+                        <!-- <div  class="help-block text-danger">
                           <div *ngIf="Empsubmitted && vf.BudgetAmountUnder.errors">Budget Amount Under is required</div>
-                          </div>
+                          </div> -->
                        <label class="common_lbl" for="Address2">BUDGET AMOUNT UNDER </label>
 
                   </div>
        </div>
 
        <div class="col-md">
-        <div class="form-floating">
-                <input type="date" class="form-control"    formControlName="PostedDate" >
+       
 
-               <label class="common_lbl" for="Address2">POSTED DATE </label>
 
-          </div>
+          
 </div>
 
                       </div>
@@ -156,27 +163,59 @@
 
                         <div class="col-md">
                           <div class="form-floating">
-                                  <input type="date" class="form-control"    formControlName="ResponseDueDate" >
-              
-                                 <label class="common_lbl" for="Address2">RESPONSE DUE DATE </label>
-              
-                            </div>
+                          
+            
+                           <input (keypress)="disableIt($event)" (change)="RemoveErrorMsgEmp()" style="overflow:auto" type="text" class="form-control" ngxDaterangepickerMd  [autoApply]="false" [showCustomRangeLabel]="true" formControlName="PostedDate"
+                [alwaysShowCalendars]="true" [ranges]="ranges" [linkedCalendars]="true" [showClearButton]="true"
+                [keepCalendarOpeningWithRange]="true" />
+            
+                <label class="common_lbl" for="Address2">POSTED DATE </label>
+            
+                      </div>
                  </div>
 
-                 <div class="col-md"></div>
+                 
 
-                 <div class="col-md"></div>
+                 <div class="col-md">
+                  <div class="form-floating">
+                          <!-- <input type="date" class="form-control"     > -->
+          
+                         <!-- <label class="common_lbl" for="Address2">POSTED DATE </label> -->
+          
+                         <input (keypress)="disableIt($event)" (change)="RemoveErrorMsgEmp()" style="overflow:auto" type="text" class="form-control" ngxDaterangepickerMd  [autoApply]="false" [showCustomRangeLabel]="true" formControlName="ResponseDueDate"
+              [alwaysShowCalendars]="true" [ranges]="ranges" [linkedCalendars]="true" [showClearButton]="true"
+              [keepCalendarOpeningWithRange]="true" />
+          
+              <label class="common_lbl" for="Address2">RESPONSE DUE DATE </label>
+          
+                    </div>
+             
+          </div>
+
+          <!-- <div class="col-md"></div> -->
 
                  <div class="col-md">
 
-                  <div class=" mt-2 text-right">
-
-
-                    <div class="btndiv mt-2">
-                        <input type="button"  class="btn btn-primary fixedwidthcls1" value="Apply Filter"  (click)="ApplyEmpFilter(EmpFilter.value)"/>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div  class="help-block text-danger" >
+                        <div id="ErrormsgForEmp" style="display:none;">Please Fill Atleast One Field</div>
                         </div>
+                    </div>
 
-               </div>
+                    <div class="col-sm-6">
+                      <div class=" mt-2 text-right">
+
+
+                        <div class="btndiv mt-2">
+                            <input type="button"  class="btn btn-primary fixedwidthcls1" value="Apply Filter"  (click)="ApplyEmpFilter(EmpFilter.value)"/>
+                            </div>
+    
+                   </div>
+                    </div>
+                  </div>
+
+                  
 
                  </div>
 
@@ -302,7 +341,7 @@
 
 
 
-<accordion [collapsing]="collapsing" *ngIf="usertype==='INDVI' || usertype==='BUSINE'">
+<accordion [collapsing]="collapsing" *ngIf="usertype==='INDIVI' || usertype==='BUSINE'">
   <accordion-item >
     <ng-template accordionTitle>
             <div class="flex space-x-2 ">
@@ -555,7 +594,7 @@
 
 
       
-      
+<!-- </div>   -->
      
       
       

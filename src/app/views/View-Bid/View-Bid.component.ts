@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators,FormArray, FormControl} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,FormArray, FormControl, ValidationErrors, AbstractControl, ValidatorFn} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { config_url } from '../shared/constant';
 import Swal from 'sweetalert2';
@@ -8,6 +8,9 @@ import { Router,ActivatedRoute,ParamMap, Params, NavigationEnd  } from '@angular
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+
+import * as moment from 'moment';
+import { Moment } from 'moment';
 
 @Component({
   selector: 'bid-management-bid-list',
@@ -25,6 +28,17 @@ export class BidListComponent implements OnInit {
   collapsing = true;
   approvalEmployeeDetail:any;
   approvalVendorDetail:any;
+  Emppostdateobj:any;
+  Emppostdateobj1:any;
+  EmpResponseDueDateobj:any;
+  EmpResponseDueDateobj1:any;
+
+  EmppostdateStartDate:any;
+  
+  EmppostdateEndDate:any;
+
+  EmpResponseDueStartDate:any;
+  EmpResponseDueEndDate:any;
 
   displayedColumns1: string[] = [
     'BidNumber',
@@ -220,14 +234,114 @@ export class BidListComponent implements OnInit {
     return this.VendorFilter.controls;
   }
 
-  ApplyEmpFilter(EmpFilter:any){
-    this.Empsubmitted=true;
-console.log(EmpFilter);
+  convert(str:any) {
+    var date = new Date(str),
+      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [date.getFullYear(), mnth, day].join("-");
   }
+
+  ApplyEmpFilter(EmpFilter:any){
+    // console.log(EmpFilter.PostedDate);
+    // console.log(EmpFilter.ResponseDueDate);
+    // alert(this.EmpFilter.get('PostedDate').value)
+if(this.EmpFilter.get('PostedDate').value != ''){
+this.Emppostdateobj = EmpFilter.PostedDate.startDate;
+
+this.EmppostdateStartDate = this.Emppostdateobj.$d;
+this.EmppostdateStartDate = this.convert(this.EmppostdateStartDate);
+// console.log(this.EmppostdateStartDate);
+this.Emppostdateobj1 = EmpFilter.PostedDate.endDate;
+
+this.EmppostdateEndDate = this.Emppostdateobj1.$d;
+// console.log(this.EmppostdateEndDate);
+
+
+this.EmppostdateEndDate = this.convert(this.EmppostdateEndDate);
+    
+
+EmpFilter.EmppostdateStartDate = this.EmppostdateStartDate;
+EmpFilter.EmppostdateEndDate = this.EmppostdateEndDate;
+
+}
+
+console.log(EmpFilter);
+
+if(this.EmpFilter.get('ResponseDueDate').value != ''){
+  this.EmpResponseDueDateobj = EmpFilter.ResponseDueDate.startDate;
+  this.EmpResponseDueDateobj1 = EmpFilter.ResponseDueDate.endDate;
+  // console.log(this.EmpResponseDueDateobj.$d);
+
+  this.EmpResponseDueStartDate = this.EmpResponseDueDateobj.$d;
+// console.log(this.EmppostdateStartDate);
+this.EmpResponseDueStartDate = this.convert(this.EmpResponseDueStartDate);
+
+this.EmpResponseDueEndDate = this.EmpResponseDueDateobj1.$d;
+// console.log(this.EmppostdateEndDate);
+this.EmpResponseDueEndDate = this.convert(this.EmpResponseDueEndDate);
+
+EmpFilter.EmpResponseDueStartDate = this.EmpResponseDueStartDate;
+EmpFilter.EmpResponseDueEndDate = this.EmpResponseDueEndDate;
+  }
+
+// console.log(EmpFilter);
+
+if(this.EmpFilter.get('BidStatusId').valid || this.EmpFilter.get('OpportunityType').valid ||
+     this.EmpFilter.get('Category').valid || this.EmpFilter.get('SetAsideTypeId').valid ||
+     this.EmpFilter.get('ContactingOfficer').valid || this.EmpFilter.get('BudgetAmountOver').valid || 
+     this.EmpFilter.get('BudgetAmountUnder').valid || this.EmpFilter.get('PostedDate').valid ||
+     this.EmpFilter.get('ResponseDueDate').valid) {
+      // console.log("if");
+      // alert(this.EmpFilter.get('PostedDate').valid);
+      this.Empsubmitted=true;
+      return false;
+    } else {
+      // console.log("else");
+      (document.getElementById('ErrormsgForEmp') as HTMLFormElement).style.display = "block";
+      this.Empsubmitted=false;
+      return true;
+    }
+
+  }
+
+  RemoveErrorMsgEmp(){
+    (document.getElementById('ErrormsgForEmp') as HTMLFormElement).style.display = "none";
+  }
+
+  public disableIt(evt:any) {
+    if (evt.keyCode === 13 || evt.keyCode === 9) {
+        evt.target.tagName.disabled  = true;
+     }
+ }
 
   ApplyVendorFilter(VendorFilter:any){
     this.Vendorsubmitted=true;
     console.log(VendorFilter);
   }
+
+
+  ranges: any = {
+    Today: [moment(), moment()],
+    Yesterday: [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+    'This Month': [moment().startOf('month'), moment().endOf('month')],
+    'Last Month': [
+      moment()
+        .subtract(1, 'month')
+        .startOf('month'),
+      moment()
+        .subtract(1, 'month')
+        .endOf('month')
+    ],
+    'Last 3 Month': [
+      moment()
+        .subtract(3, 'month')
+        .startOf('month'),
+      moment()
+        .subtract(1, 'month')
+        .endOf('month')
+    ]
+  };
 
 }
