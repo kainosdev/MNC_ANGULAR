@@ -283,6 +283,7 @@ input[type=button] {
     font-size: 16px;
     font-weight: 550;
     font-family: initial;  
+    
     }
   .Datatable-th{
         text-align: left;
@@ -328,10 +329,4 @@ input[type=button] {
   opacity: 0.65 !important;
 }
 
-    @media screen and (max-width: 768px) {
-
-        .accordion__header[_ngcontent-ori-c357] {
-            
-           height: 50% !important;
-          }
-    }
+    

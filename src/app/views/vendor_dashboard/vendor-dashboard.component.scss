@@ -95,8 +95,21 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-.searchbar{
-  width: 200px;
-  margin-left: 82%;
-  margin-bottom: 10px;
+
+
+
+@media screen and (min-width: 768px) {
+  .searchbar{
+    width: 200px;
+    margin-left: 79%;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .searchbar{
+    width: 75% !important;
+    margin-bottom: 10px;
+    margin-left: 56px;
+  }
 }

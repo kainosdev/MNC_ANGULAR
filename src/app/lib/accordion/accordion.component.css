@@ -1,5 +1,5 @@
 :host {
-    --accordion-header-height: 50px;
+    --accordion-header-height: 60px;
     --accordion-header-bg: hsl(0, 0%, 95%);
     --accordion-disabled: hsl(0, 0%, 60%);
     --accordion-border-radius: 8px;
