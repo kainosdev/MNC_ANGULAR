@@ -26,9 +26,9 @@
                       <div class="form-floating">
 
                         <select type="text" class="form-select" formControlName="BidStatusId" (change)="RemoveErrorMsgEmp()">
-                          <option >
-                            
-                          </option>
+                          <option *ngFor="let item of bidstatus" [value]="item.BidStatusId ">
+                            {{item.BidStatusDesc}}
+                        </option>
                       </select>
                       <div  class="help-block text-danger" >
                         <!-- <div id="ErrormsgForEmp" style="display:none">Please Fill Atleast One Field</div> -->
@@ -48,9 +48,9 @@
                       <div class="form-floating">
 
                         <select type="text" class="form-select" formControlName="OpportunityType" (change)="RemoveErrorMsgEmp()">
-                          <option >
-                            
-                          </option>
+                          <option *ngFor="let item of opportunity_type_list" [value]="item.SolicitationTypeId ">
+                            {{item.SolicitationTypeDesc}}
+                        </option>
                       </select>
                       <!-- <div  class="help-block text-danger">
                         <div *ngIf="Empsubmitted && vf.OpportunityType.errors">Opportunity Type is required</div>
@@ -67,9 +67,8 @@
                       <div class="form-floating">
 
                         <select type="text" class="form-select" formControlName="Category" (change)="RemoveErrorMsgEmp()">
-                          <option >
-                            
-                          </option>
+                          <option value="Open">Open</option>
+                                                        <option value="Closed">Closed</option>
                       </select>
                       <!-- <div  class="help-block text-danger">
                         <div *ngIf="Empsubmitted && vf.Category.errors">Category is required</div>
@@ -87,9 +86,9 @@
                       <div class="form-floating">
 
                         <select type="text" class="form-select" formControlName="SetAsideTypeId" (change)="RemoveErrorMsgEmp()">
-                          <option >
-                            
-                          </option>
+                          <option *ngFor="let item of aside_type_list" [value]="item.SetAsideTypeId ">
+                            {{item.SetAsideTypeDesc}}
+                        </option>
                       </select>
                       <!-- <div  class="help-block text-danger">
                         <div *ngIf="Empsubmitted && vf.SetAsideTypeId.errors">SetAside is required</div>
@@ -165,7 +164,7 @@
                           <div class="form-floating">
                           
             
-                           <input (keypress)="disableIt($event)" (change)="RemoveErrorMsgEmp()" style="overflow:auto" type="text" class="form-control" ngxDaterangepickerMd  [autoApply]="false" [showCustomRangeLabel]="true" formControlName="PostedDate"
+                           <input readonly  (keypress)="disableIt($event)" (change)="RemoveErrorMsgEmp()" style="overflow:auto" type="text" class="form-control" ngxDaterangepickerMd  [autoApply]="false" [showCustomRangeLabel]="true" formControlName="PostedDate"
                 [alwaysShowCalendars]="true" [ranges]="ranges" [linkedCalendars]="true" [showClearButton]="true"
                 [keepCalendarOpeningWithRange]="true" />
             
@@ -199,7 +198,7 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div  class="help-block text-danger" >
-                        <div id="ErrormsgForEmp" style="display:none;">Please Fill Atleast One Field</div>
+                        <div id="ErrormsgForEmp" style="display:none;font-size: 16px;">Please Fill Atleast One Field</div>
                         </div>
                     </div>
 
@@ -361,10 +360,10 @@
                           <div class="col-md">
                               <div class="form-floating">
         
-                                <select type="text" class="form-select" formControlName="BidStatusId" >
-                                  <option >
-                                    
-                                  </option>
+                                <select  class="form-select" formControlName="BidStatusId" >
+                                  <option *ngFor="let item of bidstatus" [value]="item.BidStatusId ">
+                                    {{item.BidStatusDesc}}
+                                </option>
                               </select>
                             <div  class="help-block text-danger">
                             <div *ngIf="Vendorsubmitted && vf1.BidStatusId.errors">BidStatus Id is required</div>
@@ -381,9 +380,9 @@
                               <div class="form-floating">
         
                                 <select type="text" class="form-select" formControlName="OpportunityType" >
-                                  <option >
-                                    
-                                  </option>
+                                  <option *ngFor="let item of opportunity_type_list" [value]="item.SolicitationTypeId ">
+                                    {{item.SolicitationTypeDesc}}
+                                </option>
                               </select>
                               <div  class="help-block text-danger">
                                 <div *ngIf="Vendorsubmitted && vf1.OpportunityType.errors">Opportunity Type is required</div>
@@ -400,9 +399,8 @@
                               <div class="form-floating">
         
                                 <select type="text" class="form-select" formControlName="Category" >
-                                  <option >
-                                    
-                                  </option>
+                                  <option value="Open">Open</option>
+                                                        <option value="Closed">Closed</option>
                               </select>
                             <div  class="help-block text-danger">
                             <div *ngIf="Vendorsubmitted && vf1.Category.errors">Category is required</div>
@@ -420,9 +418,9 @@
                               <div class="form-floating">
         
                                 <select type="text" class="form-select" formControlName="SetAsideTypeId" >
-                                  <option >
-                                    
-                                  </option>
+                                  <option *ngFor="let item of aside_type_list" [value]="item.SetAsideTypeId ">
+                                    {{item.SetAsideTypeDesc}}
+                                </option>
                               </select>
                               <div  class="help-block text-danger">
                                 <div *ngIf="Vendorsubmitted && vf1.SetAsideTypeId.errors">Set Aside is required</div>
@@ -446,7 +444,10 @@
     
                <div class="col-md">
                 <div class="form-floating">
-                        <input type="date" class="form-control"    formControlName="PostedDate" >
+                        <!-- <input type="date" class="form-control"    formControlName="PostedDate" > -->
+                        <input (keypress)="disableIt($event)" (change)="RemoveErrorMsgEmp()" style="overflow:auto" type="text" class="form-control" ngxDaterangepickerMd  [autoApply]="false" [showCustomRangeLabel]="true" formControlName="PostedDate"
+                [alwaysShowCalendars]="true" [ranges]="ranges" [linkedCalendars]="true" [showClearButton]="true"
+                [keepCalendarOpeningWithRange]="true" />
     
                        <label class="common_lbl" for="Address2">POSTED DATE </label>
     
@@ -455,7 +456,10 @@
 
        <div class="col-md">
         <div class="form-floating">
-                <input type="date" class="form-control"    formControlName="ResponseDueDate" >
+                <!-- <input type="date" class="form-control"    formControlName="ResponseDueDate" > -->
+                <input (keypress)="disableIt($event)" (change)="RemoveErrorMsgEmp()" style="overflow:auto" type="text" class="form-control" ngxDaterangepickerMd  [autoApply]="false" [showCustomRangeLabel]="true" formControlName="ResponseDueDate"
+                [alwaysShowCalendars]="true" [ranges]="ranges" [linkedCalendars]="true" [showClearButton]="true"
+                [keepCalendarOpeningWithRange]="true" />
 
                <label class="common_lbl" for="Address2">RESPONSE DUE DATE </label>
 
@@ -463,12 +467,20 @@
 </div>
     
 
+<!-- <div class="col-md">
+
+</div> -->
+
 <div class="col-md">
 
-</div>
-
-<div class="col-md">
+  <div class="row">
+    <div class="col-sm-6">
+      <div  class="help-block text-danger" >
+        <div id="ErrormsgForEmp" style="display:none;font-size: 16px;">Please Fill Atleast One Field</div>
+        </div>
+    </div>
     
+    <div class="col-sm-6">
 <div class=" mt-2 text-right">
 
 
@@ -476,6 +488,8 @@
       <input type="button"  class="btn btn-primary fixedwidthcls1" value="Apply Filter"  (click)="ApplyVendorFilter(VendorFilter.value)"/>
       </div>
 
+</div>
+</div>
 </div>
 
 </div>

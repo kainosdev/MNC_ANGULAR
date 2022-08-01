@@ -40,6 +40,23 @@ export class BidListComponent implements OnInit {
   EmpResponseDueStartDate:any;
   EmpResponseDueEndDate:any;
 
+
+  Vendorpostdateobj:any;
+  Vendorpostdateobj1:any;
+  VendorResponseDueDateobj:any;
+  VendorResponseDueDateobj1:any;
+
+  VendorpostdateStartDate:any;
+  
+  VendorpostdateEndDate:any;
+
+  VendorResponseDueStartDate:any;
+  VendorResponseDueEndDate:any;
+
+  bidstatus:any;
+  opportunity_type_list:any;
+  aside_type_list:any;
+
   displayedColumns1: string[] = [
     'BidNumber',
     'Title',
@@ -129,8 +146,10 @@ export class BidListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.employeeapproval();
+    this.GetBidStatus();
+    this.GetOpportunity_type();
     this.vendorapproval();
+    this.GetSet_aside();
     // debugger
     this.usertype=localStorage.getItem('usertypeses');
     // alert(this.usertype);
@@ -176,8 +195,8 @@ export class BidListComponent implements OnInit {
               //  ContactingOfficer: [],
               //  BudgetAmountOver: [],
               //  BudgetAmountUnder:[],
-               PostedDate:[],
-               ResponseDueDate:[],
+               PostedDate:['', [Validators.required]],
+               ResponseDueDate:['', [Validators.required]],
               //  ResponseStatus:[]
          
               });
@@ -315,8 +334,112 @@ if(this.EmpFilter.get('BidStatusId').valid || this.EmpFilter.get('OpportunityTyp
  }
 
   ApplyVendorFilter(VendorFilter:any){
-    this.Vendorsubmitted=true;
+    // this.Vendorsubmitted=true;
     console.log(VendorFilter);
+
+    if(this.VendorFilter.get('PostedDate').value != ''){
+      this.Vendorpostdateobj = VendorFilter.PostedDate.startDate;
+      
+      this.VendorpostdateStartDate = this.Vendorpostdateobj.$d;
+      this.VendorpostdateStartDate = this.convert(this.VendorpostdateStartDate);
+      // console.log(this.EmppostdateStartDate);
+      this.Vendorpostdateobj1 = VendorFilter.PostedDate.endDate;
+      
+      this.VendorpostdateEndDate = this.Vendorpostdateobj1.$d;
+      // console.log(this.EmppostdateEndDate);
+      
+      
+      this.VendorpostdateEndDate = this.convert(this.VendorpostdateEndDate);
+          
+      
+      VendorFilter.VendorpostdateStartDate = this.VendorpostdateStartDate;
+      VendorFilter.VendorpostdateEndDate = this.VendorpostdateEndDate;
+      
+      }
+
+      if(this.VendorFilter.get('ResponseDueDate').value != ''){
+        this.VendorResponseDueDateobj = VendorFilter.ResponseDueDate.startDate;
+        this.VendorResponseDueDateobj1 = VendorFilter.ResponseDueDate.endDate;
+        // console.log(this.EmpResponseDueDateobj.$d);
+      
+        this.VendorResponseDueStartDate = this.VendorResponseDueDateobj.$d;
+      // console.log(this.EmppostdateStartDate);
+      this.VendorResponseDueStartDate = this.convert(this.VendorResponseDueStartDate);
+      
+      this.VendorResponseDueEndDate = this.VendorResponseDueDateobj1.$d;
+      // console.log(this.EmppostdateEndDate);
+      this.VendorResponseDueEndDate = this.convert(this.VendorResponseDueEndDate);
+      
+      VendorFilter.VendorResponseDueStartDate = this.VendorResponseDueStartDate;
+      VendorFilter.VendorResponseDueEndDate = this.VendorResponseDueEndDate;
+        }
+
+        console.log(VendorFilter);
+        if(this.VendorFilter.get('BidStatusId').valid || this.VendorFilter.get('Category').valid ||
+     this.VendorFilter.get('SetAsideTypeId').valid || this.VendorFilter.get('PostedDate').valid ||
+     this.VendorFilter.get('ResponseDueDate').valid ) {
+      console.log("if");
+      // alert(this.EmpFilter.get('PostedDate').valid);
+      // this.Empsubmitted=true;
+      return false;
+    } else {
+      console.log("else");
+      (document.getElementById('ErrormsgForEmp') as HTMLFormElement).style.display = "block";
+      // this.Empsubmitted=false;
+      return true;
+    }
+  }
+
+
+  GetBidStatus(){
+    try
+    {
+      this.http.get(config_url+'/app/BidStatus').subscribe(
+        (data: any) => {
+          var response= data.BidStatus;
+          this.bidstatus = response;
+           // console.log(this.bidstatus)
+        });
+    }
+    catch(e) 
+    {
+      console.log(e); 
+    }
+      
+  }
+
+  GetOpportunity_type(){
+    try
+    {
+      this.http.get(config_url+'/app/Opportunity').subscribe(
+        (data: any) => {
+          var response= data.Opportunity;
+          this.opportunity_type_list = response;
+           // console.log(this.opportunity_type_list)
+        });
+    }
+    catch(e) 
+    {
+      console.log(e); 
+    }
+      
+  }
+
+  GetSet_aside(){
+    try
+    {
+      this.http.get(config_url+'/app/SetAsideType').subscribe(
+        (data: any) => {
+          var response= data.SetAsideType;
+          this.aside_type_list = response;
+           // console.log(this.aside_type_list)
+        });
+    }
+    catch(e) 
+    {
+      console.log(e); 
+    }
+      
   }
 
 
