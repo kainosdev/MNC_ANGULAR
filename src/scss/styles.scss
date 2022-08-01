@@ -47,11 +47,18 @@ $enable-rtl: true;
       /* this one used for per div label-width*/
 }
 
+.mainheading{
+    font-size: 16px !important;
+    font-weight: 700;
+}
+
 .innerlinefont{
     font-size: 12px !important;
 }
 
 div.dataTables_wrapper div.dataTables_filter input {
+    /* margin-left: .5em; */
+    /* display: inline-block; */
     width: 136px !important;
     height: 20px !important;
     font-size: 12px !important;
@@ -132,7 +139,17 @@ color: white !important;
 
     background: white;
 }
+.btn-primary {
+    color: #fff;
+    background-color: #10295f !important;
+    border-color: #10295f !important;
+}
 
+.btn-primary-red {
+    color: #fff !important;
+    background-color: #A01D1D !important;
+    border-color: #A01D1D !important;
+}
 
 a {
     color: #10295f !important;
@@ -161,27 +178,41 @@ a {
 .tablehead{
     text-align: left;
     background-color: #5e6572;
-    font-size: 14px !important;
+    font-size: 13px !important;
     color: white !important;
 }
+.common_lbl
+{
+  font-weight: bold;
+  opacity: 0.65 !important;
 
+}
 
-
-
+.question_font
+{
+  font-size: 12px;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}
 .userid    
 {
     pointer-events: all !important;
     width:100% !important;
-     height: 64% !important;
+    
+    height: 64% !important;
     
 }
 .info_icon
 {
-    width: 10% !important;
-    height: 250% !important;
+    width: 8% !important;
+    height: 200% !important;
     margin-bottom: 5px !important;
 }
-
+.info_icon_vendor
+{
+    width: 4% !important;
+  
+}
 label.common_lbl {
     font-size: 14px;
     font-weight: bold;
@@ -238,68 +269,4 @@ input[type=button] {
   --cui-gutter-x: 1.5rem;
   --cui-gutter-y: 0;
 }
-.px-3 {
-    padding-right: 1rem !important;
-    padding-left: 1rem !important;
-    background-color: white;
-  }
-
-
-
-
   
-
- 
-  .tabletr{
-    font-size: 13px;
-  }
-
-
-
-  .page-title /* page title*/
-  {
-    font-size: 18px;
-   font-weight: 550;
-   font-family: initial;
-   padding-bottom: 7px;
-     }
-  .accordion-title{
-    font-size: 16px;
-    font-weight: 550;
-    font-family: initial;  
-    }
-  .Datatable-th{
-        text-align: left;
-        background-color: #5e6572;
-        font-size: 14px !important;
-        color: white !important;
-    }
-
-    .Advancedsearch{
-        text-align: right;
-        font-size: 13px;
-        }
-
-    .common_lbl
-    {
-        font-weight: bold;
-        opacity: 0.65 !important;
-     }
-     .btn-primary {
-        color: #fff;
-        background-color: #10295f !important;
-        border-color: #10295f !important;
-    }
-    
-    .btn-primary-red {
-        color: #fff !important;
-        background-color: #A01D1D !important;
-        border-color: #A01D1D !important;
-    }
-
-    .question_font
-    {
-  font-size: 12px;
-  font-weight: 700 !important;
-  opacity: 1 !important;    
-    }
