@@ -244,6 +244,25 @@ export class EmpDashboardComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
+  Updateemplyeestatus(event: any, post: any){
+    try {
+      console.log(post);
+      this.http
+        .get(
+          config_url +
+           //'employee/Updateemplyeestatus?Id='+post.EmployeeId+'&UserStatusId=N&UpdatedUserId='+localStorage.getItem('CreatedUseridses')
+           'employee/Updateemplyeestatus?Id='+localStorage.getItem('CreatedUseridses')+'&UserStatusId=N&UpdatedUserId='+post.EmployeeId
+        )
+        .subscribe((data: any) => {
+        console.log(data)
+        });
+    } catch (e) {
+      console.log(e);
+    }
+
+  }
+
+
   directReport() {
     try {
       this.http

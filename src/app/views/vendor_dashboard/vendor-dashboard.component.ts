@@ -96,7 +96,7 @@ export class VendorDashboardComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource1.paginator = this.paginator1;
       this.dataSource2.paginator = this.paginator2;
-      this.dataSource3.paginator = this.paginator2;
+      this.dataSource3.paginator = this.paginator3;
       this.dataSource.sort = this.sort;
       this.dataSource1.sort = this.sort1;
       this.dataSource1.sort = this.sort2;

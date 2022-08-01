@@ -99,7 +99,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-    </div>
+    
       <!-- <table>
         <tr *ngIf="!dataSource.data.length">
           <td style="text-align: center;" [attr.colspan]="displayedColumns.length">
@@ -114,6 +114,7 @@
     <div *ngIf="displayNoRecords" style="text-align: center;">
       No Records Found!
     </div>
+  </div>
     <mat-paginator
     #paginator="matPaginator"
     [hidden]="!dataSource.data.length"
@@ -186,7 +187,7 @@
               <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
             </table>
-          </div>
+          
   
           <div *ngIf="!dataSource1.data.length" style="text-align: center;">
             No Records Found!
@@ -195,6 +196,7 @@
           <div *ngIf="displayNoRecords1" style="text-align: center;">
             No Records Found!
           </div>
+        </div>
           <mat-paginator
           #paginator1="matPaginator"
           [hidden]="!dataSource1.data.length"
@@ -264,7 +266,7 @@
               <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
             </table>
-          </div>
+          
   
           <div *ngIf="!dataSource2.data.length" style="text-align: center;">
             No Records Found!
@@ -273,6 +275,7 @@
           <div *ngIf="displayNoRecords2" style="text-align: center;">
             No Records Found!
           </div>
+        </div>
           <mat-paginator
           #paginator2="matPaginator"
           [hidden]="!dataSource2.data.length"
@@ -341,7 +344,7 @@
               <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
             </table>
-          </div>
+          
   
           <div *ngIf="!dataSource3.data.length" style="text-align: center;">
             No Records Found!
@@ -350,6 +353,7 @@
           <div *ngIf="displayNoRecords3" style="text-align: center;">
             No Records Found!
           </div>
+        </div>
           <mat-paginator
           #paginator3="matPaginator"
           [hidden]="!dataSource3.data.length"
