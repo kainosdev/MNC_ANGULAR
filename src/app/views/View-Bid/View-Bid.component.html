@@ -164,7 +164,7 @@
                           <div class="form-floating">
                           
             
-                           <input readonly  (keypress)="disableIt($event)" (change)="RemoveErrorMsgEmp()" style="overflow:auto" type="text" class="form-control" ngxDaterangepickerMd  [autoApply]="false" [showCustomRangeLabel]="true" formControlName="PostedDate"
+                           <input (keypress)="omit_special_char($event)"  (change)="RemoveErrorMsgEmp()" style="overflow:auto" type="text" class="form-control" ngxDaterangepickerMd  [autoApply]="false" [showCustomRangeLabel]="true" formControlName="PostedDate"
                 [alwaysShowCalendars]="true" [ranges]="ranges" [linkedCalendars]="true" [showClearButton]="true"
                 [keepCalendarOpeningWithRange]="true" />
             
@@ -181,7 +181,7 @@
           
                          <!-- <label class="common_lbl" for="Address2">POSTED DATE </label> -->
           
-                         <input (keypress)="disableIt($event)" (change)="RemoveErrorMsgEmp()" style="overflow:auto" type="text" class="form-control" ngxDaterangepickerMd  [autoApply]="false" [showCustomRangeLabel]="true" formControlName="ResponseDueDate"
+                         <input  (keypress)="omit_special_char($event)" (change)="RemoveErrorMsgEmp()" style="overflow:auto" type="text" class="form-control" ngxDaterangepickerMd  [autoApply]="false" [showCustomRangeLabel]="true" formControlName="ResponseDueDate"
               [alwaysShowCalendars]="true" [ranges]="ranges" [linkedCalendars]="true" [showClearButton]="true"
               [keepCalendarOpeningWithRange]="true" />
           
@@ -445,7 +445,7 @@
                <div class="col-md">
                 <div class="form-floating">
                         <!-- <input type="date" class="form-control"    formControlName="PostedDate" > -->
-                        <input (keypress)="disableIt($event)" (change)="RemoveErrorMsgEmp()" style="overflow:auto" type="text" class="form-control" ngxDaterangepickerMd  [autoApply]="false" [showCustomRangeLabel]="true" formControlName="PostedDate"
+                        <input (keypress)="omit_special_char($event)" (change)="RemoveErrorMsgEmp()" style="overflow:auto" type="text" class="form-control" ngxDaterangepickerMd  [autoApply]="false" [showCustomRangeLabel]="true" formControlName="PostedDate"
                 [alwaysShowCalendars]="true" [ranges]="ranges" [linkedCalendars]="true" [showClearButton]="true"
                 [keepCalendarOpeningWithRange]="true" />
     
@@ -457,7 +457,7 @@
        <div class="col-md">
         <div class="form-floating">
                 <!-- <input type="date" class="form-control"    formControlName="ResponseDueDate" > -->
-                <input (keypress)="disableIt($event)" (change)="RemoveErrorMsgEmp()" style="overflow:auto" type="text" class="form-control" ngxDaterangepickerMd  [autoApply]="false" [showCustomRangeLabel]="true" formControlName="ResponseDueDate"
+                <input (keypress)="omit_special_char($event)" (change)="RemoveErrorMsgEmp()" style="overflow:auto" type="text" class="form-control" ngxDaterangepickerMd  [autoApply]="false" [showCustomRangeLabel]="true" formControlName="ResponseDueDate"
                 [alwaysShowCalendars]="true" [ranges]="ranges" [linkedCalendars]="true" [showClearButton]="true"
                 [keepCalendarOpeningWithRange]="true" />
 

@@ -100,6 +100,7 @@ export class BidListComponent implements OnInit {
 
   displayNoRecords1: boolean;
   displayNoRecords2: boolean;
+  specificLength: any;
 
   constructor(
     private frmbuilder: FormBuilder,private http: HttpClient,private modalService: NgbModal,private router:Router,
@@ -441,6 +442,22 @@ if(this.EmpFilter.get('BidStatusId').valid || this.EmpFilter.get('OpportunityTyp
     }
       
   }
+
+  omit_special_char(event:any)
+{   
+   var k;  
+   k = event.charCode;  //         k = event.keyCode;  (Both can be used)
+   return((k > 222));
+  //  return((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57)); 
+}
+
+eventHandler(event:any){
+  if(event.target.value.length == this.specificLength && (event.code == "Backspace" || event.code == "Delete")){
+    return false;
+  }
+
+  return true;
+ }
 
 
   ranges: any = {
